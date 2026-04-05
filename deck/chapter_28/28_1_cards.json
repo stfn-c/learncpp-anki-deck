@@ -1,0 +1,130 @@
+{
+  "chapter": "Chapter 28",
+  "chapter_title": "Input and Output (I/O)",
+  "lesson": "28.1",
+  "lesson_title": "Input and output (I/O) streams",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch28_1_001",
+      "lesson": "28.1",
+      "type": "basic",
+      "tags": ["cpp", "iostream", "fundamentals"],
+      "front": "Where is I/O functionality defined in C++?",
+      "back": "In the C++ standard library (not in core C++), residing in the std namespace. You access it by including the &lt;iostream&gt; header.",
+      "source": "28.1 - Input and output (I/O) streams",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch28_1_002",
+      "lesson": "28.1",
+      "type": "cloze",
+      "tags": ["cpp", "iostream", "syntax"],
+      "text": "To use the iostream classes, you must {{c1::#include &lt;iostream&gt;}} at the top of your file.",
+      "source": "28.1 - Input and output (I/O) streams",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch28_1_003",
+      "lesson": "28.1",
+      "type": "basic",
+      "tags": ["cpp", "iostream", "streams"],
+      "front": "What is a stream in C++?",
+      "back": "A sequence of bytes that can be accessed sequentially. A stream may produce or consume potentially unlimited amounts of data over time.",
+      "source": "28.1 - Input and output (I/O) streams",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch28_1_004",
+      "lesson": "28.1",
+      "type": "cloze",
+      "tags": ["cpp", "iostream", "streams"],
+      "text": "{{c1::Input streams}} hold input from a data producer (keyboard, file, network), while {{c2::output streams}} hold output for a data consumer (monitor, file, printer).",
+      "source": "28.1 - Input and output (I/O) streams",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch28_1_005",
+      "lesson": "28.1",
+      "type": "reverse",
+      "tags": ["cpp", "iostream", "operators"],
+      "front": "&gt;&gt;",
+      "back": "Extraction operator - used with input streams to remove values from the stream",
+      "source": "28.1 - Input and output (I/O) streams",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch28_1_006",
+      "lesson": "28.1",
+      "type": "reverse",
+      "tags": ["cpp", "iostream", "operators"],
+      "front": "&lt;&lt;",
+      "back": "Insertion operator - used with output streams to put values into the stream",
+      "source": "28.1 - Input and output (I/O) streams",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch28_1_007",
+      "lesson": "28.1",
+      "type": "cloze",
+      "tags": ["cpp", "iostream", "classes"],
+      "text": "The three main stream classes are: {{c1::istream}} for input, {{c2::ostream}} for output, and {{c3::iostream}} for bidirectional I/O.",
+      "source": "28.1 - Input and output (I/O) streams",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch28_1_008",
+      "lesson": "28.1",
+      "type": "cloze",
+      "tags": ["cpp", "iostream", "standard-streams"],
+      "text": "The four standard stream objects in C++ are: {{c1::std::cin}} (input), {{c2::std::cout}} (output), {{c3::std::cerr}} (unbuffered error), and {{c4::std::clog}} (buffered error).",
+      "source": "28.1 - Input and output (I/O) streams",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch28_1_009",
+      "lesson": "28.1",
+      "type": "basic",
+      "tags": ["cpp", "iostream", "standard-streams"],
+      "front": "What is the difference between std::cerr and std::clog?",
+      "back": "std::cerr provides unbuffered output (handled immediately), while std::clog provides buffered output (stored and written as a block). Both write to standard error.",
+      "source": "28.1 - Input and output (I/O) streams",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch28_1_010",
+      "lesson": "28.1",
+      "type": "basic",
+      "tags": ["cpp", "iostream", "standard-streams"],
+      "front": "What standard input device is std::cin typically tied to?",
+      "back": "The keyboard",
+      "source": "28.1 - Input and output (I/O) streams",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch28_1_011",
+      "lesson": "28.1",
+      "type": "concept",
+      "tags": ["cpp", "iostream", "best-practices"],
+      "concept": "Why the iostream library can safely use multiple inheritance",
+      "explanation": "Although the iostream class hierarchy uses multiple inheritance (which is normally avoided), the library has been extensively designed and tested to avoid typical multiple inheritance problems like the diamond problem.",
+      "examples": [
+        "iostream derives from both istream and ostream",
+        "This allows bidirectional I/O without issues",
+        "Safe to use without worrying about MI problems"
+      ],
+      "source": "28.1 - Input and output (I/O) streams",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch28_1_012",
+      "lesson": "28.1",
+      "type": "basic",
+      "tags": ["cpp", "iostream", "typedef"],
+      "front": "What is std::ios a typedef for?",
+      "back": "std::basic_ios&lt;char&gt; - it defines functionality common to both input and output streams.",
+      "source": "28.1 - Input and output (I/O) streams",
+      "difficulty": "medium"
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "chapter": "Chapter 17",
+  "chapter_title": "Arrays and Strings",
+  "lesson": "17.13",
+  "lesson_title": "Multidimensional std::array",
+  "total_cards": 11,
+  "cards": [
+    {
+      "id": "ch17_13_001",
+      "lesson": "17.13",
+      "type": "cloze",
+      "tags": ["cpp", "std-array", "multidimensional", "syntax"],
+      "text": "To create a 2D std::array with 3 rows and 4 columns: {{c1::std::array&lt;std::array&lt;int, 4&gt;, 3&gt;}} arr;",
+      "source": "17.13 - Multidimensional std::array",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_13_002",
+      "lesson": "17.13",
+      "type": "basic",
+      "tags": ["cpp", "std-array", "multidimensional"],
+      "front": "How is a multidimensional std::array structured?",
+      "back": "As an array of arrays. A 2D std::array is std::array&lt;std::array&lt;T, cols&gt;, rows&gt; - the outer array contains rows, each row is an inner array of columns.",
+      "source": "17.13 - Multidimensional std::array",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_13_003",
+      "lesson": "17.13",
+      "type": "cloze",
+      "tags": ["cpp", "std-array", "multidimensional", "initialization"],
+      "text": "To initialize a 2D std::array: std::array&lt;std::array&lt;int, 2&gt;, 2&gt; arr {{c1::{{{{c2:: {{1,2}}, {{3,4}} }}}}}}",
+      "source": "17.13 - Multidimensional std::array",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_13_004",
+      "lesson": "17.13",
+      "type": "cloze",
+      "tags": ["cpp", "std-array", "multidimensional", "access"],
+      "text": "To access element at row 1, column 2 in 2D std::array arr: {{c1::arr[1][2]}} or {{c2::arr.at(1).at(2)}} with bounds checking",
+      "source": "17.13 - Multidimensional std::array",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_13_005",
+      "lesson": "17.13",
+      "type": "basic",
+      "tags": ["cpp", "std-array", "multidimensional", "advantages"],
+      "front": "What advantages does multidimensional std::array have over C-style multidimensional arrays?",
+      "back": "std::array provides:<ul><li>size() method for each dimension</li><li>No array decay when passing to functions</li><li>Assignment and comparison operators</li><li>bounds checking with at()</li><li>Better compatibility with standard algorithms</li></ul>",
+      "source": "17.13 - Multidimensional std::array",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_13_006",
+      "lesson": "17.13",
+      "type": "cloze",
+      "tags": ["cpp", "std-array", "multidimensional", "range-based-for"],
+      "text": "To iterate over a 2D std::array with range-based for: for ({{c1::const auto&amp;}} row : arr) for ({{c2::const auto&amp;}} elem : row)",
+      "source": "17.13 - Multidimensional std::array",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_13_007",
+      "lesson": "17.13",
+      "type": "code",
+      "tags": ["cpp", "std-array", "multidimensional"],
+      "question": "What type is 'row' in this loop?",
+      "code": "std::array&lt;std::array&lt;int, 3&gt;, 2&gt; arr;\nfor (auto&amp; row : arr) {\n    // ...\n}",
+      "answer": "std::array&lt;int, 3&gt;&amp;",
+      "explanation": "Each element of the outer array is a std::array&lt;int, 3&gt;, so row is a reference to an inner array.",
+      "source": "17.13 - Multidimensional std::array",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_13_008",
+      "lesson": "17.13",
+      "type": "cloze",
+      "tags": ["cpp", "std-array", "multidimensional", "ctad"],
+      "text": "Using CTAD for 2D std::array (C++17): {{c1::std::array}} arr {{ {{c2::std::array}}{{1,2}}, {{c3::std::array}}{{3,4}} }};",
+      "source": "17.13 - Multidimensional std::array",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch17_13_009",
+      "lesson": "17.13",
+      "type": "basic",
+      "tags": ["cpp", "std-array", "multidimensional", "function-parameters"],
+      "front": "How do you pass a 2D std::array to a function?",
+      "back": "By reference with explicit type: void func(std::array&lt;std::array&lt;int, 4&gt;, 3&gt;&amp; arr). Or use a template to accept any size. Unlike C-style arrays, no dimensions are lost.",
+      "source": "17.13 - Multidimensional std::array",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_13_010",
+      "lesson": "17.13",
+      "type": "concept",
+      "tags": ["cpp", "std-array", "multidimensional", "type-aliases"],
+      "concept": "Using type aliases for multidimensional std::array",
+      "explanation": "Multidimensional std::array types can be verbose. Use type aliases for clarity:<ul><li>Makes code more readable</li><li>Easier to change dimensions</li><li>Reduces typing errors</li></ul>",
+      "examples": [
+        "using Matrix3x4 = std::array&lt;std::array&lt;int, 4&gt;, 3&gt;;",
+        "Matrix3x4 arr;  // Much cleaner"
+      ],
+      "source": "17.13 - Multidimensional std::array",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_13_011",
+      "lesson": "17.13",
+      "type": "basic",
+      "tags": ["cpp", "std-array", "multidimensional", "constexpr"],
+      "front": "Can you use multidimensional std::array in constexpr contexts?",
+      "back": "Yes, multidimensional std::array fully supports constexpr, allowing compile-time initialization and computation with 2D/3D data structures.",
+      "source": "17.13 - Multidimensional std::array",
+      "difficulty": "easy"
+    }
+  ]
+}

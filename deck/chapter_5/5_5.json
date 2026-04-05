@@ -1,0 +1,137 @@
+{
+  "chapter": "Chapter 5",
+  "chapter_title": "Constants and Strings",
+  "lesson": "5.5",
+  "lesson_title": "Constant expressions",
+  "total_cards": 9,
+  "cards": [
+    {
+      "id": "ch5_5_5_001",
+      "lesson": "5.5",
+      "type": "cloze",
+      "text": "A {{c1::constant expression}} is an expression that can be evaluated at compile-time.",
+      "tags": [
+        "cpp",
+        "constant-expressions",
+        "fundamentals"
+      ],
+      "source": "5.5 - Constant expressions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch5_5_5_002",
+      "lesson": "5.5",
+      "type": "cloze",
+      "text": "Expressions involving only {{c1::literals}} and {{c2::const variables}} are constant expressions.",
+      "tags": [
+        "cpp",
+        "constant-expressions"
+      ],
+      "source": "5.5 - Constant expressions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch5_5_5_003",
+      "lesson": "5.5",
+      "type": "cloze",
+      "text": "A {{c1::compile-time constant}} is a constant whose value is known at compile-time.",
+      "tags": [
+        "cpp",
+        "const",
+        "compile-time"
+      ],
+      "source": "5.5 - Constant expressions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch5_5_5_004",
+      "lesson": "5.5",
+      "type": "cloze",
+      "text": "A {{c1::runtime constant}} is a constant whose value is not known until runtime (e.g., initialized from user input).",
+      "tags": [
+        "cpp",
+        "const",
+        "runtime"
+      ],
+      "source": "5.5 - Constant expressions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch5_5_5_005",
+      "lesson": "5.5",
+      "type": "code",
+      "question": "Which of these are constant expressions?",
+      "code": "const int x&#123; 5 &#125;;\nconst int y&#123; x + 3 &#125;;\nint z;\nstd::cin &gt;&gt; z;\nconst int w&#123; z &#125;;",
+      "answer": "x and y are constant expressions (compile-time)<br>w is NOT a constant expression (runtime constant)",
+      "explanation": "x and y can be evaluated at compile-time, but w depends on user input which is only known at runtime.",
+      "tags": [
+        "cpp",
+        "constant-expressions",
+        "compile-time"
+      ],
+      "source": "5.5 - Constant expressions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch5_5_5_006",
+      "lesson": "5.5",
+      "type": "code",
+      "question": "Is this a constant expression?",
+      "code": "const int x&#123; 5 &#125;;\nconst int y&#123; x * 2 + 1 &#125;;",
+      "answer": "Yes, both x and y are constant expressions that can be evaluated at compile-time.",
+      "explanation": "Since x is a compile-time constant, the expression x * 2 + 1 can be fully evaluated during compilation.",
+      "tags": [
+        "cpp",
+        "constant-expressions"
+      ],
+      "source": "5.5 - Constant expressions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch5_5_5_007",
+      "lesson": "5.5",
+      "type": "basic",
+      "front": "What is the difference between a compile-time constant and a runtime constant?",
+      "back": "<ul><li>Compile-time constant: value is known during compilation</li><li>Runtime constant: value is determined during program execution</li><li>Both use const keyword but serve different purposes</li></ul>",
+      "tags": [
+        "cpp",
+        "const",
+        "compile-time",
+        "runtime"
+      ],
+      "source": "5.5 - Constant expressions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch5_5_5_008",
+      "lesson": "5.5",
+      "type": "basic",
+      "front": "Can a non-const variable be part of a constant expression?",
+      "back": "No. Only literals, const variables (if they are compile-time constants), and constexpr variables can be part of constant expressions.",
+      "tags": [
+        "cpp",
+        "constant-expressions"
+      ],
+      "source": "5.5 - Constant expressions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch5_5_5_009",
+      "lesson": "5.5",
+      "type": "concept",
+      "concept": "Why constant expressions matter",
+      "explanation": "Constant expressions enable:<ul><li>Compile-time optimization (better performance)</li><li>Array sizes (must be compile-time constants)</li><li>Template arguments (must be compile-time constants)</li><li>Case labels in switch statements</li></ul>The compiler can evaluate them once during compilation instead of repeatedly at runtime.",
+      "examples": [
+        "const int size&#123; 5 &#125;;\nint arr[size];  // OK: size is constant expression",
+        "int x; std::cin &gt;&gt; x;\nconst int size2&#123; x &#125;;\nint arr2[size2];  // Error: not constant expression"
+      ],
+      "tags": [
+        "cpp",
+        "constant-expressions",
+        "best-practices"
+      ],
+      "source": "5.5 - Constant expressions",
+      "difficulty": "hard"
+    }
+  ]
+}

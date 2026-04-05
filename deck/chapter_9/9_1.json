@@ -1,0 +1,136 @@
+{
+  "chapter": "Chapter 9",
+  "chapter_title": "Error Detection and Handling",
+  "lesson": "9.1",
+  "lesson_title": "Introduction to testing your code",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch9_1_001",
+      "lesson": "9.1",
+      "type": "cloze",
+      "tags": ["cpp", "testing", "terminology"],
+      "text": "{{c1::Software testing}} (also called {{c2::software validation}}) is the process of determining whether or not the software actually works as expected.",
+      "source": "9.1 - Introduction to testing your code",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch9_1_002",
+      "lesson": "9.1",
+      "type": "cloze",
+      "tags": ["cpp", "testing", "unit-testing"],
+      "text": "Testing a small part of your code in isolation to ensure that unit of code is correct is called {{c1::unit testing}}.",
+      "source": "9.1 - Introduction to testing your code",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch9_1_003",
+      "lesson": "9.1",
+      "type": "basic",
+      "tags": ["cpp", "testing", "best-practices"],
+      "front": "When should you start testing your code?",
+      "back": "As soon as you've written a non-trivial function. Test your code as you go, not just at the end.",
+      "source": "9.1 - Introduction to testing your code",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch9_1_004",
+      "lesson": "9.1",
+      "type": "concept",
+      "tags": ["cpp", "testing", "best-practices"],
+      "concept": "Why test your program in small pieces rather than all at once",
+      "explanation": "Testing small pieces (functions or classes) and integrating them one at a time allows you to:<ul><li>Identify errors immediately when they're introduced</li><li>Know exactly where to look for the problem (in recently added code)</li><li>Fix small problems before they become large ones</li><li>Avoid ripple effects from late-discovered bugs</li></ul>This is similar to an auto manufacturer testing each component before installing it in the car.",
+      "examples": [
+        "// Good: Test isLowerVowel() immediately after writing it",
+        "bool isLowerVowel(char c) { /* ... */ }",
+        "// Test right away, then integrate into larger program"
+      ],
+      "source": "9.1 - Introduction to testing your code",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch9_1_005",
+      "lesson": "9.1",
+      "type": "cloze",
+      "tags": ["cpp", "testing", "integration"],
+      "text": "Once each unit has been tested in isolation, they can be integrated into your program and retested to make sure they were integrated properly. This is called {{c1::integration testing}}.",
+      "source": "9.1 - Introduction to testing your code",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch9_1_006",
+      "lesson": "9.1",
+      "type": "code",
+      "tags": ["cpp", "testing", "assert"],
+      "question": "What does this automated test function return if all tests pass?",
+      "code": "int testVowel()\n{\n    if (!isLowerVowel('a')) return 1;\n    if (isLowerVowel('q')) return 2;\n    \n    return 0;\n}",
+      "answer": "0 (zero)",
+      "explanation": "The function returns 0 if all tests passed, or the test number (1, 2, etc.) that failed. Returning 0 signals success in this pattern.",
+      "source": "9.1 - Introduction to testing your code",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch9_1_007",
+      "lesson": "9.1",
+      "type": "cloze",
+      "tags": ["cpp", "testing", "syntax"],
+      "text": "A better method for automated testing is to use {{c1::assert}}, which will cause the program to {{c2::abort}} with an error message if any test fails.",
+      "source": "9.1 - Introduction to testing your code",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch9_1_008",
+      "lesson": "9.1",
+      "type": "basic",
+      "tags": ["cpp", "testing", "best-practices"],
+      "front": "What are the two main advantages of preserving your tests in a separate test function instead of deleting temporary test code?",
+      "back": "1. You can re-run the tests later to ensure you haven't broken anything when modifying code<br>2. You don't have to remember what the expected outputs should be",
+      "source": "9.1 - Introduction to testing your code",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch9_1_009",
+      "lesson": "9.1",
+      "type": "concept",
+      "tags": ["cpp", "testing", "informal"],
+      "concept": "The three approaches to testing code in units",
+      "explanation": "There are three common approaches for unit testing:<ul><li><strong>Informal testing:</strong> Write temporary test code, run it, then erase it</li><li><strong>Preserving tests:</strong> Move test code into a test function you can call later</li><li><strong>Automated testing:</strong> Write tests that check results automatically and return pass/fail status</li></ul>Each approach has trade-offs between convenience and maintainability.",
+      "examples": [
+        "// Informal: std::cout &lt;&lt; isLowerVowel('a'); // delete after",
+        "// Preserved: void testVowel() { std::cout &lt;&lt; isLowerVowel('a'); }",
+        "// Automated: int testVowel() { if (!isLowerVowel('a')) return 1; return 0; }"
+      ],
+      "source": "9.1 - Introduction to testing your code",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch9_1_010",
+      "lesson": "9.1",
+      "type": "basic",
+      "tags": ["cpp", "testing", "frameworks"],
+      "front": "What is a unit testing framework?",
+      "back": "A third-party framework designed to help simplify the process of writing, maintaining, and executing unit tests. These frameworks provide consistent structure for organizing tests.",
+      "source": "9.1 - Introduction to testing your code",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch9_1_011",
+      "lesson": "9.1",
+      "type": "basic",
+      "tags": ["cpp", "testing", "common-mistakes"],
+      "front": "Why shouldn't you test every possible combination of inputs for a function that takes two 4-byte integers?",
+      "back": "It would require approximately 18 quintillion tests (2^64 combinations). You should instead test representative cases from each category (e.g., x &gt; y, x &lt; y, x == y).",
+      "source": "9.1 - Introduction to testing your code",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch9_1_012",
+      "lesson": "9.1",
+      "type": "cloze",
+      "tags": ["cpp", "testing", "best-practices", "syntax"],
+      "text": "Best practice: Write your program in {{c1::small, well defined units}} (functions or classes), {{c2::compile often}}, and {{c3::test your code as you go}}.",
+      "source": "9.1 - Introduction to testing your code",
+      "difficulty": "easy"
+    }
+  ]
+}

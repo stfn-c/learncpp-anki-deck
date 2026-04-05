@@ -1,0 +1,144 @@
+{
+  "chapter": "Chapter 1",
+  "chapter_title": "C++ Basics: Functions and Files",
+  "lesson": "1.7",
+  "lesson_title": "Keywords and naming identifiers",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch1_7_001",
+      "lesson": "1.7",
+      "type": "basic",
+      "tags": ["cpp", "keywords", "fundamentals"],
+      "front": "What is a keyword (or reserved word) in C++?",
+      "back": "A keyword is a word reserved by C++ for its own use. C++ has 92 keywords (as of C++23) that have special meaning and cannot be used as identifier names.",
+      "source": "1.7 - Keywords and naming identifiers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_7_002",
+      "lesson": "1.7",
+      "type": "cloze",
+      "tags": ["cpp", "keywords", "examples"],
+      "text": "Common C++ keywords include: {{c1::int}}, {{c2::return}}, {{c3::if}}, {{c4::while}}, {{c5::void}}, and {{c6::const}}.",
+      "source": "1.7 - Keywords and naming identifiers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_7_003",
+      "lesson": "1.7",
+      "type": "basic",
+      "tags": ["cpp", "identifiers", "fundamentals"],
+      "front": "What is an identifier in C++?",
+      "back": "An identifier is the name you give to a variable, function, type, or other kind of user-defined item. It's how you refer to that item in your code.",
+      "source": "1.7 - Keywords and naming identifiers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_7_004",
+      "lesson": "1.7",
+      "type": "concept",
+      "tags": ["cpp", "identifiers", "rules"],
+      "concept": "Rules for naming identifiers in C++",
+      "explanation": "Identifiers in C++ must follow these rules:<ul><li>Can only contain letters, numbers, and underscores</li><li>Cannot start with a number</li><li>Cannot be a C++ keyword</li><li>Are case-sensitive (myVar and MyVar are different)</li></ul>",
+      "examples": [
+        "int myVariable;    // Valid",
+        "int my_variable;   // Valid",
+        "int 2fast;         // Invalid: starts with number",
+        "int int;           // Invalid: keyword",
+        "int my-var;        // Invalid: contains hyphen"
+      ],
+      "source": "1.7 - Keywords and naming identifiers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch1_7_005",
+      "lesson": "1.7",
+      "type": "code",
+      "tags": ["cpp", "identifiers", "common-mistakes"],
+      "question": "Which of these identifier names are valid?",
+      "code": "int count;\nint Count;\nint _count;\nint count2;\nint 2count;\nint my-count;",
+      "answer": "Valid: count, Count, _count, count2<br>Invalid: 2count (starts with number), my-count (contains hyphen)",
+      "explanation": "Identifiers can contain letters, numbers, and underscores, but cannot start with a number or contain special characters like hyphens. C++ is case-sensitive, so count and Count are different identifiers.",
+      "source": "1.7 - Keywords and naming identifiers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch1_7_006",
+      "lesson": "1.7",
+      "type": "concept",
+      "tags": ["cpp", "identifiers", "best-practices"],
+      "concept": "Best practices for naming identifiers",
+      "explanation": "Follow these conventions for clear, maintainable code:<ul><li>Make names descriptive and clear (count, not c)</li><li>Start variable names with lowercase letter</li><li>Use camelCase or snake_case consistently</li><li>Avoid names starting with underscore (reserved for implementation)</li><li>Function names typically start with a verb</li><li>Don't use abbreviations unless very common</li></ul>",
+      "examples": [
+        "int studentCount;      // Good: clear and descriptive",
+        "int sc;                // Bad: unclear abbreviation",
+        "int numberOfStudents;  // Good: very clear",
+        "void calculateAverage(); // Good: verb for function",
+        "int _myVar;            // Avoid: leading underscore"
+      ],
+      "source": "1.7 - Keywords and naming identifiers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch1_7_007",
+      "lesson": "1.7",
+      "type": "cloze",
+      "tags": ["cpp", "identifiers", "best-practices"],
+      "text": "Variable names should begin with a {{c1::lowercase}} letter. Function names typically start with a {{c2::verb}} (like calculate, get, set).",
+      "source": "1.7 - Keywords and naming identifiers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_7_008",
+      "lesson": "1.7",
+      "type": "basic",
+      "tags": ["cpp", "identifiers", "best-practices"],
+      "front": "Why should you avoid identifier names starting with an underscore?",
+      "back": "Identifiers starting with an underscore are reserved for the C++ implementation and standard library. Using them can cause naming conflicts and undefined behavior.",
+      "source": "1.7 - Keywords and naming identifiers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch1_7_009",
+      "lesson": "1.7",
+      "type": "cloze",
+      "tags": ["cpp", "naming-conventions", "terminology"],
+      "text": "{{c1::snake_case}} uses underscores between words (my_variable), while {{c2::camelCase}} capitalizes each word except the first (myVariable).",
+      "source": "1.7 - Keywords and naming identifiers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_7_010",
+      "lesson": "1.7",
+      "type": "basic",
+      "tags": ["cpp", "identifiers", "length"],
+      "front": "Is there a practical limit on identifier length in C++?",
+      "back": "The C++ standard says identifiers can be of any length, but practical limits exist. Most compilers support at least 1024 characters. However, keep names concise and readable.",
+      "source": "1.7 - Keywords and naming identifiers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch1_7_011",
+      "lesson": "1.7",
+      "type": "code",
+      "tags": ["cpp", "identifiers", "best-practices"],
+      "question": "Which variable name is better and why?",
+      "code": "// Option 1:\nint n;\n\n// Option 2:\nint numberOfStudents;",
+      "answer": "Option 2 is better - it's descriptive and self-documenting",
+      "explanation": "While both are valid, numberOfStudents clearly indicates what the variable represents. Code is read far more often than written, so clarity is more important than brevity.",
+      "source": "1.7 - Keywords and naming identifiers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_7_012",
+      "lesson": "1.7",
+      "type": "basic",
+      "tags": ["cpp", "identifiers", "case-sensitivity"],
+      "front": "Are myVariable and MyVariable the same identifier in C++?",
+      "back": "No. C++ is case-sensitive, so myVariable and MyVariable are two completely different identifiers.",
+      "source": "1.7 - Keywords and naming identifiers",
+      "difficulty": "easy"
+    }
+  ]
+}

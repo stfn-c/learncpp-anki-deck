@@ -1,0 +1,135 @@
+{
+  "chapter": "Chapter 14",
+  "chapter_title": "Introduction to Classes",
+  "lesson": "14.4",
+  "lesson_title": "Const class objects and const member functions",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch14_4_001",
+      "lesson": "14.4",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "const"],
+      "text": "A {{c1::const}} class object cannot have its data members modified after initialization.",
+      "source": "14.4 - Const class objects and const member functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_4_002",
+      "lesson": "14.4",
+      "type": "code",
+      "tags": ["cpp", "classes", "const"],
+      "question": "What's wrong with this code?",
+      "code": "class Date { public: int year{}; };<br>const Date today{2024};<br>today.year = 2025;",
+      "answer": "Cannot modify a member of a const object. today.year is const and cannot be assigned to.",
+      "explanation": "Const class objects have all their data members treated as const, preventing modification.",
+      "source": "14.4 - Const class objects and const member functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_4_003",
+      "lesson": "14.4",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "const", "syntax"],
+      "text": "To define a const member function (that doesn't modify the object):<br>ReturnType functionName() {{c1::const}}<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;// implementation<br>}",
+      "source": "14.4 - Const class objects and const member functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_4_004",
+      "lesson": "14.4",
+      "type": "basic",
+      "tags": ["cpp", "classes", "const"],
+      "front": "What member functions can be called on const class objects?",
+      "back": "Only const member functions can be called on const class objects. Non-const member functions cannot be called.",
+      "source": "14.4 - Const class objects and const member functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_4_005",
+      "lesson": "14.4",
+      "type": "concept",
+      "tags": ["cpp", "classes", "const", "best-practices"],
+      "concept": "Why make member functions const",
+      "explanation": "Const member functions guarantee they won't modify the object. This allows them to be called on const objects and communicates design intent. It's a best practice to make all member functions that don't modify the object const.",
+      "examples": [
+        "void print() const { std::cout &lt;&lt; m_value; }  // doesn't modify",
+        "void setValue(int x) { m_value = x; }  // modifies, not const"
+      ],
+      "source": "14.4 - Const class objects and const member functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_4_006",
+      "lesson": "14.4",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "const"],
+      "text": "Inside a const member function, the implicit object is treated as {{c1::const}}, preventing modification of any data members.",
+      "source": "14.4 - Const class objects and const member functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_4_007",
+      "lesson": "14.4",
+      "type": "code",
+      "tags": ["cpp", "classes", "const", "common-mistakes"],
+      "question": "What's wrong with this code?",
+      "code": "class Counter<br>{<br>public:<br>&nbsp;&nbsp;&nbsp;&nbsp;int count{0};<br>&nbsp;&nbsp;&nbsp;&nbsp;void increment() const { ++count; }<br>};",
+      "answer": "A const member function cannot modify data members. ++count modifies count, which is not allowed.",
+      "explanation": "Const member functions promise not to modify the object. Attempting to modify count violates this promise and causes a compiler error.",
+      "source": "14.4 - Const class objects and const member functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_4_008",
+      "lesson": "14.4",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "const", "syntax"],
+      "text": "When defining a const member function outside the class, the {{c1::const}} keyword must appear after the parameter list in both the {{c2::declaration}} and {{c3::definition}}.",
+      "source": "14.4 - Const class objects and const member functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_4_009",
+      "lesson": "14.4",
+      "type": "basic",
+      "tags": ["cpp", "classes", "const"],
+      "front": "What is const-correctness in the context of classes?",
+      "back": "Const-correctness means properly using const for class objects and member functions that don't modify the object. All non-modifying member functions should be marked const.",
+      "source": "14.4 - Const class objects and const member functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_4_010",
+      "lesson": "14.4",
+      "type": "code",
+      "tags": ["cpp", "classes", "const"],
+      "question": "Which member function can be called on the const object?",
+      "code": "class String<br>{<br>public:<br>&nbsp;&nbsp;&nbsp;&nbsp;int length() const;<br>&nbsp;&nbsp;&nbsp;&nbsp;void clear();<br>};<br><br>const String str{\"hello\"};<br>// Which works: str.length() or str.clear()?",
+      "answer": "str.length() works because it's const. str.clear() doesn't work because it's non-const.",
+      "explanation": "Const objects can only call const member functions. length() is const so it's allowed, but clear() would modify the object so it's not allowed.",
+      "source": "14.4 - Const class objects and const member functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_4_011",
+      "lesson": "14.4",
+      "type": "reverse",
+      "tags": ["cpp", "classes", "const"],
+      "front": "const member function",
+      "back": "A member function that promises not to modify the object, marked with const after the parameter list",
+      "source": "14.4 - Const class objects and const member functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_4_012",
+      "lesson": "14.4",
+      "type": "basic",
+      "tags": ["cpp", "classes", "const", "best-practices"],
+      "front": "What is the best practice for passing class objects to functions by const reference?",
+      "back": "Pass class objects by const reference (const ClassName&amp;) to avoid expensive copies. This requires the class to have proper const member functions for any operations you want to perform.",
+      "source": "14.4 - Const class objects and const member functions",
+      "difficulty": "medium"
+    }
+  ]
+}

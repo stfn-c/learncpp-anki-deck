@@ -1,0 +1,191 @@
+{
+  "chapter": "Chapter 27",
+  "chapter_title": "Exception Handling and Error Handling",
+  "lesson": "27.5",
+  "lesson_title": "27.5 — Exceptions, classes, and inheritance",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch27_5_001",
+      "lesson": "27.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "classes"
+      ],
+      "text": "Using exception classes instead of basic types allows you to include {{c1::additional data}} and {{c2::member functions}} with the exception, making them more descriptive and useful.",
+      "source": "27.5 - Exceptions, classes, and inheritance",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch27_5_002",
+      "lesson": "27.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "classes"
+      ],
+      "question": "How do you throw and catch this custom exception?",
+      "code": "class ArrayException {\nprivate:\n    std::string m_error;\npublic:\n    ArrayException(std::string error)\n        : m_error{error} {}\n    const std::string&amp; getError() const { return m_error; }\n};",
+      "answer": "throw ArrayException(\"Invalid index\");<br>catch (const ArrayException&amp; e) { std::cout &lt;&lt; e.getError(); }",
+      "explanation": "Throw by value, catch by const reference. The exception object can carry data (error message) and provide member functions.",
+      "source": "27.5 - Exceptions, classes, and inheritance",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_5_003",
+      "lesson": "27.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "inheritance"
+      ],
+      "text": "When catching exceptions with inheritance, a catch handler for a {{c1::base class}} will also catch exceptions of any {{c2::derived class}} type.",
+      "source": "27.5 - Exceptions, classes, and inheritance",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_5_004",
+      "lesson": "27.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "inheritance"
+      ],
+      "question": "Which catch block executes if DerivedError is thrown?",
+      "code": "class BaseError {};\nclass DerivedError : public BaseError {};\n\ntry {\n    throw DerivedError();\n}\ncatch (const BaseError&amp; e) {\n    std::cout &lt;&lt; \"Base\";\n}\ncatch (const DerivedError&amp; e) {\n    std::cout &lt;&lt; \"Derived\";\n}",
+      "answer": "The first catch block (BaseError) executes.",
+      "explanation": "Catch blocks are checked in order. Since DerivedError is-a BaseError, the base class handler matches first. The derived handler is unreachable.",
+      "source": "27.5 - Exceptions, classes, and inheritance",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch27_5_005",
+      "lesson": "27.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "inheritance",
+        "best-practices"
+      ],
+      "front": "When catching exceptions from an inheritance hierarchy, what order should catch blocks be in?",
+      "back": "Most derived classes first, base classes last. This ensures specific exceptions are handled before more general ones.",
+      "source": "27.5 - Exceptions, classes, and inheritance",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_5_006",
+      "lesson": "27.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "standard-library"
+      ],
+      "text": "The C++ standard library provides {{c1::std::exception}} as a base class for all standard exceptions. It defines a virtual member function {{c2::what()}} that returns a C-string describing the error.",
+      "source": "27.5 - Exceptions, classes, and inheritance",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_5_007",
+      "lesson": "27.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "standard-library"
+      ],
+      "question": "What's the benefit of inheriting from std::exception?",
+      "code": "class MyException : public std::exception {\n    std::string m_msg;\npublic:\n    MyException(const std::string&amp; msg) : m_msg{msg} {}\n    const char* what() const noexcept override {\n        return m_msg.c_str();\n    }\n};",
+      "answer": "Your exception can be caught by catch (const std::exception&amp;) handlers along with standard exceptions, providing a unified error handling interface.",
+      "explanation": "Inheriting from std::exception allows your custom exceptions to be caught alongside standard library exceptions using polymorphism.",
+      "source": "27.5 - Exceptions, classes, and inheritance",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_5_008",
+      "lesson": "27.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "best-practices"
+      ],
+      "text": "The recommended practice is to {{c1::throw by value}} and {{c2::catch by (const) reference}}. This avoids slicing and unnecessary copying.",
+      "source": "27.5 - Exceptions, classes, and inheritance",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_5_009",
+      "lesson": "27.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "gotchas"
+      ],
+      "question": "What's wrong with catching by value here?",
+      "code": "class DerivedError : public BaseError {\n    std::string extraInfo;\npublic:\n    // ... members ...\n};\n\ntry {\n    throw DerivedError();\n}\ncatch (BaseError e) {  // by value!\n    // use e\n}",
+      "answer": "Catching by value causes object slicing - the DerivedError is sliced to BaseError, losing the extraInfo member and any derived class behavior.",
+      "explanation": "Catching by value copies the exception and slices it to the catch parameter type. Use const reference to preserve the full derived object.",
+      "source": "27.5 - Exceptions, classes, and inheritance",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch27_5_010",
+      "lesson": "27.5",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "inheritance",
+        "best-practices"
+      ],
+      "concept": "Designing exception class hierarchies",
+      "explanation": "Exception hierarchies enable flexible error handling:<ul><li>Derive all custom exceptions from std::exception</li><li>Create specific exception types for different errors</li><li>Catch specific types for targeted handling</li><li>Catch base types for general handling</li><li>Order catch blocks from most to least specific</li></ul>",
+      "examples": [
+        "class FileException : public std::exception {};",
+        "class FileNotFound : public FileException {};",
+        "class PermissionDenied : public FileException {};",
+        "",
+        "catch (const FileNotFound&amp;) { /* specific */ }",
+        "catch (const FileException&amp;) { /* file errors */ }",
+        "catch (const std::exception&amp;) { /* all std */ }"
+      ],
+      "source": "27.5 - Exceptions, classes, and inheritance",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch27_5_011",
+      "lesson": "27.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "standard-library"
+      ],
+      "front": "What does the std::exception::what() function return?",
+      "back": "It returns a const char* (C-string) containing a description of the exception. It's a virtual function meant to be overridden by derived classes.",
+      "source": "27.5 - Exceptions, classes, and inheritance",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch27_5_012",
+      "lesson": "27.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "best-practices"
+      ],
+      "text": "When catching exceptions from an inheritance hierarchy, place catch blocks for {{c1::derived}} classes before catch blocks for {{c2::base}} classes to avoid unreachable code.",
+      "source": "27.5 - Exceptions, classes, and inheritance",
+      "difficulty": "medium"
+    }
+  ]
+}

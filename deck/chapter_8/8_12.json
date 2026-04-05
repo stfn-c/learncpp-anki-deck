@@ -1,0 +1,132 @@
+{
+  "chapter": "Chapter 8",
+  "chapter_title": "Control Flow",
+  "lesson": "8.12",
+  "lesson_title": "Halts (exiting your program early)",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch8_12_001",
+      "lesson": "8.12",
+      "type": "basic",
+      "tags": ["cpp", "halts", "fundamentals"],
+      "front": "What is a halt in C++?",
+      "back": "A statement or function that terminates the program immediately, before it would normally end.",
+      "source": "8.12 - Halts (exiting your program early)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_12_002",
+      "lesson": "8.12",
+      "type": "cloze",
+      "tags": ["cpp", "halts", "functions"],
+      "text": "The two main functions for halting a program are {{c1::std::exit()}} and {{c2::std::abort()}}.",
+      "source": "8.12 - Halts (exiting your program early)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_12_003",
+      "lesson": "8.12",
+      "type": "cloze",
+      "tags": ["cpp", "exit", "syntax"],
+      "text": "To use std::exit(), include {{c1::&lt;cstdlib&gt;}} header and call {{c2::std::exit(status)}} where status is an integer.",
+      "source": "8.12 - Halts (exiting your program early)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_12_004",
+      "lesson": "8.12",
+      "type": "basic",
+      "tags": ["cpp", "exit", "fundamentals"],
+      "front": "What does std::exit() do?",
+      "back": "It terminates the program immediately with normal cleanup (destructors called for static/global objects), returning a status code to the operating system.",
+      "source": "8.12 - Halts (exiting your program early)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_12_005",
+      "lesson": "8.12",
+      "type": "cloze",
+      "tags": ["cpp", "exit", "status-codes"],
+      "text": "By convention, status code {{c1::0}} (or {{c2::EXIT_SUCCESS}}) means success, and non-zero (or {{c3::EXIT_FAILURE}}) means failure.",
+      "source": "8.12 - Halts (exiting your program early)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_12_006",
+      "lesson": "8.12",
+      "type": "basic",
+      "tags": ["cpp", "abort", "fundamentals"],
+      "front": "What does std::abort() do?",
+      "back": "It terminates the program abnormally and immediately, without cleanup (no destructors called, no resources released).",
+      "source": "8.12 - Halts (exiting your program early)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_12_007",
+      "lesson": "8.12",
+      "type": "basic",
+      "tags": ["cpp", "exit", "abort"],
+      "front": "What is the key difference between std::exit() and std::abort()?",
+      "back": "std::exit() performs cleanup (calls destructors) before terminating. std::abort() terminates immediately without any cleanup.",
+      "source": "8.12 - Halts (exiting your program early)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_12_008",
+      "lesson": "8.12",
+      "type": "basic",
+      "tags": ["cpp", "exit", "destructors"],
+      "front": "Does std::exit() call destructors for local variables?",
+      "back": "No, only destructors for static and global objects are called. Local variables in the current scope are not destroyed.",
+      "source": "8.12 - Halts (exiting your program early)",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch8_12_009",
+      "lesson": "8.12",
+      "type": "concept",
+      "tags": ["cpp", "exit", "best-practices"],
+      "concept": "When to use std::exit()",
+      "explanation": "std::exit() should be used sparingly:<ul><li>Generally avoid in favor of returning from main()</li><li>May be useful in utility functions that detect fatal errors</li><li>Appropriate when normal program flow cannot continue</li><li>Be aware it skips local destructors (resource leaks possible)</li><li>Prefer exceptions for error handling in most cases</li></ul>",
+      "examples": [
+        "// Rare legitimate use<br>if (!criticalResourceAvailable())<br>&nbsp;&nbsp;&nbsp;&nbsp;std::exit(EXIT_FAILURE);",
+        "// Better: return from main<br>int main() {<br>&nbsp;&nbsp;&nbsp;&nbsp;if (error) return 1;<br>}"
+      ],
+      "source": "8.12 - Halts (exiting your program early)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_12_010",
+      "lesson": "8.12",
+      "type": "basic",
+      "tags": ["cpp", "abort", "use-cases"],
+      "front": "When should you use std::abort()?",
+      "back": "Almost never. It's mainly used for abnormal termination in catastrophic situations or by assert macros. The lack of cleanup makes it dangerous.",
+      "source": "8.12 - Halts (exiting your program early)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_12_011",
+      "lesson": "8.12",
+      "type": "cloze",
+      "tags": ["cpp", "exit", "header"],
+      "text": "The constants EXIT_SUCCESS and EXIT_FAILURE are defined in the {{c1::&lt;cstdlib&gt;}} header.",
+      "source": "8.12 - Halts (exiting your program early)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_12_012",
+      "lesson": "8.12",
+      "type": "concept",
+      "tags": ["cpp", "halts", "best-practices"],
+      "concept": "Best practices for program termination",
+      "explanation": "Follow these guidelines:<ul><li><strong>Preferred</strong>: Return from main() - cleanest, all destructors called</li><li><strong>Acceptable</strong>: std::exit() when normal flow impossible - but beware local destructors aren't called</li><li><strong>Avoid</strong>: std::abort() - only for catastrophic failures</li><li>Use exceptions for error handling instead of halts</li><li>Always clean up resources properly before terminating</li></ul>",
+      "examples": [
+        "// Best: return from main<br>int main() {<br>&nbsp;&nbsp;&nbsp;&nbsp;if (error) return EXIT_FAILURE;<br>&nbsp;&nbsp;&nbsp;&nbsp;return EXIT_SUCCESS;<br>}"
+      ],
+      "source": "8.12 - Halts (exiting your program early)",
+      "difficulty": "medium"
+    }
+  ]
+}

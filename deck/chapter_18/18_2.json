@@ -1,0 +1,181 @@
+{
+  "chapter": "Chapter 18",
+  "chapter_title": "Basic standard library algorithms",
+  "lesson": "18.2",
+  "lesson_title": "Introduction to iterators",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch18_2_001",
+      "lesson": "18.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "iterators",
+        "fundamentals"
+      ],
+      "front": "What is an iterator in C++?",
+      "back": "An object that can traverse (iterate through) a container, providing access to elements one at a time. Think of it as a pointer-like object.",
+      "source": "18.2 - Introduction to iterators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch18_2_002",
+      "lesson": "18.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "iterators",
+        "syntax"
+      ],
+      "text": "To get an iterator to the beginning of a container, use {{c1::std::begin(container)}}. To get one past the end, use {{c2::std::end(container)}}.",
+      "source": "18.2 - Introduction to iterators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch18_2_003",
+      "lesson": "18.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "iterators",
+        "operators"
+      ],
+      "text": "Iterators support pointer-like operations: {{c1::operator*}} to dereference, {{c2::operator++}} to advance, and {{c3::operator!=}} to compare.",
+      "source": "18.2 - Introduction to iterators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch18_2_004",
+      "lesson": "18.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "iterators",
+        "loops"
+      ],
+      "question": "What does this iterator loop do?",
+      "code": "for (auto it{ std::begin(array) }; it != std::end(array); ++it)\n{\n    std::cout &lt;&lt; *it &lt;&lt; ' ';\n}",
+      "answer": "Prints each element of the array separated by spaces.",
+      "explanation": "It starts at begin(), advances until end(), dereferencing the iterator (*it) to access each element.",
+      "source": "18.2 - Introduction to iterators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch18_2_005",
+      "lesson": "18.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "iterators",
+        "pointers"
+      ],
+      "front": "What is the relationship between iterators and pointers?",
+      "back": "Pointers are a simple form of iterator. For basic arrays, std::begin() and std::end() return actual pointers. Iterators generalize this concept for all container types.",
+      "source": "18.2 - Introduction to iterators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch18_2_006",
+      "lesson": "18.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "iterators",
+        "containers"
+      ],
+      "text": "std::begin() and std::end() work with {{c1::all}} container types (arrays, std::vector, std::list, etc.), providing a {{c2::consistent}} interface.",
+      "source": "18.2 - Introduction to iterators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch18_2_007",
+      "lesson": "18.2",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "iterators",
+        "best-practices"
+      ],
+      "concept": "Why use iterators instead of indices",
+      "explanation": "Iterators provide:<ul><li>Universal interface for all container types</li><li>Work with containers that don't support indexing (e.g., std::list)</li><li>Required by standard library algorithms</li><li>More flexible than raw array access</li></ul>",
+      "examples": [
+        "std::list&lt;int&gt; myList; // No operator[]",
+        "auto it = std::begin(myList); // Works!",
+        "std::sort(std::begin(vec), std::end(vec)); // Requires iterators"
+      ],
+      "source": "18.2 - Introduction to iterators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch18_2_008",
+      "lesson": "18.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "iterators",
+        "ranges"
+      ],
+      "front": "Why does std::end() return an iterator one past the last element instead of to the last element?",
+      "back": "This allows the half-open range [begin, end) to work consistently, even for empty containers, and simplifies loop conditions (it != end()).",
+      "source": "18.2 - Introduction to iterators",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch18_2_009",
+      "lesson": "18.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "iterators",
+        "auto"
+      ],
+      "text": "When declaring an iterator, use {{c1::auto}} to avoid writing complex iterator type names like std::vector&lt;int&gt;::iterator.",
+      "source": "18.2 - Introduction to iterators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch18_2_010",
+      "lesson": "18.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "iterators",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this iterator usage?",
+      "code": "auto it{ std::begin(array) };\nstd::cout &lt;&lt; it;",
+      "answer": "Missing dereference operator (*). Should be: std::cout &lt;&lt; *it;",
+      "explanation": "Iterators must be dereferenced with * to access the value they point to, just like pointers.",
+      "source": "18.2 - Introduction to iterators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch18_2_011",
+      "lesson": "18.2",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "terminology"
+      ],
+      "front": "half-open range",
+      "back": "A range [begin, end) that includes the begin element but excludes the end element. Used by iterators.",
+      "source": "18.2 - Introduction to iterators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch18_2_012",
+      "lesson": "18.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "iterators",
+        "range-based-for"
+      ],
+      "front": "What is the relationship between range-based for loops and iterators?",
+      "back": "Range-based for loops use iterators internally. They're syntactic sugar that automatically calls std::begin() and std::end().",
+      "source": "18.2 - Introduction to iterators",
+      "difficulty": "medium"
+    }
+  ]
+}

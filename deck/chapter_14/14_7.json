@@ -1,0 +1,126 @@
+{
+  "chapter": "Chapter 14",
+  "chapter_title": "Introduction to Classes",
+  "lesson": "14.7",
+  "lesson_title": "Member functions returning references to data members",
+  "total_cards": 11,
+  "cards": [
+    {
+      "id": "ch14_7_001",
+      "lesson": "14.7",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "references"],
+      "text": "A member function can return a {{c1::reference}} to a private data member, which allows the caller to {{c2::modify}} that member directly.",
+      "source": "14.7 - Member functions returning references to data members",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_7_002",
+      "lesson": "14.7",
+      "type": "code",
+      "tags": ["cpp", "classes", "references"],
+      "question": "What does this code print?",
+      "code": "class Value<br>{<br>private:<br>&nbsp;&nbsp;&nbsp;&nbsp;int m_value{5};<br>public:<br>&nbsp;&nbsp;&nbsp;&nbsp;int&amp; get() { return m_value; }<br>};<br><br>Value v;<br>v.get() = 10;<br>std::cout &lt;&lt; v.get();",
+      "answer": "10",
+      "explanation": "get() returns a reference to m_value. Assigning to v.get() modifies m_value directly. The value is changed from 5 to 10.",
+      "source": "14.7 - Member functions returning references to data members",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_7_003",
+      "lesson": "14.7",
+      "type": "basic",
+      "tags": ["cpp", "classes", "references", "gotchas"],
+      "front": "What is the main danger of returning non-const references to private members?",
+      "back": "It breaks encapsulation. External code can modify the private member directly, bypassing any validation or invariant enforcement the class might provide.",
+      "source": "14.7 - Member functions returning references to data members",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_7_004",
+      "lesson": "14.7",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "const", "references"],
+      "text": "To provide read-only access via reference, return a {{c1::const reference}}:<br>const int&amp; getValue() const { return m_value; }",
+      "source": "14.7 - Member functions returning references to data members",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_7_005",
+      "lesson": "14.7",
+      "type": "concept",
+      "tags": ["cpp", "classes", "references", "best-practices"],
+      "concept": "When to return by const reference from getters",
+      "explanation": "Return by const reference when:<ul><li>The type is expensive to copy (like std::string, std::vector)</li><li>You want to avoid the copy overhead</li><li>You want read-only access without modification</li></ul>For cheap-to-copy types (int, double, etc.), return by value instead.",
+      "examples": [
+        "const std::string&amp; getName() const { return m_name; }  // expensive",
+        "int getAge() const { return m_age; }  // cheap, return by value"
+      ],
+      "source": "14.7 - Member functions returning references to data members",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch14_7_006",
+      "lesson": "14.7",
+      "type": "code",
+      "tags": ["cpp", "classes", "references", "common-mistakes"],
+      "question": "What's wrong with this code?",
+      "code": "class Person<br>{<br>private:<br>&nbsp;&nbsp;&nbsp;&nbsp;std::string m_name;<br>public:<br>&nbsp;&nbsp;&nbsp;&nbsp;std::string&amp; getName() { return m_name; }<br>};<br><br>Person p{\"Alice\"};<br>p.getName() = \"Hacker\";",
+      "answer": "It returns a non-const reference, allowing external code to modify the private member directly, breaking encapsulation.",
+      "explanation": "The getter should return const std::string&amp; to prevent modification. Returning non-const reference defeats the purpose of making m_name private.",
+      "source": "14.7 - Member functions returning references to data members",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_7_007",
+      "lesson": "14.7",
+      "type": "basic",
+      "tags": ["cpp", "classes", "const", "references"],
+      "front": "What are the two const keywords needed for a proper read-only reference getter?",
+      "back": "<ul><li>const on the return type: const Type&amp; (reference to const)</li><li>const after parameter list: indicates member function doesn't modify object</li></ul>Example: const std::string&amp; getName() const",
+      "source": "14.7 - Member functions returning references to data members",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_7_008",
+      "lesson": "14.7",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "best-practices"],
+      "text": "Best practice: Getters should return by {{c1::value}} for cheap-to-copy types (fundamental types, enums), and by {{c2::const reference}} for expensive-to-copy types (class types like std::string).",
+      "source": "14.7 - Member functions returning references to data members",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_7_009",
+      "lesson": "14.7",
+      "type": "code",
+      "tags": ["cpp", "classes", "references"],
+      "question": "Why is this getter implementation preferred?",
+      "code": "const std::vector&lt;int&gt;&amp; getData() const<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;return m_data;<br>}",
+      "answer": "It avoids expensive copy of the vector while preventing modification (const ref) and can be called on const objects (const member function).",
+      "explanation": "Returning const reference is efficient for large objects and maintains const-correctness throughout.",
+      "source": "14.7 - Member functions returning references to data members",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch14_7_010",
+      "lesson": "14.7",
+      "type": "basic",
+      "tags": ["cpp", "classes", "references", "gotchas"],
+      "front": "Can you return a reference to a local variable from a member function?",
+      "back": "No! Never return a reference to a local variable. The local variable is destroyed when the function returns, leaving a dangling reference. Only return references to members that persist beyond the function call.",
+      "source": "14.7 - Member functions returning references to data members",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_7_011",
+      "lesson": "14.7",
+      "type": "basic",
+      "tags": ["cpp", "classes", "references", "best-practices"],
+      "front": "When might you intentionally return a non-const reference to a private member?",
+      "back": "Rarely - only when you explicitly want to allow external modification and there's no validation needed. For example, in low-level data structures where performance is critical and encapsulation is less important.",
+      "source": "14.7 - Member functions returning references to data members",
+      "difficulty": "hard"
+    }
+  ]
+}

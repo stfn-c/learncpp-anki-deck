@@ -1,0 +1,144 @@
+{
+  "chapter": "Chapter 5",
+  "chapter_title": "Constants and Strings",
+  "lesson": "5.9",
+  "lesson_title": "std::string_view (part 2)",
+  "total_cards": 9,
+  "cards": [
+    {
+      "id": "ch5_5_9_001",
+      "lesson": "5.9",
+      "type": "cloze",
+      "text": "A {{c1::dangling}} string_view occurs when the underlying string is destroyed but the string_view still references it.",
+      "tags": [
+        "cpp",
+        "string_view",
+        "dangling",
+        "gotchas"
+      ],
+      "source": "5.9 - std::string_view part 2",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch5_5_9_002",
+      "lesson": "5.9",
+      "type": "cloze",
+      "text": "Returning a std::string_view to a {{c1::local std::string}} creates a dangling string_view.",
+      "tags": [
+        "cpp",
+        "string_view",
+        "common-mistakes"
+      ],
+      "source": "5.9 - std::string_view part 2",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch5_5_9_003",
+      "lesson": "5.9",
+      "type": "cloze",
+      "text": "To extract a substring from string_view, use the {{c1::.substr()}} method: {{c2::sv.substr(pos, len)}}",
+      "tags": [
+        "cpp",
+        "string_view",
+        "methods",
+        "syntax"
+      ],
+      "source": "5.9 - std::string_view part 2",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch5_5_9_004",
+      "lesson": "5.9",
+      "type": "cloze",
+      "text": "To remove prefix/suffix from string_view, use {{c1::.remove_prefix(n)}} or {{c2::.remove_suffix(n)}}.",
+      "tags": [
+        "cpp",
+        "string_view",
+        "methods"
+      ],
+      "source": "5.9 - std::string_view part 2",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch5_5_9_005",
+      "lesson": "5.9",
+      "type": "code",
+      "question": "What's wrong with this code?",
+      "code": "std::string_view getBadView() &#123;\n  std::string temp&#123; \"Hello\" &#125;;\n  return temp;  // Implicit conversion\n&#125;\n\nstd::string_view sv = getBadView();\nstd::cout &lt;&lt; sv;  // ???",
+      "answer": "Undefined behavior: dangling string_view. The local string temp is destroyed when the function returns, but sv still references its memory.",
+      "explanation": "Never return a string_view to a local string. The string_view will outlive the string it references.",
+      "tags": [
+        "cpp",
+        "string_view",
+        "dangling",
+        "common-mistakes"
+      ],
+      "source": "5.9 - std::string_view part 2",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch5_5_9_006",
+      "lesson": "5.9",
+      "type": "code",
+      "question": "Is this code safe?",
+      "code": "std::string_view sv;\n&#123;\n  std::string s&#123; \"Temp\" &#125;;\n  sv = s;\n&#125;\nstd::cout &lt;&lt; sv;",
+      "answer": "No, undefined behavior. The string s is destroyed at the end of the block, leaving sv dangling.",
+      "explanation": "string_view doesn't own the string data, so it becomes invalid when the source string is destroyed.",
+      "tags": [
+        "cpp",
+        "string_view",
+        "dangling",
+        "lifetime"
+      ],
+      "source": "5.9 - std::string_view part 2",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch5_5_9_007",
+      "lesson": "5.9",
+      "type": "basic",
+      "front": "What is the key danger of std::string_view?",
+      "back": "Dangling views: if the underlying string is destroyed or goes out of scope, the string_view becomes invalid and accessing it causes undefined behavior.",
+      "tags": [
+        "cpp",
+        "string_view",
+        "gotchas"
+      ],
+      "source": "5.9 - std::string_view part 2",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch5_5_9_008",
+      "lesson": "5.9",
+      "type": "basic",
+      "front": "Why is it generally unsafe to store a std::string_view as a member variable?",
+      "back": "The string_view might outlive the string it references, creating a dangling view. The object would contain an invalid reference.",
+      "tags": [
+        "cpp",
+        "string_view",
+        "lifetime",
+        "gotchas"
+      ],
+      "source": "5.9 - std::string_view part 2",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch5_5_9_009",
+      "lesson": "5.9",
+      "type": "concept",
+      "concept": "Safe usage of std::string_view",
+      "explanation": "To use string_view safely:<ul><li>Use primarily for function parameters</li><li>Ensure the source string outlives the string_view</li><li>Don't return string_view to local strings</li><li>Don't store as member variables (usually)</li><li>OK with string literals (they have static lifetime)</li></ul>",
+      "examples": [
+        "void safe(std::string_view sv);  // Good: parameter\n\nstd::string_view unsafe() &#123;\n  std::string s&#123;\"Bad\"&#125;;\n  return s;  // BAD: dangling\n&#125;"
+      ],
+      "tags": [
+        "cpp",
+        "string_view",
+        "best-practices",
+        "safety"
+      ],
+      "source": "5.9 - std::string_view part 2",
+      "difficulty": "hard"
+    }
+  ]
+}

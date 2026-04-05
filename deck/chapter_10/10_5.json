@@ -1,0 +1,214 @@
+{
+  "chapter": "Chapter 10",
+  "chapter_title": "Type Conversion, Type Aliases, and Type Deduction",
+  "lesson": "10.5",
+  "lesson_title": "Arithmetic conversions",
+  "total_cards": 14,
+  "cards": [
+    {
+      "id": "ch10_5_001",
+      "lesson": "10.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "arithmetic-conversions",
+        "operators"
+      ],
+      "front": "What are the usual arithmetic conversions?",
+      "back": "A set of rules that the compiler applies to operands of binary arithmetic operators to ensure both operands are the same type before performing the operation. Also called usual arithmetic conversions.",
+      "source": "10.5 - Arithmetic conversions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_5_002",
+      "lesson": "10.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "arithmetic-conversions",
+        "operators"
+      ],
+      "text": "The {{c1::usual arithmetic conversions}} ensure that both operands of a binary operator are converted to the {{c2::same type}} before the operation is performed.",
+      "source": "10.5 - Arithmetic conversions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_5_003",
+      "lesson": "10.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "arithmetic-conversions",
+        "operators"
+      ],
+      "front": "Which operators use the usual arithmetic conversions?",
+      "back": "Binary arithmetic operators: +, -, *, /, %<br>Binary relational operators: &lt;, &gt;, &lt;=, &gt;=, ==, !=<br>Binary bitwise operators: &amp;, |, ^",
+      "source": "10.5 - Arithmetic conversions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_5_004",
+      "lesson": "10.5",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "arithmetic-conversions",
+        "type-hierarchy"
+      ],
+      "concept": "Type hierarchy for usual arithmetic conversions",
+      "explanation": "The compiler uses a priority system (highest to lowest):<ul><li>long double</li><li>double</li><li>float</li><li>Promoted integral types (operands are first promoted to int/unsigned int)</li></ul>The operand with lower priority is converted to the type with higher priority.",
+      "examples": [
+        "int + double → both become double",
+        "float + double → both become double",
+        "short + int → short promoted to int first"
+      ],
+      "source": "10.5 - Arithmetic conversions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_5_005",
+      "lesson": "10.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "arithmetic-conversions",
+        "type-conversion"
+      ],
+      "question": "What is the type of the result?",
+      "code": "int i{ 3 };\ndouble d{ 4.5 };\nauto result = i + d;",
+      "answer": "double",
+      "explanation": "The int operand i is converted to double (higher priority in type hierarchy), addition is performed as double + double, and the result is double.",
+      "source": "10.5 - Arithmetic conversions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_5_006",
+      "lesson": "10.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "arithmetic-conversions",
+        "integral-promotion"
+      ],
+      "question": "What conversions happen here?",
+      "code": "short s1{ 4 };\nshort s2{ 5 };\nauto result = s1 + s2;",
+      "answer": "Both short operands are promoted to int via integral promotion, addition is performed as int + int, and result is type int.",
+      "explanation": "Before the usual arithmetic conversions, operands undergo numeric promotion. Both shorts are promoted to int, then added.",
+      "source": "10.5 - Arithmetic conversions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_5_007",
+      "lesson": "10.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "arithmetic-conversions",
+        "process"
+      ],
+      "text": "The usual arithmetic conversions apply in this order: First, apply {{c1::numeric promotions}} to operands, then convert operands to the {{c2::same type}} using the type hierarchy.",
+      "source": "10.5 - Arithmetic conversions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_5_008",
+      "lesson": "10.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "arithmetic-conversions",
+        "signed-unsigned"
+      ],
+      "question": "What is the result and why is it wrong?",
+      "code": "unsigned int u{ 5 };\nint s{ -3 };\nstd::cout &lt;&lt; u + s;",
+      "answer": "Prints a large number like 4294967298 (not 2).",
+      "explanation": "The signed int s is converted to unsigned int. -3 wraps to a large positive value. This is a common bug when mixing signed and unsigned types.",
+      "source": "10.5 - Arithmetic conversions",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch10_5_009",
+      "lesson": "10.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "arithmetic-conversions",
+        "signed-unsigned",
+        "best-practices"
+      ],
+      "front": "Why should you avoid mixing signed and unsigned operands in arithmetic operations?",
+      "back": "When operands have the same rank (e.g., both int-sized), the signed operand is converted to unsigned, which can cause unexpected wraparound behavior with negative values, leading to subtle bugs.",
+      "source": "10.5 - Arithmetic conversions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_5_010",
+      "lesson": "10.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "arithmetic-conversions",
+        "floating-point"
+      ],
+      "text": "In the type hierarchy for arithmetic conversions, {{c1::long double}} has the highest priority, followed by {{c2::double}}, then {{c3::float}}.",
+      "source": "10.5 - Arithmetic conversions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_5_011",
+      "lesson": "10.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "arithmetic-conversions",
+        "division"
+      ],
+      "question": "What does this print and why?",
+      "code": "std::cout &lt;&lt; 5 / 2 &lt;&lt; '\\n';\nstd::cout &lt;&lt; 5.0 / 2 &lt;&lt; '\\n';",
+      "answer": "2<br>2.5",
+      "explanation": "First line: int / int = int (integer division, truncates). Second line: double / int converts int to double, so double / double = 2.5.",
+      "source": "10.5 - Arithmetic conversions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_5_012",
+      "lesson": "10.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "arithmetic-conversions",
+        "return-type"
+      ],
+      "front": "What is the result type when adding int and double?",
+      "back": "double. The int operand is converted to double (higher priority), and the result of the addition is double.",
+      "source": "10.5 - Arithmetic conversions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_5_013",
+      "lesson": "10.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "arithmetic-conversions",
+        "type-hierarchy"
+      ],
+      "text": "In the type hierarchy for usual arithmetic conversions, {{c1::long double}} is highest, then {{c2::double}}, then {{c3::float}}, then promoted integral types.",
+      "source": "10.5 - Arithmetic conversions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_5_014",
+      "lesson": "10.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "arithmetic-conversions",
+        "signed-unsigned"
+      ],
+      "text": "Mixing {{c1::signed}} and {{c2::unsigned}} operands can cause unexpected {{c3::wraparound}} behavior with negative values.",
+      "source": "10.5 - Arithmetic conversions",
+      "difficulty": "medium"
+    }
+  ]
+}

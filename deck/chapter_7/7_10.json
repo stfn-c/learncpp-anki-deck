@@ -1,0 +1,229 @@
+{
+  "chapter": "Chapter 7",
+  "chapter_title": "Scope, Duration, and Linkage",
+  "lesson": "7.10",
+  "lesson_title": "Sharing global constants across multiple files (using inline variables)",
+  "total_cards": 15,
+  "cards": [
+    {
+      "id": "ch7_10_001",
+      "lesson": "7.10",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "constants",
+        "header-files"
+      ],
+      "front": "What happens when you define a const variable in a header file that is included in multiple .cpp files?",
+      "back": "Each .cpp file gets its own independent copy of the variable (because const has internal linkage by default). This wastes memory.",
+      "source": "7.10 - Sharing global constants across multiple files",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_10_002",
+      "lesson": "7.10",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "constants",
+        "linkage"
+      ],
+      "front": "What are two methods for sharing const global variables across files?",
+      "back": "<ul><li>Use extern const (pre-C++17 method)</li><li>Use inline const or inline constexpr (C++17 and later)</li></ul>",
+      "source": "7.10 - Sharing global constants across multiple files",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_10_003",
+      "lesson": "7.10",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "constants",
+        "syntax"
+      ],
+      "text": "To share a constant across files using inline (C++17), define it in a header as {{c1::inline constexpr double gravity{ 9.8 };}}",
+      "source": "7.10 - Sharing global constants across multiple files",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_10_004",
+      "lesson": "7.10",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "constants",
+        "extern"
+      ],
+      "question": "How do you share a constant using extern (pre-C++17)?",
+      "code": "// constants.cpp\n???\n\n// constants.h\n???",
+      "answer": "// constants.cpp<br>extern const int maxStudents{ 30 };<br><br>// constants.h<br>extern const int maxStudents;",
+      "explanation": "Define the constant with 'extern const' in a .cpp file and forward declare it with 'extern const' in a header file.",
+      "source": "7.10 - Sharing global constants across multiple files",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_10_005",
+      "lesson": "7.10",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "constants",
+        "best-practices"
+      ],
+      "front": "What is the preferred modern method for sharing constants across files?",
+      "back": "Use inline constexpr variables in a header file (C++17 and later). This is simpler and ensures only one copy exists.",
+      "source": "7.10 - Sharing global constants across multiple files",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_10_006",
+      "lesson": "7.10",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "constants",
+        "constexpr"
+      ],
+      "front": "Why prefer constexpr over const for global constants?",
+      "back": "Constexpr constants can be used in contexts that require compile-time constants (like array sizes) and are optimized better by the compiler.",
+      "source": "7.10 - Sharing global constants across multiple files",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_10_007",
+      "lesson": "7.10",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "constants",
+        "inline"
+      ],
+      "front": "What advantage do inline variables have over extern const?",
+      "back": "Inline variables can be defined directly in the header file (no separate .cpp file needed), are guaranteed to have only one instance, and are simpler to use.",
+      "source": "7.10 - Sharing global constants across multiple files",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_10_008",
+      "lesson": "7.10",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "constants",
+        "namespaces"
+      ],
+      "text": "Global constants should be placed in a {{c1::namespace}} to avoid naming conflicts and to make their purpose clear.",
+      "source": "7.10 - Sharing global constants across multiple files",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_10_009",
+      "lesson": "7.10",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "constants",
+        "best-practices"
+      ],
+      "question": "What's the best way to organize global constants?",
+      "code": "// constants.h - organize this better",
+      "answer": "// constants.h<br>namespace constants<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;inline constexpr double pi{ 3.14159 };<br>&nbsp;&nbsp;&nbsp;&nbsp;inline constexpr double gravity{ 9.8 };<br>}",
+      "explanation": "Put inline constexpr constants in a namespace within a header file. This is clean, modern, and avoids naming conflicts.",
+      "source": "7.10 - Sharing global constants across multiple files",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_10_010",
+      "lesson": "7.10",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "constants",
+        "header-files"
+      ],
+      "front": "Why is it a problem to have multiple copies of a const variable when included from a header?",
+      "back": "It wastes memory (each translation unit gets its own copy) and if the variable is large or complex, it can significantly increase compilation time and executable size.",
+      "source": "7.10 - Sharing global constants across multiple files",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_10_011",
+      "lesson": "7.10",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "constants",
+        "best-practices"
+      ],
+      "concept": "Best practice for sharing constants (C++17+)",
+      "explanation": "In modern C++ (C++17+), use inline constexpr variables in a header file:<ul><li>Define once in a header inside a namespace</li><li>No separate .cpp file needed</li><li>Only one copy exists across all translation units</li><li>Can be used in compile-time contexts</li><li>Simple and clean</li></ul>",
+      "examples": [
+        "// constants.h",
+        "namespace constants",
+        "{",
+        "    inline constexpr double pi{ 3.14159 };",
+        "    inline constexpr int maxPlayers{ 4 };",
+        "}",
+        "",
+        "// Any .cpp file",
+        "#include \"constants.h\"",
+        "double area = constants::pi * r * r;"
+      ],
+      "source": "7.10 - Sharing global constants across multiple files",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_10_012",
+      "lesson": "7.10",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "constants",
+        "inline"
+      ],
+      "text": "The modern C++17 way to share constants is to use {{c1::inline constexpr}} variables in a {{c2::header file}}.",
+      "source": "7.10 - Sharing global constants across multiple files",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_10_013",
+      "lesson": "7.10",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "constants",
+        "constexpr"
+      ],
+      "text": "Prefer {{c1::constexpr}} over const for global constants because constexpr can be used in {{c2::compile-time contexts}}.",
+      "source": "7.10 - Sharing global constants across multiple files",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_10_014",
+      "lesson": "7.10",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "constants",
+        "namespaces"
+      ],
+      "text": "Place global constants in a {{c1::namespace}} to avoid naming conflicts: namespace constants { inline constexpr double {{c2::pi}}{ 3.14159 }; }",
+      "source": "7.10 - Sharing global constants across multiple files",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_10_015",
+      "lesson": "7.10",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "constants",
+        "extern"
+      ],
+      "text": "Pre-C++17 method to share constants: define with {{c1::extern const}} in a .cpp file and forward declare with {{c2::extern const}} in a header.",
+      "source": "7.10 - Sharing global constants across multiple files",
+      "difficulty": "medium"
+    }
+  ]
+}

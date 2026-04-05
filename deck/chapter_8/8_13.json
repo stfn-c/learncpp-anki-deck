@@ -1,0 +1,147 @@
+{
+  "chapter": "Chapter 8",
+  "chapter_title": "Control Flow",
+  "lesson": "8.13",
+  "lesson_title": "Introduction to random number generation",
+  "total_cards": 14,
+  "cards": [
+    {
+      "id": "ch8_13_001",
+      "lesson": "8.13",
+      "type": "basic",
+      "tags": ["cpp", "random", "fundamentals"],
+      "front": "What is a pseudo-random number generator (PRNG)?",
+      "back": "An algorithm that generates a sequence of numbers that approximates randomness. The numbers are deterministic but appear random.",
+      "source": "8.13 - Introduction to random number generation",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_13_002",
+      "lesson": "8.13",
+      "type": "basic",
+      "tags": ["cpp", "random", "fundamentals"],
+      "front": "Why do PRNGs need a seed value?",
+      "back": "The seed is the initial state that determines the sequence of random numbers. The same seed produces the same sequence every time.",
+      "source": "8.13 - Introduction to random number generation",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_13_003",
+      "lesson": "8.13",
+      "type": "cloze",
+      "tags": ["cpp", "random", "deprecated"],
+      "text": "The C function {{c1::rand()}} should be avoided because it has poor randomness quality and is implementation-dependent.",
+      "source": "8.13 - Introduction to random number generation",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_13_004",
+      "lesson": "8.13",
+      "type": "cloze",
+      "tags": ["cpp", "random", "header"],
+      "text": "Modern C++ random number generation facilities are in the {{c1::&lt;random&gt;}} header.",
+      "source": "8.13 - Introduction to random number generation",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_13_005",
+      "lesson": "8.13",
+      "type": "basic",
+      "tags": ["cpp", "random", "components"],
+      "front": "What are the two main components needed for random number generation in modern C++?",
+      "back": "1) A random number engine (PRNG) that generates random bits<br>2) A distribution that converts those bits into numbers in a desired range",
+      "source": "8.13 - Introduction to random number generation",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_13_006",
+      "lesson": "8.13",
+      "type": "cloze",
+      "tags": ["cpp", "random", "engine"],
+      "text": "The most commonly used random number engine in C++ is {{c1::std::mt19937}}, which implements the Mersenne Twister algorithm.",
+      "source": "8.13 - Introduction to random number generation",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_13_007",
+      "lesson": "8.13",
+      "type": "cloze",
+      "tags": ["cpp", "random", "distribution"],
+      "text": "To generate random integers in a range, use {{c1::std::uniform_int_distribution&lt;int&gt;}}.",
+      "source": "8.13 - Introduction to random number generation",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_13_008",
+      "lesson": "8.13",
+      "type": "cloze",
+      "tags": ["cpp", "random", "syntax"],
+      "text": "Basic random number generation:<br>{{c1::std::mt19937 mt;}}  // engine<br>{{c2::std::uniform_int_distribution die{1, 6};}}  // distribution<br>{{c3::int roll = die(mt);}}  // generate number",
+      "source": "8.13 - Introduction to random number generation",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_13_009",
+      "lesson": "8.13",
+      "type": "basic",
+      "tags": ["cpp", "random", "seeding"],
+      "front": "What is a common source for seeding a PRNG to get different results each run?",
+      "back": "std::random_device or the current time. std::random_device is preferred as it attempts to get truly random values from the OS.",
+      "source": "8.13 - Introduction to random number generation",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_13_010",
+      "lesson": "8.13",
+      "type": "cloze",
+      "tags": ["cpp", "random", "seeding"],
+      "text": "To seed a Mersenne Twister engine with random_device:<br>{{c1::std::random_device rd;}}  // obtain random seed<br>{{c2::std::mt19937 mt{rd()};}}  // seed the engine",
+      "source": "8.13 - Introduction to random number generation",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_13_011",
+      "lesson": "8.13",
+      "type": "basic",
+      "tags": ["cpp", "random", "best-practices"],
+      "front": "Should you create a new random engine every time you need a random number?",
+      "back": "No, create the engine once (with seed) and reuse it. Creating it repeatedly, especially with the same seed, defeats randomness.",
+      "source": "8.13 - Introduction to random number generation",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_13_012",
+      "lesson": "8.13",
+      "type": "basic",
+      "tags": ["cpp", "random", "distributions"],
+      "front": "What distribution would you use for random floating-point numbers?",
+      "back": "std::uniform_real_distribution&lt;double&gt; for uniformly distributed real numbers in a range.",
+      "source": "8.13 - Introduction to random number generation",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_13_013",
+      "lesson": "8.13",
+      "type": "concept",
+      "tags": ["cpp", "random", "best-practices"],
+      "concept": "Modern C++ random number generation pattern",
+      "explanation": "The proper pattern for random numbers:<ul><li>Create engine once, seed it with std::random_device</li><li>Make it static or global so it persists</li><li>Create distribution for desired range</li><li>Call distribution with engine: dist(engine)</li><li>Reuse same engine for multiple numbers</li><li>Never use rand() - use &lt;random&gt; facilities</li></ul>",
+      "examples": [
+        "// Good: reusable setup<br>static std::mt19937 mt{std::random_device{}()};<br>std::uniform_int_distribution die{1, 6};<br>int roll = die(mt);  // generate",
+        "// Bad: recreating each time<br>std::mt19937 mt{1}; // same seed every time!"
+      ],
+      "source": "8.13 - Introduction to random number generation",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_13_014",
+      "lesson": "8.13",
+      "type": "basic",
+      "tags": ["cpp", "random", "rand"],
+      "front": "Why should you avoid using rand() and srand() from C?",
+      "back": "They produce poor quality randomness, are implementation-dependent, have limited range, and modern C++ provides far better alternatives in &lt;random&gt;.",
+      "source": "8.13 - Introduction to random number generation",
+      "difficulty": "medium"
+    }
+  ]
+}

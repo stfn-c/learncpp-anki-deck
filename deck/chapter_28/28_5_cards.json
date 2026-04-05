@@ -1,0 +1,186 @@
+{
+  "chapter": "Chapter 28",
+  "chapter_title": "Input and Output (I/O)",
+  "lesson": "28.5",
+  "lesson_title": "Stream states and input validation",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch28_5_001",
+      "lesson": "28.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "iostream",
+        "state-flags"
+      ],
+      "text": "The four stream state flags are: {{c1::goodbit}} (everything ok), {{c2::badbit}} (fatal error), {{c3::failbit}} (non-fatal error), and {{c4::eofbit}} (end of file).",
+      "source": "28.5 - Stream states and input validation",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch28_5_002",
+      "lesson": "28.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "iostream",
+        "state-flags"
+      ],
+      "front": "What causes the failbit to be set?",
+      "back": "Non-fatal errors like type mismatches (e.g., trying to read a letter into an int variable) or trying to open a non-existent file.",
+      "source": "28.5 - Stream states and input validation",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch28_5_003",
+      "lesson": "28.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "iostream",
+        "state-flags"
+      ],
+      "front": "What causes the badbit to be set?",
+      "back": "Fatal errors like reading from a closed stream, running out of memory, or unrecoverable hardware failures.",
+      "source": "28.5 - Stream states and input validation",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch28_5_004",
+      "lesson": "28.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "iostream",
+        "state-checking"
+      ],
+      "text": "To check if a stream is in a good state, use {{c1::if (std::cin.good())}} or {{c2::if (std::cin)}}.",
+      "source": "28.5 - Stream states and input validation",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch28_5_005",
+      "lesson": "28.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "iostream",
+        "state-checking"
+      ],
+      "text": "To check for specific error flags: {{c1::cin.fail()}} for failbit, {{c2::cin.bad()}} for badbit, {{c3::cin.eof()}} for eofbit.",
+      "source": "28.5 - Stream states and input validation",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch28_5_006",
+      "lesson": "28.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "iostream",
+        "clear"
+      ],
+      "text": "To reset all stream error flags, use {{c1::std::cin.clear()}}.",
+      "source": "28.5 - Stream states and input validation",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch28_5_007",
+      "lesson": "28.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "iostream",
+        "validation"
+      ],
+      "question": "What happens with this code if the user enters \"abc\"?",
+      "code": "int x;\nstd::cin &gt;&gt; x;\nstd::cout &lt;&lt; x;",
+      "answer": "x remains uninitialized (garbage value), std::cin enters fail state, and the invalid input \"abc\" stays in the buffer.",
+      "explanation": "When extraction fails, the variable is left unchanged and the stream's failbit is set.",
+      "source": "28.5 - Stream states and input validation",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch28_5_008",
+      "lesson": "28.5",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "iostream",
+        "best-practices"
+      ],
+      "concept": "Proper input validation pattern",
+      "explanation": "When validating input:<ul><li>Check if extraction succeeded (if (cin &gt;&gt; x))</li><li>If failed: clear() to reset flags</li><li>Use ignore() to remove bad input from buffer</li><li>Prompt user to try again</li></ul>",
+      "examples": [
+        "if (!(std::cin &gt;&gt; x)) {",
+        "  std::cin.clear();",
+        "  std::cin.ignore(std::numeric_limits&lt;std::streamsize&gt;::max(), '\\n');",
+        "  // Ask for input again",
+        "}"
+      ],
+      "source": "28.5 - Stream states and input validation",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch28_5_009",
+      "lesson": "28.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "iostream",
+        "conversion"
+      ],
+      "front": "How can you use a stream in a boolean context?",
+      "back": "Streams can be used in boolean contexts (if statements, while loops). They evaluate to true if in good state, false if any error flag is set.",
+      "source": "28.5 - Stream states and input validation",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch28_5_010",
+      "lesson": "28.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "iostream",
+        "common-patterns"
+      ],
+      "question": "What does this idiom do?",
+      "code": "while (std::cin &gt;&gt; value) {\n  // process value\n}",
+      "answer": "Reads values until extraction fails or EOF is reached. The stream evaluates to false when an error occurs or input ends.",
+      "explanation": "Common pattern for processing input until it runs out or encounters an error.",
+      "source": "28.5 - Stream states and input validation",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch28_5_011",
+      "lesson": "28.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "iostream",
+        "gotchas"
+      ],
+      "front": "Why doesn't clear() remove bad input from the stream buffer?",
+      "back": "clear() only resets error flags. Bad input remains in the buffer. You must use ignore() to actually remove the invalid characters.",
+      "source": "28.5 - Stream states and input validation",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch28_5_012",
+      "lesson": "28.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "iostream",
+        "gotchas"
+      ],
+      "question": "What's wrong with this error handling?",
+      "code": "int x;\nwhile (!(std::cin &gt;&gt; x)) {\n  std::cin.clear();\n  std::cout &lt;&lt; \"Try again: \";\n}",
+      "answer": "Missing cin.ignore() - the invalid input stays in buffer, causing an infinite loop.",
+      "explanation": "Without ignore(), the same invalid input is read repeatedly, continuously failing.",
+      "source": "28.5 - Stream states and input validation",
+      "difficulty": "hard"
+    }
+  ]
+}

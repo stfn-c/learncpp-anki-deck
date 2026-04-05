@@ -1,0 +1,245 @@
+{
+  "chapter": "Chapter 7",
+  "chapter_title": "Scope, Duration, and Linkage",
+  "lesson": "7.11",
+  "lesson_title": "Static local variables",
+  "total_cards": 16,
+  "cards": [
+    {
+      "id": "ch7_11_001",
+      "lesson": "7.11",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "static",
+        "syntax"
+      ],
+      "text": "To declare a static local variable, use the {{c1::static}} keyword inside a function: {{c2::static int count{ 0 };}}",
+      "source": "7.11 - Static local variables",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_11_002",
+      "lesson": "7.11",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "static",
+        "terminology"
+      ],
+      "front": "Static local variable",
+      "back": "A local variable with static duration - it is created and initialized the first time the function is called and persists until the program ends.",
+      "source": "7.11 - Static local variables",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_11_003",
+      "lesson": "7.11",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "static",
+        "behavior"
+      ],
+      "question": "What does this function print when called 3 times?",
+      "code": "void printCount()\n{\n    static int count{ 0 };\n    ++count;\n    std::cout &lt;&lt; count &lt;&lt; '\\n';\n}\n// Call 3 times",
+      "answer": "1<br>2<br>3",
+      "explanation": "Static local variables retain their value between function calls. The variable is initialized only once and persists for the program's lifetime.",
+      "source": "7.11 - Static local variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_11_004",
+      "lesson": "7.11",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "static",
+        "initialization"
+      ],
+      "front": "When is a static local variable initialized?",
+      "back": "The first time the function is called and execution reaches the variable's definition. It is not re-initialized on subsequent calls.",
+      "source": "7.11 - Static local variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_11_005",
+      "lesson": "7.11",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "static",
+        "scope"
+      ],
+      "front": "What is the scope of a static local variable?",
+      "back": "Block scope (just like normal local variables). It can only be accessed within the block where it's defined, even though it has static duration.",
+      "source": "7.11 - Static local variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_11_006",
+      "lesson": "7.11",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "static",
+        "duration"
+      ],
+      "front": "What is the duration of a static local variable?",
+      "back": "Static duration. The variable is created when first initialized and destroyed when the program ends, not when the function exits.",
+      "source": "7.11 - Static local variables",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_11_007",
+      "lesson": "7.11",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "static",
+        "initialization"
+      ],
+      "front": "What value does a static local variable have if not explicitly initialized?",
+      "back": "Zero-initialized (just like global variables). This is different from normal local variables which are uninitialized.",
+      "source": "7.11 - Static local variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_11_008",
+      "lesson": "7.11",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "static",
+        "use-cases"
+      ],
+      "front": "What is a common use case for static local variables?",
+      "back": "Generating unique IDs - the static variable maintains a counter that increments each time the function is called, ensuring each ID is unique.",
+      "source": "7.11 - Static local variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_11_009",
+      "lesson": "7.11",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "static",
+        "unique-ids"
+      ],
+      "question": "Complete this function to generate unique IDs:",
+      "code": "int generateID()\n{\n    // Your code here\n    return ???;\n}",
+      "answer": "static int id{ 0 };<br>return ++id;",
+      "explanation": "Use a static local variable to maintain state between calls. Each call increments and returns the next ID.",
+      "source": "7.11 - Static local variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_11_010",
+      "lesson": "7.11",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "static",
+        "best-practices"
+      ],
+      "front": "Why are static local variables better than global variables for maintaining state?",
+      "back": "They have limited scope (only accessible within the function), making them safer and preventing unintended modification from other parts of the program.",
+      "source": "7.11 - Static local variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_11_011",
+      "lesson": "7.11",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "static",
+        "gotchas"
+      ],
+      "front": "What happens if two static local variables in different functions have the same name?",
+      "back": "No problem. They are completely independent because each has block scope limited to its own function. The name doesn't conflict.",
+      "source": "7.11 - Static local variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_11_012",
+      "lesson": "7.11",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "static",
+        "best-practices"
+      ],
+      "concept": "When to use static local variables",
+      "explanation": "Use static local variables when you need to:<ul><li>Maintain state between function calls</li><li>Generate unique identifiers</li><li>Cache expensive computations</li><li>Count function invocations</li></ul>They provide the persistence of globals with the safety of local scope.",
+      "examples": [
+        "// Generate unique IDs",
+        "int generateID() {",
+        "    static int id{ 0 };",
+        "    return ++id;",
+        "}",
+        "",
+        "// Count function calls",
+        "void trackCalls() {",
+        "    static int calls{ 0 };",
+        "    std::cout &lt;&lt; ++calls;",
+        "}"
+      ],
+      "source": "7.11 - Static local variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_11_013",
+      "lesson": "7.11",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "static",
+        "duration"
+      ],
+      "text": "Static local variables have {{c1::block scope}} and {{c2::static duration}} - they persist until the {{c3::program ends}}.",
+      "source": "7.11 - Static local variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_11_014",
+      "lesson": "7.11",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "static",
+        "initialization"
+      ],
+      "text": "A static local variable is initialized {{c1::the first time}} the function is called and {{c2::not re-initialized}} on subsequent calls.",
+      "source": "7.11 - Static local variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_11_015",
+      "lesson": "7.11",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "static",
+        "initialization"
+      ],
+      "text": "Static local variables that are not explicitly initialized are {{c1::zero-initialized}}, unlike normal local variables which are {{c2::uninitialized}}.",
+      "source": "7.11 - Static local variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_11_016",
+      "lesson": "7.11",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "static",
+        "scope"
+      ],
+      "text": "Static local variables have {{c1::block scope}} but {{c2::static duration}}, combining local accessibility with persistent state.",
+      "source": "7.11 - Static local variables",
+      "difficulty": "medium"
+    }
+  ]
+}

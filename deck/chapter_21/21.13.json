@@ -1,0 +1,170 @@
+{
+  "chapter": "Chapter 21",
+  "chapter_title": "Operator Overloading",
+  "lesson": "21.13",
+  "lesson_title": "Shallow vs. deep copying",
+  "total_cards": 11,
+  "cards": [
+    {
+      "id": "ch21_13_001",
+      "lesson": "21.13",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "copy-semantics",
+        "memory"
+      ],
+      "text": "{{c1::Shallow copy}} copies pointer values, so both objects point to the same data. {{c2::Deep copy}} allocates new memory and copies the actual data.",
+      "source": "21.13 - Shallow vs. deep copying",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_13_002",
+      "lesson": "21.13",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "copy-semantics",
+        "memory"
+      ],
+      "front": "What problem occurs with shallow copying of dynamically allocated members?",
+      "back": "Both objects point to the same memory. When one is destroyed, it deletes the memory. The other object now has a dangling pointer, leading to double-delete and undefined behavior.",
+      "source": "21.13 - Shallow vs. deep copying",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch21_13_003",
+      "lesson": "21.13",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "copy-semantics",
+        "memory"
+      ],
+      "question": "Is this shallow or deep copy?",
+      "code": "MyString(const MyString&amp; source)\n    : m_data(source.m_data), m_length(source.m_length) {}",
+      "answer": "Shallow copy. m_data (a pointer) is copied, so both objects point to the same memory.",
+      "explanation": "This causes problems when either object is destroyed - double delete.",
+      "source": "21.13 - Shallow vs. deep copying",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_13_004",
+      "lesson": "21.13",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "copy-semantics",
+        "memory"
+      ],
+      "question": "Is this shallow or deep copy?",
+      "code": "MyString(const MyString&amp; source)\n    : m_length(source.m_length) {\n    m_data = new char[m_length];\n    std::copy(source.m_data, source.m_data + m_length, m_data);\n}",
+      "answer": "Deep copy. Allocates new memory and copies the data, so each object has independent memory.",
+      "explanation": "Each object owns its own memory, preventing double-delete issues.",
+      "source": "21.13 - Shallow vs. deep copying",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_13_005",
+      "lesson": "21.13",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "copy-semantics",
+        "memory"
+      ],
+      "text": "The default copy constructor and copy assignment operator perform {{c1::shallow}} copies (memberwise copy), which is problematic for classes with {{c2::dynamically allocated}} members.",
+      "source": "21.13 - Shallow vs. deep copying",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_13_006",
+      "lesson": "21.13",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "copy-semantics",
+        "memory"
+      ],
+      "front": "When is shallow copying acceptable?",
+      "back": "Shallow copying is fine when the class doesn't manage resources (no pointers to dynamically allocated memory, file handles, etc.). For simple classes with only fundamental types or types that handle their own copying.",
+      "source": "21.13 - Shallow vs. deep copying",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_13_007",
+      "lesson": "21.13",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "copy-semantics",
+        "memory"
+      ],
+      "text": "To implement deep copying, you must provide custom {{c1::copy constructor}} and {{c2::copy assignment operator}} that allocate new memory and copy the data.",
+      "source": "21.13 - Shallow vs. deep copying",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch21_13_008",
+      "lesson": "21.13",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "copy-semantics",
+        "memory"
+      ],
+      "front": "What is the \"double delete\" problem with shallow copying?",
+      "back": "When two objects share the same dynamically allocated memory (shallow copy), both destructors try to delete the same memory. The second delete operates on already-freed memory, causing a crash or corruption.",
+      "source": "21.13 - Shallow vs. deep copying",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch21_13_009",
+      "lesson": "21.13",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "copy-semantics",
+        "memory"
+      ],
+      "concept": "When to implement deep copy",
+      "explanation": "Implement deep copy when your class manages resources:<ul><li>Dynamically allocated memory (pointers)</li><li>File handles</li><li>Network connections</li><li>Any resource that shouldn't be shared</li></ul>Requires custom copy constructor and copy assignment operator. Or use Rule of 5 and implement move semantics too.",
+      "examples": [
+        "// Deep copy constructor",
+        "MyClass(const MyClass&amp; src) {",
+        "    m_data = new int[src.m_size];",
+        "    std::copy(src.m_data, src.m_data + src.m_size, m_data);",
+        "}"
+      ],
+      "source": "21.13 - Shallow vs. deep copying",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch21_13_010",
+      "lesson": "21.13",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "copy-semantics",
+        "memory"
+      ],
+      "text": "If you need to implement a copy constructor for deep copying, you almost certainly need to implement {{c1::operator=}}, {{c2::destructor}}, and in modern C++, {{c3::move}} operations too (Rule of 5).",
+      "source": "21.13 - Shallow vs. deep copying",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_13_011",
+      "lesson": "21.13",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "copy-semantics",
+        "best-practices"
+      ],
+      "front": "What's an alternative to implementing deep copy for resource management?",
+      "back": "Use smart pointers (std::unique_ptr, std::shared_ptr) which handle copying/moving correctly. Or use standard containers (std::vector, std::string) that already implement deep copying. Follow the Rule of Zero when possible.",
+      "source": "21.13 - Shallow vs. deep copying",
+      "difficulty": "medium"
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "chapter": "Chapter 12",
+  "chapter_title": "Compound Types: References and Pointers",
+  "lesson": "12.3",
+  "lesson_title": "Lvalue references",
+  "total_cards": 9,
+  "cards": [
+    {
+      "id": "ch12_3_001",
+      "lesson": "12.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "references",
+        "syntax"
+      ],
+      "text": "An {{c1::lvalue reference}} is declared using an ampersand ({{c2::&amp;}}) in the type declaration: {{c3::int&amp; ref = x;}}",
+      "source": "12.3 - Lvalue references",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_3_002",
+      "lesson": "12.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "references",
+        "fundamentals"
+      ],
+      "front": "What is an lvalue reference?",
+      "back": "An lvalue reference is an alias for an existing lvalue (such as a variable). It acts as an alternative name for the object it references.",
+      "source": "12.3 - Lvalue references",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_3_003",
+      "lesson": "12.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "references"
+      ],
+      "question": "What does this code output?",
+      "code": "int x = 5;<br>int&amp; ref = x;<br>ref = 6;<br>std::cout &lt;&lt; x;",
+      "answer": "6",
+      "explanation": "ref is an alias for x. Assigning 6 to ref modifies x because they refer to the same object.",
+      "source": "12.3 - Lvalue references",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_3_004",
+      "lesson": "12.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "references",
+        "initialization"
+      ],
+      "text": "References {{c1::must}} be initialized when defined. Once initialized, they {{c2::cannot be reseated}} (changed to reference another object).",
+      "source": "12.3 - Lvalue references",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_3_005",
+      "lesson": "12.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "references",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this code?",
+      "code": "int&amp; ref;       // Error 1<br>int&amp; ref2 = 5;  // Error 2",
+      "answer": "Error 1: Reference not initialized. Error 2: Cannot bind lvalue reference to rvalue (5 is a literal/rvalue).",
+      "explanation": "References must be initialized when declared and can only be bound to lvalues, not rvalues.",
+      "source": "12.3 - Lvalue references",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_3_006",
+      "lesson": "12.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "references",
+        "pointers"
+      ],
+      "front": "Can a reference be reseated to refer to a different object after initialization?",
+      "back": "No. Once a reference is bound to an object, it cannot be changed to reference a different object. This is different from pointers, which can be reassigned.",
+      "source": "12.3 - Lvalue references",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_3_007",
+      "lesson": "12.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "references",
+        "memory"
+      ],
+      "question": "What does this demonstrate about references?",
+      "code": "int x = 5;<br>int&amp; ref = x;<br>std::cout &lt;&lt; &amp;x &lt;&lt; '\\n';<br>std::cout &lt;&lt; &amp;ref;",
+      "answer": "Both output the same address, proving that ref is truly an alias for x, not a separate object.",
+      "explanation": "A reference has the same address as the object it references because it's an alias, not a copy.",
+      "source": "12.3 - Lvalue references",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_3_008",
+      "lesson": "12.3",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "references",
+        "best-practices"
+      ],
+      "concept": "Key properties of lvalue references",
+      "explanation": "Lvalue references have these important properties:<ul><li>Must be initialized when declared</li><li>Cannot be reseated (bound to a different object)</li><li>Can only bind to lvalues (not rvalues)</li><li>Act as an alias with same address as referent</li><li>Automatically dereferenced (no * needed)</li></ul>",
+      "examples": [
+        "int x = 5;",
+        "int& ref = x;  // OK: initialized with lvalue",
+        "ref = 10;      // OK: modifies x through ref",
+        "int& bad;      // Error: not initialized"
+      ],
+      "source": "12.3 - Lvalue references",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_3_009",
+      "lesson": "12.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "references",
+        "syntax"
+      ],
+      "text": "To declare multiple references, write {{c1::int&amp; ref1, &amp;ref2;}} or better, declare them on {{c2::separate lines}}.",
+      "source": "12.3 - Lvalue references",
+      "difficulty": "medium"
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "chapter": "Chapter 12",
+  "chapter_title": "Compound Types: References and Pointers",
+  "lesson": "12.9",
+  "lesson_title": "Pointers and const",
+  "total_cards": 8,
+  "cards": [
+    {
+      "id": "ch12_9_001",
+      "lesson": "12.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "pointers",
+        "const",
+        "syntax"
+      ],
+      "text": "A {{c1::pointer to const}} (const int* ptr) cannot change the value being pointed to. A {{c2::const pointer}} (int* const ptr) cannot change what it points to.",
+      "source": "12.9 - Pointers and const",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_9_002",
+      "lesson": "12.9",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "pointers",
+        "const"
+      ],
+      "front": "What is the difference between 'const int* ptr' and 'int* const ptr'?",
+      "back": "'const int* ptr' is a pointer to const (can't modify value). 'int* const ptr' is a const pointer (can't reassign pointer). Read right-to-left.",
+      "source": "12.9 - Pointers and const",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_9_003",
+      "lesson": "12.9",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "pointers",
+        "const",
+        "common-mistakes"
+      ],
+      "question": "Which lines cause errors?",
+      "code": "int x = 5, y = 10;<br>const int* ptr = &amp;x;<br>*ptr = 6;     // 1<br>ptr = &amp;y;     // 2",
+      "answer": "Line 1 causes an error. Cannot modify value through pointer to const. Line 2 is OK - the pointer itself can be reassigned.",
+      "explanation": "Pointer to const means the pointed-to value is const, not the pointer itself.",
+      "source": "12.9 - Pointers and const",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_9_004",
+      "lesson": "12.9",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "pointers",
+        "const",
+        "common-mistakes"
+      ],
+      "question": "Which lines cause errors?",
+      "code": "int x = 5, y = 10;<br>int* const ptr = &amp;x;<br>*ptr = 6;     // 1<br>ptr = &amp;y;     // 2",
+      "answer": "Line 2 causes an error. Cannot reassign a const pointer. Line 1 is OK - can modify value through non-const pointer.",
+      "explanation": "Const pointer means the pointer itself cannot be changed after initialization.",
+      "source": "12.9 - Pointers and const",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_9_005",
+      "lesson": "12.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "pointers",
+        "const",
+        "syntax"
+      ],
+      "text": "A {{c1::const int* const ptr}} is both a const pointer and a pointer to const. Neither the pointer nor the value can be changed.",
+      "source": "12.9 - Pointers and const",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_9_006",
+      "lesson": "12.9",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "pointers",
+        "const",
+        "best-practices"
+      ],
+      "concept": "Reading pointer const declarations",
+      "explanation": "Read right-to-left to understand const with pointers:<ul><li>const int* ptr: ptr is a pointer to const int</li><li>int* const ptr: ptr is a const pointer to int</li><li>const int* const ptr: const pointer to const int</li></ul>const left of * applies to value, right of * applies to pointer.",
+      "examples": [
+        "const int* p1;        // pointer to const int",
+        "int const* p2;        // same as above",
+        "int* const p3 = &x;   // const pointer to int",
+        "const int* const p4 = &x;  // const pointer to const int"
+      ],
+      "source": "12.9 - Pointers and const",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch12_9_007",
+      "lesson": "12.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "pointers",
+        "const"
+      ],
+      "text": "In const int* ptr, const applies to the {{c1::pointed-to value}}. In int* const ptr, const applies to the {{c2::pointer itself}}.",
+      "source": "12.9 - Pointers and const",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_9_008",
+      "lesson": "12.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "pointers",
+        "const",
+        "syntax"
+      ],
+      "text": "Read pointer declarations {{c1::right-to-left}}: int* const reads as 'const {{c2::pointer}} to int'.",
+      "source": "12.9 - Pointers and const",
+      "difficulty": "medium"
+    }
+  ]
+}

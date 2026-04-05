@@ -1,0 +1,222 @@
+{
+  "chapter": "Chapter 7",
+  "chapter_title": "Scope, Duration, and Linkage",
+  "lesson": "7.2",
+  "lesson_title": "User-defined namespaces and the scope resolution operator",
+  "total_cards": 15,
+  "cards": [
+    {
+      "id": "ch7_2_001",
+      "lesson": "7.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "namespaces",
+        "syntax"
+      ],
+      "text": "To define your own namespace, use the {{c1::namespace}} keyword followed by the namespace name and a block.",
+      "source": "7.2 - User-defined namespaces and the scope resolution operator",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_2_002",
+      "lesson": "7.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "namespaces",
+        "naming-collisions"
+      ],
+      "front": "What problem do namespaces solve?",
+      "back": "Naming collisions - when two identical identifiers are introduced into the same scope and the compiler cannot disambiguate which one to use.",
+      "source": "7.2 - User-defined namespaces and the scope resolution operator",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_2_003",
+      "lesson": "7.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "namespaces",
+        "syntax"
+      ],
+      "text": "To access a namespace member, use the {{c1::scope resolution operator}} ({{c2:::}}) between the namespace name and identifier.",
+      "source": "7.2 - User-defined namespaces and the scope resolution operator",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_2_004",
+      "lesson": "7.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "namespaces",
+        "syntax"
+      ],
+      "question": "How do you call the add() function from the foo namespace?",
+      "code": "namespace foo\n{\n    int add(int x, int y)\n    {\n        return x + y;\n    }\n}",
+      "answer": "foo::add(3, 4)",
+      "explanation": "Use the scope resolution operator (::) to access members of a namespace: namespace_name::identifier",
+      "source": "7.2 - User-defined namespaces and the scope resolution operator",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_2_005",
+      "lesson": "7.2",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "operators",
+        "namespaces"
+      ],
+      "front": "::",
+      "back": "Scope resolution operator - used to access members of a namespace or class",
+      "source": "7.2 - User-defined namespaces and the scope resolution operator",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_2_006",
+      "lesson": "7.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "namespaces",
+        "best-practices"
+      ],
+      "front": "Can you use the scope resolution operator (::) with no namespace name on the left?",
+      "back": "Yes. The scope resolution operator with no namespace name accesses the global namespace explicitly (e.g., ::doSomething()).",
+      "source": "7.2 - User-defined namespaces and the scope resolution operator",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_2_007",
+      "lesson": "7.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "namespaces",
+        "nesting"
+      ],
+      "front": "Can namespaces be nested inside other namespaces?",
+      "back": "Yes. Namespaces can be nested inside other namespaces. Access nested members using multiple scope resolution operators (e.g., foo::goo::add()).",
+      "source": "7.2 - User-defined namespaces and the scope resolution operator",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_2_008",
+      "lesson": "7.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "namespaces",
+        "syntax"
+      ],
+      "text": "Nested namespace foo::goo can be written more concisely in C++17 as {{c1::namespace foo::goo}}.",
+      "source": "7.2 - User-defined namespaces and the scope resolution operator",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_2_009",
+      "lesson": "7.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "namespaces",
+        "forward-declarations"
+      ],
+      "front": "Do forward declarations need to be inside the same namespace as the function definition?",
+      "back": "Yes. Forward declarations must be inside the same namespace, or you must prefix the name with the namespace when declaring/defining (e.g., void foo::doSomething()).",
+      "source": "7.2 - User-defined namespaces and the scope resolution operator",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_2_010",
+      "lesson": "7.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "namespaces",
+        "multiple-files"
+      ],
+      "front": "Can a namespace be defined across multiple files?",
+      "back": "Yes. Namespaces can be defined across multiple files. All declarations within the same namespace are considered part of that namespace, regardless of which file they're in.",
+      "source": "7.2 - User-defined namespaces and the scope resolution operator",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_2_011",
+      "lesson": "7.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "namespaces",
+        "syntax"
+      ],
+      "question": "What's wrong with this code?",
+      "code": "namespace foo\n{\n    int doSomething(int x, int y);\n}\n\n// Definition outside namespace\nint doSomething(int x, int y)\n{\n    return x + y;\n}",
+      "answer": "The definition is not in the foo namespace. It should be 'int foo::doSomething(int x, int y)' or be inside the namespace block.",
+      "explanation": "When defining a function declared in a namespace outside that namespace, you must prefix the function name with the namespace and scope resolution operator.",
+      "source": "7.2 - User-defined namespaces and the scope resolution operator",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_2_012",
+      "lesson": "7.2",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "namespaces",
+        "best-practices"
+      ],
+      "concept": "Why use namespaces in your own programs",
+      "explanation": "Namespaces prevent naming collisions by grouping related identifiers under a unique name. As programs grow, the number of identifiers increases linearly, but potential collisions increase exponentially. Namespaces keep identifiers organized and separate.",
+      "examples": [
+        "namespace math { int add(int x, int y); }",
+        "namespace graphics { int add(Point a, Point b); }",
+        "// Both add() functions can coexist"
+      ],
+      "source": "7.2 - User-defined namespaces and the scope resolution operator",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_2_013",
+      "lesson": "7.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "namespaces",
+        "syntax"
+      ],
+      "text": "To define a namespace: {{c1::namespace}} identifier {{c2::{}} declarations {{c3::}}}",
+      "source": "7.2 - User-defined namespaces and the scope resolution operator",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_2_014",
+      "lesson": "7.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "namespaces",
+        "nesting"
+      ],
+      "text": "In C++17, nested namespaces can be written concisely: {{c1::namespace parent::child { }}} instead of nesting blocks.",
+      "source": "7.2 - User-defined namespaces and the scope resolution operator",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_2_015",
+      "lesson": "7.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "namespaces",
+        "naming-collisions"
+      ],
+      "text": "A {{c1::naming collision}} occurs when two identical identifiers are introduced into the same {{c2::scope}}, preventing the compiler from disambiguating.",
+      "source": "7.2 - User-defined namespaces and the scope resolution operator",
+      "difficulty": "easy"
+    }
+  ]
+}

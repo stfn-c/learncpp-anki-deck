@@ -1,0 +1,126 @@
+{
+  "chapter": "Chapter 0",
+  "chapter_title": "Introduction / Getting Started",
+  "lesson": "0.10",
+  "lesson_title": "Configuring your compiler: Compiler extensions",
+  "total_cards": 11,
+  "cards": [
+    {
+      "id": "ch0_10_001",
+      "lesson": "0.10",
+      "type": "basic",
+      "tags": ["cpp", "compiler", "extensions"],
+      "front": "What are compiler extensions?",
+      "back": "Compiler extensions are features added by specific compilers (MSVC, GCC, Clang) that are not part of the official C++ standard. They provide extra functionality but hurt portability.",
+      "source": "0.10 - Configuring your compiler: Compiler extensions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_10_002",
+      "lesson": "0.10",
+      "type": "cloze",
+      "tags": ["cpp", "compiler", "extensions"],
+      "text": "Compiler extensions are {{c1::compiler-specific}} features that are {{c2::not}} part of the official C++ standard.",
+      "source": "0.10 - Configuring your compiler: Compiler extensions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_10_003",
+      "lesson": "0.10",
+      "type": "basic",
+      "tags": ["cpp", "compiler", "portability"],
+      "front": "What is the main problem with using compiler extensions?",
+      "back": "Code using compiler extensions won't compile on other compilers. This hurts portability - your code becomes locked to one compiler vendor.",
+      "source": "0.10 - Configuring your compiler: Compiler extensions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_10_004",
+      "lesson": "0.10",
+      "type": "concept",
+      "tags": ["cpp", "compiler", "best-practices"],
+      "concept": "Why you should disable compiler extensions",
+      "explanation": "Disabling compiler extensions is a best practice because:<ul><li>Makes code portable across different compilers</li><li>Ensures code follows the C++ standard</li><li>Prevents accidental use of non-standard features</li><li>Makes it easier to switch compilers later</li><li>Code is more likely to work in future C++ versions</li></ul>Extensions may seem convenient but create technical debt.",
+      "examples": [
+        "GCC extension: variable-length arrays (not in standard C++)",
+        "MSVC extension: non-standard string literal behavior",
+        "Code with extensions: works only on one compiler"
+      ],
+      "source": "0.10 - Configuring your compiler: Compiler extensions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_10_005",
+      "lesson": "0.10",
+      "type": "cloze",
+      "tags": ["cpp", "compiler", "configuration"],
+      "text": "To ensure maximum portability, you should {{c1::disable}} compiler extensions in your project settings.",
+      "source": "0.10 - Configuring your compiler: Compiler extensions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_10_006",
+      "lesson": "0.10",
+      "type": "basic",
+      "tags": ["cpp", "compiler", "visual-studio"],
+      "front": "How do you disable compiler extensions in Visual Studio?",
+      "back": "Project Properties → C/C++ → Language → Conformance mode → set to Yes (/permissive-)",
+      "source": "0.10 - Configuring your compiler: Compiler extensions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_10_007",
+      "lesson": "0.10",
+      "type": "basic",
+      "tags": ["cpp", "compiler", "gcc-clang"],
+      "front": "How do you disable compiler extensions in GCC and Clang?",
+      "back": "Use the -pedantic-errors flag when compiling. This treats extension usage as errors.",
+      "source": "0.10 - Configuring your compiler: Compiler extensions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_10_008",
+      "lesson": "0.10",
+      "type": "cloze",
+      "tags": ["cpp", "compiler", "flags"],
+      "text": "In GCC/Clang, the {{c1::-pedantic-errors}} flag disables compiler extensions and treats their use as {{c2::errors}}.",
+      "source": "0.10 - Configuring your compiler: Compiler extensions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_10_009",
+      "lesson": "0.10",
+      "type": "basic",
+      "tags": ["cpp", "compiler", "standards"],
+      "front": "What is \"conformance mode\" in Visual Studio?",
+      "back": "Conformance mode (/permissive-) makes MSVC strictly follow the C++ standard and disable most Microsoft-specific extensions, improving code portability.",
+      "source": "0.10 - Configuring your compiler: Compiler extensions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_10_010",
+      "lesson": "0.10",
+      "type": "basic",
+      "tags": ["cpp", "compiler", "portability"],
+      "front": "When might you intentionally use compiler extensions?",
+      "back": "Only when absolutely necessary for platform-specific functionality (OS APIs, hardware access) and when portability isn't a concern. Always isolate extension use to specific files.",
+      "source": "0.10 - Configuring your compiler: Compiler extensions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_10_011",
+      "lesson": "0.10",
+      "type": "concept",
+      "tags": ["cpp", "compiler", "best-practices"],
+      "concept": "Setting up a new C++ project for standards compliance",
+      "explanation": "Configure every new project for maximum standards compliance:<ul><li>Disable compiler extensions (conformance mode)</li><li>Enable all warnings</li><li>Treat warnings as errors</li><li>Choose a specific C++ standard (C++20, C++23)</li><li>Test on multiple compilers if possible</li></ul>These settings catch problems early and ensure portable code.",
+      "examples": [
+        "Visual Studio: /permissive- /W4 /WX /std:c++20",
+        "GCC/Clang: -std=c++20 -pedantic-errors -Wall -Wextra -Werror",
+        "CMake: set(CMAKE_CXX_STANDARD 20)"
+      ],
+      "source": "0.10 - Configuring your compiler: Compiler extensions",
+      "difficulty": "medium"
+    }
+  ]
+}

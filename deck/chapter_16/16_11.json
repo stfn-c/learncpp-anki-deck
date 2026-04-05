@@ -1,0 +1,127 @@
+{
+  "chapter": "Chapter 16",
+  "chapter_title": "Introduction to Containers and Arrays",
+  "lesson": "16.11",
+  "lesson_title": "std::vector and stack behavior",
+  "total_cards": 11,
+  "cards": [
+    {
+      "id": "ch16_11_001",
+      "lesson": "16.11",
+      "type": "basic",
+      "tags": ["cpp", "stack", "data-structures"],
+      "front": "What is a stack data structure?",
+      "back": "A container that follows LIFO (Last In, First Out) ordering. The last element added is the first one removed. Like a stack of plates.",
+      "source": "16.11 - std::vector and stack behavior",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_11_002",
+      "lesson": "16.11",
+      "type": "cloze",
+      "tags": ["cpp", "stack", "terminology"],
+      "text": "Stack operations: {{c1::push}} adds an element to the top, {{c2::pop}} removes the top element, and {{c3::top}} accesses the top element without removing it.",
+      "source": "16.11 - std::vector and stack behavior",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_11_003",
+      "lesson": "16.11",
+      "type": "reverse",
+      "tags": ["cpp", "stack", "terminology"],
+      "front": "LIFO",
+      "back": "Last In, First Out - ordering principle where the most recently added item is removed first",
+      "source": "16.11 - std::vector and stack behavior",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_11_004",
+      "lesson": "16.11",
+      "type": "cloze",
+      "tags": ["cpp", "vector", "stack"],
+      "text": "To use std::vector as a stack: {{c1::push_back()}} to push, {{c2::pop_back()}} to pop, and {{c3::back()}} to access the top element.",
+      "source": "16.11 - std::vector and stack behavior",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_11_005",
+      "lesson": "16.11",
+      "type": "code",
+      "tags": ["cpp", "vector", "stack"],
+      "question": "What does this code output?",
+      "code": "std::vector&lt;int&gt; stack;\nstack.push_back(1);\nstack.push_back(2);\nstack.push_back(3);\nstd::cout &lt;&lt; stack.back();\nstack.pop_back();\nstd::cout &lt;&lt; stack.back();",
+      "answer": "32",
+      "explanation": "First back() returns 3 (last pushed). After pop_back(), back() returns 2 (previous element).",
+      "source": "16.11 - std::vector and stack behavior",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_11_006",
+      "lesson": "16.11",
+      "type": "basic",
+      "tags": ["cpp", "vector", "functions"],
+      "front": "What does std::vector::pop_back() return?",
+      "back": "Nothing (void). It removes the last element but doesn't return it. Use back() to access the value before calling pop_back().",
+      "source": "16.11 - std::vector and stack behavior",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_11_007",
+      "lesson": "16.11",
+      "type": "concept",
+      "tags": ["cpp", "vector", "stack"],
+      "concept": "Using std::vector as a stack",
+      "explanation": "std::vector can efficiently implement stack behavior:<ul><li>push_back() adds to end (top of stack)</li><li>pop_back() removes from end (top of stack)</li><li>back() accesses end element (peek at top)</li><li>All O(1) amortized time complexity</li></ul>For dedicated stack, std::stack exists but uses std::deque by default.",
+      "examples": [
+        "stack.push_back(5);  // push",
+        "int top = stack.back();  // peek",
+        "stack.pop_back();  // pop"
+      ],
+      "source": "16.11 - std::vector and stack behavior",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_11_008",
+      "lesson": "16.11",
+      "type": "code",
+      "tags": ["cpp", "vector", "common-mistakes"],
+      "question": "What's wrong with this code?",
+      "code": "std::vector&lt;int&gt; stack;\nstack.push_back(10);\nint val = stack.pop_back();",
+      "answer": "pop_back() returns void, not the element. Should use: int val = stack.back(); then stack.pop_back();",
+      "explanation": "You must call back() before pop_back() if you need the value.",
+      "source": "16.11 - std::vector and stack behavior",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch16_11_009",
+      "lesson": "16.11",
+      "type": "basic",
+      "tags": ["cpp", "vector", "functions"],
+      "front": "What does std::vector::back() do?",
+      "back": "Returns a reference to the last element in the vector (the element at position size()-1). Does not remove it.",
+      "source": "16.11 - std::vector and stack behavior",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_11_010",
+      "lesson": "16.11",
+      "type": "cloze",
+      "tags": ["cpp", "vector", "functions"],
+      "text": "To access the first element of a vector, use {{c1::front()}}. To access the last element, use {{c2::back()}}.",
+      "source": "16.11 - std::vector and stack behavior",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_11_011",
+      "lesson": "16.11",
+      "type": "code",
+      "tags": ["cpp", "vector", "stack"],
+      "question": "Implement a safe pop that returns the value",
+      "code": "std::vector&lt;int&gt; stack{1, 2, 3};",
+      "answer": "int popValue() {<br>&nbsp;&nbsp;if (stack.empty()) throw std::runtime_error(\"empty\");<br>&nbsp;&nbsp;int val = stack.back();<br>&nbsp;&nbsp;stack.pop_back();<br>&nbsp;&nbsp;return val;<br>}",
+      "explanation": "Check if empty, get value with back(), then pop_back(), return value.",
+      "source": "16.11 - std::vector and stack behavior",
+      "difficulty": "medium"
+    }
+  ]
+}

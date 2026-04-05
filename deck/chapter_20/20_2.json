@@ -1,0 +1,150 @@
+{
+  "chapter": "Chapter 20",
+  "chapter_title": "Functions",
+  "lesson": "20.2",
+  "lesson_title": "The stack and the heap",
+  "total_cards": 14,
+  "cards": [
+    {
+      "id": "ch20_2_001",
+      "lesson": "20.2",
+      "type": "basic",
+      "tags": ["cpp", "memory", "stack"],
+      "front": "What are the two main memory segments used for variable allocation in C++?",
+      "back": "The stack (for automatic variables) and the heap (for dynamic memory allocation).",
+      "source": "20.2 - The stack and the heap",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch20_2_002",
+      "lesson": "20.2",
+      "type": "cloze",
+      "tags": ["cpp", "memory", "stack"],
+      "text": "The stack stores {{c1::local variables}}, {{c2::function parameters}}, and {{c3::function return addresses}} for each function call.",
+      "source": "20.2 - The stack and the heap",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch20_2_003",
+      "lesson": "20.2",
+      "type": "basic",
+      "tags": ["cpp", "memory", "stack"],
+      "front": "How does the stack grow and shrink?",
+      "back": "The stack grows when a function is called (allocating space for local variables) and shrinks when the function returns (deallocating that space automatically).",
+      "source": "20.2 - The stack and the heap",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch20_2_004",
+      "lesson": "20.2",
+      "type": "cloze",
+      "tags": ["cpp", "memory", "stack"],
+      "text": "Stack allocation and deallocation is very {{c1::fast}} because it only requires moving the {{c2::stack pointer}}.",
+      "source": "20.2 - The stack and the heap",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch20_2_005",
+      "lesson": "20.2",
+      "type": "basic",
+      "tags": ["cpp", "memory", "stack", "limitations"],
+      "front": "What are two main limitations of the stack?",
+      "back": "<ul><li>Stack size is limited (typically 1-8 MB)</li><li>Variables are automatically destroyed when they go out of scope</li></ul>",
+      "source": "20.2 - The stack and the heap",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_2_006",
+      "lesson": "20.2",
+      "type": "basic",
+      "tags": ["cpp", "memory", "stack-overflow"],
+      "front": "What causes a stack overflow?",
+      "back": "A stack overflow occurs when the stack runs out of memory, typically from:<ul><li>Too many function calls (deep recursion)</li><li>Allocating large local variables</li></ul>",
+      "source": "20.2 - The stack and the heap",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_2_007",
+      "lesson": "20.2",
+      "type": "cloze",
+      "tags": ["cpp", "memory", "heap"],
+      "text": "Dynamic memory allocated with {{c1::new}} or {{c2::malloc}} comes from the heap.",
+      "source": "20.2 - The stack and the heap",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch20_2_008",
+      "lesson": "20.2",
+      "type": "basic",
+      "tags": ["cpp", "memory", "heap"],
+      "front": "What are the main advantages of heap allocation?",
+      "back": "<ul><li>Much larger than the stack (limited only by system memory)</li><li>Memory persists until explicitly deallocated</li><li>Can allocate memory whose size is determined at runtime</li></ul>",
+      "source": "20.2 - The stack and the heap",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_2_009",
+      "lesson": "20.2",
+      "type": "basic",
+      "tags": ["cpp", "memory", "heap"],
+      "front": "What are the main disadvantages of heap allocation?",
+      "back": "<ul><li>Slower than stack allocation</li><li>Must be manually deallocated (risk of memory leaks)</li><li>Can cause fragmentation</li><li>Accessing heap memory is slower than stack memory</li></ul>",
+      "source": "20.2 - The stack and the heap",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_2_010",
+      "lesson": "20.2",
+      "type": "code",
+      "tags": ["cpp", "memory", "stack-vs-heap"],
+      "question": "Which variables are on the stack and which are on the heap?",
+      "code": "int main()<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;int x = 5;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// ?<br>&nbsp;&nbsp;&nbsp;&nbsp;int* ptr = new int(10); // ?<br>&nbsp;&nbsp;&nbsp;&nbsp;delete ptr;<br>&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br>}",
+      "answer": "x is on the stack (automatic variable)<br>ptr is on the stack (the pointer variable itself)<br>The int(10) is on the heap (dynamically allocated)",
+      "explanation": "Local variables are on the stack. The pointer variable ptr is on the stack, but the memory it points to (allocated with new) is on the heap.",
+      "source": "20.2 - The stack and the heap",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_2_011",
+      "lesson": "20.2",
+      "type": "concept",
+      "tags": ["cpp", "memory", "best-practices"],
+      "concept": "When to use stack vs heap allocation",
+      "explanation": "Use the stack when:<ul><li>Size is known at compile time</li><li>Size is small (not megabytes)</li><li>Variable lifetime should match scope</li></ul>Use the heap when:<ul><li>Size must be determined at runtime</li><li>Large allocations needed</li><li>Memory needs to persist beyond function scope</li><li>Returning objects from functions</li></ul>",
+      "examples": [
+        "int arr[100]; // Stack: size known, small",
+        "int* arr = new int[n]; // Heap: size runtime, could be large"
+      ],
+      "source": "20.2 - The stack and the heap",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_2_012",
+      "lesson": "20.2",
+      "type": "cloze",
+      "tags": ["cpp", "memory", "fragmentation"],
+      "text": "Heap {{c1::fragmentation}} occurs when memory becomes divided into small non-contiguous blocks, making it hard to allocate {{c2::large contiguous}} blocks even when total free memory is sufficient.",
+      "source": "20.2 - The stack and the heap",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_2_013",
+      "lesson": "20.2",
+      "type": "basic",
+      "tags": ["cpp", "memory", "performance"],
+      "front": "Why is stack allocation faster than heap allocation?",
+      "back": "Stack allocation only requires moving the stack pointer (one CPU instruction), while heap allocation requires searching for a free block, bookkeeping, and potential fragmentation handling.",
+      "source": "20.2 - The stack and the heap",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_2_014",
+      "lesson": "20.2",
+      "type": "cloze",
+      "tags": ["cpp", "memory", "lifetime"],
+      "text": "Stack variables are automatically destroyed when they go {{c1::out of scope}}, while heap variables must be {{c2::manually deleted}} or managed by smart pointers.",
+      "source": "20.2 - The stack and the heap",
+      "difficulty": "easy"
+    }
+  ]
+}

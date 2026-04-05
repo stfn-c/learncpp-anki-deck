@@ -1,0 +1,166 @@
+{
+  "chapter": "Chapter F",
+  "chapter_title": "Introduction to Functions and Constexpr",
+  "lesson": "F.4",
+  "lesson_title": "Constexpr functions (part 4)",
+  "total_cards": 11,
+  "cards": [
+    {
+      "id": "chF_4_001",
+      "lesson": "F.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "std-is-constant-evaluated"
+      ],
+      "front": "What does std::is_constant_evaluated() do?",
+      "back": "It returns true if the current expression is being evaluated at compile-time, and false if it's being evaluated at runtime.",
+      "source": "F.4 - Constexpr functions (part 4)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "chF_4_002",
+      "lesson": "F.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "std-is-constant-evaluated"
+      ],
+      "text": "std::is_constant_evaluated() is defined in the {{c1::&lt;type_traits&gt;}} header and was introduced in {{c2::C++20}}.",
+      "source": "F.4 - Constexpr functions (part 4)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "chF_4_003",
+      "lesson": "F.4",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "conditional-execution"
+      ],
+      "concept": "Using std::is_constant_evaluated() for conditional logic",
+      "explanation": "You can use std::is_constant_evaluated() to provide different implementations for compile-time vs runtime execution in the same function. This is useful when the compile-time implementation has restrictions that the runtime version doesn't.",
+      "examples": [
+        "if (std::is_constant_evaluated())",
+        "    // compile-time safe code",
+        "else",
+        "    // runtime code with more features"
+      ],
+      "source": "F.4 - Constexpr functions (part 4)",
+      "difficulty": "hard"
+    },
+    {
+      "id": "chF_4_004",
+      "lesson": "F.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "constinit"
+      ],
+      "front": "What is the purpose of the constinit specifier?",
+      "back": "constinit ensures that a variable is initialized at compile-time (like constexpr), but unlike constexpr, the variable is not const and can be modified at runtime.",
+      "source": "F.4 - Constexpr functions (part 4)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "chF_4_005",
+      "lesson": "F.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "constinit"
+      ],
+      "text": "{{c1::constinit}} int x = 42; // initialized at {{c2::compile-time}}, but can be {{c3::modified at runtime}}",
+      "source": "F.4 - Constexpr functions (part 4)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "chF_4_006",
+      "lesson": "F.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "constinit-vs-constexpr"
+      ],
+      "front": "What is the key difference between constexpr and constinit variables?",
+      "back": "<ul><li>constexpr: Initialized at compile-time AND is const (cannot be modified)</li><li>constinit: Initialized at compile-time BUT is not const (can be modified at runtime)</li></ul>",
+      "source": "F.4 - Constexpr functions (part 4)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "chF_4_007",
+      "lesson": "F.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "constinit"
+      ],
+      "question": "Which of these variables can be modified after initialization?",
+      "code": "constexpr int a = 10;\nconstinit int b = 20;\nconst int c = 30;",
+      "answer": "Only b (constinit) can be modified.",
+      "explanation": "constexpr and const variables are immutable. constinit ensures compile-time initialization but does not make the variable const, so b can be modified at runtime.",
+      "source": "F.4 - Constexpr functions (part 4)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "chF_4_008",
+      "lesson": "F.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "C++20"
+      ],
+      "text": "C++20 introduced {{c1::consteval}} functions and the {{c2::constinit}} specifier for compile-time initialization without const.",
+      "source": "F.4 - Constexpr functions (part 4)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "chF_4_009",
+      "lesson": "F.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "best-practices"
+      ],
+      "front": "When should you use constinit instead of constexpr?",
+      "back": "Use constinit when you want to ensure a global or static variable is initialized at compile-time (to avoid static initialization order fiasco) but still need to modify it at runtime.",
+      "source": "F.4 - Constexpr functions (part 4)",
+      "difficulty": "hard"
+    },
+    {
+      "id": "chF_4_010",
+      "lesson": "F.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "if-consteval"
+      ],
+      "text": "In C++23, you can use {{c1::if consteval}} as a shorthand for checking if code is executing at {{c2::compile-time}}.",
+      "source": "F.4 - Constexpr functions (part 4)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "chF_4_011",
+      "lesson": "F.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "constinit",
+        "vs-constexpr"
+      ],
+      "text": "{{c1::constexpr}} variables are const and cannot be modified, while {{c2::constinit}} variables can be {{c3::modified at runtime}} after compile-time initialization.",
+      "source": "F.4 - Constexpr functions (part 4)",
+      "difficulty": "medium"
+    }
+  ]
+}

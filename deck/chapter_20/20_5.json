@@ -1,0 +1,126 @@
+{
+  "chapter": "Chapter 20",
+  "chapter_title": "Functions",
+  "lesson": "20.5",
+  "lesson_title": "Ellipsis (and why to avoid them)",
+  "total_cards": 11,
+  "cards": [
+    {
+      "id": "ch20_5_001",
+      "lesson": "20.5",
+      "type": "cloze",
+      "tags": ["cpp", "ellipsis", "syntax"],
+      "text": "Ellipsis in C++ is denoted by {{c1::three dots (...)}} and allows functions to accept a {{c2::variable number}} of arguments of {{c3::any type}}.",
+      "source": "20.5 - Ellipsis (and why to avoid them)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch20_5_002",
+      "lesson": "20.5",
+      "type": "cloze",
+      "tags": ["cpp", "ellipsis", "syntax"],
+      "text": "To declare a function with ellipsis: {{c1::returnType functionName(type param1, ...);}} where ellipsis must be the {{c2::last parameter}}.",
+      "source": "20.5 - Ellipsis (and why to avoid them)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_5_003",
+      "lesson": "20.5",
+      "type": "code",
+      "tags": ["cpp", "ellipsis", "example"],
+      "question": "What C standard library function famously uses ellipsis?",
+      "code": "int printf(const char* format, ...);",
+      "answer": "printf() - formats and prints output with variable number of arguments based on format string",
+      "explanation": "printf uses ellipsis to accept any number of arguments. The format string determines how many arguments to expect.",
+      "source": "20.5 - Ellipsis (and why to avoid them)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch20_5_004",
+      "lesson": "20.5",
+      "type": "basic",
+      "tags": ["cpp", "ellipsis", "problems"],
+      "front": "What are the main problems with ellipsis parameters?",
+      "back": "<ul><li>No type safety - compiler can't check argument types</li><li>No way to know how many arguments were passed</li><li>Requires manual argument parsing with va_list macros</li><li>Easy to cause undefined behavior with wrong types</li></ul>",
+      "source": "20.5 - Ellipsis (and why to avoid them)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_5_005",
+      "lesson": "20.5",
+      "type": "cloze",
+      "tags": ["cpp", "ellipsis", "macros"],
+      "text": "To access ellipsis arguments, use macros from &lt;cstdarg&gt;: {{c1::va_list}}, {{c2::va_start}}, {{c3::va_arg}}, and {{c4::va_end}}.",
+      "source": "20.5 - Ellipsis (and why to avoid them)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_5_006",
+      "lesson": "20.5",
+      "type": "code",
+      "tags": ["cpp", "ellipsis", "common-mistakes"],
+      "question": "What's dangerous about this printf call?",
+      "code": "int x = 42;<br>printf(\"%s\", x); // Oops, used %s for int",
+      "answer": "Undefined behavior! %s expects a char* but got an int. This could crash or print garbage. Compiler may warn but can't prevent it.",
+      "explanation": "Ellipsis provides no type safety. The format specifier must match the argument type exactly or you get undefined behavior.",
+      "source": "20.5 - Ellipsis (and why to avoid them)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_5_007",
+      "lesson": "20.5",
+      "type": "concept",
+      "tags": ["cpp", "ellipsis", "alternatives", "best-practices"],
+      "concept": "Modern C++ alternatives to ellipsis",
+      "explanation": "Instead of ellipsis, use type-safe alternatives:<ul><li>Function overloading for known variations</li><li>Variadic templates (template parameter packs)</li><li>std::initializer_list for same-type arguments</li><li>std::vector or array for dynamic number of arguments</li></ul>These provide compile-time type checking and are safer.",
+      "examples": [
+        "template&lt;typename... Args&gt; void print(Args... args);",
+        "void sum(std::initializer_list&lt;int&gt; numbers);",
+        "void process(const std::vector&lt;int&gt;&amp; data);"
+      ],
+      "source": "20.5 - Ellipsis (and why to avoid them)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_5_008",
+      "lesson": "20.5",
+      "type": "basic",
+      "tags": ["cpp", "ellipsis", "best-practices"],
+      "front": "When should you use ellipsis in modern C++?",
+      "back": "Almost never. Only use ellipsis when interfacing with C libraries that require it (like printf). Use variadic templates or other type-safe alternatives instead.",
+      "source": "20.5 - Ellipsis (and why to avoid them)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch20_5_009",
+      "lesson": "20.5",
+      "type": "cloze",
+      "tags": ["cpp", "ellipsis", "variadic-templates"],
+      "text": "{{c1::Variadic templates}} are the modern C++ replacement for ellipsis, providing {{c2::type safety}} and {{c3::compile-time}} checking.",
+      "source": "20.5 - Ellipsis (and why to avoid them)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_5_010",
+      "lesson": "20.5",
+      "type": "basic",
+      "tags": ["cpp", "ellipsis", "requirements"],
+      "front": "What are the requirements for using ellipsis parameters?",
+      "back": "<ul><li>Must be the last parameter in parameter list</li><li>Function must have at least one named parameter before ellipsis</li><li>Need some way to know argument count/types (sentinel value, count parameter, or format string)</li></ul>",
+      "source": "20.5 - Ellipsis (and why to avoid them)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_5_011",
+      "lesson": "20.5",
+      "type": "code",
+      "tags": ["cpp", "ellipsis", "type-safety"],
+      "question": "Why is std::initializer_list better than ellipsis for variable arguments?",
+      "code": "// Ellipsis version (unsafe)<br>void sum(int count, ...);<br><br>// Initializer list version<br>void sum(std::initializer_list&lt;int&gt; nums);",
+      "answer": "std::initializer_list provides:<ul><li>Type safety (all elements must be int)</li><li>Automatic size tracking (no count needed)</li><li>Compile-time error checking</li><li>Iterator support for easy traversal</li></ul>",
+      "explanation": "std::initializer_list knows its size and enforces type at compile time, while ellipsis has no type checking and requires manual size tracking.",
+      "source": "20.5 - Ellipsis (and why to avoid them)",
+      "difficulty": "medium"
+    }
+  ]
+}

@@ -1,0 +1,228 @@
+{
+  "chapter": "Chapter 13",
+  "chapter_title": "Compound Types: Enums and Structs",
+  "lesson": "13.13",
+  "lesson_title": "13.13 — Class templates",
+  "total_cards": 16,
+  "cards": [
+    {
+      "id": "ch13_13_001",
+      "lesson": "13.13",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "syntax"
+      ],
+      "text": "To define a class template: {{c1::template}} &lt;{{c2::typename T}}&gt; struct Pair { T first; T second; };",
+      "source": "13.13 — Class templates",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_13_002",
+      "lesson": "13.13",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "front": "What is a class template?",
+      "back": "A blueprint for creating classes where one or more types are parameterized (specified when instantiating the template).",
+      "source": "13.13 — Class templates",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_13_003",
+      "lesson": "13.13",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "templates",
+        "syntax"
+      ],
+      "question": "What does this create?",
+      "code": "template &lt;typename T&gt;\nstruct Pair { T first; T second; };\n\nPair&lt;int&gt; p { 5, 10 };",
+      "answer": "Creates a Pair object with int type members (first=5, second=10).",
+      "explanation": "Template parameter T is replaced with int.",
+      "source": "13.13 — Class templates",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_13_004",
+      "lesson": "13.13",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "syntax"
+      ],
+      "text": "To instantiate a class template: Pair{{c1::&lt;int&gt;}} p { 5, 10 }; (specify {{c2::template argument}} in angle brackets)",
+      "source": "13.13 — Class templates",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_13_005",
+      "lesson": "13.13",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "terminology"
+      ],
+      "front": "What is the difference between a template parameter and template argument?",
+      "back": "<strong>Template parameter:</strong> Placeholder in definition (e.g., T)<br><strong>Template argument:</strong> Actual type when instantiating (e.g., int)",
+      "source": "13.13 — Class templates",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_13_006",
+      "lesson": "13.13",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "question": "Can you create multiple instantiations?",
+      "code": "template &lt;typename T&gt;\nstruct Box { T value; };\n\nBox&lt;int&gt; b1;\nBox&lt;double&gt; b2;\nBox&lt;std::string&gt; b3;",
+      "answer": "Yes. Each instantiation creates a different type (Box&lt;int&gt;, Box&lt;double&gt;, Box&lt;std::string&gt;).",
+      "explanation": "Templates generate code for each type argument used.",
+      "source": "13.13 — Class templates",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_13_007",
+      "lesson": "13.13",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "front": "Can a class template have multiple template parameters?",
+      "back": "Yes. Example: <code>template &lt;typename T, typename U&gt; struct Pair { T first; U second; };</code>",
+      "source": "13.13 — Class templates",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_13_008",
+      "lesson": "13.13",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "keywords"
+      ],
+      "text": "Both {{c1::typename}} and {{c2::class}} keywords can be used for template type parameters (they're equivalent).",
+      "source": "13.13 — Class templates",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_13_009",
+      "lesson": "13.13",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "question": "What types are T and U here?",
+      "code": "template &lt;typename T, typename U&gt;\nstruct Pair { T first; U second; };\n\nPair&lt;int, double&gt; p { 5, 3.14 };",
+      "answer": "T=int, U=double",
+      "explanation": "Template arguments are matched to parameters in order.",
+      "source": "13.13 — Class templates",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_13_010",
+      "lesson": "13.13",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "templates",
+        "best-practices"
+      ],
+      "concept": "Benefits of class templates",
+      "explanation": "Class templates provide:<ul><li>Type safety without code duplication</li><li>Compile-time specialization</li><li>Works with any type</li><li>Zero runtime overhead</li></ul>Used extensively in STL (vector, map, etc.)",
+      "examples": [
+        "template &lt;typename T&gt; struct Box { T val; };",
+        "Box&lt;int&gt; b1;  // Different types",
+        "Box&lt;std::string&gt; b2;  // Same code, type-safe",
+        "std::vector&lt;int&gt;  // STL uses templates"
+      ],
+      "source": "13.13 — Class templates",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_13_011",
+      "lesson": "13.13",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "compilation"
+      ],
+      "front": "When is a class template actually compiled?",
+      "back": "When it's instantiated with specific template arguments. The template itself is not compiled until used.",
+      "source": "13.13 — Class templates",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_13_012",
+      "lesson": "13.13",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "text": "Class templates use {{c1::template parameters}} (like T) that are replaced with {{c2::template arguments}} (like int) during instantiation.",
+      "source": "13.13 — Class templates",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_13_013",
+      "lesson": "13.13",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "text": "Both {{c1::typename}} and {{c2::class}} keywords can introduce template type parameters and are equivalent.",
+      "source": "13.13 — Class templates",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_13_014",
+      "lesson": "13.13",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "text": "Templates are compiled when {{c1::instantiated}} with specific template arguments, not when {{c2::defined}}.",
+      "source": "13.13 — Class templates",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_13_015",
+      "lesson": "13.13",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "text": "Class templates use {{c1::template parameters}} (like T) that are replaced with {{c2::template arguments}} (like int) during instantiation.",
+      "source": "13.13 — Class templates",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_13_016",
+      "lesson": "13.13",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "text": "Both {{c1::typename}} and {{c2::class}} keywords can introduce template type parameters and are equivalent.",
+      "source": "13.13 — Class templates",
+      "difficulty": "medium"
+    }
+  ]
+}

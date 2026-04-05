@@ -1,0 +1,167 @@
+{
+  "chapter": "Chapter 8",
+  "chapter_title": "Control Flow",
+  "lesson": "8.10",
+  "lesson_title": "For statements",
+  "total_cards": 15,
+  "cards": [
+    {
+      "id": "ch8_10_001",
+      "lesson": "8.10",
+      "type": "cloze",
+      "tags": ["cpp", "for-loop", "syntax"],
+      "text": "For loop syntax:<br>{{c1::for (init-statement; condition; end-expression)}}<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;// statements<br>}",
+      "source": "8.10 - For statements",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_10_002",
+      "lesson": "8.10",
+      "type": "basic",
+      "tags": ["cpp", "for-loop", "fundamentals"],
+      "front": "What are the three components of a for loop header?",
+      "back": "1) Init-statement (initialization)<br>2) Condition (tested before each iteration)<br>3) End-expression (executed after each iteration)",
+      "source": "8.10 - For statements",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_10_003",
+      "lesson": "8.10",
+      "type": "cloze",
+      "tags": ["cpp", "for-loop", "syntax"],
+      "text": "A typical for loop counting 0 to 9:<br>{{c1::for (int i = 0; i &lt; 10; ++i)}}<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; i;<br>}",
+      "source": "8.10 - For statements",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_10_004",
+      "lesson": "8.10",
+      "type": "basic",
+      "tags": ["cpp", "for-loop", "fundamentals"],
+      "front": "In what order are the for loop components executed?",
+      "back": "1) Init-statement (once at start)<br>2) Condition check (before each iteration)<br>3) Loop body (if condition true)<br>4) End-expression (after each iteration)<br>Then back to step 2",
+      "source": "8.10 - For statements",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_10_005",
+      "lesson": "8.10",
+      "type": "code",
+      "tags": ["cpp", "for-loop", "syntax"],
+      "question": "What does this code print?",
+      "code": "for (int i = 0; i &lt; 5; ++i)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; i &lt;&lt; ' ';<br>}",
+      "answer": "0 1 2 3 4",
+      "explanation": "Loop starts at 0, continues while i &lt; 5, and increments after each iteration. Prints 0, 1, 2, 3, 4.",
+      "source": "8.10 - For statements",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_10_006",
+      "lesson": "8.10",
+      "type": "basic",
+      "tags": ["cpp", "for-loop", "scope"],
+      "front": "What is the scope of a variable declared in a for loop's init-statement?",
+      "back": "The variable is scoped to the for loop only - it exists from declaration until the end of the loop and is then destroyed.",
+      "source": "8.10 - For statements",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_10_007",
+      "lesson": "8.10",
+      "type": "code",
+      "tags": ["cpp", "for-loop", "scope"],
+      "question": "Will this compile?",
+      "code": "for (int i = 0; i &lt; 5; ++i)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; i;<br>}<br>std::cout &lt;&lt; i;  // outside loop",
+      "answer": "No, variable i is out of scope after the for loop ends.",
+      "explanation": "Variables declared in the init-statement have loop scope only. After the loop ends, i is destroyed and cannot be accessed.",
+      "source": "8.10 - For statements",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_10_008",
+      "lesson": "8.10",
+      "type": "cloze",
+      "tags": ["cpp", "for-loop", "best-practices"],
+      "text": "It's best practice to use the prefix {{c1::++i}} rather than postfix i++ in for loops, as it may be more efficient.",
+      "source": "8.10 - For statements",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_10_009",
+      "lesson": "8.10",
+      "type": "basic",
+      "tags": ["cpp", "for-loop", "best-practices"],
+      "front": "When should you use a for loop instead of a while loop?",
+      "back": "When you know how many iterations you need in advance, especially when using a counter variable. For loops keep all loop control in one place.",
+      "source": "8.10 - For statements",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_10_010",
+      "lesson": "8.10",
+      "type": "cloze",
+      "tags": ["cpp", "for-loop", "syntax"],
+      "text": "An infinite for loop can be written as: {{c1::for (;;)}} { }",
+      "source": "8.10 - For statements",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_10_011",
+      "lesson": "8.10",
+      "type": "basic",
+      "tags": ["cpp", "for-loop", "syntax"],
+      "front": "Are the init-statement, condition, and end-expression required in a for loop?",
+      "back": "No, all three are optional. You can omit any or all (but the semicolons are still required): for (;;) is an infinite loop.",
+      "source": "8.10 - For statements",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_10_012",
+      "lesson": "8.10",
+      "type": "concept",
+      "tags": ["cpp", "for-loop", "best-practices"],
+      "concept": "For loop best practices",
+      "explanation": "Follow these practices for clean for loops:<ul><li>Use for loops when iteration count is known</li><li>Declare loop counter in init-statement (int i = 0)</li><li>Use prefix increment (++i) instead of postfix (i++)</li><li>Name counters i, j, k for simple loops; use descriptive names for complex loops</li><li>Keep loop counters simple - avoid complex end-expressions</li><li>Don't modify the loop counter inside the loop body</li></ul>",
+      "examples": [
+        "// Good: simple and clear<br>for (int i = 0; i &lt; 10; ++i) { }",
+        "// Bad: modifying counter in body<br>for (int i = 0; i &lt; 10; ++i) { ++i; }"
+      ],
+      "source": "8.10 - For statements",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_10_013",
+      "lesson": "8.10",
+      "type": "code",
+      "tags": ["cpp", "for-loop", "syntax"],
+      "question": "What does this code print?",
+      "code": "for (int i = 5; i &gt; 0; --i)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; i &lt;&lt; ' ';<br>}",
+      "answer": "5 4 3 2 1",
+      "explanation": "Loop starts at 5, continues while i &gt; 0, and decrements after each iteration. Counts down from 5 to 1.",
+      "source": "8.10 - For statements",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_10_014",
+      "lesson": "8.10",
+      "type": "basic",
+      "tags": ["cpp", "for-loop", "fundamentals"],
+      "front": "When is the end-expression in a for loop evaluated?",
+      "back": "After the loop body executes, before the next condition check. It's executed once per iteration (except the first).",
+      "source": "8.10 - For statements",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_10_015",
+      "lesson": "8.10",
+      "type": "code",
+      "tags": ["cpp", "for-loop", "common-mistakes"],
+      "question": "What's wrong with this code?",
+      "code": "for (int i = 0; i &lt; 10; ++i);<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; i;<br>}",
+      "answer": "Semicolon after for creates a null statement. The block is not part of the loop and i is out of scope.",
+      "explanation": "The semicolon makes the loop body empty. The block below is not part of the loop, and i is out of scope there. This is a common and subtle bug.",
+      "source": "8.10 - For statements",
+      "difficulty": "hard"
+    }
+  ]
+}

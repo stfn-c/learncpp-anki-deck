@@ -1,0 +1,230 @@
+{
+  "chapter": "Chapter 19",
+  "chapter_title": "Dynamic memory allocation",
+  "lesson": "19.4",
+  "lesson_title": "Pointers to pointers and dynamic multidimensional arrays",
+  "total_cards": 15,
+  "cards": [
+    {
+      "id": "ch19_4_001",
+      "lesson": "19.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "pointers",
+        "syntax"
+      ],
+      "text": "To declare a pointer to a pointer to int: {{c1::int** ptrptr;}}",
+      "source": "19.4 - Pointers to pointers and dynamic multidimensional arrays",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch19_4_002",
+      "lesson": "19.4",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "pointers"
+      ],
+      "front": "Pointer to pointer",
+      "back": "A pointer that holds the address of another pointer",
+      "source": "19.4 - Pointers to pointers and dynamic multidimensional arrays",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch19_4_003",
+      "lesson": "19.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "pointers",
+        "dereferencing"
+      ],
+      "question": "What does this code output?",
+      "code": "int value{ 5 };\nint* ptr{ &amp;value };\nint** ptrptr{ &amp;ptr };\nstd::cout &lt;&lt; **ptrptr;",
+      "answer": "5",
+      "explanation": "**ptrptr dereferences twice: first to get ptr, then to get value. *ptrptr gives the address in ptr, **ptrptr gives the value (5).",
+      "source": "19.4 - Pointers to pointers and dynamic multidimensional arrays",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch19_4_004",
+      "lesson": "19.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "pointers",
+        "arrays"
+      ],
+      "text": "An array of 10 pointers to int: {{c1::int* array[10];}} (read as \"array of 10 pointer-to-int\")",
+      "source": "19.4 - Pointers to pointers and dynamic multidimensional arrays",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch19_4_005",
+      "lesson": "19.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "pointers"
+      ],
+      "front": "What are common uses for pointers to pointers?",
+      "back": "<ul><li>Dynamically allocated 2D arrays (array of pointers to arrays)</li><li>Allowing a function to modify a pointer parameter</li><li>C-style strings array (char** argv in main)</li></ul>",
+      "source": "19.4 - Pointers to pointers and dynamic multidimensional arrays",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch19_4_006",
+      "lesson": "19.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "arrays",
+        "dynamic-memory"
+      ],
+      "text": "To create a dynamic 2D array (10x5):<br>{{c1::int** array{ new int*[10] };}}<br>for (int i{0}; i &lt; 10; ++i)<br>&nbsp;&nbsp;&nbsp;&nbsp;{{c2::array[i] = new int[5];}}",
+      "source": "19.4 - Pointers to pointers and dynamic multidimensional arrays",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch19_4_007",
+      "lesson": "19.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "arrays",
+        "dynamic-memory",
+        "delete"
+      ],
+      "question": "What's the correct way to delete this 2D array?",
+      "code": "// Created with:\nint** array{ new int*[10] };\nfor (int i{0}; i &lt; 10; ++i)\n    array[i] = new int[5];",
+      "answer": "Delete in reverse order:<br>for (int i{0}; i &lt; 10; ++i)<br>&nbsp;&nbsp;&nbsp;&nbsp;delete[] array[i];<br>delete[] array;",
+      "explanation": "Must delete each row first (delete[] array[i]), then delete the array of pointers (delete[] array). Reverse of allocation order.",
+      "source": "19.4 - Pointers to pointers and dynamic multidimensional arrays",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch19_4_008",
+      "lesson": "19.4",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "arrays",
+        "gotchas"
+      ],
+      "concept": "Problems with dynamic 2D arrays using pointers",
+      "explanation": "Issues with int** 2D arrays:<ul><li>Rows can be different lengths (not contiguous in memory)</li><li>Poor cache performance (not memory-contiguous)</li><li>Complex allocation and deallocation</li><li>Easy to create memory leaks</li><li>Must track dimensions separately</li></ul>",
+      "examples": [
+        "// Better: flatten to 1D",
+        "int* array{ new int[rows * cols] };",
+        "// Access: array[row * cols + col]",
+        "",
+        "// Best: use std::vector",
+        "std::vector&lt;std::vector&lt;int&gt;&gt; array;"
+      ],
+      "source": "19.4 - Pointers to pointers and dynamic multidimensional arrays",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch19_4_009",
+      "lesson": "19.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "arrays",
+        "best-practices"
+      ],
+      "front": "What is a flattened array and why use it for 2D data?",
+      "back": "A flattened array stores 2D data in a 1D array: int* array = new int[rows*cols];<br>Access with: array[row*cols + col]<br><br>Benefits: contiguous memory, better cache performance, simpler allocation/deallocation",
+      "source": "19.4 - Pointers to pointers and dynamic multidimensional arrays",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch19_4_010",
+      "lesson": "19.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "arrays"
+      ],
+      "text": "For a flattened 2D array with dimensions [rows][cols], access element at [row][col] using: array[{{c1::row * cols + col}}]",
+      "source": "19.4 - Pointers to pointers and dynamic multidimensional arrays",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch19_4_011",
+      "lesson": "19.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "pointers",
+        "arrays"
+      ],
+      "question": "What's the difference between these two declarations?",
+      "code": "int** ptr1;\nint* ptr2[10];",
+      "answer": "ptr1: pointer to pointer to int (can point to dynamic 2D array)<br>ptr2: array of 10 pointers to int (fixed-size array of pointers)",
+      "explanation": "ptr1 is a pointer (needs allocation), ptr2 is an array that contains 10 pointers (array itself is fixed, but each pointer can point to dynamic memory).",
+      "source": "19.4 - Pointers to pointers and dynamic multidimensional arrays",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch19_4_012",
+      "lesson": "19.4",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "best-practices",
+        "vectors"
+      ],
+      "concept": "Using std::vector for multidimensional arrays",
+      "explanation": "Prefer std::vector over manual pointer management:<ul><li>std::vector&lt;std::vector&lt;int&gt;&gt; for variable-sized 2D</li><li>Automatic memory management</li><li>No manual allocation/deallocation</li><li>Bounds checking available</li><li>Exception safe</li></ul>Manual pointers are advanced and error-prone.",
+      "examples": [
+        "// Easy and safe",
+        "std::vector&lt;std::vector&lt;int&gt;&gt; array(10, std::vector&lt;int&gt;(5));",
+        "array[2][3] = 7;",
+        "// Automatic cleanup"
+      ],
+      "source": "19.4 - Pointers to pointers and dynamic multidimensional arrays",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch19_4_013",
+      "lesson": "19.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "pointers",
+        "dereferencing"
+      ],
+      "text": "Given int** ptrptr, dereferencing once {{c1::*ptrptr}} gives a {{c2::pointer to int}}, dereferencing twice {{c3::**ptrptr}} gives the {{c4::int value}}.",
+      "source": "19.4 - Pointers to pointers and dynamic multidimensional arrays",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch19_4_014",
+      "lesson": "19.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "arrays",
+        "2d"
+      ],
+      "text": "To delete a 2D dynamic array, delete {{c1::rows first}} (delete[] array[i] in loop), then delete {{c2::the array of pointers}} (delete[] array).",
+      "source": "19.4 - Pointers to pointers and dynamic multidimensional arrays",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch19_4_015",
+      "lesson": "19.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "arrays",
+        "performance"
+      ],
+      "text": "Flattened 2D arrays use formula {{c1::row * cols + col}} to access elements and provide {{c2::better cache performance}} than pointer-to-pointer arrays.",
+      "source": "19.4 - Pointers to pointers and dynamic multidimensional arrays",
+      "difficulty": "medium"
+    }
+  ]
+}

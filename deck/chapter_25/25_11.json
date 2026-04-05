@@ -1,0 +1,131 @@
+{
+  "chapter": "Chapter 25",
+  "chapter_title": "Virtual Functions",
+  "lesson": "25.11",
+  "lesson_title": "Printing inherited classes using operator<<",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "ch25_11_001",
+      "lesson": "25.11",
+      "type": "basic",
+      "tags": ["cpp", "operator-overloading", "virtual-functions"],
+      "front": "Why can't operator&lt;&lt; be a virtual member function?",
+      "back": "operator&lt;&lt; must be a non-member function (its left operand is std::ostream, not your class). Non-member functions cannot be virtual.",
+      "source": "25.11 - Printing inherited classes using operator<<",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_11_002",
+      "lesson": "25.11",
+      "type": "code",
+      "tags": ["cpp", "operator-overloading", "common-mistakes"],
+      "question": "What's the problem with this approach?",
+      "code": "class Base {\npublic:\n    friend std::ostream&amp; operator&lt;&lt;(std::ostream&amp; out, const Base&amp; b) {\n        return out &lt;&lt; \"Base\";\n    }\n};\n\nclass Derived: public Base { };\n\nDerived d;\nstd::cout &lt;&lt; d;  // What prints?",
+      "answer": "Prints \"Base\" instead of derived-class info.",
+      "explanation": "operator&lt;&lt; takes Base by reference, causing object slicing. The Derived parts are not accessible. This is the fundamental problem with operator&lt;&lt; and inheritance.",
+      "source": "25.11 - Printing inherited classes using operator<<",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_11_003",
+      "lesson": "25.11",
+      "type": "concept",
+      "tags": ["cpp", "operator-overloading", "design-patterns"],
+      "concept": "The virtual print() helper pattern",
+      "explanation": "To enable polymorphic printing with operator&lt;&lt;:<ol><li>Create a virtual print() member function</li><li>Make operator&lt;&lt; a non-member friend that calls print()</li><li>Override print() in derived classes</li></ol>This combines the non-member operator&lt;&lt; with virtual dispatch.",
+      "examples": [
+        "class Base {",
+        "public:",
+        "    virtual void print(std::ostream&amp; out) const { out &lt;&lt; \"Base\"; }",
+        "    friend std::ostream&amp; operator&lt;&lt;(std::ostream&amp; out, const Base&amp; b) {",
+        "        b.print(out); return out;",
+        "    }",
+        "};"
+      ],
+      "source": "25.11 - Printing inherited classes using operator<<",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch25_11_004",
+      "lesson": "25.11",
+      "type": "cloze",
+      "tags": ["cpp", "operator-overloading", "virtual-functions"],
+      "text": "To enable polymorphic printing, operator&lt;&lt; should call a {{c1::virtual}} helper function like {{c2::print()}}.",
+      "source": "25.11 - Printing inherited classes using operator<<",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_11_005",
+      "lesson": "25.11",
+      "type": "code",
+      "tags": ["cpp", "operator-overloading", "virtual-functions"],
+      "question": "How would you implement this correctly for polymorphic printing?",
+      "code": "class Animal {\npublic:\n    // What goes here?\n};\n\nclass Dog: public Animal {\npublic:\n    // What goes here?\n};\n\nAnimal* ptr = new Dog();\nstd::cout &lt;&lt; *ptr;  // Should print Dog info",
+      "answer": "Animal: virtual void print(ostream&amp; out) const; and friend operator&lt;&lt; that calls print()<br>Dog: override print(ostream&amp; out) const",
+      "explanation": "The operator&lt;&lt; friend function calls the virtual print() method, which resolves to the correct derived class version at runtime.",
+      "source": "25.11 - Printing inherited classes using operator<<",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch25_11_006",
+      "lesson": "25.11",
+      "type": "code",
+      "tags": ["cpp", "operator-overloading", "best-practices"],
+      "question": "What does this code output?",
+      "code": "class Base {\npublic:\n    virtual void print(std::ostream&amp; out) const { out &lt;&lt; \"Base\"; }\n    friend std::ostream&amp; operator&lt;&lt;(std::ostream&amp; out, const Base&amp; b) {\n        b.print(out); return out;\n    }\n};\n\nclass Derived: public Base {\npublic:\n    void print(std::ostream&amp; out) const override { out &lt;&lt; \"Derived\"; }\n};\n\nBase* ptr = new Derived();\nstd::cout &lt;&lt; *ptr;",
+      "answer": "Derived",
+      "explanation": "operator&lt;&lt; calls the virtual print() method. Since ptr points to a Derived object, Derived::print() is called polymorphically.",
+      "source": "25.11 - Printing inherited classes using operator<<",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_11_007",
+      "lesson": "25.11",
+      "type": "basic",
+      "tags": ["cpp", "operator-overloading", "best-practices"],
+      "front": "Should the virtual print() helper function be public or protected/private?",
+      "back": "It depends on your design. Common approaches:<ul><li>Public: allows direct calls to print()</li><li>Protected: only accessible through operator&lt;&lt;</li><li>Private with friend: encapsulates implementation</li></ul>Protected or private is often preferred.",
+      "source": "25.11 - Printing inherited classes using operator<<",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_11_008",
+      "lesson": "25.11",
+      "type": "cloze",
+      "tags": ["cpp", "operator-overloading", "inheritance"],
+      "text": "When defining operator&lt;&lt; in a base class, it should be a {{c1::friend}} function that takes the parameter by {{c2::const reference}}.",
+      "source": "25.11 - Printing inherited classes using operator<<",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_11_009",
+      "lesson": "25.11",
+      "type": "concept",
+      "tags": ["cpp", "operator-overloading", "inheritance"],
+      "concept": "Calling base class print() from derived class",
+      "explanation": "Derived classes often need to print base class info too. Call the base class print() from the derived version:",
+      "examples": [
+        "class Derived: public Base {",
+        "public:",
+        "    void print(std::ostream&amp; out) const override {",
+        "        Base::print(out);  // Print base class parts",
+        "        out &lt;&lt; \" plus derived parts\";",
+        "    }",
+        "};"
+      ],
+      "source": "25.11 - Printing inherited classes using operator<<",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_11_010",
+      "lesson": "25.11",
+      "type": "basic",
+      "tags": ["cpp", "operator-overloading", "best-practices"],
+      "front": "Do you need to redefine operator&lt;&lt; in derived classes?",
+      "back": "No! The base class operator&lt;&lt; is inherited and works for derived classes because it calls the virtual print() method, which derived classes override.",
+      "source": "25.11 - Printing inherited classes using operator<<",
+      "difficulty": "medium"
+    }
+  ]
+}

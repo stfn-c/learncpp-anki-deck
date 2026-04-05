@@ -1,0 +1,136 @@
+{
+  "chapter": "Chapter 0",
+  "chapter_title": "Introduction / Getting Started",
+  "lesson": "0.9",
+  "lesson_title": "Configuring your compiler: Build configurations",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch0_9_001",
+      "lesson": "0.9",
+      "type": "basic",
+      "tags": ["cpp", "build", "configuration"],
+      "front": "What is a build configuration?",
+      "back": "A build configuration is a collection of project settings that determines how your IDE builds your project. It includes compiler, linker, and other tool settings.",
+      "source": "0.9 - Configuring your compiler: Build configurations",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_9_002",
+      "lesson": "0.9",
+      "type": "cloze",
+      "tags": ["cpp", "build", "configuration"],
+      "text": "The two most common build configurations are {{c1::Debug}} (for development and debugging) and {{c2::Release}} (for shipping to users).",
+      "source": "0.9 - Configuring your compiler: Build configurations",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_9_003",
+      "lesson": "0.9",
+      "type": "basic",
+      "tags": ["cpp", "build", "debug"],
+      "front": "What is the Debug build configuration optimized for?",
+      "back": "Debug builds are optimized for debugging. They include debug symbols, disable optimizations (for easier debugging), and may include extra error checking. They compile faster but run slower.",
+      "source": "0.9 - Configuring your compiler: Build configurations",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_9_004",
+      "lesson": "0.9",
+      "type": "basic",
+      "tags": ["cpp", "build", "release"],
+      "front": "What is the Release build configuration optimized for?",
+      "back": "Release builds are optimized for performance and small size. They enable compiler optimizations, strip debug symbols, and produce fast executables for end users. They compile slower but run faster.",
+      "source": "0.9 - Configuring your compiler: Build configurations",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_9_005",
+      "lesson": "0.9",
+      "type": "concept",
+      "tags": ["cpp", "build", "best-practices"],
+      "concept": "Why you should develop using Debug builds",
+      "explanation": "Debug builds are essential during development:<ul><li>Include debugging information for breakpoints and variable inspection</li><li>Disable optimizations that make debugging confusing</li><li>Add runtime checks for errors (bounds checking, assertions)</li><li>Faster compilation times for rapid iteration</li><li>Error messages point to actual source code lines</li></ul>Only switch to Release when performance testing or shipping.",
+      "examples": [
+        "Debug: see variable values at any point during execution",
+        "Debug: step through code line by line",
+        "Release: optimizations can reorder/eliminate code, confusing debugger"
+      ],
+      "source": "0.9 - Configuring your compiler: Build configurations",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_9_006",
+      "lesson": "0.9",
+      "type": "cloze",
+      "tags": ["cpp", "build", "optimization"],
+      "text": "Debug builds include {{c1::debug symbols}} and {{c2::disable optimizations}}, while Release builds {{c3::enable optimizations}} and {{c4::strip debug symbols}}.",
+      "source": "0.9 - Configuring your compiler: Build configurations",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_9_007",
+      "lesson": "0.9",
+      "type": "basic",
+      "tags": ["cpp", "build", "optimization"],
+      "front": "Why are Debug builds typically larger than Release builds?",
+      "back": "Debug builds include debugging symbols (symbol tables, line number information) and unoptimized code. Release builds strip symbols and apply optimizations that reduce code size.",
+      "source": "0.9 - Configuring your compiler: Build configurations",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_9_008",
+      "lesson": "0.9",
+      "type": "basic",
+      "tags": ["cpp", "build", "performance"],
+      "front": "How much faster can Release builds run compared to Debug builds?",
+      "back": "Release builds can be significantly faster - often 2-10x faster than Debug builds depending on the code. This is due to compiler optimizations.",
+      "source": "0.9 - Configuring your compiler: Build configurations",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_9_009",
+      "lesson": "0.9",
+      "type": "cloze",
+      "tags": ["cpp", "build", "best-practices"],
+      "text": "Use {{c1::Debug}} configuration while actively developing and debugging, then switch to {{c2::Release}} configuration for performance testing and distribution.",
+      "source": "0.9 - Configuring your compiler: Build configurations",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_9_010",
+      "lesson": "0.9",
+      "type": "basic",
+      "tags": ["cpp", "build", "gotchas"],
+      "front": "Why might a bug appear in a Release build but not in a Debug build?",
+      "back": "Compiler optimizations in Release builds can expose undefined behavior or timing-dependent bugs (race conditions, uninitialized variables) that don't appear in Debug builds.",
+      "source": "0.9 - Configuring your compiler: Build configurations",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch0_9_011",
+      "lesson": "0.9",
+      "type": "basic",
+      "tags": ["cpp", "build", "configuration"],
+      "front": "What should you do before distributing your program to users?",
+      "back": "Build and thoroughly test the Release configuration. Never ship Debug builds - they're slower, larger, and may contain debugging artifacts.",
+      "source": "0.9 - Configuring your compiler: Build configurations",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_9_012",
+      "lesson": "0.9",
+      "type": "concept",
+      "tags": ["cpp", "build", "workflow"],
+      "concept": "Typical build configuration workflow",
+      "explanation": "Professional development uses configurations strategically:<ol><li>Develop and debug in Debug configuration</li><li>Fix all bugs and warnings</li><li>Switch to Release and rebuild</li><li>Test performance and functionality</li><li>Fix any Release-only bugs</li><li>Ship the Release build</li></ol>Some teams add configurations like RelWithDebInfo (optimized but with debug symbols).",
+      "examples": [
+        "Day-to-day coding: Debug build",
+        "Performance profiling: Release build",
+        "Final QA testing: Release build"
+      ],
+      "source": "0.9 - Configuring your compiler: Build configurations",
+      "difficulty": "medium"
+    }
+  ]
+}

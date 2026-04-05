@@ -1,0 +1,196 @@
+{
+  "chapter": "Chapter 22",
+  "chapter_title": "Move Semantics and Smart Pointers",
+  "lesson": "22.x",
+  "lesson_title": "Chapter 22 summary and quiz",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch22_x_001",
+      "lesson": "22.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "smart-pointers",
+        "review"
+      ],
+      "text": "A smart pointer is a {{c1::composition}} class that manages dynamically allocated memory and ensures it gets {{c2::deleted}} when the smart pointer goes {{c3::out of scope}}.",
+      "source": "22.x - Chapter 22 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch22_x_002",
+      "lesson": "22.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "smart-pointers",
+        "review"
+      ],
+      "front": "What are the three main smart pointer types in C++11 and their ownership models?",
+      "back": "<ul><li>std::unique_ptr - exclusive ownership</li><li>std::shared_ptr - shared ownership (reference counting)</li><li>std::weak_ptr - non-owning observer</li></ul>",
+      "source": "22.x - Chapter 22 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch22_x_003",
+      "lesson": "22.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "move-semantics",
+        "review"
+      ],
+      "text": "Move semantics allows us to {{c1::transfer ownership}} of resources from one object to another, instead of making {{c2::expensive copies}}.",
+      "source": "22.x - Chapter 22 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch22_x_004",
+      "lesson": "22.x",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "smart-pointers",
+        "best-practices"
+      ],
+      "question": "Which smart pointer should you use for each scenario?",
+      "code": "// Scenario 1: Factory function returning a widget\nWidget createWidget();\n\n// Scenario 2: Multiple objects share a resource\n\n// Scenario 3: Child node pointing back to parent",
+      "answer": "1: std::unique_ptr (exclusive ownership)<br>2: std::shared_ptr (shared ownership)<br>3: std::weak_ptr (non-owning observer)",
+      "explanation": "Default to unique_ptr. Use shared_ptr for shared ownership. Use weak_ptr to break circular references.",
+      "source": "22.x - Chapter 22 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_x_005",
+      "lesson": "22.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "lvalue",
+        "rvalue",
+        "review"
+      ],
+      "front": "What's the key difference between l-values and r-values?",
+      "back": "L-values have persistent identity and addressable memory (e.g., variables).<br>R-values are temporary or about to be destroyed (e.g., literals, temporaries, moved-from objects).",
+      "source": "22.x - Chapter 22 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch22_x_006",
+      "lesson": "22.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "move-semantics",
+        "review"
+      ],
+      "text": "Move operations should be marked {{c1::noexcept}} to enable optimizations in STL containers. After moving, leave the source in a {{c2::valid but unspecified}} state.",
+      "source": "22.x - Chapter 22 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_x_007",
+      "lesson": "22.x",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "smart-pointers",
+        "best-practices"
+      ],
+      "concept": "Smart pointer selection guide",
+      "explanation": "Decision tree for choosing smart pointers:<ul><li>Single ownership? \u2192 std::unique_ptr</li><li>Multiple owners? \u2192 std::shared_ptr</li><li>Observer only (no ownership)? \u2192 std::weak_ptr</li><li>Breaking circular ref? \u2192 std::weak_ptr</li><li>Not sure? \u2192 Start with std::unique_ptr</li></ul>",
+      "examples": [
+        "// Most common: unique_ptr",
+        "auto ptr = std::make_unique&lt;Widget&gt;();",
+        "",
+        "// Shared ownership",
+        "auto shared = std::make_shared&lt;Widget&gt;();",
+        "",
+        "// Observer (from shared_ptr)",
+        "std::weak_ptr&lt;Widget&gt; observer = shared;"
+      ],
+      "source": "22.x - Chapter 22 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_x_008",
+      "lesson": "22.x",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "std-move",
+        "review"
+      ],
+      "question": "When should you NOT use std::move?",
+      "code": "// Situation 1:\nreturn std::move(localVar);\n\n// Situation 2:\nconst std::string str = \"hello\";\nauto s = std::move(str);\n\n// Situation 3:\nauto ptr = std::make_unique&lt;int&gt;(5);\nvec.push_back(std::move(ptr));",
+      "answer": "Avoid situations 1 and 2.<br>Situation 3 is correct.",
+      "explanation": "1: Prevents RVO. 2: const prevents move, will copy instead. 3: Correct use - transferring ownership.",
+      "source": "22.x - Chapter 22 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_x_009",
+      "lesson": "22.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "smart-pointers",
+        "best-practices"
+      ],
+      "front": "Why should you prefer std::make_unique and std::make_shared over using new directly?",
+      "back": "Benefits:<ul><li>Exception-safe</li><li>More efficient (make_shared does single allocation)</li><li>More concise</li><li>Impossible to accidentally leak with make_*</li></ul>",
+      "source": "22.x - Chapter 22 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch22_x_010",
+      "lesson": "22.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "rule-of-five",
+        "review"
+      ],
+      "text": "The Rule of Five states: if you define {{c1::destructor}}, {{c2::copy constructor}}, {{c3::copy assignment}}, {{c4::move constructor}}, or {{c5::move assignment}}, you should probably define all five.",
+      "source": "22.x - Chapter 22 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_x_011",
+      "lesson": "22.x",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "circular-reference",
+        "review"
+      ],
+      "concept": "Preventing circular reference memory leaks",
+      "explanation": "Circular references with shared_ptr cause memory leaks. Solutions:<ul><li>Use weak_ptr for back-references</li><li>Use weak_ptr for observers</li><li>Parent owns child (shared/unique_ptr), child observes parent (weak_ptr)</li><li>Redesign to avoid cycles</li></ul>",
+      "examples": [
+        "struct Node {",
+        "    std::shared_ptr&lt;Node&gt; next;  // owns next",
+        "    std::weak_ptr&lt;Node&gt; prev;    // observes prev",
+        "};",
+        "// No cycle, proper cleanup"
+      ],
+      "source": "22.x - Chapter 22 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_x_012",
+      "lesson": "22.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "smart-pointers",
+        "move-semantics",
+        "review"
+      ],
+      "front": "What are the key takeaways from Chapter 22?",
+      "back": "<ul><li>Always prefer smart pointers over raw owning pointers</li><li>Default to std::unique_ptr</li><li>Use std::move to enable move semantics on l-values</li><li>Mark move operations noexcept</li><li>Use std::weak_ptr to break circular references</li><li>Prefer std::make_unique and std::make_shared</li></ul>",
+      "source": "22.x - Chapter 22 summary and quiz",
+      "difficulty": "easy"
+    }
+  ]
+}

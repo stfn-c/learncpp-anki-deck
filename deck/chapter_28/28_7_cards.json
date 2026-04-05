@@ -1,0 +1,186 @@
+{
+  "chapter": "Chapter 28",
+  "chapter_title": "Input and Output (I/O)",
+  "lesson": "28.7",
+  "lesson_title": "Random file I/O",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch28_7_001",
+      "lesson": "28.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "file-io",
+        "seeking"
+      ],
+      "front": "What is random file access?",
+      "back": "The ability to read from or write to any position in a file by moving the file pointer, rather than reading/writing sequentially from beginning to end.",
+      "source": "28.7 - Random file I/O",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch28_7_002",
+      "lesson": "28.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "file-io",
+        "seeking"
+      ],
+      "text": "To move the read position in a file, use {{c1::seekg()}} (get position). To move the write position, use {{c2::seekp()}} (put position).",
+      "source": "28.7 - Random file I/O",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch28_7_003",
+      "lesson": "28.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "file-io",
+        "seeking"
+      ],
+      "text": "The three seek positions are: {{c1::std::ios::beg}} (beginning), {{c2::std::ios::cur}} (current position), and {{c3::std::ios::end}} (end of file).",
+      "source": "28.7 - Random file I/O",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch28_7_004",
+      "lesson": "28.7",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "file-io",
+        "seeking"
+      ],
+      "question": "What does this code do?",
+      "code": "file.seekg(0, std::ios::end);",
+      "answer": "Moves the read position to the end of the file (0 bytes from the end).",
+      "explanation": "This is commonly used to get file size by then calling tellg().",
+      "source": "28.7 - Random file I/O",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch28_7_005",
+      "lesson": "28.7",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "file-io",
+        "seeking"
+      ],
+      "question": "What does this code do?",
+      "code": "file.seekg(10, std::ios::beg);",
+      "answer": "Moves the read position to 10 bytes from the beginning of the file.",
+      "explanation": "Positive offset moves forward from the reference point.",
+      "source": "28.7 - Random file I/O",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch28_7_006",
+      "lesson": "28.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "file-io",
+        "tell"
+      ],
+      "text": "To get the current read position, use {{c1::file.tellg()}}. To get the current write position, use {{c2::file.tellp()}}.",
+      "source": "28.7 - Random file I/O",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch28_7_007",
+      "lesson": "28.7",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "file-io",
+        "file-size"
+      ],
+      "question": "How do you get the size of a file?",
+      "code": "std::ifstream file(\"data.txt\", std::ios::binary);\n// Get file size",
+      "answer": "file.seekg(0, std::ios::end);<br>std::streamsize size = file.tellg();<br>file.seekg(0, std::ios::beg);",
+      "explanation": "Seek to end, get position (which equals file size), then seek back to beginning for reading.",
+      "source": "28.7 - Random file I/O",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch28_7_008",
+      "lesson": "28.7",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "file-io",
+        "seeking"
+      ],
+      "question": "What does this code do?",
+      "code": "file.seekg(-5, std::ios::cur);",
+      "answer": "Moves the read position 5 bytes backward from the current position.",
+      "explanation": "Negative offset moves backward from the reference point.",
+      "source": "28.7 - Random file I/O",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch28_7_009",
+      "lesson": "28.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "file-io",
+        "binary"
+      ],
+      "front": "Why is random access more commonly used with binary files than text files?",
+      "back": "Binary files have fixed-size records, making it easy to calculate positions. Text files have variable-length lines and platform-specific line endings, making position calculations unreliable.",
+      "source": "28.7 - Random file I/O",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch28_7_010",
+      "lesson": "28.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "file-io",
+        "binary"
+      ],
+      "text": "To read binary data, use {{c1::file.read(buffer, size)}}. To write binary data, use {{c2::file.write(buffer, size)}}.",
+      "source": "28.7 - Random file I/O",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch28_7_011",
+      "lesson": "28.7",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "file-io",
+        "best-practices"
+      ],
+      "concept": "When to use random file access",
+      "explanation": "Random access is useful for:<ul><li>Database-like files with fixed-size records</li><li>Reading/modifying specific parts of large files</li><li>Implementing file-based data structures</li><li>Avoiding loading entire file into memory</li></ul>Not recommended for text files with variable-length lines.",
+      "examples": [
+        "struct Record { int id; char name[20]; };",
+        "file.seekg(recordNum * sizeof(Record));",
+        "file.read(reinterpret_cast&lt;char*&gt;(&record), sizeof(Record));"
+      ],
+      "source": "28.7 - Random file I/O",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch28_7_012",
+      "lesson": "28.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "file-io",
+        "gotchas"
+      ],
+      "front": "What's the difference between seekg and seekp?",
+      "back": "seekg() moves the get (read) position, seekp() moves the put (write) position. For files opened for both reading and writing, these can be different.",
+      "source": "28.7 - Random file I/O",
+      "difficulty": "medium"
+    }
+  ]
+}

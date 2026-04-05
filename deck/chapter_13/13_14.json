@@ -1,0 +1,211 @@
+{
+  "chapter": "Chapter 13",
+  "chapter_title": "Compound Types: Enums and Structs",
+  "lesson": "13.14",
+  "lesson_title": "13.14 — Class template argument deduction (CTAD) and deduction guides",
+  "total_cards": 14,
+  "cards": [
+    {
+      "id": "ch13_14_001",
+      "lesson": "13.14",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "cpp17"
+      ],
+      "front": "What is CTAD (Class Template Argument Deduction)?",
+      "back": "C++17 feature that allows the compiler to deduce template arguments from constructor arguments, eliminating the need to specify them explicitly.",
+      "source": "13.14 — Class template argument deduction (CTAD) and deduction guides",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_14_002",
+      "lesson": "13.14",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "templates",
+        "cpp17"
+      ],
+      "question": "Does this compile in C++17?",
+      "code": "template &lt;typename T&gt;\nstruct Pair { T first; T second; };\n\nPair p { 5, 10 };  // no &lt;int&gt;",
+      "answer": "Yes. CTAD deduces T=int from the initializer values.",
+      "explanation": "C++17 can deduce template arguments from constructor/initializer.",
+      "source": "13.14 — Class template argument deduction (CTAD) and deduction guides",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_14_003",
+      "lesson": "13.14",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "cpp17"
+      ],
+      "text": "With CTAD (C++17+), you can write Pair p { 5, 10 }; instead of Pair{{c1::&lt;int&gt;}} p { 5, 10 };",
+      "source": "13.14 — Class template argument deduction (CTAD) and deduction guides",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_14_004",
+      "lesson": "13.14",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "cpp17"
+      ],
+      "front": "What C++ version introduced CTAD?",
+      "back": "C++17",
+      "source": "13.14 — Class template argument deduction (CTAD) and deduction guides",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_14_005",
+      "lesson": "13.14",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "templates",
+        "cpp17"
+      ],
+      "question": "What type is deduced for p?",
+      "code": "template &lt;typename T&gt;\nstruct Box { T value; };\n\nBox p { 3.14 };",
+      "answer": "Box&lt;double&gt; (T is deduced as double from 3.14)",
+      "explanation": "CTAD uses initializer type to deduce template argument.",
+      "source": "13.14 — Class template argument deduction (CTAD) and deduction guides",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_14_006",
+      "lesson": "13.14",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "deduction-guides"
+      ],
+      "front": "What are deduction guides?",
+      "back": "User-defined rules that help the compiler deduce template arguments in situations where automatic deduction doesn't work or needs customization.",
+      "source": "13.14 — Class template argument deduction (CTAD) and deduction guides",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_14_007",
+      "lesson": "13.14",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "deduction-guides"
+      ],
+      "text": "Deduction guide syntax: Pair(T, T) -&gt; Pair{{c1::&lt;T&gt;}}; (tells compiler how to deduce template args)",
+      "source": "13.14 — Class template argument deduction (CTAD) and deduction guides",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch13_14_008",
+      "lesson": "13.14",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "templates",
+        "deduction-guides"
+      ],
+      "question": "What does this deduction guide do?",
+      "code": "template &lt;typename T&gt;\nstruct Box { T value; };\n\ntemplate &lt;typename T&gt;\nBox(T) -&gt; Box&lt;T&gt;;",
+      "answer": "Tells compiler how to deduce T when constructing Box from a single argument.",
+      "explanation": "Deduction guides customize CTAD behavior.",
+      "source": "13.14 — Class template argument deduction (CTAD) and deduction guides",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch13_14_009",
+      "lesson": "13.14",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "cpp17"
+      ],
+      "front": "Does CTAD work with aggregate initialization?",
+      "back": "Yes, starting in C++17, but may require deduction guides for complex cases.",
+      "source": "13.14 — Class template argument deduction (CTAD) and deduction guides",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_14_010",
+      "lesson": "13.14",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "templates",
+        "cpp17",
+        "best-practices"
+      ],
+      "concept": "Benefits and limitations of CTAD",
+      "explanation": "CTAD advantages:<ul><li>Less verbose code</li><li>Reduced redundancy</li><li>Cleaner syntax</li></ul>Limitations:<ul><li>May reduce clarity in complex cases</li><li>Requires C++17+</li><li>Sometimes needs deduction guides</li></ul>",
+      "examples": [
+        "std::pair p { 1, 2.5 };  // C++17: deduces &lt;int, double&gt;",
+        "std::vector v { 1, 2, 3 };  // deduces &lt;int&gt;",
+        "// vs C++14: std::vector&lt;int&gt; v { 1, 2, 3 };"
+      ],
+      "source": "13.14 — Class template argument deduction (CTAD) and deduction guides",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_14_011",
+      "lesson": "13.14",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "cpp17"
+      ],
+      "front": "Can CTAD deduce template arguments from function return types?",
+      "back": "No. CTAD only works with direct initialization/construction, not from return types or assignments alone.",
+      "source": "13.14 — Class template argument deduction (CTAD) and deduction guides",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch13_14_012",
+      "lesson": "13.14",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "cpp17"
+      ],
+      "text": "CTAD ({{c1::Class Template Argument Deduction}}) was introduced in {{c2::C++17}}.",
+      "source": "13.14 — Class template argument deduction (CTAD) and deduction guides",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_14_013",
+      "lesson": "13.14",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "text": "{{c1::Deduction guides}} help the compiler deduce template arguments when CTAD alone isn't sufficient.",
+      "source": "13.14 — Class template argument deduction (CTAD) and deduction guides",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch13_14_014",
+      "lesson": "13.14",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "cpp17"
+      ],
+      "text": "CTAD ({{c1::Class Template Argument Deduction}}) was introduced in {{c2::C++17}}.",
+      "source": "13.14 — Class template argument deduction (CTAD) and deduction guides",
+      "difficulty": "easy"
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "chapter": "Chapter 14",
+  "chapter_title": "Introduction to Classes",
+  "lesson": "14.x",
+  "lesson_title": "Chapter 14 summary and quiz",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "ch14_x_001",
+      "lesson": "14.x",
+      "type": "concept",
+      "tags": ["cpp", "oop", "classes", "review"],
+      "concept": "The key concepts introduced in Chapter 14",
+      "explanation": "Chapter 14 introduces object-oriented programming in C++:<ul><li>Classes and member functions</li><li>Access specifiers (public/private) and encapsulation</li><li>Constructors (default, parameterized, copy, delegating)</li><li>Member initializer lists</li><li>Const member functions and const objects</li><li>Access functions (getters/setters)</li><li>Explicit keyword and converting constructors</li><li>Copy elision and RVO</li><li>Constexpr classes</li></ul>",
+      "examples": [
+        "class MyClass { private: int m_data; public: int getData() const; };",
+        "MyClass() : m_data{0} { }  // constructor with initializer list"
+      ],
+      "source": "14.x - Chapter 14 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_x_002",
+      "lesson": "14.x",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "best-practices"],
+      "text": "The three key principles for good class design: Make data members {{c1::private}}, provide {{c2::public member functions}} for controlled access, and use {{c3::constructors}} to ensure valid initialization.",
+      "source": "14.x - Chapter 14 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_x_003",
+      "lesson": "14.x",
+      "type": "basic",
+      "tags": ["cpp", "classes", "review"],
+      "front": "What are the four main benefits of using classes over structs?",
+      "back": "<ul><li>Encapsulation - bundling data and functions together</li><li>Data hiding - private members prevent unauthorized access</li><li>Invariant enforcement - control how data is modified</li><li>Abstraction - separate interface from implementation</li></ul>",
+      "source": "14.x - Chapter 14 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_x_004",
+      "lesson": "14.x",
+      "type": "code",
+      "tags": ["cpp", "classes", "review"],
+      "question": "Identify all the issues with this class design:",
+      "code": "class BankAccount<br>{<br>public:<br>&nbsp;&nbsp;&nbsp;&nbsp;double balance;<br>&nbsp;&nbsp;&nbsp;&nbsp;void setBalance(double b) { balance = b; }<br>&nbsp;&nbsp;&nbsp;&nbsp;double getBalance() { return balance; }<br>};",
+      "answer": "<ul><li>balance should be private, not public</li><li>getBalance() should be const</li><li>setBalance() should validate input</li><li>Should use m_ naming convention for members</li><li>Should have constructor to initialize balance</li></ul>",
+      "explanation": "Multiple best practice violations: public data, non-const getter, no validation, no constructor.",
+      "source": "14.x - Chapter 14 summary and quiz",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch14_x_005",
+      "lesson": "14.x",
+      "type": "basic",
+      "tags": ["cpp", "classes", "constructors", "review"],
+      "front": "What are the five types of constructors covered in Chapter 14?",
+      "back": "<ul><li>Default constructor (no parameters)</li><li>Parameterized constructor</li><li>Copy constructor</li><li>Delegating constructor</li><li>Converting constructor (single parameter, implicit conversion)</li></ul>",
+      "source": "14.x - Chapter 14 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_x_006",
+      "lesson": "14.x",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "review"],
+      "text": "The {{c1::Rule of Three}}: If you define a custom {{c2::destructor}}, {{c3::copy constructor}}, or {{c4::copy assignment operator}}, you should probably define all three.",
+      "source": "14.x - Chapter 14 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_x_007",
+      "lesson": "14.x",
+      "type": "code",
+      "tags": ["cpp", "classes", "review"],
+      "question": "Write a complete, well-designed class for a simple Point in 2D space:",
+      "code": "// Should have x, y coordinates<br>// Should be immutable after construction<br>// Should support compile-time evaluation",
+      "answer": "class Point<br>{<br>private:<br>&nbsp;&nbsp;&nbsp;&nbsp;int m_x{};<br>&nbsp;&nbsp;&nbsp;&nbsp;int m_y{};<br>public:<br>&nbsp;&nbsp;&nbsp;&nbsp;constexpr Point(int x, int y) : m_x{x}, m_y{y} { }<br>&nbsp;&nbsp;&nbsp;&nbsp;constexpr int getX() const { return m_x; }<br>&nbsp;&nbsp;&nbsp;&nbsp;constexpr int getY() const { return m_y; }<br>};",
+      "explanation": "Private data, constexpr constructor with initializer list, const getters, supports compile-time evaluation.",
+      "source": "14.x - Chapter 14 summary and quiz",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch14_x_008",
+      "lesson": "14.x",
+      "type": "basic",
+      "tags": ["cpp", "classes", "best-practices", "review"],
+      "front": "What is the recommended order for class members?",
+      "back": "1. Public members first (interface)<br>2. Private members second (implementation)<br>Within each section:<br>- Constructors<br>- Destructors<br>- Other member functions<br>- Data members last",
+      "source": "14.x - Chapter 14 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_x_009",
+      "lesson": "14.x",
+      "type": "basic",
+      "tags": ["cpp", "classes", "review"],
+      "front": "What are the key differences between class and struct in C++?",
+      "back": "Only one difference: default access level.<ul><li>class: members are private by default</li><li>struct: members are public by default</li></ul>Otherwise completely equivalent. Use struct for passive data, class for objects with behaviors and invariants.",
+      "source": "14.x - Chapter 14 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_x_010",
+      "lesson": "14.x",
+      "type": "concept",
+      "tags": ["cpp", "classes", "best-practices", "review"],
+      "concept": "The complete checklist for a well-designed class",
+      "explanation": "A well-designed class should:<ul><li>Make all data members private (encapsulation)</li><li>Provide constructors to ensure valid initialization</li><li>Use member initializer lists in constructors</li><li>Make non-modifying member functions const</li><li>Make single-argument constructors explicit (unless conversion is intended)</li><li>Provide only necessary getters/setters</li><li>Return expensive types by const reference from getters</li><li>Pass/return class objects by const reference when possible</li><li>Use meaningful names with m_ prefix for members</li></ul>",
+      "examples": [
+        "class Fraction {",
+        "private: int m_num, m_den;",
+        "public: explicit Fraction(int n, int d=1);",
+        "  int getNumerator() const;",
+        "};"
+      ],
+      "source": "14.x - Chapter 14 summary and quiz",
+      "difficulty": "hard"
+    }
+  ]
+}

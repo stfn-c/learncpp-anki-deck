@@ -1,0 +1,132 @@
+{
+  "chapter": "Chapter 17",
+  "chapter_title": "Arrays and Strings",
+  "lesson": "17.3",
+  "lesson_title": "Passing and returning std::array",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch17_3_001",
+      "lesson": "17.3",
+      "type": "cloze",
+      "tags": ["cpp", "arrays", "std-array", "pass-by-reference"],
+      "text": "To pass a std::array to a function without copying it, use {{c1::pass by (const) reference}}: void func({{c2::const std::array&lt;int, 5&gt;&amp;}} arr)",
+      "source": "17.3 - Passing and returning std::array",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_3_002",
+      "lesson": "17.3",
+      "type": "basic",
+      "tags": ["cpp", "arrays", "std-array", "pass-by-value"],
+      "front": "What happens when you pass a std::array by value to a function?",
+      "back": "The entire array is copied element-by-element, which can be expensive for large arrays. This is different from C-style arrays which decay to pointers.",
+      "source": "17.3 - Passing and returning std::array",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_3_003",
+      "lesson": "17.3",
+      "type": "code",
+      "tags": ["cpp", "arrays", "std-array", "common-mistakes"],
+      "question": "What's the issue with this function signature?",
+      "code": "void printArray(const std::array&lt;int&gt;&amp; arr);",
+      "answer": "Missing the array length template parameter. std::array requires both type and length.",
+      "explanation": "std::array needs both template parameters: std::array&lt;int, 5&gt;&amp; arr. The length is part of the type.",
+      "source": "17.3 - Passing and returning std::array",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_3_004",
+      "lesson": "17.3",
+      "type": "cloze",
+      "tags": ["cpp", "arrays", "std-array", "template-function"],
+      "text": "To write a function that accepts std::array of any length, use a {{c1::template function}} with a {{c2::non-type template parameter}} for the length",
+      "source": "17.3 - Passing and returning std::array",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_3_005",
+      "lesson": "17.3",
+      "type": "cloze",
+      "tags": ["cpp", "arrays", "std-array", "template-syntax"],
+      "text": "A template function accepting any std::array of ints: {{c1::template &lt;std::size_t N&gt;}}<br>void func({{c2::const std::array&lt;int, N&gt;&amp;}} arr)",
+      "source": "17.3 - Passing and returning std::array",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_3_006",
+      "lesson": "17.3",
+      "type": "basic",
+      "tags": ["cpp", "arrays", "std-array", "return-value"],
+      "front": "Can you return a std::array by value from a function?",
+      "back": "Yes, you can safely return std::array by value. The compiler will typically optimize it using RVO (Return Value Optimization) to avoid copying.",
+      "source": "17.3 - Passing and returning std::array",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_3_007",
+      "lesson": "17.3",
+      "type": "cloze",
+      "tags": ["cpp", "arrays", "std-array", "auto-return"],
+      "text": "When returning a std::array from a function, you can use {{c1::auto}} as the return type and the compiler will deduce it",
+      "source": "17.3 - Passing and returning std::array",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_3_008",
+      "lesson": "17.3",
+      "type": "concept",
+      "tags": ["cpp", "arrays", "std-array", "best-practices"],
+      "concept": "Best practices for passing std::array to functions",
+      "explanation": "Prefer pass by const reference for read-only access:<ul><li>Avoids expensive copying</li><li>const prevents modification</li><li>Works for any array size if using templates</li></ul>Use pass by reference (non-const) when you need to modify the array.",
+      "examples": [
+        "void print(const std::array&lt;int, 5&gt;&amp; arr);  // Read-only",
+        "void modify(std::array&lt;int, 5&gt;&amp; arr);        // Modifiable"
+      ],
+      "source": "17.3 - Passing and returning std::array",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_3_009",
+      "lesson": "17.3",
+      "type": "basic",
+      "tags": ["cpp", "arrays", "std-array", "type-mismatch"],
+      "front": "Can a function accepting std::array&lt;int, 5&gt; also accept std::array&lt;int, 10&gt;?",
+      "back": "No, they are different types. std::array&lt;int, 5&gt; and std::array&lt;int, 10&gt; are completely distinct types. You need template functions or overloading to handle different sizes.",
+      "source": "17.3 - Passing and returning std::array",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_3_010",
+      "lesson": "17.3",
+      "type": "cloze",
+      "tags": ["cpp", "arrays", "std-array", "abbreviated-template"],
+      "text": "In C++20, you can use abbreviated function templates: void func({{c1::const auto&amp;}} arr) to accept any std::array",
+      "source": "17.3 - Passing and returning std::array",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch17_3_011",
+      "lesson": "17.3",
+      "type": "code",
+      "tags": ["cpp", "arrays", "std-array", "return-type"],
+      "question": "What does this function return?",
+      "code": "auto createArray() {\n    return std::array{ 1, 2, 3, 4, 5 };\n}",
+      "answer": "std::array&lt;int, 5&gt;",
+      "explanation": "Using CTAD (Class Template Argument Deduction) in C++17+, the compiler deduces the type as std::array&lt;int, 5&gt; from the initializer list.",
+      "source": "17.3 - Passing and returning std::array",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_3_012",
+      "lesson": "17.3",
+      "type": "basic",
+      "tags": ["cpp", "arrays", "std-array", "rvo"],
+      "front": "Why is returning std::array by value generally not a performance concern?",
+      "back": "Compilers use Return Value Optimization (RVO) to construct the return value directly in the caller's location, avoiding the copy. Additionally, move semantics can be used if copying is necessary.",
+      "source": "17.3 - Passing and returning std::array",
+      "difficulty": "hard"
+    }
+  ]
+}

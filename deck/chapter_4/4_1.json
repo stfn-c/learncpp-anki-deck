@@ -1,0 +1,151 @@
+{
+  "chapter": "Chapter 4",
+  "chapter_title": "Fundamental Data Types",
+  "lesson": "4.1",
+  "lesson_title": "Introduction to fundamental data types",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "ch4_1_001",
+      "lesson": "4.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "types",
+        "fundamentals",
+        "memory"
+      ],
+      "text": "The smallest unit of memory is a {{c1::bit}}, which can hold a value of {{c2::0}} or {{c3::1}}.",
+      "source": "4.1 - Introduction to fundamental data types",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_1_002",
+      "lesson": "4.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "types",
+        "memory"
+      ],
+      "front": "How many bits are in a byte in C++?",
+      "back": "8 bits per byte",
+      "source": "4.1 - Introduction to fundamental data types",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_1_003",
+      "lesson": "4.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "types",
+        "fundamentals"
+      ],
+      "text": "A {{c1::data type}} tells the compiler how to interpret the contents of memory in a meaningful way.",
+      "source": "4.1 - Introduction to fundamental data types",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_1_004",
+      "lesson": "4.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "types",
+        "fundamentals"
+      ],
+      "front": "What are the main categories of fundamental data types in C++?",
+      "back": "<ul><li>Integral types (boolean, character, integer)</li><li>Floating point types (float, double)</li><li>Void</li><li>Nullptr</li></ul>",
+      "source": "4.1 - Introduction to fundamental data types",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_1_005",
+      "lesson": "4.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "types",
+        "void"
+      ],
+      "text": "The {{c1::void}} keyword means {{c2::no type}}. It is primarily used to indicate a function does not return a value.",
+      "source": "4.1 - Introduction to fundamental data types",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_1_006",
+      "lesson": "4.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "types",
+        "naming"
+      ],
+      "front": "What does the _t suffix mean in type names like std::size_t?",
+      "back": "The _t suffix means 'type' and is a common naming convention for types defined via typedef or type alias.",
+      "source": "4.1 - Introduction to fundamental data types",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch4_1_007",
+      "lesson": "4.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "fundamentals",
+        "terminology"
+      ],
+      "text": "In C++, an {{c1::object}} is a region of storage that has a {{c2::value}} and other associated properties.",
+      "source": "4.1 - Introduction to fundamental data types",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch4_1_008",
+      "lesson": "4.1",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "syntax",
+        "variables"
+      ],
+      "question": "Which of these variable declarations is valid?",
+      "code": "int x;\nInt y;\nINT z;",
+      "answer": "Only <code>int x;</code> is valid",
+      "explanation": "C++ is case-sensitive. The type must be lowercase <code>int</code>, not <code>Int</code> or <code>INT</code>.",
+      "source": "4.1 - Introduction to fundamental data types",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_1_009",
+      "lesson": "4.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "syntax",
+        "best-practices"
+      ],
+      "text": "Best practice: Define multiple variables of the same type in {{c1::separate statements}} rather than in a single statement.",
+      "source": "4.1 - Introduction to fundamental data types",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch4_1_010",
+      "lesson": "4.1",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "best-practices",
+        "variables"
+      ],
+      "concept": "Why define variables in separate statements instead of comma-separated",
+      "explanation": "Defining multiple variables in one statement is error-prone because:<ul><li>Easy to accidentally mix initialized and uninitialized variables</li><li>Harder to comment individual variables</li><li>Can't mix different initialization methods</li><li>Less readable and maintainable</li></ul>",
+      "examples": [
+        "int a, b;           // bad: multiple in one",
+        "int a;\nint b;      // good: separate statements"
+      ],
+      "source": "4.1 - Introduction to fundamental data types",
+      "difficulty": "medium"
+    }
+  ]
+}

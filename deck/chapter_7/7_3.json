@@ -1,0 +1,227 @@
+{
+  "chapter": "Chapter 7",
+  "chapter_title": "Scope, Duration, and Linkage",
+  "lesson": "7.3",
+  "lesson_title": "Local variables",
+  "total_cards": 15,
+  "cards": [
+    {
+      "id": "ch7_3_001",
+      "lesson": "7.3",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "variables",
+        "terminology"
+      ],
+      "front": "Local variable",
+      "back": "A variable defined inside a function (including function parameters). Local variables have block scope and automatic duration.",
+      "source": "7.3 - Local variables",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_3_002",
+      "lesson": "7.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "scope",
+        "terminology"
+      ],
+      "text": "An identifier's {{c1::scope}} determines where the identifier can be accessed within the source code.",
+      "source": "7.3 - Local variables",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_3_003",
+      "lesson": "7.3",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "scope",
+        "terminology"
+      ],
+      "front": "Block scope",
+      "back": "A variable with block scope can only be accessed from the point of declaration until the end of the block in which it is declared (including nested blocks).",
+      "source": "7.3 - Local variables",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_3_004",
+      "lesson": "7.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "scope",
+        "variables"
+      ],
+      "front": "Can a variable defined in an outer block be accessed from a nested block?",
+      "back": "Yes. Variables defined in an outer block can be seen inside nested blocks. However, variables in nested blocks cannot be seen in outer blocks.",
+      "source": "7.3 - Local variables",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_3_005",
+      "lesson": "7.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "scope",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this code?",
+      "code": "int main()\n{\n    {\n        int x{ 5 };\n    } // x destroyed here\n    \n    std::cout &lt;&lt; x; // error!\n    return 0;\n}",
+      "answer": "Variable x goes out of scope at the end of the nested block, so it cannot be accessed afterwards.",
+      "explanation": "Variables with block scope are destroyed at the end of the block in which they are defined. Trying to use x outside its block causes a compilation error.",
+      "source": "7.3 - Local variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_3_006",
+      "lesson": "7.3",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "variables",
+        "terminology"
+      ],
+      "front": "Duration (storage duration)",
+      "back": "A variable's duration determines when it is created and destroyed. Duration is a runtime property.",
+      "source": "7.3 - Local variables",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_3_007",
+      "lesson": "7.3",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "duration",
+        "terminology"
+      ],
+      "front": "Automatic duration (automatic storage duration)",
+      "back": "Variables with automatic duration are created at the point of definition and destroyed at the end of the block in which they are defined.",
+      "source": "7.3 - Local variables",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_3_008",
+      "lesson": "7.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "variables",
+        "terminology"
+      ],
+      "text": "Local variables have {{c1::block scope}} and {{c2::automatic duration}} by default.",
+      "source": "7.3 - Local variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_3_009",
+      "lesson": "7.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "scope",
+        "variables"
+      ],
+      "front": "Where are function parameters created and destroyed?",
+      "back": "Function parameters are created when the function is entered and destroyed when the function is exited, even though they are not defined inside the function block.",
+      "source": "7.3 - Local variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_3_010",
+      "lesson": "7.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "scope",
+        "best-practices"
+      ],
+      "front": "What are two key reasons to define variables in the smallest/most limited scope possible?",
+      "back": "<ul><li>Reduces the complexity of the program by limiting where variables can be used</li><li>Reduces the chance of naming collisions since fewer identifiers are in scope at any point</li></ul>",
+      "source": "7.3 - Local variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_3_011",
+      "lesson": "7.3",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "scope",
+        "best-practices"
+      ],
+      "concept": "When to define variables close to first use",
+      "explanation": "Define variables in the most limited existing scope. If that's not possible, create a new block to limit the scope. Define variables as close to their first use as reasonable to make code easier to understand and reduce the window for errors.",
+      "examples": [
+        "// Good: limited scope",
+        "if (condition) {",
+        "    int temp = calculate();",
+        "    doSomething(temp);",
+        "}",
+        "",
+        "// Bad: overly broad scope",
+        "int temp;",
+        "// ... 50 lines ...",
+        "temp = calculate();"
+      ],
+      "source": "7.3 - Local variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_3_012",
+      "lesson": "7.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "scope",
+        "duration"
+      ],
+      "text": "Variables with {{c1::automatic}} duration are created at the point of {{c2::definition}} and destroyed when the {{c3::block}} ends.",
+      "source": "7.3 - Local variables",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_3_013",
+      "lesson": "7.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "scope",
+        "variables"
+      ],
+      "text": "Variables in an {{c1::outer block}} can be seen in {{c2::nested blocks}}, but variables in nested blocks cannot be seen in the outer block.",
+      "source": "7.3 - Local variables",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_3_014",
+      "lesson": "7.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "scope",
+        "best-practices"
+      ],
+      "text": "Define variables in the {{c1::most limited scope}} possible and as {{c2::close to their first use}} as reasonable.",
+      "source": "7.3 - Local variables",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_3_015",
+      "lesson": "7.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "scope",
+        "parameters"
+      ],
+      "text": "Function parameters are created when the function is {{c1::entered}} and destroyed when the function {{c2::exits}}.",
+      "source": "7.3 - Local variables",
+      "difficulty": "medium"
+    }
+  ]
+}

@@ -1,0 +1,137 @@
+{
+  "chapter": "Chapter 1",
+  "chapter_title": "C++ Basics: Functions and Files",
+  "lesson": "1.5",
+  "lesson_title": "Introduction to iostream: cout, cin, and endl",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch1_5_001",
+      "lesson": "1.5",
+      "type": "basic",
+      "tags": ["cpp", "iostream", "fundamentals"],
+      "front": "What is the input/output library (io library)?",
+      "back": "The io library is part of the C++ standard library that deals with basic input and output. We use it to get input from the keyboard and output data to the console.",
+      "source": "1.5 - Introduction to iostream: cout, cin, and endl",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_5_002",
+      "lesson": "1.5",
+      "type": "cloze",
+      "tags": ["cpp", "cout", "syntax"],
+      "text": "To use std::cout, you must include the {{c1::&lt;iostream&gt;}} header.",
+      "source": "1.5 - Introduction to iostream: cout, cin, and endl",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_5_003",
+      "lesson": "1.5",
+      "type": "cloze",
+      "tags": ["cpp", "cout", "operators"],
+      "text": "The {{c1::&lt;&lt;}} operator is called the {{c2::insertion}} operator when used with std::cout.",
+      "source": "1.5 - Introduction to iostream: cout, cin, and endl",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_5_004",
+      "lesson": "1.5",
+      "type": "code",
+      "tags": ["cpp", "cout", "syntax"],
+      "question": "What does this code output?",
+      "code": "#include &lt;iostream&gt;\n\nint main()\n{\n    std::cout &lt;&lt; \"Hello\" &lt;&lt; \" world!\";\n    return 0;\n}",
+      "answer": "Hello world!",
+      "explanation": "Multiple insertion operations can be chained together. The output is concatenated without any automatic separation.",
+      "source": "1.5 - Introduction to iostream: cout, cin, and endl",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_5_005",
+      "lesson": "1.5",
+      "type": "cloze",
+      "tags": ["cpp", "endl", "syntax"],
+      "text": "{{c1::std::endl}} outputs a newline character and {{c2::flushes}} the output buffer.",
+      "source": "1.5 - Introduction to iostream: cout, cin, and endl",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_5_006",
+      "lesson": "1.5",
+      "type": "code",
+      "tags": ["cpp", "cout", "endl"],
+      "question": "What does this code output?",
+      "code": "std::cout &lt;&lt; \"First\" &lt;&lt; std::endl;\nstd::cout &lt;&lt; \"Second\" &lt;&lt; std::endl;",
+      "answer": "First<br>Second<br>(on separate lines)",
+      "explanation": "std::endl outputs a newline, moving the cursor to the next line. Each statement outputs text followed by a newline.",
+      "source": "1.5 - Introduction to iostream: cout, cin, and endl",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_5_007",
+      "lesson": "1.5",
+      "type": "basic",
+      "tags": ["cpp", "endl", "performance"],
+      "front": "What is the performance concern with std::endl?",
+      "back": "std::endl flushes the output buffer after outputting a newline, which can cause performance issues if used repeatedly. Use <code>'\\n'</code> instead for better performance in most cases.",
+      "source": "1.5 - Introduction to iostream: cout, cin, and endl",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch1_5_008",
+      "lesson": "1.5",
+      "type": "cloze",
+      "tags": ["cpp", "cin", "operators"],
+      "text": "The {{c1::&gt;&gt;}} operator is called the {{c2::extraction}} operator when used with std::cin.",
+      "source": "1.5 - Introduction to iostream: cout, cin, and endl",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_5_009",
+      "lesson": "1.5",
+      "type": "code",
+      "tags": ["cpp", "cin", "syntax"],
+      "question": "What does this code do?",
+      "code": "#include &lt;iostream&gt;\n\nint main()\n{\n    int x{};\n    std::cin &gt;&gt; x;\n    return 0;\n}",
+      "answer": "Reads an integer from the keyboard and stores it in variable x",
+      "explanation": "std::cin with the extraction operator &gt;&gt; reads input from the keyboard. The program waits for user input before continuing.",
+      "source": "1.5 - Introduction to iostream: cout, cin, and endl",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_5_010",
+      "lesson": "1.5",
+      "type": "cloze",
+      "tags": ["cpp", "cin", "syntax"],
+      "text": "You can input multiple values in a single statement: {{c1::std::cin &gt;&gt; x &gt;&gt; y;}}",
+      "source": "1.5 - Introduction to iostream: cout, cin, and endl",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_5_011",
+      "lesson": "1.5",
+      "type": "code",
+      "tags": ["cpp", "iostream", "common-mistakes"],
+      "question": "What's wrong with this code?",
+      "code": "#include &lt;iostream&gt;\n\nint main()\n{\n    std::cout &gt;&gt; \"Hello\";\n    return 0;\n}",
+      "answer": "Using wrong operator: should be &lt;&lt; (insertion) not &gt;&gt; (extraction)",
+      "explanation": "Use &lt;&lt; with std::cout for output and &gt;&gt; with std::cin for input. Using the wrong operator will cause a compile error.",
+      "source": "1.5 - Introduction to iostream: cout, cin, and endl",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch1_5_012",
+      "lesson": "1.5",
+      "type": "concept",
+      "tags": ["cpp", "iostream", "best-practices"],
+      "concept": "When to use \\n vs std::endl",
+      "explanation": "Use <code>\\n</code> for newlines in most cases for better performance. Only use <code>std::endl</code> when you need to:<ul><li>Flush the output immediately</li><li>Ensure output appears before program waits for input</li><li>Debug timing-sensitive code</li></ul>",
+      "examples": [
+        "std::cout &lt;&lt; \"Hello\\n\";      // Preferred for performance",
+        "std::cout &lt;&lt; \"Hello\" &lt;&lt; std::endl; // Use when flushing needed",
+        "std::cout &lt;&lt; \"Enter value: \"; std::cin &gt;&gt; x; // endl not needed before cin"
+      ],
+      "source": "1.5 - Introduction to iostream: cout, cin, and endl",
+      "difficulty": "medium"
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "chapter": "Chapter 17",
+  "chapter_title": "Arrays and Strings",
+  "lesson": "17.2",
+  "lesson_title": "std::array length and indexing",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch17_2_001",
+      "lesson": "17.2",
+      "type": "cloze",
+      "tags": ["cpp", "arrays", "std-array", "length"],
+      "text": "To get the length of a std::array at runtime, use the {{c1::size()}} member function",
+      "source": "17.2 - std::array length and indexing",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_2_002",
+      "lesson": "17.2",
+      "type": "cloze",
+      "tags": ["cpp", "arrays", "std-array", "subscript"],
+      "text": "To access element at index 3 of std::array arr, use {{c1::arr[3]}} with the subscript operator",
+      "source": "17.2 - std::array length and indexing",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_2_003",
+      "lesson": "17.2",
+      "type": "basic",
+      "tags": ["cpp", "arrays", "std-array", "bounds-checking"],
+      "front": "Does the subscript operator [] perform bounds checking on std::array?",
+      "back": "No, operator[] does not perform bounds checking for performance reasons. Accessing out-of-bounds elements causes undefined behavior.",
+      "source": "17.2 - std::array length and indexing",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_2_004",
+      "lesson": "17.2",
+      "type": "cloze",
+      "tags": ["cpp", "arrays", "std-array", "at"],
+      "text": "To access std::array elements with bounds checking, use the {{c1::at()}} member function instead of operator[]",
+      "source": "17.2 - std::array length and indexing",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_2_005",
+      "lesson": "17.2",
+      "type": "basic",
+      "tags": ["cpp", "arrays", "std-array", "at", "exceptions"],
+      "front": "What happens when you access an out-of-bounds index using std::array's at() function?",
+      "back": "It throws a std::out_of_range exception that can be caught and handled, preventing undefined behavior.",
+      "source": "17.2 - std::array length and indexing",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_2_006",
+      "lesson": "17.2",
+      "type": "code",
+      "tags": ["cpp", "arrays", "std-array", "common-mistakes"],
+      "question": "What's the problem with this code?",
+      "code": "std::array&lt;int, 5&gt; arr { 1, 2, 3, 4, 5 };\nstd::cout &lt;&lt; arr[5];",
+      "answer": "Index 5 is out of bounds. Valid indices are 0-4 for an array of length 5.",
+      "explanation": "Array indices start at 0, so an array of length 5 has valid indices 0, 1, 2, 3, 4. Accessing index 5 causes undefined behavior.",
+      "source": "17.2 - std::array length and indexing",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_2_007",
+      "lesson": "17.2",
+      "type": "cloze",
+      "tags": ["cpp", "arrays", "std-array", "range-based-for"],
+      "text": "To iterate over all elements of a std::array arr, use a range-based for loop: {{c1::for (auto element : arr)}}",
+      "source": "17.2 - std::array length and indexing",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_2_008",
+      "lesson": "17.2",
+      "type": "basic",
+      "tags": ["cpp", "arrays", "std-array", "size", "constexpr"],
+      "front": "Can you use std::array's size() function in a constant expression?",
+      "back": "Yes, size() is constexpr, so it can be used in compile-time contexts like array declarations or static_assert.",
+      "source": "17.2 - std::array length and indexing",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_2_009",
+      "lesson": "17.2",
+      "type": "cloze",
+      "tags": ["cpp", "arrays", "std-array", "type-alias"],
+      "text": "The type returned by std::array's size() function is {{c1::std::size_t}}, which is an unsigned integer type",
+      "source": "17.2 - std::array length and indexing",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_2_010",
+      "lesson": "17.2",
+      "type": "concept",
+      "tags": ["cpp", "arrays", "std-array", "best-practices"],
+      "concept": "When to use at() vs operator[] for std::array access",
+      "explanation": "Use operator[] when:<ul><li>Performance is critical</li><li>You're certain the index is valid</li></ul>Use at() when:<ul><li>The index comes from user input or external sources</li><li>You want runtime safety and can handle exceptions</li><li>During development/debugging</li></ul>",
+      "examples": [
+        "arr[i];     // Fast, no checking",
+        "arr.at(i);  // Slower, throws on invalid index"
+      ],
+      "source": "17.2 - std::array length and indexing",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_2_011",
+      "lesson": "17.2",
+      "type": "cloze",
+      "tags": ["cpp", "arrays", "std-array", "front-back"],
+      "text": "To access the first element of std::array arr, use {{c1::arr.front()}} and for the last element use {{c2::arr.back()}}",
+      "source": "17.2 - std::array length and indexing",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_2_012",
+      "lesson": "17.2",
+      "type": "basic",
+      "tags": ["cpp", "arrays", "std-array", "signed-unsigned"],
+      "front": "Why can using size_t for loop indices with std::array be problematic?",
+      "back": "size_t is unsigned, which can cause issues when decrementing (wraps around to large value at 0) or when mixing with signed integers in comparisons.",
+      "source": "17.2 - std::array length and indexing",
+      "difficulty": "hard"
+    }
+  ]
+}

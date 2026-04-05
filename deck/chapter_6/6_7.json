@@ -1,0 +1,216 @@
+{
+  "chapter": "Chapter 6",
+  "chapter_title": "Operators",
+  "lesson": "6.7",
+  "lesson_title": "Relational operators",
+  "total_cards": 14,
+  "cards": [
+    {
+      "id": "ch6_7_001",
+      "lesson": "6.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operators",
+        "relational"
+      ],
+      "text": "The six relational operators are: {{c1::&gt;}} (greater than), {{c2::&lt;}} (less than), {{c3::&gt;=}} (greater or equal), {{c4::&lt;=}} (less or equal), {{c5::==}} (equal), {{c6::!=}} (not equal).",
+      "source": "6.7 - Relational operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_7_002",
+      "lesson": "6.7",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operators",
+        "relational"
+      ],
+      "question": "What does this code output?",
+      "code": "std::cout &lt;&lt; (5 &gt; 3);",
+      "answer": "1",
+      "explanation": "Relational operators return a boolean. true is printed as 1, false as 0. Since 5 &gt; 3 is true, it outputs 1.",
+      "source": "6.7 - Relational operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_7_003",
+      "lesson": "6.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operators",
+        "relational"
+      ],
+      "front": "What type do relational operators return?",
+      "back": "bool (boolean). They return true or false.",
+      "source": "6.7 - Relational operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_7_004",
+      "lesson": "6.7",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operators",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this code?",
+      "code": "if (x = 5)\n    std::cout &lt;&lt; \"x is 5\";",
+      "answer": "Uses assignment (=) instead of equality (==)",
+      "explanation": "This assigns 5 to x, then checks if 5 is true (it is). Should be (x == 5) to compare. This is a very common bug.",
+      "source": "6.7 - Relational operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch6_7_005",
+      "lesson": "6.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operators",
+        "relational"
+      ],
+      "text": "Comparing floating point values with {{c1::==}} or {{c2::!=}} is dangerous because of {{c3::rounding errors}}. Use an epsilon comparison instead.",
+      "source": "6.7 - Relational operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch6_7_006",
+      "lesson": "6.7",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operators",
+        "relational"
+      ],
+      "question": "What does this code output?",
+      "code": "double d1 = 0.1 + 0.1 + 0.1;\ndouble d2 = 0.3;\nstd::cout &lt;&lt; (d1 == d2);",
+      "answer": "0 (false)",
+      "explanation": "Due to floating point rounding, d1 might be 0.30000000000000004, not exactly 0.3. Never use == with floating point.",
+      "source": "6.7 - Relational operators",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch6_7_007",
+      "lesson": "6.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operators",
+        "relational"
+      ],
+      "text": "To compare floats, check if the absolute difference is less than epsilon: {{c1::std::abs(a - b) &lt; epsilon}}",
+      "source": "6.7 - Relational operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch6_7_008",
+      "lesson": "6.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operators",
+        "relational"
+      ],
+      "front": "What is the difference between = and ==?",
+      "back": "= is assignment (sets a value), == is equality comparison (tests if two values are equal). Confusing them is a common bug.",
+      "source": "6.7 - Relational operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_7_009",
+      "lesson": "6.7",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operators",
+        "relational"
+      ],
+      "question": "Can you chain comparison operators like this?",
+      "code": "if (10 &lt; x &lt; 20)",
+      "answer": "Yes, but it doesn't work as expected!",
+      "explanation": "This evaluates as (10 &lt; x) &lt; 20. First (10 &lt; x) gives true/false (1/0), then that is compared to 20, always true. Use: (10 &lt; x &amp;&amp; x &lt; 20)",
+      "source": "6.7 - Relational operators",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch6_7_010",
+      "lesson": "6.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operators",
+        "relational"
+      ],
+      "text": "The relational operators &lt;, &gt;, &lt;=, &gt;= have {{c1::higher}} precedence than ==, !=. Both have {{c2::lower}} precedence than arithmetic operators.",
+      "source": "6.7 - Relational operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch6_7_011",
+      "lesson": "6.7",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "operators",
+        "relational",
+        "gotchas"
+      ],
+      "concept": "Floating point comparison pitfalls",
+      "explanation": "Never use == or != to compare floating point numbers directly. Rounding errors make exact equality unreliable. Instead, check if the difference is smaller than a small epsilon value.",
+      "examples": [
+        "// WRONG:",
+        "if (d1 == d2)",
+        "",
+        "// CORRECT:",
+        "const double epsilon = 1e-9;",
+        "if (std::abs(d1 - d2) &lt; epsilon)"
+      ],
+      "source": "6.7 - Relational operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch6_7_012",
+      "lesson": "6.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operators",
+        "relational"
+      ],
+      "front": "What is a good value for epsilon when comparing floats?",
+      "back": "It depends on the magnitude of the numbers, but common values are 1e-9 for doubles or 1e-6 for floats. Use std::numeric_limits&lt;double&gt;::epsilon() for more precision.",
+      "source": "6.7 - Relational operators",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch6_7_013",
+      "lesson": "6.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operators",
+        "relational"
+      ],
+      "text": "The six relational operators are {{c1::&gt;}}, {{c2::&lt;}}, {{c3::&gt;=}}, {{c4::&lt;=}}, {{c5::==}}, and {{c6::!=}}. They all return type {{c7::bool}}.",
+      "source": "6.7 - Relational operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_7_014",
+      "lesson": "6.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operators",
+        "relational"
+      ],
+      "text": "Assignment operator = has {{c1::lower}} precedence than relational operators, so x = a &lt; b evaluates as {{c2::x = (a &lt; b)}}.",
+      "source": "6.7 - Relational operators",
+      "difficulty": "medium"
+    }
+  ]
+}

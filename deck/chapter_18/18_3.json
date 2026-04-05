@@ -1,0 +1,180 @@
+{
+  "chapter": "Chapter 18",
+  "chapter_title": "Basic standard library algorithms",
+  "lesson": "18.3",
+  "lesson_title": "Introduction to standard library algorithms",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch18_3_001",
+      "lesson": "18.3",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "standard-library",
+        "algorithms",
+        "best-practices"
+      ],
+      "concept": "Why use standard library algorithms instead of custom loops",
+      "explanation": "Benefits include:<ul><li>Less error-prone (well-tested, debugged)</li><li>More readable and expressive</li><li>More efficient (optimized implementations)</li><li>Work with all container types via iterators</li><li>Easier to parallelize in future</li></ul>",
+      "examples": [
+        "std::find(begin, end, value); // Clear intent",
+        "// vs writing custom loop with bugs"
+      ],
+      "source": "18.3 - Introduction to standard library algorithms",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch18_3_002",
+      "lesson": "18.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "standard-library",
+        "algorithm"
+      ],
+      "text": "Standard library algorithms are found in the {{c1::&lt;algorithm&gt;}} header and typically work with {{c2::iterators}} rather than containers directly.",
+      "source": "18.3 - Introduction to standard library algorithms",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch18_3_003",
+      "lesson": "18.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "algorithm",
+        "search"
+      ],
+      "text": "To find a value in a container, use {{c1::std::find(std::begin(container), std::end(container), value)}} which returns an {{c2::iterator}}.",
+      "source": "18.3 - Introduction to standard library algorithms",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch18_3_004",
+      "lesson": "18.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "algorithm",
+        "find"
+      ],
+      "question": "What does this code check?",
+      "code": "auto found{ std::find(std::begin(arr), std::end(arr), search) };\nif (found == std::end(arr))\n    std::cout &lt;&lt; \"Not found\\n\";",
+      "answer": "Checks if the search value was NOT found in the array.",
+      "explanation": "std::find returns std::end() if the value is not found. Comparing the result to end() tells us if the search failed.",
+      "source": "18.3 - Introduction to standard library algorithms",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch18_3_005",
+      "lesson": "18.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "algorithm",
+        "find"
+      ],
+      "front": "What does std::find return if the value is found?",
+      "back": "An iterator pointing to the first element matching the value.",
+      "source": "18.3 - Introduction to standard library algorithms",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch18_3_006",
+      "lesson": "18.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "algorithm",
+        "find"
+      ],
+      "front": "What does std::find return if the value is not found?",
+      "back": "An iterator equal to the end iterator passed as the second parameter (std::end()).",
+      "source": "18.3 - Introduction to standard library algorithms",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch18_3_007",
+      "lesson": "18.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "algorithm",
+        "count"
+      ],
+      "text": "To count occurrences of a value in a container, use {{c1::std::count(std::begin(container), std::end(container), value)}}.",
+      "source": "18.3 - Introduction to standard library algorithms",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch18_3_008",
+      "lesson": "18.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "algorithm",
+        "sorting"
+      ],
+      "text": "To sort in descending order with std::sort, pass {{c1::std::greater}} as the third argument (comparison function).",
+      "source": "18.3 - Introduction to standard library algorithms",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch18_3_009",
+      "lesson": "18.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "algorithm",
+        "sort"
+      ],
+      "question": "What does this code do?",
+      "code": "std::sort(std::begin(arr), std::end(arr), std::greater{});",
+      "answer": "Sorts the array in descending order (largest to smallest).",
+      "explanation": "std::greater is a comparison function that reverses the default ascending order.",
+      "source": "18.3 - Introduction to standard library algorithms",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch18_3_010",
+      "lesson": "18.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "algorithm",
+        "for-each"
+      ],
+      "text": "To apply a function to each element in a range, use {{c1::std::for_each(std::begin(container), std::end(container), function)}}.",
+      "source": "18.3 - Introduction to standard library algorithms",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch18_3_011",
+      "lesson": "18.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "algorithm",
+        "ranges"
+      ],
+      "front": "Why do standard library algorithms take two iterators (begin and end) instead of just a container?",
+      "back": "This allows algorithms to work on:<ul><li>Part of a container (subrange)</li><li>Any container type</li><li>Custom ranges</li><li>Even arrays and built-in types</li></ul>Maximum flexibility.",
+      "source": "18.3 - Introduction to standard library algorithms",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch18_3_012",
+      "lesson": "18.3",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "algorithm"
+      ],
+      "front": "std::min_element",
+      "back": "Algorithm that returns an iterator to the smallest element in a range",
+      "source": "18.3 - Introduction to standard library algorithms",
+      "difficulty": "easy"
+    }
+  ]
+}

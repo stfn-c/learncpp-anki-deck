@@ -1,0 +1,193 @@
+{
+  "chapter": "Chapter 27",
+  "chapter_title": "Exception Handling and Error Handling",
+  "lesson": "27.3",
+  "lesson_title": "27.3 — Exceptions, functions, and stack unwinding",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch27_3_001",
+      "lesson": "27.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "stack-unwinding"
+      ],
+      "text": "{{c1::Stack unwinding}} is the process of removing function calls from the call stack when an exception is thrown, until a matching {{c2::exception handler}} is found.",
+      "source": "27.3 - Exceptions, functions, and stack unwinding",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_3_002",
+      "lesson": "27.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "stack-unwinding"
+      ],
+      "front": "What happens when a function throws an exception that it doesn't catch?",
+      "back": "The exception propagates up the call stack to the calling function. This continues until a matching catch block is found or the program terminates.",
+      "source": "27.3 - Exceptions, functions, and stack unwinding",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_3_003",
+      "lesson": "27.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "stack-unwinding"
+      ],
+      "question": "Where is the exception caught?",
+      "code": "void C() { throw 1; }\nvoid B() { C(); }  // no try-catch\nvoid A() {\n    try { B(); }\n    catch (int) { std::cout &lt;&lt; \"Caught\"; }\n}\nA();",
+      "answer": "In function A's catch block.",
+      "explanation": "The exception thrown in C() propagates through B() (which has no handler) up to A() where it's caught.",
+      "source": "27.3 - Exceptions, functions, and stack unwinding",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_3_004",
+      "lesson": "27.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "stack-unwinding",
+        "raii"
+      ],
+      "text": "During stack unwinding, all local objects in the scope being exited are {{c1::destroyed}} (their destructors are called). This ensures proper {{c2::resource cleanup}} following RAII principles.",
+      "source": "27.3 - Exceptions, functions, and stack unwinding",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_3_005",
+      "lesson": "27.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "raii",
+        "best-practices"
+      ],
+      "question": "Is the file properly closed if processFile() throws?",
+      "code": "void readFile() {\n    std::ifstream file(\"data.txt\");\n    processFile(file);  // might throw\n    // file goes out of scope\n}",
+      "answer": "Yes, the file is properly closed.",
+      "explanation": "Even if processFile() throws, stack unwinding will destroy the file object, calling its destructor which closes the file. This is RAII in action.",
+      "source": "27.3 - Exceptions, functions, and stack unwinding",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch27_3_006",
+      "lesson": "27.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "gotchas"
+      ],
+      "front": "What happens if an exception is thrown from main() and not caught?",
+      "back": "std::terminate() is called, which typically calls std::abort() and the program terminates abnormally without proper cleanup.",
+      "source": "27.3 - Exceptions, functions, and stack unwinding",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_3_007",
+      "lesson": "27.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "fundamentals"
+      ],
+      "text": "When searching for an exception handler, only the {{c1::type}} of the exception matters, not its {{c2::value}}. The search proceeds up the {{c3::call stack}} function by function.",
+      "source": "27.3 - Exceptions, functions, and stack unwinding",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_3_008",
+      "lesson": "27.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "common-mistakes"
+      ],
+      "question": "Will this code catch the exception?",
+      "code": "void func() {\n    try {\n        throw std::runtime_error(\"error\");\n    }\n    catch (int e) {\n        std::cout &lt;&lt; \"Caught: \" &lt;&lt; e;\n    }\n}",
+      "answer": "No, the exception won't be caught and std::terminate() will be called.",
+      "explanation": "The catch block expects an int, but a std::runtime_error is thrown. Type mismatch means the exception isn't caught.",
+      "source": "27.3 - Exceptions, functions, and stack unwinding",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_3_009",
+      "lesson": "27.3",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "raii",
+        "best-practices"
+      ],
+      "concept": "Why RAII is critical for exception safety",
+      "explanation": "Stack unwinding during exceptions automatically calls destructors of local objects. RAII ensures resources are freed:<ul><li>File handles are closed</li><li>Memory is deallocated</li><li>Locks are released</li><li>Network connections are closed</li></ul>Without RAII, exceptions would leak resources.",
+      "examples": [
+        "// RAII: safe",
+        "std::unique_ptr&lt;T&gt; ptr(new T());",
+        "processData(ptr.get());  // if throws, destructor runs",
+        "",
+        "// Manual: unsafe",
+        "T* ptr = new T();",
+        "processData(ptr);  // if throws, memory leaks!"
+      ],
+      "source": "27.3 - Exceptions, functions, and stack unwinding",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch27_3_010",
+      "lesson": "27.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "syntax"
+      ],
+      "front": "Can a try block only catch exceptions from directly called functions, or also from nested function calls?",
+      "back": "A try block catches exceptions from any function in the call chain below it, not just directly called functions. Exceptions propagate up through all levels.",
+      "source": "27.3 - Exceptions, functions, and stack unwinding",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_3_011",
+      "lesson": "27.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "fundamentals"
+      ],
+      "text": "If no exception handler is found for a thrown exception, {{c1::std::terminate()}} is called, which by default calls {{c2::std::abort()}} to abnormally terminate the program.",
+      "source": "27.3 - Exceptions, functions, and stack unwinding",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch27_3_012",
+      "lesson": "27.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "stack-unwinding"
+      ],
+      "question": "How many functions are unwound from the stack?",
+      "code": "void d() { throw 1; }\nvoid c() { d(); }\nvoid b() { c(); }\nvoid a() {\n    try { b(); }\n    catch (int) { }\n}",
+      "answer": "Three functions: d(), c(), and b() are unwound before the exception is caught in a().",
+      "explanation": "Stack unwinding removes all functions from the call stack between the throw point and the catch handler.",
+      "source": "27.3 - Exceptions, functions, and stack unwinding",
+      "difficulty": "medium"
+    }
+  ]
+}

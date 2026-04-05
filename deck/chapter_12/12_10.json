@@ -1,0 +1,135 @@
+{
+  "chapter": "Chapter 12",
+  "chapter_title": "Compound Types: References and Pointers",
+  "lesson": "12.10",
+  "lesson_title": "Pass by address",
+  "total_cards": 8,
+  "cards": [
+    {
+      "id": "ch12_10_001",
+      "lesson": "12.10",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "pointers",
+        "functions",
+        "syntax"
+      ],
+      "text": "Pass by address means passing a {{c1::pointer}} to a function: {{c2::void func(int* ptr)}}. The caller passes {{c3::&amp;variable}}.",
+      "source": "12.10 - Pass by address",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_10_002",
+      "lesson": "12.10",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "pointers",
+        "functions"
+      ],
+      "question": "What does this code output?",
+      "code": "void setValue(int* ptr) {<br>    *ptr = 10;<br>}<br><br>int x = 5;<br>setValue(&amp;x);<br>std::cout &lt;&lt; x;",
+      "answer": "10",
+      "explanation": "Pass by address allows the function to modify the original variable through the pointer.",
+      "source": "12.10 - Pass by address",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_10_003",
+      "lesson": "12.10",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "pointers",
+        "functions"
+      ],
+      "front": "What are the main advantages of pass by address?",
+      "back": "1) Avoids copying (efficient for large objects)<br>2) Allows the function to modify the original object<br>3) Can accept nullptr to indicate optional parameter",
+      "source": "12.10 - Pass by address",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_10_004",
+      "lesson": "12.10",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "pointers",
+        "functions",
+        "best-practices"
+      ],
+      "text": "When using pass by address, always check if the pointer is {{c1::nullptr}} before {{c2::dereferencing}} it to avoid undefined behavior.",
+      "source": "12.10 - Pass by address",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_10_005",
+      "lesson": "12.10",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "pointers",
+        "functions",
+        "best-practices"
+      ],
+      "question": "What's the best practice shown here?",
+      "code": "void print(int* ptr) {<br>    if (!ptr) return;<br>    std::cout &lt;&lt; *ptr;<br>}",
+      "answer": "Always check for nullptr before dereferencing. This prevents undefined behavior if nullptr is passed.",
+      "explanation": "Defensive programming: validate pointer parameters before use.",
+      "source": "12.10 - Pass by address",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_10_006",
+      "lesson": "12.10",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "pointers",
+        "references",
+        "best-practices"
+      ],
+      "front": "When should you prefer pass by reference over pass by address?",
+      "back": "Prefer pass by reference when the parameter must always be valid (cannot be null). Use pass by address when nullptr is a valid input (optional parameter).",
+      "source": "12.10 - Pass by address",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_10_007",
+      "lesson": "12.10",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "pointers",
+        "functions",
+        "best-practices"
+      ],
+      "concept": "Pass by address best practices",
+      "explanation": "Guidelines for pass by address:<ul><li>Always check for nullptr before dereferencing</li><li>Use for optional parameters (can pass nullptr)</li><li>Prefer pass by reference when parameter must be valid</li><li>Use const int* for read-only access</li><li>Call with &amp;variable syntax</li></ul>",
+      "examples": [
+        "void process(int* ptr) {",
+        "    if (!ptr) return;  // Check for null",
+        "    *ptr = 42;",
+        "}",
+        "int x = 0;",
+        "process(&x);   // Pass address"
+      ],
+      "source": "12.10 - Pass by address",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_10_008",
+      "lesson": "12.10",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "pointers",
+        "functions"
+      ],
+      "text": "When passing by address, call the function with {{c1::&amp;variable}}. Inside the function, dereference with {{c2::*ptr}} to access the value.",
+      "source": "12.10 - Pass by address",
+      "difficulty": "easy"
+    }
+  ]
+}

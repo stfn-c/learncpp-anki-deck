@@ -1,0 +1,182 @@
+{
+  "chapter": "Chapter 11",
+  "chapter_title": "Function Overloading and Function Templates",
+  "lesson": "11.7",
+  "lesson_title": "Function template instantiation",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch11_7_001",
+      "lesson": "11.7",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "templates",
+        "instantiation"
+      ],
+      "front": "Template instantiation",
+      "back": "The process of creating a function from a function template for a specific type",
+      "source": "11.7 - Function template instantiation",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_7_002",
+      "lesson": "11.7",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "templates",
+        "instantiation"
+      ],
+      "front": "Implicit instantiation",
+      "back": "When the compiler automatically instantiates a template based on function call arguments",
+      "source": "11.7 - Function template instantiation",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_7_003",
+      "lesson": "11.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "text": "The function created from a template is called a {{c1::function instance}} or {{c2::template function}}.",
+      "source": "11.7 - Function template instantiation",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_7_004",
+      "lesson": "11.7",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "templates",
+        "instantiation"
+      ],
+      "question": "How many function instances are created from this template?",
+      "code": "template &lt;typename T&gt;\nT max(T x, T y) { return (x &gt; y) ? x : y; }\n\nmax(1, 2);      // call 1\nmax(3, 4);      // call 2\nmax(1.5, 2.5);  // call 3",
+      "answer": "Two function instances: max&lt;int&gt; and max&lt;double&gt;",
+      "explanation": "Calls 1 and 2 both use int, so they share the same max&lt;int&gt; instance. Call 3 uses double, creating a separate max&lt;double&gt; instance.",
+      "source": "11.7 - Function template instantiation",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_7_005",
+      "lesson": "11.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "front": "When does the compiler instantiate a function template?",
+      "back": "When a function template is called (or when the address is taken), the compiler instantiates it for the specific type(s) being used.",
+      "source": "11.7 - Function template instantiation",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_7_006",
+      "lesson": "11.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "syntax"
+      ],
+      "text": "You can explicitly specify template arguments using angle brackets: {{c1::max&lt;int&gt;(1, 2)}}",
+      "source": "11.7 - Function template instantiation",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_7_007",
+      "lesson": "11.7",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "question": "What happens when you call this?",
+      "code": "template &lt;typename T&gt;\nT add(T x, T y) { return x + y; }\n\nadd&lt;double&gt;(1, 2);",
+      "answer": "It instantiates add&lt;double&gt; and converts both arguments to double, returning 3.0.",
+      "explanation": "Explicitly specifying &lt;double&gt; forces the compiler to instantiate the double version and convert the int arguments.",
+      "source": "11.7 - Function template instantiation",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_7_008",
+      "lesson": "11.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "front": "Do function templates themselves take up any code space in the compiled program?",
+      "back": "No. Templates themselves don't generate code. Only the instantiated function instances take up code space.",
+      "source": "11.7 - Function template instantiation",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_7_009",
+      "lesson": "11.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "text": "Template instantiation happens at {{c1::compile time}}, not runtime.",
+      "source": "11.7 - Function template instantiation",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_7_010",
+      "lesson": "11.7",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "templates",
+        "gotchas"
+      ],
+      "concept": "Why template instantiation can increase executable size",
+      "explanation": "Each unique type used with a template creates a separate function instance in the compiled code. Using a template with many different types can lead to code bloat.",
+      "examples": [
+        "template &lt;typename T&gt;",
+        "void print(T x) { std::cout &lt;&lt; x; }",
+        "",
+        "print(1);      // Instantiates print&lt;int&gt;",
+        "print(1.5);    // Instantiates print&lt;double&gt;",
+        "print('a');    // Instantiates print&lt;char&gt;",
+        "// Result: 3 separate functions in executable"
+      ],
+      "source": "11.7 - Function template instantiation",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_7_011",
+      "lesson": "11.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "front": "What is the difference between a function template and a template function?",
+      "back": "A function template is the template definition. A template function (or function instance) is the actual function created by instantiating the template for a specific type.",
+      "source": "11.7 - Function template instantiation",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_7_012",
+      "lesson": "11.7",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "question": "Will this code work?",
+      "code": "template &lt;typename T&gt;\nT getValue() { return T{}; }\n\nint x = getValue&lt;int&gt;();      // ?\ndouble y = getValue&lt;double&gt;(); // ?",
+      "answer": "Yes. x will be 0, y will be 0.0.",
+      "explanation": "Explicitly specifying the template type allows the compiler to instantiate getValue&lt;int&gt; and getValue&lt;double&gt;. T{} creates a zero-initialized value of type T.",
+      "source": "11.7 - Function template instantiation",
+      "difficulty": "medium"
+    }
+  ]
+}

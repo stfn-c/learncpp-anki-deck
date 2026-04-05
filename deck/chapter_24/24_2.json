@@ -1,0 +1,133 @@
+{
+  "chapter": "Chapter 24",
+  "chapter_title": "Inheritance",
+  "lesson": "24.2",
+  "lesson_title": "Basic inheritance in C++",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch24_2_001",
+      "lesson": "24.2",
+      "type": "cloze",
+      "tags": ["cpp", "inheritance", "syntax"],
+      "text": "To make BaseballPlayer publicly inherit from Person:<br>{{c1::class BaseballPlayer : public Person}}",
+      "source": "24.2 - Basic inheritance in C++",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch24_2_002",
+      "lesson": "24.2",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "members"],
+      "front": "What two types of things does a child class inherit from the parent class?",
+      "back": "<ul><li>Behaviors (member functions)</li><li>Properties (member variables)</li></ul>",
+      "source": "24.2 - Basic inheritance in C++",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch24_2_003",
+      "lesson": "24.2",
+      "type": "code",
+      "tags": ["cpp", "inheritance", "syntax"],
+      "question": "How many member variables does a BaseballPlayer object have if BaseballPlayer defines m_battingAverage and m_homeRuns, and inherits from Person which has m_name and m_age?",
+      "code": "class Person {\n    std::string m_name{};\n    int m_age{};\n};\n\nclass BaseballPlayer : public Person {\n    double m_battingAverage{};\n    int m_homeRuns{};\n};",
+      "answer": "4 member variables total",
+      "explanation": "BaseballPlayer has 2 of its own (m_battingAverage, m_homeRuns) plus 2 inherited from Person (m_name, m_age).",
+      "source": "24.2 - Basic inheritance in C++",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch24_2_004",
+      "lesson": "24.2",
+      "type": "cloze",
+      "tags": ["cpp", "inheritance", "best-practices"],
+      "text": "When deciding whether to use inheritance, ask: \"{{c1::Is a [derived class] a [base class]?}}\" If yes, inheritance is appropriate.",
+      "source": "24.2 - Basic inheritance in C++",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_2_005",
+      "lesson": "24.2",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "chains"],
+      "front": "What is an inheritance chain?",
+      "back": "When a class inherits from another class that itself inherits from another class (e.g., Supervisor inherits from Employee which inherits from Person).",
+      "source": "24.2 - Basic inheritance in C++",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch24_2_006",
+      "lesson": "24.2",
+      "type": "cloze",
+      "tags": ["cpp", "inheritance", "chains"],
+      "text": "In an inheritance chain, {{c1::all}} derived classes inherit functions and variables from {{c1::all}} classes above them in the chain.",
+      "source": "24.2 - Basic inheritance in C++",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_2_007",
+      "lesson": "24.2",
+      "type": "code",
+      "tags": ["cpp", "inheritance", "common-mistakes"],
+      "question": "Will this code compile? Why or why not?",
+      "code": "class BaseballPlayer : public Person {\npublic:\n    double m_battingAverage{};\n    int m_homeRuns{};\n};\n\nint main() {\n    Base base{5};\n    base.getValue(); // getValue() is in BaseballPlayer\n    return 0;\n}",
+      "answer": "No, it will not compile",
+      "explanation": "Base has no access to getValue() which is defined in the derived class BaseballPlayer. Only derived classes have access to base class members, not the other way around.",
+      "source": "24.2 - Basic inheritance in C++",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_2_008",
+      "lesson": "24.2",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "relationships"],
+      "front": "Why is inheritance NOT appropriate when deciding whether to add name/age to BaseballPlayer using composition (making Person a member)?",
+      "back": "Because \"a BaseballPlayer has a Person\" doesn't make sense. The correct relationship is \"a BaseballPlayer is a Person\", which calls for inheritance.",
+      "source": "24.2 - Basic inheritance in C++",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_2_009",
+      "lesson": "24.2",
+      "type": "concept",
+      "tags": ["cpp", "inheritance", "benefits"],
+      "concept": "Why inheritance saves work and maintenance",
+      "explanation": "Inheritance means we don't have to redefine information from the base class. If we update or fix a bug in the base class, all derived classes automatically inherit the changes.",
+      "examples": [
+        "Add new function to Person → Employee, Supervisor, BaseballPlayer all gain access",
+        "Add variable to Employee → Supervisor automatically gains access",
+        "Fix bug in Person → all derived classes get the fix automatically"
+      ],
+      "source": "24.2 - Basic inheritance in C++",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_2_010",
+      "lesson": "24.2",
+      "type": "cloze",
+      "tags": ["cpp", "inheritance", "access"],
+      "text": "When a derived class is created, it can access inherited {{c1::public}} and {{c1::protected}} members, but NOT {{c2::private}} members of the base class.",
+      "source": "24.2 - Basic inheritance in C++",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_2_011",
+      "lesson": "24.2",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "relationships"],
+      "front": "Do Employee and BaseballPlayer have a direct relationship if they both inherit from Person?",
+      "back": "No, they don't have any direct relationship, even though they both inherit from Person. They are sibling classes.",
+      "source": "24.2 - Basic inheritance in C++",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_2_012",
+      "lesson": "24.2",
+      "type": "cloze",
+      "tags": ["cpp", "inheritance", "hierarchy"],
+      "text": "By constructing inheritance chains, we create classes that are very {{c1::general}} at the top and become progressively more {{c2::specific}} at each level of inheritance.",
+      "source": "24.2 - Basic inheritance in C++",
+      "difficulty": "easy"
+    }
+  ]
+}

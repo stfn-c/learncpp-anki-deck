@@ -1,0 +1,195 @@
+{
+  "chapter": "Chapter 27",
+  "chapter_title": "Exception Handling and Error Handling",
+  "lesson": "27.7",
+  "lesson_title": "27.7 — Function try blocks",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch27_7_001",
+      "lesson": "27.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "syntax"
+      ],
+      "text": "A {{c1::function try block}} is a try block that encompasses the entire function body, including the {{c2::member initializer list}} for constructors.",
+      "source": "27.7 - Function try blocks",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_7_002",
+      "lesson": "27.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "syntax"
+      ],
+      "text": "In a function try block, the {{c1::try}} keyword is placed before the function body (or member initializer list), and {{c2::catch}} blocks follow the closing brace of the function.",
+      "source": "27.7 - Function try blocks",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_7_003",
+      "lesson": "27.7",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "constructors",
+        "syntax"
+      ],
+      "question": "What does the try keyword cover here?",
+      "code": "MyClass::MyClass(int x)\ntry : m_x{x}, m_y{calculate(x)}\n{\n    // constructor body\n}\ncatch (const std::exception&amp; e)\n{\n    // handle exception\n}",
+      "answer": "The try covers both the member initializer list (m_x, m_y) and the constructor body.",
+      "explanation": "Function try blocks allow catching exceptions from member initialization, which regular try blocks inside the constructor cannot do.",
+      "source": "27.7 - Function try blocks",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch27_7_004",
+      "lesson": "27.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "constructors"
+      ],
+      "front": "What is the primary use case for function try blocks?",
+      "back": "Catching exceptions thrown from member initializer lists in constructors, which cannot be caught by regular try blocks inside the constructor body.",
+      "source": "27.7 - Function try blocks",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_7_005",
+      "lesson": "27.7",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "syntax"
+      ],
+      "question": "Is this a valid function try block?",
+      "code": "void processData(int x)\ntry\n{\n    // function body\n    doWork(x);\n}\ncatch (const std::exception&amp; e)\n{\n    logError(e.what());\n}",
+      "answer": "Yes, this is valid. Function try blocks can be used with any function, not just constructors.",
+      "explanation": "While primarily useful for constructors, function try blocks can be used with any function to wrap the entire function body.",
+      "source": "27.7 - Function try blocks",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_7_006",
+      "lesson": "27.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "constructors",
+        "gotchas"
+      ],
+      "text": "When a constructor function try block catch handler finishes, the exception is {{c1::automatically rethrown}}. You cannot prevent the exception from propagating by {{c2::not rethrowing}}.",
+      "source": "27.7 - Function try blocks",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch27_7_007",
+      "lesson": "27.7",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "constructors",
+        "gotchas"
+      ],
+      "question": "Does this catch block prevent the exception from propagating?",
+      "code": "MyClass::MyClass(int x)\ntry : m_x{x}\n{\n    // body\n}\ncatch (const std::exception&amp; e)\n{\n    std::cerr &lt;&lt; e.what();\n    // no throw statement\n}",
+      "answer": "No, the exception is automatically rethrown after the catch block.",
+      "explanation": "Constructor function try block catch handlers always rethrow the exception implicitly, even without an explicit throw; statement.",
+      "source": "27.7 - Function try blocks",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch27_7_008",
+      "lesson": "27.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "fundamentals"
+      ],
+      "front": "Do function try blocks for non-constructor functions automatically rethrow exceptions?",
+      "back": "No, only constructor function try blocks automatically rethrow. Regular function try blocks behave like normal catch blocks.",
+      "source": "27.7 - Function try blocks",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch27_7_009",
+      "lesson": "27.7",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "constructors",
+        "best-practices"
+      ],
+      "concept": "Function try blocks and constructor exception handling",
+      "explanation": "Function try blocks solve a unique problem with constructors:<ul><li>Member initializer lists run before constructor body</li><li>Regular try blocks can't catch initializer exceptions</li><li>Function try blocks cover the entire constructor</li><li>Catch handlers always rethrow (object construction failed)</li><li>Mainly used for logging or cleanup before rethrow</li></ul>",
+      "examples": [
+        "MyClass::MyClass()",
+        "try : m_member{mightThrow()}  // can catch this",
+        "{",
+        "    // constructor body",
+        "}",
+        "catch (...) {",
+        "    cleanup();  // do cleanup",
+        "    // exception auto-rethrows",
+        "}"
+      ],
+      "source": "27.7 - Function try blocks",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch27_7_010",
+      "lesson": "27.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "constructors"
+      ],
+      "front": "Can a regular try-catch block inside a constructor body catch exceptions from the member initializer list?",
+      "back": "No, because the member initializer list executes before the constructor body, so try blocks inside the body cannot catch those exceptions.",
+      "source": "27.7 - Function try blocks",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_7_011",
+      "lesson": "27.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "destructors",
+        "gotchas"
+      ],
+      "text": "Using function try blocks with destructors is problematic because if a destructor throws during stack unwinding, {{c1::std::terminate()}} is called. Destructors should {{c2::not throw}} exceptions.",
+      "source": "27.7 - Function try blocks",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch27_7_012",
+      "lesson": "27.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "best-practices"
+      ],
+      "front": "Why are function try blocks rarely used in practice?",
+      "back": "They're rarely needed because:<ul><li>Most functions don't need to catch all exceptions</li><li>For constructors, they can only log/cleanup before automatic rethrow</li><li>Member initialization usually shouldn't throw</li><li>Regular try blocks are more flexible</li></ul>",
+      "source": "27.7 - Function try blocks",
+      "difficulty": "medium"
+    }
+  ]
+}

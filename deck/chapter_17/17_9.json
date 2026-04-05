@@ -1,0 +1,144 @@
+{
+  "chapter": "Chapter 17",
+  "chapter_title": "Arrays and Strings",
+  "lesson": "17.9",
+  "lesson_title": "Pointer arithmetic and subscripting",
+  "total_cards": 13,
+  "cards": [
+    {
+      "id": "ch17_9_001",
+      "lesson": "17.9",
+      "type": "basic",
+      "tags": ["cpp", "pointers", "pointer-arithmetic"],
+      "front": "What is pointer arithmetic?",
+      "back": "Pointer arithmetic is the ability to add or subtract integer values from pointers to navigate through memory, particularly useful for traversing arrays.",
+      "source": "17.9 - Pointer arithmetic and subscripting",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_9_002",
+      "lesson": "17.9",
+      "type": "cloze",
+      "tags": ["cpp", "pointers", "pointer-arithmetic"],
+      "text": "When you add 1 to a pointer, it advances by {{c1::sizeof(type)}} bytes, not 1 byte",
+      "source": "17.9 - Pointer arithmetic and subscripting",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_9_003",
+      "lesson": "17.9",
+      "type": "code",
+      "tags": ["cpp", "pointers", "pointer-arithmetic"],
+      "question": "If ptr points to arr[0] (an int array), what does ptr + 3 point to?",
+      "code": "int arr[5] { 10, 20, 30, 40, 50 };\nint* ptr = arr;\nint* newPtr = ptr + 3;",
+      "answer": "Points to arr[3] (the value 40)",
+      "explanation": "ptr + 3 advances by 3 * sizeof(int) bytes, pointing to the element at index 3.",
+      "source": "17.9 - Pointer arithmetic and subscripting",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_9_004",
+      "lesson": "17.9",
+      "type": "cloze",
+      "tags": ["cpp", "arrays", "pointer-arithmetic", "equivalence"],
+      "text": "The expression arr[n] is equivalent to {{c1::*(arr + n)}} using pointer arithmetic",
+      "source": "17.9 - Pointer arithmetic and subscripting",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_9_005",
+      "lesson": "17.9",
+      "type": "basic",
+      "tags": ["cpp", "pointers", "pointer-arithmetic", "operations"],
+      "front": "What arithmetic operations are valid on pointers?",
+      "back": "Addition and subtraction with integers (ptr + n, ptr - n), increment/decrement (++ptr, --ptr), and subtraction of two pointers (ptr1 - ptr2). Multiplication and division are not allowed.",
+      "source": "17.9 - Pointer arithmetic and subscripting",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_9_006",
+      "lesson": "17.9",
+      "type": "cloze",
+      "tags": ["cpp", "pointers", "pointer-subtraction"],
+      "text": "Subtracting two pointers (ptr1 - ptr2) gives the {{c1::number of elements}} between them, not the byte distance",
+      "source": "17.9 - Pointer arithmetic and subscripting",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_9_007",
+      "lesson": "17.9",
+      "type": "code",
+      "tags": ["cpp", "pointers", "dereferencing"],
+      "question": "What does this expression access?",
+      "code": "int arr[5] { 10, 20, 30, 40, 50 };\nint* ptr = arr;\nstd::cout &lt;&lt; *(ptr + 2);",
+      "answer": "30 (the element at index 2)",
+      "explanation": "ptr + 2 points to arr[2], and dereferencing with * gives the value 30.",
+      "source": "17.9 - Pointer arithmetic and subscripting",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_9_008",
+      "lesson": "17.9",
+      "type": "basic",
+      "tags": ["cpp", "pointers", "pointer-arithmetic", "safety"],
+      "front": "What happens if you use pointer arithmetic to go beyond array bounds?",
+      "back": "It causes undefined behavior. The pointer may point to invalid memory, and dereferencing it can crash the program or corrupt data.",
+      "source": "17.9 - Pointer arithmetic and subscripting",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_9_009",
+      "lesson": "17.9",
+      "type": "cloze",
+      "tags": ["cpp", "pointers", "subscript-operator"],
+      "text": "The subscript operator [] works on {{c1::any pointer}}, not just arrays: ptr[n] is valid for any pointer ptr",
+      "source": "17.9 - Pointer arithmetic and subscripting",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_9_010",
+      "lesson": "17.9",
+      "type": "concept",
+      "tags": ["cpp", "pointers", "pointer-arithmetic", "best-practices"],
+      "concept": "When to use pointer arithmetic",
+      "explanation": "Pointer arithmetic use cases:<ul><li>Low-level memory manipulation</li><li>Implementing custom data structures</li><li>Performance-critical code with arrays</li></ul>Avoid when:<ul><li>Standard containers work fine (std::vector, std::array)</li><li>Readability matters more than micro-optimization</li><li>Working with modern C++ code</li></ul>",
+      "examples": [
+        "for (int* p = arr; p &lt; arr + size; ++p)  // Pointer iteration",
+        "for (auto&amp; elem : arr)  // Prefer this in modern C++"
+      ],
+      "source": "17.9 - Pointer arithmetic and subscripting",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_9_011",
+      "lesson": "17.9",
+      "type": "cloze",
+      "tags": ["cpp", "pointers", "increment"],
+      "text": "When incrementing a pointer with ++ptr, it moves to the {{c1::next element}}, not the next byte",
+      "source": "17.9 - Pointer arithmetic and subscripting",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_9_012",
+      "lesson": "17.9",
+      "type": "code",
+      "tags": ["cpp", "pointers", "pointer-arithmetic", "equivalence"],
+      "question": "Are these two loops equivalent?",
+      "code": "// Loop 1\nfor (int i = 0; i &lt; 5; ++i)\n    std::cout &lt;&lt; arr[i];\n\n// Loop 2\nfor (int* p = arr; p &lt; arr + 5; ++p)\n    std::cout &lt;&lt; *p;",
+      "answer": "Yes, they both print the same values",
+      "explanation": "Loop 1 uses array indexing, Loop 2 uses pointer arithmetic. Both access the same elements in the same order.",
+      "source": "17.9 - Pointer arithmetic and subscripting",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_9_013",
+      "lesson": "17.9",
+      "type": "basic",
+      "tags": ["cpp", "pointers", "nullptr", "pointer-arithmetic"],
+      "front": "Is pointer arithmetic valid on nullptr?",
+      "back": "No, pointer arithmetic on nullptr is undefined behavior. The pointer must point to valid memory (or one past the end of an array).",
+      "source": "17.9 - Pointer arithmetic and subscripting",
+      "difficulty": "medium"
+    }
+  ]
+}

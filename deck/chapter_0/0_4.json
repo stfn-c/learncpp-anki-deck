@@ -1,0 +1,136 @@
+{
+  "chapter": "Chapter 0",
+  "chapter_title": "Introduction / Getting Started",
+  "lesson": "0.4",
+  "lesson_title": "Introduction to C++ development",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch0_4_001",
+      "lesson": "0.4",
+      "type": "basic",
+      "tags": ["cpp", "development", "process"],
+      "front": "What are the main steps in developing a C++ program?",
+      "back": "<ol><li>Define the problem to solve</li><li>Design the solution</li><li>Write the code</li><li>Compile the code</li><li>Link object files</li><li>Test and debug</li></ol>",
+      "source": "0.4 - Introduction to C++ development",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_4_002",
+      "lesson": "0.4",
+      "type": "cloze",
+      "tags": ["cpp", "development", "process"],
+      "text": "Before writing code, you should {{c1::define the problem}} you're trying to solve and {{c2::design a solution}} approach.",
+      "source": "0.4 - Introduction to C++ development",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_4_003",
+      "lesson": "0.4",
+      "type": "basic",
+      "tags": ["cpp", "development", "design"],
+      "front": "Why is it important to design your solution before coding?",
+      "back": "Good design helps you understand the problem, plan the structure, and avoid wasting time fixing poorly thought-out code. It's much easier to fix design issues before coding than after.",
+      "source": "0.4 - Introduction to C++ development",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_4_004",
+      "lesson": "0.4",
+      "type": "cloze",
+      "tags": ["cpp", "development", "workflow"],
+      "text": "Most development time is spent {{c1::testing and debugging}} rather than {{c2::writing new code}}.",
+      "source": "0.4 - Introduction to C++ development",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_4_005",
+      "lesson": "0.4",
+      "type": "basic",
+      "tags": ["cpp", "ide", "tools"],
+      "front": "What is an IDE (Integrated Development Environment)?",
+      "back": "A software application that combines a code editor, compiler, linker, and debugger into one integrated package for easier development.",
+      "source": "0.4 - Introduction to C++ development",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_4_006",
+      "lesson": "0.4",
+      "type": "concept",
+      "tags": ["cpp", "ide", "tools"],
+      "concept": "Advantages of using an IDE vs separate tools",
+      "explanation": "IDEs integrate all development tools in one place:<ul><li>Automatic project management</li><li>Built-in compiler and build system</li><li>Integrated debugger with breakpoints</li><li>Code completion and syntax highlighting</li><li>Error detection as you type</li></ul>You don't need to manually run compiler commands or configure build systems.",
+      "examples": [
+        "Visual Studio (Windows)",
+        "Xcode (macOS)",
+        "Code::Blocks (cross-platform)",
+        "CLion (cross-platform, commercial)"
+      ],
+      "source": "0.4 - Introduction to C++ development",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_4_007",
+      "lesson": "0.4",
+      "type": "cloze",
+      "tags": ["cpp", "ide", "popular"],
+      "text": "Popular C++ IDEs include {{c1::Visual Studio}} for Windows, {{c2::Xcode}} for macOS, and {{c3::Code::Blocks}} for cross-platform development.",
+      "source": "0.4 - Introduction to C++ development",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_4_008",
+      "lesson": "0.4",
+      "type": "basic",
+      "tags": ["cpp", "development", "editors"],
+      "front": "What is the difference between an IDE and a code editor like VS Code?",
+      "back": "An IDE has compiler, debugger, and build tools built-in. A code editor is lighter-weight and requires installing and configuring external tools (compiler, debugger) separately.",
+      "source": "0.4 - Introduction to C++ development",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_4_009",
+      "lesson": "0.4",
+      "type": "basic",
+      "tags": ["cpp", "development", "best-practices"],
+      "front": "Why should beginners use a full IDE rather than just a text editor?",
+      "back": "IDEs provide better error messages, integrated debugging, automatic project setup, and handle build configuration. This lets beginners focus on learning C++ rather than toolchain setup.",
+      "source": "0.4 - Introduction to C++ development",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_4_010",
+      "lesson": "0.4",
+      "type": "cloze",
+      "tags": ["cpp", "development", "workflow"],
+      "text": "The typical development cycle is: {{c1::write code}} → {{c2::compile}} → {{c3::test}} → {{c4::debug}} → repeat.",
+      "source": "0.4 - Introduction to C++ development",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_4_011",
+      "lesson": "0.4",
+      "type": "basic",
+      "tags": ["cpp", "development", "testing"],
+      "front": "What is the difference between testing and debugging?",
+      "back": "Testing is running the program to check if it works correctly. Debugging is finding and fixing the bugs discovered during testing.",
+      "source": "0.4 - Introduction to C++ development",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_4_012",
+      "lesson": "0.4",
+      "type": "concept",
+      "tags": ["cpp", "development", "best-practices"],
+      "concept": "The importance of incremental development",
+      "explanation": "Don't try to write an entire program at once. Instead:<ul><li>Write small pieces of functionality</li><li>Compile and test frequently</li><li>Fix errors immediately before adding more code</li><li>This makes bugs easier to find and fix</li></ul>",
+      "examples": [
+        "Write and test one function at a time",
+        "Compile after adding each new feature",
+        "Don't wait until the end to test everything"
+      ],
+      "source": "0.4 - Introduction to C++ development",
+      "difficulty": "medium"
+    }
+  ]
+}

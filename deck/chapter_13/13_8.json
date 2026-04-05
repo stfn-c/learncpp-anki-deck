@@ -1,0 +1,238 @@
+{
+  "chapter": "Chapter 13",
+  "chapter_title": "Compound Types: Enums and Structs",
+  "lesson": "13.8",
+  "lesson_title": "13.8 — Struct aggregate initialization",
+  "total_cards": 16,
+  "cards": [
+    {
+      "id": "ch13_8_001",
+      "lesson": "13.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "struct",
+        "initialization"
+      ],
+      "text": "Aggregate initialization syntax: Employee joe {{c1::{ 14, 32, 60000.0 };}}}",
+      "source": "13.8 — Struct aggregate initialization",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_8_002",
+      "lesson": "13.8",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "struct",
+        "initialization"
+      ],
+      "question": "What are joe's member values?",
+      "code": "struct Employee { int id; int age; double wage; };\nEmployee joe { 14, 32, 24.15 };",
+      "answer": "id=14, age=32, wage=24.15",
+      "explanation": "Aggregate init assigns values in declaration order.",
+      "source": "13.8 — Struct aggregate initialization",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_8_003",
+      "lesson": "13.8",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "struct",
+        "initialization"
+      ],
+      "front": "What happens if you provide fewer initializers than members?",
+      "back": "Remaining members are value-initialized (typically zero for fundamental types).",
+      "source": "13.8 — Struct aggregate initialization",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_8_004",
+      "lesson": "13.8",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "struct",
+        "initialization"
+      ],
+      "question": "What are joe's values?",
+      "code": "struct Employee { int id; int age; double wage; };\nEmployee joe { 14 };",
+      "answer": "id=14, age=0, wage=0.0",
+      "explanation": "Only id is initialized. age and wage are value-initialized to 0.",
+      "source": "13.8 — Struct aggregate initialization",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_8_005",
+      "lesson": "13.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "struct",
+        "initialization"
+      ],
+      "text": "To value-initialize all members to zero: Employee joe {{c1::{ };}}} or Employee joe {{c2::{};}}}",
+      "source": "13.8 — Struct aggregate initialization",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_8_006",
+      "lesson": "13.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "struct",
+        "initialization",
+        "cpp20"
+      ],
+      "text": "C++20 designated initializers: Employee joe { {{c1::.id}} = 14, {{c2::.wage}} = 60000.0 };",
+      "source": "13.8 — Struct aggregate initialization",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_8_007",
+      "lesson": "13.8",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "struct",
+        "initialization",
+        "cpp20"
+      ],
+      "question": "What are joe's values? (C++20)",
+      "code": "struct Employee { int id; int age; double wage; };\nEmployee joe { .id = 14, .wage = 60000.0 };",
+      "answer": "id=14, age=0, wage=60000.0",
+      "explanation": "Designated init allows skipping members. age is value-initialized to 0.",
+      "source": "13.8 — Struct aggregate initialization",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_8_008",
+      "lesson": "13.8",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "struct",
+        "initialization"
+      ],
+      "front": "Can you use aggregate initialization to assign to an existing struct?",
+      "back": "No. Aggregate initialization only works during object creation.<br>For existing objects, assign members individually or use assignment operator.",
+      "source": "13.8 — Struct aggregate initialization",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_8_009",
+      "lesson": "13.8",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "struct",
+        "initialization"
+      ],
+      "front": "What are the requirements for a type to be an aggregate?",
+      "back": "<ul><li>No private/protected members</li><li>No user-declared constructors</li><li>No base classes</li><li>No virtual functions</li></ul>Simple structs are aggregates.",
+      "source": "13.8 — Struct aggregate initialization",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch13_8_010",
+      "lesson": "13.8",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "struct",
+        "initialization",
+        "best-practices"
+      ],
+      "concept": "Best practices for struct initialization",
+      "explanation": "Always initialize structs:<ul><li>Use aggregate init: <code>{ val1, val2 }</code></li><li>Prefer designated init (C++20) for clarity</li><li>Use empty braces <code>{}</code> to zero-initialize</li><li>Never leave structs uninitialized</li></ul>",
+      "examples": [
+        "Employee joe { 14, 32, 60000.0 };",
+        "Employee jane { .id = 15 };  // C++20",
+        "Employee temp {};  // All zeros"
+      ],
+      "source": "13.8 — Struct aggregate initialization",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_8_011",
+      "lesson": "13.8",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "struct",
+        "const"
+      ],
+      "question": "What's wrong?",
+      "code": "struct Employee { int id; int age; };\nconst Employee joe { 14, 32 };\njoe.age = 33;",
+      "answer": "Error: joe is const, so its members cannot be modified.",
+      "explanation": "Const struct = all members are const.",
+      "source": "13.8 — Struct aggregate initialization",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_8_012",
+      "lesson": "13.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "struct"
+      ],
+      "text": "Aggregate initialization assigns values in {{c1::declaration order}} of struct members.",
+      "source": "13.8 — Struct aggregate initialization",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_8_013",
+      "lesson": "13.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "struct",
+        "cpp20"
+      ],
+      "text": "C++20 designated initializers use {{c1::.memberName}} syntax: Point { {{c2::.x}} = 5, {{c3::.y}} = 10 }",
+      "source": "13.8 — Struct aggregate initialization",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_8_014",
+      "lesson": "13.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "struct"
+      ],
+      "text": "When fewer initializers than members are provided, remaining members are {{c1::value-initialized}} (zero for fundamental types).",
+      "source": "13.8 — Struct aggregate initialization",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_8_015",
+      "lesson": "13.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "struct"
+      ],
+      "text": "Aggregate initialization assigns values in {{c1::declaration order}} of struct members.",
+      "source": "13.8 — Struct aggregate initialization",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_8_016",
+      "lesson": "13.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "struct",
+        "cpp20"
+      ],
+      "text": "C++20 designated initializers use {{c1::.memberName}} syntax: Point { {{c2::.x}} = 5, {{c3::.y}} = 10 }",
+      "source": "13.8 — Struct aggregate initialization",
+      "difficulty": "easy"
+    }
+  ]
+}

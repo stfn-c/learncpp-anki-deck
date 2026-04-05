@@ -1,0 +1,259 @@
+{
+  "chapter": "Chapter 7",
+  "chapter_title": "Scope, Duration, and Linkage",
+  "lesson": "7.13",
+  "lesson_title": "Using declarations and using directives",
+  "total_cards": 17,
+  "cards": [
+    {
+      "id": "ch7_13_001",
+      "lesson": "7.13",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "using",
+        "syntax"
+      ],
+      "text": "A {{c1::using declaration}} allows you to use an identifier from a namespace without the namespace prefix: {{c2::using std::cout;}}",
+      "source": "7.13 - Using declarations and using directives",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_13_002",
+      "lesson": "7.13",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "using",
+        "syntax"
+      ],
+      "text": "A {{c1::using directive}} imports all identifiers from a namespace: {{c2::using namespace std;}}",
+      "source": "7.13 - Using declarations and using directives",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_13_003",
+      "lesson": "7.13",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "using",
+        "declarations"
+      ],
+      "question": "What does this code enable?",
+      "code": "using std::cout;\nusing std::cin;\n\nint main()\n{\n    cout &lt;&lt; \"Enter a number: \";\n    int x;\n    cin &gt;&gt; x;\n}",
+      "answer": "You can use cout and cin without the std:: prefix, but other std identifiers still require std::",
+      "explanation": "Using declarations import specific identifiers from a namespace, allowing you to use them without qualification.",
+      "source": "7.13 - Using declarations and using directives",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_13_004",
+      "lesson": "7.13",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "using",
+        "best-practices"
+      ],
+      "front": "Should you use 'using namespace std;' in header files?",
+      "back": "No, never. This pollutes the global namespace for any file that includes the header and can cause naming conflicts.",
+      "source": "7.13 - Using declarations and using directives",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_13_005",
+      "lesson": "7.13",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "using",
+        "best-practices"
+      ],
+      "front": "Is 'using namespace std;' acceptable in .cpp files?",
+      "back": "It's controversial. Many developers avoid it even in .cpp files because it can cause naming conflicts and makes code less clear about which namespace identifiers come from.",
+      "source": "7.13 - Using declarations and using directives",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_13_006",
+      "lesson": "7.13",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "using",
+        "scope"
+      ],
+      "front": "What is the scope of a using declaration?",
+      "back": "The block in which it appears. Using declarations follow normal scoping rules - they can be local to a function or global.",
+      "source": "7.13 - Using declarations and using directives",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_13_007",
+      "lesson": "7.13",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "using",
+        "scope"
+      ],
+      "question": "Is this code valid?",
+      "code": "int main()\n{\n    using std::cout;\n    cout &lt;&lt; \"Hello\";\n} // using declaration expires here\n\nvoid foo()\n{\n    cout &lt;&lt; \"World\"; // Is this OK?\n}",
+      "answer": "No. The using declaration is scoped to main(). In foo(), you need std::cout or another using declaration.",
+      "explanation": "Using declarations have block scope. They only apply within the block where they're declared.",
+      "source": "7.13 - Using declarations and using directives",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_13_008",
+      "lesson": "7.13",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "using",
+        "best-practices"
+      ],
+      "front": "What's the advantage of using declarations over using directives?",
+      "back": "Using declarations import only specific identifiers, reducing the chance of naming conflicts. You know exactly which names are being imported.",
+      "source": "7.13 - Using declarations and using directives",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_13_009",
+      "lesson": "7.13",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "using",
+        "best-practices"
+      ],
+      "front": "Where is it acceptable to use 'using namespace' directives?",
+      "back": "Inside a function block (limiting scope) or in a .cpp file (not header). Better yet, use using declarations for specific identifiers instead.",
+      "source": "7.13 - Using declarations and using directives",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_13_010",
+      "lesson": "7.13",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "using",
+        "common-mistakes"
+      ],
+      "question": "What's the problem with this header file?",
+      "code": "// math.h\n#ifndef MATH_H\n#define MATH_H\n\nusing namespace std;\n\nint square(int x);\n\n#endif",
+      "answer": "Never use 'using namespace' in a header file. Every file that includes this header will have 'using namespace std' injected into it, causing potential naming conflicts.",
+      "explanation": "Using directives in headers pollute the namespace for all files that include them, which is a common source of hard-to-track bugs.",
+      "source": "7.13 - Using declarations and using directives",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_13_011",
+      "lesson": "7.13",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "using",
+        "best-practices"
+      ],
+      "text": "Prefer {{c1::explicit namespace prefixes}} (e.g., std::cout) for clarity, especially for code that will be read by others or maintained long-term.",
+      "source": "7.13 - Using declarations and using directives",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_13_012",
+      "lesson": "7.13",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "using",
+        "naming-conflicts"
+      ],
+      "front": "What happens if a using declaration creates a naming conflict?",
+      "back": "The compiler will produce an error if the using declaration introduces a name that conflicts with an existing identifier in the same scope.",
+      "source": "7.13 - Using declarations and using directives",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_13_013",
+      "lesson": "7.13",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "using",
+        "best-practices"
+      ],
+      "concept": "Best practices for using declarations and directives",
+      "explanation": "Follow these guidelines:<ul><li>Never use 'using namespace' in header files</li><li>Avoid 'using namespace std;' - it imports too much</li><li>Prefer explicit namespace prefixes (std::) for clarity</li><li>If you must use 'using', prefer using declarations for specific identifiers</li><li>Limit scope of using declarations to functions when possible</li></ul>",
+      "examples": [
+        "// Best: explicit prefix",
+        "std::cout &lt;&lt; \"Hello\";",
+        "",
+        "// OK: limited scope using declaration",
+        "int main() {",
+        "    using std::cout;",
+        "    cout &lt;&lt; \"Hello\";",
+        "}",
+        "",
+        "// Avoid: broad using directive",
+        "using namespace std; // imports everything"
+      ],
+      "source": "7.13 - Using declarations and using directives",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_13_014",
+      "lesson": "7.13",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "using",
+        "best-practices"
+      ],
+      "text": "{{c1::Never}} use 'using namespace' in {{c2::header files}} as it pollutes the namespace for all files that include the header.",
+      "source": "7.13 - Using declarations and using directives",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_13_015",
+      "lesson": "7.13",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "using",
+        "syntax"
+      ],
+      "text": "A using declaration imports a {{c1::specific identifier}}: using std::cout; while a using directive imports {{c2::all identifiers}}: using namespace std;",
+      "source": "7.13 - Using declarations and using directives",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_13_016",
+      "lesson": "7.13",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "using",
+        "scope"
+      ],
+      "text": "Using declarations have {{c1::block scope}} - they only apply within the {{c2::block}} where they're declared.",
+      "source": "7.13 - Using declarations and using directives",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_13_017",
+      "lesson": "7.13",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "using",
+        "best-practices"
+      ],
+      "text": "Prefer {{c1::explicit namespace prefixes}} (std::cout) over using declarations for better code {{c2::clarity}}.",
+      "source": "7.13 - Using declarations and using directives",
+      "difficulty": "easy"
+    }
+  ]
+}

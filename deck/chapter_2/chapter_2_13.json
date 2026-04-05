@@ -1,0 +1,122 @@
+{
+  "chapter": "Chapter 2",
+  "chapter_title": "C++ Basics: Functions and Files",
+  "lesson": "2.13",
+  "lesson_title": "How to design your first programs",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "ch2_13_001",
+      "lesson": "2.13",
+      "type": "concept",
+      "tags": ["cpp", "design", "best-practices"],
+      "concept": "Steps to design a program",
+      "explanation": "Follow this process:<ul><li><strong>1. Define the problem:</strong> What should the program do?</li><li><strong>2. Design the solution:</strong> How will it work?</li><li><strong>3. Break into subtasks:</strong> Identify functions needed</li><li><strong>4. Implement:</strong> Write code incrementally</li><li><strong>5. Test:</strong> Verify each part works</li><li><strong>6. Iterate:</strong> Refine and improve</li></ul>",
+      "examples": [
+        "// Problem: Calculate average",
+        "// Solution: Get inputs, sum them, divide",
+        "// Subtasks:",
+        "int getInput();",
+        "int calculateSum(int a, int b);",
+        "double calculateAverage(int sum, int count);"
+      ],
+      "source": "2.13 - How to design programs",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_13_002",
+      "lesson": "2.13",
+      "type": "basic",
+      "tags": ["cpp", "design", "best-practices"],
+      "front": "What is top-down design?",
+      "back": "Top-down design starts with the big picture (main problem) and breaks it down into smaller, more manageable sub-problems/functions.",
+      "source": "2.13 - How to design programs",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_13_003",
+      "lesson": "2.13",
+      "type": "basic",
+      "tags": ["cpp", "design", "best-practices"],
+      "front": "What is incremental development?",
+      "back": "Incremental development means building your program one small piece at a time, testing each piece before moving on to the next.",
+      "source": "2.13 - How to design programs",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_13_004",
+      "lesson": "2.13",
+      "type": "cloze",
+      "tags": ["cpp", "design", "best-practices"],
+      "text": "Write programs {{c1::incrementally}}, adding and testing {{c2::one feature}} at a time, rather than writing everything at once.",
+      "source": "2.13 - How to design programs",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_13_005",
+      "lesson": "2.13",
+      "type": "basic",
+      "tags": ["cpp", "design", "functions"],
+      "front": "How do you know when to create a new function?",
+      "back": "Create a function when:<ul><li>Code is used multiple times</li><li>A task is logically distinct</li><li>Code is complex and needs organization</li><li>You want to test something independently</li></ul>",
+      "source": "2.13 - How to design programs",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_13_006",
+      "lesson": "2.13",
+      "type": "basic",
+      "tags": ["cpp", "design", "testing"],
+      "front": "Why should you test code frequently during development?",
+      "back": "Frequent testing:<ul><li>Catches bugs early when they're easier to fix</li><li>Ensures each piece works before adding complexity</li><li>Makes debugging easier (smaller scope)</li><li>Builds confidence in the code</li></ul>",
+      "source": "2.13 - How to design programs",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_13_007",
+      "lesson": "2.13",
+      "type": "concept",
+      "tags": ["cpp", "design", "data-flow"],
+      "concept": "Understanding data flow in program design",
+      "explanation": "When designing functions, consider:<ul><li><strong>Input:</strong> What data does the function need? (parameters)</li><li><strong>Processing:</strong> What does it do with the data?</li><li><strong>Output:</strong> What does it produce? (return value)</li></ul>Each function should have a clear purpose in the data flow.",
+      "examples": [
+        "// Clear data flow",
+        "int getUserInput();        // Output: user's number",
+        "int square(int x);         // Input: x, Output: x²",
+        "void printResult(int r);   // Input: result"
+      ],
+      "source": "2.13 - How to design programs",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_13_008",
+      "lesson": "2.13",
+      "type": "basic",
+      "tags": ["cpp", "design", "best-practices"],
+      "front": "What should you do before writing code?",
+      "back": "Before coding:<ul><li>Understand the problem fully</li><li>Plan your approach</li><li>Sketch out the main functions</li><li>Consider edge cases</li><li>Think about data flow</li></ul>Planning saves time later.",
+      "source": "2.13 - How to design programs",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_13_009",
+      "lesson": "2.13",
+      "type": "basic",
+      "tags": ["cpp", "design", "main"],
+      "front": "What should the main() function typically do?",
+      "back": "main() should coordinate the program's flow by calling other functions to do the actual work. Keep main() simple and high-level.",
+      "source": "2.13 - How to design programs",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_13_010",
+      "lesson": "2.13",
+      "type": "basic",
+      "tags": ["cpp", "design", "best-practices"],
+      "front": "What is pseudocode and when is it useful?",
+      "back": "Pseudocode is a plain-language description of what code should do. It's useful for planning logic before writing actual C++ code, helping organize thoughts without worrying about syntax.",
+      "source": "2.13 - How to design programs",
+      "difficulty": "easy"
+    }
+  ]
+}

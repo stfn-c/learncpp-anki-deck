@@ -1,0 +1,144 @@
+{
+  "chapter": "Chapter 24",
+  "chapter_title": "Inheritance",
+  "lesson": "24.4",
+  "lesson_title": "Constructors and initialization of derived classes",
+  "total_cards": 13,
+  "cards": [
+    {
+      "id": "ch24_4_001",
+      "lesson": "24.4",
+      "type": "cloze",
+      "tags": ["cpp", "inheritance", "constructors"],
+      "text": "To call a specific base class constructor from a derived class constructor, use:<br>{{c1::Derived(params) : Base{params} { }}}",
+      "source": "24.4 - Constructors and initialization of derived classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch24_4_002",
+      "lesson": "24.4",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "constructors"],
+      "front": "Can a derived class initialize inherited member variables in its member initializer list?",
+      "back": "No, C++ prevents this. A member variable can only be initialized in a member initializer list of a constructor belonging to the same class as the variable.",
+      "source": "24.4 - Constructors and initialization of derived classes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_4_003",
+      "lesson": "24.4",
+      "type": "code",
+      "tags": ["cpp", "inheritance", "common-mistakes"],
+      "question": "What's wrong with this code?",
+      "code": "class Base {\nprivate:\n    int m_id{};\npublic:\n    Base(int id=0) : m_id{id} {}\n};\n\nclass Derived: public Base {\npublic:\n    double m_cost{};\n    Derived(double cost, int id)\n        : m_cost{cost}, m_id{id} { } // ERROR\n};",
+      "answer": "Cannot initialize m_id in Derived's initializer list",
+      "explanation": "m_id is inherited from Base and can only be initialized in Base's constructor. Derived must call Base's constructor instead: Derived(double cost, int id) : Base{id}, m_cost{cost} { }",
+      "source": "24.4 - Constructors and initialization of derived classes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_4_004",
+      "lesson": "24.4",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "constructors"],
+      "front": "Why does C++ restrict initialization of inherited variables to the base class constructor?",
+      "back": "To ensure const and reference variables are initialized only once. If derived classes could re-initialize them, their values could be changed after being set, violating const correctness.",
+      "source": "24.4 - Constructors and initialization of derived classes",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch24_4_005",
+      "lesson": "24.4",
+      "type": "cloze",
+      "tags": ["cpp", "inheritance", "constructors"],
+      "text": "When calling a base constructor from a derived constructor's member initializer list, it {{c1::always}} executes {{c2::first}}, regardless of where it appears in the initializer list.",
+      "source": "24.4 - Constructors and initialization of derived classes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_4_006",
+      "lesson": "24.4",
+      "type": "code",
+      "tags": ["cpp", "inheritance", "constructors"],
+      "question": "What does this code output?",
+      "code": "class A {\npublic:\n    A(int a) { std::cout &lt;&lt; \"A: \" &lt;&lt; a &lt;&lt; '\\n'; }\n};\nclass B: public A {\npublic:\n    B(int a, double b) : A{a} {\n        std::cout &lt;&lt; \"B: \" &lt;&lt; b &lt;&lt; '\\n';\n    }\n};\nclass C: public B {\npublic:\n    C(int a, double b, char c) : B{a, b} {\n        std::cout &lt;&lt; \"C: \" &lt;&lt; c &lt;&lt; '\\n';\n    }\n};\n\nint main() {\n    C c{5, 4.3, 'R'};\n    return 0;\n}",
+      "answer": "A: 5<br>B: 4.3<br>C: R",
+      "explanation": "C calls B, B calls A. A constructs first (prints 5), then B (prints 4.3), then C (prints 'R').",
+      "source": "24.4 - Constructors and initialization of derived classes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_4_007",
+      "lesson": "24.4",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "constructors"],
+      "front": "Can a constructor call its grandparent class constructor directly?",
+      "back": "No, constructors can only call constructors from their immediate parent/base class. The C constructor can only call B, not A directly.",
+      "source": "24.4 - Constructors and initialization of derived classes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_4_008",
+      "lesson": "24.4",
+      "type": "cloze",
+      "tags": ["cpp", "inheritance", "destructors"],
+      "text": "Destructors are called in {{c1::reverse}} order of construction: from {{c2::most-derived}} to {{c2::most-base}}.",
+      "source": "24.4 - Constructors and initialization of derived classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch24_4_009",
+      "lesson": "24.4",
+      "type": "concept",
+      "tags": ["cpp", "inheritance", "constructors"],
+      "concept": "Steps when instantiating a derived class",
+      "explanation": "1. Memory for derived is allocated<br>2. Derived constructor is called<br>3. Compiler calls appropriate Base constructor<br>4. Base constructor initializer list runs<br>5. Base constructor body executes<br>6. Derived constructor initializer list runs<br>7. Derived constructor body executes",
+      "examples": [
+        "Derived d{1.3, 5}; → Base(5) runs first, then Derived(1.3)"
+      ],
+      "source": "24.4 - Constructors and initialization of derived classes",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch24_4_010",
+      "lesson": "24.4",
+      "type": "cloze",
+      "tags": ["cpp", "inheritance", "access"],
+      "text": "Derived classes can NOT access {{c1::private}} members of the base class directly. They must use {{c2::access functions}}.",
+      "source": "24.4 - Constructors and initialization of derived classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch24_4_011",
+      "lesson": "24.4",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "best-practices"],
+      "front": "Should you make base class member variables public for simplicity in derived classes?",
+      "back": "No, keep them private and use access functions. This maintains encapsulation and allows the base class to control how its data is accessed.",
+      "source": "24.4 - Constructors and initialization of derived classes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_4_012",
+      "lesson": "24.4",
+      "type": "code",
+      "tags": ["cpp", "inheritance", "constructors"],
+      "question": "How would you fix this code to initialize both name and battingAverage?",
+      "code": "class Person {\n    std::string m_name;\n    int m_age{};\npublic:\n    Person(std::string_view name, int age)\n        : m_name{name}, m_age{age} {}\n};\n\nclass BaseballPlayer : public Person {\n    double m_battingAverage{};\npublic:\n    BaseballPlayer(double avg) // Missing params!\n        : m_battingAverage{avg} {}\n};",
+      "answer": "Add name and age parameters, then call Person constructor",
+      "explanation": "BaseballPlayer(std::string_view name, int age, double avg) : Person{name, age}, m_battingAverage{avg} { }",
+      "source": "24.4 - Constructors and initialization of derived classes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_4_013",
+      "lesson": "24.4",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "destructors"],
+      "front": "If your base class has virtual functions, what should you do with the destructor?",
+      "back": "Make the destructor virtual as well, otherwise undefined behavior will result in certain cases.",
+      "source": "24.4 - Constructors and initialization of derived classes",
+      "difficulty": "hard"
+    }
+  ]
+}

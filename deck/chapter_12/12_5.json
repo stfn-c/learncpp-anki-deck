@@ -1,0 +1,147 @@
+{
+  "chapter": "Chapter 12",
+  "chapter_title": "Compound Types: References and Pointers",
+  "lesson": "12.5",
+  "lesson_title": "Pass by lvalue reference",
+  "total_cards": 9,
+  "cards": [
+    {
+      "id": "ch12_5_001",
+      "lesson": "12.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "references",
+        "functions",
+        "syntax"
+      ],
+      "text": "To pass by reference, declare the function parameter as a reference: {{c1::void func(int&amp; x)}}. The argument is {{c2::not}} copied.",
+      "source": "12.5 - Pass by lvalue reference",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_5_002",
+      "lesson": "12.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "references",
+        "functions"
+      ],
+      "front": "What is the main advantage of passing by reference over passing by value?",
+      "back": "Pass by reference avoids making a copy of the argument, which is more efficient for large objects. It also allows the function to modify the original object.",
+      "source": "12.5 - Pass by lvalue reference",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_5_003",
+      "lesson": "12.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "references",
+        "functions"
+      ],
+      "question": "What does this code output?",
+      "code": "void addOne(int&amp; x) { x++; }<br><br>int val = 5;<br>addOne(val);<br>std::cout &lt;&lt; val;",
+      "answer": "6",
+      "explanation": "Pass by reference allows the function to modify the original variable. addOne increments val directly.",
+      "source": "12.5 - Pass by lvalue reference",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_5_004",
+      "lesson": "12.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "references",
+        "functions"
+      ],
+      "question": "What does this code output?",
+      "code": "void addOne(int x) { x++; }<br><br>int val = 5;<br>addOne(val);<br>std::cout &lt;&lt; val;",
+      "answer": "5",
+      "explanation": "Pass by value creates a copy. The function modifies the copy, not the original, so val remains unchanged.",
+      "source": "12.5 - Pass by lvalue reference",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_5_005",
+      "lesson": "12.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "references",
+        "functions"
+      ],
+      "text": "Non-const reference parameters can only accept {{c1::lvalue}} arguments, not {{c2::rvalue}} arguments like literals or temporaries.",
+      "source": "12.5 - Pass by lvalue reference",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_5_006",
+      "lesson": "12.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "references",
+        "functions",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this code?",
+      "code": "void print(int&amp; x) {<br>    std::cout &lt;&lt; x;<br>}<br><br>print(5);  // error",
+      "answer": "Cannot bind non-const lvalue reference to rvalue. The function expects an lvalue but 5 is a literal (rvalue).",
+      "explanation": "To accept rvalues, the parameter should be const int& or accept by value.",
+      "source": "12.5 - Pass by lvalue reference",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_5_007",
+      "lesson": "12.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "references",
+        "functions",
+        "best-practices"
+      ],
+      "front": "How can a function return multiple values using references?",
+      "back": "Use reference parameters as out-parameters. The function can modify multiple reference parameters to 'return' multiple values to the caller.",
+      "source": "12.5 - Pass by lvalue reference",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_5_008",
+      "lesson": "12.5",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "references",
+        "functions",
+        "best-practices"
+      ],
+      "concept": "When to use pass by reference",
+      "explanation": "Use pass by (non-const) reference when:<ul><li>You want to modify the argument</li><li>You need to return multiple values via out-parameters</li><li>You want to avoid copying large objects (use const& if not modifying)</li></ul>Don't use for fundamental types unless modifying.",
+      "examples": [
+        "void swap(int& a, int& b);           // Modify arguments",
+        "void getSinCos(double angle, double& s, double& c);  // Multiple outputs",
+        "void process(std::vector&lt;int&gt;& v);   // Avoid copy, will modify"
+      ],
+      "source": "12.5 - Pass by lvalue reference",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_5_009",
+      "lesson": "12.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "references",
+        "functions"
+      ],
+      "text": "When passing by reference, the function parameter acts as an {{c1::alias}} for the argument, so modifications affect the {{c2::original variable}}.",
+      "source": "12.5 - Pass by lvalue reference",
+      "difficulty": "easy"
+    }
+  ]
+}

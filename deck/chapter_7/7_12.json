@@ -1,0 +1,226 @@
+{
+  "chapter": "Chapter 7",
+  "chapter_title": "Scope, Duration, and Linkage",
+  "lesson": "7.12",
+  "lesson_title": "Scope, duration, and linkage summary",
+  "total_cards": 15,
+  "cards": [
+    {
+      "id": "ch7_12_001",
+      "lesson": "7.12",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "scope",
+        "summary"
+      ],
+      "front": "What are the two main types of scope in C++?",
+      "back": "Block scope (local) and file scope (global/namespace).",
+      "source": "7.12 - Scope, duration, and linkage summary",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_12_002",
+      "lesson": "7.12",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "duration",
+        "summary"
+      ],
+      "front": "What are the two main types of duration in C++?",
+      "back": "Automatic duration (created/destroyed with scope) and static duration (exists for program lifetime).",
+      "source": "7.12 - Scope, duration, and linkage summary",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_12_003",
+      "lesson": "7.12",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "linkage",
+        "summary"
+      ],
+      "front": "What are the three types of linkage in C++?",
+      "back": "<ul><li>No linkage (local variables)</li><li>Internal linkage (visible in one file only)</li><li>External linkage (visible across files)</li></ul>",
+      "source": "7.12 - Scope, duration, and linkage summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_12_004",
+      "lesson": "7.12",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "variables",
+        "summary"
+      ],
+      "text": "Local variables have {{c1::block scope}}, {{c2::automatic duration}}, and {{c3::no linkage}} by default.",
+      "source": "7.12 - Scope, duration, and linkage summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_12_005",
+      "lesson": "7.12",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "variables",
+        "summary"
+      ],
+      "text": "Global variables have {{c1::file scope}}, {{c2::static duration}}, and {{c3::external linkage}} by default (if non-const).",
+      "source": "7.12 - Scope, duration, and linkage summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_12_006",
+      "lesson": "7.12",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "constants",
+        "summary"
+      ],
+      "text": "Const global variables have {{c1::file scope}}, {{c2::static duration}}, and {{c3::internal linkage}} by default.",
+      "source": "7.12 - Scope, duration, and linkage summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_12_007",
+      "lesson": "7.12",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "static",
+        "summary"
+      ],
+      "text": "Static local variables have {{c1::block scope}}, {{c2::static duration}}, and {{c3::no linkage}}.",
+      "source": "7.12 - Scope, duration, and linkage summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_12_008",
+      "lesson": "7.12",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "functions",
+        "summary"
+      ],
+      "front": "What are the default scope, duration, and linkage for functions?",
+      "back": "Functions have file scope, static duration, and external linkage by default.",
+      "source": "7.12 - Scope, duration, and linkage summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_12_009",
+      "lesson": "7.12",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "summary",
+        "attributes"
+      ],
+      "question": "What are the scope, duration, and linkage of this variable?",
+      "code": "void foo()\n{\n    static int x{ 0 };\n}",
+      "answer": "Scope: block<br>Duration: static<br>Linkage: none",
+      "explanation": "Static local variables have block scope (only accessible in the function), static duration (persist for program lifetime), and no linkage (not accessible from other files).",
+      "source": "7.12 - Scope, duration, and linkage summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_12_010",
+      "lesson": "7.12",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "summary",
+        "attributes"
+      ],
+      "question": "What are the scope, duration, and linkage of this variable?",
+      "code": "const int g_max{ 100 };",
+      "answer": "Scope: file<br>Duration: static<br>Linkage: internal",
+      "explanation": "Const global variables have file scope, static duration, and internal linkage by default (different from non-const globals which have external linkage).",
+      "source": "7.12 - Scope, duration, and linkage summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_12_011",
+      "lesson": "7.12",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "inline",
+        "summary"
+      ],
+      "front": "How do inline variables (C++17) affect linkage?",
+      "back": "Inline variables can have external linkage even when const. They allow a single variable definition to be safely included in multiple translation units.",
+      "source": "7.12 - Scope, duration, and linkage summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_12_012",
+      "lesson": "7.12",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "summary",
+        "best-practices"
+      ],
+      "concept": "Key decision tree for variable properties",
+      "explanation": "When choosing how to declare a variable, consider:<ul><li>Scope: Where does it need to be accessed? (narrowest possible)</li><li>Duration: How long should it live? (shortest necessary)</li><li>Linkage: Should other files see it? (minimize exposure)</li></ul>Prefer local variables unless you have a specific reason for global scope.",
+      "examples": [
+        "// Local: narrow scope, auto duration, no linkage",
+        "int calculate() { int temp = 0; }",
+        "",
+        "// Global const: file scope, static duration, internal",
+        "const int MAX = 100;",
+        "",
+        "// Shared const: file scope, static duration, external",
+        "inline constexpr int SHARED_MAX = 100;"
+      ],
+      "source": "7.12 - Scope, duration, and linkage summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_12_013",
+      "lesson": "7.12",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "scope",
+        "summary"
+      ],
+      "text": "The two main types of scope are {{c1::block scope}} (local) and {{c2::file scope}} (global).",
+      "source": "7.12 - Scope, duration, and linkage summary",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_12_014",
+      "lesson": "7.12",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "duration",
+        "summary"
+      ],
+      "text": "The two main types of duration are {{c1::automatic}} (created/destroyed with scope) and {{c2::static}} (program lifetime).",
+      "source": "7.12 - Scope, duration, and linkage summary",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_12_015",
+      "lesson": "7.12",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "linkage",
+        "summary"
+      ],
+      "text": "Local variables have {{c1::no linkage}}, static globals have {{c2::internal linkage}}, and non-const globals have {{c3::external linkage}} by default.",
+      "source": "7.12 - Scope, duration, and linkage summary",
+      "difficulty": "medium"
+    }
+  ]
+}

@@ -1,0 +1,211 @@
+{
+  "chapter": "Chapter 10",
+  "chapter_title": "Type Conversion, Type Aliases, and Type Deduction",
+  "lesson": "10.6",
+  "lesson_title": "Explicit type conversion (casting) and static_cast",
+  "total_cards": 14,
+  "cards": [
+    {
+      "id": "ch10_6_001",
+      "lesson": "10.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "casting",
+        "static_cast"
+      ],
+      "front": "What is explicit type conversion (casting)?",
+      "back": "A type conversion requested explicitly by the programmer using a cast operator. This tells the compiler to perform a conversion that might not happen automatically or that you want to make explicit.",
+      "source": "10.6 - Explicit type conversion (casting) and static_cast",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_6_002",
+      "lesson": "10.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "casting",
+        "terminology"
+      ],
+      "text": "Explicit type conversion is requested using a {{c1::cast operator}}. This process is also called {{c2::casting}} or {{c3::type casting}}.",
+      "source": "10.6 - Explicit type conversion (casting) and static_cast",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_6_003",
+      "lesson": "10.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "casting",
+        "static_cast"
+      ],
+      "front": "What is the syntax for static_cast?",
+      "back": "static_cast&lt;new_type&gt;(expression)<br><br>Example: static_cast&lt;int&gt;(3.5)",
+      "source": "10.6 - Explicit type conversion (casting) and static_cast",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_6_004",
+      "lesson": "10.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "static_cast",
+        "syntax"
+      ],
+      "text": "To cast a double to int using static_cast: {{c1::static_cast&lt;int&gt;}}(myDouble)",
+      "source": "10.6 - Explicit type conversion (casting) and static_cast",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_6_005",
+      "lesson": "10.6",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "static_cast",
+        "division"
+      ],
+      "question": "What does this print?",
+      "code": "int x{ 10 };\nint y{ 4 };\nstd::cout &lt;&lt; static_cast&lt;double&gt;(x) / y;",
+      "answer": "2.5",
+      "explanation": "x is cast to double (10.0). The usual arithmetic conversions then convert y to double, so we get 10.0 / 4.0 = 2.5 instead of integer division.",
+      "source": "10.6 - Explicit type conversion (casting) and static_cast",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_6_006",
+      "lesson": "10.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "static_cast",
+        "best-practices"
+      ],
+      "front": "Why is static_cast preferred over C-style casts?",
+      "back": "static_cast is safer and more visible:<ul><li>Easier to search for in code</li><li>More restrictive (won't do dangerous conversions)</li><li>Compiler checks that the cast is valid</li><li>Makes intent explicit and clear</li><li>Catches some errors at compile-time</li></ul>",
+      "source": "10.6 - Explicit type conversion (casting) and static_cast",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_6_007",
+      "lesson": "10.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "casting",
+        "c-style"
+      ],
+      "text": "A C-style cast looks like {{c1::(int)3.5}} or {{c2::int(3.5)}}. These should be {{c3::avoided}} in favor of static_cast.",
+      "source": "10.6 - Explicit type conversion (casting) and static_cast",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_6_008",
+      "lesson": "10.6",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "static_cast",
+        "char"
+      ],
+      "question": "What does this code print?",
+      "code": "char c{ 'a' };\nstd::cout &lt;&lt; c &lt;&lt; '\\n';\nstd::cout &lt;&lt; static_cast&lt;int&gt;(c) &lt;&lt; '\\n';",
+      "answer": "a<br>97",
+      "explanation": "First line prints 'a' as a character. Second line casts char to int, printing its ASCII value (97).",
+      "source": "10.6 - Explicit type conversion (casting) and static_cast",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_6_009",
+      "lesson": "10.6",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "static_cast",
+        "use-cases"
+      ],
+      "concept": "Common uses for static_cast",
+      "explanation": "static_cast is commonly used to:<ul><li>Convert int to float/double for floating-point division</li><li>Convert char to int to print ASCII values</li><li>Make implicit conversions explicit for clarity</li><li>Convert between related pointer types</li><li>Perform narrowing conversions intentionally</li></ul>",
+      "examples": [
+        "double d = static_cast&lt;double&gt;(x) / y;  // float division",
+        "int ascii = static_cast&lt;int&gt;('A');       // print ASCII value",
+        "char c = static_cast&lt;char&gt;(65);         // intentional narrowing"
+      ],
+      "source": "10.6 - Explicit type conversion (casting) and static_cast",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_6_010",
+      "lesson": "10.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "static_cast",
+        "unsigned"
+      ],
+      "front": "How can you use static_cast to avoid warnings when comparing signed and unsigned values?",
+      "back": "Cast the signed value to unsigned (or vice versa) to make both operands the same type:<br>if (static_cast&lt;unsigned int&gt;(s) == u) { }",
+      "source": "10.6 - Explicit type conversion (casting) and static_cast",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_6_011",
+      "lesson": "10.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "static_cast",
+        "safety"
+      ],
+      "front": "Does static_cast perform runtime safety checks on conversions?",
+      "back": "No. static_cast performs the conversion at compile-time with no runtime checks. It's up to the programmer to ensure the conversion is safe and makes sense.",
+      "source": "10.6 - Explicit type conversion (casting) and static_cast",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_6_012",
+      "lesson": "10.6",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "static_cast",
+        "narrowing"
+      ],
+      "question": "What's the purpose of static_cast here?",
+      "code": "double d{ 3.7 };\nint i{ static_cast&lt;int&gt;(d) };",
+      "answer": "To explicitly perform a narrowing conversion that would otherwise be rejected by brace initialization.",
+      "explanation": "Brace initialization disallows narrowing conversions. Using static_cast signals that the programmer intentionally wants to truncate the double to int.",
+      "source": "10.6 - Explicit type conversion (casting) and static_cast",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_6_013",
+      "lesson": "10.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "static_cast",
+        "syntax"
+      ],
+      "text": "The syntax for static_cast is: {{c1::static_cast&lt;new_type&gt;(expression)}}",
+      "source": "10.6 - Explicit type conversion (casting) and static_cast",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_6_014",
+      "lesson": "10.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "casting",
+        "best-practices"
+      ],
+      "text": "{{c1::static_cast}} is preferred over {{c2::C-style casts}} because it's safer, more visible, and easier to search for in code.",
+      "source": "10.6 - Explicit type conversion (casting) and static_cast",
+      "difficulty": "easy"
+    }
+  ]
+}

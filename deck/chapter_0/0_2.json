@@ -1,0 +1,130 @@
+{
+  "chapter": "Chapter 0",
+  "chapter_title": "Introduction / Getting Started",
+  "lesson": "0.2",
+  "lesson_title": "Introduction to programs and programming languages",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch0_2_001",
+      "lesson": "0.2",
+      "type": "basic",
+      "tags": ["cpp", "fundamentals", "computer-basics"],
+      "front": "What is a computer program?",
+      "back": "A sequence of instructions that tells the computer what to do. Programs are written by programmers using programming languages.",
+      "source": "0.2 - Introduction to programs and programming languages",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_2_002",
+      "lesson": "0.2",
+      "type": "cloze",
+      "tags": ["cpp", "hardware", "fundamentals"],
+      "text": "The physical components of a computer (keyboard, monitor, CPU) are called {{c1::hardware}}, while the programs and data are called {{c2::software}}.",
+      "source": "0.2 - Introduction to programs and programming languages",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_2_003",
+      "lesson": "0.2",
+      "type": "basic",
+      "tags": ["cpp", "cpu", "hardware"],
+      "front": "What is the primary function of the CPU?",
+      "back": "The CPU (Central Processing Unit) executes program instructions. It performs calculations, makes decisions, and controls the flow of the program.",
+      "source": "0.2 - Introduction to programs and programming languages",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_2_004",
+      "lesson": "0.2",
+      "type": "cloze",
+      "tags": ["cpp", "cpu", "machine-code"],
+      "text": "CPUs can only understand {{c1::machine language}} (also called {{c2::machine code}}), which consists of {{c3::binary}} instructions (1s and 0s).",
+      "source": "0.2 - Introduction to programs and programming languages",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_2_005",
+      "lesson": "0.2",
+      "type": "concept",
+      "tags": ["cpp", "machine-code", "fundamentals"],
+      "concept": "Why programmers don't write in machine language",
+      "explanation": "Machine language is extremely difficult for humans to read and write. It consists of binary numbers that are hard to understand, debug, and maintain. Each CPU architecture has different machine language instructions.",
+      "examples": [
+        "10110000 01100001 (machine code - unreadable)",
+        "mov al, 0x61 (assembly - slightly better)",
+        "int x = 97; (C++ - human readable)"
+      ],
+      "source": "0.2 - Introduction to programs and programming languages",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_2_006",
+      "lesson": "0.2",
+      "type": "basic",
+      "tags": ["cpp", "languages", "fundamentals"],
+      "front": "What is the difference between low-level and high-level programming languages?",
+      "back": "Low-level languages (assembly) are close to machine code and CPU-specific. High-level languages (C++, Python) are more human-readable, portable, and abstract away hardware details.",
+      "source": "0.2 - Introduction to programs and programming languages",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_2_007",
+      "lesson": "0.2",
+      "type": "cloze",
+      "tags": ["cpp", "languages", "assembly"],
+      "text": "{{c1::Assembly language}} uses short mnemonic names for instructions (like {{c2::mov}}, {{c3::add}}, {{c4::sub}}) instead of binary numbers.",
+      "source": "0.2 - Introduction to programs and programming languages",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_2_008",
+      "lesson": "0.2",
+      "type": "basic",
+      "tags": ["cpp", "languages", "portability"],
+      "front": "Why can't you run x86 assembly code directly on an ARM processor?",
+      "back": "Each CPU architecture has its own machine language and assembly language. Code written for one architecture won't work on another without rewriting or translation.",
+      "source": "0.2 - Introduction to programs and programming languages",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_2_009",
+      "lesson": "0.2",
+      "type": "cloze",
+      "tags": ["cpp", "languages", "high-level"],
+      "text": "C++ is a {{c1::high-level}} programming language that is {{c2::portable}} across different CPU architectures when recompiled.",
+      "source": "0.2 - Introduction to programs and programming languages",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_2_010",
+      "lesson": "0.2",
+      "type": "basic",
+      "tags": ["cpp", "languages", "advantages"],
+      "front": "What are three main advantages of high-level languages over assembly?",
+      "back": "<ul><li>Easier to read and write (more like natural language)</li><li>Portable across different CPU architectures</li><li>Faster to develop and maintain programs</li></ul>",
+      "source": "0.2 - Introduction to programs and programming languages",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_2_011",
+      "lesson": "0.2",
+      "type": "reverse",
+      "tags": ["cpp", "terminology", "fundamentals"],
+      "front": "Software",
+      "back": "The programs and data that run on computer hardware",
+      "source": "0.2 - Introduction to programs and programming languages",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_2_012",
+      "lesson": "0.2",
+      "type": "basic",
+      "tags": ["cpp", "fundamentals", "statements"],
+      "front": "What is a statement in a programming language?",
+      "back": "A statement is a single instruction in a program that tells the computer to perform a specific action. Programs consist of sequences of statements.",
+      "source": "0.2 - Introduction to programs and programming languages",
+      "difficulty": "easy"
+    }
+  ]
+}

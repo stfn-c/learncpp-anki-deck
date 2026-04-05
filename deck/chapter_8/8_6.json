@@ -1,0 +1,141 @@
+{
+  "chapter": "Chapter 8",
+  "chapter_title": "Control Flow",
+  "lesson": "8.6",
+  "lesson_title": "Switch fallthrough and scoping",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch8_6_001",
+      "lesson": "8.6",
+      "type": "basic",
+      "tags": ["cpp", "switch", "fallthrough"],
+      "front": "What is switch fallthrough?",
+      "back": "When execution flows from one case into the next case because there is no break statement, executing multiple case blocks sequentially.",
+      "source": "8.6 - Switch fallthrough and scoping",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_6_002",
+      "lesson": "8.6",
+      "type": "code",
+      "tags": ["cpp", "switch", "fallthrough"],
+      "question": "What will this code print if x = 1?",
+      "code": "switch (x)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;case 1:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; \"a\";<br>&nbsp;&nbsp;&nbsp;&nbsp;case 2:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; \"b\";<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>}",
+      "answer": "ab",
+      "explanation": "Case 1 has no break, so execution falls through to case 2. Both \"a\" and \"b\" are printed. This is fallthrough behavior.",
+      "source": "8.6 - Switch fallthrough and scoping",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_6_003",
+      "lesson": "8.6",
+      "type": "basic",
+      "tags": ["cpp", "switch", "best-practices"],
+      "front": "Is fallthrough in switch statements usually intentional or accidental?",
+      "back": "Usually accidental and a bug. Most of the time, programmers forget to add break statements. Intentional fallthrough is rare.",
+      "source": "8.6 - Switch fallthrough and scoping",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_6_004",
+      "lesson": "8.6",
+      "type": "cloze",
+      "tags": ["cpp", "switch", "attributes"],
+      "text": "To indicate intentional fallthrough and silence compiler warnings, use the {{c1::[[fallthrough]]}} attribute before the next case label.",
+      "source": "8.6 - Switch fallthrough and scoping",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_6_005",
+      "lesson": "8.6",
+      "type": "code",
+      "tags": ["cpp", "switch", "syntax"],
+      "question": "How do you properly document intentional fallthrough?",
+      "code": "switch (x)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;case 1:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; \"1\";<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{c1::[[fallthrough]];}}  // C++17<br>&nbsp;&nbsp;&nbsp;&nbsp;case 2:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; \"2\";<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>}",
+      "answer": "[[fallthrough]];",
+      "explanation": "The [[fallthrough]] attribute tells the compiler and readers that the fallthrough is intentional, suppressing warnings.",
+      "source": "8.6 - Switch fallthrough and scoping",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_6_006",
+      "lesson": "8.6",
+      "type": "basic",
+      "tags": ["cpp", "switch", "best-practices"],
+      "front": "Should you include a break statement after the last case in a switch?",
+      "back": "It's not necessary but recommended for consistency and to prevent bugs if you later add more cases.",
+      "source": "8.6 - Switch fallthrough and scoping",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_6_007",
+      "lesson": "8.6",
+      "type": "basic",
+      "tags": ["cpp", "switch", "scope"],
+      "front": "Do case statements create their own scope?",
+      "back": "No, all statements inside a switch are in the same scope. You must use explicit braces { } to create a new scope.",
+      "source": "8.6 - Switch fallthrough and scoping",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_6_008",
+      "lesson": "8.6",
+      "type": "code",
+      "tags": ["cpp", "switch", "scope"],
+      "question": "What's wrong with this code?",
+      "code": "switch (x)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;case 1:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int y = 5;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>&nbsp;&nbsp;&nbsp;&nbsp;case 2:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y = 10;  // error<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>}",
+      "answer": "Variable y is declared in case 1 without a block scope. Case 2 can see y but it may not be initialized.",
+      "explanation": "All cases share the same scope. Variable y is visible in case 2, but if case 2 executes first, y is uninitialized. Use braces to create proper scopes.",
+      "source": "8.6 - Switch fallthrough and scoping",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch8_6_009",
+      "lesson": "8.6",
+      "type": "concept",
+      "tags": ["cpp", "switch", "best-practices"],
+      "concept": "Proper variable declaration in switch cases",
+      "explanation": "To declare variables in a switch case:<ul><li>Wrap the case in braces { } to create a block scope</li><li>This prevents the variable from being visible to other cases</li><li>It ensures the variable is only in scope where it's initialized</li><li>Without braces, the variable is visible to all subsequent cases, causing potential initialization issues</li></ul>",
+      "examples": [
+        "// Correct<br>case 1:<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;int x = 5;<br>&nbsp;&nbsp;&nbsp;&nbsp;break;<br>}",
+        "// Wrong<br>case 1:<br>&nbsp;&nbsp;&nbsp;&nbsp;int x = 5;  // visible in other cases!<br>&nbsp;&nbsp;&nbsp;&nbsp;break;"
+      ],
+      "source": "8.6 - Switch fallthrough and scoping",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_6_010",
+      "lesson": "8.6",
+      "type": "cloze",
+      "tags": ["cpp", "switch", "syntax"],
+      "text": "When declaring a variable in a switch case, you must create a {{c1::block}} using {{c2::curly braces}} to properly scope the variable.",
+      "source": "8.6 - Switch fallthrough and scoping",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_6_011",
+      "lesson": "8.6",
+      "type": "basic",
+      "tags": ["cpp", "switch", "best-practices"],
+      "front": "What are the two main issues with switch fallthrough?",
+      "back": "1) It's usually unintentional and causes bugs<br>2) It makes code harder to understand and maintain",
+      "source": "8.6 - Switch fallthrough and scoping",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_6_012",
+      "lesson": "8.6",
+      "type": "concept",
+      "tags": ["cpp", "switch", "best-practices"],
+      "concept": "Switch statement best practices",
+      "explanation": "Follow these practices for clean switch statements:<ul><li>Always use break unless fallthrough is intentional</li><li>Document intentional fallthrough with [[fallthrough]]</li><li>Place default case last</li><li>Use braces { } when declaring variables in cases</li><li>Consider adding break even after the last case</li><li>Enable compiler warnings about fallthrough</li></ul>",
+      "examples": [
+        "case 1:<br>&nbsp;&nbsp;&nbsp;&nbsp;doSomething();<br>&nbsp;&nbsp;&nbsp;&nbsp;break;  // Good: explicit break",
+        "case 2:<br>{  // Good: braces for variables<br>&nbsp;&nbsp;&nbsp;&nbsp;int x = 5;<br>&nbsp;&nbsp;&nbsp;&nbsp;break;<br>}"
+      ],
+      "source": "8.6 - Switch fallthrough and scoping",
+      "difficulty": "medium"
+    }
+  ]
+}

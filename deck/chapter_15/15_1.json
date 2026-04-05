@@ -1,0 +1,187 @@
+{
+  "chapter": "Chapter 15",
+  "chapter_title": "More on Classes",
+  "lesson": "15.1",
+  "lesson_title": "The hidden \"this\" pointer and member function chaining",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch15_1_001",
+      "lesson": "15.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "this-pointer"
+      ],
+      "text": "Inside every member function, the keyword {{c1::this}} is a const pointer that holds the address of the {{c2::current implicit object}}.",
+      "source": "15.1 - The hidden this pointer",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch15_1_002",
+      "lesson": "15.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "this-pointer",
+        "syntax"
+      ],
+      "text": "To explicitly access member variable m_id using the this pointer: {{c1::this-&gt;m_id}}",
+      "source": "15.1 - The hidden this pointer",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch15_1_003",
+      "lesson": "15.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "this-pointer"
+      ],
+      "text": "In a const member function, the type of this is {{c1::const ClassName* const}} (const pointer to const object).",
+      "source": "15.1 - The hidden this pointer",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_1_004",
+      "lesson": "15.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "method-chaining",
+        "syntax"
+      ],
+      "text": "To enable member function chaining, return {{c1::*this}} by reference with return type {{c2::ClassName&amp;}}",
+      "source": "15.1 - Member function chaining",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_1_005",
+      "lesson": "15.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "method-chaining"
+      ],
+      "text": "Member function chaining allows calling multiple member functions in sequence: {{c1::obj.func1().func2().func3()}}",
+      "source": "15.1 - Member function chaining",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch15_1_006",
+      "lesson": "15.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "classes",
+        "this-pointer"
+      ],
+      "front": "How does C++ keep track of which object a member function was called on?",
+      "back": "C++ uses a hidden pointer named <code>this</code> that holds the address of the current object.",
+      "source": "15.1 - The hidden this pointer",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch15_1_007",
+      "lesson": "15.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "classes",
+        "this-pointer"
+      ],
+      "front": "What is the type of the this pointer in a non-const member function?",
+      "back": "<code>ClassName* const</code> - a const pointer to a non-const object",
+      "source": "15.1 - The hidden this pointer",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_1_008",
+      "lesson": "15.1",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "classes",
+        "this-pointer"
+      ],
+      "question": "What does this code output?",
+      "code": "class Simple {\n    int m_id{5};\npublic:\n    void print() { std::cout &lt;&lt; this-&gt;m_id; }\n};\n\nSimple s;\ns.print();",
+      "answer": "5",
+      "explanation": "The this pointer points to object s, so this-&gt;m_id accesses s.m_id which is 5.",
+      "source": "15.1 - The hidden this pointer",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch15_1_009",
+      "lesson": "15.1",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "classes",
+        "method-chaining",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this member function chaining implementation?",
+      "code": "class Calc {\n    int m_value{};\npublic:\n    void add(int x) { m_value += x; }\n};\n\nCalc c;\nc.add(5).add(3);  // Error!",
+      "answer": "The add() function returns void instead of a reference to *this.",
+      "explanation": "For chaining to work, add() should return <code>Calc&amp;</code> and end with <code>return *this;</code>",
+      "source": "15.1 - Member function chaining",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_1_010",
+      "lesson": "15.1",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "classes",
+        "method-chaining"
+      ],
+      "question": "What does this code output?",
+      "code": "class Calc {\n    int m_value{};\npublic:\n    Calc&amp; add(int x) { m_value += x; return *this; }\n    void print() { std::cout &lt;&lt; m_value; }\n};\n\nCalc c;\nc.add(5).add(3).print();",
+      "answer": "8",
+      "explanation": "add(5) sets m_value to 5, add(3) adds 3 making it 8, then print() outputs 8.",
+      "source": "15.1 - Member function chaining",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_1_011",
+      "lesson": "15.1",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "classes",
+        "this-pointer",
+        "best-practices"
+      ],
+      "concept": "When to explicitly use the this pointer",
+      "explanation": "Most of the time, using <code>this</code> is optional since member variables are implicitly accessed. Explicit use is needed when:<ul><li>Distinguishing between member variables and parameters with the same name</li><li>Returning the current object for method chaining</li><li>Passing the current object to another function</li></ul>",
+      "examples": [
+        "void setID(int m_id) { this-&gt;m_id = m_id; }  // disambiguate",
+        "MyClass&amp; func() { return *this; }  // chaining",
+        "otherFunc(*this);  // pass current object"
+      ],
+      "source": "15.1 - The hidden this pointer",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_1_012",
+      "lesson": "15.1",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "classes",
+        "this-pointer"
+      ],
+      "front": "this",
+      "back": "Hidden const pointer in member functions that holds the address of the current implicit object",
+      "source": "15.1 - The hidden this pointer",
+      "difficulty": "easy"
+    }
+  ]
+}

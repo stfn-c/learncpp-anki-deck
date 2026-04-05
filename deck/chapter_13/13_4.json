@@ -1,0 +1,218 @@
+{
+  "chapter": "Chapter 13",
+  "chapter_title": "Compound Types: Enums and Structs",
+  "lesson": "13.4",
+  "lesson_title": "13.4 — Converting an enumeration to and from a string",
+  "total_cards": 15,
+  "cards": [
+    {
+      "id": "ch13_4_001",
+      "lesson": "13.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "enum",
+        "iostream"
+      ],
+      "front": "Does C++ provide built-in functionality to convert an enum to its string name?",
+      "back": "No. You must implement this yourself using switch statements, lookup tables, or third-party libraries.",
+      "source": "13.4 — Converting an enumeration to and from a string",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_4_002",
+      "lesson": "13.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "enum",
+        "functions"
+      ],
+      "question": "What technique does this use to convert enum to string?",
+      "code": "std::string getColorName(Color c) {\n  switch (c) {\n    case red: return \"red\";\n    case green: return \"green\";\n    default: return \"unknown\";\n  }\n}",
+      "answer": "A switch statement that maps each enumerator to its string name.",
+      "explanation": "This is a common pattern for enum-to-string conversion in C++.",
+      "source": "13.4 — Converting an enumeration to and from a string",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_4_003",
+      "lesson": "13.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "enum",
+        "iostream"
+      ],
+      "text": "To output an enum as a string, you typically use a {{c1::switch statement}} or {{c2::lookup table}} to map values to names.",
+      "source": "13.4 — Converting an enumeration to and from a string",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_4_004",
+      "lesson": "13.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "enum",
+        "best-practices"
+      ],
+      "front": "What are two common approaches for converting enums to strings?",
+      "back": "<ul><li><strong>Switch statement:</strong> Map each case to a string</li><li><strong>Array lookup:</strong> Use enum value as index into string array</li></ul>",
+      "source": "13.4 — Converting an enumeration to and from a string",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_4_005",
+      "lesson": "13.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "enum",
+        "arrays"
+      ],
+      "question": "How does this array lookup approach work?",
+      "code": "enum Color { red, green, blue };\nconst char* colorNames[] = { \"red\", \"green\", \"blue\" };\nstd::cout &lt;&lt; colorNames[green];",
+      "answer": "Uses enum value (1 for green) as array index. Prints \"green\".",
+      "explanation": "Array indices must match enum values. Only works if enums start at 0 and are contiguous.",
+      "source": "13.4 — Converting an enumeration to and from a string",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_4_006",
+      "lesson": "13.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "enum",
+        "gotchas"
+      ],
+      "front": "What is a risk of using array lookup for enum-to-string conversion?",
+      "back": "If enum values are not contiguous or don't start at 0, array indices won't match enum values, causing incorrect results or out-of-bounds access.",
+      "source": "13.4 — Converting an enumeration to and from a string",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_4_007",
+      "lesson": "13.4",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "enum",
+        "best-practices"
+      ],
+      "concept": "Converting enums to strings",
+      "explanation": "C++ lacks built-in enum reflection. Common solutions:<ul><li>Switch statement (most reliable)</li><li>Array lookup (only if values are 0-based and contiguous)</li><li>Macro-based solutions</li><li>Third-party libraries (magic_enum)</li></ul>Choose switch for safety.",
+      "examples": [
+        "switch(color) { case red: return \"red\"; }",
+        "const char* names[] = {\"red\", \"green\"};",
+        "// magic_enum::enum_name(color);  // C++17+ library"
+      ],
+      "source": "13.4 — Converting an enumeration to and from a string",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_4_008",
+      "lesson": "13.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "enum",
+        "string-conversion"
+      ],
+      "front": "How would you convert a string to an enum value?",
+      "back": "Compare the string against known enum names (if/else chain or switch) and return the corresponding enum value. No built-in C++ support.",
+      "source": "13.4 — Converting an enumeration to and from a string",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_4_009",
+      "lesson": "13.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "enum",
+        "functions"
+      ],
+      "text": "When writing enum-to-string functions, use a {{c1::default}} case to handle {{c2::invalid}} or {{c3::unknown}} enum values.",
+      "source": "13.4 — Converting an enumeration to and from a string",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_4_010",
+      "lesson": "13.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "enum",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this array approach?",
+      "code": "enum Color { red = 5, green, blue };\nconst char* names[] = {\"red\", \"green\", \"blue\"};\nstd::cout &lt;&lt; names[red];",
+      "answer": "Out of bounds access. red=5 but array has only 3 elements (indices 0-2).",
+      "explanation": "Array lookup only works if enum values match array indices (0-based, contiguous).",
+      "source": "13.4 — Converting an enumeration to and from a string",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_4_011",
+      "lesson": "13.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "enum"
+      ],
+      "text": "To convert enum to string, you typically use a {{c1::switch}} statement that maps each enumerator to its {{c2::string name}}.",
+      "source": "13.4 — Converting an enumeration to and from a string",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_4_012",
+      "lesson": "13.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "enum"
+      ],
+      "text": "Array lookup for enum-to-string only works if enum values are {{c1::contiguous}} and start at {{c2::0}}.",
+      "source": "13.4 — Converting an enumeration to and from a string",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_4_013",
+      "lesson": "13.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "enum"
+      ],
+      "text": "C++ does {{c1::not}} provide built-in enum-to-string conversion; you must implement it with {{c2::switch}} or {{c3::lookup tables}}.",
+      "source": "13.4 — Converting an enumeration to and from a string",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_4_014",
+      "lesson": "13.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "enum"
+      ],
+      "text": "To convert enum to string, you typically use a {{c1::switch}} statement that maps each enumerator to its {{c2::string name}}.",
+      "source": "13.4 — Converting an enumeration to and from a string",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_4_015",
+      "lesson": "13.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "enum"
+      ],
+      "text": "Array lookup for enum-to-string only works if enum values are {{c1::contiguous}} and start at {{c2::0}}.",
+      "source": "13.4 — Converting an enumeration to and from a string",
+      "difficulty": "medium"
+    }
+  ]
+}

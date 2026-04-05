@@ -1,0 +1,65 @@
+{
+  "chapter": "28",
+  "total_cards": 84,
+  "lessons": [
+    {
+      "lesson": "28.1",
+      "title": "Input and output (I/O) streams",
+      "total_cards": 12
+    },
+    {
+      "lesson": "28.2",
+      "title": "Input with istream",
+      "total_cards": 12
+    },
+    {
+      "lesson": "28.3",
+      "title": "Output with ostream and ios",
+      "total_cards": 12
+    },
+    {
+      "lesson": "28.4",
+      "title": "Stream classes for strings",
+      "total_cards": 12
+    },
+    {
+      "lesson": "28.5",
+      "title": "Stream states and input validation",
+      "total_cards": 12
+    },
+    {
+      "lesson": "28.6",
+      "title": "Basic file I/O",
+      "total_cards": 12
+    },
+    {
+      "lesson": "28.7",
+      "title": "Random file I/O",
+      "total_cards": 12
+    }
+  ],
+  "card_types": {
+    "basic": 26,
+    "cloze": 33,
+    "reverse": 2,
+    "concept": 7,
+    "code": 16
+  },
+  "type_percentages": {
+    "basic": 30.952380952380953,
+    "cloze": 39.285714285714285,
+    "reverse": 2.380952380952381,
+    "concept": 8.333333333333332,
+    "code": 19.047619047619047
+  },
+  "difficulties": {
+    "easy": 32,
+    "medium": 42,
+    "hard": 10
+  },
+  "difficulty_percentages": {
+    "easy": 38.095238095238095,
+    "medium": 50.0,
+    "hard": 11.904761904761903
+  }
+}

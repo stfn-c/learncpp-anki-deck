@@ -1,0 +1,262 @@
+{
+  "chapter": "Chapter 19",
+  "chapter_title": "Dynamic memory allocation",
+  "lesson": "19.3",
+  "lesson_title": "Destructors",
+  "total_cards": 17,
+  "cards": [
+    {
+      "id": "ch19_3_001",
+      "lesson": "19.3",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "destructors",
+        "classes"
+      ],
+      "front": "Destructor",
+      "back": "A special class member function that is executed when an object of that class is destroyed, designed to help clean up resources",
+      "source": "19.3 - Destructors",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch19_3_002",
+      "lesson": "19.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "destructors",
+        "syntax"
+      ],
+      "text": "Destructor syntax for class Simple: {{c1::~Simple()}} { /* cleanup code */ }<br>The destructor name is the class name preceded by a {{c2::tilde (~)}}.",
+      "source": "19.3 - Destructors",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch19_3_003",
+      "lesson": "19.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "destructors",
+        "fundamentals"
+      ],
+      "front": "What are the key rules for destructors?",
+      "back": "<ul><li>Named with tilde (~) + class name</li><li>No parameters (cannot be overloaded)</li><li>No return type</li><li>Only one destructor per class</li><li>Cannot be called directly (called automatically)</li></ul>",
+      "source": "19.3 - Destructors",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch19_3_004",
+      "lesson": "19.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "destructors",
+        "lifecycle"
+      ],
+      "text": "Destructors are called automatically when:<br>- An object goes {{c1::out of scope normally}}<br>- A dynamically allocated object is {{c2::explicitly deleted using delete}}",
+      "source": "19.3 - Destructors",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch19_3_005",
+      "lesson": "19.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "destructors",
+        "dynamic-memory"
+      ],
+      "question": "Why does this class need a destructor?",
+      "code": "class IntArray\n{\nprivate:\n    int* m_array{};\n    int m_length{};\npublic:\n    IntArray(int length)\n    {\n        m_array = new int[length]{};\n        m_length = length;\n    }\n};",
+      "answer": "The class dynamically allocates memory in the constructor but never deletes it. Need destructor to delete[] m_array to prevent memory leak.",
+      "explanation": "When an IntArray object is destroyed, the m_array pointer is destroyed but the dynamically allocated array is not. A destructor must delete[] m_array.",
+      "source": "19.3 - Destructors",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch19_3_006",
+      "lesson": "19.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "destructors",
+        "syntax"
+      ],
+      "text": "Destructor to clean up dynamic array:<br>{{c1::~IntArray()}}<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;{{c2::delete[] m_array;}}<br>}",
+      "source": "19.3 - Destructors",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch19_3_007",
+      "lesson": "19.3",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "best-practices",
+        "RAII",
+        "destructors"
+      ],
+      "concept": "RAII (Resource Acquisition Is Initialization)",
+      "explanation": "A key C++ pattern where:<ul><li>Resources (memory, files, locks) are acquired in the constructor</li><li>Resources are released in the destructor</li><li>Ensures automatic cleanup when object goes out of scope</li><li>Prevents resource leaks even with exceptions</li></ul>",
+      "examples": [
+        "class FileHandler {",
+        "    FILE* m_file;",
+        "public:",
+        "    FileHandler(const char* name) { m_file = fopen(name, \"r\"); }",
+        "    ~FileHandler() { if (m_file) fclose(m_file); }",
+        "};"
+      ],
+      "source": "19.3 - Destructors",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch19_3_008",
+      "lesson": "19.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "destructors",
+        "lifecycle"
+      ],
+      "front": "In what order are constructors and destructors called for multiple objects?",
+      "back": "Constructors: called in order of creation (first created, first constructed)<br>Destructors: called in REVERSE order of creation (last created, first destroyed)",
+      "source": "19.3 - Destructors",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch19_3_009",
+      "lesson": "19.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "destructors",
+        "scope"
+      ],
+      "question": "When is the destructor called for this global object?",
+      "code": "class Simple\n{\npublic:\n    Simple() { std::cout &lt;&lt; \"Constructed\\n\"; }\n    ~Simple() { std::cout &lt;&lt; \"Destructed\\n\"; }\n};\n\nSimple g_simple; // global\n\nint main()\n{\n    return 0;\n}",
+      "answer": "The destructor is called at program termination, after main() exits.",
+      "explanation": "Global objects are destroyed when the program ends. Local objects are destroyed when they go out of scope.",
+      "source": "19.3 - Destructors",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch19_3_010",
+      "lesson": "19.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "destructors",
+        "compiler"
+      ],
+      "front": "What happens if you don't provide a destructor for a class?",
+      "back": "The compiler generates an implicit destructor that does nothing except call destructors of member objects. This is sufficient if the class doesn't manage resources.",
+      "source": "19.3 - Destructors",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch19_3_011",
+      "lesson": "19.3",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "best-practices",
+        "destructors"
+      ],
+      "concept": "When to write a custom destructor",
+      "explanation": "Write a destructor when your class:<ul><li>Dynamically allocates memory (new/new[])</li><li>Opens files or network connections</li><li>Acquires locks or other system resources</li><li>Needs to log destruction or update global state</li></ul>Don't write one if the class only has simple member variables - compiler's implicit destructor is sufficient.",
+      "examples": [
+        "// Needs destructor - allocates memory",
+        "class Array { int* m_data; };",
+        "",
+        "// No destructor needed - simple members",
+        "class Point { int x, y; };"
+      ],
+      "source": "19.3 - Destructors",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch19_3_012",
+      "lesson": "19.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "destructors",
+        "gotchas"
+      ],
+      "question": "What's wrong with this cleanup pattern?",
+      "code": "void process()\n{\n    IntArray* arr{ new IntArray(10) };\n    // ... use arr ...\n    // function ends\n}",
+      "answer": "The destructor is never called because the object was dynamically allocated but never deleted. This causes a memory leak.",
+      "explanation": "Destructors are only called automatically for stack objects going out of scope or when delete is explicitly called on heap objects.",
+      "source": "19.3 - Destructors",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch19_3_013",
+      "lesson": "19.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "destructors",
+        "gotchas"
+      ],
+      "text": "If you call {{c1::std::exit()}} or if the program crashes, destructors for {{c2::local/automatic objects}} are NOT called, causing potential resource leaks.",
+      "source": "19.3 - Destructors",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch19_3_014",
+      "lesson": "19.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "destructors",
+        "best-practices"
+      ],
+      "front": "Should you explicitly call destructors in normal code?",
+      "back": "No. Destructors are meant to be called automatically by the compiler. Explicitly calling destructors is rarely needed and can cause double-destruction bugs.",
+      "source": "19.3 - Destructors",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch19_3_015",
+      "lesson": "19.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "destructors",
+        "fundamentals"
+      ],
+      "text": "Destructor characteristics: {{c1::no parameters}}, {{c2::no return type}}, {{c3::cannot be overloaded}}, {{c4::one per class}}",
+      "source": "19.3 - Destructors",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch19_3_016",
+      "lesson": "19.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "RAII",
+        "destructors"
+      ],
+      "text": "RAII pattern: acquire resources in the {{c1::constructor}}, release resources in the {{c2::destructor}}",
+      "source": "19.3 - Destructors",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch19_3_017",
+      "lesson": "19.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "destructors",
+        "order"
+      ],
+      "text": "Destructors are called in {{c1::reverse}} order of construction: last created object is {{c2::first}} destroyed.",
+      "source": "19.3 - Destructors",
+      "difficulty": "easy"
+    }
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "chapter": "Chapter 23",
+  "chapter_title": "Object Relationships",
+  "lesson": "23.5",
+  "lesson_title": "Dependencies",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch23_5_001",
+      "lesson": "23.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "dependency",
+        "relationships"
+      ],
+      "text": "A {{c1::dependency}} occurs when one object invokes another object's functionality in order to accomplish some {{c2::specific task}}.",
+      "source": "23.5 - Dependencies",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_5_002",
+      "lesson": "23.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "dependency",
+        "vs-association"
+      ],
+      "front": "How does a dependency differ from an association in terms of relationship strength?",
+      "back": "A dependency is a weaker relationship than an association. The dependent object only needs the other object for a specific task, not as an ongoing relationship.",
+      "source": "23.5 - Dependencies",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_5_003",
+      "lesson": "23.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "dependency",
+        "directionality"
+      ],
+      "front": "What is the directionality of a dependency relationship?",
+      "back": "A dependency is always a unidirectional relationship - one object depends on another, but not vice versa.",
+      "source": "23.5 - Dependencies",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_5_004",
+      "lesson": "23.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "dependency",
+        "implementation"
+      ],
+      "text": "Dependencies typically are {{c1::not members}}. Rather, the object being depended on is typically {{c2::instantiated as needed}} or {{c3::passed into a function as a parameter}}.",
+      "source": "23.5 - Dependencies",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_5_005",
+      "lesson": "23.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "dependency",
+        "syntax"
+      ],
+      "question": "What type of relationship does Point have with std::ostream?",
+      "code": "class Point {\n    double m_x{}, m_y{}, m_z{};\npublic:\n    friend std::ostream&amp; operator&lt;&lt; (std::ostream&amp; out, const Point&amp; point);\n};\n\nstd::ostream&amp; operator&lt;&lt; (std::ostream&amp; out, const Point&amp; point) {\n    out &lt;&lt; \"Point(\" &lt;&lt; point.m_x &lt;&lt; \", \" &lt;&lt; point.m_y &lt;&lt; \", \" &lt;&lt; point.m_z &lt;&lt; ')';\n    return out;\n}",
+      "answer": "Dependency",
+      "explanation": "Point has a dependency on std::ostream. It uses std::ostream to accomplish the specific task of printing, but std::ostream is not a member of Point and is passed in as a parameter.",
+      "source": "23.5 - Dependencies",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_5_006",
+      "lesson": "23.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "dependency",
+        "vs-association"
+      ],
+      "front": "What is the key difference between a dependency and an association in C++?",
+      "back": "Associations keep a direct or indirect link to the associated class as a member. Dependencies do not have the depended-on object as a member - it's instantiated as needed or passed as a parameter.",
+      "source": "23.5 - Dependencies",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_5_007",
+      "lesson": "23.5",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "dependency",
+        "terminology"
+      ],
+      "front": "depends-on",
+      "back": "Dependency relationship verb - indicates one object depends on another to perform a specific task",
+      "source": "23.5 - Dependencies",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_5_008",
+      "lesson": "23.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "dependency",
+        "terminology"
+      ],
+      "text": "In a dependency, the relationship verb is {{c1::depends-on}}, and the relationship type is {{c2::otherwise unrelated}}.",
+      "source": "23.5 - Dependencies",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_5_009",
+      "lesson": "23.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "dependency",
+        "examples"
+      ],
+      "front": "What is a common example of a dependency that you use frequently in C++?",
+      "back": "std::ostream (std::cout) - classes use it to accomplish the task of printing to the console, but it's not a member and is only used when needed.",
+      "source": "23.5 - Dependencies",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_5_010",
+      "lesson": "23.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "dependency",
+        "impact"
+      ],
+      "front": "Even though dependency is the weakest relationship, why can it still be problematic?",
+      "back": "Any change to the object being depended upon may break functionality in the dependent caller, so there is still coupling between the objects.",
+      "source": "23.5 - Dependencies",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_5_011",
+      "lesson": "23.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "dependency",
+        "characteristics"
+      ],
+      "text": "A dependency is a {{c1::weaker}} relationship than association, and is always {{c2::unidirectional}}.",
+      "source": "23.5 - Dependencies",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_5_012",
+      "lesson": "23.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "dependency",
+        "usage"
+      ],
+      "text": "In a dependency, the depended-on object is typically {{c1::instantiated as needed}} or {{c2::passed as a parameter}}, not stored as a member.",
+      "source": "23.5 - Dependencies",
+      "difficulty": "medium"
+    }
+  ]
+}

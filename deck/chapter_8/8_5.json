@@ -1,0 +1,155 @@
+{
+  "chapter": "Chapter 8",
+  "chapter_title": "Control Flow",
+  "lesson": "8.5",
+  "lesson_title": "Switch statement basics",
+  "total_cards": 14,
+  "cards": [
+    {
+      "id": "ch8_5_001",
+      "lesson": "8.5",
+      "type": "cloze",
+      "tags": ["cpp", "switch", "syntax"],
+      "text": "Basic switch statement syntax:<br>{{c1::switch (expression)}}<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;{{c2::case}} value1:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;statement;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{c3::break;}}",
+      "source": "8.5 - Switch statement basics",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_5_002",
+      "lesson": "8.5",
+      "type": "basic",
+      "tags": ["cpp", "switch", "fundamentals"],
+      "front": "What types can be used as the condition in a switch statement?",
+      "back": "Integral types (int, char, etc.) and enumerated types. NOT floating point types, strings, or most other types.",
+      "source": "8.5 - Switch statement basics",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_5_003",
+      "lesson": "8.5",
+      "type": "cloze",
+      "tags": ["cpp", "switch", "syntax"],
+      "text": "Each case label must be a {{c1::constant expression}} or {{c2::constexpr}} value, not a variable.",
+      "source": "8.5 - Switch statement basics",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_5_004",
+      "lesson": "8.5",
+      "type": "basic",
+      "tags": ["cpp", "switch", "fundamentals"],
+      "front": "What does the break statement do in a switch?",
+      "back": "It exits the switch statement immediately, preventing execution from continuing into the next case (fallthrough).",
+      "source": "8.5 - Switch statement basics",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_5_005",
+      "lesson": "8.5",
+      "type": "cloze",
+      "tags": ["cpp", "switch", "syntax"],
+      "text": "The {{c1::default}} case in a switch statement handles all values not explicitly matched by other cases.",
+      "source": "8.5 - Switch statement basics",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_5_006",
+      "lesson": "8.5",
+      "type": "code",
+      "tags": ["cpp", "switch", "syntax"],
+      "question": "What will this code print if x = 2?",
+      "code": "switch (x)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;case 1:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; \"one\";<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>&nbsp;&nbsp;&nbsp;&nbsp;case 2:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; \"two\";<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>&nbsp;&nbsp;&nbsp;&nbsp;default:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; \"other\";<br>}",
+      "answer": "two",
+      "explanation": "The switch expression (x) evaluates to 2, which matches case 2. It prints \"two\" and then the break exits the switch.",
+      "source": "8.5 - Switch statement basics",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_5_007",
+      "lesson": "8.5",
+      "type": "basic",
+      "tags": ["cpp", "switch", "best-practices"],
+      "front": "Where should the default case be placed in a switch statement?",
+      "back": "By convention, the default case should be placed last, though it can technically appear anywhere.",
+      "source": "8.5 - Switch statement basics",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_5_008",
+      "lesson": "8.5",
+      "type": "basic",
+      "tags": ["cpp", "switch", "best-practices"],
+      "front": "Is the default case required in a switch statement?",
+      "back": "No, it's optional. However, it's considered best practice to include one to handle unexpected values.",
+      "source": "8.5 - Switch statement basics",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_5_009",
+      "lesson": "8.5",
+      "type": "code",
+      "tags": ["cpp", "switch", "common-mistakes"],
+      "question": "What's wrong with this code?",
+      "code": "int x = 2;<br>int y = 2;<br>switch (x)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;case y:  // y is 2<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; \"match\";<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>}",
+      "answer": "Case labels must be constant expressions. Variable y is not a constant expression, even though it equals 2.",
+      "explanation": "Case labels must be compile-time constants (literals or constexpr values). Regular variables like y cannot be used, even if their value is known at runtime.",
+      "source": "8.5 - Switch statement basics",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_5_010",
+      "lesson": "8.5",
+      "type": "concept",
+      "tags": ["cpp", "switch", "best-practices"],
+      "concept": "When to use switch vs if-else",
+      "explanation": "Use switch when:<ul><li>Testing a single integral/enum variable against multiple constant values</li><li>You have 3+ conditions to check against the same variable</li><li>All cases are compile-time constants</li></ul>Use if-else when:<ul><li>Testing different variables</li><li>Using non-integral types (floats, strings)</li><li>Conditions involve ranges or complex expressions</li><li>Runtime variables or non-constant conditions</li></ul>",
+      "examples": [
+        "// Good for switch<br>switch (menuChoice) { case 1: case 2: case 3: }",
+        "// Must use if-else<br>if (x &gt; 10 && y &lt; 20) { }"
+      ],
+      "source": "8.5 - Switch statement basics",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_5_011",
+      "lesson": "8.5",
+      "type": "cloze",
+      "tags": ["cpp", "switch", "syntax"],
+      "text": "Multiple case labels can be stacked to execute the same code:<br>case 1:<br>case 2:<br>case 3:<br>&nbsp;&nbsp;&nbsp;&nbsp;{{c1::// same code for all three}}<br>&nbsp;&nbsp;&nbsp;&nbsp;{{c2::break;}}",
+      "source": "8.5 - Switch statement basics",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_5_012",
+      "lesson": "8.5",
+      "type": "basic",
+      "tags": ["cpp", "switch", "scope"],
+      "front": "Can you declare variables inside a switch statement?",
+      "back": "Yes, but they must be inside a block (curly braces) within a case. Variables declared directly under a case label without braces will cause scoping issues.",
+      "source": "8.5 - Switch statement basics",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_5_013",
+      "lesson": "8.5",
+      "type": "code",
+      "tags": ["cpp", "switch", "scope"],
+      "question": "How do you properly declare a variable in a case statement?",
+      "code": "switch (x)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;case 1:<br>&nbsp;&nbsp;&nbsp;&nbsp;{  // block needed!<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int y = 5;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; y;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}",
+      "answer": "Wrap the case in curly braces { } to create a block scope for the variable.",
+      "explanation": "Variables declared in a case need their own scope to avoid initialization issues. The braces create a block scope for the variable.",
+      "source": "8.5 - Switch statement basics",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_5_014",
+      "lesson": "8.5",
+      "type": "basic",
+      "tags": ["cpp", "switch", "attributes"],
+      "front": "What attribute can you use to explicitly indicate intentional switch fallthrough?",
+      "back": "[[fallthrough]] - placed where the break would normally go to document that fallthrough is intentional.",
+      "source": "8.5 - Switch statement basics",
+      "difficulty": "medium"
+    }
+  ]
+}

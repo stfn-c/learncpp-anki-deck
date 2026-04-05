@@ -1,0 +1,195 @@
+{
+  "chapter": "Chapter 3",
+  "chapter_title": "Debugging C++ Programs",
+  "lesson": "3.2",
+  "lesson_title": "The debugging process",
+  "total_cards": 13,
+  "cards": [
+    {
+      "id": "ch3_2_001",
+      "lesson": "3.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "debugging",
+        "process"
+      ],
+      "text": "The debugging process has {{c1::five}} basic steps: Find the problem, understand it, determine a fix, apply the fix, and {{c2::validate}} that it works.",
+      "source": "3.2 - The debugging process",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_2_002",
+      "lesson": "3.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "debugging",
+        "best-practices"
+      ],
+      "front": "What is the most time-consuming part of debugging?",
+      "back": "Finding where the error actually is. Once found, fixing and validating are often trivial in comparison.",
+      "source": "3.2 - The debugging process",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_2_003",
+      "lesson": "3.2",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "debugging",
+        "best-practices"
+      ],
+      "concept": "Why write programs incrementally",
+      "explanation": "Write small pieces of code and test them immediately. This helps you localize errors to recently added code, making bugs much easier to find.",
+      "examples": [
+        "// Add one function, test it",
+        "// Add another function, test again",
+        "// Don't write 100 lines before first test"
+      ],
+      "source": "3.2 - The debugging process",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_2_004",
+      "lesson": "3.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "debugging",
+        "fundamentals"
+      ],
+      "front": "What is the fundamental premise behind all bugs?",
+      "back": "Something that you thought was correct, isn't.",
+      "source": "3.2 - The debugging process",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_2_005",
+      "lesson": "3.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "debugging",
+        "process"
+      ],
+      "text": "The five steps of debugging: {{c1::Find}} the problem \u2192 {{c2::Understand}} the problem \u2192 {{c3::Determine}} a fix \u2192 {{c4::Repair}} the issue \u2192 {{c5::Retest}}.",
+      "source": "3.2 - The debugging process",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_2_006",
+      "lesson": "3.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "debugging",
+        "best-practices"
+      ],
+      "front": "Why should you test your code thoroughly before moving on?",
+      "back": "To ensure that any errors found later are likely in the newly added code, not the code you've already tested. This dramatically reduces the search space for bugs.",
+      "source": "3.2 - The debugging process",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_2_007",
+      "lesson": "3.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "debugging",
+        "understanding"
+      ],
+      "front": "What should you do after finding where an error occurs?",
+      "back": "Understand why the error is occurring. This prevents just treating symptoms and helps you fix the actual root cause.",
+      "source": "3.2 - The debugging process",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_2_008",
+      "lesson": "3.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "debugging",
+        "validation"
+      ],
+      "front": "After fixing a bug, what final step must you take?",
+      "back": "Retest and validate that the fix actually solved the problem and didn't introduce new issues.",
+      "source": "3.2 - The debugging process",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_2_009",
+      "lesson": "3.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "debugging",
+        "best-practices"
+      ],
+      "text": "If you have {{c1::no idea}} where the error is, you'll need to use debugging techniques to {{c2::narrow down}} the location of the problem.",
+      "source": "3.2 - The debugging process",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_2_010",
+      "lesson": "3.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "debugging",
+        "process"
+      ],
+      "front": "What happens if you skip understanding the problem and jump straight to fixing?",
+      "back": "You may only treat the symptom rather than fixing the underlying cause, leading to the same or related bugs appearing later.",
+      "source": "3.2 - The debugging process",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_2_011",
+      "lesson": "3.2",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "debugging",
+        "best-practices"
+      ],
+      "concept": "How to make debugging easier from the start",
+      "explanation": "Write your code incrementally:<ul><li>Write a small amount of code</li><li>Compile and test it immediately</li><li>If it works, move on to next piece</li><li>If not, the bug is in recent changes</li></ul>",
+      "examples": [
+        "// Bad: Write entire program, then debug",
+        "// Good: Write function, test it, write next function"
+      ],
+      "source": "3.2 - The debugging process",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_2_012",
+      "lesson": "3.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "debugging",
+        "best-practices"
+      ],
+      "text": "Write {{c1::small}} pieces of code and test them {{c2::immediately}} to make bugs easier to find.",
+      "source": "3.2 - The debugging process",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_2_013",
+      "lesson": "3.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "debugging",
+        "process"
+      ],
+      "text": "After finding a bug, you must {{c1::understand}} why it occurs before attempting to {{c2::fix}} it.",
+      "source": "3.2 - The debugging process",
+      "difficulty": "easy"
+    }
+  ]
+}

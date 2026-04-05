@@ -1,0 +1,137 @@
+{
+  "chapter": "Chapter 17",
+  "chapter_title": "Arrays and Strings",
+  "lesson": "17.x",
+  "lesson_title": "Chapter 17 summary and quiz",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch17_x_001",
+      "lesson": "17.x",
+      "type": "basic",
+      "tags": ["cpp", "arrays", "summary"],
+      "front": "What are the three main array types in C++?",
+      "back": "std::vector (dynamic array), std::array (fixed-size array), and C-style arrays (fixed-size, legacy).",
+      "source": "17.x - Chapter 17 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_x_002",
+      "lesson": "17.x",
+      "type": "cloze",
+      "tags": ["cpp", "arrays", "best-practices", "summary"],
+      "text": "Prefer {{c1::std::vector}} for dynamic arrays and {{c2::std::array}} for fixed-size arrays. Avoid {{c3::C-style arrays}} in modern C++",
+      "source": "17.x - Chapter 17 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_x_003",
+      "lesson": "17.x",
+      "type": "concept",
+      "tags": ["cpp", "arrays", "comparison", "summary"],
+      "concept": "Key differences between std::array and C-style arrays",
+      "explanation": "std::array advantages:<ul><li>No array decay to pointers</li><li>Has size() member function</li><li>Supports assignment and comparison</li><li>Works with at() for bounds checking</li><li>Better constexpr support</li></ul>C-style arrays should be avoided.",
+      "examples": [
+        "std::array&lt;int, 5&gt; arr;  // Modern, safe",
+        "int arr[5];              // Legacy, avoid"
+      ],
+      "source": "17.x - Chapter 17 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_x_004",
+      "lesson": "17.x",
+      "type": "basic",
+      "tags": ["cpp", "arrays", "decay", "summary"],
+      "front": "What is the most problematic aspect of C-style arrays?",
+      "back": "Array decay - C-style arrays decay to pointers when passed to functions, losing size information. This makes them unsafe and hard to use correctly.",
+      "source": "17.x - Chapter 17 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_x_005",
+      "lesson": "17.x",
+      "type": "cloze",
+      "tags": ["cpp", "strings", "summary"],
+      "text": "For strings, prefer {{c1::std::string}} or {{c2::std::string_view}} over C-style strings (char arrays with null terminators)",
+      "source": "17.x - Chapter 17 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_x_006",
+      "lesson": "17.x",
+      "type": "basic",
+      "tags": ["cpp", "c-style-strings", "gotchas", "summary"],
+      "front": "What are the main dangers of C-style strings?",
+      "back": "Buffer overflows (no bounds checking), must manually manage null terminator, easy to forget size, pointer confusion with == and =, manual memory management.",
+      "source": "17.x - Chapter 17 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_x_007",
+      "lesson": "17.x",
+      "type": "cloze",
+      "tags": ["cpp", "reference-wrapper", "summary"],
+      "text": "To store references in arrays, use {{c1::std::reference_wrapper}} with the helper functions {{c2::std::ref()}} and {{c3::std::cref()}}",
+      "source": "17.x - Chapter 17 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_x_008",
+      "lesson": "17.x",
+      "type": "basic",
+      "tags": ["cpp", "pointer-arithmetic", "summary"],
+      "front": "What does ptr + n do in pointer arithmetic?",
+      "back": "Advances the pointer by n elements (n * sizeof(type) bytes), not n bytes. This allows navigating through arrays efficiently.",
+      "source": "17.x - Chapter 17 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_x_009",
+      "lesson": "17.x",
+      "type": "concept",
+      "tags": ["cpp", "arrays", "indexing", "summary"],
+      "concept": "Using enumerations for type-safe array indexing",
+      "explanation": "Pattern for enum-based array access:<ul><li>Define enum with values for each index</li><li>Add a count/max enumerator at the end</li><li>Use count to size the array</li><li>Cast enum values to std::size_t for indexing</li></ul>This provides type safety and self-documenting code.",
+      "examples": [
+        "enum class Color { red, green, blue, count };",
+        "std::array&lt;int, static_cast&lt;size_t&gt;(Color::count)&gt; arr;"
+      ],
+      "source": "17.x - Chapter 17 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_x_010",
+      "lesson": "17.x",
+      "type": "basic",
+      "tags": ["cpp", "multidimensional", "summary"],
+      "front": "How do you create a 2D std::array?",
+      "back": "Use nested std::array: std::array&lt;std::array&lt;int, cols&gt;, rows&gt;. The outer array represents rows, inner arrays represent columns.",
+      "source": "17.x - Chapter 17 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_x_011",
+      "lesson": "17.x",
+      "type": "cloze",
+      "tags": ["cpp", "arrays", "passing", "summary"],
+      "text": "To pass std::array efficiently to functions, use {{c1::pass by const reference}}: void func(const std::array&lt;int, 5&gt;&amp; arr)",
+      "source": "17.x - Chapter 17 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_x_012",
+      "lesson": "17.x",
+      "type": "concept",
+      "tags": ["cpp", "arrays", "best-practices", "summary"],
+      "concept": "Modern C++ array best practices summary",
+      "explanation": "Key takeaways for arrays in modern C++:<ul><li>Use std::vector when size is runtime-determined or needs to change</li><li>Use std::array when size is compile-time constant</li><li>Avoid C-style arrays and C-style strings</li><li>Use std::string for string manipulation</li><li>Pass containers by const reference</li><li>Use at() when you need bounds checking</li></ul>",
+      "examples": [
+        "std::vector&lt;int&gt; dynamic;    // Runtime size",
+        "std::array&lt;int, 5&gt; fixed;   // Compile-time size"
+      ],
+      "source": "17.x - Chapter 17 summary and quiz",
+      "difficulty": "medium"
+    }
+  ]
+}

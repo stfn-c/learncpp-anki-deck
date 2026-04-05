@@ -1,0 +1,196 @@
+{
+  "chapter": "Chapter 23",
+  "chapter_title": "Object Relationships",
+  "lesson": "23.6",
+  "lesson_title": "Container classes",
+  "total_cards": 13,
+  "cards": [
+    {
+      "id": "ch23_6_001",
+      "lesson": "23.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "container-classes",
+        "fundamentals"
+      ],
+      "text": "In a {{c1::container class}}, one class provides a container to hold multiple objects of {{c2::another type}}.",
+      "source": "23.6 - Container classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_6_002",
+      "lesson": "23.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "container-classes",
+        "types"
+      ],
+      "front": "What are the two main types of container classes?",
+      "back": "Value containers and reference containers.<br>Value containers are compositions that store copies.<br>Reference containers are aggregations that store pointers or references.",
+      "source": "23.6 - Container classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_6_003",
+      "lesson": "23.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "container-classes",
+        "value-container"
+      ],
+      "text": "A {{c1::value container}} is a composition that stores {{c2::copies}} of the objects it is holding.",
+      "source": "23.6 - Container classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_6_004",
+      "lesson": "23.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "container-classes",
+        "reference-container"
+      ],
+      "text": "A {{c1::reference container}} is an aggregation that stores {{c2::pointers or references}} to objects that live {{c3::outside the container}}.",
+      "source": "23.6 - Container classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_6_005",
+      "lesson": "23.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "container-classes",
+        "ownership"
+      ],
+      "front": "Which type of container owns the objects it contains?",
+      "back": "A value container owns the objects (composition). When the container is destroyed, the objects are destroyed. A reference container does not own the objects (aggregation).",
+      "source": "23.6 - Container classes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_6_006",
+      "lesson": "23.6",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "container-classes",
+        "value-container"
+      ],
+      "question": "What type of container class is this?",
+      "code": "class IntArray {\n    int* m_data{};\n    int m_length{};\npublic:\n    IntArray(int length) : m_length{length} {\n        m_data = new int[length]{};\n    }\n    ~IntArray() {\n        delete[] m_data;  // Container manages lifetime\n    }\n};",
+      "answer": "Value container",
+      "explanation": "This is a value container (composition). The IntArray owns the int array and manages its lifetime completely - it allocates in the constructor and deletes in the destructor.",
+      "source": "23.6 - Container classes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_6_007",
+      "lesson": "23.6",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "container-classes",
+        "reference-container"
+      ],
+      "question": "What type of container class is this?",
+      "code": "class PlayerGroup {\n    std::vector&lt;Player*&gt; m_players;\npublic:\n    void addPlayer(Player* player) {\n        m_players.push_back(player);\n    }\n    // No deletion in destructor - players managed elsewhere\n};",
+      "answer": "Reference container",
+      "explanation": "This is a reference container (aggregation). The PlayerGroup stores pointers to Players but does not manage their lifetime. The Players exist outside the container.",
+      "source": "23.6 - Container classes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_6_008",
+      "lesson": "23.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "container-classes",
+        "std-library"
+      ],
+      "front": "What are some examples of container classes in the C++ standard library?",
+      "back": "std::vector, std::array, std::map, std::set, std::list, std::deque, and others from the Standard Template Library (STL).",
+      "source": "23.6 - Container classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_6_009",
+      "lesson": "23.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "container-classes",
+        "design"
+      ],
+      "front": "When should you use a value container vs a reference container?",
+      "back": "Use a value container when the container should own and manage the objects' lifetimes. Use a reference container when objects need to be shared, exist independently, or their lifetime is managed elsewhere.",
+      "source": "23.6 - Container classes",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch23_6_010",
+      "lesson": "23.6",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "container-classes",
+        "best-practices"
+      ],
+      "concept": "Container class responsibilities",
+      "explanation": "Container classes typically provide:<ul><li>Creation/insertion of elements</li><li>Removal/deletion of elements</li><li>Access to elements (by index, iterator, etc.)</li><li>Reporting number of elements</li><li>Memory management (for value containers)</li><li>Resizing/growing as needed</li></ul>",
+      "examples": [
+        "std::vector&lt;int&gt; values;  // Value container",
+        "values.push_back(5);      // Insert",
+        "values[0];                // Access",
+        "values.size();            // Report count"
+      ],
+      "source": "23.6 - Container classes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_6_011",
+      "lesson": "23.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "container-classes",
+        "relationship"
+      ],
+      "text": "A value container implements a {{c1::composition}} relationship, while a reference container implements an {{c2::aggregation}} relationship.",
+      "source": "23.6 - Container classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_6_012",
+      "lesson": "23.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "container-classes",
+        "memory"
+      ],
+      "front": "What happens to the contained objects when a value container goes out of scope?",
+      "back": "The contained objects are destroyed because the value container owns and manages their lifetime (composition relationship).",
+      "source": "23.6 - Container classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_6_013",
+      "lesson": "23.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "container-classes",
+        "types"
+      ],
+      "text": "A value container is a {{c1::composition}} that stores {{c2::copies}}, while a reference container is an {{c3::aggregation}} that stores {{c4::pointers or references}}.",
+      "source": "23.6 - Container classes",
+      "difficulty": "medium"
+    }
+  ]
+}

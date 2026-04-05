@@ -1,0 +1,140 @@
+{
+  "chapter": "Chapter 12",
+  "chapter_title": "Compound Types: References and Pointers",
+  "lesson": "12.7",
+  "lesson_title": "Introduction to pointers",
+  "total_cards": 9,
+  "cards": [
+    {
+      "id": "ch12_7_001",
+      "lesson": "12.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "pointers",
+        "syntax"
+      ],
+      "text": "A pointer is declared using an asterisk: {{c1::int* ptr;}}. The asterisk is part of the {{c2::type}}, meaning 'pointer to int'.",
+      "source": "12.7 - Introduction to pointers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_7_002",
+      "lesson": "12.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "pointers",
+        "fundamentals"
+      ],
+      "front": "What is a pointer?",
+      "back": "A pointer is a variable that holds a memory address as its value. It 'points to' the location of another object in memory.",
+      "source": "12.7 - Introduction to pointers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_7_003",
+      "lesson": "12.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "pointers",
+        "operators"
+      ],
+      "text": "The {{c1::address-of}} operator (&amp;) returns the memory address of a variable. The {{c2::dereference}} operator (*) accesses the value at a memory address.",
+      "source": "12.7 - Introduction to pointers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_7_004",
+      "lesson": "12.7",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "pointers"
+      ],
+      "question": "What does this code output?",
+      "code": "int x = 5;<br>int* ptr = &amp;x;<br>std::cout &lt;&lt; *ptr;",
+      "answer": "5",
+      "explanation": "ptr holds the address of x. Dereferencing ptr with *ptr accesses the value stored at that address, which is 5.",
+      "source": "12.7 - Introduction to pointers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_7_005",
+      "lesson": "12.7",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "pointers"
+      ],
+      "question": "What does this code do?",
+      "code": "int x = 5;<br>int* ptr = &amp;x;<br>*ptr = 10;<br>std::cout &lt;&lt; x;",
+      "answer": "Outputs 10. Dereferencing ptr and assigning 10 modifies x.",
+      "explanation": "*ptr provides access to x through the pointer, allowing modification of the original variable.",
+      "source": "12.7 - Introduction to pointers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_7_006",
+      "lesson": "12.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "pointers",
+        "references"
+      ],
+      "front": "What is the key difference between pointers and references?",
+      "back": "Pointers can be reassigned to point to different objects and can be null. References must be initialized, cannot be reseated, and cannot be null.",
+      "source": "12.7 - Introduction to pointers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_7_007",
+      "lesson": "12.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "pointers",
+        "syntax"
+      ],
+      "text": "When declaring multiple pointers on one line, each variable needs its own asterisk: {{c1::int* ptr1, * ptr2;}} or better, declare them {{c2::separately}}.",
+      "source": "12.7 - Introduction to pointers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_7_008",
+      "lesson": "12.7",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "pointers",
+        "fundamentals"
+      ],
+      "concept": "Pointer fundamentals",
+      "explanation": "Key pointer concepts:<ul><li>Pointers store memory addresses</li><li>&amp; gets address of a variable</li><li>* dereferences (accesses value at address)</li><li>Pointers can be reassigned</li><li>Must match type (int* for int variables)</li></ul>",
+      "examples": [
+        "int x = 5;",
+        "int* ptr = &x;   // ptr holds address of x",
+        "*ptr = 10;       // modify x through ptr",
+        "int y = 20;",
+        "ptr = &y;        // reassign ptr to point to y"
+      ],
+      "source": "12.7 - Introduction to pointers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_7_009",
+      "lesson": "12.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "pointers",
+        "syntax"
+      ],
+      "text": "The type int* means {{c1::pointer to int}}. To get a pointer to a variable, use the {{c2::address-of}} operator (&amp;).",
+      "source": "12.7 - Introduction to pointers",
+      "difficulty": "easy"
+    }
+  ]
+}

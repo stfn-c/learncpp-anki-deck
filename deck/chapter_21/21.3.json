@@ -1,0 +1,155 @@
+{
+  "chapter": "Chapter 21",
+  "chapter_title": "Operator Overloading",
+  "lesson": "21.3",
+  "lesson_title": "Overloading operators using normal functions",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "ch21_3_001",
+      "lesson": "21.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "normal-functions"
+      ],
+      "text": "Normal functions (not friends or members) can overload operators if they can access needed data through {{c1::public member functions}} rather than private members directly.",
+      "source": "21.3 - Overloading operators using normal functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch21_3_002",
+      "lesson": "21.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "encapsulation"
+      ],
+      "front": "What is the advantage of using normal functions over friend functions for operator overloading?",
+      "back": "Normal functions maintain better encapsulation because they only access public interfaces, not private members. This makes the code more maintainable and reduces coupling. However, this only works if the class provides sufficient public access functions.",
+      "source": "21.3 - Overloading operators using normal functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_3_003",
+      "lesson": "21.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "normal-functions"
+      ],
+      "question": "What's required for this normal function operator overload to work?",
+      "code": "class Cents {\n    int m_cents;\npublic:\n    int getCents() const { return m_cents; }\n    Cents(int cents) : m_cents{cents} {}\n};\n\nCents operator+(const Cents&amp; c1, const Cents&amp; c2) {\n    return Cents{ c1.getCents() + c2.getCents() };\n}",
+      "answer": "The class must provide public accessor functions (getCents()) to access private data. The operator function can then use these public functions instead of needing friend access.",
+      "explanation": "This maintains encapsulation but requires the class to expose the necessary data through getters.",
+      "source": "21.3 - Overloading operators using normal functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_3_004",
+      "lesson": "21.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "friend-vs-normal"
+      ],
+      "front": "When should you prefer friend functions over normal functions for operator overloading?",
+      "back": "Use friend functions when:<ul><li>You need direct access to private members for efficiency</li><li>Providing public accessors would violate encapsulation</li><li>The operator is tightly coupled to the class implementation</li></ul>Use normal functions when the public interface is sufficient.",
+      "source": "21.3 - Overloading operators using normal functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_3_005",
+      "lesson": "21.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "best-practices"
+      ],
+      "text": "Normal function operator overloads have the same signature as {{c1::friend function}} overloads, but are declared {{c2::outside the class}} without the friend keyword.",
+      "source": "21.3 - Overloading operators using normal functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch21_3_006",
+      "lesson": "21.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "performance"
+      ],
+      "front": "What is a potential performance disadvantage of using normal functions for operator overloading?",
+      "back": "Normal functions must use public accessor functions (getters) to access data, which may be less efficient than direct member access. Friend functions can access private members directly, potentially avoiding function call overhead (though inlining often mitigates this).",
+      "source": "21.3 - Overloading operators using normal functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_3_007",
+      "lesson": "21.3",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "design"
+      ],
+      "concept": "Choosing between friend, normal, and member function operator overloads",
+      "explanation": "Three approaches for operator overloading:<ul><li><b>Member functions:</b> Use for operators that modify the left operand (=, +=, -=, [], ++, --)</li><li><b>Friend functions:</b> Use for symmetric binary operators needing private access (+, -, *, /, ==, !=)</li><li><b>Normal functions:</b> Use when public interface is sufficient and you want better encapsulation</li></ul>",
+      "examples": [
+        "Cents&amp; operator+=(const Cents&amp; c);  // Member: modifies *this",
+        "friend Cents operator+(const Cents&amp; c1, const Cents&amp; c2);  // Friend: needs private access",
+        "Cents operator+(const Cents&amp; c1, const Cents&amp; c2);  // Normal: uses public interface"
+      ],
+      "source": "21.3 - Overloading operators using normal functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_3_008",
+      "lesson": "21.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "encapsulation"
+      ],
+      "front": "Does using normal functions for operator overloading break encapsulation?",
+      "back": "No. Normal functions maintain encapsulation by only accessing public members. This is actually better encapsulation than friend functions, which can access private members. However, it may require adding public accessor functions.",
+      "source": "21.3 - Overloading operators using normal functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch21_3_009",
+      "lesson": "21.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "implicit-conversions"
+      ],
+      "text": "Both friend functions and normal functions allow {{c1::implicit conversions}} on both the left and right operands, unlike member functions which only allow conversions on the {{c2::right operand}}.",
+      "source": "21.3 - Overloading operators using normal functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_3_010",
+      "lesson": "21.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "comparison"
+      ],
+      "question": "Which implementation is better and why?",
+      "code": "// Version 1: Friend\nfriend bool operator==(const Cents&amp; c1, const Cents&amp; c2) {\n    return c1.m_cents == c2.m_cents;\n}\n\n// Version 2: Normal\nbool operator==(const Cents&amp; c1, const Cents&amp; c2) {\n    return c1.getCents() == c2.getCents();\n}",
+      "answer": "Friend (Version 1) is slightly more efficient with direct member access. Normal (Version 2) has better encapsulation. Choose based on whether you need direct access or prefer loose coupling.",
+      "explanation": "Friend functions are tightly coupled to the class implementation. Normal functions depend only on the public interface, making them more maintainable if implementation changes.",
+      "source": "21.3 - Overloading operators using normal functions",
+      "difficulty": "hard"
+    }
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "chapter": "Chapter 8",
+  "chapter_title": "Control Flow",
+  "lesson": "8.1",
+  "lesson_title": "Control flow introduction",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch8_1_001",
+      "lesson": "8.1",
+      "type": "basic",
+      "tags": ["cpp", "control-flow", "fundamentals"],
+      "front": "What is an execution path in a C++ program?",
+      "back": "The specific sequence of statements that the CPU executes when running a program.",
+      "source": "8.1 - Control flow introduction",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_1_002",
+      "lesson": "8.1",
+      "type": "basic",
+      "tags": ["cpp", "control-flow", "fundamentals"],
+      "front": "What is a straight-line program?",
+      "back": "A program that takes the same execution path (executes the same statements in the same order) every time it is run.",
+      "source": "8.1 - Control flow introduction",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_1_003",
+      "lesson": "8.1",
+      "type": "cloze",
+      "tags": ["cpp", "control-flow", "terminology"],
+      "text": "{{c1::Control flow statements}} (also called {{c2::flow control statements}}) allow the programmer to change the normal path of execution through the program.",
+      "source": "8.1 - Control flow introduction",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_1_004",
+      "lesson": "8.1",
+      "type": "basic",
+      "tags": ["cpp", "control-flow", "terminology"],
+      "front": "What is branching in the context of control flow?",
+      "back": "When a control flow statement causes the point of execution to change to a non-sequential statement.",
+      "source": "8.1 - Control flow introduction",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_1_005",
+      "lesson": "8.1",
+      "type": "cloze",
+      "tags": ["cpp", "control-flow", "categories"],
+      "text": "The six categories of flow control in C++ are: {{c1::conditional statements}}, {{c2::jumps}}, {{c3::function calls}}, {{c4::loops}}, {{c5::halts}}, and {{c6::exceptions}}.",
+      "source": "8.1 - Control flow introduction",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_1_006",
+      "lesson": "8.1",
+      "type": "concept",
+      "tags": ["cpp", "control-flow", "categories"],
+      "concept": "Categories of control flow statements",
+      "explanation": "C++ provides six categories of flow control:<ul><li><strong>Conditional statements</strong>: Execute code only if a condition is met (if, else, switch)</li><li><strong>Jumps</strong>: Start executing at another location (goto, break, continue)</li><li><strong>Function calls</strong>: Jump to another location and back</li><li><strong>Loops</strong>: Repeatedly execute code (while, do-while, for, ranged-for)</li><li><strong>Halts</strong>: Terminate the program (std::exit(), std::abort())</li><li><strong>Exceptions</strong>: Error handling (try, throw, catch)</li></ul>",
+      "examples": [
+        "if (x &gt; 0) { /* conditional */ }",
+        "while (x &lt; 10) { /* loop */ }",
+        "goto label; /* jump */"
+      ],
+      "source": "8.1 - Control flow introduction",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_1_007",
+      "lesson": "8.1",
+      "type": "cloze",
+      "tags": ["cpp", "control-flow", "keywords"],
+      "text": "Conditional statements in C++ are implemented by {{c1::if}}, {{c2::else}}, and {{c3::switch}}.",
+      "source": "8.1 - Control flow introduction",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_1_008",
+      "lesson": "8.1",
+      "type": "cloze",
+      "tags": ["cpp", "control-flow", "keywords"],
+      "text": "Jump statements in C++ are {{c1::goto}}, {{c2::break}}, and {{c3::continue}}.",
+      "source": "8.1 - Control flow introduction",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_1_009",
+      "lesson": "8.1",
+      "type": "cloze",
+      "tags": ["cpp", "loops", "keywords"],
+      "text": "The four loop types in C++ are {{c1::while}}, {{c2::do-while}}, {{c3::for}}, and {{c4::ranged-for}} loops.",
+      "source": "8.1 - Control flow introduction",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_1_010",
+      "lesson": "8.1",
+      "type": "cloze",
+      "tags": ["cpp", "halts", "functions"],
+      "text": "To terminate a program early, you can use {{c1::std::exit()}} or {{c2::std::abort()}}.",
+      "source": "8.1 - Control flow introduction",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_1_011",
+      "lesson": "8.1",
+      "type": "cloze",
+      "tags": ["cpp", "exceptions", "keywords"],
+      "text": "Exception handling in C++ uses {{c1::try}}, {{c2::throw}}, and {{c3::catch}}.",
+      "source": "8.1 - Control flow introduction",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_1_012",
+      "lesson": "8.1",
+      "type": "basic",
+      "tags": ["cpp", "control-flow", "best-practices"],
+      "front": "Why are control flow statements important in programming?",
+      "back": "They allow programs to respond to different conditions and user input dynamically, rather than executing the same sequence every time. Without them, you're restricted to straight-line programs that can't handle variable input or conditions.",
+      "source": "8.1 - Control flow introduction",
+      "difficulty": "medium"
+    }
+  ]
+}

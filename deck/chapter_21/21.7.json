@@ -1,0 +1,181 @@
+{
+  "chapter": "Chapter 21",
+  "chapter_title": "Operator Overloading",
+  "lesson": "21.7",
+  "lesson_title": "Overloading the comparison operators",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch21_7_001",
+      "lesson": "21.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "comparison"
+      ],
+      "text": "The six comparison operators are: {{c1::==}}, {{c2::!=}}, {{c3::&lt;}}, {{c4::&gt;}}, {{c5::&lt;=}}, and {{c6::&gt;=}}.",
+      "source": "21.7 - Overloading the comparison operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch21_7_002",
+      "lesson": "21.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "comparison"
+      ],
+      "front": "What should comparison operators return?",
+      "back": "Comparison operators should return bool. true if the comparison is true, false otherwise. They should not modify either operand and should take parameters by const reference.",
+      "source": "21.7 - Overloading the comparison operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch21_7_003",
+      "lesson": "21.7",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "comparison"
+      ],
+      "question": "What does this comparison operator do?",
+      "code": "friend bool operator==(const Cents&amp; c1, const Cents&amp; c2) {\n    return c1.m_cents == c2.m_cents;\n}",
+      "answer": "Compares two Cents objects for equality by comparing their m_cents values. Returns true if equal, false otherwise.",
+      "explanation": "Implemented as friend function for symmetry. Takes const references, returns bool.",
+      "source": "21.7 - Overloading the comparison operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch21_7_004",
+      "lesson": "21.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "comparison"
+      ],
+      "text": "Comparison operators should be implemented as {{c1::friend}} or {{c2::normal}} functions to allow implicit conversions on both operands.",
+      "source": "21.7 - Overloading the comparison operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_7_005",
+      "lesson": "21.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "comparison"
+      ],
+      "front": "Can you implement operator!= in terms of operator==?",
+      "back": "Yes. Common pattern: bool operator!=(const T&amp; lhs, const T&amp; rhs) { return !(lhs == rhs); }. This ensures consistency and reduces code duplication.",
+      "source": "21.7 - Overloading the comparison operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_7_006",
+      "lesson": "21.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "comparison"
+      ],
+      "text": "In C++20, if you define operator{{c1::&lt;=&gt;}} (three-way comparison), the compiler can automatically generate {{c2::all six}} comparison operators.",
+      "source": "21.7 - Overloading the comparison operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_7_007",
+      "lesson": "21.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "comparison"
+      ],
+      "front": "What parameters should operator&lt; take?",
+      "back": "Two const reference parameters: bool operator&lt;(const T&amp; lhs, const T&amp; rhs). Both const because comparison doesn't modify operands. Reference for efficiency.",
+      "source": "21.7 - Overloading the comparison operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch21_7_008",
+      "lesson": "21.7",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "comparison"
+      ],
+      "question": "How would you implement operator&gt; using operator&lt;?",
+      "code": "bool operator&lt;(const Cents&amp; c1, const Cents&amp; c2) {\n    return c1.getCents() &lt; c2.getCents();\n}",
+      "answer": "bool operator&gt;(const Cents&amp; c1, const Cents&amp; c2) { return c2 &lt; c1; }",
+      "explanation": "a &gt; b is equivalent to b &lt; a. Implementing in terms of operator&lt; ensures consistency.",
+      "source": "21.7 - Overloading the comparison operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_7_009",
+      "lesson": "21.7",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "comparison"
+      ],
+      "concept": "Minimizing code duplication in comparison operators",
+      "explanation": "You can implement all six comparison operators from just one or two:<ul><li>Implement operator== and operator&lt;</li><li>operator!= returns !(a == b)</li><li>operator&gt; returns b &lt; a</li><li>operator&lt;= returns !(b &lt; a)</li><li>operator&gt;= returns !(a &lt; b)</li></ul>Or in C++20, just implement operator&lt;=&gt; and operator==.",
+      "examples": [
+        "bool operator!=(const T&amp; a, const T&amp; b) { return !(a == b); }",
+        "bool operator&gt;(const T&amp; a, const T&amp; b) { return b &lt; a; }"
+      ],
+      "source": "21.7 - Overloading the comparison operators",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch21_7_010",
+      "lesson": "21.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "comparison"
+      ],
+      "text": "All comparison operators should take parameters by {{c1::const reference}} and return {{c2::bool}}.",
+      "source": "21.7 - Overloading the comparison operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch21_7_011",
+      "lesson": "21.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "comparison"
+      ],
+      "front": "Why implement comparison operators as friend functions instead of member functions?",
+      "back": "Friend functions allow implicit conversions on both operands and provide symmetry. With member functions, a &lt; 5 works but 5 &lt; a doesn't. Friend functions treat both sides equally.",
+      "source": "21.7 - Overloading the comparison operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_7_012",
+      "lesson": "21.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "comparison"
+      ],
+      "front": "What is the three-way comparison operator in C++20?",
+      "back": "operator&lt;=&gt; (spaceship operator). It returns std::strong_ordering, std::weak_ordering, or std::partial_ordering. The compiler can use it to generate all six comparison operators automatically.",
+      "source": "21.7 - Overloading the comparison operators",
+      "difficulty": "medium"
+    }
+  ]
+}

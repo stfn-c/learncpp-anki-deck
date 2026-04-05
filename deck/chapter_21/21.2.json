@@ -1,0 +1,168 @@
+{
+  "chapter": "Chapter 21",
+  "chapter_title": "Operator Overloading",
+  "lesson": "21.2",
+  "lesson_title": "Overloading the arithmetic operators using friend functions",
+  "total_cards": 11,
+  "cards": [
+    {
+      "id": "ch21_2_001",
+      "lesson": "21.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "friend-functions"
+      ],
+      "text": "When overloading a binary operator as a friend function, you need {{c1::two}} parameters: one for the left operand and one for the right operand.",
+      "source": "21.2 - Overloading the arithmetic operators using friend functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch21_2_002",
+      "lesson": "21.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "syntax"
+      ],
+      "text": "Friend function to overload operator+:<br>{{c1::friend}} Cents {{c2::operator+}}(const Cents&amp; c1, const Cents&amp; c2);",
+      "source": "21.2 - Overloading the arithmetic operators using friend functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch21_2_003",
+      "lesson": "21.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "friend-functions"
+      ],
+      "front": "Why use friend functions for operator overloading instead of member functions?",
+      "back": "Friend functions are preferred when:<ul><li>The left operand is not of your class type (e.g., int + Cents)</li><li>Both operands should be treated symmetrically</li><li>You need to access private members but don't want a member function</li><li>The operator needs to work with implicit conversions on the left operand</li></ul>",
+      "source": "21.2 - Overloading the arithmetic operators using friend functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_2_004",
+      "lesson": "21.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "return-types"
+      ],
+      "front": "What should arithmetic operators (+, -, *, /) typically return?",
+      "back": "Arithmetic operators should typically return a new object by value, not a reference. This is because the result is a temporary object, and returning a reference to a local variable would be undefined behavior.",
+      "source": "21.2 - Overloading the arithmetic operators using friend functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_2_005",
+      "lesson": "21.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "friend-functions"
+      ],
+      "question": "What's the typical pattern for implementing operator+ as a friend?",
+      "code": "class Cents {\n    int m_cents{};\npublic:\n    Cents(int cents) : m_cents{cents} {}\n    friend Cents operator+(const Cents&amp; c1, const Cents&amp; c2);\n};\n\nCents operator+(const Cents&amp; c1, const Cents&amp; c2) {\n    return Cents{ c1.m_cents + c2.m_cents };\n}",
+      "answer": "Declare friend function inside class, define it outside. Takes two const references, returns new object by value containing the sum.",
+      "explanation": "The friend declaration gives the function access to private members. Parameters are const ref for efficiency. Returns by value since result is a new object.",
+      "source": "21.2 - Overloading the arithmetic operators using friend functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_2_006",
+      "lesson": "21.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "best-practices"
+      ],
+      "text": "Arithmetic operator parameters should be passed by {{c1::const reference}} to avoid unnecessary copies and prevent modification of operands.",
+      "source": "21.2 - Overloading the arithmetic operators using friend functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch21_2_007",
+      "lesson": "21.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "compound-operators"
+      ],
+      "front": "Should you implement operator+= if you've implemented operator+?",
+      "back": "Yes. Compound assignment operators (+=, -=, *=, /=) are separate from arithmetic operators and should be implemented independently. They modify the left operand in-place and typically return a reference to *this.",
+      "source": "21.2 - Overloading the arithmetic operators using friend functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_2_008",
+      "lesson": "21.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "operators"
+      ],
+      "text": "Binary operators (like +, -, *, /) take {{c1::two}} parameters when implemented as friend functions, while unary operators (like -, !) take {{c2::one}} parameter.",
+      "source": "21.2 - Overloading the arithmetic operators using friend functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch21_2_009",
+      "lesson": "21.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "friend-functions"
+      ],
+      "question": "Why does this work with friend functions but not member functions?",
+      "code": "Cents c1{ 10 };\nCents c2 = 5 + c1;  // int + Cents\nCents c3 = c1 + 5;  // Cents + int",
+      "answer": "Friend functions allow implicit conversion on both operands. With member functions, only the right operand can be implicitly converted (c1 + 5 works, but 5 + c1 doesn't).",
+      "explanation": "Friend operator+(const Cents&amp;, const Cents&amp;) allows the compiler to convert int to Cents for either parameter, providing symmetry.",
+      "source": "21.2 - Overloading the arithmetic operators using friend functions",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch21_2_010",
+      "lesson": "21.2",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "best-practices"
+      ],
+      "concept": "Best practices for overloading arithmetic operators",
+      "explanation": "Follow these guidelines when overloading arithmetic operators:<ul><li>Use friend functions for symmetry and implicit conversions</li><li>Parameters: pass by const reference</li><li>Return: by value (new object)</li><li>Don't modify operands</li><li>Implement related operators together (+, +=, -, -=, etc.)</li><li>Make behavior consistent with built-in types</li></ul>",
+      "examples": [
+        "friend Cents operator+(const Cents&amp; c1, const Cents&amp; c2);  // Good",
+        "Cents operator+(Cents c1, Cents c2);  // Bad: copies",
+        "void operator+(const Cents&amp; c1, const Cents&amp; c2);  // Bad: returns void"
+      ],
+      "source": "21.2 - Overloading the arithmetic operators using friend functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_2_011",
+      "lesson": "21.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "arithmetic"
+      ],
+      "front": "What are the four basic arithmetic operators typically overloaded together?",
+      "back": "<ul><li>operator+ (addition)</li><li>operator- (subtraction)</li><li>operator* (multiplication)</li><li>operator/ (division)</li></ul>Each should return a new object by value and not modify operands.",
+      "source": "21.2 - Overloading the arithmetic operators using friend functions",
+      "difficulty": "easy"
+    }
+  ]
+}

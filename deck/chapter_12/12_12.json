@@ -1,0 +1,147 @@
+{
+  "chapter": "Chapter 12",
+  "chapter_title": "Compound Types: References and Pointers",
+  "lesson": "12.12",
+  "lesson_title": "Return by reference and return by address",
+  "total_cards": 9,
+  "cards": [
+    {
+      "id": "ch12_12_001",
+      "lesson": "12.12",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "references",
+        "functions",
+        "syntax"
+      ],
+      "text": "Return by reference syntax: {{c1::int&amp; getElement()}}. This returns a {{c2::reference}} to an object, not a copy.",
+      "source": "12.12 - Return by reference and return by address",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_12_002",
+      "lesson": "12.12",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "references",
+        "functions",
+        "common-mistakes"
+      ],
+      "front": "What is a dangling reference?",
+      "back": "A dangling reference is a reference to an object that has been destroyed. This happens when returning a reference to a local variable, causing undefined behavior.",
+      "source": "12.12 - Return by reference and return by address",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_12_003",
+      "lesson": "12.12",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "references",
+        "functions",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this code?",
+      "code": "int&amp; getLocal() {<br>    int x = 5;<br>    return x;  // danger!<br>}",
+      "answer": "Returns a reference to a local variable. x is destroyed when function returns, creating a dangling reference.",
+      "explanation": "Never return a reference to a local variable - it will be destroyed, leaving the reference invalid.",
+      "source": "12.12 - Return by reference and return by address",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_12_004",
+      "lesson": "12.12",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "references",
+        "functions",
+        "best-practices"
+      ],
+      "text": "It's safe to return a reference to an object passed by {{c1::reference}} or to a {{c2::static}} or {{c3::global}} variable, but never to a {{c4::local}} variable.",
+      "source": "12.12 - Return by reference and return by address",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_12_005",
+      "lesson": "12.12",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "references",
+        "functions"
+      ],
+      "question": "Why is this code safe?",
+      "code": "int&amp; max(int&amp; a, int&amp; b) {<br>    return (a &gt; b) ? a : b;<br>}",
+      "answer": "Safe because it returns a reference to a parameter, which exists in the caller's scope and won't be destroyed.",
+      "explanation": "The returned reference points to an object that outlives the function call.",
+      "source": "12.12 - Return by reference and return by address",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_12_006",
+      "lesson": "12.12",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "pointers",
+        "references",
+        "functions"
+      ],
+      "front": "What is a dangling pointer?",
+      "back": "A dangling pointer is a pointer to an object that has been destroyed. Like dangling references, this causes undefined behavior when dereferenced.",
+      "source": "12.12 - Return by reference and return by address",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_12_007",
+      "lesson": "12.12",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "references",
+        "functions",
+        "best-practices"
+      ],
+      "concept": "Safe return by reference patterns",
+      "explanation": "Safe to return reference to:<ul><li>Reference parameter (lives in caller scope)</li><li>Static variable (persists after return)</li><li>Global variable (persists after return)</li><li>Dynamically allocated memory (manual management)</li></ul>NEVER return reference to local variable!",
+      "examples": [
+        "int& max(int& a, int& b) { return (a>b)?a:b; }  // Safe",
+        "int& getStatic() { static int x=5; return x; }  // Safe",
+        "int& getBad() { int x=5; return x; }            // DANGER!"
+      ],
+      "source": "12.12 - Return by reference and return by address",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch12_12_008",
+      "lesson": "12.12",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "references",
+        "functions",
+        "common-mistakes"
+      ],
+      "text": "A {{c1::dangling}} reference occurs when returning a reference to a {{c2::local variable}} that gets {{c3::destroyed}} when the function returns.",
+      "source": "12.12 - Return by reference and return by address",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_12_009",
+      "lesson": "12.12",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "references",
+        "functions"
+      ],
+      "text": "Safe to return reference to: {{c1::reference parameter}}, {{c2::static}} variable, or {{c3::global}} variable - but never a {{c4::local}} variable.",
+      "source": "12.12 - Return by reference and return by address",
+      "difficulty": "hard"
+    }
+  ]
+}

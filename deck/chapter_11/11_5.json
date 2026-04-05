@@ -1,0 +1,188 @@
+{
+  "chapter": "Chapter 11",
+  "chapter_title": "Function Overloading and Function Templates",
+  "lesson": "11.5",
+  "lesson_title": "Default arguments",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch11_5_001",
+      "lesson": "11.5",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "functions",
+        "parameters"
+      ],
+      "front": "Default argument",
+      "back": "A default value provided for a function parameter that will be used if no argument is supplied by the caller",
+      "source": "11.5 - Default arguments",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_5_002",
+      "lesson": "11.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "syntax"
+      ],
+      "text": "To declare a default argument: {{c1::void print(int x = 10);}}",
+      "source": "11.5 - Default arguments",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_5_003",
+      "lesson": "11.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "functions"
+      ],
+      "question": "What does this code output?",
+      "code": "void print(int x = 5) {\n    std::cout &lt;&lt; x;\n}\n\nprint();    // ?\nprint(10);  // ?",
+      "answer": "5<br>10",
+      "explanation": "print() uses the default argument 5. print(10) uses the supplied argument 10.",
+      "source": "11.5 - Default arguments",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_5_004",
+      "lesson": "11.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "functions",
+        "parameters"
+      ],
+      "front": "Where must default arguments be placed in a parameter list?",
+      "back": "Default arguments must be the rightmost parameters. All parameters with default arguments must be consecutive and at the end of the parameter list.",
+      "source": "11.5 - Default arguments",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_5_005",
+      "lesson": "11.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "functions",
+        "common-mistakes"
+      ],
+      "question": "Is this function declaration valid?",
+      "code": "void print(int x = 5, int y, int z = 10);",
+      "answer": "No, it is invalid.",
+      "explanation": "Default arguments must be rightmost. You cannot have a non-default parameter (y) after a default parameter (x).",
+      "source": "11.5 - Default arguments",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_5_006",
+      "lesson": "11.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "parameters"
+      ],
+      "text": "Default arguments can only be declared {{c1::once}}, typically in the {{c2::forward declaration}} in the header file.",
+      "source": "11.5 - Default arguments",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_5_007",
+      "lesson": "11.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "functions",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this code?",
+      "code": "// header.h\nvoid print(int x = 5);\n\n// source.cpp\nvoid print(int x = 5) {\n    std::cout &lt;&lt; x;\n}",
+      "answer": "The default argument is declared twice (in both declaration and definition).",
+      "explanation": "Default arguments should only be specified once, in the forward declaration, not in the definition.",
+      "source": "11.5 - Default arguments",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_5_008",
+      "lesson": "11.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "functions",
+        "parameters"
+      ],
+      "front": "Can you have multiple parameters with default arguments?",
+      "back": "Yes, as long as they are all consecutive and at the rightmost end of the parameter list.",
+      "source": "11.5 - Default arguments",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_5_009",
+      "lesson": "11.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "functions"
+      ],
+      "question": "How many ways can you call this function?",
+      "code": "void print(int x, int y = 2, int z = 3);",
+      "answer": "Three ways: print(1), print(1, 2), print(1, 2, 3)",
+      "explanation": "You must provide x, but y and z are optional. You can provide 1, 2, or 3 arguments total.",
+      "source": "11.5 - Default arguments",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_5_010",
+      "lesson": "11.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "parameters"
+      ],
+      "text": "When using default arguments with forward declarations, put the default values in the {{c1::forward declaration}}, not the {{c2::function definition}}.",
+      "source": "11.5 - Default arguments",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_5_011",
+      "lesson": "11.5",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "functions",
+        "best-practices"
+      ],
+      "concept": "When to use default arguments vs function overloading",
+      "explanation": "Use default arguments when you have parameters that commonly use the same value. Use function overloading when you need different behavior for different parameter types or when the logic differs significantly.",
+      "examples": [
+        "// Good use of default arguments",
+        "void openFile(const char* filename, bool readOnly = true);",
+        "",
+        "// Better as overloads (different behavior)",
+        "int add(int x, int y);",
+        "double add(double x, double y);"
+      ],
+      "source": "11.5 - Default arguments",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_5_012",
+      "lesson": "11.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "functions",
+        "parameters"
+      ],
+      "front": "Can you skip a middle default argument and only provide the last one when calling a function?",
+      "back": "No. Arguments are matched left to right. You cannot skip middle arguments; you can only omit arguments from right to left.",
+      "source": "11.5 - Default arguments",
+      "difficulty": "medium"
+    }
+  ]
+}

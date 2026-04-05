@@ -1,0 +1,106 @@
+{
+  "chapter": "Chapter 9",
+  "chapter_title": "Error Detection and Handling",
+  "lesson": "9.x",
+  "lesson_title": "Chapter 9 summary and quiz",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "ch9_x_001",
+      "lesson": "9.x",
+      "type": "cloze",
+      "tags": ["cpp", "testing", "terminology"],
+      "text": "{{c1::Scope creep}} occurs when a project's capabilities grow beyond what was originally intended at the start of the project or project phase.",
+      "source": "9.x - Chapter 9 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch9_x_002",
+      "lesson": "9.x",
+      "type": "cloze",
+      "tags": ["cpp", "testing", "terminology"],
+      "text": "{{c1::Software verification}} is the process of testing whether or not the software works as expected in all cases.",
+      "source": "9.x - Chapter 9 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch9_x_003",
+      "lesson": "9.x",
+      "type": "cloze",
+      "tags": ["cpp", "testing", "frameworks"],
+      "text": "{{c1::Unit test frameworks}} can help you organize your unit tests by providing consistent structure for writing, maintaining, and executing tests.",
+      "source": "9.x - Chapter 9 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch9_x_004",
+      "lesson": "9.x",
+      "type": "cloze",
+      "tags": ["cpp", "testing", "integration"],
+      "text": "{{c1::Integration testing}} tests the integration of a bunch of units together to ensure they work properly when combined.",
+      "source": "9.x - Chapter 9 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch9_x_005",
+      "lesson": "9.x",
+      "type": "cloze",
+      "tags": ["cpp", "input", "terminology"],
+      "text": "A {{c1::buffer}} is a piece of memory set aside for storing data temporarily while it is moved from one place to another.",
+      "source": "9.x - Chapter 9 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch9_x_006",
+      "lesson": "9.x",
+      "type": "cloze",
+      "tags": ["cpp", "streams", "terminology"],
+      "text": "{{c1::std::cerr}} is an output stream (like std::cout) designed to be used for error messages.",
+      "source": "9.x - Chapter 9 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch9_x_007",
+      "lesson": "9.x",
+      "type": "basic",
+      "tags": ["cpp", "assert", "error-handling"],
+      "front": "When should you use assertions vs error handling?",
+      "back": "Assertions should be used to document cases that should be logically impossible (programming errors). Error handling should be used to handle cases that are possible (runtime errors).",
+      "source": "9.x - Chapter 9 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch9_x_008",
+      "lesson": "9.x",
+      "type": "cloze",
+      "tags": ["cpp", "assert", "runtime"],
+      "text": "In C++, runtime assertions are typically implemented using the {{c1::assert}} preprocessor macro. Assertions are usually turned off in {{c2::non-debug}} code.",
+      "source": "9.x - Chapter 9 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch9_x_009",
+      "lesson": "9.x",
+      "type": "cloze",
+      "tags": ["cpp", "assert", "compile-time"],
+      "text": "A {{c1::static_assert}} is an assertion that is evaluated at {{c2::compile-time}}.",
+      "source": "9.x - Chapter 9 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch9_x_010",
+      "lesson": "9.x",
+      "type": "concept",
+      "tags": ["cpp", "testing", "review"],
+      "concept": "Key concepts from Chapter 9",
+      "explanation": "Chapter 9 covers error detection and handling:<ul><li>Testing strategies: unit testing, integration testing, code coverage (statement, branch, loop)</li><li>Common semantic errors: conditional logic, infinite loops, off-by-one, operator precedence, floating point precision, integer division, null statements, assignment vs equality</li><li>Error handling strategies: handle within function, pass to caller, halt program, throw exception</li><li>Input validation: robust programs validate input, handle extraction failures, clear error states</li><li>Assertions: preconditions, invariants, postconditions; assert for programming errors, error handling for runtime errors</li></ul>",
+      "examples": [
+        "assert(y != 0);  // Precondition",
+        "if (!std::cin) { std::cin.clear(); ignoreLine(); }  // Input validation",
+        "static_assert(sizeof(int) &gt;= 4);  // Compile-time check"
+      ],
+      "source": "9.x - Chapter 9 summary and quiz",
+      "difficulty": "hard"
+    }
+  ]
+}

@@ -1,0 +1,214 @@
+{
+  "chapter": "Chapter 6",
+  "chapter_title": "Operators",
+  "lesson": "6.4",
+  "lesson_title": "Increment/decrement operators, and side effects",
+  "total_cards": 14,
+  "cards": [
+    {
+      "id": "ch6_4_001",
+      "lesson": "6.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operators",
+        "increment"
+      ],
+      "text": "The prefix increment operator {{c1::++x}} increments x and returns the {{c2::new}} value, while postfix {{c3::x++}} increments x but returns the {{c4::old}} value.",
+      "source": "6.4 - Increment/decrement operators, and side effects",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch6_4_002",
+      "lesson": "6.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operators",
+        "increment"
+      ],
+      "question": "What does this code output?",
+      "code": "int x = 5;\nstd::cout &lt;&lt; ++x &lt;&lt; '\\n';\nstd::cout &lt;&lt; x;",
+      "answer": "6\n6",
+      "explanation": "++x increments x to 6 and returns 6 (prefix increments first). x remains 6.",
+      "source": "6.4 - Increment/decrement operators, and side effects",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch6_4_003",
+      "lesson": "6.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operators",
+        "increment"
+      ],
+      "question": "What does this code output?",
+      "code": "int x = 5;\nstd::cout &lt;&lt; x++ &lt;&lt; '\\n';\nstd::cout &lt;&lt; x;",
+      "answer": "5\n6",
+      "explanation": "x++ returns the old value (5) before incrementing, then x is incremented to 6.",
+      "source": "6.4 - Increment/decrement operators, and side effects",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch6_4_004",
+      "lesson": "6.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operators",
+        "side-effects"
+      ],
+      "front": "What is a side effect in C++?",
+      "back": "When an expression modifies some state or has an observable effect beyond producing a value. Examples: modifying a variable, I/O operations, calling functions that modify state.",
+      "source": "6.4 - Increment/decrement operators, and side effects",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_4_005",
+      "lesson": "6.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operators",
+        "best-practices"
+      ],
+      "text": "You should {{c1::strongly prefer}} prefix increment (++x) over postfix (x++) because prefix is {{c2::more efficient}} and doesn't create a temporary copy.",
+      "source": "6.4 - Increment/decrement operators, and side effects",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_4_006",
+      "lesson": "6.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operators",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this code?",
+      "code": "int x = 1;\nint y = ++x + ++x;",
+      "answer": "Undefined behavior: x is modified twice in the same expression",
+      "explanation": "Modifying the same variable more than once in a single expression without an intervening sequence point causes undefined behavior.",
+      "source": "6.4 - Increment/decrement operators, and side effects",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch6_4_007",
+      "lesson": "6.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operators",
+        "decrement"
+      ],
+      "text": "The decrement operators are {{c1::--x}} (prefix) and {{c2::x--}} (postfix). They {{c3::decrease}} the value by 1.",
+      "source": "6.4 - Increment/decrement operators, and side effects",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_4_008",
+      "lesson": "6.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operators",
+        "side-effects"
+      ],
+      "front": "Why is the order of evaluation for function arguments important with side effects?",
+      "back": "Function arguments can be evaluated in any order. If multiple arguments have side effects on the same variable, the result is undefined behavior.",
+      "source": "6.4 - Increment/decrement operators, and side effects",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch6_4_009",
+      "lesson": "6.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operators",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this code?",
+      "code": "int x = 5;\nadd(x, ++x);",
+      "answer": "Undefined behavior: x is evaluated and modified in function arguments",
+      "explanation": "The order of argument evaluation is unspecified. x might be 5 or 6 depending on which argument is evaluated first. This is undefined behavior.",
+      "source": "6.4 - Increment/decrement operators, and side effects",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch6_4_010",
+      "lesson": "6.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operators",
+        "syntax"
+      ],
+      "text": "To increment x by 1, you can use {{c1::++x}}, {{c2::x++}}, {{c3::x += 1}}, or {{c4::x = x + 1}}. The first option (++x) is preferred.",
+      "source": "6.4 - Increment/decrement operators, and side effects",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_4_011",
+      "lesson": "6.4",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "operators",
+        "best-practices",
+        "gotchas"
+      ],
+      "concept": "Avoiding side effects in complex expressions",
+      "explanation": "Do not use a variable that has a side effect applied more than once in a given statement. This causes undefined behavior and makes code hard to understand.",
+      "examples": [
+        "int y = ++x + ++x;     // WRONG: UB",
+        "add(x, ++x);           // WRONG: UB",
+        "x = x++;               // WRONG: UB",
+        "++x; int y = x + x;    // OK: separate statements"
+      ],
+      "source": "6.4 - Increment/decrement operators, and side effects",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch6_4_012",
+      "lesson": "6.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operators",
+        "increment"
+      ],
+      "front": "When is it acceptable to use postfix increment (x++) instead of prefix (++x)?",
+      "back": "When you specifically need the old value before incrementing, such as in array[index++]. Otherwise, prefer prefix.",
+      "source": "6.4 - Increment/decrement operators, and side effects",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch6_4_013",
+      "lesson": "6.4",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "operators"
+      ],
+      "front": "++x",
+      "back": "Prefix increment: increments x, returns new value",
+      "source": "6.4 - Increment/decrement operators, and side effects",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_4_014",
+      "lesson": "6.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operators",
+        "increment"
+      ],
+      "text": "Prefix increment {{c1::++x}} returns the {{c2::new}} value, while postfix {{c3::x++}} returns the {{c4::old}} value before incrementing.",
+      "source": "6.4 - Increment/decrement operators, and side effects",
+      "difficulty": "easy"
+    }
+  ]
+}

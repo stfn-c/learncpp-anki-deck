@@ -1,0 +1,126 @@
+{
+  "chapter": "Chapter 1",
+  "chapter_title": "C++ Basics: Functions and Files",
+  "lesson": "1.10",
+  "lesson_title": "Introduction to expressions",
+  "total_cards": 11,
+  "cards": [
+    {
+      "id": "ch1_10_001",
+      "lesson": "1.10",
+      "type": "basic",
+      "tags": ["cpp", "expressions", "fundamentals"],
+      "front": "What is an expression in C++?",
+      "back": "An expression is a combination of literals, variables, operators, and function calls that calculates a single value. Every expression produces a value as a result.",
+      "source": "1.10 - Introduction to expressions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_10_002",
+      "lesson": "1.10",
+      "type": "cloze",
+      "tags": ["cpp", "expressions", "examples"],
+      "text": "Examples of expressions: {{c1::2 + 3}} (evaluates to 5), {{c2::x}} (evaluates to the value of x), {{c3::5}} (evaluates to 5).",
+      "source": "1.10 - Introduction to expressions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_10_003",
+      "lesson": "1.10",
+      "type": "basic",
+      "tags": ["cpp", "expressions", "terminology"],
+      "front": "What is the difference between an expression and a statement?",
+      "back": "An expression calculates a value. A statement is a complete instruction that causes some action. An expression statement is an expression followed by a semicolon (e.g., <code>x = 5;</code>).",
+      "source": "1.10 - Introduction to expressions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch1_10_004",
+      "lesson": "1.10",
+      "type": "cloze",
+      "tags": ["cpp", "expressions", "terminology"],
+      "text": "The process of executing an expression to produce a value is called {{c1::evaluation}}. The single value produced is called the {{c2::result}}.",
+      "source": "1.10 - Introduction to expressions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_10_005",
+      "lesson": "1.10",
+      "type": "code",
+      "tags": ["cpp", "expressions", "evaluation"],
+      "question": "What value does this expression evaluate to?",
+      "code": "2 + 3 * 4",
+      "answer": "14",
+      "explanation": "Following operator precedence, multiplication happens first: 3 * 4 = 12, then addition: 2 + 12 = 14.",
+      "source": "1.10 - Introduction to expressions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch1_10_006",
+      "lesson": "1.10",
+      "type": "basic",
+      "tags": ["cpp", "expressions", "statements"],
+      "front": "Can a single expression be used as a complete statement?",
+      "back": "Yes. An expression followed by a semicolon becomes an expression statement. Example: <code>2 + 3;</code> is a valid (though useless) statement.",
+      "source": "1.10 - Introduction to expressions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_10_007",
+      "lesson": "1.10",
+      "type": "code",
+      "tags": ["cpp", "expressions", "assignment"],
+      "question": "In the statement <code>x = 2 + 3;</code>, which part is the expression?",
+      "answer": "2 + 3 is an expression (evaluates to 5)<br>x = 2 + 3 is also an expression (assignment expression)<br>The whole line with semicolon is an expression statement",
+      "explanation": "Expressions can be nested. The inner expression (2 + 3) evaluates first, then the assignment expression (x = 5) evaluates, then the semicolon makes it a statement.",
+      "source": "1.10 - Introduction to expressions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch1_10_008",
+      "lesson": "1.10",
+      "type": "cloze",
+      "tags": ["cpp", "expressions", "terminology"],
+      "text": "Expressions that don't produce a useful result (like {{c1::2 + 3;}}) are called {{c2::discarded-value}} expressions.",
+      "source": "1.10 - Introduction to expressions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch1_10_009",
+      "lesson": "1.10",
+      "type": "basic",
+      "tags": ["cpp", "expressions", "side-effects"],
+      "front": "What is a side effect in C++?",
+      "back": "A side effect is when an expression (or statement) changes program state in a way that persists after the expression evaluates. Examples include modifying a variable's value or outputting to console.",
+      "source": "1.10 - Introduction to expressions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch1_10_010",
+      "lesson": "1.10",
+      "type": "code",
+      "tags": ["cpp", "expressions", "side-effects"],
+      "question": "Which of these expressions has a side effect?",
+      "code": "// Expression 1:\n2 + 3\n\n// Expression 2:\nx = 5",
+      "answer": "Expression 2 (x = 5) has a side effect",
+      "explanation": "Expression 1 (2 + 3) just calculates a value with no lasting effect. Expression 2 (x = 5) modifies the variable x, which is a side effect that persists after the expression evaluates.",
+      "source": "1.10 - Introduction to expressions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch1_10_011",
+      "lesson": "1.10",
+      "type": "concept",
+      "tags": ["cpp", "expressions", "best-practices"],
+      "concept": "Why understanding expressions matters for writing C++ code",
+      "explanation": "Understanding expressions is fundamental because:<ul><li>Expressions are the building blocks of most statements</li><li>You need to understand evaluation order to predict program behavior</li><li>Debugging requires understanding what values expressions produce</li><li>Complex expressions can be broken down into simpler sub-expressions</li><li>Knowing when expressions have side effects prevents bugs</li></ul>",
+      "examples": [
+        "int total = price * quantity + tax; // Multiple expressions",
+        "if (x &gt; 10) // Expression in condition",
+        "std::cout &lt;&lt; x + y; // Expression as output"
+      ],
+      "source": "1.10 - Introduction to expressions",
+      "difficulty": "medium"
+    }
+  ]
+}

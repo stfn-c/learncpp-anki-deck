@@ -1,0 +1,130 @@
+{
+  "chapter": "Chapter 12",
+  "chapter_title": "Compound Types: References and Pointers",
+  "lesson": "12.14",
+  "lesson_title": "Type deduction with pointers, references, and const",
+  "total_cards": 8,
+  "cards": [
+    {
+      "id": "ch12_14_001",
+      "lesson": "12.14",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "auto",
+        "type-deduction"
+      ],
+      "text": "When using {{c1::auto}}, top-level const and references are {{c2::dropped}}. Use {{c3::auto&amp;}} to deduce a reference type and {{c4::const auto&amp;}} for const reference.",
+      "source": "12.14 - Type deduction with pointers, references, and const",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_14_002",
+      "lesson": "12.14",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "auto",
+        "type-deduction"
+      ],
+      "question": "What type is deduced for x?",
+      "code": "int&amp; ref = value;<br>auto x = ref;",
+      "answer": "int (not int&amp;). auto drops references.",
+      "explanation": "auto drops references and top-level const. Use auto& to preserve reference.",
+      "source": "12.14 - Type deduction with pointers, references, and const",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_14_003",
+      "lesson": "12.14",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "auto",
+        "type-deduction"
+      ],
+      "question": "What type is deduced for x?",
+      "code": "const int value = 5;<br>auto x = value;",
+      "answer": "int (not const int). auto drops top-level const.",
+      "explanation": "To preserve const, use const auto x = value;",
+      "source": "12.14 - Type deduction with pointers, references, and const",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_14_004",
+      "lesson": "12.14",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "auto",
+        "references",
+        "best-practices"
+      ],
+      "text": "Use {{c1::auto&amp;}} when you want to work with the actual object (not a copy) and {{c2::const auto&amp;}} when you want read-only access without copying.",
+      "source": "12.14 - Type deduction with pointers, references, and const",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_14_005",
+      "lesson": "12.14",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "auto",
+        "pointers"
+      ],
+      "front": "How does auto handle pointers differently from references?",
+      "back": "auto preserves pointers (int* becomes auto = int*) but drops references (int& becomes auto = int). This is because * is part of the type, but & is not.",
+      "source": "12.14 - Type deduction with pointers, references, and const",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_14_006",
+      "lesson": "12.14",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "auto",
+        "type-deduction",
+        "best-practices"
+      ],
+      "concept": "Auto type deduction rules",
+      "explanation": "Key rules for auto:<ul><li>auto drops references - use auto& to keep</li><li>auto drops top-level const - use const auto</li><li>auto preserves pointers and low-level const</li><li>const auto& for read-only without copy</li><li>auto& for modifiable reference</li></ul>",
+      "examples": [
+        "int& ref = x; auto a = ref;      // int (drops &)",
+        "const int c = 5; auto b = c;     // int (drops const)",
+        "int* ptr = &x; auto d = ptr;     // int* (keeps *)",
+        "auto& e = x;                     // int& (explicit &)",
+        "const auto& f = x;               // const int& (explicit)"
+      ],
+      "source": "12.14 - Type deduction with pointers, references, and const",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch12_14_007",
+      "lesson": "12.14",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "auto",
+        "const"
+      ],
+      "text": "To preserve constness with auto, use {{c1::const auto}} or {{c2::const auto&amp;}}. Plain auto {{c3::drops}} top-level const.",
+      "source": "12.14 - Type deduction with pointers, references, and const",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_14_008",
+      "lesson": "12.14",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "auto",
+        "references"
+      ],
+      "text": "Use {{c1::auto&amp;}} to deduce a reference type and {{c2::const auto&amp;}} for a const reference. Plain auto {{c3::drops}} the reference.",
+      "source": "12.14 - Type deduction with pointers, references, and const",
+      "difficulty": "medium"
+    }
+  ]
+}

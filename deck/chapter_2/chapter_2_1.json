@@ -1,0 +1,185 @@
+{
+  "chapter": "Chapter 2",
+  "chapter_title": "C++ Basics: Functions and Files",
+  "lesson": "2.1",
+  "lesson_title": "Introduction to functions",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch2_1_001",
+      "lesson": "2.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "syntax"
+      ],
+      "text": "The basic syntax for defining a user-defined function is: {{c1::returnType}} {{c2::functionName}}() { }",
+      "source": "2.1 - Introduction to functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_1_002",
+      "lesson": "2.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "terminology"
+      ],
+      "source": "2.1 - Introduction to functions",
+      "difficulty": "easy",
+      "text": "The function that initiates a function call is called the {{c1::caller}}. The function being called is the {{c2::callee}}."
+    },
+    {
+      "id": "ch2_1_003",
+      "lesson": "2.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "terminology"
+      ],
+      "source": "2.1 - Introduction to functions",
+      "difficulty": "easy",
+      "text": "The curly braces and statements in-between in a function definition are called the {{c1::function body}}."
+    },
+    {
+      "id": "ch2_1_004",
+      "lesson": "2.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "syntax"
+      ],
+      "text": "To call a function, use the function's name followed by {{c1::parentheses}}, e.g., {{c2::functionName()}}",
+      "source": "2.1 - Introduction to functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_1_005",
+      "lesson": "2.1",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "functions",
+        "common-mistakes"
+      ],
+      "question": "What happens if you forget the parentheses when calling a function?",
+      "code": "void doPrint() { }<br><br>int main() {<br>  doPrint;  // Missing parentheses!<br>  return 0;<br>}",
+      "answer": "The program may not compile. If it does compile, the function will NOT be called.",
+      "explanation": "Forgetting the parentheses after the function name is a common mistake. The parentheses are required to actually call the function.",
+      "source": "2.1 - Introduction to functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_1_006",
+      "lesson": "2.1",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "functions",
+        "execution"
+      ],
+      "question": "What does this program output?",
+      "code": "#include &lt;iostream&gt;<br><br>void doPrint() {<br>  std::cout &lt;&lt; \"In doPrint()\\n\";<br>}<br><br>int main() {<br>  std::cout &lt;&lt; \"Starting main()\\n\";<br>  doPrint();<br>  std::cout &lt;&lt; \"Ending main()\\n\";<br>  return 0;<br>}",
+      "answer": "Starting main()<br>In doPrint()<br>Ending main()",
+      "explanation": "Execution starts in main(), calls doPrint() which prints its message, then returns to main() to print the ending message.",
+      "source": "2.1 - Introduction to functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_1_007",
+      "lesson": "2.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "execution"
+      ],
+      "text": "When a function call is made, the CPU \"{{c1::puts a bookmark}}\" at the current point of execution, executes the called function, then {{c2::returns}} to the bookmarked point.",
+      "source": "2.1 - Introduction to functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_1_008",
+      "lesson": "2.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "reusability"
+      ],
+      "source": "2.1 - Introduction to functions",
+      "difficulty": "easy",
+      "text": "Functions can be called {{c1::multiple times}}, and each call will execute the function body {{c2::independently}}."
+    },
+    {
+      "id": "ch2_1_009",
+      "lesson": "2.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "nested"
+      ],
+      "source": "2.1 - Introduction to functions",
+      "difficulty": "medium",
+      "text": "C++ does {{c1::not}} support {{c2::nested functions}} (functions defined inside other functions)."
+    },
+    {
+      "id": "ch2_1_010",
+      "lesson": "2.1",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "functions",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this code?",
+      "code": "#include &lt;iostream&gt;<br><br>int main() {<br>  void foo() {  // Nested function<br>    std::cout &lt;&lt; \"foo!\\n\";<br>  }<br>  foo();<br>  return 0;<br>}",
+      "answer": "Illegal: Functions cannot be nested inside other functions in C++.",
+      "explanation": "C++ does not support nested functions. The function foo() must be defined outside of main() at global scope.",
+      "source": "2.1 - Introduction to functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_1_011",
+      "lesson": "2.1",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "functions",
+        "best-practices"
+      ],
+      "concept": "Why use functions instead of putting all code in main()",
+      "explanation": "Functions provide a way to:<ul><li>Split programs into small, modular chunks</li><li>Make code easier to organize and test</li><li>Reuse code without duplication</li><li>Make programs more manageable as they grow</li></ul>",
+      "examples": [
+        "// Bad: Everything in main()",
+        "int main() { /* 500 lines of code */ }",
+        "",
+        "// Good: Organized into functions",
+        "void processInput() { }",
+        "void calculateResults() { }",
+        "int main() { processInput(); calculateResults(); }"
+      ],
+      "source": "2.1 - Introduction to functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_1_012",
+      "lesson": "2.1",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "functions",
+        "terminology"
+      ],
+      "front": "caller",
+      "back": "The function that initiates a function call (invokes another function)",
+      "source": "2.1 - Introduction to functions",
+      "difficulty": "easy"
+    }
+  ]
+}

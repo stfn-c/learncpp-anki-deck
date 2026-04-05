@@ -1,0 +1,147 @@
+{
+  "chapter": "Chapter 24",
+  "chapter_title": "Inheritance",
+  "lesson": "24.7",
+  "lesson_title": "Calling inherited functions and overriding behavior",
+  "total_cards": 13,
+  "cards": [
+    {
+      "id": "ch24_7_001",
+      "lesson": "24.7",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "function-resolution"],
+      "front": "When a member function is called on a derived class object, where does the compiler look first?",
+      "back": "The compiler first looks in the derived class. If not found there, it walks up the inheritance chain checking each parent class.",
+      "source": "24.7 - Calling inherited functions and overriding behavior",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch24_7_002",
+      "lesson": "24.7",
+      "type": "cloze",
+      "tags": ["cpp", "inheritance", "overriding"],
+      "text": "To modify the way a function defined in a base class works in the derived class, simply {{c1::redefine the function in the derived class}}.",
+      "source": "24.7 - Calling inherited functions and overriding behavior",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch24_7_003",
+      "lesson": "24.7",
+      "type": "code",
+      "tags": ["cpp", "inheritance", "function-resolution"],
+      "question": "What does this code output?",
+      "code": "class Base {\npublic:\n    void identify() const {\n        std::cout &lt;&lt; \"Base::identify()\\n\";\n    }\n};\n\nclass Derived: public Base {\npublic:\n    void identify() const {\n        std::cout &lt;&lt; \"Derived::identify()\\n\";\n    }\n};\n\nint main() {\n    Derived derived{};\n    derived.identify();\n    return 0;\n}",
+      "answer": "Derived::identify()",
+      "explanation": "The derived class has its own identify() function, so that one is called instead of the base class version.",
+      "source": "24.7 - Calling inherited functions and overriding behavior",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch24_7_004",
+      "lesson": "24.7",
+      "type": "cloze",
+      "tags": ["cpp", "inheritance", "scope-resolution"],
+      "text": "To call a base class function from a derived class function with the same name, use: {{c1::Base::functionName()}}",
+      "source": "24.7 - Calling inherited functions and overriding behavior",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch24_7_005",
+      "lesson": "24.7",
+      "type": "code",
+      "tags": ["cpp", "inheritance", "common-mistakes"],
+      "question": "What's wrong with this code?",
+      "code": "class Base {\npublic:\n    void identify() const {\n        std::cout &lt;&lt; \"Base::identify()\\n\";\n    }\n};\n\nclass Derived: public Base {\npublic:\n    void identify() const {\n        std::cout &lt;&lt; \"Derived::identify()\\n\";\n        identify(); // Call base version\n    }\n};",
+      "answer": "This causes infinite recursion",
+      "explanation": "Calling identify() without scope resolution defaults to the current class (Derived::identify()), which calls itself infinitely. Should use Base::identify() instead.",
+      "source": "24.7 - Calling inherited functions and overriding behavior",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_7_006",
+      "lesson": "24.7",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "access-specifiers"],
+      "front": "When you redefine a function in a derived class, does it inherit the access specifier from the base class?",
+      "back": "No, it uses whatever access specifier it is defined under in the derived class. A private function in base can be redefined as public in derived, or vice versa.",
+      "source": "24.7 - Calling inherited functions and overriding behavior",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_7_007",
+      "lesson": "24.7",
+      "type": "cloze",
+      "tags": ["cpp", "inheritance", "overriding"],
+      "text": "The compiler will select the best matching function from the {{c1::most-derived}} class with at least one function with that name.",
+      "source": "24.7 - Calling inherited functions and overriding behavior",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_7_008",
+      "lesson": "24.7",
+      "type": "code",
+      "tags": ["cpp", "inheritance", "overload-resolution"],
+      "question": "Which print() function is called?",
+      "code": "class Base {\npublic:\n    void print(int) { std::cout &lt;&lt; \"Base::print(int)\\n\"; }\n    void print(double) { std::cout &lt;&lt; \"Base::print(double)\\n\"; }\n};\n\nclass Derived: public Base {\npublic:\n    void print(double) { std::cout &lt;&lt; \"Derived::print(double)\"; }\n};\n\nint main() {\n    Derived d{};\n    d.print(5); // Which one?\n    return 0;\n}",
+      "answer": "Derived::print(double)",
+      "explanation": "Because there's at least one print() in Derived, the compiler only considers Derived's functions. Base::print(int) is not even considered, so 5 is implicitly converted to double.",
+      "source": "24.7 - Calling inherited functions and overriding behavior",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch24_7_009",
+      "lesson": "24.7",
+      "type": "cloze",
+      "tags": ["cpp", "inheritance", "using-declaration"],
+      "text": "To make all base class functions with a given name visible in the derived class for overload resolution, use: {{c1::using Base::functionName;}}",
+      "source": "24.7 - Calling inherited functions and overriding behavior",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_7_010",
+      "lesson": "24.7",
+      "type": "concept",
+      "tags": ["cpp", "inheritance", "friend-functions"],
+      "concept": "Calling base class friend functions from derived class",
+      "explanation": "Friend functions aren't part of the class, so scope resolution (Base::) won't work. Instead, use static_cast to temporarily cast the Derived object to a Base reference.",
+      "examples": [
+        "out &lt;&lt; static_cast&lt;const Base&amp;&gt;(derivedObj);",
+        "This calls the Base version of operator&lt;&lt;"
+      ],
+      "source": "24.7 - Calling inherited functions and overriding behavior",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch24_7_011",
+      "lesson": "24.7",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "overriding"],
+      "front": "What happens when a derived class redefines a base class function?",
+      "back": "The derived function hides the base class function. To call the base version, you must use scope resolution (Base::functionName()) or cast to Base.",
+      "source": "24.7 - Calling inherited functions and overriding behavior",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_7_012",
+      "lesson": "24.7",
+      "type": "code",
+      "tags": ["cpp", "inheritance", "using-declaration"],
+      "question": "How does 'using Base::print;' affect overload resolution?",
+      "code": "class Base {\npublic:\n    void print(int) { /*...*/ }\n    void print(double) { /*...*/ }\n};\n\nclass Derived: public Base {\npublic:\n    using Base::print;\n    void print(double) { /*...*/ }\n};\n\nint main() {\n    Derived d{};\n    d.print(5); // Now which one?\n}",
+      "answer": "Base::print(int)",
+      "explanation": "The using declaration makes all Base::print functions visible in Derived for overload resolution, so now Base::print(int) is considered and selected as the best match for integer 5.",
+      "source": "24.7 - Calling inherited functions and overriding behavior",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch24_7_013",
+      "lesson": "24.7",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "function-resolution"],
+      "front": "If a derived class has no function with a given name, where does the compiler look next?",
+      "back": "It walks up the inheritance chain, checking each parent class in turn, until it finds a matching function or reaches the top of the hierarchy.",
+      "source": "24.7 - Calling inherited functions and overriding behavior",
+      "difficulty": "easy"
+    }
+  ]
+}

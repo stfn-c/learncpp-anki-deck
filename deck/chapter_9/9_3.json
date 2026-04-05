@@ -1,0 +1,181 @@
+{
+  "chapter": "Chapter 9",
+  "chapter_title": "Error Detection and Handling",
+  "lesson": "9.3",
+  "lesson_title": "Common semantic errors in C++",
+  "total_cards": 15,
+  "cards": [
+    {
+      "id": "ch9_3_001",
+      "lesson": "9.3",
+      "type": "cloze",
+      "tags": ["cpp", "errors", "terminology"],
+      "text": "A {{c1::conditional logic error}} occurs when the programmer incorrectly codes the logic of a conditional statement or loop condition.",
+      "source": "9.3 - Common semantic errors in C++",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch9_3_002",
+      "lesson": "9.3",
+      "type": "code",
+      "tags": ["cpp", "errors", "common-mistakes"],
+      "question": "What's wrong with this code if the intent is to print only when x is greater than 5?",
+      "code": "if (x &gt;= 5)\n    std::cout &lt;&lt; x &lt;&lt; \" is greater than 5\\n\";",
+      "answer": "Should use &gt; instead of &gt;=. The current code will also print when x equals 5.",
+      "explanation": "Using &gt;= will print when x is 5, but the message says 'greater than 5'. This is a conditional logic error - using the wrong comparison operator.",
+      "source": "9.3 - Common semantic errors in C++",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch9_3_003",
+      "lesson": "9.3",
+      "type": "code",
+      "tags": ["cpp", "errors", "infinite-loops"],
+      "question": "Why does this loop run infinitely?",
+      "code": "int count{ 1 };\nwhile (count &lt;= 10)\n{\n    std::cout &lt;&lt; count &lt;&lt; ' ';\n}",
+      "answer": "The loop never increments count, so count &lt;= 10 is always true.",
+      "explanation": "This is an infinite loop because count is never modified inside the loop body. The condition count &lt;= 10 will never become false.",
+      "source": "9.3 - Common semantic errors in C++",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch9_3_004",
+      "lesson": "9.3",
+      "type": "code",
+      "tags": ["cpp", "errors", "unsigned", "gotchas"],
+      "question": "Why does this countdown loop never terminate?",
+      "code": "for (unsigned int count{ 5 }; count &gt;= 0; --count)\n{\n    if (count == 0)\n        std::cout &lt;&lt; \"blastoff! \";\n    else\n        std::cout &lt;&lt; count &lt;&lt; ' ';\n}",
+      "answer": "count &gt;= 0 can never be false when count is unsigned. After reaching 0 and decrementing, it wraps to 4294967295.",
+      "explanation": "Unsigned integers cannot be negative. When count reaches 0 and is decremented, it wraps around to the maximum unsigned value, so count &gt;= 0 is always true.",
+      "source": "9.3 - Common semantic errors in C++",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch9_3_005",
+      "lesson": "9.3",
+      "type": "cloze",
+      "tags": ["cpp", "errors", "loops"],
+      "text": "An {{c1::off-by-one error}} is an error that occurs when a loop executes {{c2::one too many}} or {{c3::one too few}} times.",
+      "source": "9.3 - Common semantic errors in C++",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch9_3_006",
+      "lesson": "9.3",
+      "type": "code",
+      "tags": ["cpp", "errors", "off-by-one"],
+      "question": "What does this code print (intended to print 1 2 3 4 5)?",
+      "code": "for (int count{ 1 }; count &lt; 5; ++count)\n{\n    std::cout &lt;&lt; count &lt;&lt; ' ';\n}",
+      "answer": "1 2 3 4",
+      "explanation": "This is an off-by-one error. The loop uses &lt; instead of &lt;=, so it stops one iteration early, printing only 1 through 4.",
+      "source": "9.3 - Common semantic errors in C++",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch9_3_007",
+      "lesson": "9.3",
+      "type": "code",
+      "tags": ["cpp", "errors", "operator-precedence"],
+      "question": "What does this code print?",
+      "code": "int x{ 5 };\nint y{ 7 };\nif (!x &gt; y)\n    std::cout &lt;&lt; x &lt;&lt; \" is not greater than \" &lt;&lt; y &lt;&lt; '\\n';\nelse\n    std::cout &lt;&lt; x &lt;&lt; \" is greater than \" &lt;&lt; y &lt;&lt; '\\n';",
+      "answer": "5 is greater than 7",
+      "explanation": "Operator precedence error: ! has higher precedence than &gt;, so this evaluates as (!x) &gt; y, which is (0) &gt; 7, which is false. The else branch executes.",
+      "source": "9.3 - Common semantic errors in C++",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch9_3_008",
+      "lesson": "9.3",
+      "type": "basic",
+      "tags": ["cpp", "errors", "floating-point"],
+      "front": "Why is using operator== problematic with floating point numbers?",
+      "back": "Floating point numbers accumulate small rounding errors from arithmetic operations, so values that should be equal mathematically may not be exactly equal in memory.",
+      "source": "9.3 - Common semantic errors in C++",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch9_3_009",
+      "lesson": "9.3",
+      "type": "code",
+      "tags": ["cpp", "errors", "integer-division"],
+      "question": "What does this code print?",
+      "code": "int x{ 5 };\nint y{ 3 };\nstd::cout &lt;&lt; x &lt;&lt; \" divided by \" &lt;&lt; y &lt;&lt; \" is: \" &lt;&lt; x / y;",
+      "answer": "5 divided by 3 is: 1",
+      "explanation": "This performs integer division because both operands are integers. The fractional part is dropped. To get floating point division, at least one operand must be a floating point type (e.g., use static_cast).",
+      "source": "9.3 - Common semantic errors in C++",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch9_3_010",
+      "lesson": "9.3",
+      "type": "code",
+      "tags": ["cpp", "errors", "null-statements"],
+      "question": "What's wrong with this code?",
+      "code": "if (c == 'y');\n    blowUpWorld();",
+      "answer": "Accidental null statement - the semicolon after the if creates an empty statement, so blowUpWorld() always executes.",
+      "explanation": "The semicolon creates a null statement that is the body of the if. The blowUpWorld() call is not part of the if statement and always executes.",
+      "source": "9.3 - Common semantic errors in C++",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch9_3_011",
+      "lesson": "9.3",
+      "type": "code",
+      "tags": ["cpp", "errors", "compound-statements"],
+      "question": "What's wrong with this code?",
+      "code": "if (c == 'y')\n    std::cout &lt;&lt; \"Okay, here we go...\\n\";\n    blowUpWorld();",
+      "answer": "Missing compound statement (braces). blowUpWorld() always executes because it's not inside the if statement.",
+      "explanation": "Without braces, only the first statement after the if is conditional. The blowUpWorld() call is not part of the if block and always executes.",
+      "source": "9.3 - Common semantic errors in C++",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch9_3_012",
+      "lesson": "9.3",
+      "type": "code",
+      "tags": ["cpp", "errors", "assignment-vs-equality"],
+      "question": "What's wrong with this conditional?",
+      "code": "if (c = 'y')\n    blowUpWorld();",
+      "answer": "Uses assignment (=) instead of equality (==). This assigns 'y' to c, then evaluates to true, always calling blowUpWorld().",
+      "explanation": "The assignment operator returns its left operand. c = 'y' assigns 'y' to c and returns c. 'y' (non-zero) converts to bool true, so the if always executes.",
+      "source": "9.3 - Common semantic errors in C++",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch9_3_013",
+      "lesson": "9.3",
+      "type": "code",
+      "tags": ["cpp", "errors", "function-calls"],
+      "question": "What does this code most likely print?",
+      "code": "int getValue()\n{\n    return 5;\n}\n\nint main()\n{\n    std::cout &lt;&lt; getValue &lt;&lt; '\\n';\n    return 0;\n}",
+      "answer": "1 (or a memory address in hex)",
+      "explanation": "Missing function call operator (). getValue without () gives a function pointer that converts to bool true (which prints as 1), instead of calling the function and printing 5.",
+      "source": "9.3 - Common semantic errors in C++",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch9_3_014",
+      "lesson": "9.3",
+      "type": "cloze",
+      "tags": ["cpp", "errors", "syntax"],
+      "text": "To fix \"forgetting the function call operator\" error, change {{c1::std::cout &lt;&lt; getValue}} to {{c2::std::cout &lt;&lt; getValue()}}.",
+      "source": "9.3 - Common semantic errors in C++",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch9_3_015",
+      "lesson": "9.3",
+      "type": "concept",
+      "tags": ["cpp", "errors", "best-practices"],
+      "concept": "Most common types of semantic errors in C++",
+      "explanation": "The most common semantic errors include:<ul><li>Conditional logic errors (wrong operator: &gt;= vs &gt;, &gt; vs &lt;)</li><li>Infinite loops (forgetting to update loop variable, unsigned wraparound)</li><li>Off-by-one errors (using &lt; instead of &lt;=)</li><li>Incorrect operator precedence (! vs &gt;, &amp;&amp; vs ||)</li><li>Precision issues with floating point types</li><li>Integer division when floating point expected</li><li>Accidental null statements (semicolon after if)</li><li>Missing compound statement (braces)</li><li>Assignment (=) instead of equality (==) in conditionals</li><li>Forgetting function call operator ()</li></ul>",
+      "examples": [
+        "if (x &gt;= 5)  // should be &gt;",
+        "while (count &lt;= 10) { /* forgot ++count */ }",
+        "if (c = 'y')  // should be =="
+      ],
+      "source": "9.3 - Common semantic errors in C++",
+      "difficulty": "hard"
+    }
+  ]
+}

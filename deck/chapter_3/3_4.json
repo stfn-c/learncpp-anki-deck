@@ -1,0 +1,217 @@
+{
+  "chapter": "Chapter 3",
+  "chapter_title": "Debugging C++ Programs",
+  "lesson": "3.4",
+  "lesson_title": "Basic debugging tactics",
+  "total_cards": 14,
+  "cards": [
+    {
+      "id": "ch3_4_001",
+      "lesson": "3.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "debugging",
+        "commenting"
+      ],
+      "text": "To isolate a problem, you can {{c1::comment out}} sections of code and see if the issue {{c2::disappears}}, helping narrow down where the bug is located.",
+      "source": "3.4 - Basic debugging tactics",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_4_002",
+      "lesson": "3.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "debugging",
+        "validation"
+      ],
+      "front": "What are defensive assumptions in programming?",
+      "back": "Validating that your assumptions are correct by adding checks (like assertions or print statements) to verify values are what you expect them to be.",
+      "source": "3.4 - Basic debugging tactics",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_4_003",
+      "lesson": "3.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "debugging",
+        "input"
+      ],
+      "text": "Instead of using interactive input during debugging, use {{c1::hardcoded}} test values so you can quickly {{c2::rerun}} the program with the same inputs.",
+      "source": "3.4 - Basic debugging tactics",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_4_004",
+      "lesson": "3.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "debugging",
+        "preprocessor"
+      ],
+      "question": "What does this debugging code do?",
+      "code": "#define ENABLE_DEBUG\n\n#ifdef ENABLE_DEBUG\nstd::cout &lt;&lt; \"x = \" &lt;&lt; x &lt;&lt; '\\n';\n#endif",
+      "answer": "Conditionally compiles debug output. You can enable/disable all debug prints by defining or commenting out ENABLE_DEBUG.",
+      "explanation": "This allows you to leave debug code in place but easily turn it on/off.",
+      "source": "3.4 - Basic debugging tactics",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_4_005",
+      "lesson": "3.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "debugging",
+        "output"
+      ],
+      "front": "Why should you print both variable names and values when debugging?",
+      "back": "Printing just values can be confusing. Including variable names makes output self-documenting and easier to understand.<br><br>Example: <code>std::cout &lt;&lt; \"x = \" &lt;&lt; x;</code>",
+      "source": "3.4 - Basic debugging tactics",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_4_006",
+      "lesson": "3.4",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "debugging",
+        "binary-search"
+      ],
+      "concept": "Binary search debugging technique",
+      "explanation": "When you don't know where a bug is:<ul><li>Comment out half the code</li><li>If bug persists, it's in active half</li><li>If bug disappears, it's in commented half</li><li>Repeat, dividing the suspect region in half each time</li></ul>",
+      "examples": [
+        "// Start: 100 lines might have bug",
+        "// Comment out lines 50-100 \u2192 still broken? Bug in 1-50",
+        "// Comment out lines 25-50 \u2192 fixed? Bug in 25-50",
+        "// Repeat until found"
+      ],
+      "source": "3.4 - Basic debugging tactics",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_4_007",
+      "lesson": "3.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "debugging",
+        "print"
+      ],
+      "text": "When adding debug print statements, use a {{c1::prefix}} or {{c2::log level}} to distinguish them from normal program output.",
+      "source": "3.4 - Basic debugging tactics",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_4_008",
+      "lesson": "3.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "debugging",
+        "best-practices"
+      ],
+      "front": "What's the advantage of using preprocessor directives for debug output?",
+      "back": "Debug code can be left in the source but easily enabled/disabled. When disabled, it's not compiled, so there's no runtime performance cost.",
+      "source": "3.4 - Basic debugging tactics",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_4_009",
+      "lesson": "3.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "debugging",
+        "common-mistakes"
+      ],
+      "question": "Why might this debug statement not help you?",
+      "code": "std::cout &lt;&lt; x &lt;&lt; y &lt;&lt; z;",
+      "answer": "You can't tell which value is which. Should use: <code>std::cout &lt;&lt; \"x=\" &lt;&lt; x &lt;&lt; \" y=\" &lt;&lt; y &lt;&lt; \" z=\" &lt;&lt; z;</code>",
+      "explanation": "Always label your debug output so you know what you're looking at.",
+      "source": "3.4 - Basic debugging tactics",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_4_010",
+      "lesson": "3.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "debugging",
+        "testing"
+      ],
+      "front": "Why use hardcoded test values instead of user input while debugging?",
+      "back": "Hardcoded values let you quickly rerun the program with identical inputs, making it easier to reproduce bugs and test fixes.",
+      "source": "3.4 - Basic debugging tactics",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_4_011",
+      "lesson": "3.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "debugging",
+        "assumptions"
+      ],
+      "text": "Don't assume your code is {{c1::correct}} - validate your {{c2::assumptions}} by checking that variables contain expected values at key points.",
+      "source": "3.4 - Basic debugging tactics",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_4_012",
+      "lesson": "3.4",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "debugging",
+        "best-practices"
+      ],
+      "concept": "Effective use of debug output",
+      "explanation": "Best practices for debug printing:<ul><li>Print both variable names and values</li><li>Use a distinctive prefix (e.g., \"DEBUG: \")</li><li>Use preprocessor directives to enable/disable</li><li>Print at key checkpoints (function entry/exit, before/after calculations)</li><li>Remove or disable before release</li></ul>",
+      "examples": [
+        "#ifdef DEBUG",
+        "std::cout &lt;&lt; \"DEBUG: x = \" &lt;&lt; x &lt;&lt; '\\n';",
+        "#endif"
+      ],
+      "source": "3.4 - Basic debugging tactics",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_4_013",
+      "lesson": "3.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "debugging",
+        "commenting"
+      ],
+      "text": "The {{c1::binary search}} debugging technique involves commenting out {{c2::half}} the code repeatedly to narrow down the bug location.",
+      "source": "3.4 - Basic debugging tactics",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_4_014",
+      "lesson": "3.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "debugging",
+        "preprocessor"
+      ],
+      "question": "How do you conditionally enable all debug output?",
+      "code": "// At top of file\n{{c1::#define ENABLE_DEBUG}}\n\n// Debug statement\n{{c2::#ifdef}} ENABLE_DEBUG\nstd::cerr &lt;&lt; \"x = \" &lt;&lt; x;\n{{c3::#endif}}",
+      "answer": "Define ENABLE_DEBUG at the top. All #ifdef ENABLE_DEBUG blocks will be compiled. Comment out the #define to disable all debug output.",
+      "explanation": "This allows you to turn all debug code on/off with a single line.",
+      "source": "3.4 - Basic debugging tactics",
+      "difficulty": "medium"
+    }
+  ]
+}

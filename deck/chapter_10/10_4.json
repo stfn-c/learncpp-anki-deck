@@ -1,0 +1,212 @@
+{
+  "chapter": "Chapter 10",
+  "chapter_title": "Type Conversion, Type Aliases, and Type Deduction",
+  "lesson": "10.4",
+  "lesson_title": "Narrowing conversions, list initialization, and constexpr initializers",
+  "total_cards": 14,
+  "cards": [
+    {
+      "id": "ch10_4_001",
+      "lesson": "10.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "brace-initialization",
+        "narrowing-conversion"
+      ],
+      "front": "What is the key safety feature of brace initialization (list initialization) regarding type conversions?",
+      "back": "Brace initialization disallows narrowing conversions that would result in data loss. This prevents common bugs from implicit conversions.",
+      "source": "10.4 - Narrowing conversions, list initialization, and constexpr initializers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_4_002",
+      "lesson": "10.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "brace-initialization",
+        "syntax"
+      ],
+      "text": "Brace initialization (also called {{c1::list initialization}}) disallows {{c2::narrowing conversions}}.",
+      "source": "10.4 - Narrowing conversions, list initialization, and constexpr initializers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_4_003",
+      "lesson": "10.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "brace-initialization",
+        "narrowing-conversion"
+      ],
+      "question": "Which of these compile and which don't?",
+      "code": "int i1 = 3.5;   // 1\nint i2{ 3.5 };  // 2\nint i3 = {3.5}; // 3",
+      "answer": "Line 1 compiles (copy init allows narrowing). Lines 2 and 3 fail (brace init disallows narrowing).",
+      "explanation": "Copy initialization (=) allows narrowing conversions, but brace initialization ({ } or = { }) does not.",
+      "source": "10.4 - Narrowing conversions, list initialization, and constexpr initializers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_4_004",
+      "lesson": "10.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "narrowing-conversion",
+        "constexpr"
+      ],
+      "front": "When does brace initialization allow a narrowing conversion from a larger integral type to a smaller one?",
+      "back": "When the initializer is a constexpr AND the value fits within the range of the smaller type. The compiler can verify at compile-time that no data loss will occur.",
+      "source": "10.4 - Narrowing conversions, list initialization, and constexpr initializers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_4_005",
+      "lesson": "10.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "brace-initialization",
+        "constexpr"
+      ],
+      "question": "Which of these compile?",
+      "code": "constexpr int n1{ 5 };\nint n2{ 5 };\n\nchar c1{ n1 };  // 1\nchar c2{ n2 };  // 2\nchar c3{ 5 };   // 3",
+      "answer": "Lines 1 and 3 compile. Line 2 fails.",
+      "explanation": "Lines 1 and 3 use constexpr values that fit in char range, which is allowed. Line 2 uses a non-constexpr variable, so the compiler can't verify the value at compile-time.",
+      "source": "10.4 - Narrowing conversions, list initialization, and constexpr initializers",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch10_4_006",
+      "lesson": "10.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "brace-initialization",
+        "constexpr"
+      ],
+      "text": "Brace initialization allows narrowing from a larger integral type to smaller if the initializer is a {{c1::constexpr}} and the value {{c2::fits within the target type's range}}.",
+      "source": "10.4 - Narrowing conversions, list initialization, and constexpr initializers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_4_007",
+      "lesson": "10.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "brace-initialization",
+        "constexpr"
+      ],
+      "question": "Why does this fail to compile?",
+      "code": "constexpr int n{ 300 };\nchar c{ n };",
+      "answer": "Compile error: 300 is outside the range of char (-128 to 127 for signed char).",
+      "explanation": "Even though n is constexpr, the value 300 doesn't fit in a char, so brace initialization rejects this narrowing conversion.",
+      "source": "10.4 - Narrowing conversions, list initialization, and constexpr initializers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_4_008",
+      "lesson": "10.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "brace-initialization",
+        "floating-point"
+      ],
+      "front": "Does brace initialization allow conversions from floating point to integral types?",
+      "back": "No. Brace initialization disallows all conversions from floating point to integral types, even if the floating point value is constexpr and has no fractional part (like 3.0).",
+      "source": "10.4 - Narrowing conversions, list initialization, and constexpr initializers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_4_009",
+      "lesson": "10.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "brace-initialization",
+        "floating-point"
+      ],
+      "question": "Why does this fail even though the value fits?",
+      "code": "constexpr double d{ 3.0 };\nint i{ d };",
+      "answer": "Compile error: Brace initialization disallows ALL conversions from floating point to integral, even constexpr ones without fractional parts.",
+      "explanation": "The rule is strict: no floating point to integral conversions are allowed with brace initialization, regardless of the value.",
+      "source": "10.4 - Narrowing conversions, list initialization, and constexpr initializers",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch10_4_010",
+      "lesson": "10.4",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "best-practices",
+        "brace-initialization"
+      ],
+      "concept": "Why prefer brace initialization",
+      "explanation": "Brace initialization is safer than copy initialization because:<ul><li>Disallows narrowing conversions that lose data</li><li>Prevents accidental data loss from implicit conversions</li><li>Catches potential bugs at compile-time</li><li>Makes intent clearer in code</li></ul>This is why it's the recommended initialization form in modern C++.",
+      "examples": [
+        "int x{ 3.5 };  // Error: won't compile",
+        "int y = 3.5;   // OK but loses .5 silently"
+      ],
+      "source": "10.4 - Narrowing conversions, list initialization, and constexpr initializers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_4_011",
+      "lesson": "10.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "brace-initialization",
+        "safety"
+      ],
+      "text": "The form {{c1::int x = {3.5};}} also uses brace initialization and will {{c2::disallow narrowing conversions}} just like int x{3.5}.",
+      "source": "10.4 - Narrowing conversions, list initialization, and constexpr initializers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_4_012",
+      "lesson": "10.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "narrowing-conversion",
+        "signed-unsigned"
+      ],
+      "front": "Does brace initialization allow conversions between signed and unsigned integral types?",
+      "back": "Generally no, unless the initializer is a constexpr that fits within the target type's range. For example, unsigned int u{-1} fails, but unsigned int u{5} succeeds if 5 is constexpr.",
+      "source": "10.4 - Narrowing conversions, list initialization, and constexpr initializers",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch10_4_013",
+      "lesson": "10.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "brace-initialization",
+        "safety"
+      ],
+      "text": "List initialization using {{c1::braces}} is safer than copy initialization because it {{c2::disallows narrowing conversions}}.",
+      "source": "10.4 - Narrowing conversions, list initialization, and constexpr initializers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_4_014",
+      "lesson": "10.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "brace-initialization",
+        "floating-point"
+      ],
+      "text": "Brace initialization disallows {{c1::all}} conversions from floating point to integral, even if the value is {{c2::constexpr}}.",
+      "source": "10.4 - Narrowing conversions, list initialization, and constexpr initializers",
+      "difficulty": "medium"
+    }
+  ]
+}

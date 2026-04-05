@@ -1,0 +1,150 @@
+{
+  "chapter": "Chapter 20",
+  "chapter_title": "Functions",
+  "lesson": "20.3",
+  "lesson_title": "Recursion",
+  "total_cards": 13,
+  "cards": [
+    {
+      "id": "ch20_3_001",
+      "lesson": "20.3",
+      "type": "basic",
+      "tags": ["cpp", "recursion", "fundamentals"],
+      "front": "What is recursion?",
+      "back": "A recursive function is a function that calls itself, either directly or indirectly through another function.",
+      "source": "20.3 - Recursion",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch20_3_002",
+      "lesson": "20.3",
+      "type": "cloze",
+      "tags": ["cpp", "recursion", "components"],
+      "text": "Every recursive function must have two parts: a {{c1::base case}} (termination condition) and a {{c2::recursive case}} (function calls itself).",
+      "source": "20.3 - Recursion",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch20_3_003",
+      "lesson": "20.3",
+      "type": "basic",
+      "tags": ["cpp", "recursion", "base-case"],
+      "front": "What happens if a recursive function doesn't have a proper base case?",
+      "back": "The function will recurse infinitely (or until the stack overflows), causing a crash.",
+      "source": "20.3 - Recursion",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch20_3_004",
+      "lesson": "20.3",
+      "type": "code",
+      "tags": ["cpp", "recursion", "example"],
+      "question": "What does this recursive function compute?",
+      "code": "int factorial(int n)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;if (n &lt;= 1)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 1;<br>&nbsp;&nbsp;&nbsp;&nbsp;return n * factorial(n - 1);<br>}",
+      "answer": "factorial(n) computes n! (n factorial)<br>Example: factorial(5) = 5 * 4 * 3 * 2 * 1 = 120",
+      "explanation": "Base case: n &lt;= 1 returns 1. Recursive case: n * factorial(n-1) multiplies n by the factorial of (n-1).",
+      "source": "20.3 - Recursion",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_3_005",
+      "lesson": "20.3",
+      "type": "code",
+      "tags": ["cpp", "recursion", "fibonacci"],
+      "question": "What does this recursive function compute?",
+      "code": "int fib(int n)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;if (n == 0) return 0;<br>&nbsp;&nbsp;&nbsp;&nbsp;if (n == 1) return 1;<br>&nbsp;&nbsp;&nbsp;&nbsp;return fib(n-1) + fib(n-2);<br>}",
+      "answer": "The nth Fibonacci number<br>Sequence: 0, 1, 1, 2, 3, 5, 8, 13, 21...",
+      "explanation": "Base cases: fib(0)=0, fib(1)=1. Recursive case: each number is sum of previous two.",
+      "source": "20.3 - Recursion",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_3_006",
+      "lesson": "20.3",
+      "type": "concept",
+      "tags": ["cpp", "recursion", "gotchas"],
+      "concept": "Why naive recursive Fibonacci is inefficient",
+      "explanation": "The naive recursive Fibonacci implementation has exponential time complexity O(2^n) because it recalculates the same values many times. For example, fib(5) calls fib(3) twice, fib(2) three times, etc.",
+      "examples": [
+        "fib(5) makes 15 function calls",
+        "fib(10) makes 177 function calls",
+        "fib(40) makes 331,160,281 calls!"
+      ],
+      "source": "20.3 - Recursion",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch20_3_007",
+      "lesson": "20.3",
+      "type": "cloze",
+      "tags": ["cpp", "recursion", "performance"],
+      "text": "Recursive functions use more {{c1::memory}} (stack space) and are generally {{c2::slower}} than iterative solutions due to function call overhead.",
+      "source": "20.3 - Recursion",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_3_008",
+      "lesson": "20.3",
+      "type": "basic",
+      "tags": ["cpp", "recursion", "when-to-use"],
+      "front": "When is recursion a good choice?",
+      "back": "When the problem naturally divides into similar subproblems (tree traversal, divide-and-conquer), or when iterative solution would be much more complex. Not for simple loops.",
+      "source": "20.3 - Recursion",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_3_009",
+      "lesson": "20.3",
+      "type": "code",
+      "tags": ["cpp", "recursion", "common-mistakes"],
+      "question": "What's wrong with this recursive function?",
+      "code": "int sumTo(int n)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;return n + sumTo(n - 1);<br>}",
+      "answer": "Missing base case! This will recurse infinitely and cause a stack overflow.",
+      "explanation": "Should have: if (n &lt;= 0) return 0; as the base case before the recursive call.",
+      "source": "20.3 - Recursion",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch20_3_010",
+      "lesson": "20.3",
+      "type": "cloze",
+      "tags": ["cpp", "recursion", "memoization"],
+      "text": "{{c1::Memoization}} is a technique that caches previously computed results to avoid redundant recursive calls, improving performance from {{c2::exponential}} to linear time.",
+      "source": "20.3 - Recursion",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_3_011",
+      "lesson": "20.3",
+      "type": "basic",
+      "tags": ["cpp", "recursion", "stack-frames"],
+      "front": "What happens to the stack when a recursive function calls itself?",
+      "back": "Each recursive call creates a new stack frame containing local variables and parameters. These frames accumulate until the base case is reached, then unwind as each call returns.",
+      "source": "20.3 - Recursion",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_3_012",
+      "lesson": "20.3",
+      "type": "concept",
+      "tags": ["cpp", "recursion", "best-practices"],
+      "concept": "Guidelines for writing good recursive functions",
+      "explanation": "Best practices for recursion:<ul><li>Always define a clear base case first</li><li>Ensure each recursive call moves toward the base case</li><li>Avoid redundant calculations (use memoization if needed)</li><li>Consider iterative alternatives for simple loops</li><li>Be mindful of stack depth for deep recursion</li></ul>",
+      "examples": [
+        "Good: Tree traversal, quicksort, merge sort",
+        "Bad: Simple counting loops, Fibonacci without memoization"
+      ],
+      "source": "20.3 - Recursion",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_3_013",
+      "lesson": "20.3",
+      "type": "cloze",
+      "tags": ["cpp", "recursion", "types"],
+      "text": "{{c1::Direct}} recursion is when a function calls itself. {{c2::Indirect}} recursion is when function A calls function B, which calls function A.",
+      "source": "20.3 - Recursion",
+      "difficulty": "easy"
+    }
+  ]
+}

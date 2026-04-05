@@ -1,0 +1,136 @@
+{
+  "chapter": "Chapter 16",
+  "chapter_title": "Introduction to Containers and Arrays",
+  "lesson": "16.10",
+  "lesson_title": "std::vector resizing and capacity",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch16_10_001",
+      "lesson": "16.10",
+      "type": "basic",
+      "tags": ["cpp", "vector", "terminology"],
+      "front": "What is the difference between a vector's length and its capacity?",
+      "back": "Length is the number of elements currently in use. Capacity is the total amount of storage allocated. Capacity is always &gt;= length.",
+      "source": "16.10 - std::vector resizing and capacity",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_10_002",
+      "lesson": "16.10",
+      "type": "cloze",
+      "tags": ["cpp", "vector", "functions"],
+      "text": "To get a vector's length, use {{c1::size()}}. To get its capacity, use {{c2::capacity()}}.",
+      "source": "16.10 - std::vector resizing and capacity",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_10_003",
+      "lesson": "16.10",
+      "type": "cloze",
+      "tags": ["cpp", "vector", "modification"],
+      "text": "To add an element to the end of a vector, use {{c1::push_back()}} or {{c1::emplace_back()}}.",
+      "source": "16.10 - std::vector resizing and capacity",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_10_004",
+      "lesson": "16.10",
+      "type": "code",
+      "tags": ["cpp", "vector", "modification"],
+      "question": "What does this code output?",
+      "code": "std::vector&lt;int&gt; v{1, 2, 3};\nv.push_back(4);\nv.push_back(5);\nstd::cout &lt;&lt; v.size();",
+      "answer": "5",
+      "explanation": "Started with 3 elements, added 2 more with push_back. Total: 5 elements.",
+      "source": "16.10 - std::vector resizing and capacity",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_10_005",
+      "lesson": "16.10",
+      "type": "concept",
+      "tags": ["cpp", "vector", "performance"],
+      "concept": "Why vectors allocate extra capacity",
+      "explanation": "Vectors allocate more memory than needed to avoid frequent reallocations:<ul><li>Reallocation requires copying all elements to new memory (expensive)</li><li>Typically doubles capacity when full (geometric growth)</li><li>Amortizes cost over many insertions</li><li>Trade-off: uses more memory for better performance</li></ul>",
+      "examples": [
+        "// Vector with capacity 4, size 3",
+        "// Adding 1 element: no reallocation",
+        "// Adding 2nd element: reallocate to capacity 8"
+      ],
+      "source": "16.10 - std::vector resizing and capacity",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_10_006",
+      "lesson": "16.10",
+      "type": "cloze",
+      "tags": ["cpp", "vector", "functions"],
+      "text": "To change a vector's length, use {{c1::resize()}}. To preallocate capacity without changing length, use {{c2::reserve()}}.",
+      "source": "16.10 - std::vector resizing and capacity",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_10_007",
+      "lesson": "16.10",
+      "type": "basic",
+      "tags": ["cpp", "vector", "functions"],
+      "front": "What is the difference between resize() and reserve()?",
+      "back": "resize(n) changes the length to n, adding/removing elements as needed.<br>reserve(n) preallocates capacity to n without changing length. Use reserve() when you know how many elements you'll add.",
+      "source": "16.10 - std::vector resizing and capacity",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_10_008",
+      "lesson": "16.10",
+      "type": "code",
+      "tags": ["cpp", "vector", "resize"],
+      "question": "What does this code output?",
+      "code": "std::vector&lt;int&gt; v{1, 2, 3};\nv.resize(5);\nstd::cout &lt;&lt; v.size() &lt;&lt; ' ' &lt;&lt; v[4];",
+      "answer": "5 0",
+      "explanation": "resize(5) adds 2 new value-initialized elements (zeros). Size becomes 5, and v[4] is 0.",
+      "source": "16.10 - std::vector resizing and capacity",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_10_009",
+      "lesson": "16.10",
+      "type": "code",
+      "tags": ["cpp", "vector", "reserve"],
+      "question": "What does this code output?",
+      "code": "std::vector&lt;int&gt; v;\nv.reserve(100);\nstd::cout &lt;&lt; v.size() &lt;&lt; ' ' &lt;&lt; v.capacity();",
+      "answer": "0 100 (or greater)",
+      "explanation": "reserve() only changes capacity, not size. Size remains 0, capacity is at least 100.",
+      "source": "16.10 - std::vector resizing and capacity",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_10_010",
+      "lesson": "16.10",
+      "type": "basic",
+      "tags": ["cpp", "vector", "best-practices"],
+      "front": "When should you use reserve() with a vector?",
+      "back": "When you know approximately how many elements you'll add. This prevents multiple reallocations, improving performance. Especially useful before a loop that adds many elements.",
+      "source": "16.10 - std::vector resizing and capacity",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_10_011",
+      "lesson": "16.10",
+      "type": "cloze",
+      "tags": ["cpp", "vector", "functions"],
+      "text": "To reduce a vector's capacity to match its size, use {{c1::shrink_to_fit()}}. This is a request, not a guarantee.",
+      "source": "16.10 - std::vector resizing and capacity",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_10_012",
+      "lesson": "16.10",
+      "type": "basic",
+      "tags": ["cpp", "vector", "performance"],
+      "front": "What happens when you push_back to a vector that's at capacity?",
+      "back": "The vector reallocates: allocates new memory (typically double the old capacity), copies all elements to new location, deletes old memory. This is expensive but happens infrequently due to geometric growth.",
+      "source": "16.10 - std::vector resizing and capacity",
+      "difficulty": "hard"
+    }
+  ]
+}

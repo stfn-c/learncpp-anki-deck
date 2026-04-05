@@ -1,0 +1,237 @@
+{
+  "chapter": "Chapter 7",
+  "chapter_title": "Scope, Duration, and Linkage",
+  "lesson": "7.9",
+  "lesson_title": "Inline functions and variables",
+  "total_cards": 16,
+  "cards": [
+    {
+      "id": "ch7_9_001",
+      "lesson": "7.9",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "inline",
+        "terminology"
+      ],
+      "front": "Inline expansion",
+      "back": "The process where a function call is replaced with the code from the function body. This eliminates function call overhead but increases code size.",
+      "source": "7.9 - Inline functions and variables",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_9_002",
+      "lesson": "7.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "inline",
+        "syntax"
+      ],
+      "text": "To suggest that a function be inline-expanded, use the {{c1::inline}} keyword: {{c2::inline int max(int x, int y) { return (x &gt; y) ? x : y; }}}",
+      "source": "7.9 - Inline functions and variables",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_9_003",
+      "lesson": "7.9",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "inline",
+        "optimization"
+      ],
+      "front": "Is the 'inline' keyword a command or a suggestion to the compiler?",
+      "back": "A suggestion. The compiler can ignore the inline keyword and is free to inline expand functions even without it. Modern compilers usually make better decisions than programmers.",
+      "source": "7.9 - Inline functions and variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_9_004",
+      "lesson": "7.9",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "inline",
+        "performance"
+      ],
+      "front": "What are the trade-offs of inline expansion?",
+      "back": "Benefits: Eliminates function call overhead. Drawbacks: Increases executable size (code bloat), which can hurt performance due to less efficient caching.",
+      "source": "7.9 - Inline functions and variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_9_005",
+      "lesson": "7.9",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "inline",
+        "header-files"
+      ],
+      "front": "Why must inline functions be defined in every translation unit where they are used?",
+      "back": "Because the compiler needs to see the full definition to perform inline expansion. This means inline functions are typically defined in header files.",
+      "source": "7.9 - Inline functions and variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_9_006",
+      "lesson": "7.9",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "inline",
+        "odr"
+      ],
+      "front": "Do inline functions violate the one-definition rule when defined in headers?",
+      "back": "No. Inline functions are exempt from the one-definition rule, allowing them to be defined in multiple translation units as long as all definitions are identical.",
+      "source": "7.9 - Inline functions and variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_9_007",
+      "lesson": "7.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "inline",
+        "variables"
+      ],
+      "text": "An {{c1::inline variable}} (C++17) is a variable that is allowed to be defined in multiple translation units. Use the {{c2::inline}} keyword before the variable definition.",
+      "source": "7.9 - Inline functions and variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_9_008",
+      "lesson": "7.9",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "inline",
+        "syntax"
+      ],
+      "question": "How do you define an inline variable in a header file?",
+      "code": "// constants.h\n// Need to share this variable across multiple files",
+      "answer": "inline constexpr double gravity{ 9.8 };",
+      "explanation": "The 'inline' keyword allows the variable to be defined in a header file and included in multiple translation units without violating ODR.",
+      "source": "7.9 - Inline functions and variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_9_009",
+      "lesson": "7.9",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "inline",
+        "variables"
+      ],
+      "front": "What C++ version introduced inline variables?",
+      "back": "C++17",
+      "source": "7.9 - Inline functions and variables",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_9_010",
+      "lesson": "7.9",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "inline",
+        "best-practices"
+      ],
+      "front": "Should you use the 'inline' keyword to try to optimize performance?",
+      "back": "No. Let the compiler decide. Modern compilers are better at determining what should be inlined. Use 'inline' primarily to allow definitions in header files.",
+      "source": "7.9 - Inline functions and variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_9_011",
+      "lesson": "7.9",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "inline",
+        "constexpr"
+      ],
+      "front": "Are constexpr functions implicitly inline?",
+      "back": "Yes. Constexpr functions are implicitly inline, so they can be defined in header files without violating ODR.",
+      "source": "7.9 - Inline functions and variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_9_012",
+      "lesson": "7.9",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "inline",
+        "best-practices"
+      ],
+      "concept": "Modern use of inline keyword",
+      "explanation": "In modern C++, the primary use of 'inline' is not for optimization but to:<ul><li>Allow function definitions in header files</li><li>Allow variable definitions in header files (C++17)</li><li>Avoid violating the one-definition rule</li></ul>The compiler will inline what it wants regardless of the keyword.",
+      "examples": [
+        "// Modern use: define in header",
+        "// math.h",
+        "inline int square(int x) { return x * x; }",
+        "inline constexpr double pi{ 3.14159 };",
+        "",
+        "// Can be included in multiple .cpp files safely"
+      ],
+      "source": "7.9 - Inline functions and variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_9_013",
+      "lesson": "7.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "inline",
+        "variables"
+      ],
+      "text": "To define a variable in a header file (C++17), use {{c1::inline}}: inline constexpr double pi{ 3.14159 };",
+      "source": "7.9 - Inline functions and variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_9_014",
+      "lesson": "7.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "inline",
+        "functions"
+      ],
+      "text": "Inline functions are exempt from the {{c1::one-definition rule}}, allowing them to be defined in {{c2::multiple translation units}}.",
+      "source": "7.9 - Inline functions and variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_9_015",
+      "lesson": "7.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "inline",
+        "optimization"
+      ],
+      "text": "{{c1::Inline expansion}} replaces a function call with the code from the function body, eliminating {{c2::function call overhead}} but increasing {{c3::code size}}.",
+      "source": "7.9 - Inline functions and variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_9_016",
+      "lesson": "7.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "inline",
+        "constexpr"
+      ],
+      "text": "Constexpr functions are {{c1::implicitly inline}}, allowing them to be defined in {{c2::header files}}.",
+      "source": "7.9 - Inline functions and variables",
+      "difficulty": "medium"
+    }
+  ]
+}

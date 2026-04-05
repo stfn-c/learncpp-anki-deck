@@ -1,0 +1,224 @@
+{
+  "chapter": "Chapter 7",
+  "chapter_title": "Scope, Duration, and Linkage",
+  "lesson": "7.1",
+  "lesson_title": "Compound statements (blocks)",
+  "total_cards": 15,
+  "cards": [
+    {
+      "id": "ch7_1_001",
+      "lesson": "7.1",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "blocks",
+        "terminology"
+      ],
+      "front": "Compound statement",
+      "back": "A group of zero or more statements treated by the compiler as a single statement. Also called a block or block statement.",
+      "source": "7.1 - Compound statements (blocks)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_1_002",
+      "lesson": "7.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "blocks",
+        "syntax"
+      ],
+      "text": "Blocks begin with a {{c1::{}} symbol and end with a {{c2::}}} symbol. {{c3::No semicolon}} is needed at the end of a block.",
+      "source": "7.1 - Compound statements (blocks)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_1_003",
+      "lesson": "7.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "blocks",
+        "syntax"
+      ],
+      "front": "Can functions be nested inside other functions in C++?",
+      "back": "No. Although functions cannot be nested inside other functions, blocks can be nested inside other blocks.",
+      "source": "7.1 - Compound statements (blocks)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_1_004",
+      "lesson": "7.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "blocks",
+        "terminology"
+      ],
+      "text": "When blocks are nested, the enclosing block is called the {{c1::outer block}} and the enclosed block is called the {{c2::inner block}} or {{c3::nested block}}.",
+      "source": "7.1 - Compound statements (blocks)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_1_005",
+      "lesson": "7.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "blocks",
+        "control-flow"
+      ],
+      "front": "What is the most common use case for blocks in C++?",
+      "back": "In conjunction with if statements, to execute multiple statements conditionally when a condition evaluates to true.",
+      "source": "7.1 - Compound statements (blocks)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_1_006",
+      "lesson": "7.1",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "blocks",
+        "syntax"
+      ],
+      "question": "What's wrong with this code?",
+      "code": "int main()\n{\n    if (x &gt; 0)\n    {\n        std::cout &lt;&lt; \"positive\";\n    }; // &lt;-- semicolon here\n    return 0;\n}",
+      "answer": "Blocks should not have a semicolon after the closing brace.",
+      "explanation": "Unlike statements, blocks do not require a semicolon at the end. The semicolon after the closing brace is unnecessary and can be confusing.",
+      "source": "7.1 - Compound statements (blocks)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_1_007",
+      "lesson": "7.1",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "blocks",
+        "terminology"
+      ],
+      "front": "Nesting level (nesting depth)",
+      "back": "The maximum number of nested blocks you can be inside at any point in a function, including the outer block.",
+      "source": "7.1 - Compound statements (blocks)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_1_008",
+      "lesson": "7.1",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "blocks",
+        "nesting"
+      ],
+      "question": "What is the nesting level of this function?",
+      "code": "int main()\n{ // block 1\n    if (x &gt; 0)\n    { // block 2\n        if ((x % 2) == 0)\n        { // block 3\n            std::cout &lt;&lt; \"positive and even\";\n        }\n    }\n    return 0;\n}",
+      "answer": "3",
+      "explanation": "The nesting level is 3 because the deepest point in the function has 3 nested blocks (the outer main block, the first if block, and the nested if block).",
+      "source": "7.1 - Compound statements (blocks)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_1_009",
+      "lesson": "7.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "blocks",
+        "syntax"
+      ],
+      "text": "A function body is a {{c1::block}}. Example:<br>int add(int x, int y)<br>{{c2::{}} // start block<br>&nbsp;&nbsp;&nbsp;&nbsp;return x + y;<br>{{c3::}}} // end block (no semicolon)",
+      "source": "7.1 - Compound statements (blocks)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_1_010",
+      "lesson": "7.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "blocks",
+        "best-practices"
+      ],
+      "front": "What is the recommended maximum nesting level for functions?",
+      "back": "3 or less. Functions with more nested levels should be refactored into sub-functions.",
+      "source": "7.1 - Compound statements (blocks)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_1_011",
+      "lesson": "7.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "blocks",
+        "standards"
+      ],
+      "front": "How many levels of nesting should C++ compilers support according to the C++ standard?",
+      "back": "256 levels of nesting (though not all compilers support this many, e.g., Visual Studio supports fewer).",
+      "source": "7.1 - Compound statements (blocks)",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch7_1_012",
+      "lesson": "7.1",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "blocks",
+        "best-practices"
+      ],
+      "concept": "Why keep nesting levels to 3 or less",
+      "explanation": "Overly-nested blocks are hard to read and understand. Just as overly-long functions should be refactored into smaller functions, deeply-nested blocks should be refactored with the most-nested blocks becoming separate functions.",
+      "examples": [
+        "// Bad: deeply nested",
+        "if (a) { if (b) { if (c) { if (d) { /* code */ } } } }",
+        "",
+        "// Good: refactored",
+        "if (a &amp;&amp; b) { handleCD(c, d); }"
+      ],
+      "source": "7.1 - Compound statements (blocks)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_1_013",
+      "lesson": "7.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "blocks",
+        "if-statements"
+      ],
+      "text": "To execute multiple statements conditionally with if, use a {{c1::block}} enclosed in {{c2::{} braces}}.",
+      "source": "7.1 - Compound statements (blocks)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_1_014",
+      "lesson": "7.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "blocks",
+        "syntax"
+      ],
+      "text": "A function body is an example of a {{c1::block}}, starting with {{c2::{}} and ending with {{c3::}}}.",
+      "source": "7.1 - Compound statements (blocks)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_1_015",
+      "lesson": "7.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "blocks",
+        "nesting"
+      ],
+      "text": "The recommended maximum {{c1::nesting level}} for functions is {{c2::3}} or less to maintain code readability.",
+      "source": "7.1 - Compound statements (blocks)",
+      "difficulty": "medium"
+    }
+  ]
+}

@@ -1,0 +1,194 @@
+{
+  "chapter": "Chapter 27",
+  "chapter_title": "Exception Handling and Error Handling",
+  "lesson": "27.8",
+  "lesson_title": "27.8 — Exception dangers and downsides",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch27_8_001",
+      "lesson": "27.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "gotchas"
+      ],
+      "text": "When an exception is thrown, any allocated {{c1::resources}} (memory, file handles, etc.) in the current function will {{c2::leak}} unless they are managed by objects with {{c3::destructors}} (RAII).",
+      "source": "27.8 - Exception dangers and downsides",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_8_002",
+      "lesson": "27.8",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "common-mistakes",
+        "memory"
+      ],
+      "question": "What's wrong with this code if processData() throws?",
+      "code": "void func() {\n    int* ptr = new int[100];\n    processData(ptr);  // might throw\n    delete[] ptr;\n}",
+      "answer": "Memory leak! If processData() throws, delete[] ptr never executes and memory is leaked.",
+      "explanation": "When an exception is thrown, the function exits immediately. Without RAII, the cleanup code (delete[]) never runs.",
+      "source": "27.8 - Exception dangers and downsides",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_8_003",
+      "lesson": "27.8",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "raii",
+        "best-practices"
+      ],
+      "question": "Why doesn't this code leak if processData() throws?",
+      "code": "void func() {\n    std::unique_ptr&lt;int[]&gt; ptr{new int[100]};\n    processData(ptr.get());  // might throw\n}",
+      "answer": "No leak because unique_ptr's destructor runs during stack unwinding and automatically deletes the memory.",
+      "explanation": "RAII ensures cleanup even when exceptions are thrown. The unique_ptr destructor releases the memory automatically.",
+      "source": "27.8 - Exception dangers and downsides",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch27_8_004",
+      "lesson": "27.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "performance"
+      ],
+      "text": "Exception handling has {{c1::minimal}} overhead when no exception is thrown, but throwing and catching exceptions is {{c2::expensive}} due to stack unwinding and object destruction.",
+      "source": "27.8 - Exception dangers and downsides",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_8_005",
+      "lesson": "27.8",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "best-practices"
+      ],
+      "front": "Should exceptions be used for normal control flow?",
+      "back": "No, exceptions should only be used for exceptional circumstances, not normal control flow. They are expensive and make code harder to follow.",
+      "source": "27.8 - Exception dangers and downsides",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch27_8_006",
+      "lesson": "27.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "destructors",
+        "best-practices"
+      ],
+      "text": "Destructors should {{c1::not throw}} exceptions. If a destructor throws during stack unwinding while another exception is active, {{c2::std::terminate()}} is called.",
+      "source": "27.8 - Exception dangers and downsides",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch27_8_007",
+      "lesson": "27.8",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "destructors",
+        "gotchas"
+      ],
+      "question": "What happens when this code runs?",
+      "code": "class Bad {\n    ~Bad() { throw 1; }  // throws in destructor\n};\n\nvoid func() {\n    Bad b;\n    throw 2;  // throw during b's lifetime\n}",
+      "answer": "std::terminate() is called.",
+      "explanation": "throw 2 starts unwinding. During unwinding, ~Bad() throws. Two active exceptions cause std::terminate().",
+      "source": "27.8 - Exception dangers and downsides",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch27_8_008",
+      "lesson": "27.8",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "deprecated"
+      ],
+      "front": "Why were dynamic exception specifications (throw(...)) deprecated in C++11?",
+      "back": "They were error-prone, not enforced at compile time, caused runtime overhead, and didn't work well with templates. They were replaced with noexcept.",
+      "source": "27.8 - Exception dangers and downsides",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_8_009",
+      "lesson": "27.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "noexcept"
+      ],
+      "text": "The {{c1::noexcept}} specifier indicates a function won't throw exceptions. If a noexcept function does throw, {{c2::std::terminate()}} is called immediately.",
+      "source": "27.8 - Exception dangers and downsides",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_8_010",
+      "lesson": "27.8",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "raii",
+        "best-practices"
+      ],
+      "concept": "Exception safety requires RAII",
+      "explanation": "To write exception-safe code:<ul><li>Never use raw pointers with new/delete</li><li>Use RAII classes (unique_ptr, vector, fstream, etc.)</li><li>Ensure destructors clean up resources</li><li>Destructors must not throw</li><li>Acquire resources in constructors</li><li>Release resources in destructors</li></ul>",
+      "examples": [
+        "// Unsafe: leaks if throws",
+        "int* p = new int;",
+        "mightThrow();",
+        "delete p;",
+        "",
+        "// Safe: RAII cleanup",
+        "std::unique_ptr&lt;int&gt; p{new int};",
+        "mightThrow();  // p cleaned up automatically"
+      ],
+      "source": "27.8 - Exception dangers and downsides",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch27_8_011",
+      "lesson": "27.8",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "performance",
+        "best-practices"
+      ],
+      "front": "When should you avoid using exceptions due to performance concerns?",
+      "back": "In performance-critical code where exceptions might be thrown frequently, or in embedded/real-time systems where predictable performance is required.",
+      "source": "27.8 - Exception dangers and downsides",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_8_012",
+      "lesson": "27.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "best-practices"
+      ],
+      "text": "The basic exception safety guarantee ensures no {{c1::resource leaks}} and objects remain in a {{c2::valid state}}, while the strong guarantee ensures either {{c3::complete success}} or {{c4::no effect}} (rollback).",
+      "source": "27.8 - Exception dangers and downsides",
+      "difficulty": "hard"
+    }
+  ]
+}

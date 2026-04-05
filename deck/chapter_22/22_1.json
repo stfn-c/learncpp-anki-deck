@@ -1,0 +1,181 @@
+{
+  "chapter": "Chapter 22",
+  "chapter_title": "Move Semantics and Smart Pointers",
+  "lesson": "22.1",
+  "lesson_title": "Introduction to smart pointers and move semantics",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch22_1_001",
+      "lesson": "22.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "smart-pointers",
+        "memory"
+      ],
+      "text": "A {{c1::smart pointer}} is a composition class that manages {{c2::dynamically allocated memory}} and ensures it gets deleted when the smart pointer goes {{c3::out of scope}}.",
+      "source": "22.1 - Introduction to smart pointers and move semantics",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch22_1_002",
+      "lesson": "22.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "smart-pointers",
+        "auto_ptr"
+      ],
+      "front": "Why was std::auto_ptr deprecated in C++11?",
+      "back": "std::auto_ptr implements move semantics using copy semantics, which causes the source object to be modified during a copy. This violates the principle that copy operations shouldn't modify the source object.",
+      "source": "22.1 - Introduction to smart pointers and move semantics",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_1_003",
+      "lesson": "22.1",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "auto_ptr",
+        "common-mistakes"
+      ],
+      "question": "What's the problem with this code using std::auto_ptr?",
+      "code": "std::auto_ptr&lt;Resource&gt; res1(new Resource());\nstd::auto_ptr&lt;Resource&gt; res2 = res1; // copy\nres1-&gt;doSomething(); // use res1",
+      "answer": "res1 is now null after the copy to res2. The copy operation actually moved ownership, so dereferencing res1 causes undefined behavior.",
+      "explanation": "std::auto_ptr implements move semantics through copy operations, so copying transfers ownership and nullifies the source pointer.",
+      "source": "22.1 - Introduction to smart pointers and move semantics",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_1_004",
+      "lesson": "22.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "move-semantics",
+        "terminology"
+      ],
+      "text": "{{c1::Move semantics}} means a class will transfer ownership of an object's resources rather than {{c2::making a copy}}.",
+      "source": "22.1 - Introduction to smart pointers and move semantics",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch22_1_005",
+      "lesson": "22.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "move-semantics",
+        "copy-semantics"
+      ],
+      "front": "What is the key difference between copy semantics and move semantics?",
+      "back": "Copy semantics duplicates an object, leaving both the source and destination valid. Move semantics transfers ownership of resources from source to destination, leaving the source in a valid but unspecified state.",
+      "source": "22.1 - Introduction to smart pointers and move semantics",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch22_1_006",
+      "lesson": "22.1",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "move-semantics",
+        "best-practices"
+      ],
+      "concept": "When move semantics is beneficial",
+      "explanation": "Move semantics is beneficial when:<ul><li>Copying an object is expensive (large dynamic allocations)</li><li>The source object is a temporary that will be destroyed anyway</li><li>You need to transfer unique ownership of a resource</li></ul>",
+      "examples": [
+        "std::unique_ptr&lt;int&gt; p1 = std::make_unique&lt;int&gt;(5);",
+        "std::unique_ptr&lt;int&gt; p2 = std::move(p1); // move, not copy",
+        "// p1 is now null, p2 owns the resource"
+      ],
+      "source": "22.1 - Introduction to smart pointers and move semantics",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_1_007",
+      "lesson": "22.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "smart-pointers",
+        "types"
+      ],
+      "text": "C++11 introduced three smart pointer types: {{c1::std::unique_ptr}}, {{c2::std::shared_ptr}}, and {{c3::std::weak_ptr}}.",
+      "source": "22.1 - Introduction to smart pointers and move semantics",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch22_1_008",
+      "lesson": "22.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "smart-pointers",
+        "best-practices"
+      ],
+      "front": "What problems do smart pointers solve compared to raw pointers?",
+      "back": "Smart pointers solve:<ul><li>Memory leaks from forgetting to delete</li><li>Early returns or exceptions bypassing delete</li><li>Multiple or missing deletes</li><li>Automatic cleanup when going out of scope</li></ul>",
+      "source": "22.1 - Introduction to smart pointers and move semantics",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch22_1_009",
+      "lesson": "22.1",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "memory-leak",
+        "common-mistakes"
+      ],
+      "question": "What's the problem with this code?",
+      "code": "void someFunction()\n{\n    Resource* ptr = new Resource();\n    if (condition)\n        return; // early return\n    delete ptr;\n}",
+      "answer": "Memory leak. If condition is true, the function returns early without deleting ptr, causing the allocated memory to leak.",
+      "explanation": "Smart pointers would automatically clean up when going out of scope, preventing this leak.",
+      "source": "22.1 - Introduction to smart pointers and move semantics",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch22_1_010",
+      "lesson": "22.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "smart-pointers",
+        "raii"
+      ],
+      "text": "Smart pointers implement the {{c1::RAII}} (Resource Acquisition Is Initialization) idiom, where resources are acquired in the {{c2::constructor}} and released in the {{c3::destructor}}.",
+      "source": "22.1 - Introduction to smart pointers and move semantics",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_1_011",
+      "lesson": "22.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "smart-pointers",
+        "unique_ptr"
+      ],
+      "front": "What should you use instead of std::auto_ptr in modern C++?",
+      "back": "std::unique_ptr. It properly implements move semantics and is the preferred smart pointer for single ownership in C++11 and later.",
+      "source": "22.1 - Introduction to smart pointers and move semantics",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch22_1_012",
+      "lesson": "22.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "move-semantics",
+        "syntax"
+      ],
+      "text": "Move semantics requires implementing a {{c1::move constructor}} and a {{c2::move assignment operator}} instead of using copy operations.",
+      "source": "22.1 - Introduction to smart pointers and move semantics",
+      "difficulty": "medium"
+    }
+  ]
+}

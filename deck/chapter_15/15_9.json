@@ -1,0 +1,177 @@
+{
+  "chapter": "Chapter 15",
+  "chapter_title": "More on Classes",
+  "lesson": "15.9",
+  "lesson_title": "Friend classes and friend member functions",
+  "total_cards": 11,
+  "cards": [
+    {
+      "id": "ch15_9_001",
+      "lesson": "15.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "friend"
+      ],
+      "text": "A {{c1::friend class}} is a class whose members can all access the private and protected members of another class.",
+      "source": "15.9 - Friend classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch15_9_002",
+      "lesson": "15.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "friend",
+        "syntax"
+      ],
+      "text": "To make an entire class a friend, declare it with: <code>{{c1::friend class}} ClassName;</code>",
+      "source": "15.9 - Friend classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch15_9_003",
+      "lesson": "15.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "friend"
+      ],
+      "text": "Friendship is {{c1::not reciprocal}} - if class A is a friend of class B, class B is {{c2::not automatically}} a friend of class A.",
+      "source": "15.9 - Friend classes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_9_004",
+      "lesson": "15.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "friend"
+      ],
+      "text": "Friendship is {{c1::not transitive}} - if A is a friend of B, and B is a friend of C, A is {{c2::not automatically}} a friend of C.",
+      "source": "15.9 - Friend classes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_9_005",
+      "lesson": "15.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "friend",
+        "syntax"
+      ],
+      "text": "To make only a specific member function a friend: <code>friend ReturnType {{c1::ClassName::}}memberFunction();</code>",
+      "source": "15.9 - Friend member functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_9_006",
+      "lesson": "15.9",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "classes",
+        "friend"
+      ],
+      "front": "What is the difference between a friend class and a friend function?",
+      "back": "<ul><li>Friend class: ALL members of the class can access private data</li><li>Friend function: Only that specific function can access private data</li></ul>",
+      "source": "15.9 - Friend classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch15_9_007",
+      "lesson": "15.9",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "classes",
+        "friend"
+      ],
+      "front": "If class Storage makes class Display a friend, can Display access Storage's private members?",
+      "back": "Yes. Display's member functions can access all private and protected members of Storage.",
+      "source": "15.9 - Friend classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch15_9_008",
+      "lesson": "15.9",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "classes",
+        "friend",
+        "syntax"
+      ],
+      "question": "Complete the friend class declaration.",
+      "code": "class Storage {\n    int m_data;\n    // Make Display a friend class here\n};\n\nclass Display {\npublic:\n    void show(const Storage&amp; s) {\n        std::cout &lt;&lt; s.m_data;  // Can access private member\n    }\n};",
+      "answer": "<code>friend class Display;</code>",
+      "explanation": "Declare Display as a friend class inside Storage to grant all Display members access to Storage's private data.",
+      "source": "15.9 - Friend classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch15_9_009",
+      "lesson": "15.9",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "classes",
+        "friend"
+      ],
+      "question": "If A is a friend of B, and B is a friend of C, can A access C's private members?",
+      "code": "class C {\n    friend class B;\n    int m_secretC;\n};\n\nclass B {\n    friend class A;\n    int m_secretB;\n};\n\nclass A {\npublic:\n    void test(C&amp; c) { std::cout &lt;&lt; c.m_secretC; }  // Valid?\n};",
+      "answer": "No, this is invalid. Friendship is not transitive.",
+      "explanation": "A can access B's members, B can access C's members, but A cannot access C's members.",
+      "source": "15.9 - Friend classes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_9_010",
+      "lesson": "15.9",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "classes",
+        "friend",
+        "syntax"
+      ],
+      "question": "How do you make only the print() member function of Display a friend?",
+      "code": "class Display;  // Forward declaration\n\nclass Storage {\n    int m_data;\n    // Make only Display::print() a friend\n};\n\nclass Display {\npublic:\n    void print(const Storage&amp; s);\n};",
+      "answer": "<code>friend void Display::print(const Storage&amp; s);</code>",
+      "explanation": "Use ClassName::functionName syntax to make only a specific member function a friend.",
+      "source": "15.9 - Friend member functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_9_011",
+      "lesson": "15.9",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "classes",
+        "friend",
+        "best-practices"
+      ],
+      "concept": "Best practices for friend classes",
+      "explanation": "When using friend classes:<ul><li>Use sparingly - they tightly couple classes together</li><li>Prefer friend functions over friend classes when possible</li><li>Remember friendship is not inherited by derived classes</li><li>Document why the friendship is necessary</li><li>Consider if the design could be improved to avoid friends</li></ul>",
+      "examples": [
+        "// Use case: Tightly coupled classes",
+        "class Node {",
+        "    friend class LinkedList;  // List needs Node internals",
+        "    Node* next;",
+        "    int data;",
+        "};"
+      ],
+      "source": "15.9 - Friend classes",
+      "difficulty": "medium"
+    }
+  ]
+}

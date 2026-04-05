@@ -1,0 +1,115 @@
+{
+  "chapter": "Chapter 0",
+  "chapter_title": "Introduction / Getting Started",
+  "lesson": "0.13",
+  "lesson_title": "What language standard is my compiler using?",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "ch0_13_001",
+      "lesson": "0.13",
+      "type": "basic",
+      "tags": ["cpp", "standards", "debugging"],
+      "front": "Why might the compiler use a different C++ standard than you configured?",
+      "back": "The project settings might not have saved, the compiler might not support that standard, or you're building a different configuration than you thought. Always verify the active standard.",
+      "source": "0.13 - What language standard is my compiler using?",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_13_002",
+      "lesson": "0.13",
+      "type": "cloze",
+      "tags": ["cpp", "standards", "macros"],
+      "text": "The predefined macro {{c1::__cplusplus}} contains a value that indicates which C++ standard the compiler is using.",
+      "source": "0.13 - What language standard is my compiler using?",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_13_003",
+      "lesson": "0.13",
+      "type": "code",
+      "tags": ["cpp", "standards", "debugging"],
+      "question": "What does this code do?",
+      "code": "#include &lt;iostream&gt;\n\nint main()\n{\n    std::cout &lt;&lt; __cplusplus &lt;&lt; '\\n';\n    return 0;\n}",
+      "answer": "Prints a number indicating the C++ standard version being used (e.g., 202002 for C++20)",
+      "explanation": "The __cplusplus macro expands to a long integer representing the C++ standard: 199711 (C++98), 201103 (C++11), 201402 (C++14), 201703 (C++17), 202002 (C++20), 202302 (C++23).",
+      "source": "0.13 - What language standard is my compiler using?",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_13_004",
+      "lesson": "0.13",
+      "type": "basic",
+      "tags": ["cpp", "standards", "macros"],
+      "front": "What value does __cplusplus have for C++20?",
+      "back": "202002L (representing the year 2020 and month 02 when C++20 was finalized)",
+      "source": "0.13 - What language standard is my compiler using?",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_13_005",
+      "lesson": "0.13",
+      "type": "cloze",
+      "tags": ["cpp", "standards", "values"],
+      "text": "The __cplusplus macro values are: {{c1::199711}}L for C++98, {{c2::201103}}L for C++11, {{c3::201703}}L for C++17, and {{c4::202002}}L for C++20.",
+      "source": "0.13 - What language standard is my compiler using?",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_13_006",
+      "lesson": "0.13",
+      "type": "concept",
+      "tags": ["cpp", "standards", "debugging"],
+      "concept": "How to verify your compiler's C++ standard",
+      "explanation": "To check which standard is actually being used:<ol><li>Write a program that prints __cplusplus</li><li>Compile and run it</li><li>Compare the output to known values</li><li>If wrong, check project settings again</li><li>Verify you're building the right configuration</li></ol>This catches configuration mistakes early.",
+      "examples": [
+        "std::cout &lt;&lt; __cplusplus; // prints 202002 for C++20",
+        "Expected C++20 but got 199711? Check project settings",
+        "Different values in Debug vs Release? Check both configs"
+      ],
+      "source": "0.13 - What language standard is my compiler using?",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_13_007",
+      "lesson": "0.13",
+      "type": "basic",
+      "tags": ["cpp", "standards", "visual-studio"],
+      "front": "Why might MSVC show 199711L even when configured for C++20?",
+      "back": "Older versions of MSVC had a bug where __cplusplus always showed 199711L. Use __cplusplus or the /Zc:__cplusplus flag to get the correct value, or use _MSVC_LANG instead.",
+      "source": "0.13 - What language standard is my compiler using?",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch0_13_008",
+      "lesson": "0.13",
+      "type": "cloze",
+      "tags": ["cpp", "standards", "visual-studio"],
+      "text": "In MSVC, you can use {{c1::_MSVC_LANG}} instead of __cplusplus to reliably check the C++ standard version.",
+      "source": "0.13 - What language standard is my compiler using?",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_13_009",
+      "lesson": "0.13",
+      "type": "code",
+      "tags": ["cpp", "standards", "preprocessor"],
+      "question": "What does this preprocessor check do?",
+      "code": "#if __cplusplus &lt; 201703L\n#error This code requires C++17 or later\n#endif",
+      "answer": "Causes a compilation error if the C++ standard is older than C++17",
+      "explanation": "This preprocessor directive checks the C++ standard at compile time and stops compilation with an error message if the requirement isn't met.",
+      "source": "0.13 - What language standard is my compiler using?",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_13_010",
+      "lesson": "0.13",
+      "type": "basic",
+      "tags": ["cpp", "standards", "best-practices"],
+      "front": "When should you check the __cplusplus value in your code?",
+      "back": "When your code requires specific C++ features from a particular standard, use __cplusplus checks to provide clear error messages if compiled with an older standard.",
+      "source": "0.13 - What language standard is my compiler using?",
+      "difficulty": "medium"
+    }
+  ]
+}

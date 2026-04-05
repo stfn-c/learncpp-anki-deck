@@ -1,0 +1,184 @@
+{
+  "chapter": "Chapter 11",
+  "chapter_title": "Function Overloading and Function Templates",
+  "lesson": "11.6",
+  "lesson_title": "Function templates",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch11_6_001",
+      "lesson": "11.6",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "templates",
+        "functions"
+      ],
+      "front": "Function template",
+      "back": "A template definition for a family of functions that works with different types",
+      "source": "11.6 - Function templates",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_6_002",
+      "lesson": "11.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "syntax"
+      ],
+      "text": "To declare a function template: {{c1::template &lt;typename T&gt;}}<br>{{c2::T max(T x, T y);}}",
+      "source": "11.6 - Function templates",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_6_003",
+      "lesson": "11.6",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "templates",
+        "functions"
+      ],
+      "question": "What does this function template do?",
+      "code": "template &lt;typename T&gt;\nT max(T x, T y) {\n    return (x &gt; y) ? x : y;\n}",
+      "answer": "It defines a template that returns the maximum of two values of the same type T.",
+      "explanation": "The template can work with any type T that supports the &gt; operator.",
+      "source": "11.6 - Function templates",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_6_004",
+      "lesson": "11.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "front": "What keyword can be used instead of typename in template parameter declarations?",
+      "back": "class (both typename and class mean the same thing in this context)",
+      "source": "11.6 - Function templates",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_6_005",
+      "lesson": "11.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "text": "In a template declaration, {{c1::T}} is called a {{c2::template type parameter}} or {{c3::type template parameter}}.",
+      "source": "11.6 - Function templates",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_6_006",
+      "lesson": "11.6",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "question": "What type does the compiler deduce for T in each call?",
+      "code": "template &lt;typename T&gt;\nT max(T x, T y) { return (x &gt; y) ? x : y; }\n\nmax(3, 7);      // ?\nmax(3.5, 7.2);  // ?",
+      "answer": "max(3, 7): T is int<br>max(3.5, 7.2): T is double",
+      "explanation": "The compiler deduces the template type from the argument types through template argument deduction.",
+      "source": "11.6 - Function templates",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_6_007",
+      "lesson": "11.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "front": "What is template argument deduction?",
+      "back": "The process by which the compiler automatically determines template type arguments from the function call arguments.",
+      "source": "11.6 - Function templates",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_6_008",
+      "lesson": "11.6",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "templates",
+        "common-mistakes"
+      ],
+      "question": "Will this code compile?",
+      "code": "template &lt;typename T&gt;\nT max(T x, T y) { return (x &gt; y) ? x : y; }\n\nmax(3, 7.5);",
+      "answer": "No, it will not compile.",
+      "explanation": "The arguments have different types (int and double), but the template expects both parameters to be the same type T. This causes a template argument deduction failure.",
+      "source": "11.6 - Function templates",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_6_009",
+      "lesson": "11.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "syntax"
+      ],
+      "text": "You can explicitly specify the template argument using angle brackets: {{c1::max&lt;double&gt;(3, 7.5)}}",
+      "source": "11.6 - Function templates",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_6_010",
+      "lesson": "11.6",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "templates",
+        "best-practices"
+      ],
+      "concept": "Advantages of function templates over function overloading",
+      "explanation": "Function templates allow you to write one function that works with multiple types instead of writing separate overloads for each type. This reduces code duplication and maintenance burden.",
+      "examples": [
+        "// Without templates - multiple overloads needed",
+        "int max(int x, int y);",
+        "double max(double x, double y);",
+        "// ... one for each type",
+        "",
+        "// With template - one definition for all types",
+        "template &lt;typename T&gt;",
+        "T max(T x, T y) { return (x &gt; y) ? x : y; }"
+      ],
+      "source": "11.6 - Function templates",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_6_011",
+      "lesson": "11.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "front": "Can you have both function templates and regular overloaded functions with the same name?",
+      "back": "Yes. Function templates can coexist with regular overloaded functions, and the compiler will prefer exact matches to regular functions over template instantiations.",
+      "source": "11.6 - Function templates",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_6_012",
+      "lesson": "11.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "best-practices"
+      ],
+      "text": "Best practice: Use {{c1::function templates}} to write generic code that works with a wide variety of types.",
+      "source": "11.6 - Function templates",
+      "difficulty": "easy"
+    }
+  ]
+}

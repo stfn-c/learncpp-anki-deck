@@ -1,0 +1,103 @@
+{
+  "chapter": "Chapter 12",
+  "chapter_title": "Compound Types: References and Pointers",
+  "lesson": "12.11",
+  "lesson_title": "Pass by address (part 2)",
+  "total_cards": 6,
+  "cards": [
+    {
+      "id": "ch12_11_001",
+      "lesson": "12.11",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "pointers",
+        "const",
+        "functions"
+      ],
+      "text": "Pass by address to const is declared as {{c1::void func(const int* ptr)}}. This prevents modifying the value but allows {{c2::nullptr}}.",
+      "source": "12.11 - Pass by address (part 2)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_11_002",
+      "lesson": "12.11",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "pointers",
+        "references",
+        "best-practices"
+      ],
+      "front": "When should you use pass by const pointer vs pass by const reference?",
+      "back": "Use pass by const pointer when nullptr is a meaningful value (optional parameter). Use pass by const reference when the parameter must always be valid.",
+      "source": "12.11 - Pass by address (part 2)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_11_003",
+      "lesson": "12.11",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "pointers",
+        "const",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this code?",
+      "code": "void print(const int* ptr) {<br>    *ptr = 10;  // error<br>}",
+      "answer": "Cannot modify value through pointer to const. The const applies to the pointed-to value.",
+      "explanation": "Pointer to const prevents modification of the value, providing read-only access.",
+      "source": "12.11 - Pass by address (part 2)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_11_004",
+      "lesson": "12.11",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "pointers",
+        "references",
+        "best-practices"
+      ],
+      "concept": "Choosing between pass by address and pass by reference",
+      "explanation": "Decision guide:<ul><li>Pass by reference: parameter must be valid (preferred)</li><li>Pass by address: nullptr is meaningful (optional param)</li><li>Add const if not modifying</li><li>For fundamentals, use pass by value</li></ul>",
+      "examples": [
+        "void must(int& x);           // Must be valid",
+        "void optional(int* x);       // Can be nullptr",
+        "void readOnly(const int& x); // Can't modify, must be valid",
+        "void optRead(const int* x);  // Can't modify, can be nullptr"
+      ],
+      "source": "12.11 - Pass by address (part 2)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_11_005",
+      "lesson": "12.11",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "pointers",
+        "references",
+        "best-practices"
+      ],
+      "text": "Prefer {{c1::pass by reference}} over pass by address unless {{c2::nullptr}} is a meaningful value for the parameter.",
+      "source": "12.11 - Pass by address (part 2)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_11_006",
+      "lesson": "12.11",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "pointers",
+        "const"
+      ],
+      "text": "Pass by {{c1::const}} pointer (const T*) provides {{c2::read-only}} access while allowing {{c3::nullptr}} as a valid value.",
+      "source": "12.11 - Pass by address (part 2)",
+      "difficulty": "medium"
+    }
+  ]
+}

@@ -1,0 +1,192 @@
+{
+  "chapter": "Chapter 25",
+  "chapter_title": "Virtual Functions",
+  "lesson": "25.x",
+  "lesson_title": "Chapter 25 summary and quiz",
+  "total_cards": 14,
+  "cards": [
+    {
+      "id": "ch25_x_001",
+      "lesson": "25.x",
+      "type": "concept",
+      "tags": ["cpp", "virtual-functions", "summary"],
+      "concept": "Key concepts from Chapter 25 - Virtual Functions",
+      "explanation": "Virtual functions enable runtime polymorphism in C++:<ul><li>Base pointers/references can call derived functions</li><li>Use 'virtual' keyword in base class</li><li>Override in derived classes (use override specifier)</li><li>Resolved at runtime via vtables</li><li>Essential for polymorphic behavior</li></ul>",
+      "examples": [
+        "class Base {",
+        "    virtual void func() { }",
+        "};",
+        "class Derived: public Base {",
+        "    void func() override { }",
+        "};"
+      ],
+      "source": "25.x - Chapter 25 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_x_002",
+      "lesson": "25.x",
+      "type": "cloze",
+      "tags": ["cpp", "virtual-functions", "summary"],
+      "text": "The three key components of polymorphism in C++ are: {{c1::virtual functions}}, {{c2::inheritance}}, and {{c3::base class pointers/references}}.",
+      "source": "25.x - Chapter 25 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_x_003",
+      "lesson": "25.x",
+      "type": "concept",
+      "tags": ["cpp", "virtual-functions", "best-practices"],
+      "concept": "Best practices for virtual functions",
+      "explanation": "<ul><li>Always use override specifier in derived classes</li><li>Make destructors virtual in polymorphic base classes</li><li>Never call virtual functions from constructors/destructors</li><li>Use final sparingly to prevent further overriding</li><li>Pass polymorphic objects by pointer/reference, not value</li><li>Delete copy operations to prevent slicing</li></ul>",
+      "examples": [
+        "class Base {",
+        "public:",
+        "    virtual ~Base() = default;",
+        "    Base(const Base&amp;) = delete;",
+        "    virtual void func() = 0;",
+        "};"
+      ],
+      "source": "25.x - Chapter 25 summary and quiz",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch25_x_004",
+      "lesson": "25.x",
+      "type": "basic",
+      "tags": ["cpp", "virtual-functions", "summary"],
+      "front": "What are the main performance costs of virtual functions?",
+      "back": "<ul><li>Runtime overhead for vtable lookup (2 indirections)</li><li>Memory overhead (vptr per object, vtable per class)</li><li>Cannot be inlined</li><li>Larger object sizes</li></ul>",
+      "source": "25.x - Chapter 25 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_x_005",
+      "lesson": "25.x",
+      "type": "cloze",
+      "tags": ["cpp", "abstract-base-class", "summary"],
+      "text": "A class with at least one {{c1::pure virtual function}} is an {{c2::abstract base class}} and {{c3::cannot be instantiated}}.",
+      "source": "25.x - Chapter 25 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_x_006",
+      "lesson": "25.x",
+      "type": "basic",
+      "tags": ["cpp", "virtual-functions", "gotchas"],
+      "front": "What are three common mistakes with virtual functions?",
+      "back": "<ul><li>Forgetting to make destructor virtual</li><li>Signature mismatch (wrong const, parameters, etc.)</li><li>Passing derived objects by value (object slicing)</li></ul>",
+      "source": "25.x - Chapter 25 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_x_007",
+      "lesson": "25.x",
+      "type": "code",
+      "tags": ["cpp", "virtual-functions", "quiz"],
+      "question": "Will this code work correctly for polymorphism?",
+      "code": "class Shape {\npublic:\n    virtual double area() { return 0; }\n    virtual ~Shape() = default;\n};\n\nclass Circle: public Shape {\npublic:\n    double area() override { return 3.14 * r * r; }\nprivate:\n    double r;\n};\n\nShape* s = new Circle();\nstd::cout &lt;&lt; s-&gt;area();\ndelete s;",
+      "answer": "Yes, this works correctly.",
+      "explanation": "Shape::area() is virtual, Circle overrides it correctly, destructor is virtual, and we're calling through a pointer - all requirements for polymorphism are met.",
+      "source": "25.x - Chapter 25 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_x_008",
+      "lesson": "25.x",
+      "type": "concept",
+      "tags": ["cpp", "polymorphism", "summary"],
+      "concept": "When to use different inheritance techniques",
+      "explanation": "<ul><li><strong>Virtual functions:</strong> Different behavior for derived classes</li><li><strong>Pure virtual:</strong> No sensible base implementation</li><li><strong>Abstract base class:</strong> Define interface/contract</li><li><strong>Interface class:</strong> Multiple inheritance of pure interfaces</li><li><strong>Virtual base class:</strong> Solve diamond problem (rare)</li></ul>",
+      "examples": [
+        "// Interface:",
+        "class ISerializable { virtual void save() = 0; };",
+        "",
+        "// Abstract base:",
+        "class Shape { virtual double area() = 0; };",
+        "",
+        "// Concrete with virtual:",
+        "class Animal { virtual void speak() { } };"
+      ],
+      "source": "25.x - Chapter 25 summary and quiz",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch25_x_009",
+      "lesson": "25.x",
+      "type": "basic",
+      "tags": ["cpp", "virtual-functions", "design"],
+      "front": "What is the fundamental problem that virtual functions solve?",
+      "back": "They allow base class pointers/references to call derived class functions, enabling runtime polymorphism. Without virtual functions, base pointers always call base class versions.",
+      "source": "25.x - Chapter 25 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_x_010",
+      "lesson": "25.x",
+      "type": "cloze",
+      "tags": ["cpp", "binding", "summary"],
+      "text": "Virtual functions use {{c1::late binding}} (resolved at runtime), while non-virtual functions use {{c2::early binding}} (resolved at compile time).",
+      "source": "25.x - Chapter 25 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_x_011",
+      "lesson": "25.x",
+      "type": "concept",
+      "tags": ["cpp", "virtual-functions", "design"],
+      "concept": "The relationship between virtual functions and the Liskov Substitution Principle",
+      "explanation": "Virtual functions enable the Liskov Substitution Principle: derived classes can be used anywhere the base class is expected.<br><br>Requirements:<ul><li>Derived classes maintain the base class contract</li><li>Overrides have same/compatible signatures</li><li>Behavior is substitutable (not just syntax)</li></ul>This is the foundation of polymorphic design.",
+      "examples": [
+        "void processShape(Shape&amp; s) {",
+        "    std::cout &lt;&lt; s.area();  // Works for Circle, Rectangle, etc.",
+        "}",
+        "",
+        "// Any Shape derivative can be passed"
+      ],
+      "source": "25.x - Chapter 25 summary and quiz",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch25_x_012",
+      "lesson": "25.x",
+      "type": "basic",
+      "tags": ["cpp", "object-slicing", "summary"],
+      "front": "What is object slicing and how do you prevent it?",
+      "back": "Object slicing: when a derived object is assigned to a base object by value, losing derived parts.<br><br>Prevention:<ul><li>Pass by pointer or reference</li><li>Delete copy constructor/assignment in base</li><li>Use smart pointers for polymorphic objects</li></ul>",
+      "source": "25.x - Chapter 25 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_x_013",
+      "lesson": "25.x",
+      "type": "code",
+      "tags": ["cpp", "virtual-functions", "quiz"],
+      "question": "Identify all errors in this code:",
+      "code": "class Base {\npublic:\n    void func() { }  // Error 1?\n};\n\nclass Derived: public Base {\npublic:\n    void func() override { }  // Error 2?\n};\n\nvoid process(Base b) {  // Error 3?\n    b.func();\n}\n\nDerived* d = new Derived();\nprocess(*d);  // Error 4?\ndelete d;",
+      "answer": "Errors: 1) func() should be virtual in Base 2) override fails because base isn't virtual 3) Pass by value causes slicing 4) No virtual destructor in Base",
+      "explanation": "Multiple issues prevent polymorphism: non-virtual function, object slicing from pass-by-value, and missing virtual destructor.",
+      "source": "25.x - Chapter 25 summary and quiz",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch25_x_014",
+      "lesson": "25.x",
+      "type": "concept",
+      "tags": ["cpp", "virtual-functions", "summary"],
+      "concept": "Summary: Making a polymorphic class hierarchy",
+      "explanation": "Complete checklist for proper polymorphic design:<ol><li>Mark functions virtual in base class</li><li>Use override in derived classes</li><li>Add virtual destructor to base</li><li>Delete copy operations if appropriate</li><li>Use pure virtual for interface functions</li><li>Pass objects by pointer/reference</li><li>Store in containers as pointers</li><li>Consider using smart pointers</li></ol>",
+      "examples": [
+        "class Base {",
+        "public:",
+        "    virtual ~Base() = default;",
+        "    Base(const Base&amp;) = delete;",
+        "    virtual void interface() = 0;",
+        "    virtual void behavior() { }",
+        "};"
+      ],
+      "source": "25.x - Chapter 25 summary and quiz",
+      "difficulty": "hard"
+    }
+  ]
+}

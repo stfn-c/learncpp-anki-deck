@@ -1,0 +1,135 @@
+{
+  "chapter": "Chapter 14",
+  "chapter_title": "Introduction to Classes",
+  "lesson": "14.10",
+  "lesson_title": "Constructor member initializer lists",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch14_10_001",
+      "lesson": "14.10",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "constructors", "syntax"],
+      "text": "A {{c1::member initializer list}} is a list that directly initializes member variables, appearing after the constructor parameter list with a {{c2::colon}}.",
+      "source": "14.10 - Constructor member initializer lists",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_10_002",
+      "lesson": "14.10",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "constructors", "syntax"],
+      "text": "Member initializer list syntax:<br>ClassName(int x, int y) {{c1:::}} {{c2::m_x{x}}}, {{c3::m_y{y}}}<br>{<br>}",
+      "source": "14.10 - Constructor member initializer lists",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_10_003",
+      "lesson": "14.10",
+      "type": "code",
+      "tags": ["cpp", "classes", "constructors"],
+      "question": "Rewrite this constructor using a member initializer list:",
+      "code": "class Point<br>{<br>private:<br>&nbsp;&nbsp;&nbsp;&nbsp;int m_x;<br>&nbsp;&nbsp;&nbsp;&nbsp;int m_y;<br>public:<br>&nbsp;&nbsp;&nbsp;&nbsp;Point(int x, int y)<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m_x = x;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m_y = y;<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>};",
+      "answer": "Point(int x, int y) : m_x{x}, m_y{y}<br>{<br>}",
+      "explanation": "Member initializer list directly initializes members instead of using assignment in the constructor body.",
+      "source": "14.10 - Constructor member initializer lists",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_10_004",
+      "lesson": "14.10",
+      "type": "concept",
+      "tags": ["cpp", "classes", "constructors", "best-practices"],
+      "concept": "Why member initializer lists are better than assignment in constructor body",
+      "explanation": "<ul><li><b>More efficient:</b> Initializes directly instead of default-initialize then assign</li><li><b>Required for const members:</b> Const members must be initialized, not assigned</li><li><b>Required for references:</b> References must be initialized</li><li><b>Required for members without default constructor:</b> Some types can't be default-initialized</li><li><b>Clearer intent:</b> Shows initialization vs other logic</li></ul>",
+      "examples": [
+        "Foo(int x) : m_x{x} { }  // direct initialization",
+        "Foo(int x) { m_x = x; }  // default-init then assign (less efficient)"
+      ],
+      "source": "14.10 - Constructor member initializer lists",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch14_10_005",
+      "lesson": "14.10",
+      "type": "basic",
+      "tags": ["cpp", "classes", "constructors", "const"],
+      "front": "Why must const members be initialized using a member initializer list?",
+      "back": "Const members cannot be assigned to after creation. They must be initialized at the point of creation. Assignment in the constructor body comes after initialization, so it won't work for const members.",
+      "source": "14.10 - Constructor member initializer lists",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_10_006",
+      "lesson": "14.10",
+      "type": "code",
+      "tags": ["cpp", "classes", "constructors", "common-mistakes"],
+      "question": "What's wrong with this code?",
+      "code": "class ID<br>{<br>private:<br>&nbsp;&nbsp;&nbsp;&nbsp;const int m_id;<br>public:<br>&nbsp;&nbsp;&nbsp;&nbsp;ID(int id)<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m_id = id;  // error!<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>};",
+      "answer": "Cannot assign to const member m_id. Must use member initializer list: ID(int id) : m_id{id} { }",
+      "explanation": "Const members must be initialized using a member initializer list, not assigned in the constructor body.",
+      "source": "14.10 - Constructor member initializer lists",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_10_007",
+      "lesson": "14.10",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "constructors"],
+      "text": "Members are initialized in the {{c1::order they are declared}} in the class, NOT the order they appear in the member initializer list.",
+      "source": "14.10 - Constructor member initializer lists",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_10_008",
+      "lesson": "14.10",
+      "type": "basic",
+      "tags": ["cpp", "classes", "constructors", "best-practices"],
+      "front": "What is the best practice for ordering members in the initializer list?",
+      "back": "List members in the initializer list in the same order they are declared in the class. This prevents confusion since initialization always happens in declaration order regardless of initializer list order.",
+      "source": "14.10 - Constructor member initializer lists",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_10_009",
+      "lesson": "14.10",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "constructors", "best-practices"],
+      "text": "Best practice: {{c1::Prefer member initializer lists}} over assignment in the constructor body for initializing member variables.",
+      "source": "14.10 - Constructor member initializer lists",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_10_010",
+      "lesson": "14.10",
+      "type": "basic",
+      "tags": ["cpp", "classes", "constructors"],
+      "front": "Can you mix default member initializers with member initializer lists?",
+      "back": "Yes. Members in the initializer list use those values. Members not in the initializer list use their default member initializer. Members with neither are default-initialized.",
+      "source": "14.10 - Constructor member initializer lists",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_10_011",
+      "lesson": "14.10",
+      "type": "code",
+      "tags": ["cpp", "classes", "constructors"],
+      "question": "What values do the members have?",
+      "code": "class Data<br>{<br>private:<br>&nbsp;&nbsp;&nbsp;&nbsp;int m_a{1};<br>&nbsp;&nbsp;&nbsp;&nbsp;int m_b{2};<br>&nbsp;&nbsp;&nbsp;&nbsp;int m_c{3};<br>public:<br>&nbsp;&nbsp;&nbsp;&nbsp;Data(int a) : m_a{a}, m_b{5}<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>};<br><br>Data d{10};",
+      "answer": "m_a = 10 (from initializer list)<br>m_b = 5 (from initializer list)<br>m_c = 3 (from default member initializer)",
+      "explanation": "Initializer list values override default member initializers. m_c is not in the list so it uses its default value of 3.",
+      "source": "14.10 - Constructor member initializer lists",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_10_012",
+      "lesson": "14.10",
+      "type": "basic",
+      "tags": ["cpp", "classes", "constructors", "references"],
+      "front": "Can reference members be initialized using assignment in the constructor body?",
+      "back": "No. Like const members, reference members must be initialized using a member initializer list. References cannot be reseated after initialization.",
+      "source": "14.10 - Constructor member initializer lists",
+      "difficulty": "medium"
+    }
+  ]
+}

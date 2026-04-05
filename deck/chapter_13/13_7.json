@@ -1,0 +1,201 @@
+{
+  "chapter": "Chapter 13",
+  "chapter_title": "Compound Types: Enums and Structs",
+  "lesson": "13.7",
+  "lesson_title": "13.7 — Introduction to structs, members, and member selection",
+  "total_cards": 14,
+  "cards": [
+    {
+      "id": "ch13_7_001",
+      "lesson": "13.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "struct",
+        "syntax"
+      ],
+      "text": "To define a struct: {{c1::struct}} Employee {{c2::{<br>&nbsp;&nbsp;int id;<br>&nbsp;&nbsp;double wage;<br>};}}}",
+      "source": "13.7 — Introduction to structs, members, and member selection",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_7_002",
+      "lesson": "13.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "struct"
+      ],
+      "front": "What are the variables inside a struct called?",
+      "back": "<strong>Data members</strong> or <strong>member variables</strong>.<br>Each object gets its own copy.",
+      "source": "13.7 — Introduction to structs, members, and member selection",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_7_003",
+      "lesson": "13.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "struct",
+        "syntax"
+      ],
+      "text": "To access struct member: employee{{c1::.}}id (using {{c2::member selection operator}})",
+      "source": "13.7 — Introduction to structs, members, and member selection",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_7_004",
+      "lesson": "13.7",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "struct"
+      ],
+      "question": "What does this print?",
+      "code": "struct Employee { int id; double wage; };\nEmployee joe;\njoe.id = 14;\njoe.wage = 24.15;\nstd::cout &lt;&lt; joe.wage;",
+      "answer": "24.15",
+      "explanation": "Accesses the wage member of joe struct object.",
+      "source": "13.7 — Introduction to structs, members, and member selection",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_7_005",
+      "lesson": "13.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "struct",
+        "naming"
+      ],
+      "front": "What is the naming convention for struct types?",
+      "back": "Start with capital letter, use PascalCase:<br><code>Employee</code>, <code>DateOfBirth</code>, <code>InventoryItem</code>",
+      "source": "13.7 — Introduction to structs, members, and member selection",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_7_006",
+      "lesson": "13.7",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "struct",
+        "initialization"
+      ],
+      "question": "What values do joe's members have?",
+      "code": "struct Employee { int id; double wage; };\nEmployee joe;",
+      "answer": "Indeterminate (garbage values) - members are not initialized.",
+      "explanation": "Uninitialized struct members with fundamental types contain garbage.",
+      "source": "13.7 — Introduction to structs, members, and member selection",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_7_007",
+      "lesson": "13.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "struct"
+      ],
+      "front": "What are the benefits of using structs over separate variables?",
+      "back": "<ul><li>Group related data together</li><li>Pass multiple values as one parameter</li><li>Return multiple values from functions</li><li>Create arrays of related objects</li></ul>",
+      "source": "13.7 — Introduction to structs, members, and member selection",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_7_008",
+      "lesson": "13.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "struct"
+      ],
+      "text": "Structs in C++ can contain both {{c1::data members}} and {{c2::member functions}}.",
+      "source": "13.7 — Introduction to structs, members, and member selection",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_7_009",
+      "lesson": "13.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "struct",
+        "best-practices"
+      ],
+      "front": "Where should the struct type name be placed?",
+      "back": "After the closing brace:<br><code>struct Employee { /* ... */ };</code><br>Not C-style: <code>struct { } Employee;</code>",
+      "source": "13.7 — Introduction to structs, members, and member selection",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_7_010",
+      "lesson": "13.7",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "struct",
+        "design"
+      ],
+      "concept": "When to use structs",
+      "explanation": "Use structs when:<ul><li>Grouping related data that represents a single concept</li><li>Data is frequently passed/returned together</li><li>You want arrays of complex objects</li><li>All members should be public (no encapsulation needed)</li></ul>Use class when you need encapsulation/invariants.",
+      "examples": [
+        "struct Point { int x; int y; };",
+        "struct Employee { int id; std::string name; };",
+        "std::vector&lt;Employee&gt; employees;"
+      ],
+      "source": "13.7 — Introduction to structs, members, and member selection",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_7_011",
+      "lesson": "13.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "struct",
+        "memory"
+      ],
+      "front": "Does each struct object get its own copy of the members?",
+      "back": "Yes. Each object has its own separate copy of all data members.",
+      "source": "13.7 — Introduction to structs, members, and member selection",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_7_012",
+      "lesson": "13.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "struct"
+      ],
+      "text": "Struct type names conventionally use {{c1::PascalCase}} starting with a {{c2::capital letter}}.",
+      "source": "13.7 — Introduction to structs, members, and member selection",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_7_013",
+      "lesson": "13.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "struct"
+      ],
+      "text": "To define a struct member: struct Employee { {{c1::int}} id; {{c2::double}} wage; };",
+      "source": "13.7 — Introduction to structs, members, and member selection",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_7_014",
+      "lesson": "13.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "struct"
+      ],
+      "text": "Struct type names conventionally use {{c1::PascalCase}} starting with a {{c2::capital letter}}.",
+      "source": "13.7 — Introduction to structs, members, and member selection",
+      "difficulty": "easy"
+    }
+  ]
+}

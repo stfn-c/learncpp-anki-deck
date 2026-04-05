@@ -1,0 +1,178 @@
+{
+  "chapter": "Chapter 15",
+  "chapter_title": "More on Classes",
+  "lesson": "15.7",
+  "lesson_title": "Static member functions",
+  "total_cards": 11,
+  "cards": [
+    {
+      "id": "ch15_7_001",
+      "lesson": "15.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "static"
+      ],
+      "text": "Static member functions have {{c1::no this pointer}} and can only access {{c2::static member variables}} and other {{c2::static member functions}}.",
+      "source": "15.7 - Static member functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch15_7_002",
+      "lesson": "15.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "static",
+        "syntax"
+      ],
+      "text": "To define a static member function outside the class, use {{c1::ClassName::functionName()}} but do NOT include the {{c2::static}} keyword in the definition.",
+      "source": "15.7 - Static member functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_7_003",
+      "lesson": "15.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "static"
+      ],
+      "text": "Static member functions can be called using either {{c1::ClassName::functionName()}} or {{c2::object.functionName()}}, but {{c1::class name}} syntax is preferred.",
+      "source": "15.7 - Static member functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch15_7_004",
+      "lesson": "15.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "static"
+      ],
+      "text": "Static member functions are best used for functionality that is {{c1::related to the class}} but {{c2::doesn't depend on a specific object}}.",
+      "source": "15.7 - Static member functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_7_005",
+      "lesson": "15.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "classes",
+        "static"
+      ],
+      "front": "Why can't static member functions access non-static member variables?",
+      "back": "Because static member functions have no <code>this</code> pointer - they aren't associated with any specific object, so they don't know which object's members to access.",
+      "source": "15.7 - Static member functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_7_006",
+      "lesson": "15.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "classes",
+        "static"
+      ],
+      "front": "Can a static member function be const-qualified?",
+      "back": "No. The const qualifier applies to the this pointer, but static member functions have no this pointer, so const doesn't make sense.",
+      "source": "15.7 - Static member functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_7_007",
+      "lesson": "15.7",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "classes",
+        "static",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this code?",
+      "code": "class Data {\n    int m_value;\n    static int s_count;\npublic:\n    static void print() {\n        std::cout &lt;&lt; m_value;  // ERROR!\n    }\n};",
+      "answer": "Static member functions cannot access non-static member variables like m_value.",
+      "explanation": "Static functions have no <code>this</code> pointer, so they can't access non-static members which belong to specific objects.",
+      "source": "15.7 - Static member functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch15_7_008",
+      "lesson": "15.7",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "classes",
+        "static",
+        "syntax"
+      ],
+      "question": "How do you define this static member function outside the class?",
+      "code": "class Math {\npublic:\n    static int add(int a, int b);\n};\n\n// Define add() here",
+      "answer": "<code>int Math::add(int a, int b) { return a + b; }</code>",
+      "explanation": "Use ClassName:: but do NOT repeat the <code>static</code> keyword in the definition.",
+      "source": "15.7 - Static member functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch15_7_009",
+      "lesson": "15.7",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "classes",
+        "static"
+      ],
+      "question": "What does this code output?",
+      "code": "class Counter {\n    static int s_count;\npublic:\n    Counter() { ++s_count; }\n    static int getCount() { return s_count; }\n};\nint Counter::s_count{ 0 };\n\nCounter c1, c2;\nstd::cout &lt;&lt; Counter::getCount();",
+      "answer": "2",
+      "explanation": "Two Counter objects are created, incrementing s_count twice. The static function getCount() returns the shared s_count value of 2.",
+      "source": "15.7 - Static member functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_7_010",
+      "lesson": "15.7",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "classes",
+        "static",
+        "best-practices"
+      ],
+      "concept": "When to use static member functions",
+      "explanation": "Static member functions are useful for:<ul><li>Accessing or modifying static member variables</li><li>Factory functions that create objects</li><li>Utility functions related to the class</li><li>Functions that don't need object-specific data</li><li>Implementing singleton getInstance() methods</li></ul>",
+      "examples": [
+        "class IDGenerator {",
+        "    static int s_nextID;",
+        "public:",
+        "    static int getNextID() { return s_nextID++; }",
+        "};",
+        "",
+        "int id = IDGenerator::getNextID();  // No object needed"
+      ],
+      "source": "15.7 - Static member functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_7_011",
+      "lesson": "15.7",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "classes",
+        "static"
+      ],
+      "front": "static member function",
+      "back": "A member function that has no this pointer and can only access static members; can be called without an object",
+      "source": "15.7 - Static member functions",
+      "difficulty": "easy"
+    }
+  ]
+}

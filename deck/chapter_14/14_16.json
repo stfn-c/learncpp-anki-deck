@@ -1,0 +1,138 @@
+{
+  "chapter": "Chapter 14",
+  "chapter_title": "Introduction to Classes",
+  "lesson": "14.16",
+  "lesson_title": "Converting constructors and the explicit keyword",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch14_16_001",
+      "lesson": "14.16",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "constructors"],
+      "text": "A {{c1::converting constructor}} is a constructor that can be called with a {{c2::single argument}}, allowing implicit conversion from that argument type to the class type.",
+      "source": "14.16 - Converting constructors and the explicit keyword",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_16_002",
+      "lesson": "14.16",
+      "type": "code",
+      "tags": ["cpp", "classes", "constructors", "conversion"],
+      "question": "What happens in this code?",
+      "code": "class Fraction<br>{<br>public:<br>&nbsp;&nbsp;&nbsp;&nbsp;Fraction(int num) : m_num{num}, m_den{1} { }<br>private:<br>&nbsp;&nbsp;&nbsp;&nbsp;int m_num, m_den;<br>};<br><br>Fraction f = 5;",
+      "answer": "Implicit conversion. The int 5 is implicitly converted to Fraction by calling Fraction(5).",
+      "explanation": "The single-argument constructor acts as a converting constructor, allowing assignment from int to Fraction.",
+      "source": "14.16 - Converting constructors and the explicit keyword",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_16_003",
+      "lesson": "14.16",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "explicit", "syntax"],
+      "text": "To prevent implicit conversions, mark the constructor as {{c1::explicit}}:<br>{{c2::explicit}} ClassName(int value);",
+      "source": "14.16 - Converting constructors and the explicit keyword",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_16_004",
+      "lesson": "14.16",
+      "type": "code",
+      "tags": ["cpp", "classes", "explicit", "common-mistakes"],
+      "question": "What's wrong with this code?",
+      "code": "class String<br>{<br>public:<br>&nbsp;&nbsp;&nbsp;&nbsp;explicit String(const char* str) { }<br>};<br><br>String s = \"hello\";  // error!",
+      "answer": "Cannot use copy initialization with explicit constructor. Must use direct initialization: String s{\"hello\"};",
+      "explanation": "The explicit keyword prevents implicit conversions, including copy initialization. Direct initialization is required.",
+      "source": "14.16 - Converting constructors and the explicit keyword",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_16_005",
+      "lesson": "14.16",
+      "type": "concept",
+      "tags": ["cpp", "classes", "explicit", "best-practices"],
+      "concept": "When to use explicit constructors",
+      "explanation": "Make constructors explicit to:<ul><li>Prevent unintended implicit conversions</li><li>Make code more explicit and readable</li><li>Avoid ambiguity in function overload resolution</li><li>Prevent subtle bugs from unexpected conversions</li></ul>Use non-explicit constructors only when implicit conversion is intended and makes sense semantically.",
+      "examples": [
+        "explicit String(int size);  // prevent String s = 10;",
+        "Fraction(int n);  // allow Fraction f = 5; if intentional"
+      ],
+      "source": "14.16 - Converting constructors and the explicit keyword",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_16_006",
+      "lesson": "14.16",
+      "type": "basic",
+      "tags": ["cpp", "classes", "explicit"],
+      "front": "What does the explicit keyword do?",
+      "back": "The explicit keyword prevents a constructor from being used for implicit conversions. The constructor can only be called explicitly with direct initialization, not through copy initialization or implicit type conversion.",
+      "source": "14.16 - Converting constructors and the explicit keyword",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_16_007",
+      "lesson": "14.16",
+      "type": "code",
+      "tags": ["cpp", "classes", "conversion"],
+      "question": "What happens when this function is called with an int?",
+      "code": "class Cents<br>{<br>public:<br>&nbsp;&nbsp;&nbsp;&nbsp;Cents(int value) { }<br>};<br><br>void print(Cents c) { }<br><br>print(5);",
+      "answer": "Compiles and works. The int 5 is implicitly converted to Cents{5} to match the parameter type.",
+      "explanation": "Non-explicit single-argument constructors allow implicit conversion when passing arguments to functions.",
+      "source": "14.16 - Converting constructors and the explicit keyword",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_16_008",
+      "lesson": "14.16",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "best-practices"],
+      "text": "Best practice: Make all single-argument constructors {{c1::explicit}} by default, unless you {{c2::specifically intend}} to allow implicit conversions.",
+      "source": "14.16 - Converting constructors and the explicit keyword",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_16_009",
+      "lesson": "14.16",
+      "type": "basic",
+      "tags": ["cpp", "classes", "constructors"],
+      "front": "What counts as a single-argument constructor for conversion purposes?",
+      "back": "<ul><li>Constructor with exactly one parameter</li><li>Constructor with multiple parameters where all but the first have default values</li></ul>Both can act as converting constructors.",
+      "source": "14.16 - Converting constructors and the explicit keyword",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_16_010",
+      "lesson": "14.16",
+      "type": "code",
+      "tags": ["cpp", "classes", "explicit"],
+      "question": "Which initialization works with an explicit constructor?",
+      "code": "class Widget<br>{<br>public:<br>&nbsp;&nbsp;&nbsp;&nbsp;explicit Widget(int x) { }<br>};<br><br>A) Widget w = 5;<br>B) Widget w{5};<br>C) Widget w(5);",
+      "answer": "B and C work (direct initialization). A doesn't work (copy initialization).",
+      "explanation": "Explicit constructors can only be used with direct initialization (braces or parentheses), not copy initialization (equals).",
+      "source": "14.16 - Converting constructors and the explicit keyword",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_16_011",
+      "lesson": "14.16",
+      "type": "basic",
+      "tags": ["cpp", "classes", "explicit", "gotchas"],
+      "front": "Why can implicit conversions with constructors be dangerous?",
+      "back": "They can cause unexpected behavior:<ul><li>Accidentally passing wrong type (compile succeeds but logic is wrong)</li><li>Performance overhead from temporary object creation</li><li>Ambiguity in overload resolution</li><li>Code that compiles but doesn't do what you intended</li></ul>",
+      "source": "14.16 - Converting constructors and the explicit keyword",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_16_012",
+      "lesson": "14.16",
+      "type": "reverse",
+      "tags": ["cpp", "keywords"],
+      "front": "explicit",
+      "back": "Keyword that prevents a constructor from being used for implicit type conversions",
+      "source": "14.16 - Converting constructors and the explicit keyword",
+      "difficulty": "easy"
+    }
+  ]
+}

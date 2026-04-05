@@ -1,0 +1,196 @@
+{
+  "chapter": "Chapter 4",
+  "chapter_title": "Fundamental Data Types",
+  "lesson": "4.8",
+  "lesson_title": "Floating point numbers",
+  "total_cards": 13,
+  "cards": [
+    {
+      "id": "ch4_8_001",
+      "lesson": "4.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "floating-point",
+        "types"
+      ],
+      "text": "A {{c1::floating point}} number is a number with a {{c2::fractional}} part (decimal point can 'float').",
+      "source": "4.8 - Floating point numbers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_8_002",
+      "lesson": "4.8",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "floating-point",
+        "types"
+      ],
+      "front": "What are the three floating point types in C++?",
+      "back": "<ul><li>float (4 bytes, ~7 digits precision)</li><li>double (8 bytes, ~15 digits precision)</li><li>long double (8-16 bytes, varies)</li></ul>",
+      "source": "4.8 - Floating point numbers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_8_003",
+      "lesson": "4.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "floating-point",
+        "best-practices"
+      ],
+      "text": "Best practice: Favor {{c1::double}} over float unless space is at a premium, as double has better precision.",
+      "source": "4.8 - Floating point numbers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_8_004",
+      "lesson": "4.8",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "floating-point",
+        "syntax"
+      ],
+      "question": "What suffix makes this a float literal?",
+      "code": "float x{ 5.0f };",
+      "answer": "f or F suffix",
+      "explanation": "Without the f suffix, 5.0 would be a double. The f forces it to be a float literal.",
+      "source": "4.8 - Floating point numbers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_8_005",
+      "lesson": "4.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "floating-point",
+        "syntax"
+      ],
+      "text": "By default, floating point literals are of type {{c1::double}}. Use {{c2::f}} suffix for float.",
+      "source": "4.8 - Floating point numbers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_8_006",
+      "lesson": "4.8",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "floating-point",
+        "gotchas"
+      ],
+      "question": "Why might this print something unexpected?",
+      "code": "float x{ 0.1f };\nstd::cout &lt;&lt; std::setprecision(10) &lt;&lt; x;",
+      "answer": "Prints 0.1000000015 (not exactly 0.1)",
+      "explanation": "Many decimal numbers cannot be represented exactly in binary floating point, causing small rounding errors.",
+      "source": "4.8 - Floating point numbers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch4_8_007",
+      "lesson": "4.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "floating-point",
+        "gotchas"
+      ],
+      "text": "Floating point numbers have limited {{c1::precision}} and may introduce small {{c2::rounding errors}}.",
+      "source": "4.8 - Floating point numbers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch4_8_008",
+      "lesson": "4.8",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "floating-point",
+        "gotchas"
+      ],
+      "concept": "Why comparing floating point numbers with == is dangerous",
+      "explanation": "Floating point rounding errors mean numbers that should be equal may differ slightly:<ul><li>0.1 + 0.2 might not exactly equal 0.3</li><li>Use epsilon comparison instead</li><li>Check if difference is less than small threshold</li></ul>",
+      "examples": [
+        "if (abs(a - b) &lt; 0.0001)  // good: epsilon comparison",
+        "if (a == b)               // bad: exact comparison"
+      ],
+      "source": "4.8 - Floating point numbers",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch4_8_009",
+      "lesson": "4.8",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "floating-point",
+        "special-values"
+      ],
+      "front": "What special values can floating point numbers have?",
+      "back": "<ul><li>Infinity (positive and negative)</li><li>NaN (Not a Number) - from invalid operations</li><li>-0 (negative zero)</li></ul>",
+      "source": "4.8 - Floating point numbers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch4_8_010",
+      "lesson": "4.8",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "floating-point",
+        "special-values"
+      ],
+      "question": "What does this code produce?",
+      "code": "double x{ 5.0 / 0.0 };",
+      "answer": "Infinity (inf)",
+      "explanation": "Dividing a floating point number by zero produces infinity (not a crash or error like with integers).",
+      "source": "4.8 - Floating point numbers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch4_8_011",
+      "lesson": "4.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "floating-point",
+        "output"
+      ],
+      "text": "Use {{c1::std::setprecision()}} from {{c2::&lt;iomanip&gt;}} to control how many digits are output for floating point numbers.",
+      "source": "4.8 - Floating point numbers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_8_012",
+      "lesson": "4.8",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "floating-point",
+        "best-practices"
+      ],
+      "front": "When should you use floating point numbers instead of integers?",
+      "back": "When you need:<ul><li>Fractional values (decimals)</li><li>Very large or very small numbers</li><li>Mathematical calculations requiring precision</li></ul>Avoid for money (use integers for cents).",
+      "source": "4.8 - Floating point numbers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_8_013",
+      "lesson": "4.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "floating-point",
+        "output",
+        "syntax"
+      ],
+      "text": "To output floating point in fixed notation (not scientific), use {{c1::std::fixed}} manipulator.",
+      "source": "4.8 - Floating point numbers",
+      "difficulty": "medium"
+    }
+  ]
+}

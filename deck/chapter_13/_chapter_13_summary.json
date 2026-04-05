@@ -1,0 +1,104 @@
+{
+  "chapter": "Chapter 13",
+  "chapter_title": "Compound Types: Enums and Structs",
+  "total_lessons": 17,
+  "total_cards": 217,
+  "cards_by_type": {
+    "cloze": 87,
+    "basic": 68,
+    "concept": 17,
+    "code": 45
+  },
+  "cards_by_difficulty": {
+    "easy": 125,
+    "medium": 83,
+    "hard": 9
+  },
+  "lessons": [
+    {
+      "lesson": "13.1",
+      "lesson_title": "13.1 — Introduction to program-defined (user-defined) types",
+      "total_cards": 12
+    },
+    {
+      "lesson": "13.2",
+      "lesson_title": "13.2 — Unscoped enumerations",
+      "total_cards": 14
+    },
+    {
+      "lesson": "13.3",
+      "lesson_title": "13.3 — Unscoped enumerator integral conversions",
+      "total_cards": 12
+    },
+    {
+      "lesson": "13.4",
+      "lesson_title": "13.4 — Converting an enumeration to and from a string",
+      "total_cards": 13
+    },
+    {
+      "lesson": "13.5",
+      "lesson_title": "13.5 — Introduction to overloading the I/O operators",
+      "total_cards": 12
+    },
+    {
+      "lesson": "13.6",
+      "lesson_title": "13.6 — Scoped enumerations (enum classes)",
+      "total_cards": 14
+    },
+    {
+      "lesson": "13.7",
+      "lesson_title": "13.7 — Introduction to structs, members, and member selection",
+      "total_cards": 13
+    },
+    {
+      "lesson": "13.8",
+      "lesson_title": "13.8 — Struct aggregate initialization",
+      "total_cards": 14
+    },
+    {
+      "lesson": "13.9",
+      "lesson_title": "13.9 — Default member initialization",
+      "total_cards": 13
+    },
+    {
+      "lesson": "13.10",
+      "lesson_title": "13.10 — Passing and returning structs",
+      "total_cards": 14
+    },
+    {
+      "lesson": "13.11",
+      "lesson_title": "13.11 — Struct miscellany",
+      "total_cards": 14
+    },
+    {
+      "lesson": "13.12",
+      "lesson_title": "13.12 — Member selection with pointers and references",
+      "total_cards": 13
+    },
+    {
+      "lesson": "13.13",
+      "lesson_title": "13.13 — Class templates",
+      "total_cards": 14
+    },
+    {
+      "lesson": "13.14",
+      "lesson_title": "13.14 — Class template argument deduction (CTAD) and deduction guides",
+      "total_cards": 13
+    },
+    {
+      "lesson": "13.15",
+      "lesson_title": "13.15 — Alias templates",
+      "total_cards": 14
+    },
+    {
+      "lesson": "13.x",
+      "lesson_title": "13.x — Chapter 13 summary and quiz",
+      "total_cards": 11
+    },
+    {
+      "lesson": "13.y",
+      "lesson_title": "13.y — Using a language reference",
+      "total_cards": 7
+    }
+  ]
+}

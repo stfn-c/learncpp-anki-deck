@@ -1,0 +1,184 @@
+{
+  "chapter": "Chapter 4",
+  "chapter_title": "Fundamental Data Types",
+  "lesson": "4.12",
+  "lesson_title": "Introduction to type conversion and static_cast",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch4_12_001",
+      "lesson": "4.12",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "type-conversion",
+        "casting"
+      ],
+      "text": "{{c1::Type conversion}} is the process of converting a value from one type to another.",
+      "source": "4.12 - Introduction to type conversion and static_cast",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_12_002",
+      "lesson": "4.12",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "type-conversion"
+      ],
+      "front": "What's the difference between implicit and explicit type conversion?",
+      "back": "<ul><li><strong>Implicit</strong>: Compiler converts automatically</li><li><strong>Explicit</strong>: Programmer requests conversion with a cast</li></ul>",
+      "source": "4.12 - Introduction to type conversion and static_cast",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_12_003",
+      "lesson": "4.12",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "type-conversion",
+        "implicit"
+      ],
+      "question": "What type conversion happens here?",
+      "code": "double d{ 5 };",
+      "answer": "Implicit conversion from int to double",
+      "explanation": "The integer literal 5 is implicitly converted to 5.0 (double) by the compiler.",
+      "source": "4.12 - Introduction to type conversion and static_cast",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_12_004",
+      "lesson": "4.12",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "static_cast",
+        "syntax"
+      ],
+      "text": "To explicitly convert a value, use {{c1::static_cast&lt;new_type&gt;(expression)}}.",
+      "source": "4.12 - Introduction to type conversion and static_cast",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_12_005",
+      "lesson": "4.12",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "static_cast",
+        "syntax"
+      ],
+      "question": "What does x equal?",
+      "code": "int x{ static_cast&lt;int&gt;(5.7) };",
+      "answer": "5",
+      "explanation": "static_cast&lt;int&gt; converts 5.7 to int by truncating the decimal part.",
+      "source": "4.12 - Introduction to type conversion and static_cast",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_12_006",
+      "lesson": "4.12",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "static_cast",
+        "best-practices"
+      ],
+      "concept": "Why use static_cast instead of C-style casts",
+      "explanation": "Prefer static_cast because:<ul><li>More visible in code (easier to find)</li><li>Compile-time checked for validity</li><li>More restrictive (safer)</li><li>Clearer intent</li></ul>Avoid C-style casts like (int)x.",
+      "examples": [
+        "static_cast&lt;int&gt;(x)  // good: C++ style",
+        "(int)x              // avoid: C style"
+      ],
+      "source": "4.12 - Introduction to type conversion and static_cast",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch4_12_007",
+      "lesson": "4.12",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "type-conversion",
+        "narrowing"
+      ],
+      "text": "A {{c1::narrowing conversion}} is a conversion where data may be lost, such as converting double to int.",
+      "source": "4.12 - Introduction to type conversion and static_cast",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch4_12_008",
+      "lesson": "4.12",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "type-conversion",
+        "narrowing"
+      ],
+      "question": "Why might this cause a warning?",
+      "code": "int x{ 3.5 };",
+      "answer": "Narrowing conversion from double to int",
+      "explanation": "Brace initialization disallows implicit narrowing conversions. Use static_cast to make it explicit.",
+      "source": "4.12 - Introduction to type conversion and static_cast",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch4_12_009",
+      "lesson": "4.12",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "static_cast",
+        "best-practices"
+      ],
+      "front": "When should you use static_cast?",
+      "back": "<ul><li>Converting between numeric types</li><li>Making implicit conversions explicit</li><li>Converting to/from char</li><li>Whenever you need an explicit conversion</li></ul>",
+      "source": "4.12 - Introduction to type conversion and static_cast",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_12_010",
+      "lesson": "4.12",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "static_cast",
+        "division"
+      ],
+      "question": "How can you fix this to get 3.5?",
+      "code": "int x{ 7 };\nint y{ 2 };\ndouble result{ x / y };  // gives 3.0",
+      "answer": "double result{ static_cast&lt;double&gt;(x) / y };",
+      "explanation": "Cast at least one operand to double before division to get floating point result.",
+      "source": "4.12 - Introduction to type conversion and static_cast",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch4_12_011",
+      "lesson": "4.12",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "type-conversion",
+        "unsigned"
+      ],
+      "text": "Converting from larger signed to smaller unsigned type (e.g., int to unsigned char) can cause {{c1::overflow}} and should use {{c2::static_cast}} to be explicit.",
+      "source": "4.12 - Introduction to type conversion and static_cast",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch4_12_012",
+      "lesson": "4.12",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "static_cast",
+        "gotchas"
+      ],
+      "front": "What conversions can static_cast NOT perform?",
+      "back": "<ul><li>Cannot cast away const</li><li>Cannot perform pointer to unrelated type conversions</li><li>Cannot do dynamic type checking</li></ul>Use const_cast, reinterpret_cast, or dynamic_cast for these.",
+      "source": "4.12 - Introduction to type conversion and static_cast",
+      "difficulty": "hard"
+    }
+  ]
+}

@@ -1,0 +1,205 @@
+{
+  "chapter": "Chapter 26",
+  "chapter_title": "Templates and Classes",
+  "lesson": "26.3",
+  "lesson_title": "Function template specialization",
+  "total_cards": 14,
+  "cards": [
+    {
+      "id": "ch26_3_001",
+      "lesson": "26.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "specialization"
+      ],
+      "front": "What is function template specialization?",
+      "back": "A feature that allows you to define a different implementation of a template function for a specific type.",
+      "source": "26.3 - Function template specialization",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch26_3_002",
+      "lesson": "26.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "specialization",
+        "syntax"
+      ],
+      "text": "To specialize a template function for type double: {{c1::template&lt;&gt;}}<br>{{c2::void print&lt;double&gt;(const double&amp; d)}} { ... }",
+      "source": "26.3 - Function template specialization",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_3_003",
+      "lesson": "26.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "specialization"
+      ],
+      "front": "What is the difference between full specialization and partial specialization?",
+      "back": "Full specialization: all template parameters are specialized<br>Partial specialization: only some template parameters are specialized<br>(Note: Functions cannot be partially specialized)",
+      "source": "26.3 - Function template specialization",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_3_004",
+      "lesson": "26.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "best-practices"
+      ],
+      "front": "What is the preferred alternative to function template specialization?",
+      "back": "Define a non-template function for the specific type. Non-template functions don't need the same signature as the template and will take precedence.",
+      "source": "26.3 - Function template specialization",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_3_005",
+      "lesson": "26.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "templates",
+        "specialization"
+      ],
+      "question": "What does template&lt;&gt; mean in a function specialization?",
+      "code": "template&lt;&gt;\nvoid print&lt;double&gt;(const double&amp; d);",
+      "answer": "Empty angle brackets indicate this is a full specialization with no template parameters remaining (all are specialized).",
+      "explanation": "The template&lt;&gt; tells the compiler this is a template-related declaration, but the empty brackets mean we're not introducing any new template parameters - we're specializing an existing template.",
+      "source": "26.3 - Function template specialization",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch26_3_006",
+      "lesson": "26.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "specialization"
+      ],
+      "text": "A function template specialization must have {{c1::the same signature}} as the primary template, except with the specific type substituted.",
+      "source": "26.3 - Function template specialization",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_3_007",
+      "lesson": "26.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "precedence"
+      ],
+      "front": "If both a non-template function and a matching template specialization exist, which takes precedence?",
+      "back": "The non-template function takes precedence.",
+      "source": "26.3 - Function template specialization",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch26_3_008",
+      "lesson": "26.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "inline"
+      ],
+      "front": "Are full template function specializations implicitly inline?",
+      "back": "No. Full specializations are NOT implicitly inline (but partial specializations are). Mark them inline if putting in a header file to avoid ODR violations.",
+      "source": "26.3 - Function template specialization",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch26_3_009",
+      "lesson": "26.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "templates",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this specialization?",
+      "code": "template &lt;typename T&gt;\nvoid print(const T&amp; t);\n\ntemplate&lt;&gt;\nvoid print&lt;double&gt;(double d); // pass by value",
+      "answer": "The specialization signature doesn't match the primary template. Primary uses const T&amp; (reference), specialization uses pass-by-value.",
+      "explanation": "The specialization must match the primary template's signature pattern. If primary uses const T&amp;, specialization must use const double&amp;.",
+      "source": "26.3 - Function template specialization",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch26_3_010",
+      "lesson": "26.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "specialization"
+      ],
+      "text": "Before specializing a template, the compiler must have seen {{c1::a declaration for the primary template}}.",
+      "source": "26.3 - Function template specialization",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_3_011",
+      "lesson": "26.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "deletion"
+      ],
+      "front": "How can you delete a function template specialization?",
+      "back": "Use = delete on the specialization to produce a compilation error for any calls that resolve to it.",
+      "source": "26.3 - Function template specialization",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_3_012",
+      "lesson": "26.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "member-functions"
+      ],
+      "front": "Can you use function template specialization for member functions of a template class?",
+      "back": "No, that would require class template specialization. Member functions like Storage&lt;double&gt;::print() are part of the class template, not standalone function templates.",
+      "source": "26.3 - Function template specialization",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch26_3_013",
+      "lesson": "26.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "specialization"
+      ],
+      "text": "Explicit template specialization allows you to define {{c1::different implementations}} for {{c2::specific types or values}}.",
+      "source": "26.3 - Function template specialization",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch26_3_014",
+      "lesson": "26.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "specialization"
+      ],
+      "text": "When all template parameters are specialized, it's called {{c1::full specialization}}. When only some are specialized, it's {{c2::partial specialization}}.",
+      "source": "26.3 - Function template specialization",
+      "difficulty": "medium"
+    }
+  ]
+}

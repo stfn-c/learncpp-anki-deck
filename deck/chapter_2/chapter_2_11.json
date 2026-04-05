@@ -1,0 +1,166 @@
+{
+  "chapter": "Chapter 2",
+  "chapter_title": "C++ Basics: Functions and Files",
+  "lesson": "2.11",
+  "lesson_title": "Header files",
+  "total_cards": 11,
+  "cards": [
+    {
+      "id": "ch2_11_001",
+      "lesson": "2.11",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "headers"
+      ],
+      "source": "2.11 - Header files",
+      "difficulty": "easy",
+      "text": "{{c1::Header files}} provide a way to share {{c2::declarations}} across multiple {{c3::source files}} without {{c4::duplicating code}}."
+    },
+    {
+      "id": "ch2_11_002",
+      "lesson": "2.11",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "headers",
+        "extensions"
+      ],
+      "text": "Header files typically use the extension {{c1::.h}} or {{c2::.hpp}}. Implementation files use {{c3::.cpp}}.",
+      "source": "2.11 - Header files",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_11_003",
+      "lesson": "2.11",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "headers",
+        "content"
+      ],
+      "front": "What should header files contain?",
+      "back": "Headers should contain:<ul><li>Function declarations/prototypes</li><li>Class definitions</li><li>Const variable declarations</li><li>Type definitions</li></ul>Generally declarations, not definitions.",
+      "source": "2.11 - Header files",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_11_004",
+      "lesson": "2.11",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "headers",
+        "content"
+      ],
+      "front": "What should NOT go in header files?",
+      "back": "Avoid in headers:<ul><li>Function definitions (except inline/template)</li><li>Variable definitions</li><li>using namespace directives</li><li>Non-const global variable declarations</li></ul>",
+      "source": "2.11 - Header files",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_11_005",
+      "lesson": "2.11",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "headers",
+        "include"
+      ],
+      "text": "Each source file (.cpp) should #include its corresponding {{c1::header file}} (.h) to ensure declarations match definitions.",
+      "source": "2.11 - Header files",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_11_006",
+      "lesson": "2.11",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "headers",
+        "organization"
+      ],
+      "question": "What should go in math.h vs math.cpp?",
+      "code": "",
+      "answer": "math.h: int add(int, int);<br>math.cpp: #include \"math.h\"<br>&nbsp;&nbsp;&nbsp;&nbsp;int add(int a, int b) { return a+b; }",
+      "explanation": "The header has the declaration, the .cpp file includes the header and provides the definition.",
+      "source": "2.11 - Header files",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_11_007",
+      "lesson": "2.11",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "headers",
+        "include"
+      ],
+      "source": "2.11 - Header files",
+      "difficulty": "medium",
+      "text": "#include {{c1::&lt;header&gt;}} searches {{c2::system/standard library}} directories. #include {{c3::\"header\"}} searches {{c4::current directory}} first, then system directories."
+    },
+    {
+      "id": "ch2_11_008",
+      "lesson": "2.11",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "headers",
+        "best-practices"
+      ],
+      "front": "Why should you #include as few headers as possible?",
+      "back": "Including unnecessary headers:<ul><li>Increases compilation time</li><li>May cause naming conflicts</li><li>Creates unnecessary dependencies</li><li>Makes code less maintainable</li></ul>",
+      "source": "2.11 - Header files",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_11_009",
+      "lesson": "2.11",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "headers",
+        "best-practices"
+      ],
+      "concept": "Header file best practices",
+      "explanation": "Follow these guidelines:<ul><li>Every header should have header guards</li><li>Only include what you need</li><li>Header should be self-contained (include its dependencies)</li><li>Don't put 'using namespace' in headers</li><li>Match .h and .cpp file names</li><li>Order includes: own header, C++ standard, other libraries</li></ul>",
+      "examples": [
+        "// math.h",
+        "#ifndef MATH_H",
+        "#define MATH_H",
+        "int add(int a, int b);",
+        "#endif"
+      ],
+      "source": "2.11 - Header files",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_11_010",
+      "lesson": "2.11",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "headers",
+        "compilation"
+      ],
+      "front": "What happens when you #include a header file?",
+      "back": "The preprocessor literally copies and pastes the entire contents of the header file at the location of the #include directive.",
+      "source": "2.11 - Header files",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_11_011",
+      "lesson": "2.11",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "headers",
+        "organization"
+      ],
+      "source": "2.11 - Header files",
+      "difficulty": "medium",
+      "text": "Never #include {{c1::.cpp}} files. Only include {{c2::header files}} (.h/.hpp). .cpp files are {{c3::compiled separately}} and {{c4::linked together}}."
+    }
+  ]
+}

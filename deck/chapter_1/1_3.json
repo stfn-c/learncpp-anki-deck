@@ -1,0 +1,133 @@
+{
+  "chapter": "Chapter 1",
+  "chapter_title": "C++ Basics: Functions and Files",
+  "lesson": "1.3",
+  "lesson_title": "Introduction to objects and variables",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch1_3_001",
+      "lesson": "1.3",
+      "type": "basic",
+      "tags": ["cpp", "data", "fundamentals"],
+      "front": "What is data in computing?",
+      "back": "Data is any information that can be moved, processed, or stored by a computer. Programs manipulate data by reading, changing, and writing it.",
+      "source": "1.3 - Introduction to objects and variables",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_3_002",
+      "lesson": "1.3",
+      "type": "cloze",
+      "tags": ["cpp", "values", "fundamentals"],
+      "text": "A single piece of data stored in memory is called a {{c1::value}}.",
+      "source": "1.3 - Introduction to objects and variables",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_3_003",
+      "lesson": "1.3",
+      "type": "basic",
+      "tags": ["cpp", "ram", "memory"],
+      "front": "What is RAM (Random Access Memory)?",
+      "back": "RAM is the memory available for programs to use. When a program is run, the operating system loads it into RAM. Data that needs to be stored beyond program termination must be written to disk.",
+      "source": "1.3 - Introduction to objects and variables",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_3_004",
+      "lesson": "1.3",
+      "type": "basic",
+      "tags": ["cpp", "objects", "fundamentals"],
+      "front": "What is an object in C++?",
+      "back": "An object is a region of storage (usually memory) that can store a value and has other associated properties (like a type).",
+      "source": "1.3 - Introduction to objects and variables",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_3_005",
+      "lesson": "1.3",
+      "type": "cloze",
+      "tags": ["cpp", "variables", "syntax"],
+      "text": "A {{c1::variable}} is a named object. The name of the object is called an {{c2::identifier}}.",
+      "source": "1.3 - Introduction to objects and variables",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_3_006",
+      "lesson": "1.3",
+      "type": "cloze",
+      "tags": ["cpp", "variables", "syntax"],
+      "text": "The statement to create a variable is called a {{c1::definition}} (or {{c2::definition statement}}).",
+      "source": "1.3 - Introduction to objects and variables",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_3_007",
+      "lesson": "1.3",
+      "type": "code",
+      "tags": ["cpp", "variables", "syntax"],
+      "question": "What does this statement do?",
+      "code": "int x;",
+      "answer": "Defines a variable named x of type int (integer)",
+      "explanation": "This is a definition statement that creates a variable. 'int' is the type, and 'x' is the identifier (name) of the variable.",
+      "source": "1.3 - Introduction to objects and variables",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_3_008",
+      "lesson": "1.3",
+      "type": "basic",
+      "tags": ["cpp", "types", "fundamentals"],
+      "front": "What is a data type (or type) in C++?",
+      "back": "A data type tells the compiler what type of value (integer, letter, decimal number, etc.) a variable will store. It also determines how much memory to allocate for the variable.",
+      "source": "1.3 - Introduction to objects and variables",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_3_009",
+      "lesson": "1.3",
+      "type": "cloze",
+      "tags": ["cpp", "int", "types"],
+      "text": "The {{c1::int}} type is used to store integer (whole number) values, such as {{c2::4}}, {{c3::27}}, or {{c4::-1234}}.",
+      "source": "1.3 - Introduction to objects and variables",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_3_010",
+      "lesson": "1.3",
+      "type": "code",
+      "tags": ["cpp", "variables", "syntax"],
+      "question": "How many variables are defined in this statement?",
+      "code": "int a, b;",
+      "answer": "Two variables: a and b",
+      "explanation": "You can define multiple variables of the same type in a single statement by separating the names with commas. However, this is not recommended as it can lead to mistakes.",
+      "source": "1.3 - Introduction to objects and variables",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_3_011",
+      "lesson": "1.3",
+      "type": "concept",
+      "tags": ["cpp", "best-practices", "variables"],
+      "concept": "Best practice for defining multiple variables",
+      "explanation": "Although C++ allows you to define multiple variables of the same type in a single statement (e.g., <code>int a, b;</code>), it's better to define each variable in a separate statement on its own line:<ul><li>Easier to read</li><li>Easier to comment individual variables</li><li>Prevents mistakes with mixed definitions</li></ul>",
+      "examples": [
+        "// Preferred:\nint a;\nint b;",
+        "// Avoid:\nint a, b;",
+        "// Error-prone:\nint a, double b; // Won't compile!"
+      ],
+      "source": "1.3 - Introduction to objects and variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch1_3_012",
+      "lesson": "1.3",
+      "type": "cloze",
+      "tags": ["cpp", "instantiation", "terminology"],
+      "text": "At runtime, the variable will be {{c1::instantiated}}, which means the object will be created and assigned a memory address.",
+      "source": "1.3 - Introduction to objects and variables",
+      "difficulty": "medium"
+    }
+  ]
+}

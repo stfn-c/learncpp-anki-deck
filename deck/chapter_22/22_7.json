@@ -1,0 +1,200 @@
+{
+  "chapter": "Chapter 22",
+  "chapter_title": "Move Semantics and Smart Pointers",
+  "lesson": "22.7",
+  "lesson_title": "Circular dependency issues with std::shared_ptr, and std::weak_ptr",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch22_7_001",
+      "lesson": "22.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "shared_ptr",
+        "circular-reference"
+      ],
+      "front": "What is a circular reference with std::shared_ptr and why is it a problem?",
+      "back": "When two objects have shared_ptrs to each other, their reference counts never reach zero, causing a memory leak. Neither can be deleted because each keeps the other alive.",
+      "source": "22.7 - Circular dependency issues with std::shared_ptr, and std::weak_ptr",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_7_002",
+      "lesson": "22.7",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "shared_ptr",
+        "circular-reference"
+      ],
+      "question": "Why does this code cause a memory leak?",
+      "code": "struct Node {\n    std::shared_ptr&lt;Node&gt; next;\n};\n\nauto n1 = std::make_shared&lt;Node&gt;();\nauto n2 = std::make_shared&lt;Node&gt;();\nn1-&gt;next = n2;\nn2-&gt;next = n1;",
+      "answer": "Circular reference. n1 owns n2, and n2 owns n1. Reference counts stay at 2, so neither is ever deleted.",
+      "explanation": "When n1 and n2 go out of scope, each still has a reference count of 1 due to the circular reference, preventing deletion.",
+      "source": "22.7 - Circular dependency issues with std::shared_ptr, and std::weak_ptr",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_7_003",
+      "lesson": "22.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "weak_ptr",
+        "terminology"
+      ],
+      "text": "std::weak_ptr is a smart pointer that {{c1::observes}} but does not {{c2::own}} a shared_ptr's resource. It doesn't affect the {{c3::reference count}}.",
+      "source": "22.7 - Circular dependency issues with std::shared_ptr, and std::weak_ptr",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch22_7_004",
+      "lesson": "22.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "weak_ptr",
+        "syntax"
+      ],
+      "text": "Create a weak_ptr from a shared_ptr: {{c1::std::weak_ptr&lt;Type&gt; wptr = sptr;}}",
+      "source": "22.7 - Circular dependency issues with std::shared_ptr, and std::weak_ptr",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch22_7_005",
+      "lesson": "22.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "weak_ptr",
+        "methods"
+      ],
+      "front": "How do you access the object pointed to by a std::weak_ptr?",
+      "back": "You can't access it directly. You must first convert it to a shared_ptr using lock():<br>auto sptr = wptr.lock();<br>Then check if sptr is null before using it.",
+      "source": "22.7 - Circular dependency issues with std::shared_ptr, and std::weak_ptr",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_7_006",
+      "lesson": "22.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "weak_ptr",
+        "methods"
+      ],
+      "text": "Call {{c1::wptr.lock()}} to create a shared_ptr from a weak_ptr. If the object was deleted, lock() returns {{c2::nullptr}}.",
+      "source": "22.7 - Circular dependency issues with std::shared_ptr, and std::weak_ptr",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch22_7_007",
+      "lesson": "22.7",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "weak_ptr",
+        "syntax"
+      ],
+      "question": "How do you safely use a weak_ptr?",
+      "code": "std::weak_ptr&lt;int&gt; wptr = sptr;\n// How to use wptr?",
+      "answer": "if (auto sptr = wptr.lock()) {<br>&nbsp;&nbsp;// use sptr safely<br>&nbsp;&nbsp;std::cout &lt;&lt; *sptr;<br>} else {<br>&nbsp;&nbsp;// object was deleted<br>}",
+      "explanation": "lock() returns a shared_ptr if the object still exists, or nullptr if it was deleted. Always check before use.",
+      "source": "22.7 - Circular dependency issues with std::shared_ptr, and std::weak_ptr",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_7_008",
+      "lesson": "22.7",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "weak_ptr",
+        "circular-reference"
+      ],
+      "concept": "Using weak_ptr to break circular references",
+      "explanation": "To break circular references, make one direction use weak_ptr:<ul><li>Parent has shared_ptr to child (owns)</li><li>Child has weak_ptr to parent (observes)</li></ul>This allows proper cleanup when the parent is destroyed.",
+      "examples": [
+        "struct Node {",
+        "    std::shared_ptr&lt;Node&gt; next;",
+        "    std::weak_ptr&lt;Node&gt; prev; // weak_ptr breaks cycle",
+        "};",
+        "",
+        "auto n1 = std::make_shared&lt;Node&gt;();",
+        "auto n2 = std::make_shared&lt;Node&gt;();",
+        "n1-&gt;next = n2; // shared_ptr",
+        "n2-&gt;prev = n1; // weak_ptr - no cycle!"
+      ],
+      "source": "22.7 - Circular dependency issues with std::shared_ptr, and std::weak_ptr",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_7_009",
+      "lesson": "22.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "weak_ptr",
+        "methods"
+      ],
+      "text": "Call {{c1::wptr.expired()}} to check if the weak_ptr's object has been deleted. Returns {{c2::true}} if deleted, {{c3::false}} if still valid.",
+      "source": "22.7 - Circular dependency issues with std::shared_ptr, and std::weak_ptr",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch22_7_010",
+      "lesson": "22.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "weak_ptr",
+        "best-practices"
+      ],
+      "front": "What are the main use cases for std::weak_ptr?",
+      "back": "Use std::weak_ptr for:<ul><li>Breaking circular references</li><li>Caching (observer doesn't own)</li><li>Observer pattern (observers don't own subject)</li><li>Back-pointers in tree structures (child to parent)</li></ul>",
+      "source": "22.7 - Circular dependency issues with std::shared_ptr, and std::weak_ptr",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_7_011",
+      "lesson": "22.7",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "weak_ptr",
+        "gotchas"
+      ],
+      "question": "What does this code print?",
+      "code": "std::weak_ptr&lt;int&gt; wptr;\n{\n    auto sptr = std::make_shared&lt;int&gt;(42);\n    wptr = sptr;\n} // sptr destroyed\nstd::cout &lt;&lt; wptr.expired();",
+      "answer": "Prints true (or 1).",
+      "explanation": "When sptr goes out of scope, the int is deleted because weak_ptr doesn't contribute to reference count. wptr.expired() returns true.",
+      "source": "22.7 - Circular dependency issues with std::shared_ptr, and std::weak_ptr",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_7_012",
+      "lesson": "22.7",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "weak_ptr",
+        "shared_ptr",
+        "best-practices"
+      ],
+      "concept": "Parent-child smart pointer pattern",
+      "explanation": "Best practice for parent-child relationships:<ul><li>Parent owns children: std::shared_ptr or std::unique_ptr</li><li>Child references parent: std::weak_ptr</li><li>Siblings: shared_ptr if shared ownership needed</li></ul>This prevents circular references and ensures proper cleanup.",
+      "examples": [
+        "class Node {",
+        "    std::vector&lt;std::shared_ptr&lt;Node&gt;&gt; children; // owns",
+        "    std::weak_ptr&lt;Node&gt; parent;                  // doesn't own",
+        "};",
+        "",
+        "// Parent owns child, child observes parent",
+        "// No circular reference, proper cleanup"
+      ],
+      "source": "22.7 - Circular dependency issues with std::shared_ptr, and std::weak_ptr",
+      "difficulty": "medium"
+    }
+  ]
+}

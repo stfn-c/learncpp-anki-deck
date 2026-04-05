@@ -1,0 +1,133 @@
+{
+  "chapter": "Chapter 14",
+  "chapter_title": "Introduction to Classes",
+  "lesson": "14.5",
+  "lesson_title": "Public and private members and access specifiers",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch14_5_001",
+      "lesson": "14.5",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "access-specifiers"],
+      "text": "{{c1::Public}} members can be accessed by anyone, including from outside the class. {{c2::Private}} members can only be accessed by member functions of the same class.",
+      "source": "14.5 - Public and private members and access specifiers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_5_002",
+      "lesson": "14.5",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "syntax"],
+      "text": "Access specifiers in C++ are: {{c1::public:}}, {{c2::private:}}, and {{c3::protected:}}",
+      "source": "14.5 - Public and private members and access specifiers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_5_003",
+      "lesson": "14.5",
+      "type": "basic",
+      "tags": ["cpp", "classes", "access-specifiers"],
+      "front": "What is the default access level for members in a class?",
+      "back": "Private. All members in a class are private by default unless otherwise specified.",
+      "source": "14.5 - Public and private members and access specifiers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_5_004",
+      "lesson": "14.5",
+      "type": "basic",
+      "tags": ["cpp", "classes", "access-specifiers"],
+      "front": "What is the default access level for members in a struct?",
+      "back": "Public. All members in a struct are public by default unless otherwise specified.",
+      "source": "14.5 - Public and private members and access specifiers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_5_005",
+      "lesson": "14.5",
+      "type": "code",
+      "tags": ["cpp", "classes", "access-specifiers", "common-mistakes"],
+      "question": "What's wrong with this code?",
+      "code": "class BankAccount<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;double balance{0.0};<br>public:<br>&nbsp;&nbsp;&nbsp;&nbsp;void deposit(double amt) { balance += amt; }<br>};<br><br>BankAccount acct;<br>acct.balance = 1000000;",
+      "answer": "Cannot access private member 'balance' from outside the class. balance is private by default.",
+      "explanation": "Since balance appears before any access specifier in a class, it defaults to private and cannot be accessed directly from main().",
+      "source": "14.5 - Public and private members and access specifiers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_5_006",
+      "lesson": "14.5",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "naming"],
+      "text": "By convention, private data members are often prefixed with {{c1::m_}} to indicate they are member variables, like {{c2::m_balance}} or {{c3::m_count}}.",
+      "source": "14.5 - Public and private members and access specifiers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_5_007",
+      "lesson": "14.5",
+      "type": "concept",
+      "tags": ["cpp", "classes", "encapsulation", "best-practices"],
+      "concept": "Why make data members private",
+      "explanation": "Private data members provide encapsulation and data hiding. The class can control how the data is accessed and modified, enforce invariants, validate input, and change internal implementation without breaking external code.",
+      "examples": [
+        "private: double m_balance;  // can't be directly modified",
+        "public: void deposit(double amt) { if (amt &gt; 0) m_balance += amt; }"
+      ],
+      "source": "14.5 - Public and private members and access specifiers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_5_008",
+      "lesson": "14.5",
+      "type": "basic",
+      "tags": ["cpp", "classes", "access-specifiers"],
+      "front": "Can you have multiple access specifier sections in a class?",
+      "back": "Yes, you can have multiple public:, private:, and protected: sections in any order. Each section applies until the next access specifier.",
+      "source": "14.5 - Public and private members and access specifiers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_5_009",
+      "lesson": "14.5",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "best-practices"],
+      "text": "Best practice: Make member variables {{c1::private}} and member functions {{c2::public}} by default. Only make member functions private if they are {{c3::helper functions}} not meant to be called externally.",
+      "source": "14.5 - Public and private members and access specifiers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_5_010",
+      "lesson": "14.5",
+      "type": "code",
+      "tags": ["cpp", "classes", "access-specifiers"],
+      "question": "What can access private members of a class?",
+      "code": "class MyClass<br>{<br>private:<br>&nbsp;&nbsp;&nbsp;&nbsp;int m_data{0};<br>public:<br>&nbsp;&nbsp;&nbsp;&nbsp;void set(int x) { m_data = x; }<br>};",
+      "answer": "Only member functions of the same class (like set()) can access private members.",
+      "explanation": "Private members are inaccessible from outside the class, but member functions of the class have full access to all private members.",
+      "source": "14.5 - Public and private members and access specifiers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_5_011",
+      "lesson": "14.5",
+      "type": "reverse",
+      "tags": ["cpp", "classes", "terminology"],
+      "front": "Encapsulation",
+      "back": "The bundling of data and functions that operate on that data within a class, with restricted direct access to some components (data hiding)",
+      "source": "14.5 - Public and private members and access specifiers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_5_012",
+      "lesson": "14.5",
+      "type": "basic",
+      "tags": ["cpp", "classes", "access-specifiers", "design"],
+      "front": "What is the key principle behind making data members private?",
+      "back": "Principle of least privilege: external code should only be able to access what it absolutely needs. Private members allow the class to control and validate all access to its data.",
+      "source": "14.5 - Public and private members and access specifiers",
+      "difficulty": "medium"
+    }
+  ]
+}

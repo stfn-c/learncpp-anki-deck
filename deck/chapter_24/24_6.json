@@ -1,0 +1,114 @@
+{
+  "chapter": "Chapter 24",
+  "chapter_title": "Inheritance",
+  "lesson": "24.6",
+  "lesson_title": "Adding new functionality to a derived class",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "ch24_6_001",
+      "lesson": "24.6",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "extending"],
+      "front": "What are the two major ways to construct complex classes in C++?",
+      "back": "<ul><li>Object composition (has-a relationship)</li><li>Inheritance (is-a relationship)</li></ul>",
+      "source": "24.6 - Adding new functionality to a derived class",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch24_6_002",
+      "lesson": "24.6",
+      "type": "cloze",
+      "tags": ["cpp", "inheritance", "extending"],
+      "text": "To add new functionality to a derived class, simply {{c1::declare that functionality in the derived class}} like normal.",
+      "source": "24.6 - Adding new functionality to a derived class",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch24_6_003",
+      "lesson": "24.6",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "extending"],
+      "front": "Why might you add functionality to a derived class instead of modifying the base class?",
+      "back": "You may not have access to the base class source code (e.g., 3rd party library, standard library), or modifying it would be risky (updates could overwrite changes).",
+      "source": "24.6 - Adding new functionality to a derived class",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_6_004",
+      "lesson": "24.6",
+      "type": "code",
+      "tags": ["cpp", "inheritance", "extending"],
+      "question": "Will this code compile?",
+      "code": "class Base {\nprotected:\n    int m_value{};\npublic:\n    Base(int value) : m_value{value} {}\n};\n\nclass Derived: public Base {\npublic:\n    Derived(int value) : Base{value} {}\n    int getValue() const { return m_value; }\n};\n\nint main() {\n    Base base{5};\n    std::cout &lt;&lt; base.getValue(); // OK?\n    return 0;\n}",
+      "answer": "No, it will not compile",
+      "explanation": "Base has no getValue() function. Only Derived has it. Base objects cannot access Derived functionality.",
+      "source": "24.6 - Adding new functionality to a derived class",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_6_005",
+      "lesson": "24.6",
+      "type": "cloze",
+      "tags": ["cpp", "inheritance", "extending"],
+      "text": "Because {{c1::Derived}} is-a {{c2::Base}}, Derived has access to stuff in Base. However, {{c2::Base}} does NOT have access to anything in {{c1::Derived}}.",
+      "source": "24.6 - Adding new functionality to a derived class",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_6_006",
+      "lesson": "24.6",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "extending"],
+      "front": "Can you add functions to classes from the standard library by deriving from them?",
+      "back": "Yes, you can inherit from standard library classes and add your own functionality in derived classes, even though you can't modify the standard library code itself.",
+      "source": "24.6 - Adding new functionality to a derived class",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_6_007",
+      "lesson": "24.6",
+      "type": "concept",
+      "tags": ["cpp", "inheritance", "extending"],
+      "concept": "When to add functionality via inheritance vs modifying base class",
+      "explanation": "Add to derived class when:<ul><li>You don't have access to base class source</li><li>Base class is from 3rd party (updates would overwrite)</li><li>Base class is part of standard library</li><li>Base class code is precompiled</li></ul>Modify base class when:<ul><li>You own the code</li><li>Functionality applies to all derived classes</li></ul>",
+      "examples": [
+        "Can't modify std::vector, but can derive from it",
+        "3rd party library updates would erase your changes"
+      ],
+      "source": "24.6 - Adding new functionality to a derived class",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_6_008",
+      "lesson": "24.6",
+      "type": "cloze",
+      "tags": ["cpp", "inheritance", "access"],
+      "text": "Because m_value is declared as {{c1::protected}} in the Base class, the Derived class has {{c2::direct access}} to it.",
+      "source": "24.6 - Adding new functionality to a derived class",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch24_6_009",
+      "lesson": "24.6",
+      "type": "code",
+      "tags": ["cpp", "inheritance", "extending"],
+      "question": "What does this code output?",
+      "code": "class Base {\nprotected:\n    int m_value{};\npublic:\n    Base(int value) : m_value{value} {}\n};\n\nclass Derived: public Base {\npublic:\n    Derived(int value) : Base{value} {}\n    int getValue() const { return m_value; }\n};\n\nint main() {\n    Derived derived{5};\n    std::cout &lt;&lt; derived.getValue();\n    return 0;\n}",
+      "answer": "5",
+      "explanation": "Derived can access protected member m_value from Base and return it via getValue().",
+      "source": "24.6 - Adding new functionality to a derived class",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch24_6_010",
+      "lesson": "24.6",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "extending"],
+      "front": "Does a base class have access to functions defined in a derived class?",
+      "back": "No, base classes have no access to derived class members. The relationship is one-way: derived can access base, but not vice versa.",
+      "source": "24.6 - Adding new functionality to a derived class",
+      "difficulty": "easy"
+    }
+  ]
+}

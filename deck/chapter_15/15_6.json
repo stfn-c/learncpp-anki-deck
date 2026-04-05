@@ -1,0 +1,192 @@
+{
+  "chapter": "Chapter 15",
+  "chapter_title": "More on Classes",
+  "lesson": "15.6",
+  "lesson_title": "Static member variables",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch15_6_001",
+      "lesson": "15.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "static"
+      ],
+      "text": "A {{c1::static member variable}} is shared by all objects of a class, with only {{c2::one copy}} existing regardless of how many objects are created.",
+      "source": "15.6 - Static member variables",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch15_6_002",
+      "lesson": "15.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "static",
+        "syntax"
+      ],
+      "text": "Static member variables must be {{c1::defined}} outside the class definition (usually in a .cpp file), even if they are {{c2::declared}} inside the class.",
+      "source": "15.6 - Static member variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_6_003",
+      "lesson": "15.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "static",
+        "syntax"
+      ],
+      "text": "To define a static member variable outside the class: <code>{{c1::int ClassName::}}s_varName{{c2::{value}}};</code>",
+      "source": "15.6 - Static member variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_6_004",
+      "lesson": "15.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "static"
+      ],
+      "text": "Static member variables can be accessed using either {{c1::ClassName::varName}} or {{c2::object.varName}}, but the {{c1::class name}} syntax is preferred.",
+      "source": "15.6 - Static member variables",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch15_6_005",
+      "lesson": "15.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "static"
+      ],
+      "text": "Since C++17, static constexpr member variables can be {{c1::initialized inside the class}} without requiring a separate definition.",
+      "source": "15.6 - Static member variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_6_006",
+      "lesson": "15.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "classes",
+        "static"
+      ],
+      "front": "What is the difference between a static member variable and a regular member variable?",
+      "back": "Static member variables:<ul><li>Are shared by all objects of the class (one copy total)</li><li>Exist even if no objects are created</li><li>Regular member variables: Each object has its own copy</li></ul>",
+      "source": "15.6 - Static member variables",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch15_6_007",
+      "lesson": "15.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "classes",
+        "static"
+      ],
+      "front": "Why must static member variables be defined outside the class?",
+      "back": "Because the class definition is just a blueprint and doesn't allocate memory. The external definition allocates actual storage for the static variable.",
+      "source": "15.6 - Static member variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_6_008",
+      "lesson": "15.6",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "classes",
+        "static",
+        "syntax"
+      ],
+      "question": "Complete the static member variable definition.",
+      "code": "// Something.h\nclass Something {\npublic:\n    static int s_value;\n};\n\n// Something.cpp\n// Define s_value here, initialized to 1",
+      "answer": "<code>int Something::s_value{ 1 };</code>",
+      "explanation": "Define outside the class using ClassName::varName syntax. Do not use the <code>static</code> keyword in the definition.",
+      "source": "15.6 - Static member variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_6_009",
+      "lesson": "15.6",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "classes",
+        "static"
+      ],
+      "question": "What does this code output?",
+      "code": "class Counter {\npublic:\n    static int s_count;\n    Counter() { ++s_count; }\n};\nint Counter::s_count{ 0 };\n\nCounter c1;\nCounter c2;\nCounter c3;\nstd::cout &lt;&lt; Counter::s_count;",
+      "answer": "3",
+      "explanation": "Each time a Counter object is constructed, s_count is incremented. Since it's static (shared), all three constructors increment the same variable.",
+      "source": "15.6 - Static member variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_6_010",
+      "lesson": "15.6",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "classes",
+        "static",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this code?",
+      "code": "class Data {\npublic:\n    static int s_value{ 10 };  // Initialized in class\n};\n\nint main() {\n    std::cout &lt;&lt; Data::s_value;\n}",
+      "answer": "Static non-const member variables cannot be initialized inside the class (except for static constexpr).",
+      "explanation": "Need to declare in class and define outside: <code>static int s_value;</code> in class, then <code>int Data::s_value{ 10 };</code> outside.",
+      "source": "15.6 - Static member variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_6_011",
+      "lesson": "15.6",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "classes",
+        "static",
+        "best-practices"
+      ],
+      "concept": "Common uses for static member variables",
+      "explanation": "Static member variables are useful for:<ul><li>Counting instances of a class</li><li>Storing configuration shared by all objects</li><li>Implementing singleton patterns</li><li>Sharing lookup tables or caches</li><li>Maintaining class-wide state</li></ul>",
+      "examples": [
+        "class IDGenerator {",
+        "    static int s_nextID;",
+        "public:",
+        "    IDGenerator() { m_id = s_nextID++; }",
+        "private:",
+        "    int m_id;",
+        "};"
+      ],
+      "source": "15.6 - Static member variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_6_012",
+      "lesson": "15.6",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "classes",
+        "static"
+      ],
+      "front": "static member variable",
+      "back": "A member variable shared by all instances of a class, with only one copy existing for the entire class",
+      "source": "15.6 - Static member variables",
+      "difficulty": "easy"
+    }
+  ]
+}

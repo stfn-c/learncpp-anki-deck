@@ -1,0 +1,112 @@
+{
+  "chapter": "Chapter 16",
+  "chapter_title": "Introduction to Containers and Arrays",
+  "lesson": "16.7",
+  "lesson_title": "Arrays, loops, and sign challenge solutions",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "ch16_7_001",
+      "lesson": "16.7",
+      "type": "cloze",
+      "tags": ["cpp", "signed-unsigned", "conversion"],
+      "text": "The sign challenge: array sizes are {{c1::unsigned}} (std::size_t), but {{c2::signed}} integers are preferred for loop counters, creating {{c3::comparison and conversion}} issues.",
+      "source": "16.7 - Arrays, loops, and sign challenge solutions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_7_002",
+      "lesson": "16.7",
+      "type": "cloze",
+      "tags": ["cpp", "vector", "best-practices"],
+      "text": "To avoid sign conversion warnings when using signed loop counters, use {{c1::std::ssize()}} instead of {{c2::.size()}} to get the vector length as a signed value.",
+      "source": "16.7 - Arrays, loops, and sign challenge solutions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_7_003",
+      "lesson": "16.7",
+      "type": "concept",
+      "tags": ["cpp", "signed-unsigned", "best-practices"],
+      "concept": "Solutions to the sign challenge with arrays",
+      "explanation": "Three main approaches:<ul><li>Use std::ssize() (C++20) to get signed size</li><li>Use static_cast&lt;int&gt;(vec.size()) for older C++</li><li>Use std::size_t for counters (not recommended - wraparound issues)</li></ul>LearnCPP recommends using signed integers with std::ssize().",
+      "examples": [
+        "for (int i{0}; i &lt; std::ssize(vec); ++i)  // Best",
+        "for (int i{0}; i &lt; static_cast&lt;int&gt;(vec.size()); ++i)  // OK",
+        "for (std::size_t i{0}; i &lt; vec.size(); ++i)  // Not recommended"
+      ],
+      "source": "16.7 - Arrays, loops, and sign challenge solutions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_7_004",
+      "lesson": "16.7",
+      "type": "code",
+      "tags": ["cpp", "vector", "signed-unsigned"],
+      "question": "What warning might this code generate?",
+      "code": "std::vector&lt;int&gt; vec{1, 2, 3};\nfor (int i{0}; i &lt; vec.size(); ++i)\n    std::cout &lt;&lt; vec[i];",
+      "answer": "Signed/unsigned comparison warning",
+      "explanation": "i is signed int, vec.size() is unsigned. Comparing them triggers a warning. Use std::ssize(vec) instead.",
+      "source": "16.7 - Arrays, loops, and sign challenge solutions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_7_005",
+      "lesson": "16.7",
+      "type": "cloze",
+      "tags": ["cpp", "casting", "vector"],
+      "text": "To convert an unsigned size to signed int in pre-C++20: {{c1::static_cast&lt;int&gt;(vec.size())}}",
+      "source": "16.7 - Arrays, loops, and sign challenge solutions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_7_006",
+      "lesson": "16.7",
+      "type": "basic",
+      "tags": ["cpp", "signed-unsigned", "gotchas"],
+      "front": "What problem occurs when you use unsigned std::size_t for a loop that decrements to 0?",
+      "back": "When the counter reaches 0 and decrements, it wraps around to the maximum unsigned value (like 18446744073709551615), causing an infinite loop.",
+      "source": "16.7 - Arrays, loops, and sign challenge solutions",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch16_7_007",
+      "lesson": "16.7",
+      "type": "code",
+      "tags": ["cpp", "vector", "best-practices"],
+      "question": "Which version is better and why?",
+      "code": "// Version A\nfor (std::size_t i{0}; i &lt; vec.size(); ++i)\n\n// Version B\nfor (int i{0}; i &lt; std::ssize(vec); ++i)",
+      "answer": "Version B - uses signed int which is safer and more intuitive",
+      "explanation": "Signed integers avoid wraparound issues, work with negative values, and are more natural for counters and indices.",
+      "source": "16.7 - Arrays, loops, and sign challenge solutions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_7_008",
+      "lesson": "16.7",
+      "type": "cloze",
+      "tags": ["cpp", "vector", "functions"],
+      "text": "The std::ssize() function was introduced in {{c1::C++20}}.",
+      "source": "16.7 - Arrays, loops, and sign challenge solutions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_7_009",
+      "lesson": "16.7",
+      "type": "cloze",
+      "tags": ["cpp", "signed-unsigned", "warnings"],
+      "text": "When comparing signed and unsigned integers, the {{c1::signed}} value is implicitly converted to {{c2::unsigned}}, which can cause unexpected results if the signed value is {{c3::negative}}.",
+      "source": "16.7 - Arrays, loops, and sign challenge solutions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_7_010",
+      "lesson": "16.7",
+      "type": "cloze",
+      "tags": ["cpp", "best-practices", "loops"],
+      "text": "The recommended type for array indices and loop counters is {{c1::signed}} integers like {{c2::int}} or std::ptrdiff_t. Use {{c3::std::ssize()}} to get container sizes as signed.",
+      "source": "16.7 - Arrays, loops, and sign challenge solutions",
+      "difficulty": "medium"
+    }
+  ]
+}

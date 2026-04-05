@@ -1,0 +1,120 @@
+{
+  "chapter": "Chapter 0",
+  "chapter_title": "Introduction / Getting Started",
+  "lesson": "0.3",
+  "lesson_title": "Introduction to C/C++",
+  "total_cards": 11,
+  "cards": [
+    {
+      "id": "ch0_3_001",
+      "lesson": "0.3",
+      "type": "basic",
+      "tags": ["cpp", "history", "fundamentals"],
+      "front": "Who created the C programming language and when?",
+      "back": "Dennis Ritchie created C in 1972 at Bell Telephone Laboratories.",
+      "source": "0.3 - Introduction to C/C++",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_3_002",
+      "lesson": "0.3",
+      "type": "cloze",
+      "tags": ["cpp", "history", "fundamentals"],
+      "text": "C was designed to be a {{c1::efficient}}, {{c2::portable}} language for {{c3::systems programming}} (like operating systems and compilers).",
+      "source": "0.3 - Introduction to C/C++",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_3_003",
+      "lesson": "0.3",
+      "type": "basic",
+      "tags": ["cpp", "history", "fundamentals"],
+      "front": "Who created C++ and when?",
+      "back": "Bjarne Stroustrup created C++ in 1979 (originally called \"C with Classes\"). It was renamed to C++ in 1983.",
+      "source": "0.3 - Introduction to C/C++",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_3_004",
+      "lesson": "0.3",
+      "type": "cloze",
+      "tags": ["cpp", "philosophy", "fundamentals"],
+      "text": "C++ was designed to add {{c1::object-oriented programming}} features to C while maintaining {{c2::backward compatibility}} with C code.",
+      "source": "0.3 - Introduction to C/C++",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_3_005",
+      "lesson": "0.3",
+      "type": "basic",
+      "tags": ["cpp", "philosophy", "design"],
+      "front": "What does the C++ design philosophy \"trust the programmer\" mean?",
+      "back": "C++ gives programmers freedom and control but doesn't prevent them from doing dangerous things. The language trusts programmers to know what they're doing.",
+      "source": "0.3 - Introduction to C/C++",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_3_006",
+      "lesson": "0.3",
+      "type": "concept",
+      "tags": ["cpp", "philosophy", "gotchas"],
+      "concept": "Why C++ is harder to learn than some other languages",
+      "explanation": "C++ prioritizes performance and flexibility over ease of learning. It has:<ul><li>Low-level memory control (pointers, manual memory management)</li><li>Many features and ways to do things</li><li>Undefined behavior that can cause subtle bugs</li><li>Backward compatibility with C</li></ul>The language trusts programmers but doesn't prevent errors.",
+      "examples": [
+        "int* p; *p = 5; // Undefined behavior - uninitialized pointer",
+        "int arr[5]; arr[10] = 0; // No bounds checking",
+        "delete p; delete p; // Double delete - undefined behavior"
+      ],
+      "source": "0.3 - Introduction to C/C++",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch0_3_007",
+      "lesson": "0.3",
+      "type": "cloze",
+      "tags": ["cpp", "standards", "versions"],
+      "text": "C++ is standardized by the {{c1::ISO}} committee. Major versions include C++98, C++11, C++14, C++17, {{c2::C++20}}, and {{c3::C++23}}.",
+      "source": "0.3 - Introduction to C/C++",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_3_008",
+      "lesson": "0.3",
+      "type": "basic",
+      "tags": ["cpp", "standards", "versions"],
+      "front": "Why was C++11 considered a major update to C++?",
+      "back": "C++11 added many significant features (auto, lambdas, move semantics, smart pointers) that modernized the language. It's considered the start of \"modern C++\".",
+      "source": "0.3 - Introduction to C/C++",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_3_009",
+      "lesson": "0.3",
+      "type": "cloze",
+      "tags": ["cpp", "standards", "best-practices"],
+      "text": "The ISO C++ committee now releases new C++ standards every {{c1::3 years}}, with the most recent being {{c2::C++23}}.",
+      "source": "0.3 - Introduction to C/C++",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_3_010",
+      "lesson": "0.3",
+      "type": "basic",
+      "tags": ["cpp", "philosophy", "performance"],
+      "front": "What is the \"zero-overhead abstraction\" principle in C++?",
+      "back": "You don't pay performance costs for features you don't use. High-level abstractions should have no more overhead than hand-written low-level code.",
+      "source": "0.3 - Introduction to C/C++",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_3_011",
+      "lesson": "0.3",
+      "type": "basic",
+      "tags": ["cpp", "fundamentals", "use-cases"],
+      "front": "What types of applications is C++ commonly used for?",
+      "back": "C++ is used for performance-critical applications:<ul><li>Operating systems and drivers</li><li>Game engines and AAA games</li><li>High-performance servers</li><li>Embedded systems</li><li>Scientific computing and simulations</li></ul>",
+      "source": "0.3 - Introduction to C/C++",
+      "difficulty": "easy"
+    }
+  ]
+}

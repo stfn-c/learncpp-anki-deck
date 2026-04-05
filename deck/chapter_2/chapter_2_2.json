@@ -1,0 +1,201 @@
+{
+  "chapter": "Chapter 2",
+  "chapter_title": "C++ Basics: Functions and Files",
+  "lesson": "2.2",
+  "lesson_title": "Function return values (value-returning functions)",
+  "total_cards": 13,
+  "cards": [
+    {
+      "id": "ch2_2_001",
+      "lesson": "2.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "return",
+        "syntax"
+      ],
+      "text": "To return a value from a function, use the {{c1::return}} keyword followed by the value: return {{c2::expression}};",
+      "source": "2.2 - Function return values",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_2_002",
+      "lesson": "2.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "return"
+      ],
+      "source": "2.2 - Function return values",
+      "difficulty": "easy",
+      "text": "When a return statement is executed, the function {{c1::immediately stops}} executing and returns {{c2::control}} (and optionally a value) to the caller."
+    },
+    {
+      "id": "ch2_2_003",
+      "lesson": "2.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "syntax"
+      ],
+      "text": "A function that returns a value is called a {{c1::value-returning}} function. The return type is specified before the function name.",
+      "source": "2.2 - Function return values",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_2_004",
+      "lesson": "2.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "functions",
+        "return"
+      ],
+      "question": "What does this function return?",
+      "code": "int getValueFromUser() {<br>  return 5;<br>}",
+      "answer": "The integer value 5",
+      "explanation": "The function has return type int and returns the literal value 5 using the return statement.",
+      "source": "2.2 - Function return values",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_2_005",
+      "lesson": "2.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "return",
+        "syntax"
+      ],
+      "text": "The value returned from a function is called a {{c1::return value}}. The return value must match the function's {{c2::return type}}.",
+      "source": "2.2 - Function return values",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_2_006",
+      "lesson": "2.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "functions",
+        "return"
+      ],
+      "question": "What does this program output?",
+      "code": "#include &lt;iostream&gt;<br><br>int returnFive() {<br>  return 5;<br>}<br><br>int main() {<br>  std::cout &lt;&lt; returnFive();<br>  return 0;<br>}",
+      "answer": "5",
+      "explanation": "returnFive() is called, returns 5, and that value is sent to std::cout which prints it.",
+      "source": "2.2 - Function return values",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_2_007",
+      "lesson": "2.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "return",
+        "main"
+      ],
+      "source": "2.2 - Function return values",
+      "difficulty": "medium",
+      "text": "The return value of main() is a {{c1::status code}} returned to the operating system. {{c2::0}} means success, {{c3::non-zero}} indicates an error."
+    },
+    {
+      "id": "ch2_2_008",
+      "lesson": "2.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "functions",
+        "return",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this code?",
+      "code": "int getValue() {<br>  // Missing return statement!<br>}",
+      "answer": "Undefined behavior: A value-returning function must return a value. Failing to do so causes undefined behavior.",
+      "explanation": "Every path through a value-returning function must end with a return statement that returns a value of the appropriate type.",
+      "source": "2.2 - Function return values",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_2_009",
+      "lesson": "2.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "return"
+      ],
+      "text": "The function call can be used anywhere a value of the function's {{c1::return type}} is expected, such as in {{c2::variable initialization}} or as an {{c3::operand}} in an expression.",
+      "source": "2.2 - Function return values",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_2_010",
+      "lesson": "2.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "functions",
+        "return"
+      ],
+      "question": "Is this code valid?",
+      "code": "int getValue() { return 5; }<br><br>int main() {<br>  int x = getValue();<br>  int y = getValue() * 2;<br>  return 0;<br>}",
+      "answer": "Yes, this is valid. getValue() can be used anywhere an int value is expected.",
+      "explanation": "The return value can be assigned to a variable or used in expressions. x gets 5, y gets 10.",
+      "source": "2.2 - Function return values",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_2_011",
+      "lesson": "2.2",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "functions",
+        "return",
+        "best-practices"
+      ],
+      "concept": "When to use return values vs void functions",
+      "explanation": "Use a return value when:<ul><li>The function computes or retrieves a value</li><li>You need to communicate a result back to the caller</li><li>The function performs a calculation</li></ul>Use void when the function only performs an action without producing a value (like printing).",
+      "examples": [
+        "int add(int a, int b) { return a + b; }  // Returns computed value",
+        "void printHello() { std::cout << \"Hello\"; }  // Just performs action"
+      ],
+      "source": "2.2 - Function return values",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_2_012",
+      "lesson": "2.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "return",
+        "syntax"
+      ],
+      "text": "A function can only return {{c1::one}} value to the caller each time it is called.",
+      "source": "2.2 - Function return values",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_2_013",
+      "lesson": "2.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "return"
+      ],
+      "source": "2.2 - Function return values",
+      "difficulty": "medium",
+      "text": "The return value of a function can be {{c1::used}} (assigned, printed, used in expression) or {{c2::ignored/discarded}}."
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "chapter": "Chapter 14",
+  "chapter_title": "Introduction to Classes",
+  "lesson": "14.6",
+  "lesson_title": "Access functions",
+  "total_cards": 11,
+  "cards": [
+    {
+      "id": "ch14_6_001",
+      "lesson": "14.6",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "access-functions"],
+      "text": "A {{c1::getter}} (or accessor) is a public member function that returns the value of a private member variable. A {{c2::setter}} (or mutator) is a public member function that sets the value of a private member variable.",
+      "source": "14.6 - Access functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_6_002",
+      "lesson": "14.6",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "syntax", "getters"],
+      "text": "Getter naming convention:<br>int {{c1::getValue}}() const { return m_value; }<br>or<br>int {{c2::value}}() const { return m_value; }",
+      "source": "14.6 - Access functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_6_003",
+      "lesson": "14.6",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "syntax", "setters"],
+      "text": "Setter naming convention:<br>void {{c1::setValue}}(int value) { m_value = value; }<br>or<br>void {{c2::value}}(int value) { m_value = value; }",
+      "source": "14.6 - Access functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_6_004",
+      "lesson": "14.6",
+      "type": "basic",
+      "tags": ["cpp", "classes", "getters", "best-practices"],
+      "front": "Should getters be marked const?",
+      "back": "Yes. Getters should always be const because they don't modify the object - they only return data.",
+      "source": "14.6 - Access functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_6_005",
+      "lesson": "14.6",
+      "type": "concept",
+      "tags": ["cpp", "classes", "access-functions", "best-practices"],
+      "concept": "Benefits of using getters and setters instead of public members",
+      "explanation": "Getters and setters provide:<ul><li>Validation - setters can validate input before modifying data</li><li>Invariant enforcement - ensure object stays in valid state</li><li>Read-only access - provide getter without setter</li><li>Future flexibility - can change internal implementation without breaking interface</li><li>Debugging - add breakpoints or logging</li></ul>",
+      "examples": [
+        "void setAge(int age) { if (age &gt; 0) m_age = age; }  // validation",
+        "int getAge() const { return m_age; }  // read-only access"
+      ],
+      "source": "14.6 - Access functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_6_006",
+      "lesson": "14.6",
+      "type": "code",
+      "tags": ["cpp", "classes", "setters"],
+      "question": "What's the advantage of this setter over direct member access?",
+      "code": "void setBalance(double balance)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;if (balance &lt; 0)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m_balance = 0;<br>&nbsp;&nbsp;&nbsp;&nbsp;else<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m_balance = balance;<br>}",
+      "answer": "Validation - it ensures balance never goes negative, maintaining class invariants.",
+      "explanation": "The setter can validate input and enforce business rules, preventing the object from entering an invalid state.",
+      "source": "14.6 - Access functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_6_007",
+      "lesson": "14.6",
+      "type": "basic",
+      "tags": ["cpp", "classes", "access-functions"],
+      "front": "When should you provide a getter without a setter?",
+      "back": "When you want read-only access to a member variable. This allows external code to view the value but not modify it directly, maintaining encapsulation.",
+      "source": "14.6 - Access functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_6_008",
+      "lesson": "14.6",
+      "type": "code",
+      "tags": ["cpp", "classes", "access-functions"],
+      "question": "What does this code demonstrate?",
+      "code": "class Counter<br>{<br>private:<br>&nbsp;&nbsp;&nbsp;&nbsp;int m_count{0};<br>public:<br>&nbsp;&nbsp;&nbsp;&nbsp;int getCount() const { return m_count; }<br>&nbsp;&nbsp;&nbsp;&nbsp;// no setCount()<br>};",
+      "answer": "Read-only access - external code can read m_count but cannot modify it directly.",
+      "explanation": "By providing only a getter, the class allows viewing the count while maintaining complete control over how it's modified (likely through other methods like increment()).",
+      "source": "14.6 - Access functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_6_009",
+      "lesson": "14.6",
+      "type": "basic",
+      "tags": ["cpp", "classes", "access-functions", "best-practices"],
+      "front": "What is the guideline for providing access functions?",
+      "back": "Only provide access functions when needed. Don't automatically create getters and setters for every private member - only add them when there's a legitimate need for external access.",
+      "source": "14.6 - Access functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_6_010",
+      "lesson": "14.6",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "access-functions"],
+      "text": "Access functions should be {{c1::public}} so they can be called from outside the class, while the data members they access remain {{c2::private}}.",
+      "source": "14.6 - Access functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_6_011",
+      "lesson": "14.6",
+      "type": "basic",
+      "tags": ["cpp", "classes", "design", "gotchas"],
+      "front": "What is the main criticism of having both getters and setters for all private members?",
+      "back": "It defeats the purpose of encapsulation. If every private member has both getter and setter, it's effectively the same as making them public, just with extra steps.",
+      "source": "14.6 - Access functions",
+      "difficulty": "hard"
+    }
+  ]
+}

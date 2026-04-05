@@ -1,0 +1,212 @@
+{
+  "chapter": "Chapter 13",
+  "chapter_title": "Compound Types: Enums and Structs",
+  "lesson": "13.9",
+  "lesson_title": "13.9 — Default member initialization",
+  "total_cards": 14,
+  "cards": [
+    {
+      "id": "ch13_9_001",
+      "lesson": "13.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "struct",
+        "initialization"
+      ],
+      "text": "Default member initialization: struct Point { int x {{c1::= 0}}; int y {{c2::= 0}}; };",
+      "source": "13.9 — Default member initialization",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_9_002",
+      "lesson": "13.9",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "struct",
+        "initialization"
+      ],
+      "front": "What is default member initialization?",
+      "back": "Providing default values for struct members in the struct definition itself.<br>Example: <code>struct Point { int x = 0; int y = 0; };</code>",
+      "source": "13.9 — Default member initialization",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_9_003",
+      "lesson": "13.9",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "struct",
+        "initialization"
+      ],
+      "question": "What are p's values?",
+      "code": "struct Point { int x = 5; int y = 10; };\nPoint p {};",
+      "answer": "x=5, y=10",
+      "explanation": "Empty braces use default member initializers.",
+      "source": "13.9 — Default member initialization",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_9_004",
+      "lesson": "13.9",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "struct",
+        "initialization"
+      ],
+      "question": "What are p's values?",
+      "code": "struct Point { int x = 5; int y = 10; };\nPoint p { 20 };",
+      "answer": "x=20, y=10",
+      "explanation": "Explicit initializer (20) overrides default for x. y uses default.",
+      "source": "13.9 — Default member initialization",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_9_005",
+      "lesson": "13.9",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "struct",
+        "initialization"
+      ],
+      "front": "Do explicit initializers override default member initializers?",
+      "back": "Yes. Explicit initializers in aggregate initialization override defaults for those members.",
+      "source": "13.9 — Default member initialization",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_9_006",
+      "lesson": "13.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "struct",
+        "initialization"
+      ],
+      "text": "Default member initializers use {{c1::=}} or {{c2::brace}} initialization syntax.",
+      "source": "13.9 — Default member initialization",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_9_007",
+      "lesson": "13.9",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "struct",
+        "initialization"
+      ],
+      "question": "Are both initialization forms valid?",
+      "code": "struct Point {\n  int x = 5;   // form 1\n  int y { 10 }; // form 2\n};",
+      "answer": "Yes. Both = and brace initialization are valid for default member initializers.",
+      "explanation": "Prefer braces for consistency with aggregate init.",
+      "source": "13.9 — Default member initialization",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_9_008",
+      "lesson": "13.9",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "struct",
+        "initialization",
+        "best-practices"
+      ],
+      "front": "What are the benefits of default member initialization?",
+      "back": "<ul><li>Members always have valid values</li><li>Prevents uninitialized variables</li><li>Documents expected defaults</li><li>Reduces chance of bugs</li></ul>",
+      "source": "13.9 — Default member initialization",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_9_009",
+      "lesson": "13.9",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "struct",
+        "initialization"
+      ],
+      "question": "What are p's values?",
+      "code": "struct Point { int x = 5; int y = 10; };\nPoint p;  // no initializer",
+      "answer": "x=5, y=10 (default member initializers are used)",
+      "explanation": "Even without explicit initialization, default member initializers apply.",
+      "source": "13.9 — Default member initialization",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_9_010",
+      "lesson": "13.9",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "struct",
+        "initialization",
+        "best-practices"
+      ],
+      "concept": "When to use default member initialization",
+      "explanation": "Use default member initialization when:<ul><li>Most objects use the same default values</li><li>You want to ensure members are never uninitialized</li><li>The default is meaningful for the type</li></ul>Best practice: provide defaults for all members when possible.",
+      "examples": [
+        "struct Point { int x = 0; int y = 0; };",
+        "struct Settings { bool debug = false; };",
+        "Point p1 {};  // Uses defaults",
+        "Point p2 { 5, 10 };  // Overrides defaults"
+      ],
+      "source": "13.9 — Default member initialization",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_9_011",
+      "lesson": "13.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "struct",
+        "initialization"
+      ],
+      "text": "Default member initializers are applied when a member is {{c1::not explicitly initialized}} during aggregate initialization.",
+      "source": "13.9 — Default member initialization",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_9_012",
+      "lesson": "13.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "struct"
+      ],
+      "text": "Default member initializers can use {{c1::=}} or {{c2::brace}} initialization: int x {{c3::= 5}}; or int y {{c4::{ 10 }}}; ",
+      "source": "13.9 — Default member initialization",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_9_013",
+      "lesson": "13.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "struct"
+      ],
+      "text": "Explicit initializers {{c1::override}} default member initializers during aggregate initialization.",
+      "source": "13.9 — Default member initialization",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_9_014",
+      "lesson": "13.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "struct"
+      ],
+      "text": "Default member initializers can use {{c1::=}} or {{c2::brace}} initialization: int x {{c3::= 5}}; or int y {{c4::{ 10 }}}; ",
+      "source": "13.9 — Default member initialization",
+      "difficulty": "easy"
+    }
+  ]
+}

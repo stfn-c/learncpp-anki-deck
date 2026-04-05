@@ -1,0 +1,134 @@
+{
+  "chapter": "Chapter 12",
+  "chapter_title": "Compound Types: References and Pointers",
+  "lesson": "12.8",
+  "lesson_title": "Null pointers",
+  "total_cards": 8,
+  "cards": [
+    {
+      "id": "ch12_8_001",
+      "lesson": "12.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "pointers",
+        "nullptr",
+        "syntax"
+      ],
+      "text": "A null pointer is initialized using the keyword {{c1::nullptr}}: {{c2::int* ptr = nullptr;}}. It means the pointer is not pointing to anything.",
+      "source": "12.8 - Null pointers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_8_002",
+      "lesson": "12.8",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "pointers",
+        "nullptr"
+      ],
+      "front": "What happens when you dereference a null pointer?",
+      "back": "Dereferencing a null pointer leads to undefined behavior, typically causing a program crash. Always check if a pointer is null before dereferencing.",
+      "source": "12.8 - Null pointers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_8_003",
+      "lesson": "12.8",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "pointers",
+        "nullptr",
+        "best-practices"
+      ],
+      "question": "How do you safely check if a pointer is null?",
+      "code": "int* ptr = nullptr;<br>if ({{c1::ptr}}) {<br>    std::cout &lt;&lt; *ptr;<br>}",
+      "answer": "Use if (ptr) or if (ptr != nullptr). Pointers convert to bool: nullptr is false, non-null is true.",
+      "explanation": "Always check pointers before dereferencing to avoid undefined behavior.",
+      "source": "12.8 - Null pointers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_8_004",
+      "lesson": "12.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "pointers",
+        "nullptr",
+        "best-practices"
+      ],
+      "text": "Use {{c1::nullptr}} instead of 0 or NULL for null pointers in modern C++. It's type-safe and unambiguous.",
+      "source": "12.8 - Null pointers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_8_005",
+      "lesson": "12.8",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "pointers",
+        "nullptr",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this code?",
+      "code": "int* ptr = nullptr;<br>*ptr = 5;  // undefined behavior!",
+      "answer": "Dereferencing a null pointer causes undefined behavior. Must assign ptr to a valid address before dereferencing.",
+      "explanation": "A null pointer doesn't point to any valid memory location, so dereferencing it is dangerous.",
+      "source": "12.8 - Null pointers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_8_006",
+      "lesson": "12.8",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "pointers",
+        "nullptr",
+        "best-practices"
+      ],
+      "front": "When should you initialize a pointer to nullptr?",
+      "back": "Initialize a pointer to nullptr when you don't have a valid object to point to yet. This makes it safe to check if the pointer is valid before using it.",
+      "source": "12.8 - Null pointers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_8_007",
+      "lesson": "12.8",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "pointers",
+        "nullptr",
+        "best-practices"
+      ],
+      "concept": "Null pointer best practices",
+      "explanation": "Follow these guidelines for null pointers:<ul><li>Use nullptr, not 0 or NULL</li><li>Initialize pointers to nullptr if no valid address yet</li><li>Always check before dereferencing</li><li>Dereferencing nullptr is undefined behavior</li><li>Pointers convert to bool (nullptr = false)</li></ul>",
+      "examples": [
+        "int* ptr = nullptr;  // Initialize to null",
+        "if (ptr) {           // Check before use",
+        "    *ptr = 5;        // Safe: only if non-null",
+        "}"
+      ],
+      "source": "12.8 - Null pointers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_8_008",
+      "lesson": "12.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "pointers",
+        "nullptr"
+      ],
+      "text": "A pointer can be checked with {{c1::if (ptr)}} because pointers convert to {{c2::bool}}, where nullptr is {{c3::false}}.",
+      "source": "12.8 - Null pointers",
+      "difficulty": "easy"
+    }
+  ]
+}

@@ -1,0 +1,183 @@
+{
+  "chapter": "Chapter 21",
+  "chapter_title": "Operator Overloading",
+  "lesson": "21.12",
+  "lesson_title": "Overloading the assignment operator",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch21_12_001",
+      "lesson": "21.12",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "assignment"
+      ],
+      "text": "The copy assignment operator has signature: ClassName{{c1::&amp;}} operator{{c2::=}}(const ClassName{{c3::&amp;}} rhs);",
+      "source": "21.12 - Overloading the assignment operator",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_12_002",
+      "lesson": "21.12",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "assignment"
+      ],
+      "text": "operator= must be a {{c1::member function}} and should return {{c2::*this}} by {{c3::reference}} to allow chaining: a = b = c.",
+      "source": "21.12 - Overloading the assignment operator",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch21_12_003",
+      "lesson": "21.12",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "assignment"
+      ],
+      "question": "What does this assignment operator do?",
+      "code": "MyString&amp; operator=(const MyString&amp; rhs) {\n    if (this == &amp;rhs)\n        return *this;\n    \n    delete[] m_data;\n    m_length = rhs.m_length;\n    m_data = new char[m_length];\n    std::copy(rhs.m_data, rhs.m_data + m_length, m_data);\n    return *this;\n}",
+      "answer": "Copy assignment: checks for self-assignment, deletes old data, allocates new memory, copies rhs data, returns *this.",
+      "explanation": "Standard pattern for deep copy assignment with dynamic memory.",
+      "source": "21.12 - Overloading the assignment operator",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch21_12_004",
+      "lesson": "21.12",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "assignment"
+      ],
+      "front": "Why must you check for self-assignment in operator=?",
+      "back": "Self-assignment (a = a) would delete a's data before copying it, causing undefined behavior. The check if (this == &amp;rhs) return *this; prevents this. Without it, you'd delete the source data you're trying to copy.",
+      "source": "21.12 - Overloading the assignment operator",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch21_12_005",
+      "lesson": "21.12",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "assignment"
+      ],
+      "text": "The self-assignment check is: if ({{c1::this}} {{c2::==}} {{c3::&amp;rhs}}) return *this;",
+      "source": "21.12 - Overloading the assignment operator",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_12_006",
+      "lesson": "21.12",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "assignment"
+      ],
+      "front": "What's the difference between copy assignment and copy constructor?",
+      "back": "Copy constructor initializes a new object from an existing one (MyClass b = a;). Copy assignment copies to an already-existing object (b = a;). Assignment must clean up existing resources first.",
+      "source": "21.12 - Overloading the assignment operator",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_12_007",
+      "lesson": "21.12",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "assignment"
+      ],
+      "text": "Copy assignment pattern: check {{c1::self-assignment}}, {{c2::clean up}} old resources, {{c3::copy}} new data, return {{c4::*this}}.",
+      "source": "21.12 - Overloading the assignment operator",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_12_008",
+      "lesson": "21.12",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "assignment"
+      ],
+      "front": "Why does operator= return *this by reference?",
+      "back": "To enable assignment chaining (a = b = c) and match built-in behavior. The return value of (b = c) is b, which then gets assigned to a. Reference avoids unnecessary copying.",
+      "source": "21.12 - Overloading the assignment operator",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_12_009",
+      "lesson": "21.12",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "assignment"
+      ],
+      "question": "What's wrong with this operator=?",
+      "code": "MyClass&amp; operator=(const MyClass&amp; rhs) {\n    delete[] m_data;\n    m_data = new int[rhs.m_size];\n    std::copy(rhs.m_data, rhs.m_data + rhs.m_size, m_data);\n    return *this;\n}",
+      "answer": "Missing self-assignment check. If rhs is *this, deleting m_data destroys the source before copying.",
+      "explanation": "Must add: if (this == &amp;rhs) return *this; at the beginning.",
+      "source": "21.12 - Overloading the assignment operator",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch21_12_010",
+      "lesson": "21.12",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "assignment"
+      ],
+      "front": "What does the compiler-generated default operator= do?",
+      "back": "It performs memberwise assignment: copies each member variable from rhs to *this using their assignment operators. This does shallow copy, which is problematic for classes managing resources.",
+      "source": "21.12 - Overloading the assignment operator",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_12_011",
+      "lesson": "21.12",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "assignment"
+      ],
+      "concept": "Implementing copy assignment operator",
+      "explanation": "Essential steps for operator=:<ul><li>Check for self-assignment (this == &amp;rhs)</li><li>Clean up any existing resources (*this already exists)</li><li>Copy all data from rhs</li><li>Return *this by reference</li><li>Must be a member function</li><li>Handle exceptions safely (use copy-and-swap idiom)</li></ul>",
+      "examples": [
+        "if (this == &amp;rhs) return *this;  // self-assignment check",
+        "delete[] m_data;  // clean up",
+        "m_data = new int[rhs.m_size];  // allocate",
+        "std::copy(...);  // copy",
+        "return *this;  // enable chaining"
+      ],
+      "source": "21.12 - Overloading the assignment operator",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch21_12_012",
+      "lesson": "21.12",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "assignment"
+      ],
+      "text": "The parameter to operator= should be {{c1::const ClassName&amp;}} to prevent modifying the source and avoid {{c2::unnecessary copies}}.",
+      "source": "21.12 - Overloading the assignment operator",
+      "difficulty": "easy"
+    }
+  ]
+}

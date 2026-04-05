@@ -1,0 +1,232 @@
+{
+  "chapter": "Chapter 13",
+  "chapter_title": "Compound Types: Enums and Structs",
+  "lesson": "13.15",
+  "lesson_title": "13.15 — Alias templates",
+  "total_cards": 16,
+  "cards": [
+    {
+      "id": "ch13_15_001",
+      "lesson": "13.15",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "syntax"
+      ],
+      "text": "To create an alias template: {{c1::template}} &lt;typename T&gt; {{c2::using}} VectorPtr = std::vector&lt;T&gt;*;",
+      "source": "13.15 — Alias templates",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_15_002",
+      "lesson": "13.15",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "aliases"
+      ],
+      "front": "What is an alias template?",
+      "back": "A template that creates a type alias, allowing you to create convenient shortcuts for complex template types.",
+      "source": "13.15 — Alias templates",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_15_003",
+      "lesson": "13.15",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "templates",
+        "aliases"
+      ],
+      "question": "What does this create?",
+      "code": "template &lt;typename T&gt;\nusing Ptr = T*;\n\nPtr&lt;int&gt; p;",
+      "answer": "Creates an int* (pointer to int). Ptr&lt;int&gt; is an alias for int*.",
+      "explanation": "Alias templates substitute the parameter and create a type alias.",
+      "source": "13.15 — Alias templates",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_15_004",
+      "lesson": "13.15",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "aliases"
+      ],
+      "text": "Alias templates use the {{c1::using}} keyword with a {{c2::template}} parameter list.",
+      "source": "13.15 — Alias templates",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_15_005",
+      "lesson": "13.15",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "templates",
+        "aliases"
+      ],
+      "question": "What's the benefit of this alias?",
+      "code": "template &lt;typename T&gt;\nusing Vec = std::vector&lt;T&gt;;\n\nVec&lt;int&gt; numbers;\nVec&lt;std::string&gt; names;",
+      "answer": "Shorter, more readable syntax than repeatedly writing std::vector&lt;T&gt;.",
+      "explanation": "Alias templates reduce boilerplate in template-heavy code.",
+      "source": "13.15 — Alias templates",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_15_006",
+      "lesson": "13.15",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "aliases"
+      ],
+      "front": "What's the difference between a type alias and an alias template?",
+      "back": "<strong>Type alias:</strong> Fixed type alias (using IntVec = std::vector&lt;int&gt;)<br><strong>Alias template:</strong> Parameterized (template&lt;typename T&gt; using Vec = std::vector&lt;T&gt;)",
+      "source": "13.15 — Alias templates",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_15_007",
+      "lesson": "13.15",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "templates",
+        "aliases"
+      ],
+      "question": "What does this alias template do?",
+      "code": "template &lt;typename T&gt;\nusing StringMap = std::map&lt;std::string, T&gt;;",
+      "answer": "Creates a shortcut for maps with string keys and template-parameter values.",
+      "explanation": "StringMap&lt;int&gt; expands to std::map&lt;std::string, int&gt;",
+      "source": "13.15 — Alias templates",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_15_008",
+      "lesson": "13.15",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "aliases",
+        "typedef"
+      ],
+      "text": "Unlike {{c1::typedef}}, {{c2::using}} can be used to create alias templates with template parameters.",
+      "source": "13.15 — Alias templates",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_15_009",
+      "lesson": "13.15",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "aliases"
+      ],
+      "front": "Can typedef create alias templates?",
+      "back": "No. Only <code>using</code> can create alias templates. typedef cannot be templated.",
+      "source": "13.15 — Alias templates",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_15_010",
+      "lesson": "13.15",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "templates",
+        "aliases",
+        "best-practices"
+      ],
+      "concept": "When to use alias templates",
+      "explanation": "Use alias templates to:<ul><li>Simplify complex template types</li><li>Create domain-specific type shortcuts</li><li>Partially specialize template parameters</li><li>Improve code readability</li></ul>Common in template-heavy libraries.",
+      "examples": [
+        "template&lt;typename T&gt; using Ptr = T*;",
+        "template&lt;typename T&gt; using Vec = std::vector&lt;T&gt;;",
+        "template&lt;typename V&gt; using StrMap = std::map&lt;std::string, V&gt;;"
+      ],
+      "source": "13.15 — Alias templates",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_15_011",
+      "lesson": "13.15",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "aliases"
+      ],
+      "front": "Do alias templates create new types?",
+      "back": "No. They create alternative names for existing types, not new distinct types.",
+      "source": "13.15 — Alias templates",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_15_012",
+      "lesson": "13.15",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "text": "Alias templates use {{c1::template}} with {{c2::using}}: template&lt;typename T&gt; using Ptr = T*;",
+      "source": "13.15 — Alias templates",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_15_013",
+      "lesson": "13.15",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "text": "Unlike {{c1::typedef}}, {{c2::using}} declarations can be templated to create alias templates.",
+      "source": "13.15 — Alias templates",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_15_014",
+      "lesson": "13.15",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "text": "Alias templates create {{c1::alternative names}} for types, not {{c2::new distinct types}}.",
+      "source": "13.15 — Alias templates",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_15_015",
+      "lesson": "13.15",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "text": "Alias templates use {{c1::template}} with {{c2::using}}: template&lt;typename T&gt; using Ptr = T*;",
+      "source": "13.15 — Alias templates",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_15_016",
+      "lesson": "13.15",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "text": "Unlike {{c1::typedef}}, {{c2::using}} declarations can be templated to create alias templates.",
+      "source": "13.15 — Alias templates",
+      "difficulty": "medium"
+    }
+  ]
+}

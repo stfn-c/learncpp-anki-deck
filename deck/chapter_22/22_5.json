@@ -1,0 +1,195 @@
+{
+  "chapter": "Chapter 22",
+  "chapter_title": "Move Semantics and Smart Pointers",
+  "lesson": "22.5",
+  "lesson_title": "std::unique_ptr",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch22_5_001",
+      "lesson": "22.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "unique_ptr",
+        "headers"
+      ],
+      "text": "std::unique_ptr is defined in the {{c1::&lt;memory&gt;}} header.",
+      "source": "22.5 - std::unique_ptr",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch22_5_002",
+      "lesson": "22.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "unique_ptr",
+        "syntax"
+      ],
+      "text": "To create a unique_ptr, use: {{c1::std::unique_ptr&lt;Type&gt; ptr = std::make_unique&lt;Type&gt;(args);}}",
+      "source": "22.5 - std::unique_ptr",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch22_5_003",
+      "lesson": "22.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "unique_ptr",
+        "ownership"
+      ],
+      "front": "What ownership model does std::unique_ptr implement?",
+      "back": "Exclusive ownership. Only one std::unique_ptr can own a resource at any time. The resource is automatically deleted when the unique_ptr goes out of scope.",
+      "source": "22.5 - std::unique_ptr",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch22_5_004",
+      "lesson": "22.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "unique_ptr",
+        "syntax"
+      ],
+      "question": "What's the preferred way to create a unique_ptr in C++14 and later?",
+      "code": "// Option A:\nstd::unique_ptr&lt;int&gt; p1(new int(5));\n\n// Option B:\nauto p2 = std::make_unique&lt;int&gt;(5);",
+      "answer": "Option B with std::make_unique is preferred.",
+      "explanation": "std::make_unique is safer (exception-safe), more concise, and avoids explicit new. It was introduced in C++14.",
+      "source": "22.5 - std::unique_ptr",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch22_5_005",
+      "lesson": "22.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "unique_ptr",
+        "move-semantics"
+      ],
+      "text": "std::unique_ptr cannot be {{c1::copied}} (copy constructor/assignment are deleted), but it can be {{c2::moved}} using std::move.",
+      "source": "22.5 - std::unique_ptr",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch22_5_006",
+      "lesson": "22.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "unique_ptr",
+        "move-semantics"
+      ],
+      "question": "How do you transfer ownership of a unique_ptr?",
+      "code": "auto ptr1 = std::make_unique&lt;int&gt;(42);\nauto ptr2 = /* what goes here? */;",
+      "answer": "auto ptr2 = std::move(ptr1);",
+      "explanation": "After this, ptr1 is nullptr and ptr2 owns the resource. std::move is required to transfer ownership.",
+      "source": "22.5 - std::unique_ptr",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch22_5_007",
+      "lesson": "22.5",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "unique_ptr",
+        "best-practices"
+      ],
+      "concept": "When to use std::unique_ptr",
+      "explanation": "Use std::unique_ptr when:<ul><li>You need exclusive ownership of dynamically allocated memory</li><li>You want automatic cleanup</li><li>You're replacing raw owning pointers</li><li>Returning dynamically allocated objects from functions</li></ul>Default choice for smart pointers.",
+      "examples": [
+        "auto widget = std::make_unique&lt;Widget&gt;();",
+        "// widget automatically deleted when out of scope",
+        "",
+        "std::unique_ptr&lt;Widget&gt; factory() {",
+        "    return std::make_unique&lt;Widget&gt;();",
+        "}"
+      ],
+      "source": "22.5 - std::unique_ptr",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_5_008",
+      "lesson": "22.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "unique_ptr",
+        "syntax"
+      ],
+      "text": "Access the object through unique_ptr using {{c1::*ptr}} (dereference) or {{c2::ptr-&gt;member}} (arrow operator), just like raw pointers.",
+      "source": "22.5 - std::unique_ptr",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch22_5_009",
+      "lesson": "22.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "unique_ptr",
+        "methods"
+      ],
+      "front": "When should you use the get() method of std::unique_ptr?",
+      "back": "Use get() when you need to pass the raw pointer to a function that takes a raw pointer parameter but doesn't take ownership. Never delete the pointer returned by get().",
+      "source": "22.5 - std::unique_ptr",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_5_010",
+      "lesson": "22.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "unique_ptr",
+        "arrays"
+      ],
+      "question": "How do you create a unique_ptr for an array?",
+      "code": "// Allocate array of 10 ints",
+      "answer": "auto arr = std::make_unique&lt;int[]&gt;(10);",
+      "explanation": "Use Type[] syntax for arrays. Access with arr[i]. However, prefer std::vector or std::array over unique_ptr&lt;T[]&gt; in most cases.",
+      "source": "22.5 - std::unique_ptr",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_5_011",
+      "lesson": "22.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "unique_ptr",
+        "methods"
+      ],
+      "text": "Call {{c1::ptr.reset()}} to delete the managed object and set the unique_ptr to {{c2::nullptr}}. You can also call {{c3::ptr.reset(new_ptr)}} to replace the managed object.",
+      "source": "22.5 - std::unique_ptr",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_5_012",
+      "lesson": "22.5",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "unique_ptr",
+        "best-practices"
+      ],
+      "concept": "Advantages of std::unique_ptr over raw pointers",
+      "explanation": "std::unique_ptr advantages:<ul><li>Automatic memory management (RAII)</li><li>Exception-safe</li><li>No manual delete needed</li><li>Clear ownership semantics</li><li>No overhead in release builds</li><li>Move-only type prevents accidental copies</li></ul>",
+      "examples": [
+        "// Raw pointer - manual management, error-prone",
+        "Widget* w = new Widget();",
+        "delete w; // easy to forget",
+        "",
+        "// unique_ptr - automatic, safe",
+        "auto w = std::make_unique&lt;Widget&gt;();",
+        "// automatically deleted"
+      ],
+      "source": "22.5 - std::unique_ptr",
+      "difficulty": "easy"
+    }
+  ]
+}

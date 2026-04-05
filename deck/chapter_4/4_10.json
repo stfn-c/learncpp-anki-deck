@@ -1,0 +1,187 @@
+{
+  "chapter": "Chapter 4",
+  "chapter_title": "Fundamental Data Types",
+  "lesson": "4.10",
+  "lesson_title": "Introduction to if statements",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch4_10_001",
+      "lesson": "4.10",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "control-flow",
+        "if-statement",
+        "syntax"
+      ],
+      "text": "An if statement has the form: {{c1::if}} ({{c2::condition}}) {{c3::statement}}",
+      "source": "4.10 - Introduction to if statements",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_10_002",
+      "lesson": "4.10",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "if-statement",
+        "syntax"
+      ],
+      "question": "What does this code print when x is 5?",
+      "code": "int x{ 5 };\nif (x == 5)\n    std::cout &lt;&lt; \"equal\";",
+      "answer": "equal",
+      "explanation": "The condition (x == 5) is true, so the statement executes.",
+      "source": "4.10 - Introduction to if statements",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_10_003",
+      "lesson": "4.10",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "if-statement",
+        "syntax"
+      ],
+      "text": "The {{c1::else}} keyword provides an alternative statement to execute when the if condition is {{c2::false}}.",
+      "source": "4.10 - Introduction to if statements",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_10_004",
+      "lesson": "4.10",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "if-statement",
+        "syntax"
+      ],
+      "question": "What does this print when x is 3?",
+      "code": "int x{ 3 };\nif (x == 5)\n    std::cout &lt;&lt; \"five\";\nelse\n    std::cout &lt;&lt; \"not five\";",
+      "answer": "not five",
+      "explanation": "x == 5 is false, so the else block executes.",
+      "source": "4.10 - Introduction to if statements",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_10_005",
+      "lesson": "4.10",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "if-statement",
+        "blocks",
+        "syntax"
+      ],
+      "text": "To execute multiple statements in an if, use a {{c1::block}} (compound statement) with {{c2::curly braces}}.",
+      "source": "4.10 - Introduction to if statements",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_10_006",
+      "lesson": "4.10",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "if-statement",
+        "blocks"
+      ],
+      "question": "Is this code correct?",
+      "code": "if (x == 5)\n{\n    std::cout &lt;&lt; \"x is 5\";\n    std::cout &lt;&lt; \"!\";\n}",
+      "answer": "Yes, both statements execute when x == 5",
+      "explanation": "The curly braces create a block, so both statements are part of the if.",
+      "source": "4.10 - Introduction to if statements",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_10_007",
+      "lesson": "4.10",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "if-statement",
+        "best-practices"
+      ],
+      "concept": "Why always use blocks with if statements",
+      "explanation": "Best practice: Always use curly braces for if/else bodies because:<ul><li>Prevents bugs when adding statements later</li><li>Makes code structure explicit</li><li>Easier to read and maintain</li><li>Avoids indentation mistakes</li></ul>",
+      "examples": [
+        "if (x == 5)\n{\n    doSomething();\n}  // good",
+        "if (x == 5)\n    doSomething();     // avoid"
+      ],
+      "source": "4.10 - Introduction to if statements",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch4_10_008",
+      "lesson": "4.10",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "if-statement",
+        "syntax"
+      ],
+      "text": "To chain multiple conditions together, use {{c1::else if}} to test another condition when the first is false.",
+      "source": "4.10 - Introduction to if statements",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_10_009",
+      "lesson": "4.10",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "if-statement"
+      ],
+      "question": "What does this print when x is 7?",
+      "code": "int x{ 7 };\nif (x &lt; 5)\n    std::cout &lt;&lt; \"small\";\nelse if (x &lt; 10)\n    std::cout &lt;&lt; \"medium\";\nelse\n    std::cout &lt;&lt; \"large\";",
+      "answer": "medium",
+      "explanation": "x &lt; 5 is false, but x &lt; 10 is true, so 'medium' prints.",
+      "source": "4.10 - Introduction to if statements",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_10_010",
+      "lesson": "4.10",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "if-statement",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this code?",
+      "code": "if (x = 5)  // intending to test equality\n    std::cout &lt;&lt; \"five\";",
+      "answer": "Uses assignment (=) instead of comparison (==)",
+      "explanation": "Single = is assignment, not comparison. This assigns 5 to x and always evaluates to true. Should be x == 5.",
+      "source": "4.10 - Introduction to if statements",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch4_10_011",
+      "lesson": "4.10",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "if-statement",
+        "gotchas"
+      ],
+      "front": "What does this code do: if (x == 5); doSomething();",
+      "back": "The semicolon creates a null statement. doSomething() always executes regardless of the condition (bug).",
+      "source": "4.10 - Introduction to if statements",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch4_10_012",
+      "lesson": "4.10",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "if-statement",
+        "evaluation"
+      ],
+      "text": "The condition in an if statement must evaluate to a {{c1::Boolean}} value (true or false).",
+      "source": "4.10 - Introduction to if statements",
+      "difficulty": "easy"
+    }
+  ]
+}

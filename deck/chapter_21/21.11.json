@@ -1,0 +1,153 @@
+{
+  "chapter": "Chapter 21",
+  "chapter_title": "Operator Overloading",
+  "lesson": "21.11",
+  "lesson_title": "Overloading typecasts",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "ch21_11_001",
+      "lesson": "21.11",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "typecasts"
+      ],
+      "text": "User-defined conversion operators are declared as: {{c1::operator}} TypeName() {{c2::const}};",
+      "source": "21.11 - Overloading typecasts",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_11_002",
+      "lesson": "21.11",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "typecasts"
+      ],
+      "text": "Conversion operators have {{c1::no return type}} specified (not even void) because the return type is implied by the {{c2::operator name}}.",
+      "source": "21.11 - Overloading typecasts",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_11_003",
+      "lesson": "21.11",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "typecasts"
+      ],
+      "question": "What does this conversion operator do?",
+      "code": "class Cents {\n    int m_cents;\npublic:\n    operator int() const { return m_cents; }\n};",
+      "answer": "Allows Cents to be implicitly converted to int. Returns the m_cents value.",
+      "explanation": "Now you can do: Cents c{5}; int x = c; // implicit conversion",
+      "source": "21.11 - Overloading typecasts",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_11_004",
+      "lesson": "21.11",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "typecasts"
+      ],
+      "front": "What is the danger of implicit conversion operators?",
+      "back": "They can cause unexpected conversions that lead to bugs. For example, if Cents converts to int, you might accidentally use Cents in integer arithmetic where it doesn't make sense. Use the explicit keyword to prevent implicit conversions.",
+      "source": "21.11 - Overloading typecasts",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch21_11_005",
+      "lesson": "21.11",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "typecasts"
+      ],
+      "text": "To prevent implicit conversions, use the {{c1::explicit}} keyword: explicit operator int() const. This requires {{c2::explicit casts}} like static_cast&lt;int&gt;(cents).",
+      "source": "21.11 - Overloading typecasts",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_11_006",
+      "lesson": "21.11",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "typecasts"
+      ],
+      "front": "Why should conversion operators usually be marked const?",
+      "back": "Conversion operators should be const because converting an object to another type typically shouldn't modify the object. This allows converting const objects and temporaries.",
+      "source": "21.11 - Overloading typecasts",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_11_007",
+      "lesson": "21.11",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "typecasts"
+      ],
+      "question": "What's the difference between these two conversion operators?",
+      "code": "operator int() const { return m_cents; }\nexplicit operator int() const { return m_cents; }",
+      "answer": "First allows implicit conversion (int x = cents). Second requires explicit cast (int x = static_cast&lt;int&gt;(cents)).",
+      "explanation": "explicit keyword prevents accidental implicit conversions, making code safer.",
+      "source": "21.11 - Overloading typecasts",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_11_008",
+      "lesson": "21.11",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "typecasts"
+      ],
+      "front": "Should conversion operators have parameters?",
+      "back": "No. Conversion operators always have no parameters (except implicit *this). The conversion is from the class type to the target type specified in the operator name.",
+      "source": "21.11 - Overloading typecasts",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch21_11_009",
+      "lesson": "21.11",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "typecasts"
+      ],
+      "text": "The special conversion operator {{c1::operator bool}}() const is commonly used to test if an object is in a {{c2::valid}} or {{c3::true-like}} state.",
+      "source": "21.11 - Overloading typecasts",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_11_010",
+      "lesson": "21.11",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "typecasts"
+      ],
+      "concept": "Best practices for conversion operators",
+      "explanation": "Guidelines for user-defined conversions:<ul><li>Mark as const (conversions shouldn't modify object)</li><li>Use explicit keyword to prevent implicit conversions</li><li>Only provide conversions that are intuitive and safe</li><li>operator bool() is useful for validity checking</li><li>No return type specified (implied by operator name)</li></ul>",
+      "examples": [
+        "explicit operator int() const { return m_value; }",
+        "explicit operator bool() const { return m_isValid; }"
+      ],
+      "source": "21.11 - Overloading typecasts",
+      "difficulty": "hard"
+    }
+  ]
+}

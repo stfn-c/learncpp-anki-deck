@@ -1,0 +1,133 @@
+{
+  "chapter": "Chapter 1",
+  "chapter_title": "C++ Basics: Functions and Files",
+  "lesson": "1.4",
+  "lesson_title": "Variable assignment and initialization",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch1_4_001",
+      "lesson": "1.4",
+      "type": "cloze",
+      "tags": ["cpp", "assignment", "operators"],
+      "text": "The {{c1::=}} operator is called the {{c2::assignment}} operator.",
+      "source": "1.4 - Variable assignment and initialization",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_4_002",
+      "lesson": "1.4",
+      "type": "code",
+      "tags": ["cpp", "assignment", "syntax"],
+      "question": "What value does variable x contain after these statements execute?",
+      "code": "int x;\nx = 5;\nx = 10;",
+      "answer": "10",
+      "explanation": "First x is defined (uninitialized), then assigned 5, then assigned 10. The second assignment overwrites the first value.",
+      "source": "1.4 - Variable assignment and initialization",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_4_003",
+      "lesson": "1.4",
+      "type": "basic",
+      "tags": ["cpp", "initialization", "fundamentals"],
+      "front": "What is the difference between initialization and assignment?",
+      "back": "Initialization provides a variable with an initial value at the point of definition. Assignment gives a variable a value after it has already been defined.",
+      "source": "1.4 - Variable assignment and initialization",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch1_4_004",
+      "lesson": "1.4",
+      "type": "cloze",
+      "tags": ["cpp", "initialization", "syntax"],
+      "text": "There are 6 basic ways to initialize variables in C++: default, copy, direct, list ({{c1::brace}}), value, and zero initialization.",
+      "source": "1.4 - Variable assignment and initialization",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch1_4_005",
+      "lesson": "1.4",
+      "type": "cloze",
+      "tags": ["cpp", "initialization", "syntax"],
+      "text": "Copy initialization: {{c1::int width = 5;}}",
+      "source": "1.4 - Variable assignment and initialization",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_4_006",
+      "lesson": "1.4",
+      "type": "cloze",
+      "tags": ["cpp", "initialization", "syntax"],
+      "text": "Direct initialization: {{c1::int width(5);}}",
+      "source": "1.4 - Variable assignment and initialization",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_4_007",
+      "lesson": "1.4",
+      "type": "cloze",
+      "tags": ["cpp", "initialization", "syntax"],
+      "text": "List initialization (brace initialization): {{c1::int width{5};}} or {{c2::int width = {5};}}",
+      "source": "1.4 - Variable assignment and initialization",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_4_008",
+      "lesson": "1.4",
+      "type": "concept",
+      "tags": ["cpp", "initialization", "best-practices"],
+      "concept": "Why list initialization (brace initialization) is preferred",
+      "explanation": "List initialization (also called uniform initialization or brace initialization) is the modern C++ way to initialize variables:<ul><li>Works for all initialization types</li><li>Disallows narrowing conversions (prevents data loss)</li><li>Prevents certain types of unexpected behavior</li></ul>",
+      "examples": [
+        "int x{5};      // Preferred",
+        "int y = 5;     // Okay but older style",
+        "int z(5);      // Older direct initialization",
+        "int w{4.5};    // Error: narrowing conversion"
+      ],
+      "source": "1.4 - Variable assignment and initialization",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch1_4_009",
+      "lesson": "1.4",
+      "type": "cloze",
+      "tags": ["cpp", "initialization", "syntax"],
+      "text": "Value initialization (zero initialization): {{c1::int width{};}} initializes the variable to {{c2::zero}} (or empty).",
+      "source": "1.4 - Variable assignment and initialization",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_4_010",
+      "lesson": "1.4",
+      "type": "basic",
+      "tags": ["cpp", "best-practices", "initialization"],
+      "front": "When should you initialize a variable?",
+      "back": "Initialize a variable upon creation whenever possible. If you don't yet know what value the variable should have, use value initialization (empty braces) to initialize it to zero.",
+      "source": "1.4 - Variable assignment and initialization",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_4_011",
+      "lesson": "1.4",
+      "type": "code",
+      "tags": ["cpp", "initialization", "common-mistakes"],
+      "question": "What's the problem with this code?",
+      "code": "int a, b = 5;\nint c, d{6};",
+      "answer": "Only b and d are initialized; a and c are uninitialized",
+      "explanation": "When defining multiple variables on one line, each variable must be initialized separately. The initialization only applies to the variable immediately before the initializer.",
+      "source": "1.4 - Variable assignment and initialization",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch1_4_012",
+      "lesson": "1.4",
+      "type": "basic",
+      "tags": ["cpp", "unused-variables", "best-practices"],
+      "front": "What should you do with an unused variable in your code?",
+      "back": "Remove it. Unused variables clutter code, may indicate bugs, and modern compilers will warn about them. There's no reason to keep them in the code.",
+      "source": "1.4 - Variable assignment and initialization",
+      "difficulty": "easy"
+    }
+  ]
+}

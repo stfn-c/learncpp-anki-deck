@@ -1,0 +1,242 @@
+{
+  "chapter": "Chapter 23",
+  "chapter_title": "Object Relationships",
+  "lesson": "23.x",
+  "lesson_title": "Chapter 23 summary and quiz",
+  "total_cards": 16,
+  "cards": [
+    {
+      "id": "ch23_x_001",
+      "lesson": "23.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "object-composition",
+        "terminology"
+      ],
+      "text": "The process of building complex objects from simpler ones is called {{c1::object composition}}. There are two types of object composition: {{c2::composition}} and {{c3::aggregation}}.",
+      "source": "23.x - Chapter 23 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_x_002",
+      "lesson": "23.x",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "relationships",
+        "comparison"
+      ],
+      "concept": "Comparison table of object relationships",
+      "explanation": "Key differences between relationship types:<ul><li><b>Composition:</b> Part-of, whole/part, member can't belong to multiple classes, existence managed by class, unidirectional</li><li><b>Aggregation:</b> Has-a, whole/part, member can belong to multiple classes, existence NOT managed by class, unidirectional</li><li><b>Association:</b> Uses-a, otherwise unrelated, can belong to multiple classes, existence NOT managed, uni- or bidirectional</li><li><b>Dependency:</b> Depends-on, otherwise unrelated, can belong to multiple classes, existence NOT managed, unidirectional</li></ul>",
+      "examples": [
+        "Composition: Person has-a Heart (manages it)",
+        "Aggregation: Department has-a Teacher (doesn't manage)",
+        "Association: Doctor uses-a Patient",
+        "Dependency: Point depends-on std::ostream"
+      ],
+      "source": "23.x - Chapter 23 summary and quiz",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch23_x_003",
+      "lesson": "23.x",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "relationships",
+        "quiz"
+      ],
+      "question": "An Animal class contains an animal type (enum) and name (string). What type of relationship is this?",
+      "code": "class Animal {\n    AnimalType m_type;\n    std::string m_name;\npublic:\n    Animal(AnimalType type, std::string name)\n        : m_type{type}, m_name{name} {}\n};",
+      "answer": "Composition",
+      "explanation": "The animal type and name are part of the Animal and don't have a use outside of it. The Animal manages their existence completely.",
+      "source": "23.x - Chapter 23 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_x_004",
+      "lesson": "23.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "relationships",
+        "quiz"
+      ],
+      "front": "A text editor class has a save() function that takes a File object as an argument to write contents to disk. What type of relationship is this?",
+      "back": "Dependency - The text editor class is using the File object for the task of saving to disk, but the File is not a member.",
+      "source": "23.x - Chapter 23 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_x_005",
+      "lesson": "23.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "relationships",
+        "quiz"
+      ],
+      "front": "An Adventurer class can carry various Items (swords, potions, etc.). These Items can be dropped and picked up by other Adventurers. What type of relationship is this?",
+      "back": "Association - The Adventurer and Items aren't a whole-part relationship, so this isn't aggregation. The Adventurer uses-a Items, and doesn't manage their existence.",
+      "source": "23.x - Chapter 23 summary and quiz",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch23_x_006",
+      "lesson": "23.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "relationships",
+        "quiz"
+      ],
+      "front": "A Player prays at a Shrine to receive a new power. What type of relationship is this?",
+      "back": "Dependency - The player depends on the shrine to receive the power, but does not have any long-term association with it.",
+      "source": "23.x - Chapter 23 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_x_007",
+      "lesson": "23.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "relationships",
+        "quiz"
+      ],
+      "front": "A Computer class contains a CPU class. The CPU can be removed from the Computer and tested on its own. What type of relationship is this?",
+      "back": "Aggregation - The computer has-a CPU, but does not manage its existence. The CPU can exist independently.",
+      "source": "23.x - Chapter 23 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_x_008",
+      "lesson": "23.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "relationships",
+        "quiz"
+      ],
+      "front": "A blacksmith has a specific anvil that he uses to do his work. What type of relationship is this?",
+      "back": "Association - The blacksmith uses the anvil, but does not have a whole-part relationship with it.",
+      "source": "23.x - Chapter 23 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_x_009",
+      "lesson": "23.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "relationships",
+        "best-practices"
+      ],
+      "text": "If you can design a class using {{c1::composition}}, then you should use {{c1::composition}}.",
+      "source": "23.x - Chapter 23 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_x_010",
+      "lesson": "23.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "relationships",
+        "membership"
+      ],
+      "front": "Which relationship types allow members to belong to multiple classes at the same time?",
+      "back": "Aggregation, association, and dependency all allow members to belong to multiple classes. Only composition restricts membership to a single class.",
+      "source": "23.x - Chapter 23 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_x_011",
+      "lesson": "23.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "relationships",
+        "management"
+      ],
+      "front": "Which relationship type has the class managing the existence of its members?",
+      "back": "Only composition. In aggregation, association, and dependency, the class does NOT manage the member's existence.",
+      "source": "23.x - Chapter 23 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_x_012",
+      "lesson": "23.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "relationships",
+        "directionality"
+      ],
+      "front": "Which relationship type can be bidirectional?",
+      "back": "Only association can be bidirectional (reflexive association). Composition, aggregation, and dependency are always unidirectional.",
+      "source": "23.x - Chapter 23 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_x_013",
+      "lesson": "23.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "relationships",
+        "terminology"
+      ],
+      "text": "The relationship type for composition and aggregation is {{c1::whole/part}}, while for association and dependency it is {{c2::otherwise unrelated}}.",
+      "source": "23.x - Chapter 23 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_x_014",
+      "lesson": "23.x",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "relationships",
+        "decision-making"
+      ],
+      "concept": "How to choose the right relationship type",
+      "explanation": "Decision process:<br>1. Is the object a part of the whole, with lifetime managed by it? &rarr; <b>Composition</b><br>2. Is the object a part of the whole, but exists independently? &rarr; <b>Aggregation</b><br>3. Does the object use another unrelated object with some persistence? &rarr; <b>Association</b><br>4. Does the object use another object only for a specific task? &rarr; <b>Dependency</b><br><br>Always prefer composition when possible.",
+      "examples": [
+        "Person/Heart &rarr; Composition (heart can't exist without person)",
+        "Team/Player &rarr; Aggregation (player exists independently)",
+        "Doctor/Patient &rarr; Association (unrelated, ongoing)",
+        "Point/ostream &rarr; Dependency (only for printing)"
+      ],
+      "source": "23.x - Chapter 23 summary and quiz",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch23_x_015",
+      "lesson": "23.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "relationships",
+        "exclusivity"
+      ],
+      "text": "Only {{c1::composition}} restricts a member to belonging to a single object. {{c2::Aggregation}}, {{c3::association}}, and {{c4::dependency}} all allow sharing.",
+      "source": "23.x - Chapter 23 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_x_016",
+      "lesson": "23.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "relationships",
+        "management"
+      ],
+      "text": "Only {{c1::composition}} has the class managing member existence. In {{c2::aggregation}}, {{c3::association}}, and {{c4::dependency}}, existence is NOT managed.",
+      "source": "23.x - Chapter 23 summary and quiz",
+      "difficulty": "medium"
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "chapter": "Chapter 8",
+  "chapter_title": "Control Flow",
+  "lesson": "8.7",
+  "lesson_title": "Goto statements",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "ch8_7_001",
+      "lesson": "8.7",
+      "type": "cloze",
+      "tags": ["cpp", "goto", "syntax"],
+      "text": "Goto statement syntax:<br>{{c1::goto}} labelName;<br>// ...<br>{{c2::labelName:}}<br>&nbsp;&nbsp;&nbsp;&nbsp;statement;",
+      "source": "8.7 - Goto statements",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_7_002",
+      "lesson": "8.7",
+      "type": "basic",
+      "tags": ["cpp", "goto", "fundamentals"],
+      "front": "What does a goto statement do?",
+      "back": "It causes the program to jump to a statement identified by a label elsewhere in the same function.",
+      "source": "8.7 - Goto statements",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_7_003",
+      "lesson": "8.7",
+      "type": "basic",
+      "tags": ["cpp", "goto", "scope"],
+      "front": "Can a goto statement jump to a label in a different function?",
+      "back": "No, goto can only jump to labels within the same function. It cannot jump between functions.",
+      "source": "8.7 - Goto statements",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_7_004",
+      "lesson": "8.7",
+      "type": "cloze",
+      "tags": ["cpp", "goto", "syntax"],
+      "text": "A statement label ends with a {{c1::colon}} (:) and must be followed by a {{c2::statement}}.",
+      "source": "8.7 - Goto statements",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_7_005",
+      "lesson": "8.7",
+      "type": "basic",
+      "tags": ["cpp", "goto", "best-practices"],
+      "front": "Why is using goto generally discouraged in modern C++?",
+      "back": "Goto creates spaghetti code that's hard to follow, understand, and debug. Modern control structures (loops, functions) are clearer and more maintainable.",
+      "source": "8.7 - Goto statements",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_7_006",
+      "lesson": "8.7",
+      "type": "basic",
+      "tags": ["cpp", "goto", "best-practices"],
+      "front": "Are there any legitimate uses for goto in modern C++?",
+      "back": "Yes, very rare cases like breaking out of nested loops or resource cleanup in low-level code. But these are almost always better handled with functions or other control structures.",
+      "source": "8.7 - Goto statements",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_7_007",
+      "lesson": "8.7",
+      "type": "code",
+      "tags": ["cpp", "goto", "syntax"],
+      "question": "What does this code do?",
+      "code": "int x = 0;<br>loop:<br>std::cout &lt;&lt; x &lt;&lt; ' ';<br>++x;<br>if (x &lt; 5)<br>&nbsp;&nbsp;&nbsp;&nbsp;goto loop;",
+      "answer": "Prints: 0 1 2 3 4",
+      "explanation": "This creates a loop using goto. It prints x, increments it, and if x &lt; 5, jumps back to the loop label. This is what while loops are for!",
+      "source": "8.7 - Goto statements",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_7_008",
+      "lesson": "8.7",
+      "type": "concept",
+      "tags": ["cpp", "goto", "best-practices"],
+      "concept": "Why goto creates spaghetti code",
+      "explanation": "Goto creates \"spaghetti code\" because:<ul><li>Execution flow jumps arbitrarily, making it hard to trace</li><li>Can jump backward and forward unpredictably</li><li>Makes reasoning about program state difficult</li><li>Bypasses normal scope and initialization rules</li><li>Modern alternatives (loops, functions) are clearer</li></ul>Almost any goto can be replaced with better control structures.",
+      "examples": [
+        "// Bad: goto loop<br>label: doWork(); goto label;",
+        "// Good: while loop<br>while (true) { doWork(); }"
+      ],
+      "source": "8.7 - Goto statements",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_7_009",
+      "lesson": "8.7",
+      "type": "basic",
+      "tags": ["cpp", "goto", "scope"],
+      "front": "Can goto jump over variable initialization?",
+      "back": "The compiler will give an error if goto jumps over a variable initialization, as this could leave the variable in an indeterminate state.",
+      "source": "8.7 - Goto statements",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_7_010",
+      "lesson": "8.7",
+      "type": "basic",
+      "tags": ["cpp", "goto", "best-practices"],
+      "front": "What is the one-sentence guideline for using goto in C++?",
+      "back": "Avoid goto statements entirely in modern C++ - use loops, functions, and other control structures instead.",
+      "source": "8.7 - Goto statements",
+      "difficulty": "easy"
+    }
+  ]
+}

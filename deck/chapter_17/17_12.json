@@ -1,0 +1,131 @@
+{
+  "chapter": "Chapter 17",
+  "chapter_title": "Arrays and Strings",
+  "lesson": "17.12",
+  "lesson_title": "Multidimensional C-style Arrays",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch17_12_001",
+      "lesson": "17.12",
+      "type": "cloze",
+      "tags": ["cpp", "arrays", "multidimensional", "syntax"],
+      "text": "To declare a 2D C-style array with 3 rows and 4 columns: {{c1::int arr[3][4];}} where first dimension is {{c2::rows}} and second is {{c3::columns}}",
+      "source": "17.12 - Multidimensional C-style Arrays",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_12_002",
+      "lesson": "17.12",
+      "type": "cloze",
+      "tags": ["cpp", "multidimensional", "indexing"],
+      "text": "To access element at row 2, column 3 of a 2D array arr, use {{c1::arr[2][3]}} with two subscript operators",
+      "source": "17.12 - Multidimensional C-style Arrays",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_12_003",
+      "lesson": "17.12",
+      "type": "cloze",
+      "tags": ["cpp", "multidimensional", "initialization"],
+      "text": "To initialize a 2D array with nested braces: int arr[2][3] = {{c1::{{ {1,2,3}, {4,5,6} }}}}",
+      "source": "17.12 - Multidimensional C-style Arrays",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_12_004",
+      "lesson": "17.12",
+      "type": "basic",
+      "tags": ["cpp", "multidimensional", "memory-layout"],
+      "front": "How are multidimensional arrays stored in memory?",
+      "back": "In row-major order: elements are stored row by row consecutively in memory. For arr[2][3], elements are stored as arr[0][0], arr[0][1], arr[0][2], arr[1][0], arr[1][1], arr[1][2].",
+      "source": "17.12 - Multidimensional C-style Arrays",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_12_005",
+      "lesson": "17.12",
+      "type": "cloze",
+      "tags": ["cpp", "multidimensional", "nested-loops"],
+      "text": "To iterate over a 2D array, use nested loops: outer loop for {{c1::rows}}, inner loop for {{c2::columns}}",
+      "source": "17.12 - Multidimensional C-style Arrays",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_12_006",
+      "lesson": "17.12",
+      "type": "code",
+      "tags": ["cpp", "multidimensional", "iteration"],
+      "question": "What does this code print?",
+      "code": "int arr[2][2] = {{ {1, 2}, {3, 4} }};\nfor (int i = 0; i &lt; 2; ++i)\n    for (int j = 0; j &lt; 2; ++j)\n        std::cout &lt;&lt; arr[i][j] &lt;&lt; \" \";",
+      "answer": "1 2 3 4",
+      "explanation": "The nested loops iterate through rows first, then columns, printing all elements in row-major order.",
+      "source": "17.12 - Multidimensional C-style Arrays",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_12_007",
+      "lesson": "17.12",
+      "type": "basic",
+      "tags": ["cpp", "multidimensional", "function-parameters"],
+      "front": "When passing a 2D C-style array to a function, which dimension(s) must be specified?",
+      "back": "All dimensions except the first must be specified. For example: void func(int arr[][4]) where 4 (columns) is required but the row count can be omitted.",
+      "source": "17.12 - Multidimensional C-style Arrays",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_12_008",
+      "lesson": "17.12",
+      "type": "code",
+      "tags": ["cpp", "multidimensional", "common-mistakes"],
+      "question": "What's wrong with this function signature?",
+      "code": "void printArray(int arr[][]);",
+      "answer": "Missing the second dimension size. Should be: void printArray(int arr[][columns])",
+      "explanation": "The compiler needs the column count to calculate element offsets, so all dimensions except the first must be specified.",
+      "source": "17.12 - Multidimensional C-style Arrays",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_12_009",
+      "lesson": "17.12",
+      "type": "cloze",
+      "tags": ["cpp", "multidimensional", "flattening"],
+      "text": "To calculate the 1D index from 2D coordinates [row][col] in an array with C columns: {{c1::row * C + col}}",
+      "source": "17.12 - Multidimensional C-style Arrays",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch17_12_010",
+      "lesson": "17.12",
+      "type": "basic",
+      "tags": ["cpp", "multidimensional", "dimensions"],
+      "front": "Can you create arrays with more than 2 dimensions in C++?",
+      "back": "Yes, you can create 3D, 4D, or higher dimensional arrays using additional brackets: int arr[2][3][4]. However, they quickly become unwieldy and hard to manage.",
+      "source": "17.12 - Multidimensional C-style Arrays",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_12_011",
+      "lesson": "17.12",
+      "type": "concept",
+      "tags": ["cpp", "multidimensional", "best-practices"],
+      "concept": "Alternatives to multidimensional C-style arrays",
+      "explanation": "Modern alternatives to multidimensional C-style arrays:<ul><li>std::vector&lt;std::vector&lt;T&gt;&gt; - Dynamic 2D array</li><li>std::array&lt;std::array&lt;T, cols&gt;, rows&gt; - Fixed-size 2D</li><li>Single 1D array with manual indexing - Better cache performance</li><li>Libraries like Eigen for matrices</li></ul>These provide better safety and functionality.",
+      "examples": [
+        "int arr[3][4];  // C-style: avoid",
+        "std::array&lt;std::array&lt;int, 4&gt;, 3&gt; arr;  // Better"
+      ],
+      "source": "17.12 - Multidimensional C-style Arrays",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_12_012",
+      "lesson": "17.12",
+      "type": "cloze",
+      "tags": ["cpp", "multidimensional", "initialization"],
+      "text": "When using brace elision for multidimensional arrays, you can write: int arr[2][3] = {{c1::{ 1,2,3, 4,5,6 }}} with single braces",
+      "source": "17.12 - Multidimensional C-style Arrays",
+      "difficulty": "medium"
+    }
+  ]
+}

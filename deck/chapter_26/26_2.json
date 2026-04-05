@@ -1,0 +1,194 @@
+{
+  "chapter": "Chapter 26",
+  "chapter_title": "Templates and Classes",
+  "lesson": "26.2",
+  "lesson_title": "Template non-type parameters",
+  "total_cards": 13,
+  "cards": [
+    {
+      "id": "ch26_2_001",
+      "lesson": "26.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "non-type-parameters"
+      ],
+      "front": "What is a template non-type parameter?",
+      "back": "A template parameter where the type is predefined and is substituted for a constexpr value passed in as an argument.",
+      "source": "26.2 - Template non-type parameters",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch26_2_002",
+      "lesson": "26.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "non-type-parameters",
+        "syntax"
+      ],
+      "text": "To create a template class with a type parameter T and an integer non-type parameter: {{c1::template &lt;typename T, int size&gt;}}",
+      "source": "26.2 - Template non-type parameters",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch26_2_003",
+      "lesson": "26.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "non-type-parameters"
+      ],
+      "front": "What types can be used as template non-type parameters?",
+      "back": "Allowed types:<ul><li>Integral types</li><li>Enumeration types</li><li>Pointer or reference to class object</li><li>Pointer or reference to function</li><li>Pointer or reference to class member function</li><li>std::nullptr_t</li><li>Floating point type (since C++20)</li></ul>",
+      "source": "26.2 - Template non-type parameters",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_2_004",
+      "lesson": "26.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "syntax"
+      ],
+      "text": "The syntax {{c1::template &lt;typename T, int size&gt;}} declares a template with {{c2::one type parameter (T)}} and {{c3::one non-type parameter (size)}}.",
+      "source": "26.2 - Template non-type parameters",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_2_005",
+      "lesson": "26.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "templates",
+        "non-type-parameters"
+      ],
+      "question": "What does this code declare?",
+      "code": "template &lt;typename T, int size&gt;\nclass StaticArray\n{\nprivate:\n    T m_array[size] {};\n};",
+      "answer": "A template class StaticArray with a type parameter T and a non-type parameter size that determines the array size at compile time.",
+      "explanation": "The non-type parameter size must be a constexpr value, allowing the array to be allocated statically without dynamic memory.",
+      "source": "26.2 - Template non-type parameters",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_2_006",
+      "lesson": "26.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "std-library"
+      ],
+      "front": "How does std::array use template non-type parameters?",
+      "back": "In std::array&lt;int, 5&gt;, int is a type parameter and 5 is a non-type parameter that specifies the array size.",
+      "source": "26.2 - Template non-type parameters",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch26_2_007",
+      "lesson": "26.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "templates",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this code?",
+      "code": "template &lt;int size&gt;\nclass Foo { };\n\nint main()\n{\n    int x{ 4 };\n    Foo&lt;x&gt; f;\n    return 0;\n}",
+      "answer": "Compilation error: x is not constexpr. Template non-type arguments must be constexpr values.",
+      "explanation": "Template non-type parameters require compile-time constant values. Use constexpr int x{ 4 }; or pass a literal like Foo&lt;4&gt;.",
+      "source": "26.2 - Template non-type parameters",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_2_008",
+      "lesson": "26.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "non-type-parameters"
+      ],
+      "text": "Template non-type parameters must be {{c1::constexpr}} values, meaning they must be known at {{c2::compile time}}.",
+      "source": "26.2 - Template non-type parameters",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch26_2_009",
+      "lesson": "26.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "non-type-parameters"
+      ],
+      "front": "Why can StaticArray&lt;int, 12&gt; allocate m_array statically without dynamic memory?",
+      "back": "Because the size (12) is a constexpr value known at compile time, so the compiler knows the exact array size and can allocate it on the stack.",
+      "source": "26.2 - Template non-type parameters",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_2_010",
+      "lesson": "26.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "instantiation"
+      ],
+      "text": "When you instantiate StaticArray&lt;int, 12&gt;, the compiler replaces {{c1::size with 12}}, making m_array of type {{c2::int[12]}}.",
+      "source": "26.2 - Template non-type parameters",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_2_011",
+      "lesson": "26.2",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "templates",
+        "best-practices"
+      ],
+      "concept": "When to use template non-type parameters",
+      "explanation": "Use template non-type parameters when you need compile-time constant values that affect class/function behavior, such as:<ul><li>Array sizes for static allocation</li><li>Buffer sizes</li><li>Compile-time configuration values</li></ul>",
+      "examples": [
+        "template &lt;typename T, int N&gt; class Array { T data[N]; };",
+        "std::array&lt;int, 10&gt; arr;  // Size is non-type parameter"
+      ],
+      "source": "26.2 - Template non-type parameters",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_2_012",
+      "lesson": "26.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "std-library"
+      ],
+      "text": "In std::array&lt;int, 5&gt;, the type parameter is {{c1::int}} and the non-type parameter is {{c2::5}}.",
+      "source": "26.2 - Template non-type parameters",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch26_2_013",
+      "lesson": "26.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "non-type-parameters"
+      ],
+      "text": "Floating point types can be used as non-type parameters {{c1::since C++20}}.",
+      "source": "26.2 - Template non-type parameters",
+      "difficulty": "medium"
+    }
+  ]
+}

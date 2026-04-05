@@ -1,0 +1,229 @@
+{
+  "url": "https://www.learncpp.com/cpp-tutorial/stdstring-appending/",
+  "title": "22.6 \u2014 std::string appending",
+  "sections": [
+    {
+      "heading": null,
+      "content": [
+        {
+          "text": "AppendingAppending strings to the end of an existing string is easy using either operator+=, append(), or push_back().string& string::operator+= (const string& str)string& string::append (const string& str)Both functions append the characters of str to the string.Both functions return *this so they can be \u201cchained\u201d.Both functions throw a length_error exception if the result exceeds the maximum number of characters.Sample code:std::string sString{\"one\"};\n\nsString += std::string{\" two\"};\n\nstd::string sThree{\" three\"};\nsString.append(sThree);\n\nstd::cout << sString << '\\n';Output:one two threeThere\u2019s also a flavor of append() that can append a substring:string& string::append (const string& str, size_type index, size_type num)This function appends num characters from str, starting at index, to the string.Returns *this so it can be \u201cchained\u201d.Throws an out_of_range if index is out of boundsThrows a length_error exception if the result exceeds the maximum number of characters.Sample code:std::string sString{\"one \"};\n\nconst std::string sTemp{\"twothreefour\"};\nsString.append(sTemp, 3, 5); // append substring of sTemp starting at index 3 of length 5\nstd::cout << sString << '\\n';Output:one threeOperator+= and append() also have versions that work on C-style strings:string& string::operator+= (const char* str)string& string::append (const char* str)Both functions append the characters of str to the string.Both functions return *this so they can be \u201cchained\u201d.Both functions throw a length_error exception if the result exceeds the maximum number of characters.str should not be NULL.Sample code:std::string sString{\"one\"};\n\nsString += \" two\";\nsString.append(\" three\");\nstd::cout << sString << '\\n';Output:one two threeThere is an additional flavor of append() that works on C-style strings:string& string::append (const char* str, size_type len)Appends the first len characters of str to the string.Returns *this so they can be \u201cchained\u201d.Throw a length_error exception if the result exceeds the maximum number of characters.Ignores special characters (including \u201d)Sample code:std::string sString{\"one \"};\n\nsString.append(\"threefour\", 5);\nstd::cout << sString << '\\n';Output:one threeThis function is dangerous and its use is not recommended.There is also a set of functions that append characters. Note that the name of the non-operator function to append a character is push_back(), not append()!string& string::operator+= (char c)void string::push_back (char c)Both functions append the character c to the string.Operator += returns *this so it can be \u201cchained\u201d.Both functions throw a length_error exception if the result exceeds the maximum number of characters.Sample code:std::string sString{\"one\"};\n\nsString += ' ';\nsString.push_back('2');\nstd::cout << sString << '\\n';Output:one 2Now you might be wondering why the name of the function is push_back() and not append(). This follows a naming convention used for stacks, where push_back() is the function that adds a single item to the end of the stack. If you envision a string as a stack of characters, using push_back() to add a single character to the end makes sense. However, the lack of an append() function is inconsistent in my view!It turns out there is an append() function for characters, that looks like this:string& string::append (size_type num, char c)Adds num occurrences of the character c to the stringReturns *this so it can be \u201cchained\u201d.Throws a length_error exception if the result exceeds the maximum number of characters.Sample code:std::string sString{\"aaa\"};\n\nsString.append(4, 'b');\nstd::cout << sString << '\\n';Output:aaabbbbThere\u2019s one final flavor of append() that works with iterators:string& string::append (InputIterator start, InputIterator end)Appends all characters from the range [start, end) (including start up to but not including end)Returns *this so it can be \u201cchained\u201d.Throws a length_error exception if the result exceeds the maximum number of characters.Next lesson22.7std::string insertingBack to table of contentsPrevious lesson22.5std::string assignment and swapping"
+        },
+        {
+          "text": "Appending strings to the end of an existing string is easy using either operator+=, append(), or push_back().string& string::operator+= (const string& str)string& string::append (const string& str)Both functions append the characters of str to the string.Both functions return *this so they can be \u201cchained\u201d.Both functions throw a length_error exception if the result exceeds the maximum number of characters.Sample code:std::string sString{\"one\"};\n\nsString += std::string{\" two\"};\n\nstd::string sThree{\" three\"};\nsString.append(sThree);\n\nstd::cout << sString << '\\n';Output:one two threeThere\u2019s also a flavor of append() that can append a substring:string& string::append (const string& str, size_type index, size_type num)This function appends num characters from str, starting at index, to the string.Returns *this so it can be \u201cchained\u201d.Throws an out_of_range if index is out of boundsThrows a length_error exception if the result exceeds the maximum number of characters.Sample code:std::string sString{\"one \"};\n\nconst std::string sTemp{\"twothreefour\"};\nsString.append(sTemp, 3, 5); // append substring of sTemp starting at index 3 of length 5\nstd::cout << sString << '\\n';Output:one threeOperator+= and append() also have versions that work on C-style strings:string& string::operator+= (const char* str)string& string::append (const char* str)Both functions append the characters of str to the string.Both functions return *this so they can be \u201cchained\u201d.Both functions throw a length_error exception if the result exceeds the maximum number of characters.str should not be NULL.Sample code:std::string sString{\"one\"};\n\nsString += \" two\";\nsString.append(\" three\");\nstd::cout << sString << '\\n';Output:one two threeThere is an additional flavor of append() that works on C-style strings:string& string::append (const char* str, size_type len)Appends the first len characters of str to the string.Returns *this so they can be \u201cchained\u201d.Throw a length_error exception if the result exceeds the maximum number of characters.Ignores special characters (including \u201d)Sample code:std::string sString{\"one \"};\n\nsString.append(\"threefour\", 5);\nstd::cout << sString << '\\n';Output:one threeThis function is dangerous and its use is not recommended.There is also a set of functions that append characters. Note that the name of the non-operator function to append a character is push_back(), not append()!string& string::operator+= (char c)void string::push_back (char c)Both functions append the character c to the string.Operator += returns *this so it can be \u201cchained\u201d.Both functions throw a length_error exception if the result exceeds the maximum number of characters.Sample code:std::string sString{\"one\"};\n\nsString += ' ';\nsString.push_back('2');\nstd::cout << sString << '\\n';Output:one 2Now you might be wondering why the name of the function is push_back() and not append(). This follows a naming convention used for stacks, where push_back() is the function that adds a single item to the end of the stack. If you envision a string as a stack of characters, using push_back() to add a single character to the end makes sense. However, the lack of an append() function is inconsistent in my view!It turns out there is an append() function for characters, that looks like this:string& string::append (size_type num, char c)Adds num occurrences of the character c to the stringReturns *this so it can be \u201cchained\u201d.Throws a length_error exception if the result exceeds the maximum number of characters.Sample code:std::string sString{\"aaa\"};\n\nsString.append(4, 'b');\nstd::cout << sString << '\\n';Output:aaabbbbThere\u2019s one final flavor of append() that works with iterators:string& string::append (InputIterator start, InputIterator end)Appends all characters from the range [start, end) (including start up to but not including end)Returns *this so it can be \u201cchained\u201d.Throws a length_error exception if the result exceeds the maximum number of characters.Next lesson22.7std::string insertingBack to table of contentsPrevious lesson22.5std::string assignment and swapping"
+        },
+        {
+          "text": "string& string::operator+= (const string& str)string& string::append (const string& str)Both functions append the characters of str to the string.Both functions return *this so they can be \u201cchained\u201d.Both functions throw a length_error exception if the result exceeds the maximum number of characters.Sample code:std::string sString{\"one\"};\n\nsString += std::string{\" two\"};\n\nstd::string sThree{\" three\"};\nsString.append(sThree);\n\nstd::cout << sString << '\\n';Output:one two three"
+        },
+        {
+          "text": "string& string::operator+= (const string& str)string& string::append (const string& str)Both functions append the characters of str to the string.Both functions return *this so they can be \u201cchained\u201d.Both functions throw a length_error exception if the result exceeds the maximum number of characters.Sample code:std::string sString{\"one\"};\n\nsString += std::string{\" two\"};\n\nstd::string sThree{\" three\"};\nsString.append(sThree);\n\nstd::cout << sString << '\\n';Output:one two three"
+        },
+        {
+          "text": "Both functions append the characters of str to the string.Both functions return *this so they can be \u201cchained\u201d.Both functions throw a length_error exception if the result exceeds the maximum number of characters.Sample code:std::string sString{\"one\"};\n\nsString += std::string{\" two\"};\n\nstd::string sThree{\" three\"};\nsString.append(sThree);\n\nstd::cout << sString << '\\n';Output:one two three"
+        },
+        {
+          "list": [
+            "Both functions append the characters of str to the string.Both functions return *this so they can be \u201cchained\u201d.Both functions throw a length_error exception if the result exceeds the maximum number of characters.",
+            "Both functions return *this so they can be \u201cchained\u201d.Both functions throw a length_error exception if the result exceeds the maximum number of characters.",
+            "Both functions throw a length_error exception if the result exceeds the maximum number of characters."
+          ]
+        },
+        {
+          "text": "Sample code:std::string sString{\"one\"};\n\nsString += std::string{\" two\"};\n\nstd::string sThree{\" three\"};\nsString.append(sThree);\n\nstd::cout << sString << '\\n';Output:one two three"
+        },
+        {
+          "code": "std::string sString{\"one\"};\n\nsString += std::string{\" two\"};\n\nstd::string sThree{\" three\"};\nsString.append(sThree);\n\nstd::cout << sString << '\\n';"
+        },
+        {
+          "text": "Output:one two three"
+        },
+        {
+          "code": "one two three\n"
+        },
+        {
+          "text": "There\u2019s also a flavor of append() that can append a substring:string& string::append (const string& str, size_type index, size_type num)This function appends num characters from str, starting at index, to the string.Returns *this so it can be \u201cchained\u201d.Throws an out_of_range if index is out of boundsThrows a length_error exception if the result exceeds the maximum number of characters.Sample code:std::string sString{\"one \"};\n\nconst std::string sTemp{\"twothreefour\"};\nsString.append(sTemp, 3, 5); // append substring of sTemp starting at index 3 of length 5\nstd::cout << sString << '\\n';Output:one threeOperator+= and append() also have versions that work on C-style strings:string& string::operator+= (const char* str)string& string::append (const char* str)Both functions append the characters of str to the string.Both functions return *this so they can be \u201cchained\u201d.Both functions throw a length_error exception if the result exceeds the maximum number of characters.str should not be NULL.Sample code:std::string sString{\"one\"};\n\nsString += \" two\";\nsString.append(\" three\");\nstd::cout << sString << '\\n';Output:one two threeThere is an additional flavor of append() that works on C-style strings:string& string::append (const char* str, size_type len)Appends the first len characters of str to the string.Returns *this so they can be \u201cchained\u201d.Throw a length_error exception if the result exceeds the maximum number of characters.Ignores special characters (including \u201d)Sample code:std::string sString{\"one \"};\n\nsString.append(\"threefour\", 5);\nstd::cout << sString << '\\n';Output:one threeThis function is dangerous and its use is not recommended.There is also a set of functions that append characters. Note that the name of the non-operator function to append a character is push_back(), not append()!string& string::operator+= (char c)void string::push_back (char c)Both functions append the character c to the string.Operator += returns *this so it can be \u201cchained\u201d.Both functions throw a length_error exception if the result exceeds the maximum number of characters.Sample code:std::string sString{\"one\"};\n\nsString += ' ';\nsString.push_back('2');\nstd::cout << sString << '\\n';Output:one 2Now you might be wondering why the name of the function is push_back() and not append(). This follows a naming convention used for stacks, where push_back() is the function that adds a single item to the end of the stack. If you envision a string as a stack of characters, using push_back() to add a single character to the end makes sense. However, the lack of an append() function is inconsistent in my view!It turns out there is an append() function for characters, that looks like this:string& string::append (size_type num, char c)Adds num occurrences of the character c to the stringReturns *this so it can be \u201cchained\u201d.Throws a length_error exception if the result exceeds the maximum number of characters.Sample code:std::string sString{\"aaa\"};\n\nsString.append(4, 'b');\nstd::cout << sString << '\\n';Output:aaabbbbThere\u2019s one final flavor of append() that works with iterators:string& string::append (InputIterator start, InputIterator end)Appends all characters from the range [start, end) (including start up to but not including end)Returns *this so it can be \u201cchained\u201d.Throws a length_error exception if the result exceeds the maximum number of characters.Next lesson22.7std::string insertingBack to table of contentsPrevious lesson22.5std::string assignment and swapping"
+        },
+        {
+          "text": "string& string::append (const string& str, size_type index, size_type num)This function appends num characters from str, starting at index, to the string.Returns *this so it can be \u201cchained\u201d.Throws an out_of_range if index is out of boundsThrows a length_error exception if the result exceeds the maximum number of characters.Sample code:std::string sString{\"one \"};\n\nconst std::string sTemp{\"twothreefour\"};\nsString.append(sTemp, 3, 5); // append substring of sTemp starting at index 3 of length 5\nstd::cout << sString << '\\n';Output:one three"
+        },
+        {
+          "text": "string& string::append (const string& str, size_type index, size_type num)This function appends num characters from str, starting at index, to the string.Returns *this so it can be \u201cchained\u201d.Throws an out_of_range if index is out of boundsThrows a length_error exception if the result exceeds the maximum number of characters.Sample code:std::string sString{\"one \"};\n\nconst std::string sTemp{\"twothreefour\"};\nsString.append(sTemp, 3, 5); // append substring of sTemp starting at index 3 of length 5\nstd::cout << sString << '\\n';Output:one three"
+        },
+        {
+          "text": "This function appends num characters from str, starting at index, to the string.Returns *this so it can be \u201cchained\u201d.Throws an out_of_range if index is out of boundsThrows a length_error exception if the result exceeds the maximum number of characters.Sample code:std::string sString{\"one \"};\n\nconst std::string sTemp{\"twothreefour\"};\nsString.append(sTemp, 3, 5); // append substring of sTemp starting at index 3 of length 5\nstd::cout << sString << '\\n';Output:one three"
+        },
+        {
+          "list": [
+            "This function appends num characters from str, starting at index, to the string.Returns *this so it can be \u201cchained\u201d.Throws an out_of_range if index is out of boundsThrows a length_error exception if the result exceeds the maximum number of characters.",
+            "Returns *this so it can be \u201cchained\u201d.Throws an out_of_range if index is out of boundsThrows a length_error exception if the result exceeds the maximum number of characters.",
+            "Throws an out_of_range if index is out of boundsThrows a length_error exception if the result exceeds the maximum number of characters.",
+            "Throws a length_error exception if the result exceeds the maximum number of characters."
+          ]
+        },
+        {
+          "text": "Sample code:std::string sString{\"one \"};\n\nconst std::string sTemp{\"twothreefour\"};\nsString.append(sTemp, 3, 5); // append substring of sTemp starting at index 3 of length 5\nstd::cout << sString << '\\n';Output:one three"
+        },
+        {
+          "code": "std::string sString{\"one \"};\n\nconst std::string sTemp{\"twothreefour\"};\nsString.append(sTemp, 3, 5); // append substring of sTemp starting at index 3 of length 5\nstd::cout << sString << '\\n';"
+        },
+        {
+          "text": "Output:one three"
+        },
+        {
+          "code": "one three\n"
+        },
+        {
+          "text": "Operator+= and append() also have versions that work on C-style strings:string& string::operator+= (const char* str)string& string::append (const char* str)Both functions append the characters of str to the string.Both functions return *this so they can be \u201cchained\u201d.Both functions throw a length_error exception if the result exceeds the maximum number of characters.str should not be NULL.Sample code:std::string sString{\"one\"};\n\nsString += \" two\";\nsString.append(\" three\");\nstd::cout << sString << '\\n';Output:one two threeThere is an additional flavor of append() that works on C-style strings:string& string::append (const char* str, size_type len)Appends the first len characters of str to the string.Returns *this so they can be \u201cchained\u201d.Throw a length_error exception if the result exceeds the maximum number of characters.Ignores special characters (including \u201d)Sample code:std::string sString{\"one \"};\n\nsString.append(\"threefour\", 5);\nstd::cout << sString << '\\n';Output:one threeThis function is dangerous and its use is not recommended.There is also a set of functions that append characters. Note that the name of the non-operator function to append a character is push_back(), not append()!string& string::operator+= (char c)void string::push_back (char c)Both functions append the character c to the string.Operator += returns *this so it can be \u201cchained\u201d.Both functions throw a length_error exception if the result exceeds the maximum number of characters.Sample code:std::string sString{\"one\"};\n\nsString += ' ';\nsString.push_back('2');\nstd::cout << sString << '\\n';Output:one 2Now you might be wondering why the name of the function is push_back() and not append(). This follows a naming convention used for stacks, where push_back() is the function that adds a single item to the end of the stack. If you envision a string as a stack of characters, using push_back() to add a single character to the end makes sense. However, the lack of an append() function is inconsistent in my view!It turns out there is an append() function for characters, that looks like this:string& string::append (size_type num, char c)Adds num occurrences of the character c to the stringReturns *this so it can be \u201cchained\u201d.Throws a length_error exception if the result exceeds the maximum number of characters.Sample code:std::string sString{\"aaa\"};\n\nsString.append(4, 'b');\nstd::cout << sString << '\\n';Output:aaabbbbThere\u2019s one final flavor of append() that works with iterators:string& string::append (InputIterator start, InputIterator end)Appends all characters from the range [start, end) (including start up to but not including end)Returns *this so it can be \u201cchained\u201d.Throws a length_error exception if the result exceeds the maximum number of characters.Next lesson22.7std::string insertingBack to table of contentsPrevious lesson22.5std::string assignment and swapping"
+        },
+        {
+          "text": "string& string::operator+= (const char* str)string& string::append (const char* str)Both functions append the characters of str to the string.Both functions return *this so they can be \u201cchained\u201d.Both functions throw a length_error exception if the result exceeds the maximum number of characters.str should not be NULL.Sample code:std::string sString{\"one\"};\n\nsString += \" two\";\nsString.append(\" three\");\nstd::cout << sString << '\\n';Output:one two three"
+        },
+        {
+          "text": "string& string::operator+= (const char* str)string& string::append (const char* str)Both functions append the characters of str to the string.Both functions return *this so they can be \u201cchained\u201d.Both functions throw a length_error exception if the result exceeds the maximum number of characters.str should not be NULL.Sample code:std::string sString{\"one\"};\n\nsString += \" two\";\nsString.append(\" three\");\nstd::cout << sString << '\\n';Output:one two three"
+        },
+        {
+          "text": "Both functions append the characters of str to the string.Both functions return *this so they can be \u201cchained\u201d.Both functions throw a length_error exception if the result exceeds the maximum number of characters.str should not be NULL.Sample code:std::string sString{\"one\"};\n\nsString += \" two\";\nsString.append(\" three\");\nstd::cout << sString << '\\n';Output:one two three"
+        },
+        {
+          "list": [
+            "Both functions append the characters of str to the string.Both functions return *this so they can be \u201cchained\u201d.Both functions throw a length_error exception if the result exceeds the maximum number of characters.str should not be NULL.",
+            "Both functions return *this so they can be \u201cchained\u201d.Both functions throw a length_error exception if the result exceeds the maximum number of characters.str should not be NULL.",
+            "Both functions throw a length_error exception if the result exceeds the maximum number of characters.str should not be NULL.",
+            "str should not be NULL."
+          ]
+        },
+        {
+          "text": "Sample code:std::string sString{\"one\"};\n\nsString += \" two\";\nsString.append(\" three\");\nstd::cout << sString << '\\n';Output:one two three"
+        },
+        {
+          "code": "std::string sString{\"one\"};\n\nsString += \" two\";\nsString.append(\" three\");\nstd::cout << sString << '\\n';"
+        },
+        {
+          "text": "Output:one two three"
+        },
+        {
+          "code": "one two three\n"
+        },
+        {
+          "text": "There is an additional flavor of append() that works on C-style strings:string& string::append (const char* str, size_type len)Appends the first len characters of str to the string.Returns *this so they can be \u201cchained\u201d.Throw a length_error exception if the result exceeds the maximum number of characters.Ignores special characters (including \u201d)Sample code:std::string sString{\"one \"};\n\nsString.append(\"threefour\", 5);\nstd::cout << sString << '\\n';Output:one threeThis function is dangerous and its use is not recommended.There is also a set of functions that append characters. Note that the name of the non-operator function to append a character is push_back(), not append()!string& string::operator+= (char c)void string::push_back (char c)Both functions append the character c to the string.Operator += returns *this so it can be \u201cchained\u201d.Both functions throw a length_error exception if the result exceeds the maximum number of characters.Sample code:std::string sString{\"one\"};\n\nsString += ' ';\nsString.push_back('2');\nstd::cout << sString << '\\n';Output:one 2Now you might be wondering why the name of the function is push_back() and not append(). This follows a naming convention used for stacks, where push_back() is the function that adds a single item to the end of the stack. If you envision a string as a stack of characters, using push_back() to add a single character to the end makes sense. However, the lack of an append() function is inconsistent in my view!It turns out there is an append() function for characters, that looks like this:string& string::append (size_type num, char c)Adds num occurrences of the character c to the stringReturns *this so it can be \u201cchained\u201d.Throws a length_error exception if the result exceeds the maximum number of characters.Sample code:std::string sString{\"aaa\"};\n\nsString.append(4, 'b');\nstd::cout << sString << '\\n';Output:aaabbbbThere\u2019s one final flavor of append() that works with iterators:string& string::append (InputIterator start, InputIterator end)Appends all characters from the range [start, end) (including start up to but not including end)Returns *this so it can be \u201cchained\u201d.Throws a length_error exception if the result exceeds the maximum number of characters.Next lesson22.7std::string insertingBack to table of contentsPrevious lesson22.5std::string assignment and swapping"
+        },
+        {
+          "text": "string& string::append (const char* str, size_type len)Appends the first len characters of str to the string.Returns *this so they can be \u201cchained\u201d.Throw a length_error exception if the result exceeds the maximum number of characters.Ignores special characters (including \u201d)Sample code:std::string sString{\"one \"};\n\nsString.append(\"threefour\", 5);\nstd::cout << sString << '\\n';Output:one threeThis function is dangerous and its use is not recommended."
+        },
+        {
+          "text": "string& string::append (const char* str, size_type len)Appends the first len characters of str to the string.Returns *this so they can be \u201cchained\u201d.Throw a length_error exception if the result exceeds the maximum number of characters.Ignores special characters (including \u201d)Sample code:std::string sString{\"one \"};\n\nsString.append(\"threefour\", 5);\nstd::cout << sString << '\\n';Output:one threeThis function is dangerous and its use is not recommended."
+        },
+        {
+          "text": "Appends the first len characters of str to the string.Returns *this so they can be \u201cchained\u201d.Throw a length_error exception if the result exceeds the maximum number of characters.Ignores special characters (including \u201d)Sample code:std::string sString{\"one \"};\n\nsString.append(\"threefour\", 5);\nstd::cout << sString << '\\n';Output:one threeThis function is dangerous and its use is not recommended."
+        },
+        {
+          "list": [
+            "Appends the first len characters of str to the string.Returns *this so they can be \u201cchained\u201d.Throw a length_error exception if the result exceeds the maximum number of characters.Ignores special characters (including \u201d)",
+            "Returns *this so they can be \u201cchained\u201d.Throw a length_error exception if the result exceeds the maximum number of characters.Ignores special characters (including \u201d)",
+            "Throw a length_error exception if the result exceeds the maximum number of characters.Ignores special characters (including \u201d)",
+            "Ignores special characters (including \u201d)"
+          ]
+        },
+        {
+          "text": "Sample code:std::string sString{\"one \"};\n\nsString.append(\"threefour\", 5);\nstd::cout << sString << '\\n';Output:one threeThis function is dangerous and its use is not recommended."
+        },
+        {
+          "code": "std::string sString{\"one \"};\n\nsString.append(\"threefour\", 5);\nstd::cout << sString << '\\n';"
+        },
+        {
+          "text": "Output:one threeThis function is dangerous and its use is not recommended."
+        },
+        {
+          "code": "one three\n"
+        },
+        {
+          "text": "This function is dangerous and its use is not recommended."
+        },
+        {
+          "text": "There is also a set of functions that append characters. Note that the name of the non-operator function to append a character is push_back(), not append()!string& string::operator+= (char c)void string::push_back (char c)Both functions append the character c to the string.Operator += returns *this so it can be \u201cchained\u201d.Both functions throw a length_error exception if the result exceeds the maximum number of characters.Sample code:std::string sString{\"one\"};\n\nsString += ' ';\nsString.push_back('2');\nstd::cout << sString << '\\n';Output:one 2Now you might be wondering why the name of the function is push_back() and not append(). This follows a naming convention used for stacks, where push_back() is the function that adds a single item to the end of the stack. If you envision a string as a stack of characters, using push_back() to add a single character to the end makes sense. However, the lack of an append() function is inconsistent in my view!It turns out there is an append() function for characters, that looks like this:string& string::append (size_type num, char c)Adds num occurrences of the character c to the stringReturns *this so it can be \u201cchained\u201d.Throws a length_error exception if the result exceeds the maximum number of characters.Sample code:std::string sString{\"aaa\"};\n\nsString.append(4, 'b');\nstd::cout << sString << '\\n';Output:aaabbbbThere\u2019s one final flavor of append() that works with iterators:string& string::append (InputIterator start, InputIterator end)Appends all characters from the range [start, end) (including start up to but not including end)Returns *this so it can be \u201cchained\u201d.Throws a length_error exception if the result exceeds the maximum number of characters.Next lesson22.7std::string insertingBack to table of contentsPrevious lesson22.5std::string assignment and swapping"
+        },
+        {
+          "text": "string& string::operator+= (char c)void string::push_back (char c)Both functions append the character c to the string.Operator += returns *this so it can be \u201cchained\u201d.Both functions throw a length_error exception if the result exceeds the maximum number of characters.Sample code:std::string sString{\"one\"};\n\nsString += ' ';\nsString.push_back('2');\nstd::cout << sString << '\\n';Output:one 2"
+        },
+        {
+          "text": "string& string::operator+= (char c)void string::push_back (char c)Both functions append the character c to the string.Operator += returns *this so it can be \u201cchained\u201d.Both functions throw a length_error exception if the result exceeds the maximum number of characters.Sample code:std::string sString{\"one\"};\n\nsString += ' ';\nsString.push_back('2');\nstd::cout << sString << '\\n';Output:one 2"
+        },
+        {
+          "text": "Both functions append the character c to the string.Operator += returns *this so it can be \u201cchained\u201d.Both functions throw a length_error exception if the result exceeds the maximum number of characters.Sample code:std::string sString{\"one\"};\n\nsString += ' ';\nsString.push_back('2');\nstd::cout << sString << '\\n';Output:one 2"
+        },
+        {
+          "list": [
+            "Both functions append the character c to the string.Operator += returns *this so it can be \u201cchained\u201d.Both functions throw a length_error exception if the result exceeds the maximum number of characters.",
+            "Operator += returns *this so it can be \u201cchained\u201d.Both functions throw a length_error exception if the result exceeds the maximum number of characters.",
+            "Both functions throw a length_error exception if the result exceeds the maximum number of characters."
+          ]
+        },
+        {
+          "text": "Sample code:std::string sString{\"one\"};\n\nsString += ' ';\nsString.push_back('2');\nstd::cout << sString << '\\n';Output:one 2"
+        },
+        {
+          "code": "std::string sString{\"one\"};\n\nsString += ' ';\nsString.push_back('2');\nstd::cout << sString << '\\n';"
+        },
+        {
+          "text": "Output:one 2"
+        },
+        {
+          "code": "one 2\n"
+        },
+        {
+          "text": "Now you might be wondering why the name of the function is push_back() and not append(). This follows a naming convention used for stacks, where push_back() is the function that adds a single item to the end of the stack. If you envision a string as a stack of characters, using push_back() to add a single character to the end makes sense. However, the lack of an append() function is inconsistent in my view!It turns out there is an append() function for characters, that looks like this:string& string::append (size_type num, char c)Adds num occurrences of the character c to the stringReturns *this so it can be \u201cchained\u201d.Throws a length_error exception if the result exceeds the maximum number of characters.Sample code:std::string sString{\"aaa\"};\n\nsString.append(4, 'b');\nstd::cout << sString << '\\n';Output:aaabbbbThere\u2019s one final flavor of append() that works with iterators:string& string::append (InputIterator start, InputIterator end)Appends all characters from the range [start, end) (including start up to but not including end)Returns *this so it can be \u201cchained\u201d.Throws a length_error exception if the result exceeds the maximum number of characters.Next lesson22.7std::string insertingBack to table of contentsPrevious lesson22.5std::string assignment and swapping"
+        },
+        {
+          "text": "It turns out there is an append() function for characters, that looks like this:string& string::append (size_type num, char c)Adds num occurrences of the character c to the stringReturns *this so it can be \u201cchained\u201d.Throws a length_error exception if the result exceeds the maximum number of characters.Sample code:std::string sString{\"aaa\"};\n\nsString.append(4, 'b');\nstd::cout << sString << '\\n';Output:aaabbbbThere\u2019s one final flavor of append() that works with iterators:string& string::append (InputIterator start, InputIterator end)Appends all characters from the range [start, end) (including start up to but not including end)Returns *this so it can be \u201cchained\u201d.Throws a length_error exception if the result exceeds the maximum number of characters.Next lesson22.7std::string insertingBack to table of contentsPrevious lesson22.5std::string assignment and swapping"
+        },
+        {
+          "text": "string& string::append (size_type num, char c)Adds num occurrences of the character c to the stringReturns *this so it can be \u201cchained\u201d.Throws a length_error exception if the result exceeds the maximum number of characters.Sample code:std::string sString{\"aaa\"};\n\nsString.append(4, 'b');\nstd::cout << sString << '\\n';Output:aaabbbb"
+        },
+        {
+          "text": "string& string::append (size_type num, char c)Adds num occurrences of the character c to the stringReturns *this so it can be \u201cchained\u201d.Throws a length_error exception if the result exceeds the maximum number of characters.Sample code:std::string sString{\"aaa\"};\n\nsString.append(4, 'b');\nstd::cout << sString << '\\n';Output:aaabbbb"
+        },
+        {
+          "text": "Adds num occurrences of the character c to the stringReturns *this so it can be \u201cchained\u201d.Throws a length_error exception if the result exceeds the maximum number of characters.Sample code:std::string sString{\"aaa\"};\n\nsString.append(4, 'b');\nstd::cout << sString << '\\n';Output:aaabbbb"
+        },
+        {
+          "list": [
+            "Adds num occurrences of the character c to the stringReturns *this so it can be \u201cchained\u201d.Throws a length_error exception if the result exceeds the maximum number of characters.",
+            "Returns *this so it can be \u201cchained\u201d.Throws a length_error exception if the result exceeds the maximum number of characters.",
+            "Throws a length_error exception if the result exceeds the maximum number of characters."
+          ]
+        },
+        {
+          "text": "Sample code:std::string sString{\"aaa\"};\n\nsString.append(4, 'b');\nstd::cout << sString << '\\n';Output:aaabbbb"
+        },
+        {
+          "code": "std::string sString{\"aaa\"};\n\nsString.append(4, 'b');\nstd::cout << sString << '\\n';"
+        },
+        {
+          "text": "Output:aaabbbb"
+        },
+        {
+          "code": "aaabbbb\n"
+        },
+        {
+          "text": "There\u2019s one final flavor of append() that works with iterators:string& string::append (InputIterator start, InputIterator end)Appends all characters from the range [start, end) (including start up to but not including end)Returns *this so it can be \u201cchained\u201d.Throws a length_error exception if the result exceeds the maximum number of characters.Next lesson22.7std::string insertingBack to table of contentsPrevious lesson22.5std::string assignment and swapping"
+        },
+        {
+          "text": "string& string::append (InputIterator start, InputIterator end)Appends all characters from the range [start, end) (including start up to but not including end)Returns *this so it can be \u201cchained\u201d.Throws a length_error exception if the result exceeds the maximum number of characters."
+        },
+        {
+          "text": "string& string::append (InputIterator start, InputIterator end)Appends all characters from the range [start, end) (including start up to but not including end)Returns *this so it can be \u201cchained\u201d.Throws a length_error exception if the result exceeds the maximum number of characters."
+        },
+        {
+          "text": "Appends all characters from the range [start, end) (including start up to but not including end)Returns *this so it can be \u201cchained\u201d.Throws a length_error exception if the result exceeds the maximum number of characters."
+        },
+        {
+          "list": [
+            "Appends all characters from the range [start, end) (including start up to but not including end)Returns *this so it can be \u201cchained\u201d.Throws a length_error exception if the result exceeds the maximum number of characters.",
+            "Returns *this so it can be \u201cchained\u201d.Throws a length_error exception if the result exceeds the maximum number of characters.",
+            "Throws a length_error exception if the result exceeds the maximum number of characters."
+          ]
+        }
+      ]
+    }
+  ],
+  "quiz": []
+}

@@ -1,0 +1,110 @@
+{
+  "chapter": "Chapter 24",
+  "chapter_title": "Inheritance",
+  "lesson": "24.x",
+  "lesson_title": "Chapter 24 summary and quiz",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "ch24_x_001",
+      "lesson": "24.x",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "summary"],
+      "front": "What are the three names for the class being inherited from?",
+      "back": "<ul><li>Parent class</li><li>Base class</li><li>Superclass</li></ul>",
+      "source": "24.x - Chapter 24 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch24_x_002",
+      "lesson": "24.x",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "summary"],
+      "front": "What are the three names for the class doing the inheriting?",
+      "back": "<ul><li>Child class</li><li>Derived class</li><li>Subclass</li></ul>",
+      "source": "24.x - Chapter 24 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch24_x_003",
+      "lesson": "24.x",
+      "type": "cloze",
+      "tags": ["cpp", "inheritance", "construction"],
+      "text": "Construction order: {{c1::Base}} portion first, then {{c2::Derived}} portion.<br>Destruction order: {{c3::Derived}} portion first, then {{c4::Base}} portion.",
+      "source": "24.x - Chapter 24 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_x_004",
+      "lesson": "24.x",
+      "type": "concept",
+      "tags": ["cpp", "inheritance", "summary"],
+      "concept": "Access specifier changes with inheritance types",
+      "explanation": "Public inheritance (most common):<ul><li>Public → Public</li><li>Protected → Protected</li><li>Private → Inaccessible</li></ul>Private inheritance:<ul><li>Public → Private</li><li>Protected → Private</li><li>Private → Inaccessible</li></ul>Protected inheritance:<ul><li>Public → Protected</li><li>Protected → Protected</li><li>Private → Inaccessible</li></ul>",
+      "examples": [
+        "class Derived: public Base { }; // Use this",
+        "class Derived: private Base { }; // Rare"
+      ],
+      "source": "24.x - Chapter 24 summary and quiz",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch24_x_005",
+      "lesson": "24.x",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "summary"],
+      "front": "What can derived classes do with inherited functionality?",
+      "back": "<ul><li>Add new functions</li><li>Change how base functions work (override)</li><li>Change an inherited member's access level</li><li>Hide functionality</li></ul>",
+      "source": "24.x - Chapter 24 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_x_006",
+      "lesson": "24.x",
+      "type": "cloze",
+      "tags": ["cpp", "inheritance", "construction"],
+      "text": "When constructing a derived class:<br>1. Memory is {{c1::set aside}}<br>2. {{c2::Derived}} constructor is called<br>3. {{c3::Base}} object is constructed first<br>4. Derived {{c4::initializer list}} runs<br>5. Derived {{c5::constructor body}} executes",
+      "source": "24.x - Chapter 24 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_x_007",
+      "lesson": "24.x",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "summary"],
+      "front": "What are the three access specifiers in C++?",
+      "back": "<ul><li>public (accessible by anybody)</li><li>private (only by class members and friends)</li><li>protected (by class, friends, and derived classes)</li></ul>",
+      "source": "24.x - Chapter 24 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch24_x_008",
+      "lesson": "24.x",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "multiple-inheritance"],
+      "front": "What is the general best practice regarding multiple inheritance?",
+      "back": "Avoid multiple inheritance unless alternatives lead to more complexity. Most problems can be solved with single inheritance.",
+      "source": "24.x - Chapter 24 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_x_009",
+      "lesson": "24.x",
+      "type": "cloze",
+      "tags": ["cpp", "inheritance", "summary"],
+      "text": "When a derived class inherits from a base class, the derived class acquires all of the {{c1::members}} of the base class (subject to {{c2::access restrictions}}).",
+      "source": "24.x - Chapter 24 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch24_x_010",
+      "lesson": "24.x",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "summary"],
+      "front": "What relationship does inheritance model, and what relationship does composition model?",
+      "back": "Inheritance models an \"is-a\" relationship (a Dog is-an Animal). Composition models a \"has-a\" relationship (a Car has-an Engine).",
+      "source": "24.x - Chapter 24 summary and quiz",
+      "difficulty": "easy"
+    }
+  ]
+}

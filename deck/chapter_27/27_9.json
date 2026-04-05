@@ -1,0 +1,201 @@
+{
+  "chapter": "Chapter 27",
+  "chapter_title": "Exception Handling and Error Handling",
+  "lesson": "27.9",
+  "lesson_title": "27.9 — Exception specifications and noexcept",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch27_9_001",
+      "lesson": "27.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "noexcept",
+        "syntax"
+      ],
+      "text": "The {{c1::noexcept}} specifier is placed after the function parameter list and indicates the function {{c2::will not throw}} any exceptions.",
+      "source": "27.9 - Exception specifications and noexcept",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch27_9_002",
+      "lesson": "27.9",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "noexcept",
+        "syntax"
+      ],
+      "question": "How do you declare a function that won't throw exceptions?",
+      "code": "void func() noexcept\n{\n    // guaranteed not to throw\n}",
+      "answer": "Add the noexcept specifier after the parameter list.",
+      "explanation": "The noexcept specifier tells the compiler and users that this function won't throw exceptions.",
+      "source": "27.9 - Exception specifications and noexcept",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch27_9_003",
+      "lesson": "27.9",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "noexcept",
+        "gotchas"
+      ],
+      "front": "What happens if a noexcept function throws an exception?",
+      "back": "std::terminate() is called immediately, ending the program. Stack unwinding may or may not occur.",
+      "source": "27.9 - Exception specifications and noexcept",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_9_004",
+      "lesson": "27.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "noexcept",
+        "syntax"
+      ],
+      "text": "The noexcept specifier can take a {{c1::boolean expression}}: noexcept(true) means no throw, noexcept(false) means {{c2::may throw}}. Plain noexcept is equivalent to noexcept({{c3::true}}).",
+      "source": "27.9 - Exception specifications and noexcept",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_9_005",
+      "lesson": "27.9",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "noexcept",
+        "templates"
+      ],
+      "question": "What does this template noexcept specification mean?",
+      "code": "template&lt;typename T&gt;\nvoid swap(T&amp; a, T&amp; b) \n    noexcept(std::is_nothrow_move_constructible_v&lt;T&gt;)\n{\n    T temp{std::move(a)};\n    a = std::move(b);\n    b = std::move(temp);\n}",
+      "answer": "The function is noexcept only if T's move constructor is noexcept.",
+      "explanation": "Conditional noexcept allows a function's exception guarantee to depend on template parameters or other compile-time conditions.",
+      "source": "27.9 - Exception specifications and noexcept",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch27_9_006",
+      "lesson": "27.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "noexcept",
+        "operators"
+      ],
+      "text": "The {{c1::noexcept}} operator is a compile-time operator that returns {{c2::true}} if an expression is declared noexcept, otherwise returns {{c3::false}}.",
+      "source": "27.9 - Exception specifications and noexcept",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_9_007",
+      "lesson": "27.9",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "noexcept",
+        "operators"
+      ],
+      "question": "What does noexcept(noexcept(expr)) do?",
+      "code": "template&lt;typename T&gt;\nvoid func(T t) noexcept(noexcept(t.someMethod()))\n{\n    t.someMethod();\n}",
+      "answer": "The function is noexcept if t.someMethod() is noexcept. The outer noexcept is the specifier, the inner is the operator.",
+      "explanation": "noexcept(noexcept(expr)) checks if expr is noexcept and uses that result as the noexcept specification.",
+      "source": "27.9 - Exception specifications and noexcept",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch27_9_008",
+      "lesson": "27.9",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "noexcept",
+        "best-practices"
+      ],
+      "front": "What functions should be marked noexcept?",
+      "back": "Functions that:<ul><li>Are guaranteed not to throw (simple getters)</li><li>Destructors (implicitly noexcept)</li><li>Move constructors and move assignment</li><li>Swap functions</li><li>Performance-critical functions where no-throw enables optimizations</li></ul>",
+      "source": "27.9 - Exception specifications and noexcept",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_9_009",
+      "lesson": "27.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "noexcept",
+        "destructors"
+      ],
+      "text": "Destructors are {{c1::implicitly noexcept}} by default. You should never explicitly mark them noexcept({{c2::false}}) because throwing from destructors during unwinding causes {{c3::std::terminate()}}.",
+      "source": "27.9 - Exception specifications and noexcept",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_9_010",
+      "lesson": "27.9",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "noexcept",
+        "performance"
+      ],
+      "concept": "How noexcept enables optimizations",
+      "explanation": "noexcept allows the compiler to optimize because:<ul><li>No exception handling code needed</li><li>Move operations can be used instead of copy (vector reallocation)</li><li>Smaller binary size (no exception tables)</li><li>Better inlining opportunities</li><li>Enables certain STL optimizations</li></ul>",
+      "examples": [
+        "// vector::push_back uses move if noexcept",
+        "class MyClass {",
+        "    MyClass(MyClass&amp;&amp;) noexcept;  // enables optimization",
+        "};",
+        "",
+        "std::vector&lt;MyClass&gt; vec;",
+        "vec.push_back(x);  // uses move, not copy"
+      ],
+      "source": "27.9 - Exception specifications and noexcept",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch27_9_011",
+      "lesson": "27.9",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "deprecated"
+      ],
+      "front": "What replaced dynamic exception specifications (throw()) in C++11?",
+      "back": "The noexcept specifier replaced throw(). Dynamic exception specifications were deprecated in C++11 and removed in C++17.",
+      "source": "27.9 - Exception specifications and noexcept",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch27_9_012",
+      "lesson": "27.9",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "noexcept",
+        "best-practices"
+      ],
+      "question": "Why should move operations be noexcept?",
+      "code": "class MyClass {\npublic:\n    MyClass(MyClass&amp;&amp;) noexcept;\n    MyClass&amp; operator=(MyClass&amp;&amp;) noexcept;\n};",
+      "answer": "STL containers use move operations only if they're noexcept, otherwise they copy for exception safety. Marking them noexcept enables performance optimizations.",
+      "explanation": "STL containers like vector need strong exception guarantee during reallocation. They only use move if it's noexcept, otherwise copy.",
+      "source": "27.9 - Exception specifications and noexcept",
+      "difficulty": "hard"
+    }
+  ]
+}

@@ -1,0 +1,163 @@
+{
+  "chapter": "Chapter 11",
+  "chapter_title": "Function Overloading and Function Templates",
+  "lesson": "11.x",
+  "lesson_title": "Chapter 11 summary and quiz",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "ch11_x_001",
+      "lesson": "11.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "functions",
+        "overloading",
+        "review"
+      ],
+      "front": "What is the primary benefit of function overloading?",
+      "back": "It allows you to use the same function name for functions that perform similar operations on different types, reducing the number of function names you need to remember.",
+      "source": "11.x - Chapter 11 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_x_002",
+      "lesson": "11.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "review"
+      ],
+      "front": "What is the main advantage of function templates over function overloading?",
+      "back": "Function templates allow you to write one generic function that works with many types, instead of writing separate overloads for each type, reducing code duplication.",
+      "source": "11.x - Chapter 11 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_x_003",
+      "lesson": "11.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "overloading",
+        "review"
+      ],
+      "text": "Functions are differentiated based on {{c1::number of parameters}} and {{c2::type of parameters}}, but not on {{c3::return type}}.",
+      "source": "11.x - Chapter 11 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_x_004",
+      "lesson": "11.x",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "functions",
+        "review"
+      ],
+      "question": "What technique is being used here?",
+      "code": "void print(int x = 0, int y = 0, int z = 0);",
+      "answer": "Default arguments",
+      "explanation": "This function uses default arguments, allowing it to be called with 0, 1, 2, or 3 arguments.",
+      "source": "11.x - Chapter 11 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_x_005",
+      "lesson": "11.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "functions",
+        "review"
+      ],
+      "front": "What is the purpose of deleting a function with = delete?",
+      "back": "To explicitly prevent a function from being called, often used to prevent unwanted implicit conversions or to disable compiler-generated functions.",
+      "source": "11.x - Chapter 11 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_x_006",
+      "lesson": "11.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "review"
+      ],
+      "text": "Templates are instantiated at {{c1::compile time}}, creating separate function instances for each unique type used.",
+      "source": "11.x - Chapter 11 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_x_007",
+      "lesson": "11.x",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "review",
+        "best-practices"
+      ],
+      "concept": "Key concepts from Chapter 11",
+      "explanation": "Chapter 11 covers techniques for creating more flexible and reusable functions:<ul><li>Function overloading: Same name, different parameters</li><li>Function templates: Generic code for multiple types</li><li>Default arguments: Optional parameters with default values</li><li>Deleted functions: Explicitly prevent function calls</li></ul>",
+      "examples": [
+        "// Overloading",
+        "void print(int x);",
+        "void print(double x);",
+        "",
+        "// Templates",
+        "template &lt;typename T&gt;",
+        "void print(T x);"
+      ],
+      "source": "11.x - Chapter 11 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_x_008",
+      "lesson": "11.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "review"
+      ],
+      "front": "Why must template definitions be in header files?",
+      "back": "Because the compiler needs to see the complete template definition at each point of instantiation to generate code for the specific types being used.",
+      "source": "11.x - Chapter 11 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_x_009",
+      "lesson": "11.x",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "templates",
+        "review"
+      ],
+      "question": "What is this template parameter called?",
+      "code": "template &lt;int N&gt;\nvoid func();",
+      "answer": "Non-type template parameter",
+      "explanation": "N is a non-type template parameter (a compile-time constant value rather than a type).",
+      "source": "11.x - Chapter 11 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_x_010",
+      "lesson": "11.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "functions",
+        "overloading",
+        "review"
+      ],
+      "front": "What happens when the compiler cannot determine which overloaded function to call?",
+      "back": "The compiler issues an ambiguous match compile error.",
+      "source": "11.x - Chapter 11 summary and quiz",
+      "difficulty": "easy"
+    }
+  ]
+}

@@ -1,0 +1,163 @@
+{
+  "chapter": "Chapter 15",
+  "chapter_title": "More on Classes",
+  "lesson": "15.10",
+  "lesson_title": "Ref qualifiers",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "ch15_10_001",
+      "lesson": "15.10",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "ref-qualifiers"
+      ],
+      "text": "Ref qualifiers allow you to overload member functions based on whether the implicit object is an {{c1::lvalue}} or {{c2::rvalue}}.",
+      "source": "15.10 - Ref qualifiers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_10_002",
+      "lesson": "15.10",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "ref-qualifiers",
+        "syntax"
+      ],
+      "text": "To specify that a member function can only be called on lvalues, add {{c1::&amp;}} after the function signature: <code>void func() {{c1::&amp;}}</code>",
+      "source": "15.10 - Ref qualifiers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_10_003",
+      "lesson": "15.10",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "ref-qualifiers",
+        "syntax"
+      ],
+      "text": "To specify that a member function can only be called on rvalues, add {{c1::&amp;&amp;}} after the function signature: <code>void func() {{c1::&amp;&amp;}}</code>",
+      "source": "15.10 - Ref qualifiers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_10_004",
+      "lesson": "15.10",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "ref-qualifiers"
+      ],
+      "text": "Ref qualifiers are placed {{c1::after}} the const qualifier but {{c2::before}} the function body or trailing return type.",
+      "source": "15.10 - Ref qualifiers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_10_005",
+      "lesson": "15.10",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "classes",
+        "ref-qualifiers"
+      ],
+      "front": "What is the purpose of ref qualifiers?",
+      "back": "To allow different behavior when a member function is called on an lvalue (persistent object) versus an rvalue (temporary object).",
+      "source": "15.10 - Ref qualifiers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_10_006",
+      "lesson": "15.10",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "classes",
+        "ref-qualifiers"
+      ],
+      "front": "Can you have both lvalue and rvalue overloads of the same member function?",
+      "back": "Yes, you can provide separate implementations: one with <code>&amp;</code> for lvalues and one with <code>&amp;&amp;</code> for rvalues.",
+      "source": "15.10 - Ref qualifiers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_10_007",
+      "lesson": "15.10",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "classes",
+        "ref-qualifiers",
+        "syntax"
+      ],
+      "question": "Which version of getValue() will be called for each case?",
+      "code": "class Data {\npublic:\n    int getValue() &amp; { return 1; }      // lvalue version\n    int getValue() &amp;&amp; { return 2; }    // rvalue version\n};\n\nData d;\nint a = d.getValue();           // ?\nint b = Data().getValue();      // ?",
+      "answer": "a = 1 (lvalue version), b = 2 (rvalue version)",
+      "explanation": "d is an lvalue, so the &amp; version is called. Data() is a temporary rvalue, so the &amp;&amp; version is called.",
+      "source": "15.10 - Ref qualifiers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_10_008",
+      "lesson": "15.10",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "classes",
+        "ref-qualifiers",
+        "syntax"
+      ],
+      "question": "Complete the syntax for this lvalue-qualified member function.",
+      "code": "class Text {\npublic:\n    std::string&amp; getString() ???  // Only callable on lvalues\n    {\n        return m_str;\n    }\nprivate:\n    std::string m_str;\n};",
+      "answer": "<code>&amp;</code> (after the parentheses, before the body)",
+      "explanation": "Syntax: <code>std::string&amp; getString() &amp; { return m_str; }</code>",
+      "source": "15.10 - Ref qualifiers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_10_009",
+      "lesson": "15.10",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "classes",
+        "ref-qualifiers",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this code?",
+      "code": "class Container {\npublic:\n    void process() &amp; { /* lvalue version */ }\n    void process() { /* unqualified version */ }  // ERROR!\n};",
+      "answer": "Cannot mix ref-qualified and non-ref-qualified overloads of the same function.",
+      "explanation": "If you provide ref-qualifiers for one overload, all overloads must have ref-qualifiers.",
+      "source": "15.10 - Ref qualifiers",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch15_10_010",
+      "lesson": "15.10",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "classes",
+        "ref-qualifiers",
+        "best-practices"
+      ],
+      "concept": "When to use ref qualifiers",
+      "explanation": "Ref qualifiers are useful when:<ul><li>You want to return a reference from lvalues but a value from rvalues</li><li>Preventing dangerous operations on temporaries</li><li>Optimizing temporary object handling</li><li>Common use case: preventing assignment to temporaries</li></ul>",
+      "examples": [
+        "class Array {",
+        "    int&amp; operator[](int i) &amp; { return m_data[i]; }",
+        "    int operator[](int i) &amp;&amp; { return m_data[i]; }  // Return by value for rvalues",
+        "};"
+      ],
+      "source": "15.10 - Ref qualifiers",
+      "difficulty": "hard"
+    }
+  ]
+}

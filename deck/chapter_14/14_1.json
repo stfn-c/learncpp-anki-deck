@@ -1,0 +1,133 @@
+{
+  "chapter": "Chapter 14",
+  "chapter_title": "Introduction to Classes",
+  "lesson": "14.1",
+  "lesson_title": "Introduction to object-oriented programming",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch14_1_001",
+      "lesson": "14.1",
+      "type": "cloze",
+      "tags": ["cpp", "oop", "procedural"],
+      "text": "In {{c1::procedural programming}}, the focus is on creating functions that implement program logic, with {{c2::functions and data}} as separate entities.",
+      "source": "14.1 - Introduction to object-oriented programming",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_1_002",
+      "lesson": "14.1",
+      "type": "basic",
+      "tags": ["cpp", "oop", "fundamentals"],
+      "front": "What are the two major components that real-world objects have?",
+      "back": "<ul><li>Properties (represented by data members)</li><li>Behaviors (represented by member functions)</li></ul>",
+      "source": "14.1 - Introduction to object-oriented programming",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_1_003",
+      "lesson": "14.1",
+      "type": "cloze",
+      "tags": ["cpp", "oop", "fundamentals"],
+      "text": "In object-oriented programming, the focus is on creating program-defined {{c1::data types}} that contain both {{c2::properties}} and {{c3::behaviors}}.",
+      "source": "14.1 - Introduction to object-oriented programming",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_1_004",
+      "lesson": "14.1",
+      "type": "code",
+      "tags": ["cpp", "oop", "syntax"],
+      "question": "Which code represents an OOP approach?",
+      "code": "A) eat(you, apple);<br><br>B) you.eat(apple);",
+      "answer": "B) you.eat(apple);",
+      "explanation": "In OOP, the subject (you) owns the behavior (eat), making it clearer who performs the action and what the accessory objects are.",
+      "source": "14.1 - Introduction to object-oriented programming",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_1_005",
+      "lesson": "14.1",
+      "type": "cloze",
+      "tags": ["cpp", "oop", "struct", "syntax"],
+      "text": "To define a simple class-like structure with properties:<br>{{c1::struct Cat<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;std::string_view name{\"cat\"};<br>&nbsp;&nbsp;&nbsp;&nbsp;int numLegs{4};<br>};}}}",
+      "source": "14.1 - Introduction to object-oriented programming",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_1_006",
+      "lesson": "14.1",
+      "type": "basic",
+      "tags": ["cpp", "oop", "benefits"],
+      "front": "What are the three main benefits of OOP over procedural programming?",
+      "back": "<ul><li>Easier modularization - properties and behaviors together</li><li>Higher code reusability</li><li>More intuitive way to work with data</li></ul>",
+      "source": "14.1 - Introduction to object-oriented programming",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_1_007",
+      "lesson": "14.1",
+      "type": "basic",
+      "tags": ["cpp", "oop", "pillars"],
+      "front": "What are the four key concepts that OOP brings to the table?",
+      "back": "<ul><li>Inheritance</li><li>Encapsulation</li><li>Abstraction</li><li>Polymorphism</li></ul>",
+      "source": "14.1 - Introduction to object-oriented programming",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_1_008",
+      "lesson": "14.1",
+      "type": "cloze",
+      "tags": ["cpp", "oop", "terminology"],
+      "text": "In traditional programming, an {{c1::object}} is a piece of memory to store values. In OOP, we prefer the term {{c2::class object}} to refer to objects that combine properties and behaviors.",
+      "source": "14.1 - Introduction to object-oriented programming",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_1_009",
+      "lesson": "14.1",
+      "type": "concept",
+      "tags": ["cpp", "oop", "best-practices"],
+      "concept": "Why OOP is better for code evolution and maintenance",
+      "explanation": "In OOP, when adding new types (like a Snake to an animal program), you only need to create a new type definition. In procedural programming, you must modify multiple existing functions (animalName(), numLegs(), etc.), touching more code and risking breakage.",
+      "examples": [
+        "// Procedural: must modify AnimalType enum, animalName(), numLegs()",
+        "// OOP: just create struct Snake { ... }; and use it"
+      ],
+      "source": "14.1 - Introduction to object-oriented programming",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_1_010",
+      "lesson": "14.1",
+      "type": "basic",
+      "tags": ["cpp", "oop", "procedural"],
+      "front": "In procedural programming, why is modifying code to add a new type (like a snake animal) risky?",
+      "back": "You must modify multiple existing functions and the enum type definition. If the type is used in many places, that's a lot of code to touch and potentially break.",
+      "source": "14.1 - Introduction to object-oriented programming",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_1_011",
+      "lesson": "14.1",
+      "type": "code",
+      "tags": ["cpp", "oop", "struct"],
+      "question": "What does this code print?",
+      "code": "struct Cat { std::string_view name{\"cat\"}; int numLegs{4}; };<br>Cat animal;<br>std::cout &lt;&lt; animal.name &lt;&lt; \" \" &lt;&lt; animal.numLegs;",
+      "answer": "cat 4",
+      "explanation": "The Cat struct defines default values for name and numLegs. When instantiated, animal gets these default values.",
+      "source": "14.1 - Introduction to object-oriented programming",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_1_012",
+      "lesson": "14.1",
+      "type": "basic",
+      "tags": ["cpp", "oop", "design"],
+      "front": "Why might you prefer OOP with separate structs (Cat, Dog, Chicken) over a common Animal struct when each animal has the same members?",
+      "back": "With separate structs, you can add members specific to one type (like wormsPerDay for Chicken) without affecting other types. A common Animal struct would force all animals to have every member.",
+      "source": "14.1 - Introduction to object-oriented programming",
+      "difficulty": "hard"
+    }
+  ]
+}

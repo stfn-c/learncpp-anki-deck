@@ -1,0 +1,180 @@
+{
+  "chapter": "Chapter 15",
+  "chapter_title": "More on Classes",
+  "lesson": "15.5",
+  "lesson_title": "Class templates with member functions",
+  "total_cards": 11,
+  "cards": [
+    {
+      "id": "ch15_5_001",
+      "lesson": "15.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "classes",
+        "syntax"
+      ],
+      "text": "When defining a class template member function outside the class, you must provide the {{c1::template parameter declaration}} before the function definition.",
+      "source": "15.5 - Class templates with member functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_5_002",
+      "lesson": "15.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "classes",
+        "syntax"
+      ],
+      "text": "When defining a member function outside a class template, use the syntax: <code>template&lt;typename T&gt; {{c1::ReturnType ClassName&lt;T&gt;::}}functionName()</code>",
+      "source": "15.5 - Class templates with member functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_5_003",
+      "lesson": "15.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "classes",
+        "best-practices"
+      ],
+      "text": "Class templates and their member functions are typically defined entirely in {{c1::header files}} because the compiler needs to see the full definition to {{c2::instantiate}} them.",
+      "source": "15.5 - Class templates with member functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_5_004",
+      "lesson": "15.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "classes"
+      ],
+      "text": "Member functions of class templates are only {{c1::instantiated}} when they are {{c2::actually used}} in the program.",
+      "source": "15.5 - Class templates with member functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_5_005",
+      "lesson": "15.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "classes"
+      ],
+      "front": "Why are class template definitions typically kept in header files?",
+      "back": "Because the compiler needs to see the full definition to instantiate the template with specific types. If separated into .cpp files, the linker won't be able to find the instantiated versions.",
+      "source": "15.5 - Class templates with member functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_5_006",
+      "lesson": "15.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "classes"
+      ],
+      "front": "What happens if you define a member function in a class template but never call it?",
+      "back": "The member function is never instantiated by the compiler, so it won't generate any code for it.",
+      "source": "15.5 - Class templates with member functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_5_007",
+      "lesson": "15.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "templates",
+        "classes",
+        "syntax"
+      ],
+      "question": "Complete the member function definition outside the class template.",
+      "code": "template &lt;typename T&gt;\nclass Array {\npublic:\n    T getElement(int index);\n};\n\n// Define getElement here\ntemplate &lt;typename T&gt;\n??? Array???::getElement(int index) { /* ... */ }",
+      "answer": "<code>T Array&lt;T&gt;::getElement(int index)</code>",
+      "explanation": "Need return type T and class name with template parameter Array&lt;T&gt;::, then function name.",
+      "source": "15.5 - Class templates with member functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_5_008",
+      "lesson": "15.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "templates",
+        "classes",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this code?",
+      "code": "template &lt;typename T&gt;\nclass Pair {\npublic:\n    T first, second;\n    void swap();\n};\n\n// Missing something!\nvoid Pair&lt;T&gt;::swap() {\n    T temp = first;\n    first = second;\n    second = temp;\n}",
+      "answer": "Missing the template parameter declaration before the function definition.",
+      "explanation": "Should be: <code>template &lt;typename T&gt;<br>void Pair&lt;T&gt;::swap() { ... }</code>",
+      "source": "15.5 - Class templates with member functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_5_009",
+      "lesson": "15.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "templates",
+        "classes"
+      ],
+      "question": "Is this code valid?",
+      "code": "template &lt;typename T&gt;\nclass Storage {\npublic:\n    void print() { std::cout &lt;&lt; \"Storage\"; }\n    void badFunc() { T::nonexistent(); }  // T might not have this\n};\n\nStorage&lt;int&gt; s;\ns.print();  // Only calling print()",
+      "answer": "Yes, this is valid. badFunc() is never instantiated since it's not called.",
+      "explanation": "Template member functions are only instantiated when used, so the error in badFunc() is never encountered.",
+      "source": "15.5 - Class templates with member functions",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch15_5_010",
+      "lesson": "15.5",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "templates",
+        "classes",
+        "best-practices"
+      ],
+      "concept": "Organizing class template code",
+      "explanation": "Class templates require special organization:<ul><li>Typically keep everything in header files (.h or .hpp)</li><li>Alternative: Use .inl (inline) files included at end of header</li><li>Cannot separate into .cpp files like regular classes</li><li>Reason: Compiler needs full definition to instantiate templates</li></ul>",
+      "examples": [
+        "// Array.h",
+        "template &lt;typename T&gt;",
+        "class Array {",
+        "    T getElement(int index);",
+        "};",
+        "",
+        "template &lt;typename T&gt;",
+        "T Array&lt;T&gt;::getElement(int index) { /* ... */ }"
+      ],
+      "source": "15.5 - Class templates with member functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_5_011",
+      "lesson": "15.5",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "front": "template instantiation",
+      "back": "The process where the compiler generates concrete code from a template by replacing template parameters with actual types",
+      "source": "15.5 - Class templates with member functions",
+      "difficulty": "easy"
+    }
+  ]
+}

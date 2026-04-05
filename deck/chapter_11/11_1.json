@@ -1,0 +1,190 @@
+{
+  "chapter": "Chapter 11",
+  "chapter_title": "Function Overloading and Function Templates",
+  "lesson": "11.1",
+  "lesson_title": "Introduction to function overloading",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch11_1_001",
+      "lesson": "11.1",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "functions",
+        "overloading"
+      ],
+      "front": "Function overloading",
+      "back": "Creating multiple functions with the same name that have different parameter types",
+      "source": "11.1 - Introduction to function overloading",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_1_002",
+      "lesson": "11.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "functions",
+        "overloading"
+      ],
+      "front": "What requirement allows two functions with the same name to coexist in the same scope?",
+      "back": "The functions must have different parameter types (or be otherwise differentiated by the compiler).",
+      "source": "11.1 - Introduction to function overloading",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_1_003",
+      "lesson": "11.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "overloading",
+        "terminology"
+      ],
+      "text": "Each function sharing a name in the same scope is called an {{c1::overloaded function}} or an {{c2::overload}} for short.",
+      "source": "11.1 - Introduction to function overloading",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_1_004",
+      "lesson": "11.1",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "functions",
+        "overloading"
+      ],
+      "question": "What does this program output?",
+      "code": "#include &lt;iostream&gt;\n\nint add(int x, int y) { return x + y; }\ndouble add(double x, double y) { return x + y; }\n\nint main() {\n    std::cout &lt;&lt; add(1, 2) &lt;&lt; '\\n';\n    std::cout &lt;&lt; add(1.2, 3.4);\n    return 0;\n}",
+      "answer": "3<br>4.6",
+      "explanation": "The call add(1, 2) resolves to add(int, int) returning 3. The call add(1.2, 3.4) resolves to add(double, double) returning 4.6.",
+      "source": "11.1 - Introduction to function overloading",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_1_005",
+      "lesson": "11.1",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "functions",
+        "overloading"
+      ],
+      "front": "Overload resolution",
+      "back": "The process by which the compiler matches a function call to the appropriate overloaded function based on the arguments",
+      "source": "11.1 - Introduction to function overloading",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_1_006",
+      "lesson": "11.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "overloading",
+        "syntax"
+      ],
+      "text": "To create an overloaded add() function for doubles: {{c1::double add(double x, double y) { return x + y; }}}",
+      "source": "11.1 - Introduction to function overloading",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_1_007",
+      "lesson": "11.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "functions",
+        "overloading"
+      ],
+      "front": "What two conditions must be true for a program using overloaded functions to compile?",
+      "back": "<ul><li>Each overloaded function must be differentiated from the others</li><li>Each call to an overloaded function must resolve to an overloaded function</li></ul>",
+      "source": "11.1 - Introduction to function overloading",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_1_008",
+      "lesson": "11.1",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "functions",
+        "overloading"
+      ],
+      "question": "Which add() function is called for each statement?",
+      "code": "int add(int x, int y) { return x + y; }\ndouble add(double x, double y) { return x + y; }\n\nadd(1, 2);      // ?\nadd(1.2, 3.4);  // ?",
+      "answer": "add(1, 2) calls add(int, int)<br>add(1.2, 3.4) calls add(double, double)",
+      "explanation": "The compiler performs overload resolution by matching the argument types to the parameter types.",
+      "source": "11.1 - Introduction to function overloading",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_1_009",
+      "lesson": "11.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "overloading"
+      ],
+      "text": "Functions can be overloaded so long as {{c1::each overloaded function can be differentiated by the compiler}}.",
+      "source": "11.1 - Introduction to function overloading",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_1_010",
+      "lesson": "11.1",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "functions",
+        "overloading",
+        "best-practices"
+      ],
+      "concept": "Why use function overloading instead of differently named functions",
+      "explanation": "Function overloading reduces program complexity by reducing the number of function names to remember. Instead of addInteger(), addDouble(), addFloat(), you just use add() for all types.",
+      "examples": [
+        "// Without overloading - must remember multiple names",
+        "int addInteger(int x, int y);",
+        "double addDouble(double x, double y);",
+        "",
+        "// With overloading - one name to remember",
+        "int add(int x, int y);",
+        "double add(double x, double y);"
+      ],
+      "source": "11.1 - Introduction to function overloading",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_1_011",
+      "lesson": "11.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "functions",
+        "overloading"
+      ],
+      "front": "What happens if an overloaded function cannot be differentiated from another overloaded function?",
+      "back": "A compile error will result.",
+      "source": "11.1 - Introduction to function overloading",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_1_012",
+      "lesson": "11.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "overloading",
+        "best-practices"
+      ],
+      "text": "Best practice: {{c1::Use function overloading to make your program simpler}}.",
+      "source": "11.1 - Introduction to function overloading",
+      "difficulty": "easy"
+    }
+  ]
+}

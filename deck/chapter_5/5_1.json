@@ -1,0 +1,154 @@
+{
+  "chapter": "Chapter 5",
+  "chapter_title": "Constants and Strings",
+  "lesson": "5.1",
+  "lesson_title": "Constant variables (named constants)",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "ch5_5_1_001",
+      "lesson": "5.1",
+      "type": "cloze",
+      "text": "To declare a constant variable in C++, use the {{c1::const}} keyword before the type.",
+      "tags": [
+        "cpp",
+        "const",
+        "syntax"
+      ],
+      "source": "5.1 - Constant variables",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch5_5_1_002",
+      "lesson": "5.1",
+      "type": "cloze",
+      "text": "A const variable {{c1::must be initialized}} when it is declared.",
+      "tags": [
+        "cpp",
+        "const",
+        "initialization"
+      ],
+      "source": "5.1 - Constant variables",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch5_5_1_003",
+      "lesson": "5.1",
+      "type": "cloze",
+      "text": "Syntax to declare a constant: {{c1::const int x&#123; 5 &#125;;}}",
+      "tags": [
+        "cpp",
+        "const",
+        "syntax"
+      ],
+      "source": "5.1 - Constant variables",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch5_5_1_004",
+      "lesson": "5.1",
+      "type": "cloze",
+      "text": "Const variables are also called {{c1::named constants}} or {{c2::symbolic constants}}.",
+      "tags": [
+        "cpp",
+        "const",
+        "terminology"
+      ],
+      "source": "5.1 - Constant variables",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch5_5_1_005",
+      "lesson": "5.1",
+      "type": "code",
+      "question": "What's wrong with this code?",
+      "code": "const int x;\nx = 5;",
+      "answer": "Const variables must be initialized when declared. Also, you cannot assign to a const variable after declaration.",
+      "explanation": "The first line doesn't initialize x, and the second line attempts to modify a const variable, which is not allowed.",
+      "tags": [
+        "cpp",
+        "const",
+        "common-mistakes"
+      ],
+      "source": "5.1 - Constant variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch5_5_1_006",
+      "lesson": "5.1",
+      "type": "code",
+      "question": "What's wrong with this code?",
+      "code": "const int x&#123; 5 &#125;;\nx = 10;",
+      "answer": "Cannot assign to a const variable. Once initialized, const variables cannot be changed.",
+      "explanation": "The const keyword makes the variable read-only after initialization.",
+      "tags": [
+        "cpp",
+        "const",
+        "common-mistakes"
+      ],
+      "source": "5.1 - Constant variables",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch5_5_1_007",
+      "lesson": "5.1",
+      "type": "basic",
+      "front": "What happens if you try to change the value of a const variable after initialization?",
+      "back": "The compiler will generate an error. Const variables are read-only after initialization.",
+      "tags": [
+        "cpp",
+        "const",
+        "fundamentals"
+      ],
+      "source": "5.1 - Constant variables",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch5_5_1_008",
+      "lesson": "5.1",
+      "type": "basic",
+      "front": "What are three benefits of using const variables instead of magic numbers?",
+      "back": "<ul><li>Makes code more readable and self-documenting</li><li>Easier to update values in one place</li><li>Prevents accidental modification of values</li></ul>",
+      "tags": [
+        "cpp",
+        "const",
+        "best-practices"
+      ],
+      "source": "5.1 - Constant variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch5_5_1_009",
+      "lesson": "5.1",
+      "type": "concept",
+      "concept": "When to use const variables",
+      "explanation": "Use const variables when you have a value that:<ul><li>Should not change during program execution</li><li>Needs a meaningful name (not a magic number)</li><li>Might need to be updated in the future (easier to change in one place)</li></ul>",
+      "examples": [
+        "const double pi&#123; 3.14159 &#125;;",
+        "const int maxStudents&#123; 30 &#125;;",
+        "const char newline&#123; '\\n' &#125;;"
+      ],
+      "tags": [
+        "cpp",
+        "const",
+        "best-practices"
+      ],
+      "source": "5.1 - Constant variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch5_5_1_010",
+      "lesson": "5.1",
+      "type": "reverse",
+      "front": "const",
+      "back": "Keyword that makes a variable read-only after initialization",
+      "tags": [
+        "cpp",
+        "keywords",
+        "const"
+      ],
+      "source": "5.1 - Constant variables",
+      "difficulty": "easy"
+    }
+  ]
+}

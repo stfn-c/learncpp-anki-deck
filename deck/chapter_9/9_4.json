@@ -1,0 +1,148 @@
+{
+  "chapter": "Chapter 9",
+  "chapter_title": "Error Detection and Handling",
+  "lesson": "9.4",
+  "lesson_title": "Detecting and handling errors",
+  "total_cards": 13,
+  "cards": [
+    {
+      "id": "ch9_4_001",
+      "lesson": "9.4",
+      "type": "basic",
+      "tags": ["cpp", "errors", "testing"],
+      "front": "What is the difference between the 'happy path' and 'sad path' in testing?",
+      "back": "The happy path is the path of execution when there are no errors. The sad path is where an error or failure state occurs. You should test both.",
+      "source": "9.4 - Detecting and handling errors",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch9_4_002",
+      "lesson": "9.4",
+      "type": "concept",
+      "tags": ["cpp", "errors", "strategies"],
+      "concept": "The 4 general error handling strategies",
+      "explanation": "When a function encounters an error, there are 4 general strategies:<ul><li><strong>Handle the error within the function:</strong> Retry until successful, or cancel the operation</li><li><strong>Pass the error back to the caller:</strong> Return bool success/fail, sentinel value, or std::optional</li><li><strong>Halt the program:</strong> Use std::exit() for fatal errors</li><li><strong>Throw an exception:</strong> Let errors propagate up the call stack</li></ul>The best strategy depends on the nature of the problem and whether it can be fixed.",
+      "examples": [
+        "// Handle: if (y != 0) print(); else return;",
+        "// Pass back: return false; or return 0.0; or return std::nullopt;",
+        "// Halt: std::exit(1);",
+        "// Throw: throw std::runtime_error(\"message\");"
+      ],
+      "source": "9.4 - Detecting and handling errors",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch9_4_003",
+      "lesson": "9.4",
+      "type": "cloze",
+      "tags": ["cpp", "errors", "terminology"],
+      "text": "A {{c1::non-recoverable error}} (also called a {{c2::fatal error}}) is an error that is severe enough that the program cannot continue to operate properly.",
+      "source": "9.4 - Detecting and handling errors",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch9_4_004",
+      "lesson": "9.4",
+      "type": "cloze",
+      "tags": ["cpp", "errors", "terminology"],
+      "text": "A {{c1::sentinel value}} is a value that has some special meaning in the context of a function or algorithm, often used to indicate an error condition.",
+      "source": "9.4 - Detecting and handling errors",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch9_4_005",
+      "lesson": "9.4",
+      "type": "code",
+      "tags": ["cpp", "errors", "sentinel-values"],
+      "question": "What sentinel value does this function return to indicate an error?",
+      "code": "constexpr double error_no_reciprocal { 0.0 };\n\ndouble reciprocal(double x)\n{\n    if (x == 0.0)\n       return error_no_reciprocal;\n    \n    return 1.0 / x;\n}",
+      "answer": "0.0",
+      "explanation": "The function returns 0.0 as a sentinel value when x is 0.0. Since the reciprocal of any number can never be 0.0 legitimately, this value indicates an error.",
+      "source": "9.4 - Detecting and handling errors",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch9_4_006",
+      "lesson": "9.4",
+      "type": "basic",
+      "tags": ["cpp", "errors", "void-functions"],
+      "front": "How can a void function pass error information back to the caller?",
+      "back": "Change the return type from void to bool. Return true for success, false for failure.",
+      "source": "9.4 - Detecting and handling errors",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch9_4_007",
+      "lesson": "9.4",
+      "type": "basic",
+      "tags": ["cpp", "errors", "best-practices"],
+      "front": "When is using a sentinel value to indicate an error problematic?",
+      "back": "When the full range of return values can be produced by the function. The caller cannot tell if the return value is valid or an error. In such cases, use std::optional or std::expected instead.",
+      "source": "9.4 - Detecting and handling errors",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch9_4_008",
+      "lesson": "9.4",
+      "type": "cloze",
+      "tags": ["cpp", "errors", "syntax"],
+      "text": "For fatal errors deep in nested functions, use {{c1::std::exit(1)}} to terminate the program, or let the error propagate back to {{c2::main()}} to return a non-zero status code.",
+      "source": "9.4 - Detecting and handling errors",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch9_4_009",
+      "lesson": "9.4",
+      "type": "basic",
+      "tags": ["cpp", "errors", "exceptions"],
+      "front": "What happens to an exception if the current function doesn't catch it?",
+      "back": "The caller of the function has a chance to catch the error. The error progressively moves up the call stack until it is caught and handled, or until main() fails to handle it (terminating with an exception error).",
+      "source": "9.4 - Detecting and handling errors",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch9_4_010",
+      "lesson": "9.4",
+      "type": "concept",
+      "tags": ["cpp", "errors", "streams"],
+      "concept": "When to use std::cout vs std::cerr vs logging",
+      "explanation": "Use different output streams based on the application type and message purpose:<ul><li><strong>std::cout:</strong> All conventional, user-facing text and output</li><li><strong>std::cerr:</strong> Error messages for interactive programs, or error-only output for non-interactive programs</li><li><strong>Logfile:</strong> Status, diagnostic info, warnings, transactional logs that aren't interesting to normal users but help diagnose issues</li></ul>std::cerr allows errors to be displayed or parsed separately from normal output.",
+      "examples": [
+        "std::cout &lt;&lt; \"Result: \" &lt;&lt; x;  // normal output",
+        "std::cerr &lt;&lt; \"Error: division by zero\\n\";  // error",
+        "logfile &lt;&lt; \"Processing file: \" &lt;&lt; filename;  // diagnostic"
+      ],
+      "source": "9.4 - Detecting and handling errors",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch9_4_011",
+      "lesson": "9.4",
+      "type": "basic",
+      "tags": ["cpp", "errors", "application-types"],
+      "front": "What is the difference between an interactive and non-interactive application?",
+      "back": "Interactive applications require user interaction after running (e.g., games). Non-interactive applications don't require user interaction (e.g., tools like grep, or services like virus scanners).",
+      "source": "9.4 - Detecting and handling errors",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch9_4_012",
+      "lesson": "9.4",
+      "type": "cloze",
+      "tags": ["cpp", "errors", "best-practices"],
+      "text": "For non-interactive programs, use {{c1::std::cerr}} for error output only. This allows errors to be {{c2::displayed or parsed separately}} from normal output.",
+      "source": "9.4 - Detecting and handling errors",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch9_4_013",
+      "lesson": "9.4",
+      "type": "basic",
+      "tags": ["cpp", "errors", "assumptions"],
+      "front": "What are the three key places where assumption errors typically occur?",
+      "back": "1. When a function returns (assuming it was successful when it wasn't)<br>2. When receiving input (assuming correct format and valid semantics)<br>3. When a function is called (assuming arguments are semantically valid)",
+      "source": "9.4 - Detecting and handling errors",
+      "difficulty": "medium"
+    }
+  ]
+}

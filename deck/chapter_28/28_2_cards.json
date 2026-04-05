@@ -1,0 +1,182 @@
+{
+  "chapter": "Chapter 28",
+  "chapter_title": "Input and Output (I/O)",
+  "lesson": "28.2",
+  "lesson_title": "Input with istream",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch28_2_001",
+      "lesson": "28.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "iostream",
+        "extraction"
+      ],
+      "text": "To extract a single character from cin, use {{c1::cin.get(ch)}} or {{c2::ch = cin.get()}}.",
+      "source": "28.2 - Input with istream",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch28_2_002",
+      "lesson": "28.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "iostream",
+        "extraction"
+      ],
+      "front": "What is the difference between operator&gt;&gt; and get() for reading characters?",
+      "back": "operator&gt;&gt; skips whitespace (spaces, tabs, newlines), while get() reads all characters including whitespace.",
+      "source": "28.2 - Input with istream",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch28_2_003",
+      "lesson": "28.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "iostream",
+        "getline"
+      ],
+      "text": "To read a full line of input into a std::string, use {{c1::std::getline(std::cin, str)}}.",
+      "source": "28.2 - Input with istream",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch28_2_004",
+      "lesson": "28.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "iostream",
+        "common-mistakes"
+      ],
+      "question": "What's the problem with using operator&gt;&gt; to read a full name?",
+      "code": "std::string name;\nstd::cin &gt;&gt; name;  // User enters \"John Doe\"",
+      "answer": "operator&gt;&gt; only reads up to the first whitespace, so name will only contain \"John\", not the full name.",
+      "explanation": "Use std::getline() instead to read input containing spaces.",
+      "source": "28.2 - Input with istream",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch28_2_005",
+      "lesson": "28.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "iostream",
+        "methods"
+      ],
+      "text": "{{c1::cin.gcount()}} returns the number of characters extracted by the last unformatted input operation.",
+      "source": "28.2 - Input with istream",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch28_2_006",
+      "lesson": "28.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "iostream",
+        "methods"
+      ],
+      "front": "What does cin.ignore() do?",
+      "back": "Discards characters from the input stream. Can specify how many characters to discard and which delimiter to stop at.",
+      "source": "28.2 - Input with istream",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch28_2_007",
+      "lesson": "28.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "iostream",
+        "ignore"
+      ],
+      "text": "To ignore all characters up to and including a newline: {{c1::std::cin.ignore(std::numeric_limits&lt;std::streamsize&gt;::max(), '\\n')}}",
+      "source": "28.2 - Input with istream",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch28_2_008",
+      "lesson": "28.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "iostream",
+        "peek"
+      ],
+      "front": "What does cin.peek() do?",
+      "back": "Returns the next character in the stream without extracting it, allowing you to look ahead.",
+      "source": "28.2 - Input with istream",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch28_2_009",
+      "lesson": "28.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "iostream",
+        "unget"
+      ],
+      "front": "What does cin.unget() do?",
+      "back": "Puts the last character read back into the stream, allowing it to be read again.",
+      "source": "28.2 - Input with istream",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch28_2_010",
+      "lesson": "28.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "iostream",
+        "putback"
+      ],
+      "front": "What does cin.putback(ch) do?",
+      "back": "Puts a specific character back into the stream (doesn't have to be the last character read).",
+      "source": "28.2 - Input with istream",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch28_2_011",
+      "lesson": "28.2",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "iostream",
+        "best-practices"
+      ],
+      "concept": "When to use getline() vs operator&gt;&gt;",
+      "explanation": "Use getline() when you need to read input that may contain spaces (like full names, sentences, or complete lines). Use operator&gt;&gt; for single words or when whitespace should act as a delimiter.",
+      "examples": [
+        "std::getline(std::cin, fullName);  // For \"John Doe\"",
+        "std::cin &gt;&gt; firstName;  // For single word",
+        "std::cin &gt;&gt; age;  // For numbers"
+      ],
+      "source": "28.2 - Input with istream",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch28_2_012",
+      "lesson": "28.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "iostream",
+        "gotchas"
+      ],
+      "question": "What problem occurs with this code?",
+      "code": "int age;\nstd::cin &gt;&gt; age;\nstd::string name;\nstd::getline(std::cin, name);",
+      "answer": "getline() will read an empty string because the newline character from the age input is still in the buffer.",
+      "explanation": "After extracting age with &gt;&gt;, the newline is left in the stream. getline() immediately reads it as an empty line. Fix: use cin.ignore() before getline().",
+      "source": "28.2 - Input with istream",
+      "difficulty": "hard"
+    }
+  ]
+}

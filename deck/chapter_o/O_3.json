@@ -1,0 +1,232 @@
+{
+  "chapter": "Chapter O",
+  "chapter_title": "Bit Manipulation",
+  "lesson": "O.3",
+  "lesson_title": "Bit manipulation with bitwise operators and bit masks",
+  "total_cards": 15,
+  "cards": [
+    {
+      "id": "cho_3_001",
+      "lesson": "O.3",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "bitwise",
+        "bitmask"
+      ],
+      "front": "bit mask",
+      "back": "A predefined set of bits used to manipulate (select, set, clear, or toggle) specific bits in a value",
+      "source": "O.3 - Bit manipulation with bitwise operators and bit masks",
+      "difficulty": "easy"
+    },
+    {
+      "id": "cho_3_002",
+      "lesson": "O.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "bitwise",
+        "bitmask"
+      ],
+      "text": "To test if a bit is set using a mask, use the {{c1::&amp;}} operator and check if the result is {{c2::non-zero}} (or equal to the mask).",
+      "source": "O.3 - Bit manipulation with bitwise operators and bit masks",
+      "difficulty": "medium"
+    },
+    {
+      "id": "cho_3_003",
+      "lesson": "O.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "bitwise",
+        "bitmask"
+      ],
+      "question": "What does this code check?",
+      "code": "constexpr unsigned char mask = 0b0000'0100;\nif (flags &amp; mask) {\n    // do something\n}",
+      "answer": "Checks if bit 2 is set in flags",
+      "explanation": "The mask has only bit 2 set. Using &amp; with the mask isolates bit 2. If that bit is set in flags, the result is non-zero (true).",
+      "source": "O.3 - Bit manipulation with bitwise operators and bit masks",
+      "difficulty": "medium"
+    },
+    {
+      "id": "cho_3_004",
+      "lesson": "O.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "bitwise",
+        "bitmask"
+      ],
+      "text": "To set (turn on) a bit using a mask, use the {{c1::|=}} operator: flags {{c1::|=}} mask;",
+      "source": "O.3 - Bit manipulation with bitwise operators and bit masks",
+      "difficulty": "easy"
+    },
+    {
+      "id": "cho_3_005",
+      "lesson": "O.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "bitwise",
+        "bitmask"
+      ],
+      "text": "To clear (turn off) a bit using a mask, use the {{c1::&amp;=}} operator with the {{c2::inverted mask}}: flags {{c1::&amp;=}} {{c2::~}}mask;",
+      "source": "O.3 - Bit manipulation with bitwise operators and bit masks",
+      "difficulty": "medium"
+    },
+    {
+      "id": "cho_3_006",
+      "lesson": "O.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "bitwise",
+        "bitmask"
+      ],
+      "question": "What is the value of flags after this operation?",
+      "code": "unsigned char flags = 0b0000'0101;\nconstexpr unsigned char mask = 0b0000'0010;\nflags |= mask;",
+      "answer": "0b0000'0111",
+      "explanation": "The |= operator sets bit 1:<br>0000 0101<br>| 0000 0010<br>-----------<br>0000 0111",
+      "source": "O.3 - Bit manipulation with bitwise operators and bit masks",
+      "difficulty": "medium"
+    },
+    {
+      "id": "cho_3_007",
+      "lesson": "O.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "bitwise",
+        "bitmask"
+      ],
+      "question": "What is the value of flags after this operation?",
+      "code": "unsigned char flags = 0b0000'0111;\nconstexpr unsigned char mask = 0b0000'0010;\nflags &amp;= ~mask;",
+      "answer": "0b0000'0101",
+      "explanation": "~mask = 0b1111'1101, then &amp;= clears bit 1:<br>0000 0111<br>&amp; 1111 1101<br>-----------<br>0000 0101",
+      "source": "O.3 - Bit manipulation with bitwise operators and bit masks",
+      "difficulty": "medium"
+    },
+    {
+      "id": "cho_3_008",
+      "lesson": "O.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "bitwise",
+        "bitmask"
+      ],
+      "text": "To toggle (flip) a bit using a mask, use the {{c1::^=}} operator: flags {{c1::^=}} mask;",
+      "source": "O.3 - Bit manipulation with bitwise operators and bit masks",
+      "difficulty": "easy"
+    },
+    {
+      "id": "cho_3_009",
+      "lesson": "O.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "bitwise",
+        "bitmask"
+      ],
+      "question": "What is the value of flags after two toggle operations?",
+      "code": "unsigned char flags = 0b0000'0101;\nconstexpr unsigned char mask = 0b0000'0100;\nflags ^= mask;\nflags ^= mask;",
+      "answer": "0b0000'0101 (back to original)",
+      "explanation": "First toggle flips bit 2 to 0: 0b0000'0001<br>Second toggle flips bit 2 back to 1: 0b0000'0101<br>XOR twice returns to original value.",
+      "source": "O.3 - Bit manipulation with bitwise operators and bit masks",
+      "difficulty": "medium"
+    },
+    {
+      "id": "cho_3_010",
+      "lesson": "O.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "bitwise",
+        "bitmask"
+      ],
+      "text": "To create a mask for bit n, use the left shift: {{c1::1 &lt;&lt; n}} which creates a value with only bit n set.",
+      "source": "O.3 - Bit manipulation with bitwise operators and bit masks",
+      "difficulty": "medium"
+    },
+    {
+      "id": "cho_3_011",
+      "lesson": "O.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "bitwise",
+        "bitmask"
+      ],
+      "question": "What mask does this create?",
+      "code": "constexpr unsigned char mask = 1 &lt;&lt; 3;",
+      "answer": "0b0000'1000",
+      "explanation": "1 &lt;&lt; 3 shifts the bit 1 three positions left:<br>0000 0001 becomes 0000 1000<br>This creates a mask for bit 3.",
+      "source": "O.3 - Bit manipulation with bitwise operators and bit masks",
+      "difficulty": "medium"
+    },
+    {
+      "id": "cho_3_012",
+      "lesson": "O.3",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "bitwise",
+        "bitmask"
+      ],
+      "concept": "How to work with multiple bits at once using masks",
+      "explanation": "You can combine multiple bit masks using the OR operator to create a mask that affects multiple bits at once.<ul><li>Set multiple bits: flags |= (mask1 | mask2)</li><li>Clear multiple bits: flags &amp;= ~(mask1 | mask2)</li><li>Test multiple bits: (flags &amp; (mask1 | mask2)) != 0</li></ul>",
+      "examples": [
+        "constexpr unsigned char mask = (1 &lt;&lt; 2) | (1 &lt;&lt; 4);  // bits 2 and 4",
+        "flags |= mask;  // set both bits 2 and 4",
+        "flags &amp;= ~mask;  // clear both bits 2 and 4"
+      ],
+      "source": "O.3 - Bit manipulation with bitwise operators and bit masks",
+      "difficulty": "hard"
+    },
+    {
+      "id": "cho_3_013",
+      "lesson": "O.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "bitwise",
+        "bitmask",
+        "best-practices"
+      ],
+      "front": "Why should bit masks be declared as constexpr?",
+      "back": "Because masks are typically compile-time constants that don't change. Using constexpr:<ul><li>Ensures compile-time evaluation</li><li>Allows use in constant expressions</li><li>Provides better optimization</li><li>Makes intent clear</li></ul>",
+      "source": "O.3 - Bit manipulation with bitwise operators and bit masks",
+      "difficulty": "easy"
+    },
+    {
+      "id": "cho_3_014",
+      "lesson": "O.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "bitwise",
+        "bitmask"
+      ],
+      "question": "What does this condition check?",
+      "code": "unsigned char flags = 0b0001'0101;\nconstexpr unsigned char mask = 0b0001'0001;\nif ((flags &amp; mask) == mask) {\n    // do something\n}",
+      "answer": "Checks if BOTH bit 0 AND bit 4 are set",
+      "explanation": "Testing (flags &amp; mask) == mask checks if ALL bits in the mask are set in flags. Both bits 0 and 4 must be 1 for the condition to be true.",
+      "source": "O.3 - Bit manipulation with bitwise operators and bit masks",
+      "difficulty": "hard"
+    },
+    {
+      "id": "cho_3_015",
+      "lesson": "O.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "bitwise",
+        "bitmask",
+        "operations"
+      ],
+      "text": "The four key bit manipulation operations are: {{c1::test}} (check if set), {{c2::set}} (turn on), {{c3::clear/reset}} (turn off), and {{c4::toggle/flip}} (invert).",
+      "source": "O.3 - Bit manipulation with bitwise operators and bit masks",
+      "difficulty": "easy"
+    }
+  ]
+}

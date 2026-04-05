@@ -1,0 +1,250 @@
+{
+  "chapter": "Chapter 19",
+  "chapter_title": "Dynamic memory allocation",
+  "lesson": "19.2",
+  "lesson_title": "Dynamically allocating arrays",
+  "total_cards": 16,
+  "cards": [
+    {
+      "id": "ch19_2_001",
+      "lesson": "19.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "dynamic-memory",
+        "arrays",
+        "syntax"
+      ],
+      "text": "To dynamically allocate an array of 10 integers: {{c1::int* array{ new int[10] };}}}",
+      "source": "19.2 - Dynamically allocating arrays",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch19_2_002",
+      "lesson": "19.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "dynamic-memory",
+        "arrays",
+        "delete"
+      ],
+      "text": "To delete a dynamically allocated array, use the {{c1::array}} form of delete: {{c2::delete[] array;}}",
+      "source": "19.2 - Dynamically allocating arrays",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch19_2_003",
+      "lesson": "19.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "arrays",
+        "common-mistakes",
+        "delete"
+      ],
+      "question": "What's wrong with this code?",
+      "code": "int* array{ new int[10] };\ndelete array;",
+      "answer": "Using delete instead of delete[] for a dynamically allocated array causes undefined behavior. Should use delete[] array;",
+      "explanation": "Scalar delete only deletes the first element. Array delete (delete[]) properly deallocates the entire array.",
+      "source": "19.2 - Dynamically allocating arrays",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch19_2_004",
+      "lesson": "19.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "arrays",
+        "dynamic-memory"
+      ],
+      "front": "What is the difference between new and new[] operators?",
+      "back": "<strong>new</strong>: allocates a single object/variable<br><strong>new[]</strong>: allocates an array of objects<br><br>Must match with corresponding delete or delete[]",
+      "source": "19.2 - Dynamically allocating arrays",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch19_2_005",
+      "lesson": "19.2",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "arrays",
+        "initialization"
+      ],
+      "concept": "Initializing dynamically allocated arrays",
+      "explanation": "Dynamic arrays can be initialized using uniform initialization (C++11 and later):<ul><li>Zero initialization: new int[10]{}</li><li>List initialization: new int[5]{1, 2, 3, 4, 5}</li><li>Partial initialization: new int[10]{1, 2} - remaining elements are zero-initialized</li></ul>",
+      "examples": [
+        "int* array1{ new int[5]{} };        // all zeros",
+        "int* array2{ new int[3]{1, 2, 3} }; // initialized values",
+        "int* array3{ new int[5]{1, 2} };    // 1, 2, 0, 0, 0"
+      ],
+      "source": "19.2 - Dynamically allocating arrays",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch19_2_006",
+      "lesson": "19.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "arrays",
+        "dynamic-memory"
+      ],
+      "text": "Unlike fixed arrays, dynamic arrays can have their length determined at {{c1::runtime}}: {{c2::int* array{ new int[length] }; // length can be a variable}}",
+      "source": "19.2 - Dynamically allocating arrays",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch19_2_007",
+      "lesson": "19.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "arrays",
+        "dynamic-memory"
+      ],
+      "front": "Can you resize a dynamically allocated array after creation?",
+      "back": "No, dynamic arrays cannot be resized. You must:<ul><li>Allocate a new array of the desired size</li><li>Copy elements from old array to new array</li><li>Delete the old array</li></ul>Use std::vector for automatic resizing.",
+      "source": "19.2 - Dynamically allocating arrays",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch19_2_008",
+      "lesson": "19.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "memory-leak",
+        "arrays",
+        "common-mistakes"
+      ],
+      "question": "What happens if you forget delete[] for a dynamic array?",
+      "code": "void processData()\n{\n    int* data{ new int[1000] };\n    // ... use data ...\n    // forgot: delete[] data;\n}",
+      "answer": "Memory leak - when the function returns, the pointer is destroyed but the 1000-element array remains allocated and cannot be freed.",
+      "explanation": "The dynamically allocated array persists after the pointer goes out of scope, creating a memory leak. Always match new[] with delete[].",
+      "source": "19.2 - Dynamically allocating arrays",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch19_2_009",
+      "lesson": "19.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "arrays",
+        "gotchas"
+      ],
+      "front": "Do dynamically allocated arrays perform bounds checking?",
+      "back": "No. Like fixed arrays, dynamic arrays do NOT check if indices are valid. Accessing out of bounds causes undefined behavior.",
+      "source": "19.2 - Dynamically allocating arrays",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch19_2_010",
+      "lesson": "19.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "arrays",
+        "functions"
+      ],
+      "text": "When passing a dynamically allocated array to a function, also pass the {{c1::length/size}} as a separate parameter because dynamic arrays don't know their own size.",
+      "source": "19.2 - Dynamically allocating arrays",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch19_2_011",
+      "lesson": "19.2",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "best-practices",
+        "vectors"
+      ],
+      "concept": "Prefer std::vector over dynamic arrays",
+      "explanation": "std::vector provides:<ul><li>Automatic memory management (no manual new/delete)</li><li>Built-in size tracking</li><li>Bounds checking with at()</li><li>Easy resizing</li><li>Exception safety</li></ul>Use dynamic arrays only when interfacing with old C code or in performance-critical scenarios.",
+      "examples": [
+        "// Bad: manual memory management",
+        "int* arr = new int[10];",
+        "delete[] arr;",
+        "",
+        "// Good: automatic management",
+        "std::vector&lt;int&gt; vec(10);"
+      ],
+      "source": "19.2 - Dynamically allocating arrays",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch19_2_012",
+      "lesson": "19.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "arrays",
+        "sizeof",
+        "gotchas"
+      ],
+      "front": "What does sizeof return for a dynamically allocated array pointer?",
+      "back": "sizeof returns the size of the pointer itself (typically 4 or 8 bytes), NOT the size of the array. Dynamic arrays don't track their own size.",
+      "source": "19.2 - Dynamically allocating arrays",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch19_2_013",
+      "lesson": "19.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "arrays",
+        "best-practices"
+      ],
+      "question": "What is the correct pattern for using a dynamic array?",
+      "code": "// Get size at runtime\nint size{};\nstd::cin &gt;&gt; size;\n\n// Allocate\nint* array{ new int[size]{} };\n\n// Use array\narray[0] = 5;\n\n// Clean up\ndelete[] array;\narray = nullptr;",
+      "answer": "This is correct: allocate with new[], use the array, then deallocate with delete[] and set to nullptr.",
+      "explanation": "Always match new[] with delete[], and set the pointer to nullptr after deletion to avoid dangling pointers.",
+      "source": "19.2 - Dynamically allocating arrays",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch19_2_014",
+      "lesson": "19.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "arrays",
+        "initialization"
+      ],
+      "text": "Three ways to initialize a dynamic array of 5 ints:<br>Zero-init: {{c1::new int[5]{} }}<br>List-init: {{c2::new int[5]{1,2,3,4,5} }}<br>Partial: {{c3::new int[5]{1,2} }}",
+      "source": "19.2 - Dynamically allocating arrays",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch19_2_015",
+      "lesson": "19.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "arrays",
+        "best-practices"
+      ],
+      "text": "Always match allocation with deallocation: {{c1::new}} with {{c2::delete}}, {{c3::new[]}} with {{c4::delete[]}}",
+      "source": "19.2 - Dynamically allocating arrays",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch19_2_016",
+      "lesson": "19.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "arrays",
+        "functions"
+      ],
+      "text": "When passing a dynamic array to a function, you must also pass the {{c1::length/size}} because arrays don't know their own {{c2::size}}.",
+      "source": "19.2 - Dynamically allocating arrays",
+      "difficulty": "medium"
+    }
+  ]
+}

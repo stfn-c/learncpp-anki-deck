@@ -1,0 +1,161 @@
+{
+  "chapter": "Chapter 9",
+  "chapter_title": "Error Detection and Handling",
+  "lesson": "9.5",
+  "lesson_title": "std::cin and handling invalid input",
+  "total_cards": 14,
+  "cards": [
+    {
+      "id": "ch9_5_001",
+      "lesson": "9.5",
+      "type": "cloze",
+      "tags": ["cpp", "input", "terminology"],
+      "text": "The process of checking whether user input conforms to what the program is expecting is called {{c1::input validation}}.",
+      "source": "9.5 - std::cin and handling invalid input",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch9_5_002",
+      "lesson": "9.5",
+      "type": "cloze",
+      "tags": ["cpp", "input", "terminology"],
+      "text": "A program that handles error cases well is said to be {{c1::robust}}.",
+      "source": "9.5 - std::cin and handling invalid input",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch9_5_003",
+      "lesson": "9.5",
+      "type": "concept",
+      "tags": ["cpp", "input", "validation-strategies"],
+      "concept": "The three basic ways to do input validation",
+      "explanation": "There are three approaches to validate input:<ul><li><strong>Inline (as user types):</strong> Prevent invalid input character-by-character (not supported by std::cin)</li><li><strong>Post-entry (after user types):</strong> Let user enter string, validate it, then convert to final format</li><li><strong>Let std::cin extract and handle errors:</strong> Easiest method - let operator&gt;&gt; try to extract, then handle failures</li></ul>The third method is most common and easiest to implement.",
+      "examples": [
+        "// Inline: GUI validates each keystroke (std::cin doesn't support)",
+        "// Post-entry: Read string, parse/validate, convert",
+        "// std::cin: std::cin &gt;&gt; x; if (!std::cin) handle_error();"
+      ],
+      "source": "9.5 - std::cin and handling invalid input",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch9_5_004",
+      "lesson": "9.5",
+      "type": "concept",
+      "tags": ["cpp", "input", "error-types"],
+      "concept": "The 4 types of invalid text input errors",
+      "explanation": "Input errors can be categorized into four types:<ul><li><strong>Meaningless input:</strong> Extraction succeeds but input doesn't make sense (e.g., 'k' for a math operator)</li><li><strong>Extraneous input:</strong> Extraction succeeds but user enters extra characters (e.g., '*q hello' for operator)</li><li><strong>Extraction fails:</strong> Can't extract to variable type (e.g., 'q' into numeric input)</li><li><strong>Numeric overflow:</strong> Extraction succeeds but value overflows the type's range</li></ul>",
+      "examples": [
+        "// Meaningless: Enter +, -, *, /: k",
+        "// Extraneous: Enter number: 5*7",
+        "// Failed: Enter number: abc",
+        "// Overflow: Enter int16: 40000"
+      ],
+      "source": "9.5 - std::cin and handling invalid input",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch9_5_005",
+      "lesson": "9.5",
+      "type": "cloze",
+      "tags": ["cpp", "input", "syntax"],
+      "text": "To ignore all characters up to and including the next newline, call {{c1::std::cin.ignore(std::numeric_limits&lt;std::streamsize&gt;::max(), '\\n')}}.",
+      "source": "9.5 - std::cin and handling invalid input",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch9_5_006",
+      "lesson": "9.5",
+      "type": "code",
+      "tags": ["cpp", "input", "helper-functions"],
+      "question": "What does this helper function do?",
+      "code": "void ignoreLine()\n{\n    std::cin.ignore(std::numeric_limits&lt;std::streamsize&gt;::max(), '\\n');\n}",
+      "answer": "Clears all characters from std::cin's buffer up to and including the next newline character.",
+      "explanation": "This function wraps the long std::cin.ignore() call into a convenient helper that removes extraneous input from the buffer.",
+      "source": "9.5 - std::cin and handling invalid input",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch9_5_007",
+      "lesson": "9.5",
+      "type": "cloze",
+      "tags": ["cpp", "input", "failure-mode"],
+      "text": "When std::cin enters failure mode, {{c1::std::cin.clear()}} must be called to put it back in normal operation mode, then {{c2::ignoreLine()}} to remove the bad input.",
+      "source": "9.5 - std::cin and handling invalid input",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch9_5_008",
+      "lesson": "9.5",
+      "type": "basic",
+      "tags": ["cpp", "input", "failure-detection"],
+      "front": "How do you detect if a prior std::cin extraction failed?",
+      "back": "Check if (!std::cin) or if (std::cin.fail()). Both test if the previous extraction was unsuccessful.",
+      "source": "9.5 - std::cin and handling invalid input",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch9_5_009",
+      "lesson": "9.5",
+      "type": "basic",
+      "tags": ["cpp", "input", "gotchas"],
+      "front": "What happens if you call std::cin.ignore() while std::cin is in failure mode?",
+      "back": "It will silently fail and do nothing. You must call std::cin.clear() first to put std::cin back in normal operation mode.",
+      "source": "9.5 - std::cin and handling invalid input",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch9_5_010",
+      "lesson": "9.5",
+      "type": "code",
+      "tags": ["cpp", "input", "validation-pattern"],
+      "question": "What pattern does this function implement?",
+      "code": "double getDouble()\n{\n    while (true)\n    {\n        std::cout &lt;&lt; \"Enter a number: \";\n        double x{};\n        std::cin &gt;&gt; x;\n        \n        if (!std::cin)\n        {\n            std::cin.clear();\n            ignoreLine();\n            continue;\n        }\n        \n        ignoreLine();\n        return x;\n    }\n}",
+      "answer": "Input validation loop: keeps asking until valid input is entered.",
+      "explanation": "This function loops until the user enters valid input. If extraction fails, it clears the error state, removes bad input, and tries again. If successful, it removes any extraneous input and returns the value.",
+      "source": "9.5 - std::cin and handling invalid input",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch9_5_011",
+      "lesson": "9.5",
+      "type": "cloze",
+      "tags": ["cpp", "input", "eof"],
+      "text": "In C++, EOF is an {{c1::error state}}, not a character. When std::cin encounters EOF and the input stream may be {{c2::disconnected}}, you should typically {{c3::std::exit(0)}} to terminate the program.",
+      "source": "9.5 - std::cin and handling invalid input",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch9_5_012",
+      "lesson": "9.5",
+      "type": "basic",
+      "tags": ["cpp", "input", "eof"],
+      "front": "How do you detect if the user entered an EOF character?",
+      "back": "Check if (std::cin.eof()) returns true after a failed extraction.",
+      "source": "9.5 - std::cin and handling invalid input",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch9_5_013",
+      "lesson": "9.5",
+      "type": "code",
+      "tags": ["cpp", "input", "helper-functions"],
+      "question": "What does this helper function do?",
+      "code": "bool hasUnextractedInput()\n{\n    return !std::cin.eof() &amp;&amp; std::cin.peek() != '\\n';\n}",
+      "answer": "Returns true if there is unextracted input (other than newline) remaining in std::cin's buffer.",
+      "explanation": "This checks if we've extracted all input from the current line. If not at EOF and the next character isn't newline, there's extraneous input.",
+      "source": "9.5 - std::cin and handling invalid input",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch9_5_014",
+      "lesson": "9.5",
+      "type": "basic",
+      "tags": ["cpp", "input", "overflow"],
+      "front": "What happens when you extract a value that's too large for a numeric type (e.g., 40000 into std::int16_t)?",
+      "back": "std::cin goes into failure mode and assigns the closest in-range value to the variable (e.g., 32767 for std::int16_t). This should be handled the same as other extraction failures.",
+      "source": "9.5 - std::cin and handling invalid input",
+      "difficulty": "medium"
+    }
+  ]
+}

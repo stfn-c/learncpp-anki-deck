@@ -1,0 +1,239 @@
+{
+  "chapter": "Chapter 13",
+  "chapter_title": "Compound Types: Enums and Structs",
+  "lesson": "13.10",
+  "lesson_title": "13.10 — Passing and returning structs",
+  "total_cards": 16,
+  "cards": [
+    {
+      "id": "ch13_10_001",
+      "lesson": "13.10",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "struct",
+        "functions"
+      ],
+      "front": "Can you pass structs to functions?",
+      "back": "Yes. Structs can be passed by value, reference, or const reference, just like fundamental types.",
+      "source": "13.10 — Passing and returning structs",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_10_002",
+      "lesson": "13.10",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "struct",
+        "functions",
+        "best-practices"
+      ],
+      "text": "For read-only struct parameters, prefer passing by {{c1::const reference}} to avoid {{c2::copying}}.",
+      "source": "13.10 — Passing and returning structs",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_10_003",
+      "lesson": "13.10",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "struct",
+        "functions"
+      ],
+      "question": "What parameter passing method is used?",
+      "code": "void print(const Employee&amp; e) {\n  std::cout &lt;&lt; e.id;\n}",
+      "answer": "Pass by const reference",
+      "explanation": "Efficient (no copy) and safe (can't modify).",
+      "source": "13.10 — Passing and returning structs",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_10_004",
+      "lesson": "13.10",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "struct",
+        "functions"
+      ],
+      "front": "Can functions return structs?",
+      "back": "Yes. Functions can return structs by value, allowing you to return multiple related values together.",
+      "source": "13.10 — Passing and returning structs",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_10_005",
+      "lesson": "13.10",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "struct",
+        "functions"
+      ],
+      "question": "What does this function return?",
+      "code": "Point makePoint(int x, int y) {\n  return { x, y };\n}",
+      "answer": "Returns a Point struct initialized with the given x and y values.",
+      "explanation": "Aggregate initialization in return statement creates struct.",
+      "source": "13.10 — Passing and returning structs",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_10_006",
+      "lesson": "13.10",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "struct",
+        "functions"
+      ],
+      "text": "To modify a struct parameter, pass by {{c1::non-const reference}}: void update(Employee{{c2::&amp;}} e)",
+      "source": "13.10 — Passing and returning structs",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_10_007",
+      "lesson": "13.10",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "struct",
+        "functions",
+        "best-practices"
+      ],
+      "front": "When should you pass structs by value vs by reference?",
+      "back": "<ul><li><strong>By value:</strong> Small structs (2-3 scalars), want a copy</li><li><strong>By const ref:</strong> Large structs, read-only access</li><li><strong>By ref:</strong> Need to modify the struct</li></ul>",
+      "source": "13.10 — Passing and returning structs",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_10_008",
+      "lesson": "13.10",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "struct",
+        "functions"
+      ],
+      "question": "What's the benefit of this return style?",
+      "code": "Employee createEmployee() {\n  return { 14, 32, 60000.0 };\n}",
+      "answer": "Returns multiple related values in a single struct without needing output parameters.",
+      "explanation": "Cleaner than multiple output parameters or std::pair/tuple.",
+      "source": "13.10 — Passing and returning structs",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_10_009",
+      "lesson": "13.10",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "struct",
+        "functions"
+      ],
+      "front": "What happens when you return a struct by value from a function?",
+      "back": "The struct is typically returned via copy elision (RVO), avoiding unnecessary copies. Modern C++ optimizes this efficiently.",
+      "source": "13.10 — Passing and returning structs",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_10_010",
+      "lesson": "13.10",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "struct",
+        "functions",
+        "best-practices"
+      ],
+      "concept": "Using structs for multiple return values",
+      "explanation": "Structs provide clean multiple return values:<ul><li>More readable than std::pair/tuple</li><li>Self-documenting with named members</li><li>Type-safe and compiler-checked</li><li>Efficient with RVO</li></ul>Better than output parameters.",
+      "examples": [
+        "struct Result { bool success; int value; };",
+        "Result compute() { return { true, 42 }; }",
+        "auto [ok, val] = compute();  // C++17 structured binding"
+      ],
+      "source": "13.10 — Passing and returning structs",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_10_011",
+      "lesson": "13.10",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "struct",
+        "best-practices"
+      ],
+      "front": "Why prefer structs over std::pair for multiple return values?",
+      "back": "Structs have named members (self-documenting) while std::pair uses generic first/second, making code less clear.",
+      "source": "13.10 — Passing and returning structs",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_10_012",
+      "lesson": "13.10",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "struct",
+        "functions"
+      ],
+      "text": "For large read-only structs, pass by {{c1::const reference}} to avoid {{c2::copying overhead}}.",
+      "source": "13.10 — Passing and returning structs",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_10_013",
+      "lesson": "13.10",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "struct",
+        "functions"
+      ],
+      "text": "To modify a struct parameter, pass by {{c1::non-const reference}}: void update(Employee{{c2::&amp;}} e)",
+      "source": "13.10 — Passing and returning structs",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_10_014",
+      "lesson": "13.10",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "struct"
+      ],
+      "text": "Functions can return structs by {{c1::value}}, efficiently using {{c2::RVO}} (Return Value Optimization).",
+      "source": "13.10 — Passing and returning structs",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_10_015",
+      "lesson": "13.10",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "struct",
+        "functions"
+      ],
+      "text": "For large read-only structs, pass by {{c1::const reference}} to avoid {{c2::copying overhead}}.",
+      "source": "13.10 — Passing and returning structs",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_10_016",
+      "lesson": "13.10",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "struct",
+        "functions"
+      ],
+      "text": "To modify a struct parameter, pass by {{c1::non-const reference}}: void update(Employee{{c2::&amp;}} e)",
+      "source": "13.10 — Passing and returning structs",
+      "difficulty": "easy"
+    }
+  ]
+}

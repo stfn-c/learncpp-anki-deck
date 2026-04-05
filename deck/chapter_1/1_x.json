@@ -1,0 +1,137 @@
+{
+  "chapter": "Chapter 1",
+  "chapter_title": "C++ Basics: Functions and Files",
+  "lesson": "1.x",
+  "lesson_title": "Chapter 1 summary and quiz",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch1_x_001",
+      "lesson": "1.x",
+      "type": "cloze",
+      "tags": ["cpp", "fundamentals", "review"],
+      "text": "A {{c1::statement}} is an instruction that tells the program to perform an action. Most statements end with a {{c2::semicolon}}.",
+      "source": "1.x - Chapter 1 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_x_002",
+      "lesson": "1.x",
+      "type": "cloze",
+      "tags": ["cpp", "functions", "review"],
+      "text": "A {{c1::function}} is a collection of statements that execute sequentially. Every C++ program must have a function called {{c2::main}}.",
+      "source": "1.x - Chapter 1 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_x_003",
+      "lesson": "1.x",
+      "type": "cloze",
+      "tags": ["cpp", "comments", "review"],
+      "text": "Single-line comments start with {{c1:://}} and multi-line comments are enclosed in {{c2::/*}} and {{c3::*/}}.",
+      "source": "1.x - Chapter 1 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_x_004",
+      "lesson": "1.x",
+      "type": "cloze",
+      "tags": ["cpp", "variables", "review"],
+      "text": "A {{c1::variable}} is a named region of memory. Variables must be {{c2::defined}} before use, and should be {{c3::initialized}} when defined.",
+      "source": "1.x - Chapter 1 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_x_005",
+      "lesson": "1.x",
+      "type": "concept",
+      "tags": ["cpp", "initialization", "review"],
+      "concept": "The main initialization forms in modern C++",
+      "explanation": "Modern C++ has several initialization forms, with list initialization (brace initialization) being preferred:<ul><li>Copy initialization: <code>int x = 5;</code></li><li>Direct initialization: <code>int x(5);</code></li><li>List initialization: <code>int x{5};</code> (preferred)</li><li>Value initialization: <code>int x{};</code> (initializes to 0)</li></ul>",
+      "examples": [
+        "int width{5};     // Preferred: list initialization",
+        "int height{};     // Value initialization (0)",
+        "int depth = 5;    // Copy initialization (older style)"
+      ],
+      "source": "1.x - Chapter 1 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch1_x_006",
+      "lesson": "1.x",
+      "type": "cloze",
+      "tags": ["cpp", "iostream", "review"],
+      "text": "Use {{c1::std::cout}} and {{c2::&lt;&lt;}} to output to console. Use {{c3::std::cin}} and {{c4::&gt;&gt;}} to read from keyboard.",
+      "source": "1.x - Chapter 1 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_x_007",
+      "lesson": "1.x",
+      "type": "basic",
+      "tags": ["cpp", "undefined-behavior", "review"],
+      "front": "What are the three main ways to avoid undefined behavior from uninitialized variables?",
+      "back": "<ul><li>1. Always initialize variables when defining them</li><li>2. Use value initialization (empty braces) if you don't know the value yet</li><li>3. Enable compiler warnings to catch uninitialized variable use</li></ul>",
+      "source": "1.x - Chapter 1 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch1_x_008",
+      "lesson": "1.x",
+      "type": "concept",
+      "tags": ["cpp", "identifiers", "review"],
+      "concept": "Rules and best practices for identifier names",
+      "explanation": "<strong>Rules (must follow):</strong><ul><li>Can only contain letters, numbers, underscores</li><li>Cannot start with number</li><li>Cannot be a keyword</li></ul><strong>Best practices:</strong><ul><li>Use descriptive names</li><li>Start variables with lowercase</li><li>Avoid leading underscores</li><li>Be consistent with naming style</li></ul>",
+      "examples": [
+        "int studentCount;  // Good",
+        "int x;             // Bad: not descriptive",
+        "int 2count;        // Error: starts with number"
+      ],
+      "source": "1.x - Chapter 1 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch1_x_009",
+      "lesson": "1.x",
+      "type": "cloze",
+      "tags": ["cpp", "literals", "review"],
+      "text": "A {{c1::literal}} is a fixed value inserted into source code, like {{c2::5}}, {{c3::3.14}}, or {{c4::\"Hello\"}}.",
+      "source": "1.x - Chapter 1 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_x_010",
+      "lesson": "1.x",
+      "type": "cloze",
+      "tags": ["cpp", "operators", "review"],
+      "text": "An {{c1::operator}} is a symbol that performs an operation. Operators can be {{c2::unary}} (one operand), {{c3::binary}} (two operands), or {{c4::ternary}} (three operands).",
+      "source": "1.x - Chapter 1 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_x_011",
+      "lesson": "1.x",
+      "type": "basic",
+      "tags": ["cpp", "expressions", "review"],
+      "front": "What is an expression and what does it produce?",
+      "back": "An expression is a combination of literals, variables, operators, and function calls that is evaluated to produce a single value (called the result).",
+      "source": "1.x - Chapter 1 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_x_012",
+      "lesson": "1.x",
+      "type": "concept",
+      "tags": ["cpp", "best-practices", "review"],
+      "concept": "Key best practices from Chapter 1",
+      "explanation": "Essential practices for writing good C++ code:<ul><li>Always initialize variables when defining them</li><li>Use list initialization (braces) for initialization</li><li>Write one statement per line for readability</li><li>Use descriptive identifier names</li><li>Add comments to explain <em>why</em>, not <em>what</em></li><li>Format code consistently with proper indentation</li><li>Compile and test frequently (incremental development)</li><li>Enable compiler warnings</li></ul>",
+      "examples": [
+        "int count{0};           // Good initialization",
+        "// Calculate tax (why)  // Good comment",
+        "Compile after each small change"
+      ],
+      "source": "1.x - Chapter 1 summary and quiz",
+      "difficulty": "medium"
+    }
+  ]
+}

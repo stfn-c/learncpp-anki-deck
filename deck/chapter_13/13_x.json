@@ -1,0 +1,175 @@
+{
+  "chapter": "Chapter 13",
+  "chapter_title": "Compound Types: Enums and Structs",
+  "lesson": "13.x",
+  "lesson_title": "13.x — Chapter 13 summary and quiz",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch13_x_001",
+      "lesson": "13.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "review",
+        "types"
+      ],
+      "front": "What are the two main categories of program-defined types covered in Chapter 13?",
+      "back": "<ul><li><strong>Enumerations:</strong> Named symbolic constants (enum, enum class)</li><li><strong>Structs/Classes:</strong> Aggregate types with multiple members</li></ul>",
+      "source": "13.x — Chapter 13 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_x_002",
+      "lesson": "13.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "review",
+        "best-practices"
+      ],
+      "text": "Prefer {{c1::enum class}} over unscoped enum, and prefer {{c2::structs with default member initialization}} to avoid uninitialized members.",
+      "source": "13.x — Chapter 13 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_x_003",
+      "lesson": "13.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "review",
+        "enum"
+      ],
+      "front": "What's the key difference between enum and enum class?",
+      "back": "enum class is scoped (enumerators don't pollute namespace) and doesn't implicitly convert to int, providing better type safety.",
+      "source": "13.x — Chapter 13 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_x_004",
+      "lesson": "13.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "review",
+        "struct"
+      ],
+      "front": "What are the three ways to initialize struct members?",
+      "back": "<ul><li>Aggregate initialization: { val1, val2 }</li><li>Designated initializers (C++20): { .member = val }</li><li>Default member initialization: in struct definition</li></ul>",
+      "source": "13.x — Chapter 13 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_x_005",
+      "lesson": "13.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "review",
+        "operators"
+      ],
+      "text": "Use {{c1::.}} (dot) for objects/references, and {{c2::-&gt;}} (arrow) for pointers when accessing struct members.",
+      "source": "13.x — Chapter 13 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_x_006",
+      "lesson": "13.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "review",
+        "templates"
+      ],
+      "front": "What are the two template-related features that reduce boilerplate?",
+      "back": "<ul><li><strong>CTAD (C++17):</strong> Deduces template arguments from initializers</li><li><strong>Alias templates:</strong> Create shortcuts for complex template types</li></ul>",
+      "source": "13.x — Chapter 13 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_x_007",
+      "lesson": "13.x",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "review",
+        "best-practices"
+      ],
+      "concept": "Chapter 13 key best practices",
+      "explanation": "Main takeaways:<ul><li>Use enum class for type-safe enumerations</li><li>Always initialize struct members</li><li>Pass large structs by const reference</li><li>Use templates for type-safe generic code</li><li>Leverage CTAD and alias templates for cleaner code</li></ul>",
+      "examples": [
+        "enum class Color { red };",
+        "struct Point { int x = 0; int y = 0; };",
+        "void print(const Point&amp; p);",
+        "template&lt;typename T&gt; struct Box { T val; };"
+      ],
+      "source": "13.x — Chapter 13 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_x_008",
+      "lesson": "13.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "review",
+        "struct"
+      ],
+      "front": "How do you return multiple values from a function idiomatically?",
+      "back": "Return a struct with named members. More readable than std::pair/tuple, and efficient with RVO.",
+      "source": "13.x — Chapter 13 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_x_009",
+      "lesson": "13.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "review",
+        "io"
+      ],
+      "text": "To enable custom I/O for types, overload operators {{c1::&lt;&lt;}} (output) and {{c2::&gt;&gt;}} (input).",
+      "source": "13.x — Chapter 13 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_x_010",
+      "lesson": "13.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "review"
+      ],
+      "text": "The two main program-defined types are {{c1::enumerations}} (named constants) and {{c2::structs/classes}} (aggregate types).",
+      "source": "13.x — Chapter 13 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_x_011",
+      "lesson": "13.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "review",
+        "initialization"
+      ],
+      "text": "Three struct initialization methods: {{c1::aggregate}} initialization ({ val1, val2 }), {{c2::designated}} initializers (C++20), and {{c3::default member}} initialization.",
+      "source": "13.x — Chapter 13 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_x_012",
+      "lesson": "13.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "review"
+      ],
+      "text": "The two main program-defined types are {{c1::enumerations}} (named constants) and {{c2::structs/classes}} (aggregate types).",
+      "source": "13.x — Chapter 13 summary and quiz",
+      "difficulty": "easy"
+    }
+  ]
+}

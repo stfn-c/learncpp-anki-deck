@@ -1,0 +1,103 @@
+{
+  "chapter": "Chapter 12",
+  "chapter_title": "Compound Types: References and Pointers",
+  "lesson": "12.1",
+  "lesson_title": "Introduction to compound data types",
+  "total_cards": 7,
+  "cards": [
+    {
+      "id": "ch12_1_001",
+      "lesson": "12.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "types",
+        "fundamentals"
+      ],
+      "text": "{{c1::Compound data types}} (also called composite data types) are types that are defined in terms of {{c2::other existing data types}}.",
+      "source": "12.1 - Introduction to compound data types",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_1_002",
+      "lesson": "12.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "types",
+        "fundamentals"
+      ],
+      "front": "What are the two main categories of data types in C++?",
+      "back": "Fundamental types and compound types. Every data type falls into one of these two categories as defined by the C++ standard.",
+      "source": "12.1 - Introduction to compound data types",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_1_003",
+      "lesson": "12.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "types",
+        "classes"
+      ],
+      "text": "A {{c1::class type}} is a type that is a {{c2::struct}}, {{c3::class}}, or {{c4::union}}.",
+      "source": "12.1 - Introduction to compound data types",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_1_004",
+      "lesson": "12.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "functions",
+        "types"
+      ],
+      "front": "Is a function a compound type or fundamental type?",
+      "back": "A function is a compound type. For example, a function void doSomething(int x, double y) has type void(int, double), which is composed of fundamental types.",
+      "source": "12.1 - Introduction to compound data types",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_1_005",
+      "lesson": "12.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "string",
+        "types"
+      ],
+      "front": "What kind of type is std::string?",
+      "back": "std::string is a class type (compound type), not a fundamental type.",
+      "source": "12.1 - Introduction to compound data types",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_1_007",
+      "lesson": "12.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "types",
+        "pointers"
+      ],
+      "text": "Pointer types include pointers to {{c1::objects}}, pointers to {{c2::functions}}, and pointers to {{c3::members}}.",
+      "source": "12.1 - Introduction to compound data types",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_1_008",
+      "lesson": "12.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "types",
+        "references"
+      ],
+      "text": "Reference types in C++ include {{c1::lvalue}} references and {{c2::rvalue}} references.",
+      "source": "12.1 - Introduction to compound data types",
+      "difficulty": "easy"
+    }
+  ]
+}

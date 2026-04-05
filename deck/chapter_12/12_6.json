@@ -1,0 +1,152 @@
+{
+  "chapter": "Chapter 12",
+  "chapter_title": "Compound Types: References and Pointers",
+  "lesson": "12.6",
+  "lesson_title": "Pass by const lvalue reference",
+  "total_cards": 9,
+  "cards": [
+    {
+      "id": "ch12_6_001",
+      "lesson": "12.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "references",
+        "const",
+        "functions",
+        "syntax"
+      ],
+      "text": "Pass by const reference syntax: {{c1::void func(const int&amp; x)}}. This avoids {{c2::copying}} and prevents {{c3::modification}}.",
+      "source": "12.6 - Pass by const lvalue reference",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_6_002",
+      "lesson": "12.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "references",
+        "const",
+        "best-practices"
+      ],
+      "front": "When should you prefer pass by const reference over pass by non-const reference?",
+      "back": "Favor pass by const reference in most cases, unless you specifically need the function to modify the argument. It provides safety while maintaining efficiency.",
+      "source": "12.6 - Pass by const lvalue reference",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_6_003",
+      "lesson": "12.6",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "references",
+        "const",
+        "functions"
+      ],
+      "question": "Which function calls are valid?",
+      "code": "void print(const int&amp; x) { std::cout &lt;&lt; x; }<br><br>int a = 5;<br>const int b = 10;<br>print(a);    // 1<br>print(b);    // 2<br>print(15);   // 3",
+      "answer": "All three calls are valid.",
+      "explanation": "Const references can bind to modifiable lvalues (a), non-modifiable lvalues (b), and rvalues (15).",
+      "source": "12.6 - Pass by const lvalue reference",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_6_004",
+      "lesson": "12.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "references",
+        "const",
+        "functions"
+      ],
+      "front": "What two benefits does pass by const reference provide?",
+      "back": "1) Avoids making a copy of the argument (efficient for large objects)<br>2) Guarantees that the function cannot modify the value being referenced (safe)",
+      "source": "12.6 - Pass by const lvalue reference",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_6_005",
+      "lesson": "12.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "references",
+        "const",
+        "best-practices"
+      ],
+      "text": "For {{c1::expensive-to-copy}} types (like std::string or std::vector), favor passing by {{c2::const reference}} over passing by value when the function doesn't need to modify the argument.",
+      "source": "12.6 - Pass by const lvalue reference",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_6_006",
+      "lesson": "12.6",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "references",
+        "const",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this code?",
+      "code": "void addOne(const int&amp; x) {<br>    ++x;  // error<br>}",
+      "answer": "Cannot modify a value through a const reference. The parameter is const, so x cannot be incremented.",
+      "explanation": "Const references are read-only. To modify the parameter, use a non-const reference.",
+      "source": "12.6 - Pass by const lvalue reference",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_6_007",
+      "lesson": "12.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "references",
+        "const",
+        "performance"
+      ],
+      "front": "Should you pass fundamental types (int, double, char) by const reference?",
+      "back": "No. For fundamental types, pass by value is typically as fast or faster than pass by const reference. Use pass by const reference for expensive-to-copy types.",
+      "source": "12.6 - Pass by const lvalue reference",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_6_008",
+      "lesson": "12.6",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "references",
+        "const",
+        "best-practices"
+      ],
+      "concept": "When to use pass by const reference",
+      "explanation": "Use pass by const reference when:<ul><li>Passing expensive-to-copy types (strings, vectors, classes)</li><li>You don't need to modify the argument</li><li>You want to accept both lvalues and rvalues</li></ul>Don't use for fundamental types - use pass by value instead.",
+      "examples": [
+        "void print(const std::string& s);     // Good: avoid copy",
+        "void process(const std::vector&lt;int&gt;& v);  // Good: avoid copy",
+        "void calc(const int& x);              // Bad: just use int x",
+        "void func(int x);                     // Good: fundamentals by value"
+      ],
+      "source": "12.6 - Pass by const lvalue reference",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_6_009",
+      "lesson": "12.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "references",
+        "const",
+        "best-practices"
+      ],
+      "text": "Pass by const reference is ideal for {{c1::expensive-to-copy}} types like std::{{c2::string}} and std::{{c3::vector}}.",
+      "source": "12.6 - Pass by const lvalue reference",
+      "difficulty": "easy"
+    }
+  ]
+}

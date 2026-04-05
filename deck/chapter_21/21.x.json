@@ -1,0 +1,121 @@
+{
+  "chapter": "Chapter 21",
+  "chapter_title": "Operator Overloading",
+  "lesson": "21.x",
+  "lesson_title": "Chapter 21 summary and quiz",
+  "total_cards": 8,
+  "cards": [
+    {
+      "id": "ch21_x_001",
+      "lesson": "21.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "summary"
+      ],
+      "text": "Operators that must be members: {{c1::=}}, {{c2::[]}}, {{c3::()}}, and {{c4::-&gt;}}.",
+      "source": "21.x - Chapter summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_x_002",
+      "lesson": "21.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "summary"
+      ],
+      "text": "Operators that should be friends: {{c1::arithmetic}} (+, -, *, /), {{c2::comparison}} (==, !=, &lt;, etc.), and {{c3::I/O}} (&lt;&lt;, &gt;&gt;).",
+      "source": "21.x - Chapter summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_x_003",
+      "lesson": "21.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "summary"
+      ],
+      "front": "What operators should return *this by reference?",
+      "back": "Compound assignment operators (+=, -=, *=, /=), assignment operator (=), and prefix increment/decrement (++x, --x). This enables chaining and matches built-in behavior.",
+      "source": "21.x - Chapter summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_x_004",
+      "lesson": "21.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "summary"
+      ],
+      "front": "What operators should return by value?",
+      "back": "Arithmetic operators (+, -, *, /), postfix increment/decrement (x++, x--), and other operators that create new objects. They return temporary values, not references.",
+      "source": "21.x - Chapter summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_x_005",
+      "lesson": "21.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "summary"
+      ],
+      "text": "To enable deep copying for classes with dynamic memory: implement {{c1::copy constructor}}, {{c2::copy assignment}}, and {{c3::destructor}} (Rule of Three).",
+      "source": "21.x - Chapter summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_x_006",
+      "lesson": "21.x",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "summary"
+      ],
+      "concept": "Quick reference: Operator overloading patterns",
+      "explanation": "Common patterns:<ul><li><b>Arithmetic (+):</b> Friend, const ref params, return by value</li><li><b>Compound (+=):</b> Member, modify *this, return *this&amp;</li><li><b>Comparison (==):</b> Friend, const ref params, return bool</li><li><b>I/O (&lt;&lt;):</b> Friend, return stream ref</li><li><b>Assignment (=):</b> Member, check self-assign, return *this&amp;</li><li><b>Subscript ([]):</b> Member, return ref, provide const version</li></ul>",
+      "examples": [
+        "friend T operator+(const T&amp; a, const T&amp; b);",
+        "T&amp; operator+=(const T&amp; rhs) { /* modify */ return *this; }"
+      ],
+      "source": "21.x - Chapter summary",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch21_x_007",
+      "lesson": "21.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "summary"
+      ],
+      "front": "What's the Rule of Three/Five in C++?",
+      "back": "If you define a destructor, copy constructor, or copy assignment, you should define all three (Rule of 3). In modern C++, also define move constructor and move assignment (Rule of 5). Or follow Rule of Zero by using smart pointers.",
+      "source": "21.x - Chapter summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_x_008",
+      "lesson": "21.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "summary"
+      ],
+      "text": "Prefix ++: return {{c1::*this}} by {{c2::reference}}.<br>Postfix ++: return {{c3::old value}} by {{c4::value}} (requires copy).",
+      "source": "21.x - Chapter summary",
+      "difficulty": "medium"
+    }
+  ]
+}

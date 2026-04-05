@@ -1,0 +1,86 @@
+{
+  "chapter": "Chapter 5",
+  "chapter_title": "Constants and Strings",
+  "lesson": "5.x",
+  "lesson_title": "Chapter 5 summary and quiz",
+  "total_cards": 5,
+  "cards": [
+    {
+      "id": "ch5_5_x_001",
+      "lesson": "5.x",
+      "type": "cloze",
+      "text": "Chapter 5 summary: Use {{c1::constexpr}} for compile-time constants and {{c2::const}} for runtime constants.",
+      "tags": [
+        "cpp",
+        "const",
+        "constexpr",
+        "summary"
+      ],
+      "source": "5.x - Chapter 5 summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch5_5_x_002",
+      "lesson": "5.x",
+      "type": "cloze",
+      "text": "For read-only string function parameters, prefer {{c1::std::string_view}} over {{c2::const std::string&amp;}}.",
+      "tags": [
+        "cpp",
+        "string_view",
+        "best-practices",
+        "summary"
+      ],
+      "source": "5.x - Chapter 5 summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch5_5_x_003",
+      "lesson": "5.x",
+      "type": "basic",
+      "front": "What are the three types of constants covered in Chapter 5?",
+      "back": "<ul><li>Literals (fixed values in code)</li><li>const variables (runtime or compile-time)</li><li>constexpr variables (guaranteed compile-time)</li></ul>",
+      "tags": [
+        "cpp",
+        "const",
+        "constexpr",
+        "literals",
+        "summary"
+      ],
+      "source": "5.x - Chapter 5 summary",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch5_5_x_004",
+      "lesson": "5.x",
+      "type": "basic",
+      "front": "What are the key differences between std::string and std::string_view?",
+      "back": "<ul><li>std::string: owns the string data, can modify</li><li>std::string_view: read-only view, doesn't own data, lightweight</li></ul>Use string for storage, string_view for parameters.",
+      "tags": [
+        "cpp",
+        "string",
+        "string_view",
+        "summary"
+      ],
+      "source": "5.x - Chapter 5 summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch5_5_x_005",
+      "lesson": "5.x",
+      "type": "code",
+      "question": "Choose the best type for each variable:",
+      "code": "// 1. Max students in class (known at compile-time)\n// 2. User's age (from input)\n// 3. Pi (mathematical constant)\n// 4. Today's date (changes)",
+      "answer": "1. constexpr int maxStudents&#123; 30 &#125;;<br>2. const int age&#123; getAge() &#125;;<br>3. constexpr double pi&#123; 3.14159 &#125;;<br>4. std::string date&#123; getCurrentDate() &#125;;",
+      "explanation": "Use constexpr for compile-time constants, const for runtime constants, and regular variables for values that change.",
+      "tags": [
+        "cpp",
+        "const",
+        "constexpr",
+        "best-practices",
+        "summary"
+      ],
+      "source": "5.x - Chapter 5 summary",
+      "difficulty": "hard"
+    }
+  ]
+}

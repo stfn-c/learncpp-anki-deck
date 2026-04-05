@@ -1,0 +1,107 @@
+{
+  "chapter": "Chapter 13",
+  "chapter_title": "Compound Types: Enums and Structs",
+  "lesson": "13.y",
+  "lesson_title": "13.y — Using a language reference",
+  "total_cards": 7,
+  "cards": [
+    {
+      "id": "ch13_y_001",
+      "lesson": "13.y",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "documentation",
+        "resources"
+      ],
+      "front": "What is the most comprehensive online C++ reference?",
+      "back": "cppreference.com - comprehensive, accurate, covers all C++ versions",
+      "source": "13.y — Using a language reference",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_y_002",
+      "lesson": "13.y",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "documentation"
+      ],
+      "front": "What are the two main sections of cppreference.com?",
+      "back": "<ul><li><strong>Language:</strong> C++ syntax, keywords, concepts</li><li><strong>Standard library:</strong> STL containers, algorithms, utilities</li></ul>",
+      "source": "13.y — Using a language reference",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_y_003",
+      "lesson": "13.y",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "documentation",
+        "best-practices"
+      ],
+      "front": "What should you look for when reading C++ reference documentation?",
+      "back": "<ul><li>Syntax and parameters</li><li>Return type/value</li><li>Since which C++ version (C++11, C++17, etc.)</li><li>Example code</li><li>Related functions</li></ul>",
+      "source": "13.y — Using a language reference",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_y_004",
+      "lesson": "13.y",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "documentation"
+      ],
+      "text": "When using C++ references, pay attention to {{c1::which C++ standard}} a feature requires (C++11, C++14, C++17, C++20, etc.).",
+      "source": "13.y — Using a language reference",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_y_005",
+      "lesson": "13.y",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "documentation",
+        "resources"
+      ],
+      "front": "Besides cppreference.com, what's another official C++ resource?",
+      "back": "The C++ standard itself, though it's more technical and harder to read than cppreference.",
+      "source": "13.y — Using a language reference",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_y_006",
+      "lesson": "13.y",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "documentation",
+        "best-practices"
+      ],
+      "concept": "Effective use of C++ documentation",
+      "explanation": "Tips for using C++ references:<ul><li>Start with examples, then read details</li><li>Check C++ version requirements</li><li>Look for \"Notes\" and \"Possible implementation\" sections</li><li>Use compiler documentation for extensions</li><li>Verify with actual code tests</li></ul>",
+      "examples": [
+        "// cppreference.com for standard library",
+        "// compiler docs for platform-specific",
+        "// Try example code to understand behavior"
+      ],
+      "source": "13.y — Using a language reference",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_y_007",
+      "lesson": "13.y",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "documentation"
+      ],
+      "text": "The most comprehensive C++ reference is {{c1::cppreference.com}}, covering both {{c2::language}} and {{c3::standard library}}.",
+      "source": "13.y — Using a language reference",
+      "difficulty": "easy"
+    }
+  ]
+}

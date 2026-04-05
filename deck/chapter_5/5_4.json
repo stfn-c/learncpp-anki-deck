@@ -1,0 +1,129 @@
+{
+  "chapter": "Chapter 5",
+  "chapter_title": "Constants and Strings",
+  "lesson": "5.4",
+  "lesson_title": "The as-if rule and compile-time optimization",
+  "total_cards": 8,
+  "cards": [
+    {
+      "id": "ch5_5_4_001",
+      "lesson": "5.4",
+      "type": "cloze",
+      "text": "The {{c1::as-if rule}} allows compilers to modify programs as long as observable behavior remains the same.",
+      "tags": [
+        "cpp",
+        "compiler",
+        "optimization"
+      ],
+      "source": "5.4 - The as-if rule",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch5_5_4_002",
+      "lesson": "5.4",
+      "type": "cloze",
+      "text": "When the compiler evaluates a constant expression at compile-time, it's called {{c1::constant folding}}.",
+      "tags": [
+        "cpp",
+        "compiler",
+        "optimization"
+      ],
+      "source": "5.4 - The as-if rule",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch5_5_4_003",
+      "lesson": "5.4",
+      "type": "cloze",
+      "text": "{{c1::Constant propagation}} is when the compiler replaces a constant variable with its literal value.",
+      "tags": [
+        "cpp",
+        "compiler",
+        "optimization"
+      ],
+      "source": "5.4 - The as-if rule",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch5_5_4_004",
+      "lesson": "5.4",
+      "type": "code",
+      "question": "What optimization will the compiler likely perform?",
+      "code": "int x = 3 + 4;\nstd::cout &lt;&lt; x;",
+      "answer": "Constant folding: the compiler will evaluate 3 + 4 at compile-time and replace it with 7.",
+      "explanation": "Since both operands are literals, the compiler can compute the result during compilation rather than at runtime.",
+      "tags": [
+        "cpp",
+        "compiler",
+        "optimization",
+        "constant-folding"
+      ],
+      "source": "5.4 - The as-if rule",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch5_5_4_005",
+      "lesson": "5.4",
+      "type": "code",
+      "question": "What optimization will the compiler likely perform?",
+      "code": "const int x&#123; 5 &#125;;\nint y = x * 2;",
+      "answer": "Constant propagation: the compiler will replace x with 5, then perform constant folding to compute 5 * 2 = 10 at compile-time.",
+      "explanation": "The const variable's value is known at compile-time, so the compiler can substitute and optimize.",
+      "tags": [
+        "cpp",
+        "compiler",
+        "optimization"
+      ],
+      "source": "5.4 - The as-if rule",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch5_5_4_006",
+      "lesson": "5.4",
+      "type": "basic",
+      "front": "What is the 'observable behavior' in the as-if rule?",
+      "back": "The behavior that can be observed from outside the program: input/output operations, access to volatile objects, and calls to library I/O functions.",
+      "tags": [
+        "cpp",
+        "compiler",
+        "as-if-rule"
+      ],
+      "source": "5.4 - The as-if rule",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch5_5_4_007",
+      "lesson": "5.4",
+      "type": "basic",
+      "front": "What is the benefit of compile-time optimization like constant folding?",
+      "back": "The program runs faster because the calculation is done once during compilation, not every time the program runs.",
+      "tags": [
+        "cpp",
+        "compiler",
+        "optimization",
+        "performance"
+      ],
+      "source": "5.4 - The as-if rule",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch5_5_4_008",
+      "lesson": "5.4",
+      "type": "concept",
+      "concept": "Compile-time vs runtime optimization",
+      "explanation": "Compile-time optimizations happen during compilation and result in faster executables. Runtime optimizations happen during program execution.<ul><li>Compile-time: constant folding, dead code elimination</li><li>Runtime: JIT compilation, dynamic optimization</li></ul>C++ emphasizes compile-time optimization for maximum performance.",
+      "examples": [
+        "int x = 5 + 3;  // Optimized to: int x = 8;",
+        "const int y&#123; 10 &#125;; int z = y * 2;  // Optimized to: int z = 20;"
+      ],
+      "tags": [
+        "cpp",
+        "compiler",
+        "optimization",
+        "performance"
+      ],
+      "source": "5.4 - The as-if rule",
+      "difficulty": "hard"
+    }
+  ]
+}

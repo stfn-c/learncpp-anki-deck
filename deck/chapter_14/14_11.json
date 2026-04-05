@@ -1,0 +1,137 @@
+{
+  "chapter": "Chapter 14",
+  "chapter_title": "Introduction to Classes",
+  "lesson": "14.11",
+  "lesson_title": "Default constructors and default arguments",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch14_11_001",
+      "lesson": "14.11",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "constructors"],
+      "text": "A {{c1::default constructor}} is a constructor that can be called with {{c2::no arguments}}. It either has no parameters or all parameters have default values.",
+      "source": "14.11 - Default constructors and default arguments",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_11_002",
+      "lesson": "14.11",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "constructors"],
+      "text": "If you don't provide any constructors, the compiler will generate a {{c1::implicit default constructor}} that {{c2::default-initializes}} all members.",
+      "source": "14.11 - Default constructors and default arguments",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_11_003",
+      "lesson": "14.11",
+      "type": "basic",
+      "tags": ["cpp", "classes", "constructors"],
+      "front": "What happens when you define any constructor for a class?",
+      "back": "The compiler will NOT generate an implicit default constructor. If you want a default constructor, you must explicitly define one yourself.",
+      "source": "14.11 - Default constructors and default arguments",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_11_004",
+      "lesson": "14.11",
+      "type": "code",
+      "tags": ["cpp", "classes", "constructors", "common-mistakes"],
+      "question": "What's wrong with this code?",
+      "code": "class Foo<br>{<br>public:<br>&nbsp;&nbsp;&nbsp;&nbsp;Foo(int x) { }<br>};<br><br>Foo f;  // error!",
+      "answer": "No default constructor available. Once you define any constructor, the implicit default constructor is not generated.",
+      "explanation": "Foo has a constructor that requires an int parameter. The implicit default constructor is gone, so Foo f; doesn't work. Use Foo f{5}; or add an explicit default constructor.",
+      "source": "14.11 - Default constructors and default arguments",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_11_005",
+      "lesson": "14.11",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "constructors", "syntax"],
+      "text": "To explicitly define a default constructor:<br>{{c1::ClassName()}} {{c2::= default;}}&nbsp;&nbsp;// compiler-generated<br>or<br>{{c3::ClassName()}} { }  // user-defined",
+      "source": "14.11 - Default constructors and default arguments",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_11_006",
+      "lesson": "14.11",
+      "type": "concept",
+      "tags": ["cpp", "classes", "constructors", "best-practices"],
+      "concept": "Using default arguments to create a default constructor",
+      "explanation": "You can provide default values for all constructor parameters, making it callable with no arguments. This serves as both a parameterized constructor and a default constructor.",
+      "examples": [
+        "Fraction(int num = 0, int den = 1) : m_num{num}, m_den{den} { }",
+        "Fraction f1;       // uses defaults: 0/1",
+        "Fraction f2{3};    // uses 3/1",
+        "Fraction f3{3, 4}; // uses 3/4"
+      ],
+      "source": "14.11 - Default constructors and default arguments",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_11_007",
+      "lesson": "14.11",
+      "type": "basic",
+      "tags": ["cpp", "classes", "constructors"],
+      "front": "What is the difference between = default and an empty constructor body?",
+      "back": "= default generates a compiler-provided default constructor. An empty body { } is user-provided. For most purposes they're similar, but = default may be more optimizable and works better with certain language features.",
+      "source": "14.11 - Default constructors and default arguments",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch14_11_008",
+      "lesson": "14.11",
+      "type": "code",
+      "tags": ["cpp", "classes", "constructors"],
+      "question": "How many ways can you instantiate objects from this class?",
+      "code": "class Point<br>{<br>public:<br>&nbsp;&nbsp;&nbsp;&nbsp;Point(int x = 0, int y = 0) : m_x{x}, m_y{y} { }<br>private:<br>&nbsp;&nbsp;&nbsp;&nbsp;int m_x, m_y;<br>};",
+      "answer": "Point p1;<br>Point p2{5};<br>Point p3{5, 10};<br>All three work due to default arguments.",
+      "explanation": "Default arguments make the constructor callable with 0, 1, or 2 arguments, providing flexibility.",
+      "source": "14.11 - Default constructors and default arguments",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_11_009",
+      "lesson": "14.11",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "constructors", "best-practices"],
+      "text": "Best practice: If you define any constructors for a class, consider whether the class should also have a {{c1::default constructor}}. If so, {{c2::provide one}}.",
+      "source": "14.11 - Default constructors and default arguments",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_11_010",
+      "lesson": "14.11",
+      "type": "basic",
+      "tags": ["cpp", "classes", "constructors"],
+      "front": "Can a class have both a default constructor and other constructors?",
+      "back": "Yes. You can have a default constructor (no parameters) and other constructors with parameters. This is constructor overloading.",
+      "source": "14.11 - Default constructors and default arguments",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_11_011",
+      "lesson": "14.11",
+      "type": "code",
+      "tags": ["cpp", "classes", "constructors", "common-mistakes"],
+      "question": "What's wrong with this instantiation?",
+      "code": "class Widget<br>{<br>public:<br>&nbsp;&nbsp;&nbsp;&nbsp;Widget() { }<br>};<br><br>Widget w();",
+      "answer": "Most vexing parse! Widget w(); declares a function, not a variable. Use Widget w; or Widget w{}; instead.",
+      "explanation": "C++ interprets Widget w(); as a function declaration that takes no parameters and returns a Widget. This is a famous gotcha.",
+      "source": "14.11 - Default constructors and default arguments",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch14_11_012",
+      "lesson": "14.11",
+      "type": "basic",
+      "tags": ["cpp", "classes", "constructors", "best-practices"],
+      "front": "When should you use = default for the default constructor?",
+      "back": "Use = default when you want the compiler-generated behavior and don't need to add custom initialization logic. It's clearer intent and may enable certain optimizations.",
+      "source": "14.11 - Default constructors and default arguments",
+      "difficulty": "medium"
+    }
+  ]
+}

@@ -1,0 +1,215 @@
+{
+  "chapter": "Chapter 13",
+  "chapter_title": "Compound Types: Enums and Structs",
+  "lesson": "13.12",
+  "lesson_title": "13.12 — Member selection with pointers and references",
+  "total_cards": 14,
+  "cards": [
+    {
+      "id": "ch13_12_001",
+      "lesson": "13.12",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "struct",
+        "pointers"
+      ],
+      "text": "To access members through a pointer, use the {{c1::member selection from pointer}} operator {{c2::-&gt;}}",
+      "source": "13.12 — Member selection with pointers and references",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_12_002",
+      "lesson": "13.12",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "struct",
+        "pointers"
+      ],
+      "question": "What's the output?",
+      "code": "Employee joe { 14, 32, 60000.0 };\nEmployee* ptr = &amp;joe;\nstd::cout &lt;&lt; ptr-&gt;id;",
+      "answer": "14",
+      "explanation": "ptr-&gt;id accesses id member through pointer.",
+      "source": "13.12 — Member selection with pointers and references",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_12_003",
+      "lesson": "13.12",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "struct",
+        "pointers",
+        "operators"
+      ],
+      "front": "What are the two member selection operators in C++?",
+      "back": "<ul><li><strong>.</strong> (dot) - for objects and references</li><li><strong>-&gt;</strong> (arrow) - for pointers</li></ul>",
+      "source": "13.12 — Member selection with pointers and references",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_12_004",
+      "lesson": "13.12",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "struct",
+        "pointers"
+      ],
+      "question": "Are these equivalent?",
+      "code": "Employee* ptr = &amp;joe;\nptr-&gt;id\n(*ptr).id",
+      "answer": "Yes. ptr-&gt;id is shorthand for (*ptr).id",
+      "explanation": "Arrow operator dereferences pointer and accesses member.",
+      "source": "13.12 — Member selection with pointers and references",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_12_005",
+      "lesson": "13.12",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "struct",
+        "pointers"
+      ],
+      "text": "ptr-&gt;member is equivalent to {{c1::(*ptr).member}}, where parentheses are needed due to {{c2::operator precedence}}.",
+      "source": "13.12 — Member selection with pointers and references",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_12_006",
+      "lesson": "13.12",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "struct",
+        "references"
+      ],
+      "front": "Which member selection operator do you use with references?",
+      "back": "The dot operator (.). References use the same syntax as regular objects.<br><code>ref.member</code>",
+      "source": "13.12 — Member selection with pointers and references",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_12_007",
+      "lesson": "13.12",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "struct",
+        "references"
+      ],
+      "question": "What's the correct syntax?",
+      "code": "Employee joe { 14, 32, 60000.0 };\nEmployee&amp; ref = joe;\n// Access id member?",
+      "answer": "<code>ref.id</code> (use dot, not arrow)",
+      "explanation": "References use dot operator, just like objects.",
+      "source": "13.12 — Member selection with pointers and references",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_12_008",
+      "lesson": "13.12",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "struct",
+        "pointers"
+      ],
+      "question": "What's wrong?",
+      "code": "Employee* ptr = nullptr;\nstd::cout &lt;&lt; ptr-&gt;id;",
+      "answer": "Undefined behavior: dereferencing null pointer.",
+      "explanation": "Always check pointers before using arrow operator.",
+      "source": "13.12 — Member selection with pointers and references",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_12_009",
+      "lesson": "13.12",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "struct",
+        "pointers",
+        "best-practices"
+      ],
+      "front": "Why is the arrow operator (-&gt;) useful?",
+      "back": "Provides cleaner syntax than (*ptr).member, especially with chained member access or complex expressions.",
+      "source": "13.12 — Member selection with pointers and references",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_12_010",
+      "lesson": "13.12",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "struct",
+        "pointers",
+        "operators"
+      ],
+      "concept": "Member selection operator choice",
+      "explanation": "Choose operator based on type:<ul><li><strong>Object/reference:</strong> use . (dot)</li><li><strong>Pointer:</strong> use -&gt; (arrow)</li></ul>Arrow operator is shorthand for dereference-then-access: <code>ptr-&gt;m</code> = <code>(*ptr).m</code>",
+      "examples": [
+        "Employee obj; obj.id;",
+        "Employee&amp; ref = obj; ref.id;",
+        "Employee* ptr = &amp;obj; ptr-&gt;id;",
+        "// ptr-&gt;id same as (*ptr).id"
+      ],
+      "source": "13.12 — Member selection with pointers and references",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_12_011",
+      "lesson": "13.12",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operators",
+        "precedence"
+      ],
+      "text": "The member selection operator . has {{c1::higher}} precedence than the dereference operator *, which is why {{c2::(*ptr).member}} needs parentheses.",
+      "source": "13.12 — Member selection with pointers and references",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch13_12_012",
+      "lesson": "13.12",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "struct",
+        "pointers"
+      ],
+      "text": "The {{c1::arrow}} operator (-&gt;) is shorthand for {{c2::(*ptr).member}}, used with pointers to access members.",
+      "source": "13.12 — Member selection with pointers and references",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_12_013",
+      "lesson": "13.12",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "pointers"
+      ],
+      "text": "References use the {{c1::dot}} operator (.) for member selection, the same as {{c2::objects}}.",
+      "source": "13.12 — Member selection with pointers and references",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_12_014",
+      "lesson": "13.12",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "struct",
+        "pointers"
+      ],
+      "text": "The {{c1::arrow}} operator (-&gt;) is shorthand for {{c2::(*ptr).member}}, used with pointers to access members.",
+      "source": "13.12 — Member selection with pointers and references",
+      "difficulty": "easy"
+    }
+  ]
+}

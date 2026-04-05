@@ -1,0 +1,108 @@
+{
+  "chapter": "Chapter 4",
+  "chapter_title": "Fundamental Data Types",
+  "lesson": "4.7",
+  "lesson_title": "Introduction to scientific notation",
+  "total_cards": 7,
+  "cards": [
+    {
+      "id": "ch4_7_001",
+      "lesson": "4.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "floating-point",
+        "notation"
+      ],
+      "text": "In scientific notation, a number is written as {{c1::significand}} × 10^{{c2::exponent}}.",
+      "source": "4.7 - Introduction to scientific notation",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_7_002",
+      "lesson": "4.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "floating-point",
+        "notation"
+      ],
+      "front": "Convert 42,000 to scientific notation",
+      "back": "4.2 × 10^4<br>(significand: 4.2, exponent: 4)",
+      "source": "4.7 - Introduction to scientific notation",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_7_003",
+      "lesson": "4.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "floating-point",
+        "syntax"
+      ],
+      "text": "In C++, scientific notation uses {{c1::e}} instead of × 10^: 4.2e4 means {{c2::4.2 × 10^4}}.",
+      "source": "4.7 - Introduction to scientific notation",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_7_004",
+      "lesson": "4.7",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "floating-point",
+        "syntax"
+      ],
+      "question": "What value does x hold?",
+      "code": "double x{ 1.5e-3 };",
+      "answer": "0.0015 (1.5 × 10^-3)",
+      "explanation": "The exponent -3 means move decimal point 3 places left: 1.5 → 0.0015",
+      "source": "4.7 - Introduction to scientific notation",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_7_005",
+      "lesson": "4.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "floating-point",
+        "notation"
+      ],
+      "front": "What's the difference between a positive and negative exponent in scientific notation?",
+      "back": "<ul><li>Positive exponent: move decimal right (larger number)</li><li>Negative exponent: move decimal left (smaller number)</li></ul>",
+      "source": "4.7 - Introduction to scientific notation",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_7_006",
+      "lesson": "4.7",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "floating-point",
+        "output"
+      ],
+      "question": "What might this print?",
+      "code": "double x{ 0.0000012 };\nstd::cout &lt;&lt; x;",
+      "answer": "1.2e-06 or 0.0000012",
+      "explanation": "C++ may output very small or large numbers in scientific notation automatically, but formatting depends on the output stream settings.",
+      "source": "4.7 - Introduction to scientific notation",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch4_7_007",
+      "lesson": "4.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "floating-point",
+        "best-practices"
+      ],
+      "text": "Scientific notation is useful for representing very {{c1::large}} or very {{c2::small}} numbers compactly.",
+      "source": "4.7 - Introduction to scientific notation",
+      "difficulty": "easy"
+    }
+  ]
+}

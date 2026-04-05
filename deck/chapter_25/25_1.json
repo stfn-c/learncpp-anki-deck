@@ -1,0 +1,141 @@
+{
+  "chapter": "Chapter 25",
+  "chapter_title": "Virtual Functions",
+  "lesson": "25.1",
+  "lesson_title": "Pointers and references to the base class of derived objects",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch25_1_001",
+      "lesson": "25.1",
+      "type": "cloze",
+      "tags": ["cpp", "inheritance", "pointers"],
+      "text": "When you create a derived class object, it contains {{c1::multiple parts}}: one part for {{c2::each inherited class}}, and a part for {{c3::itself}}.",
+      "source": "25.1 - Pointers and references to the base class of derived objects",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_1_002",
+      "lesson": "25.1",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "pointers"],
+      "front": "Can you set a Base pointer or reference to a Derived object in C++?",
+      "back": "Yes, this is legal. Since Derived has a Base part (is-a relationship), you can point a Base* or Base&amp; to a Derived object.",
+      "source": "25.1 - Pointers and references to the base class of derived objects",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_1_003",
+      "lesson": "25.1",
+      "type": "code",
+      "tags": ["cpp", "inheritance", "common-mistakes"],
+      "question": "What does this code output?",
+      "code": "class Base {\npublic:\n    std::string_view getName() const { return \"Base\"; }\n};\n\nclass Derived: public Base {\npublic:\n    std::string_view getName() const { return \"Derived\"; }\n};\n\nDerived derived{};\nBase* pBase{ &amp;derived };\nstd::cout &lt;&lt; pBase-&gt;getName();",
+      "answer": "Base",
+      "explanation": "Even though pBase points to a Derived object, it can only see Base members. It calls Base::getName(), not Derived::getName().",
+      "source": "25.1 - Pointers and references to the base class of derived objects",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_1_004",
+      "lesson": "25.1",
+      "type": "cloze",
+      "tags": ["cpp", "inheritance", "syntax"],
+      "text": "A Base pointer or reference can only see {{c1::members of Base}} (or any classes that Base inherited), not members of the derived class.",
+      "source": "25.1 - Pointers and references to the base class of derived objects",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_1_005",
+      "lesson": "25.1",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "best-practices"],
+      "front": "What is one advantage of using base class pointers/references with derived objects?",
+      "back": "You can write a single function that works with all derived classes, instead of writing overloaded functions for each derived type.<br><br>Example: One report(const Animal&amp;) function works for Cat, Dog, and any future Animal-derived classes.",
+      "source": "25.1 - Pointers and references to the base class of derived objects",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_1_006",
+      "lesson": "25.1",
+      "type": "code",
+      "tags": ["cpp", "inheritance", "arrays"],
+      "question": "What problem exists with this code?",
+      "code": "const Cat fred{ \"Fred\" };\nconst Dog garbo{ \"Garbo\" };\n\nconst auto animals{ std::to_array&lt;const Animal*&gt;({&amp;fred, &amp;garbo}) };\n\nfor (const auto animal : animals) {\n    std::cout &lt;&lt; animal-&gt;speak() &lt;&lt; '\\n';\n}",
+      "answer": "It calls Animal::speak() instead of Cat::speak() or Dog::speak(), because animal is a pointer to Animal.",
+      "explanation": "The base class pointer can only see Animal members, so it calls the base version of speak(), not the derived versions that would return \"Meow\" or \"Woof\".",
+      "source": "25.1 - Pointers and references to the base class of derived objects",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_1_007",
+      "lesson": "25.1",
+      "type": "cloze",
+      "tags": ["cpp", "inheritance", "polymorphism"],
+      "text": "When a Base pointer points to a Derived object and calls a function, it calls the {{c1::Base}} version of the function, not the {{c2::Derived}} version.",
+      "source": "25.1 - Pointers and references to the base class of derived objects",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_1_008",
+      "lesson": "25.1",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "arrays"],
+      "front": "What advantage does storing derived objects as base class pointers in an array provide?",
+      "back": "You can store objects of different derived types in a single array, instead of needing separate arrays for each type.<br><br>Example: std::array&lt;Animal*&gt; can hold both Cat* and Dog* objects.",
+      "source": "25.1 - Pointers and references to the base class of derived objects",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_1_009",
+      "lesson": "25.1",
+      "type": "concept",
+      "tags": ["cpp", "inheritance", "best-practices"],
+      "concept": "Why use base class references in function parameters",
+      "explanation": "Using base class references allows a single function to accept any derived type, making code more flexible and maintainable.<br><br>Without base references, you need separate overloaded functions for each derived type, which becomes unmaintainable with many derived classes.",
+      "examples": [
+        "void report(const Animal&amp; a) { }  // Works for Cat, Dog, etc.",
+        "// Instead of:",
+        "void report(const Cat&amp; c) { }",
+        "void report(const Dog&amp; d) { }",
+        "// ... one for each animal type"
+      ],
+      "source": "25.1 - Pointers and references to the base class of derived objects",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_1_010",
+      "lesson": "25.1",
+      "type": "cloze",
+      "tags": ["cpp", "inheritance", "terminology"],
+      "text": "Derived::getName() {{c1::shadows}} (or hides) Base::getName() for Derived objects, but a Base pointer cannot see the {{c2::derived}} version.",
+      "source": "25.1 - Pointers and references to the base class of derived objects",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_1_011",
+      "lesson": "25.1",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "templates"],
+      "front": "What are two issues with using a template function instead of base class references for polymorphism?",
+      "back": "<ul><li>It's not clear what type T should be (lost documentation that T is an Animal)</li><li>The function doesn't enforce that T is an Animal - it accepts any type with the required member functions</li></ul>",
+      "source": "25.1 - Pointers and references to the base class of derived objects",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch25_1_012",
+      "lesson": "25.1",
+      "type": "concept",
+      "tags": ["cpp", "inheritance", "gotchas"],
+      "concept": "The fundamental problem with base class pointers/references",
+      "explanation": "Base class pointers and references can only call the base class version of functions, not the derived class versions, even when pointing to a derived object.<br><br>This prevents polymorphic behavior and is exactly the problem that virtual functions solve.",
+      "examples": [
+        "Animal* ptr = &amp;dog;",
+        "ptr-&gt;speak();  // Calls Animal::speak(), not Dog::speak()",
+        "// Output: \"???\" instead of \"Woof\""
+      ],
+      "source": "25.1 - Pointers and references to the base class of derived objects",
+      "difficulty": "medium"
+    }
+  ]
+}

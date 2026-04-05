@@ -1,0 +1,114 @@
+{
+  "chapter": "Chapter 20",
+  "chapter_title": "Functions",
+  "lesson": "20.x",
+  "lesson_title": "Chapter 20 summary and quiz",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "ch20_x_001",
+      "lesson": "20.x",
+      "type": "concept",
+      "tags": ["cpp", "functions", "summary"],
+      "concept": "Chapter 20 key topics overview",
+      "explanation": "Chapter 20 covered advanced function topics:<ul><li>Function pointers - storing and passing functions</li><li>Stack vs heap memory management</li><li>Recursion - functions that call themselves</li><li>Command line arguments (argc, argv)</li><li>Ellipsis and why to avoid them</li><li>Lambda expressions (anonymous functions)</li><li>Lambda captures (accessing outer scope)</li></ul>",
+      "examples": [
+        "int (*funcPtr)(int) = &amp;myFunc;",
+        "auto lambda = [x](int y) { return x + y; };"
+      ],
+      "source": "20.x - Chapter 20 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch20_x_002",
+      "lesson": "20.x",
+      "type": "basic",
+      "tags": ["cpp", "function-pointers", "std-function"],
+      "front": "What is the modern C++ way to store function pointers?",
+      "back": "Use std::function&lt;returnType(params)&gt; from &lt;functional&gt; header, or auto for lambda storage. This is cleaner and safer than raw function pointer syntax.",
+      "source": "20.x - Chapter 20 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_x_003",
+      "lesson": "20.x",
+      "type": "basic",
+      "tags": ["cpp", "memory", "stack-vs-heap"],
+      "front": "What are the key differences between stack and heap memory?",
+      "back": "Stack: Fast, automatic, limited size, LIFO order<br>Heap: Slower, manual management, large size, flexible lifetime<br>Use stack by default, heap when needed for large/dynamic allocations.",
+      "source": "20.x - Chapter 20 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_x_004",
+      "lesson": "20.x",
+      "type": "cloze",
+      "tags": ["cpp", "recursion", "best-practices"],
+      "text": "Every recursive function needs a {{c1::base case}} to terminate and a {{c2::recursive case}} that moves toward the base case. Without proper base case, you get {{c3::stack overflow}}.",
+      "source": "20.x - Chapter 20 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch20_x_005",
+      "lesson": "20.x",
+      "type": "cloze",
+      "tags": ["cpp", "command-line", "syntax"],
+      "text": "Command line arguments: {{c1::argc}} is the count (including program name), {{c2::argv}} is the array of C-style strings, with {{c3::argv[0]}} being the program name.",
+      "source": "20.x - Chapter 20 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch20_x_006",
+      "lesson": "20.x",
+      "type": "basic",
+      "tags": ["cpp", "ellipsis", "best-practices"],
+      "front": "Why should you avoid ellipsis (...) in modern C++?",
+      "back": "Ellipsis has no type safety, requires manual parsing with va_list macros, and can cause undefined behavior. Use variadic templates, std::initializer_list, or function overloading instead.",
+      "source": "20.x - Chapter 20 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch20_x_007",
+      "lesson": "20.x",
+      "type": "cloze",
+      "tags": ["cpp", "lambdas", "syntax"],
+      "text": "Lambda syntax: {{c1::[captures]}}(parameters) {{c2::-&gt; returnType}} { body }. The capture clause and parameter list are required, return type is {{c3::optional}}.",
+      "source": "20.x - Chapter 20 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_x_008",
+      "lesson": "20.x",
+      "type": "basic",
+      "tags": ["cpp", "lambdas", "captures"],
+      "front": "What's the difference between [=] and [&amp;] lambda captures?",
+      "back": "[=] captures all used variables by value (makes copies)<br>[&amp;] captures all used variables by reference (can modify originals, but risky if lambda outlives variables)",
+      "source": "20.x - Chapter 20 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch20_x_009",
+      "lesson": "20.x",
+      "type": "concept",
+      "tags": ["cpp", "functions", "best-practices"],
+      "concept": "When to use each function technique",
+      "explanation": "Choose the right tool:<ul><li>Regular functions: Reusable, complex logic, multiple uses</li><li>Function pointers/std::function: Callbacks, storing functions, runtime selection</li><li>Lambdas: Short, one-off operations, closures, STL algorithms</li><li>Recursion: Tree/graph traversal, divide-and-conquer, natural subproblems</li></ul>",
+      "examples": [
+        "sort(v.begin(), v.end(), [](int a, int b){ return a &lt; b; }); // Lambda",
+        "std::function&lt;int(int)&gt; ops[] = {add, sub, mul}; // Function storage"
+      ],
+      "source": "20.x - Chapter 20 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_x_010",
+      "lesson": "20.x",
+      "type": "basic",
+      "tags": ["cpp", "lambdas", "advantages"],
+      "front": "What are the main benefits of lambdas over traditional function pointers?",
+      "back": "<ul><li>Cleaner syntax, defined at point of use</li><li>Can capture local variables (closures)</li><li>Compiler can inline more easily</li><li>Type-safe with auto deduction</li><li>No need to name simple functions</li></ul>",
+      "source": "20.x - Chapter 20 summary and quiz",
+      "difficulty": "medium"
+    }
+  ]
+}

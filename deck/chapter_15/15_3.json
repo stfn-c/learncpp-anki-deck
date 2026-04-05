@@ -1,0 +1,175 @@
+{
+  "chapter": "Chapter 15",
+  "chapter_title": "More on Classes",
+  "lesson": "15.3",
+  "lesson_title": "Nested types (member types)",
+  "total_cards": 11,
+  "cards": [
+    {
+      "id": "ch15_3_001",
+      "lesson": "15.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "nested-types"
+      ],
+      "text": "A {{c1::nested type}} (or {{c1::member type}}) is a type defined inside another type, and it follows the same {{c2::access specifiers}} as other class members.",
+      "source": "15.3 - Nested types",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch15_3_002",
+      "lesson": "15.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "nested-types",
+        "syntax"
+      ],
+      "text": "To access a public nested type from outside the class, use the {{c1::scope resolution operator}}: <code>{{c2::OuterClass::NestedType}}</code>",
+      "source": "15.3 - Nested types",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch15_3_003",
+      "lesson": "15.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "nested-types",
+        "best-practices"
+      ],
+      "text": "Nested types should be used when the type is {{c1::only used within the enclosing class}} or {{c2::tightly coupled to the enclosing class}}.",
+      "source": "15.3 - Nested types",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_3_004",
+      "lesson": "15.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "nested-types"
+      ],
+      "text": "Nested types defined in the {{c1::public}} section can be accessed from outside the class, while those in the {{c2::private}} section cannot.",
+      "source": "15.3 - Nested types",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch15_3_005",
+      "lesson": "15.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "nested-types"
+      ],
+      "text": "Common nested types include {{c1::enums}}, {{c2::type aliases}}, and {{c3::nested classes}}.",
+      "source": "15.3 - Nested types",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch15_3_006",
+      "lesson": "15.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "classes",
+        "nested-types"
+      ],
+      "front": "What types can be nested inside a class?",
+      "back": "Any type can be nested: classes, structs, enums, type aliases (using), etc.",
+      "source": "15.3 - Nested types",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch15_3_007",
+      "lesson": "15.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "classes",
+        "nested-types",
+        "syntax"
+      ],
+      "question": "How do you create a variable of the nested enum type from outside the class?",
+      "code": "class Fruit {\npublic:\n    enum class Type { apple, banana, cherry };\n};",
+      "answer": "<code>Fruit::Type myFruit = Fruit::Type::apple;</code>",
+      "explanation": "Use the scope resolution operator twice: once for the class (Fruit::) and once for the enum (Type::).",
+      "source": "15.3 - Nested types",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch15_3_008",
+      "lesson": "15.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "classes",
+        "nested-types",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this code?",
+      "code": "class Container {\nprivate:\n    enum class Status { active, inactive };\n};\n\nint main() {\n    Container::Status s = Container::Status::active;\n}",
+      "answer": "The nested enum Status is private, so it cannot be accessed from outside the class.",
+      "explanation": "Nested types follow access specifiers. Private nested types can only be used within the enclosing class.",
+      "source": "15.3 - Nested types",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_3_009",
+      "lesson": "15.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "classes",
+        "nested-types"
+      ],
+      "question": "Is this code valid?",
+      "code": "class Outer {\npublic:\n    class Inner {\n    public:\n        int m_value{};\n    };\n};\n\nint main() {\n    Outer::Inner obj;\n    obj.m_value = 5;\n}",
+      "answer": "Yes, this is valid. Inner is a public nested class, so it can be used outside Outer.",
+      "explanation": "Public nested classes can be instantiated and used from outside the enclosing class using OuterClass::InnerClass syntax.",
+      "source": "15.3 - Nested types",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_3_010",
+      "lesson": "15.3",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "classes",
+        "nested-types",
+        "best-practices"
+      ],
+      "concept": "Benefits of nested types",
+      "explanation": "Nested types provide several advantages:<ul><li>Organization: Groups related types together</li><li>Encapsulation: Can make types private to the class</li><li>Namespace management: Prevents naming conflicts</li><li>Locality: Shows the type is specifically for this class</li></ul>",
+      "examples": [
+        "class Container {",
+        "    enum class Status { empty, partial, full };  // only for Container",
+        "    Status m_status;",
+        "};"
+      ],
+      "source": "15.3 - Nested types",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_3_011",
+      "lesson": "15.3",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "classes",
+        "nested-types"
+      ],
+      "front": "nested type (member type)",
+      "back": "A type defined inside another class or struct, which follows the enclosing class's access specifiers",
+      "source": "15.3 - Nested types",
+      "difficulty": "easy"
+    }
+  ]
+}

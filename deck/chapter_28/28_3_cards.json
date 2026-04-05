@@ -1,0 +1,179 @@
+{
+  "chapter": "Chapter 28",
+  "chapter_title": "Input and Output (I/O)",
+  "lesson": "28.3",
+  "lesson_title": "Output with ostream and ios",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch28_3_001",
+      "lesson": "28.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "iostream",
+        "output"
+      ],
+      "text": "To output a single character to cout, use {{c1::std::cout.put(ch)}} or {{c2::std::cout &lt;&lt; ch}}.",
+      "source": "28.3 - Output with ostream and ios",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch28_3_002",
+      "lesson": "28.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "iostream",
+        "manipulators"
+      ],
+      "text": "To set the output field width to 10 characters, use {{c1::std::cout &lt;&lt; std::setw(10)}}. This requires {{c2::#include &lt;iomanip&gt;}}.",
+      "source": "28.3 - Output with ostream and ios",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch28_3_003",
+      "lesson": "28.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "iostream",
+        "manipulators"
+      ],
+      "front": "What is the difference between std::setw() and most other manipulators?",
+      "back": "std::setw() only affects the next output operation, while most other manipulators (like std::setprecision) remain in effect until changed.",
+      "source": "28.3 - Output with ostream and ios",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch28_3_004",
+      "lesson": "28.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "iostream",
+        "formatting"
+      ],
+      "text": "To set the fill character for padding to '*', use {{c1::std::cout.fill('*')}} or {{c2::std::cout &lt;&lt; std::setfill('*')}}.",
+      "source": "28.3 - Output with ostream and ios",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch28_3_005",
+      "lesson": "28.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "iostream",
+        "precision"
+      ],
+      "text": "To set floating-point precision to 4 digits, use {{c1::std::cout &lt;&lt; std::setprecision(4)}} or {{c2::std::cout.precision(4)}}.",
+      "source": "28.3 - Output with ostream and ios",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch28_3_006",
+      "lesson": "28.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "iostream",
+        "formatting"
+      ],
+      "question": "What does this code output?",
+      "code": "double x = 123.456789;\nstd::cout &lt;&lt; std::setprecision(3) &lt;&lt; x;",
+      "answer": "123",
+      "explanation": "By default, setprecision() sets the total number of significant digits (not decimal places). Use std::fixed to make it represent decimal places.",
+      "source": "28.3 - Output with ostream and ios",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch28_3_007",
+      "lesson": "28.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "iostream",
+        "flags"
+      ],
+      "text": "To display numbers in hexadecimal, use {{c1::std::cout &lt;&lt; std::hex}}. To return to decimal, use {{c2::std::cout &lt;&lt; std::dec}}.",
+      "source": "28.3 - Output with ostream and ios",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch28_3_008",
+      "lesson": "28.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "iostream",
+        "boolalpha"
+      ],
+      "text": "To print booleans as \"true\"/\"false\" instead of 1/0, use {{c1::std::cout &lt;&lt; std::boolalpha}}.",
+      "source": "28.3 - Output with ostream and ios",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch28_3_009",
+      "lesson": "28.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "iostream",
+        "fixed"
+      ],
+      "front": "What does std::fixed do when used with setprecision()?",
+      "back": "It makes setprecision() control the number of decimal places (after the decimal point) instead of total significant digits.",
+      "source": "28.3 - Output with ostream and ios",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch28_3_010",
+      "lesson": "28.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "iostream",
+        "alignment"
+      ],
+      "text": "The three alignment manipulators are {{c1::std::left}} (left-align), {{c2::std::right}} (right-align), and {{c3::std::internal}} (align sign/base prefix).",
+      "source": "28.3 - Output with ostream and ios",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch28_3_011",
+      "lesson": "28.3",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "iostream",
+        "best-practices"
+      ],
+      "concept": "Using iomanip manipulators vs member functions",
+      "explanation": "Manipulators (from &lt;iomanip&gt;) can be chained with &lt;&lt; for cleaner code, while member functions require separate statements. Both achieve the same result, but manipulators are preferred for readability.",
+      "examples": [
+        "std::cout &lt;&lt; std::setw(10) &lt;&lt; std::setfill('*') &lt;&lt; 42;",
+        "std::cout.width(10); std::cout.fill('*'); std::cout &lt;&lt; 42;",
+        "First approach is more concise and readable"
+      ],
+      "source": "28.3 - Output with ostream and ios",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch28_3_012",
+      "lesson": "28.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "iostream",
+        "formatting"
+      ],
+      "question": "What does this code output?",
+      "code": "std::cout &lt;&lt; std::setw(5) &lt;&lt; \"Hi\" &lt;&lt; std::setw(5) &lt;&lt; \"!\" &lt;&lt; '\\n';",
+      "answer": "\"   Hi    !\" (Hi right-aligned in 5 chars, ! right-aligned in 5 chars)",
+      "explanation": "setw() must be set before each output because it only affects the next insertion. Default alignment is right.",
+      "source": "28.3 - Output with ostream and ios",
+      "difficulty": "medium"
+    }
+  ]
+}

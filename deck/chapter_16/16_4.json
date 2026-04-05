@@ -1,0 +1,123 @@
+{
+  "chapter": "Chapter 16",
+  "chapter_title": "Introduction to Containers and Arrays",
+  "lesson": "16.4",
+  "lesson_title": "Passing std::vector",
+  "total_cards": 11,
+  "cards": [
+    {
+      "id": "ch16_4_001",
+      "lesson": "16.4",
+      "type": "cloze",
+      "tags": ["cpp", "vector", "functions"],
+      "text": "When passing a std::vector to a function that doesn't modify it, pass by {{c1::const reference}}: {{c2::const std::vector&lt;int&gt;&amp;}}}",
+      "source": "16.4 - Passing std::vector",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_4_002",
+      "lesson": "16.4",
+      "type": "cloze",
+      "tags": ["cpp", "vector", "best-practices"],
+      "text": "Avoid passing std::vector by {{c1::value}} because it creates a {{c2::copy}} of the entire vector. Instead, pass by {{c3::reference}} to avoid copying.",
+      "source": "16.4 - Passing std::vector",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_4_003",
+      "lesson": "16.4",
+      "type": "code",
+      "tags": ["cpp", "vector", "functions"],
+      "question": "What's the best way to write this function signature?",
+      "code": "void printVector(std::vector&lt;int&gt; v)\n{\n    for (int val : v)\n        std::cout &lt;&lt; val &lt;&lt; ' ';\n}",
+      "answer": "void printVector(const std::vector&lt;int&gt;&amp; v)",
+      "explanation": "Pass by const reference to avoid copying the vector. The function doesn't modify v, so const is appropriate.",
+      "source": "16.4 - Passing std::vector",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_4_004",
+      "lesson": "16.4",
+      "type": "cloze",
+      "tags": ["cpp", "vector", "functions"],
+      "text": "When passing a std::vector to a function that needs to modify it, pass by {{c1::non-const reference}}: {{c2::std::vector&lt;int&gt;&amp;}}",
+      "source": "16.4 - Passing std::vector",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_4_005",
+      "lesson": "16.4",
+      "type": "concept",
+      "tags": ["cpp", "vector", "best-practices"],
+      "concept": "Best practices for passing std::vector to functions",
+      "explanation": "Follow these guidelines:<ul><li>Pass by const reference for read-only access</li><li>Pass by non-const reference to modify</li><li>Never pass by value (expensive copy)</li><li>Return by value when creating a new vector (move semantics)</li></ul>",
+      "examples": [
+        "void read(const std::vector&lt;int&gt;&amp; v);  // read-only",
+        "void modify(std::vector&lt;int&gt;&amp; v);  // can modify",
+        "std::vector&lt;int&gt; create();  // return new vector"
+      ],
+      "source": "16.4 - Passing std::vector",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_4_006",
+      "lesson": "16.4",
+      "type": "cloze",
+      "tags": ["cpp", "vector", "functions"],
+      "text": "It's {{c1::rarely}} acceptable to pass std::vector by value. Only do so when you need a {{c2::copy}} to modify locally without affecting the {{c3::original}}.",
+      "source": "16.4 - Passing std::vector",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_4_007",
+      "lesson": "16.4",
+      "type": "code",
+      "tags": ["cpp", "vector", "functions"],
+      "question": "What will this output?",
+      "code": "void addOne(std::vector&lt;int&gt;&amp; v) {\n    for (int&amp; val : v)\n        val += 1;\n}\nstd::vector&lt;int&gt; v{1, 2, 3};\naddOne(v);\nstd::cout &lt;&lt; v[0];",
+      "answer": "2",
+      "explanation": "v is passed by reference and modified in addOne. The first element changes from 1 to 2.",
+      "source": "16.4 - Passing std::vector",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_4_008",
+      "lesson": "16.4",
+      "type": "cloze",
+      "tags": ["cpp", "vector", "access"],
+      "text": "In a range-based for loop, to modify vector elements use {{c1::int&amp;}} (reference). To read-only, use {{c2::const int&amp;}} or just {{c3::int}} (for cheap-to-copy types).",
+      "source": "16.4 - Passing std::vector",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_4_009",
+      "lesson": "16.4",
+      "type": "cloze",
+      "tags": ["cpp", "vector", "performance"],
+      "text": "When passing a std::vector&lt;int&gt; with 1000 elements by value, all {{c1::1000 integers}} must be {{c2::copied}} into a new vector. Passing by {{c3::reference}} avoids this cost.",
+      "source": "16.4 - Passing std::vector",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_4_010",
+      "lesson": "16.4",
+      "type": "code",
+      "tags": ["cpp", "vector", "common-mistakes"],
+      "question": "What's wrong with this code?",
+      "code": "const std::vector&lt;int&gt;&amp; getVector() {\n    std::vector&lt;int&gt; v{1, 2, 3};\n    return v;\n}",
+      "answer": "Returns a reference to a local variable that will be destroyed. This is a dangling reference.",
+      "explanation": "v is destroyed when the function returns. The reference points to destroyed memory. Return by value instead.",
+      "source": "16.4 - Passing std::vector",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch16_4_011",
+      "lesson": "16.4",
+      "type": "cloze",
+      "tags": ["cpp", "vector", "parameters"],
+      "text": "Use const std::vector&lt;T&gt;&amp; as a parameter when the function needs to {{c1::read}} the vector but {{c2::doesn't need to modify}} it. This is the {{c3::most common}} case for vector parameters.",
+      "source": "16.4 - Passing std::vector",
+      "difficulty": "easy"
+    }
+  ]
+}

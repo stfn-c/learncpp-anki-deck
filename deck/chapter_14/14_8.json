@@ -1,0 +1,118 @@
+{
+  "chapter": "Chapter 14",
+  "chapter_title": "Introduction to Classes",
+  "lesson": "14.8",
+  "lesson_title": "The benefits of data hiding (encapsulation)",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "ch14_8_001",
+      "lesson": "14.8",
+      "type": "reverse",
+      "tags": ["cpp", "oop", "terminology"],
+      "front": "Data hiding",
+      "back": "The practice of making data members private so they cannot be accessed directly from outside the class",
+      "source": "14.8 - The benefits of data hiding (encapsulation)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_8_002",
+      "lesson": "14.8",
+      "type": "cloze",
+      "tags": ["cpp", "oop", "encapsulation"],
+      "text": "{{c1::Encapsulation}} is the process of bundling data and functions that work on that data together in a class, while {{c2::data hiding}} restricts direct access to that data.",
+      "source": "14.8 - The benefits of data hiding (encapsulation)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_8_003",
+      "lesson": "14.8",
+      "type": "concept",
+      "tags": ["cpp", "oop", "encapsulation", "best-practices"],
+      "concept": "The four main benefits of data hiding",
+      "explanation": "<ul><li><b>Maintain invariants:</b> Class can ensure data stays in valid state</li><li><b>Change implementation:</b> Internal representation can change without affecting external code</li><li><b>Easier debugging:</b> Narrow down where data is modified</li><li><b>Interface vs implementation:</b> Users only need to know public interface, not internal details</li></ul>",
+      "examples": [
+        "class Fraction { private: int m_num, m_den; };  // can ensure m_den != 0",
+        "// Can change from int to long internally without breaking users"
+      ],
+      "source": "14.8 - The benefits of data hiding (encapsulation)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_8_004",
+      "lesson": "14.8",
+      "type": "basic",
+      "tags": ["cpp", "oop", "encapsulation"],
+      "front": "How does data hiding help maintain class invariants?",
+      "back": "By making data private and providing controlled access through member functions, the class can validate all changes and ensure the object never enters an invalid state (e.g., ensuring denominator is never 0 in a Fraction class).",
+      "source": "14.8 - The benefits of data hiding (encapsulation)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_8_005",
+      "lesson": "14.8",
+      "type": "basic",
+      "tags": ["cpp", "oop", "encapsulation"],
+      "front": "How does data hiding make code easier to debug?",
+      "back": "When data members are private, they can only be modified by member functions of the class. This limits where you need to look when tracking down bugs related to incorrect data values.",
+      "source": "14.8 - The benefits of data hiding (encapsulation)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_8_006",
+      "lesson": "14.8",
+      "type": "concept",
+      "tags": ["cpp", "oop", "encapsulation", "design"],
+      "concept": "How encapsulation enables changing implementation",
+      "explanation": "When data members are private, you can change the internal implementation (e.g., change from storing Celsius to Kelvin in a Temperature class) without breaking any external code, as long as the public interface remains the same.",
+      "examples": [
+        "// Originally: private: double m_celsius;",
+        "// Changed to: private: double m_kelvin;",
+        "// getters/setters updated, but external code unaffected"
+      ],
+      "source": "14.8 - The benefits of data hiding (encapsulation)",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch14_8_007",
+      "lesson": "14.8",
+      "type": "cloze",
+      "tags": ["cpp", "oop", "terminology"],
+      "text": "The {{c1::public interface}} of a class consists of all the public members that external code can use. The {{c2::implementation}} consists of the private members and code inside member functions.",
+      "source": "14.8 - The benefits of data hiding (encapsulation)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_8_008",
+      "lesson": "14.8",
+      "type": "basic",
+      "tags": ["cpp", "oop", "encapsulation", "best-practices"],
+      "front": "What is the principle of abstraction in OOP?",
+      "back": "Users of a class should only need to understand what the class does (its public interface), not how it does it (its implementation). This separates interface from implementation.",
+      "source": "14.8 - The benefits of data hiding (encapsulation)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_8_009",
+      "lesson": "14.8",
+      "type": "code",
+      "tags": ["cpp", "oop", "encapsulation"],
+      "question": "Why is this design with encapsulation better than public data members?",
+      "code": "class Temperature<br>{<br>private:<br>&nbsp;&nbsp;&nbsp;&nbsp;double m_celsius;<br>public:<br>&nbsp;&nbsp;&nbsp;&nbsp;void setCelsius(double c) { m_celsius = c; }<br>&nbsp;&nbsp;&nbsp;&nbsp;double getFahrenheit() const<br>&nbsp;&nbsp;&nbsp;&nbsp;{ return m_celsius * 9.0/5.0 + 32; }<br>};",
+      "answer": "Can switch internal storage from Celsius to Kelvin or Fahrenheit without changing the public interface. Users don't need to know or care about internal representation.",
+      "explanation": "Encapsulation allows changing implementation details while maintaining the same public interface, preventing code breakage.",
+      "source": "14.8 - The benefits of data hiding (encapsulation)",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch14_8_010",
+      "lesson": "14.8",
+      "type": "basic",
+      "tags": ["cpp", "oop", "encapsulation", "best-practices"],
+      "front": "Why should you think carefully before making data members public?",
+      "back": "Public data members become part of the class's public interface. Once external code depends on them, you cannot easily change or remove them without breaking that code. Private members can be freely refactored.",
+      "source": "14.8 - The benefits of data hiding (encapsulation)",
+      "difficulty": "hard"
+    }
+  ]
+}

@@ -1,0 +1,153 @@
+{
+  "chapter": "Chapter 21",
+  "chapter_title": "Operator Overloading",
+  "lesson": "21.10",
+  "lesson_title": "Overloading the parenthesis operator",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "ch21_10_001",
+      "lesson": "21.10",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "function-call"
+      ],
+      "text": "The function call operator {{c1::()}} makes an object {{c2::callable}} like a function, creating a {{c3::functor}} or function object.",
+      "source": "21.10 - Overloading the parenthesis operator",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_10_002",
+      "lesson": "21.10",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "function-call"
+      ],
+      "text": "operator() must be implemented as a {{c1::member function}} and can take {{c2::any number}} of parameters (including zero).",
+      "source": "21.10 - Overloading the parenthesis operator",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch21_10_003",
+      "lesson": "21.10",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "function-call"
+      ],
+      "question": "What does this operator() do?",
+      "code": "class Multiply {\npublic:\n    int operator()(int x, int y) {\n        return x * y;\n    }\n};\n\nMultiply mult;\nint result = mult(5, 6);",
+      "answer": "Makes Multiply objects callable like functions. mult(5, 6) calls operator() which returns 5 * 6 = 30.",
+      "explanation": "Function call operator allows using objects as if they were functions.",
+      "source": "21.10 - Overloading the parenthesis operator",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_10_004",
+      "lesson": "21.10",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "function-call"
+      ],
+      "front": "What is a functor in C++?",
+      "back": "A functor (or function object) is a class that overloads operator(), making objects of that class callable like functions. Functors can maintain state between calls, unlike regular functions.",
+      "source": "21.10 - Overloading the parenthesis operator",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_10_005",
+      "lesson": "21.10",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "function-call"
+      ],
+      "text": "Functors have advantages over regular functions: they can {{c1::maintain state}}, be {{c2::passed to templates}}, and have {{c3::overloaded}} call operators with different parameters.",
+      "source": "21.10 - Overloading the parenthesis operator",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_10_006",
+      "lesson": "21.10",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "function-call"
+      ],
+      "front": "Can operator() be overloaded with different parameter lists?",
+      "back": "Yes. You can provide multiple operator() overloads with different numbers or types of parameters, just like normal function overloading. Each overload handles different call signatures.",
+      "source": "21.10 - Overloading the parenthesis operator",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_10_007",
+      "lesson": "21.10",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "function-call"
+      ],
+      "question": "What makes this class a functor?",
+      "code": "class Accumulator {\n    int m_sum{0};\npublic:\n    int operator()(int value) {\n        m_sum += value;\n        return m_sum;\n    }\n};",
+      "answer": "It overloads operator(), making it callable. It maintains state (m_sum) across calls, demonstrating an advantage of functors over functions.",
+      "explanation": "Each call adds to m_sum and returns the running total. State persistence is a key benefit of functors.",
+      "source": "21.10 - Overloading the parenthesis operator",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch21_10_008",
+      "lesson": "21.10",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "function-call"
+      ],
+      "front": "Where are functors commonly used in the C++ standard library?",
+      "back": "Functors are used with STL algorithms like std::sort, std::for_each, and std::transform. For example, std::sort can take a functor to define custom comparison logic. Many STL components accept function objects.",
+      "source": "21.10 - Overloading the parenthesis operator",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_10_009",
+      "lesson": "21.10",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "function-call"
+      ],
+      "text": "The expression myObject{{c1::(}}arg1, arg2{{c2::)}} calls the overloaded {{c3::operator()}} on myObject with arguments arg1 and arg2.",
+      "source": "21.10 - Overloading the parenthesis operator",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch21_10_010",
+      "lesson": "21.10",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "function-call"
+      ],
+      "concept": "Benefits and uses of operator() overloading",
+      "explanation": "Overloading operator() creates functors with several advantages:<ul><li>Can maintain state between calls</li><li>Can have multiple overloads with different signatures</li><li>Work with STL algorithms</li><li>Can be inlined more easily than function pointers</li><li>Type-safe compared to function pointers</li></ul>Common uses: custom comparators, predicates, callbacks.",
+      "examples": [
+        "class Less { bool operator()(int a, int b) { return a &lt; b; } };",
+        "std::sort(vec.begin(), vec.end(), Less{});  // Use as comparator"
+      ],
+      "source": "21.10 - Overloading the parenthesis operator",
+      "difficulty": "hard"
+    }
+  ]
+}

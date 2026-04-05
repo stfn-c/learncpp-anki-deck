@@ -1,0 +1,132 @@
+{
+  "chapter": "Chapter 0",
+  "chapter_title": "Introduction / Getting Started",
+  "lesson": "0.5",
+  "lesson_title": "Introduction to the compiler, linker, and libraries",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch0_5_001",
+      "lesson": "0.5",
+      "type": "basic",
+      "tags": ["cpp", "compiler", "fundamentals"],
+      "front": "What does a C++ compiler do?",
+      "back": "The compiler reads C++ source code (.cpp files) and translates it into machine language, producing object files (.o or .obj) that the CPU can execute.",
+      "source": "0.5 - Introduction to the compiler, linker, and libraries",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_5_002",
+      "lesson": "0.5",
+      "type": "cloze",
+      "tags": ["cpp", "compiler", "process"],
+      "text": "The compiler translates {{c1::.cpp}} source files into {{c2::object files}} (with extensions like {{c3::.o}} or {{c4::.obj}}).",
+      "source": "0.5 - Introduction to the compiler, linker, and libraries",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_5_003",
+      "lesson": "0.5",
+      "type": "basic",
+      "tags": ["cpp", "compiler", "process"],
+      "front": "What happens when the compiler encounters a syntax error?",
+      "back": "The compiler stops compilation and produces an error message indicating where the problem is and what's wrong. You must fix the error before the code will compile.",
+      "source": "0.5 - Introduction to the compiler, linker, and libraries",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_5_004",
+      "lesson": "0.5",
+      "type": "cloze",
+      "tags": ["cpp", "compiler", "process"],
+      "text": "Each {{c1::.cpp}} file in a project is compiled {{c2::separately}} into its own {{c3::object file}}.",
+      "source": "0.5 - Introduction to the compiler, linker, and libraries",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_5_005",
+      "lesson": "0.5",
+      "type": "basic",
+      "tags": ["cpp", "linker", "fundamentals"],
+      "front": "What does the linker do?",
+      "back": "The linker combines all object files (.o/.obj) and libraries into a single executable program. It also resolves cross-file function calls and ensures all referenced functions exist.",
+      "source": "0.5 - Introduction to the compiler, linker, and libraries",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_5_006",
+      "lesson": "0.5",
+      "type": "concept",
+      "tags": ["cpp", "linker", "errors"],
+      "concept": "The difference between compiler errors and linker errors",
+      "explanation": "Compiler errors occur during compilation of individual .cpp files:<ul><li>Syntax errors</li><li>Type mismatches</li><li>Undeclared variables</li></ul>Linker errors occur when combining object files:<ul><li>Missing function definitions</li><li>Duplicate definitions</li><li>Missing libraries</li></ul>Compiler errors prevent object file creation. Linker errors prevent executable creation.",
+      "examples": [
+        "// Compiler error: int x = 'hello'; // type mismatch",
+        "// Linker error: function declared but never defined",
+        "// Linker error: main() function not found"
+      ],
+      "source": "0.5 - Introduction to the compiler, linker, and libraries",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_5_007",
+      "lesson": "0.5",
+      "type": "cloze",
+      "tags": ["cpp", "build", "process"],
+      "text": "The complete build process is: {{c1::compile}} .cpp files to object files → {{c2::link}} object files and libraries → produce {{c3::executable}}.",
+      "source": "0.5 - Introduction to the compiler, linker, and libraries",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_5_008",
+      "lesson": "0.5",
+      "type": "basic",
+      "tags": ["cpp", "libraries", "fundamentals"],
+      "front": "What is a library in C++?",
+      "back": "A library is a package of precompiled code that provides reusable functionality (functions, classes). Libraries save time by providing common functionality you don't have to write yourself.",
+      "source": "0.5 - Introduction to the compiler, linker, and libraries",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_5_009",
+      "lesson": "0.5",
+      "type": "basic",
+      "tags": ["cpp", "libraries", "types"],
+      "front": "What is the difference between static and dynamic libraries?",
+      "back": "Static libraries (.a/.lib) are copied into your executable at link time. Dynamic libraries (.so/.dll/.dylib) are loaded at runtime and can be shared between programs.",
+      "source": "0.5 - Introduction to the compiler, linker, and libraries",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_5_010",
+      "lesson": "0.5",
+      "type": "cloze",
+      "tags": ["cpp", "libraries", "standard"],
+      "text": "The {{c1::C++ Standard Library}} is a library that comes with every C++ compiler and provides essential functionality like {{c2::iostream}} for input/output.",
+      "source": "0.5 - Introduction to the compiler, linker, and libraries",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_5_011",
+      "lesson": "0.5",
+      "type": "code",
+      "tags": ["cpp", "linker", "common-mistakes"],
+      "question": "Why does this cause a linker error?",
+      "code": "// main.cpp\nint add(int a, int b); // declaration only\n\nint main() {\n    return add(3, 4); // calls add\n}",
+      "answer": "Linker error: The add function is declared but never defined. The linker can't find the implementation.",
+      "explanation": "You must provide a definition (implementation) for the add function, either in the same file or in another .cpp file that gets linked.",
+      "source": "0.5 - Introduction to the compiler, linker, and libraries",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_5_012",
+      "lesson": "0.5",
+      "type": "basic",
+      "tags": ["cpp", "build", "process"],
+      "front": "Why do C++ projects compile faster on subsequent builds?",
+      "back": "The build system only recompiles .cpp files that have changed. Unchanged files use their existing object files, saving compilation time.",
+      "source": "0.5 - Introduction to the compiler, linker, and libraries",
+      "difficulty": "medium"
+    }
+  ]
+}

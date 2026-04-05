@@ -1,0 +1,184 @@
+{
+  "chapter": "Chapter 21",
+  "chapter_title": "Operator Overloading",
+  "lesson": "21.1",
+  "lesson_title": "Introduction to operator overloading",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch21_1_001",
+      "lesson": "21.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "fundamentals"
+      ],
+      "text": "{{c1::Operator overloading}} allows you to define custom behaviors for operators when used with user-defined types (classes and enums).",
+      "source": "21.1 - Introduction to operator overloading",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch21_1_002",
+      "lesson": "21.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "operators"
+      ],
+      "text": "In C++, operators are implemented as functions with the name {{c1::operator}} followed by the symbol for the operator being overloaded.",
+      "source": "21.1 - Introduction to operator overloading",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch21_1_003",
+      "lesson": "21.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "syntax"
+      ],
+      "text": "To overload the + operator, you define a function named {{c1::operator+}}. For operator&lt;&lt;, the function is named {{c2::operator&lt;&lt;}}.",
+      "source": "21.1 - Introduction to operator overloading",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch21_1_004",
+      "lesson": "21.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "limitations"
+      ],
+      "front": "Which C++ operators CANNOT be overloaded?",
+      "back": "<ul><li>Conditional operator (?:)</li><li>Sizeof operator</li><li>Scope resolution operator (::)</li><li>Member selector operator (.)</li><li>Pointer-to-member selector (.*)</li><li>typeid operator</li></ul>",
+      "source": "21.1 - Introduction to operator overloading",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_1_005",
+      "lesson": "21.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "friend-functions"
+      ],
+      "front": "What are the three ways to implement operator overloading in C++?",
+      "back": "<ul><li>As a friend function</li><li>As a normal function</li><li>As a member function</li></ul>Each approach has different use cases depending on the operator and access requirements.",
+      "source": "21.1 - Introduction to operator overloading",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch21_1_006",
+      "lesson": "21.1",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "best-practices"
+      ],
+      "concept": "Rules for operator overloading in C++",
+      "explanation": "When overloading operators, you must follow these rules:<ul><li>At least one operand must be a user-defined type (class or enum)</li><li>You cannot change the number of operands an operator takes</li><li>You cannot create new operator symbols</li><li>You cannot change operator precedence or associativity</li><li>Overloaded operators should behave intuitively (follow expected semantics)</li></ul>",
+      "examples": [
+        "Cents operator+(const Cents&amp; c1, const Cents&amp; c2)  // Valid: binary +",
+        "// Cannot do: operator+(Cents&amp; c1)  // Invalid: + requires 2 operands"
+      ],
+      "source": "21.1 - Introduction to operator overloading",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_1_007",
+      "lesson": "21.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "precedence"
+      ],
+      "front": "Can you change the precedence or associativity of operators when overloading them?",
+      "back": "No. Operator precedence and associativity are fixed in C++ and cannot be changed through overloading. For example, operator* will always have higher precedence than operator+, regardless of how you overload them.",
+      "source": "21.1 - Introduction to operator overloading",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch21_1_008",
+      "lesson": "21.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "best-practices"
+      ],
+      "text": "When overloading operators, they should behave {{c1::intuitively}} and follow the {{c2::expected semantics}} of the built-in operators. For example, operator+ should perform addition, not subtraction.",
+      "source": "21.1 - Introduction to operator overloading",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch21_1_009",
+      "lesson": "21.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "requirements"
+      ],
+      "front": "Why can't you overload operator+ to add two ints together in a new way?",
+      "back": "At least one operand of an overloaded operator must be a user-defined type (class or enum). Since int is a fundamental type, you cannot redefine how operators work for built-in types only. This prevents modification of fundamental language behavior.",
+      "source": "21.1 - Introduction to operator overloading",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_1_010",
+      "lesson": "21.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "return-types"
+      ],
+      "front": "Do overloaded operators need to return a specific type in C++?",
+      "back": "No, overloaded operators can return any type you want (or void). However, for intuitive behavior, they should typically return types consistent with built-in operators. For example, operator+ usually returns the result type, while operator&lt;&lt; returns a stream reference.",
+      "source": "21.1 - Introduction to operator overloading",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_1_011",
+      "lesson": "21.1",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "syntax"
+      ],
+      "question": "What does this operator overload do?",
+      "code": "class Cents {\n    int m_cents{};\npublic:\n    Cents operator+(const Cents&amp; rhs) {\n        return Cents{ m_cents + rhs.m_cents };\n    }\n};",
+      "answer": "Overloads the + operator as a member function to add two Cents objects together, returning a new Cents object with the sum of their m_cents values.",
+      "explanation": "This is a member function implementation. The left operand is the implicit *this object, and the right operand is the rhs parameter.",
+      "source": "21.1 - Introduction to operator overloading",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_1_012",
+      "lesson": "21.1",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "best-practices"
+      ],
+      "concept": "Benefits of operator overloading",
+      "explanation": "Operator overloading makes code more intuitive and readable:<ul><li>Natural mathematical notation: a + b instead of a.add(b)</li><li>Consistency with built-in types</li><li>More concise code</li><li>Enables use of generic algorithms and templates</li></ul>However, operators should only be overloaded when they provide clear, intuitive meaning.",
+      "examples": [
+        "Cents total = c1 + c2;  // Clear: adding money",
+        "std::cout &lt;&lt; cents;  // Clear: output",
+        "// Bad: Don't use + for unrelated operations"
+      ],
+      "source": "21.1 - Introduction to operator overloading",
+      "difficulty": "easy"
+    }
+  ]
+}

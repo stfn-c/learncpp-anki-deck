@@ -1,0 +1,132 @@
+{
+  "chapter": "Chapter 16",
+  "chapter_title": "Introduction to Containers and Arrays",
+  "lesson": "16.5",
+  "lesson_title": "Returning std::vector, and an introduction to move semantics",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch16_5_001",
+      "lesson": "16.5",
+      "type": "cloze",
+      "tags": ["cpp", "vector", "functions"],
+      "text": "Return std::vector from a function by {{c1::value}}. Modern C++ uses {{c2::move semantics}} to make this {{c3::efficient}}.",
+      "source": "16.5 - Returning std::vector, and an introduction to move semantics",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_5_002",
+      "lesson": "16.5",
+      "type": "cloze",
+      "tags": ["cpp", "move-semantics", "fundamentals"],
+      "text": "{{c1::Move semantics}} allows transferring ownership of resources from one object to another, avoiding expensive {{c2::copies}}.",
+      "source": "16.5 - Returning std::vector, and an introduction to move semantics",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_5_003",
+      "lesson": "16.5",
+      "type": "cloze",
+      "tags": ["cpp", "move-semantics", "rvalue"],
+      "text": "An {{c1::rvalue}} is a {{c2::temporary}} object or value that doesn't persist beyond the expression. Examples: {{c3::literals}}, temporary objects, function return values.",
+      "source": "16.5 - Returning std::vector, and an introduction to move semantics",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_5_004",
+      "lesson": "16.5",
+      "type": "cloze",
+      "tags": ["cpp", "move-semantics", "lvalue"],
+      "text": "An {{c1::lvalue}} is an object with {{c2::persistent}} storage that can appear on the {{c3::left side}} of an assignment. Examples: variables, dereferenced pointers, references.",
+      "source": "16.5 - Returning std::vector, and an introduction to move semantics",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_5_005",
+      "lesson": "16.5",
+      "type": "concept",
+      "tags": ["cpp", "move-semantics", "optimization"],
+      "concept": "How move semantics optimize returning std::vector",
+      "explanation": "When returning a vector by value:<ul><li>Without move: entire vector copied (slow)</li><li>With move: only internal pointer transferred (fast)</li><li>Original vector left in valid but empty state</li><li>Compiler automatically uses move when returning local objects</li></ul>This makes returning by value efficient.",
+      "examples": [
+        "std::vector&lt;int&gt; create() {",
+        "    std::vector&lt;int&gt; v{1,2,3};",
+        "    return v;  // moved, not copied!",
+        "}"
+      ],
+      "source": "16.5 - Returning std::vector, and an introduction to move semantics",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_5_006",
+      "lesson": "16.5",
+      "type": "cloze",
+      "tags": ["cpp", "move-semantics", "syntax"],
+      "text": "The {{c1::std::move()}} function converts an lvalue to an {{c2::rvalue reference}}, enabling move semantics.",
+      "source": "16.5 - Returning std::vector, and an introduction to move semantics",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_5_007",
+      "lesson": "16.5",
+      "type": "code",
+      "tags": ["cpp", "move-semantics", "vector"],
+      "question": "What happens after this code?",
+      "code": "std::vector&lt;int&gt; v1{1, 2, 3};\nstd::vector&lt;int&gt; v2 = std::move(v1);\nstd::cout &lt;&lt; v1.size();",
+      "answer": "0",
+      "explanation": "std::move(v1) transfers ownership of v1's contents to v2. v1 is left in a valid but empty state (size = 0).",
+      "source": "16.5 - Returning std::vector, and an introduction to move semantics",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch16_5_008",
+      "lesson": "16.5",
+      "type": "basic",
+      "tags": ["cpp", "move-semantics", "best-practices"],
+      "front": "Should you use std::move() when returning a local vector from a function?",
+      "back": "No! The compiler automatically moves when returning local objects. Using std::move() can actually prevent optimizations like copy elision.",
+      "source": "16.5 - Returning std::vector, and an introduction to move semantics",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch16_5_009",
+      "lesson": "16.5",
+      "type": "cloze",
+      "tags": ["cpp", "optimization", "move-semantics"],
+      "text": "{{c1::Copy elision}} (or RVO - Return Value Optimization) is a compiler optimization that eliminates unnecessary {{c2::copy or move}} operations when returning objects.",
+      "source": "16.5 - Returning std::vector, and an introduction to move semantics",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_5_010",
+      "lesson": "16.5",
+      "type": "cloze",
+      "tags": ["cpp", "move-semantics", "state"],
+      "text": "After being moved from, an object is in a {{c1::valid but unspecified}} state. It can be {{c2::destroyed or assigned to}}, but don't rely on its {{c3::contents}}.",
+      "source": "16.5 - Returning std::vector, and an introduction to move semantics",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_5_011",
+      "lesson": "16.5",
+      "type": "code",
+      "tags": ["cpp", "move-semantics", "common-mistakes"],
+      "question": "What's wrong with this code?",
+      "code": "std::vector&lt;int&gt; create() {\n    std::vector&lt;int&gt; v{1,2,3};\n    return std::move(v);  // explicit move\n}",
+      "answer": "Unnecessary and potentially harmful. Return v; is better - compiler automatically moves and can apply copy elision.",
+      "explanation": "Explicit std::move() prevents copy elision optimization. The compiler knows to move when returning local variables.",
+      "source": "16.5 - Returning std::vector, and an introduction to move semantics",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch16_5_012",
+      "lesson": "16.5",
+      "type": "reverse",
+      "tags": ["cpp", "move-semantics"],
+      "front": "RVO",
+      "back": "Return Value Optimization - compiler optimization that eliminates copy/move when returning objects",
+      "source": "16.5 - Returning std::vector, and an introduction to move semantics",
+      "difficulty": "medium"
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "chapter": "Chapter 4",
+  "chapter_title": "Fundamental Data Types",
+  "lesson": "4.3",
+  "lesson_title": "Object sizes and the sizeof operator",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "ch4_3_001",
+      "lesson": "4.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operators",
+        "memory"
+      ],
+      "text": "The {{c1::sizeof}} operator returns the size of a type or variable in {{c2::bytes}}.",
+      "source": "4.3 - Object sizes and the sizeof operator",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_3_002",
+      "lesson": "4.3",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "operators"
+      ],
+      "front": "sizeof",
+      "back": "Unary operator that returns the size of a type or object in bytes",
+      "source": "4.3 - Object sizes and the sizeof operator",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_3_003",
+      "lesson": "4.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "sizeof",
+        "syntax"
+      ],
+      "question": "What does this print (assuming 4-byte ints)?",
+      "code": "int x{};\nstd::cout &lt;&lt; sizeof(x);",
+      "answer": "4",
+      "explanation": "sizeof returns the size in bytes. On most modern systems, int is 4 bytes.",
+      "source": "4.3 - Object sizes and the sizeof operator",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_3_004",
+      "lesson": "4.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "sizeof",
+        "syntax"
+      ],
+      "text": "When using sizeof with a type name, use {{c1::parentheses}}: sizeof{{c2::(int)}}",
+      "source": "4.3 - Object sizes and the sizeof operator",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_3_005",
+      "lesson": "4.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "types",
+        "memory"
+      ],
+      "front": "What are the minimum guaranteed sizes for char, short, int, and long in C++?",
+      "back": "<ul><li>char: 1 byte</li><li>short: 2 bytes</li><li>int: 2 bytes (usually 4)</li><li>long: 4 bytes</li></ul>",
+      "source": "4.3 - Object sizes and the sizeof operator",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch4_3_006",
+      "lesson": "4.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "types",
+        "memory",
+        "portability"
+      ],
+      "front": "Why do object sizes vary between systems in C++?",
+      "back": "C++ only guarantees minimum sizes to allow compilers to pick sizes that maximize performance for the target architecture. A 32-bit int may be faster on some systems, 64-bit on others.",
+      "source": "4.3 - Object sizes and the sizeof operator",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch4_3_007",
+      "lesson": "4.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "sizeof",
+        "types"
+      ],
+      "text": "The sizeof operator returns a value of type {{c1::std::size_t}}, which is an {{c2::unsigned}} integral type.",
+      "source": "4.3 - Object sizes and the sizeof operator",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch4_3_008",
+      "lesson": "4.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "sizeof",
+        "syntax"
+      ],
+      "question": "Are both sizeof calls valid?",
+      "code": "int x{};\nsizeof x;     // 1\nsizeof(int);  // 2",
+      "answer": "Yes, both are valid",
+      "explanation": "sizeof works with or without parentheses for variables (line 1), but requires parentheses for type names (line 2).",
+      "source": "4.3 - Object sizes and the sizeof operator",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch4_3_009",
+      "lesson": "4.3",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "best-practices",
+        "portability"
+      ],
+      "concept": "Why you should not assume object sizes",
+      "explanation": "Never assume object sizes because:<ul><li>Sizes vary by compiler and architecture</li><li>Code may be ported to different systems</li><li>Can cause bugs when assumptions break</li><li>Use sizeof to get actual size at compile time</li></ul>",
+      "examples": [
+        "int x{};\nint size = sizeof(x);  // good: use sizeof",
+        "int size = 4;          // bad: assumption"
+      ],
+      "source": "4.3 - Object sizes and the sizeof operator",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch4_3_010",
+      "lesson": "4.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "types",
+        "memory"
+      ],
+      "front": "What size relationships are guaranteed between integral types in C++?",
+      "back": "Guaranteed relationships:<br>sizeof(char) &lt;= sizeof(short) &lt;= sizeof(int) &lt;= sizeof(long) &lt;= sizeof(long long)",
+      "source": "4.3 - Object sizes and the sizeof operator",
+      "difficulty": "medium"
+    }
+  ]
+}

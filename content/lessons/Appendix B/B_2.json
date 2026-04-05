@@ -1,0 +1,37 @@
+{
+  "url": "https://www.learncpp.com/cpp-tutorial/introduction-to-c14/",
+  "title": "B.2 \u2014 Introduction to C++14",
+  "sections": [
+    {
+      "heading": null,
+      "content": [
+        {
+          "text": "What is C++14?On August 18, 2014, theISO (International Organization for Standardization)approved a new version of C++, called C++14. Unlike C++11, which added a huge amount of new functionality, C++14 is a comparatively minor update, mainly featuring bug fixes and small improvements.New improvements in C++14For your interest, here\u2019s a list of the major improvements that C++14 adds. Note that this list is not comprehensive, but rather intended to highlight some of the key improvements of interest.Aggregate member initialization (13.7 -- Introduction to structs, members, and member selection)Binary literals (5.3 -- Numeral systems (decimal, binary, hexadecimal, and octal))[[deprecated]] attribute (no tutorial yet)Digit separators (5.3 -- Numeral systems (decimal, binary, hexadecimal, and octal))Function return type deduction (10.8 -- Type deduction for objects using the auto keyword)Generic lambdas (20.6 -- Introduction to lambdas (anonymous functions))Relaxed constexpr functions (F.1 -- Constexpr functions)Variable templates (no tutorial yet)std::make_unique (22.5 -- std::unique_ptr)Next lessonB.3Introduction to C++17Back to table of contentsPrevious lessonB.1Introduction to C++11"
+        },
+        {
+          "text": "On August 18, 2014, theISO (International Organization for Standardization)approved a new version of C++, called C++14. Unlike C++11, which added a huge amount of new functionality, C++14 is a comparatively minor update, mainly featuring bug fixes and small improvements.New improvements in C++14For your interest, here\u2019s a list of the major improvements that C++14 adds. Note that this list is not comprehensive, but rather intended to highlight some of the key improvements of interest.Aggregate member initialization (13.7 -- Introduction to structs, members, and member selection)Binary literals (5.3 -- Numeral systems (decimal, binary, hexadecimal, and octal))[[deprecated]] attribute (no tutorial yet)Digit separators (5.3 -- Numeral systems (decimal, binary, hexadecimal, and octal))Function return type deduction (10.8 -- Type deduction for objects using the auto keyword)Generic lambdas (20.6 -- Introduction to lambdas (anonymous functions))Relaxed constexpr functions (F.1 -- Constexpr functions)Variable templates (no tutorial yet)std::make_unique (22.5 -- std::unique_ptr)Next lessonB.3Introduction to C++17Back to table of contentsPrevious lessonB.1Introduction to C++11"
+        },
+        {
+          "text": "New improvements in C++14For your interest, here\u2019s a list of the major improvements that C++14 adds. Note that this list is not comprehensive, but rather intended to highlight some of the key improvements of interest.Aggregate member initialization (13.7 -- Introduction to structs, members, and member selection)Binary literals (5.3 -- Numeral systems (decimal, binary, hexadecimal, and octal))[[deprecated]] attribute (no tutorial yet)Digit separators (5.3 -- Numeral systems (decimal, binary, hexadecimal, and octal))Function return type deduction (10.8 -- Type deduction for objects using the auto keyword)Generic lambdas (20.6 -- Introduction to lambdas (anonymous functions))Relaxed constexpr functions (F.1 -- Constexpr functions)Variable templates (no tutorial yet)std::make_unique (22.5 -- std::unique_ptr)Next lessonB.3Introduction to C++17Back to table of contentsPrevious lessonB.1Introduction to C++11"
+        },
+        {
+          "text": "For your interest, here\u2019s a list of the major improvements that C++14 adds. Note that this list is not comprehensive, but rather intended to highlight some of the key improvements of interest.Aggregate member initialization (13.7 -- Introduction to structs, members, and member selection)Binary literals (5.3 -- Numeral systems (decimal, binary, hexadecimal, and octal))[[deprecated]] attribute (no tutorial yet)Digit separators (5.3 -- Numeral systems (decimal, binary, hexadecimal, and octal))Function return type deduction (10.8 -- Type deduction for objects using the auto keyword)Generic lambdas (20.6 -- Introduction to lambdas (anonymous functions))Relaxed constexpr functions (F.1 -- Constexpr functions)Variable templates (no tutorial yet)std::make_unique (22.5 -- std::unique_ptr)Next lessonB.3Introduction to C++17Back to table of contentsPrevious lessonB.1Introduction to C++11"
+        },
+        {
+          "list": [
+            "Aggregate member initialization (13.7 -- Introduction to structs, members, and member selection)Binary literals (5.3 -- Numeral systems (decimal, binary, hexadecimal, and octal))[[deprecated]] attribute (no tutorial yet)Digit separators (5.3 -- Numeral systems (decimal, binary, hexadecimal, and octal))Function return type deduction (10.8 -- Type deduction for objects using the auto keyword)Generic lambdas (20.6 -- Introduction to lambdas (anonymous functions))Relaxed constexpr functions (F.1 -- Constexpr functions)Variable templates (no tutorial yet)std::make_unique (22.5 -- std::unique_ptr)",
+            "Binary literals (5.3 -- Numeral systems (decimal, binary, hexadecimal, and octal))[[deprecated]] attribute (no tutorial yet)Digit separators (5.3 -- Numeral systems (decimal, binary, hexadecimal, and octal))Function return type deduction (10.8 -- Type deduction for objects using the auto keyword)Generic lambdas (20.6 -- Introduction to lambdas (anonymous functions))Relaxed constexpr functions (F.1 -- Constexpr functions)Variable templates (no tutorial yet)std::make_unique (22.5 -- std::unique_ptr)",
+            "[[deprecated]] attribute (no tutorial yet)Digit separators (5.3 -- Numeral systems (decimal, binary, hexadecimal, and octal))Function return type deduction (10.8 -- Type deduction for objects using the auto keyword)Generic lambdas (20.6 -- Introduction to lambdas (anonymous functions))Relaxed constexpr functions (F.1 -- Constexpr functions)Variable templates (no tutorial yet)std::make_unique (22.5 -- std::unique_ptr)",
+            "Digit separators (5.3 -- Numeral systems (decimal, binary, hexadecimal, and octal))Function return type deduction (10.8 -- Type deduction for objects using the auto keyword)Generic lambdas (20.6 -- Introduction to lambdas (anonymous functions))Relaxed constexpr functions (F.1 -- Constexpr functions)Variable templates (no tutorial yet)std::make_unique (22.5 -- std::unique_ptr)",
+            "Function return type deduction (10.8 -- Type deduction for objects using the auto keyword)Generic lambdas (20.6 -- Introduction to lambdas (anonymous functions))Relaxed constexpr functions (F.1 -- Constexpr functions)Variable templates (no tutorial yet)std::make_unique (22.5 -- std::unique_ptr)",
+            "Generic lambdas (20.6 -- Introduction to lambdas (anonymous functions))Relaxed constexpr functions (F.1 -- Constexpr functions)Variable templates (no tutorial yet)std::make_unique (22.5 -- std::unique_ptr)",
+            "Relaxed constexpr functions (F.1 -- Constexpr functions)Variable templates (no tutorial yet)std::make_unique (22.5 -- std::unique_ptr)",
+            "Variable templates (no tutorial yet)std::make_unique (22.5 -- std::unique_ptr)",
+            "std::make_unique (22.5 -- std::unique_ptr)"
+          ]
+        }
+      ]
+    }
+  ],
+  "quiz": []
+}

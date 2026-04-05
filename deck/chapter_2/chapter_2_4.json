@@ -1,0 +1,218 @@
+{
+  "chapter": "Chapter 2",
+  "chapter_title": "C++ Basics: Functions and Files",
+  "lesson": "2.4",
+  "lesson_title": "Introduction to function parameters and arguments",
+  "total_cards": 14,
+  "cards": [
+    {
+      "id": "ch2_4_001",
+      "lesson": "2.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "parameters",
+        "syntax"
+      ],
+      "text": "A {{c1::parameter}} is a variable declared in the function definition. An {{c2::argument}} is the actual value passed to the function.",
+      "source": "2.4 - Function parameters and arguments",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_4_002",
+      "lesson": "2.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "functions",
+        "parameters"
+      ],
+      "front": "What is the difference between a parameter and an argument?",
+      "back": "A <strong>parameter</strong> is the variable in the function declaration. An <strong>argument</strong> is the actual value passed when calling the function.",
+      "source": "2.4 - Function parameters and arguments",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_4_003",
+      "lesson": "2.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "parameters",
+        "syntax"
+      ],
+      "text": "Parameters are defined inside the {{c1::parentheses}} after the function name, with syntax: {{c2::type name}}",
+      "source": "2.4 - Function parameters and arguments",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_4_004",
+      "lesson": "2.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "functions",
+        "parameters"
+      ],
+      "question": "What does this program output?",
+      "code": "#include &lt;iostream&gt;<br><br>void printValue(int x) {<br>  std::cout &lt;&lt; x;<br>}<br><br>int main() {<br>  printValue(5);<br>  return 0;<br>}",
+      "answer": "5",
+      "explanation": "The function printValue takes parameter x. When called with argument 5, x is set to 5 and printed.",
+      "source": "2.4 - Function parameters and arguments",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_4_005",
+      "lesson": "2.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "parameters",
+        "syntax"
+      ],
+      "text": "Multiple parameters are separated by {{c1::commas}}. Example: void func(int x, {{c2::double y}}, {{c3::bool z}})",
+      "source": "2.4 - Function parameters and arguments",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_4_006",
+      "lesson": "2.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "parameters"
+      ],
+      "source": "2.4 - Function parameters and arguments",
+      "difficulty": "medium",
+      "text": "When a function is called, parameters are {{c1::created}} and {{c2::initialized}} with the values of the corresponding arguments. They act as {{c3::local variables}} inside the function."
+    },
+    {
+      "id": "ch2_4_007",
+      "lesson": "2.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "functions",
+        "parameters"
+      ],
+      "question": "What does this function return?",
+      "code": "int add(int x, int y) {<br>  return x + y;<br>}<br><br>// Called as: add(3, 4)",
+      "answer": "7",
+      "explanation": "Parameters x and y are initialized with arguments 3 and 4. The function returns 3 + 4 = 7.",
+      "source": "2.4 - Function parameters and arguments",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_4_008",
+      "lesson": "2.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "functions",
+        "parameters",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this function call?",
+      "code": "void printValues(int x, int y) { }<br><br>int main() {<br>  printValues(5);  // Error!<br>  return 0;<br>}",
+      "answer": "Error: Wrong number of arguments. printValues expects 2 arguments but only 1 was provided.",
+      "explanation": "The number of arguments must match the number of parameters. Missing or extra arguments cause compilation errors.",
+      "source": "2.4 - Function parameters and arguments",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_4_009",
+      "lesson": "2.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "parameters"
+      ],
+      "source": "2.4 - Function parameters and arguments",
+      "difficulty": "medium",
+      "text": "Arguments should match parameter {{c1::types}}. If types differ, {{c2::implicit conversion}} may occur if possible, otherwise a {{c3::compilation error}} results."
+    },
+    {
+      "id": "ch2_4_010",
+      "lesson": "2.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "parameters"
+      ],
+      "text": "When arguments are passed to parameters, they are passed by {{c1::value}} (copied) by default in C++.",
+      "source": "2.4 - Function parameters and arguments",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_4_011",
+      "lesson": "2.4",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "functions",
+        "parameters",
+        "best-practices"
+      ],
+      "concept": "Purpose of function parameters",
+      "explanation": "Parameters allow functions to be flexible and reusable:<ul><li>Same function can work with different values</li><li>Enables code reuse without duplication</li><li>Makes functions more general-purpose</li><li>Allows functions to operate on data provided by caller</li></ul>",
+      "examples": [
+        "// Without parameters - limited",
+        "void printFive() { std::cout << 5; }",
+        "",
+        "// With parameters - flexible",
+        "void printValue(int x) { std::cout << x; }"
+      ],
+      "source": "2.4 - Function parameters and arguments",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_4_012",
+      "lesson": "2.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "functions",
+        "parameters"
+      ],
+      "question": "How many parameters and arguments are in this code?",
+      "code": "void multiply(int a, int b, int c) { }<br><br>int main() {<br>  multiply(2, 3, 4);<br>  return 0;<br>}",
+      "answer": "3 parameters (a, b, c) and 3 arguments (2, 3, 4)",
+      "explanation": "The function definition has 3 parameters. The function call provides 3 arguments that correspond to those parameters.",
+      "source": "2.4 - Function parameters and arguments",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_4_013",
+      "lesson": "2.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "parameters"
+      ],
+      "source": "2.4 - Function parameters and arguments",
+      "difficulty": "easy",
+      "text": "A function can have {{c1::zero}} parameters, indicated by {{c2::empty parentheses}}: void func()"
+    },
+    {
+      "id": "ch2_4_014",
+      "lesson": "2.4",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "functions",
+        "terminology"
+      ],
+      "front": "argument",
+      "back": "The actual value passed to a function when it is called",
+      "source": "2.4 - Function parameters and arguments",
+      "difficulty": "easy"
+    }
+  ]
+}

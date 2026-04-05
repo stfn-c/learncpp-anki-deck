@@ -1,0 +1,68 @@
+{
+  "chapter": "Chapter 21",
+  "chapter_title": "Operator Overloading",
+  "lesson": "21.y",
+  "lesson_title": "Chapter 21 project",
+  "total_cards": 4,
+  "cards": [
+    {
+      "id": "ch21_y_001",
+      "lesson": "21.y",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "project"
+      ],
+      "front": "When implementing a complete class with operator overloading, what operators should you typically include?",
+      "back": "At minimum: arithmetic (+, -, *, /), compound assignment (+=, -=, *=, /=), comparison (==, !=, &lt;, &gt;, &lt;=, &gt;=), I/O (&lt;&lt;, &gt;&gt;), and possibly subscript ([]), assignment (=), and increment/decrement.",
+      "source": "21.y - Chapter project",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_y_002",
+      "lesson": "21.y",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "project"
+      ],
+      "text": "When implementing multiple related operators, implement the {{c1::compound assignment}} version first (+=), then implement the {{c2::arithmetic}} version (+) using it to avoid code duplication.",
+      "source": "21.y - Chapter project",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_y_003",
+      "lesson": "21.y",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "project"
+      ],
+      "concept": "Implementing a complete class with operator overloading",
+      "explanation": "Steps for a well-designed class:<ul><li>Start with constructors and destructor</li><li>Add comparison operators (==, &lt;) first</li><li>Implement compound assignment operators (+=, -=, etc.)</li><li>Implement arithmetic using compound assignment</li><li>Add I/O operators (&lt;&lt;, &gt;&gt;)</li><li>Add other operators as needed ([], ++, etc.)</li><li>Ensure const-correctness throughout</li></ul>",
+      "examples": [
+        "T&amp; operator+=(const T&amp; rhs);  // Implement first",
+        "friend T operator+(T lhs, const T&amp; rhs) { return lhs += rhs; }  // Use +="
+      ],
+      "source": "21.y - Chapter project",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch21_y_004",
+      "lesson": "21.y",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "project"
+      ],
+      "front": "Why implement operator+ using operator+=?",
+      "back": "Reduces code duplication and ensures consistency. operator+= contains the actual logic. operator+ creates a copy, uses +=, and returns it: T operator+(T lhs, const T&amp; rhs) { return lhs += rhs; }",
+      "source": "21.y - Chapter project",
+      "difficulty": "medium"
+    }
+  ]
+}

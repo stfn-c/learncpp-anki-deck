@@ -1,0 +1,181 @@
+{
+  "chapter": "Chapter F",
+  "chapter_title": "Introduction to Functions and Constexpr",
+  "lesson": "F.2",
+  "lesson_title": "Constexpr functions (part 2)",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "chF_2_001",
+      "lesson": "F.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "inline"
+      ],
+      "front": "Are constexpr functions implicitly inline?",
+      "back": "Yes. Constexpr functions are implicitly inline, which means the compiler can see the full function definition and potentially inline the function call.",
+      "source": "F.2 - Constexpr functions (part 2)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "chF_2_002",
+      "lesson": "F.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "definition"
+      ],
+      "text": "For a constexpr function to be evaluated at compile-time, the compiler must be able to see the {{c1::full definition}} of the function.",
+      "source": "F.2 - Constexpr functions (part 2)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "chF_2_003",
+      "lesson": "F.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "forward-declaration"
+      ],
+      "front": "Can you call a constexpr function at compile-time using only its forward declaration?",
+      "back": "No. The compiler needs to see the full definition of a constexpr function to evaluate it at compile-time. A forward declaration alone is not sufficient.",
+      "source": "F.2 - Constexpr functions (part 2)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "chF_2_004",
+      "lesson": "F.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "header-files"
+      ],
+      "text": "Constexpr function definitions are typically placed in {{c1::header files}} so they can be {{c2::included wherever they are needed}}.",
+      "source": "F.2 - Constexpr functions (part 2)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "chF_2_005",
+      "lesson": "F.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "parameters"
+      ],
+      "front": "Can function parameters in a constexpr function be constexpr?",
+      "back": "No. Function parameters cannot be constexpr, even in a constexpr function. They can be const, but not constexpr.",
+      "source": "F.2 - Constexpr functions (part 2)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "chF_2_006",
+      "lesson": "F.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "parameters"
+      ],
+      "question": "What's wrong with this code?",
+      "code": "constexpr int add(constexpr int x, constexpr int y)\n{\n    return x + y;\n}",
+      "answer": "Function parameters cannot be constexpr. Remove the constexpr keyword from the parameters.",
+      "explanation": "Even in a constexpr function, parameters can only be const, not constexpr. The correct declaration is: constexpr int add(int x, int y)",
+      "source": "F.2 - Constexpr functions (part 2)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "chF_2_007",
+      "lesson": "F.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "local-variables"
+      ],
+      "text": "Local variables in a constexpr function can be {{c1::const}} but not {{c2::constexpr}} (unless their initializers are constant expressions).",
+      "source": "F.2 - Constexpr functions (part 2)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "chF_2_008",
+      "lesson": "F.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "restrictions"
+      ],
+      "front": "What operations are NOT allowed in constexpr functions?",
+      "back": "<ul><li>Non-constexpr function calls (when evaluating at compile-time)</li><li>I/O operations (std::cout, std::cin)</li><li>Accessing non-const global/static variables</li><li>Operations with undefined behavior</li></ul>",
+      "source": "F.2 - Constexpr functions (part 2)",
+      "difficulty": "hard"
+    },
+    {
+      "id": "chF_2_009",
+      "lesson": "F.2",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "best-practices"
+      ],
+      "concept": "When to make a function constexpr",
+      "explanation": "Make a function constexpr if:<ul><li>It performs calculations that could be done at compile-time</li><li>It doesn't perform I/O operations</li><li>It doesn't rely on runtime-only features</li><li>You want to use it in constant expressions</li></ul>Best practice: If a function CAN be constexpr, it SHOULD be constexpr.",
+      "examples": [
+        "constexpr int square(int x) { return x * x; }  // Good candidate",
+        "void print(int x) { std::cout &lt;&lt; x; }  // Cannot be constexpr (I/O)"
+      ],
+      "source": "F.2 - Constexpr functions (part 2)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "chF_2_010",
+      "lesson": "F.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "syntax"
+      ],
+      "text": "{{c1::constexpr}} int factorial(int n) { return (n &lt;= 1) ? 1 : (n * {{c2::factorial(n - 1)}}); }",
+      "source": "F.2 - Constexpr functions (part 2)",
+      "difficulty": "hard"
+    },
+    {
+      "id": "chF_2_011",
+      "lesson": "F.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "recursion"
+      ],
+      "front": "Can constexpr functions be recursive?",
+      "back": "Yes. Constexpr functions can call themselves recursively, which is useful for algorithms like factorial calculation.",
+      "source": "F.2 - Constexpr functions (part 2)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "chF_2_012",
+      "lesson": "F.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "compile-time"
+      ],
+      "question": "Will this evaluate at compile-time or runtime?",
+      "code": "constexpr int factorial(int n)\n{\n    return (n &lt;= 1) ? 1 : (n * factorial(n - 1));\n}\n\nint main()\n{\n    constexpr int result = factorial(5);\n    return 0;\n}",
+      "answer": "Compile-time",
+      "explanation": "The function is constexpr, the argument (5) is a constant expression, and result is constexpr, requiring compile-time evaluation. The compiler will calculate 120 at compile-time.",
+      "source": "F.2 - Constexpr functions (part 2)",
+      "difficulty": "medium"
+    }
+  ]
+}

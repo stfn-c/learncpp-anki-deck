@@ -1,0 +1,178 @@
+{
+  "chapter": "Chapter 8",
+  "chapter_title": "Control Flow",
+  "lesson": "8.x",
+  "lesson_title": "Chapter 8 summary and quiz",
+  "total_cards": 15,
+  "cards": [
+    {
+      "id": "ch8_x_001",
+      "lesson": "8.x",
+      "type": "basic",
+      "tags": ["cpp", "control-flow", "summary"],
+      "front": "What are the six categories of control flow statements in C++?",
+      "back": "1) Conditional statements (if, switch)<br>2) Jumps (goto, break, continue)<br>3) Function calls<br>4) Loops (while, do-while, for)<br>5) Halts (std::exit, std::abort)<br>6) Exceptions (try, throw, catch)",
+      "source": "8.x - Chapter 8 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_x_002",
+      "lesson": "8.x",
+      "type": "cloze",
+      "tags": ["cpp", "loops", "comparison"],
+      "text": "Use {{c1::while}} loops when iteration count is unknown. Use {{c2::for}} loops when iteration count is known. Use {{c3::do-while}} when the body must execute at least once.",
+      "source": "8.x - Chapter 8 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_x_003",
+      "lesson": "8.x",
+      "type": "concept",
+      "tags": ["cpp", "if-statement", "best-practices"],
+      "concept": "If statement best practices summary",
+      "explanation": "Key practices for if statements:<ul><li>Always use braces { } even for single statements</li><li>Use == for comparison, not = (assignment)</li><li>Watch for accidental semicolons after conditions</li><li>Be aware of the dangling else problem</li><li>Don't compare floating point with == or !=</li><li>Prefer if constexpr when condition is compile-time</li></ul>",
+      "examples": [
+        "// Good<br>if (x == 5) {<br>&nbsp;&nbsp;&nbsp;&nbsp;doSomething();<br>}",
+        "// Bad<br>if (x = 5);  // assignment + null statement"
+      ],
+      "source": "8.x - Chapter 8 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_x_004",
+      "lesson": "8.x",
+      "type": "concept",
+      "tags": ["cpp", "switch", "best-practices"],
+      "concept": "Switch statement best practices summary",
+      "explanation": "Key practices for switch statements:<ul><li>Always use break unless fallthrough is intentional</li><li>Use [[fallthrough]] attribute for intentional fallthrough</li><li>Place default case last by convention</li><li>Case labels must be constant expressions</li><li>Use braces { } when declaring variables in cases</li><li>Prefer switch over if-else chains for testing integral values</li></ul>",
+      "examples": [
+        "switch (x) {<br>&nbsp;&nbsp;&nbsp;&nbsp;case 1:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;action();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>&nbsp;&nbsp;&nbsp;&nbsp;default:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error();<br>}"
+      ],
+      "source": "8.x - Chapter 8 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_x_005",
+      "lesson": "8.x",
+      "type": "basic",
+      "tags": ["cpp", "goto", "best-practices"],
+      "front": "What is the recommended usage of goto in modern C++?",
+      "back": "Avoid goto entirely. Use loops, functions, and other control structures instead. Goto creates hard-to-understand spaghetti code.",
+      "source": "8.x - Chapter 8 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_x_006",
+      "lesson": "8.x",
+      "type": "basic",
+      "tags": ["cpp", "break", "continue", "summary"],
+      "front": "What is the key difference between break and continue in loops?",
+      "back": "Break exits the loop entirely. Continue skips the rest of the current iteration and jumps to the next iteration.",
+      "source": "8.x - Chapter 8 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_x_007",
+      "lesson": "8.x",
+      "type": "cloze",
+      "tags": ["cpp", "loops", "syntax"],
+      "text": "The three components every loop needs: {{c1::initialization}}, {{c2::condition}}, and {{c3::update}}. Forgetting the update usually causes an {{c4::infinite loop}}.",
+      "source": "8.x - Chapter 8 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_x_008",
+      "lesson": "8.x",
+      "type": "concept",
+      "tags": ["cpp", "random", "best-practices"],
+      "concept": "Random number generation best practices summary",
+      "explanation": "Modern C++ random number generation:<ul><li>Never use rand() and srand() - use &lt;random&gt;</li><li>Use std::mt19937 (Mersenne Twister) engine</li><li>Seed with std::random_device for different results</li><li>Make engine static or global to persist state</li><li>Use distributions (uniform_int_distribution, etc.)</li><li>Create a Random namespace with helper functions</li></ul>",
+      "examples": [
+        "// Good pattern<br>static std::mt19937 mt{std::random_device{}()};<br>std::uniform_int_distribution die{1, 6};<br>return die(mt);"
+      ],
+      "source": "8.x - Chapter 8 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_x_009",
+      "lesson": "8.x",
+      "type": "basic",
+      "tags": ["cpp", "halts", "best-practices"],
+      "front": "What is the preferred way to exit a program?",
+      "back": "Return from main(). This is cleanest and ensures all destructors are called. Avoid std::exit() and std::abort() in most cases.",
+      "source": "8.x - Chapter 8 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_x_010",
+      "lesson": "8.x",
+      "type": "code",
+      "tags": ["cpp", "quiz", "loops"],
+      "question": "What's the most efficient loop structure for this task: print numbers 1 to 10?",
+      "code": "// Print 1 to 10",
+      "answer": "for (int i = 1; i &lt;= 10; ++i) {<br>&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; i &lt;&lt; ' ';<br>}",
+      "explanation": "For loops are best when the iteration count is known. All loop control (init, condition, update) is in one place.",
+      "source": "8.x - Chapter 8 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_x_011",
+      "lesson": "8.x",
+      "type": "code",
+      "tags": ["cpp", "quiz", "switch"],
+      "question": "When is switch better than if-else?",
+      "code": "// You need to test one integral variable against multiple constant values",
+      "answer": "Switch is better when testing a single integral/enum variable against 3+ constant values. It's more readable and potentially more efficient than if-else chains.",
+      "explanation": "Switch is optimized for this case and makes the intent clearer. If-else is needed for ranges, non-integral types, or complex conditions.",
+      "source": "8.x - Chapter 8 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_x_012",
+      "lesson": "8.x",
+      "type": "basic",
+      "tags": ["cpp", "constexpr", "summary"],
+      "front": "When should you use if constexpr instead of regular if?",
+      "back": "When the condition can be evaluated at compile-time and you want to eliminate dead code. Common in template metaprogramming.",
+      "source": "8.x - Chapter 8 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_x_013",
+      "lesson": "8.x",
+      "type": "concept",
+      "tags": ["cpp", "control-flow", "common-mistakes"],
+      "concept": "Most common control flow mistakes",
+      "explanation": "Watch out for these frequent bugs:<ul><li>Using = instead of == in conditions</li><li>Accidental semicolons after if/while/for</li><li>Forgetting break in switch cases</li><li>Forgetting to update loop counter (infinite loop)</li><li>Dangling else without braces</li><li>Not using braces for single statements</li><li>Using rand() instead of &lt;random&gt;</li></ul>",
+      "examples": [
+        "// Bug: semicolon<br>if (x &gt; 0);<br>&nbsp;&nbsp;&nbsp;&nbsp;doSomething();  // always runs!",
+        "// Bug: no update<br>while (i &lt; 10) {  // infinite loop<br>&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; i;<br>}"
+      ],
+      "source": "8.x - Chapter 8 summary and quiz",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch8_x_014",
+      "lesson": "8.x",
+      "type": "basic",
+      "tags": ["cpp", "scope", "summary"],
+      "front": "What is the scope of a variable declared in a for loop's init-statement?",
+      "back": "Loop scope only - the variable exists from declaration until the end of the loop, then is destroyed.",
+      "source": "8.x - Chapter 8 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_x_015",
+      "lesson": "8.x",
+      "type": "concept",
+      "tags": ["cpp", "control-flow", "summary"],
+      "concept": "Control flow selection guide",
+      "explanation": "Choose the right control structure:<ul><li><strong>if/else</strong>: 1-2 conditions, any type, complex expressions</li><li><strong>switch</strong>: Testing one integral variable vs many constants</li><li><strong>while</strong>: Unknown iteration count, may skip entirely</li><li><strong>do-while</strong>: Must execute at least once</li><li><strong>for</strong>: Known iteration count, counter-based</li><li><strong>goto</strong>: Never (use other structures)</li></ul>",
+      "examples": [
+        "if (complex || condition) { }  // use if<br>switch (menuChoice) { }  // use switch<br>for (int i = 0; i &lt; n; ++i) { }  // use for"
+      ],
+      "source": "8.x - Chapter 8 summary and quiz",
+      "difficulty": "medium"
+    }
+  ]
+}

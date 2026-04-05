@@ -1,0 +1,141 @@
+{
+  "chapter": "Chapter 12",
+  "chapter_title": "Compound Types: References and Pointers",
+  "lesson": "12.15",
+  "lesson_title": "std::optional",
+  "total_cards": 9,
+  "cards": [
+    {
+      "id": "ch12_15_001",
+      "lesson": "12.15",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "optional",
+        "syntax"
+      ],
+      "text": "{{c1::std::optional&lt;T&gt;}} is a wrapper that contains either a value of type T or {{c2::no value}}. It's used to represent optional or potentially missing values.",
+      "source": "12.15 - std::optional",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_15_002",
+      "lesson": "12.15",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "optional",
+        "syntax"
+      ],
+      "question": "How do you create an optional with no value?",
+      "code": "std::optional&lt;int&gt; opt = {{c1::std::nullopt}};",
+      "answer": "Use std::nullopt to represent 'no value' state.",
+      "explanation": "std::nullopt is analogous to nullptr for pointers.",
+      "source": "12.15 - std::optional",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_15_003",
+      "lesson": "12.15",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "optional"
+      ],
+      "question": "How do you check if an optional has a value?",
+      "code": "std::optional&lt;int&gt; opt = 5;<br>if ({{c1::opt.has_value()}}) {<br>    std::cout &lt;&lt; {{c2::*opt}};<br>}",
+      "answer": "Use has_value() or implicit bool conversion. Access value with * or value().",
+      "explanation": "Always check before accessing to avoid undefined behavior.",
+      "source": "12.15 - std::optional",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_15_004",
+      "lesson": "12.15",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "optional",
+        "best-practices"
+      ],
+      "front": "What is the advantage of std::optional over using a pointer or sentinel value?",
+      "back": "std::optional is type-safe, self-documenting, and doesn't require special sentinel values. It clearly expresses that a value may or may not exist.",
+      "source": "12.15 - std::optional",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_15_005",
+      "lesson": "12.15",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "optional",
+        "syntax"
+      ],
+      "text": "Access optional value with {{c1::*opt}} (dereference) or {{c2::opt.value()}}. The value() method throws if empty, while {{c3::value_or(default)}} returns a default value.",
+      "source": "12.15 - std::optional",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_15_006",
+      "lesson": "12.15",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "optional"
+      ],
+      "question": "What does value_or() do?",
+      "code": "std::optional&lt;int&gt; opt = std::nullopt;<br>int x = opt.value_or(42);",
+      "answer": "Returns the contained value if present, otherwise returns the provided default (42).",
+      "explanation": "value_or() provides a safe way to get a value with a fallback.",
+      "source": "12.15 - std::optional",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_15_007",
+      "lesson": "12.15",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "optional",
+        "best-practices"
+      ],
+      "concept": "When to use std::optional",
+      "explanation": "Use std::optional when:<ul><li>A value may or may not exist</li><li>You want to avoid special sentinel values</li><li>You need type-safe optional parameters</li><li>Function may fail to return a meaningful value</li></ul>Prefer over pointers for optional values.",
+      "examples": [
+        "std::optional&lt;int&gt; find(const std::vector&lt;int&gt;& v, int target);",
+        "std::optional&lt;std::string&gt; getName();",
+        "if (auto result = find(vec, 42)) {",
+        "    std::cout &lt;&lt; *result;",
+        "}"
+      ],
+      "source": "12.15 - std::optional",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_15_008",
+      "lesson": "12.15",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "optional"
+      ],
+      "text": "Create an empty optional with {{c1::std::nullopt}}. Check if it has a value with {{c2::has_value()}} or implicit {{c3::bool}} conversion.",
+      "source": "12.15 - std::optional",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_15_009",
+      "lesson": "12.15",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "optional",
+        "syntax"
+      ],
+      "text": "Access optional value with {{c1::*opt}} or {{c2::opt.value()}}. Use {{c3::opt.value_or(default)}} to provide a fallback value.",
+      "source": "12.15 - std::optional",
+      "difficulty": "easy"
+    }
+  ]
+}

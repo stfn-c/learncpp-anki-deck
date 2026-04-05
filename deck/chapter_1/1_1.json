@@ -1,0 +1,134 @@
+{
+  "chapter": "Chapter 1",
+  "chapter_title": "C++ Basics: Functions and Files",
+  "lesson": "1.1",
+  "lesson_title": "Statements and the structure of a program",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch1_1_001",
+      "lesson": "1.1",
+      "type": "basic",
+      "tags": ["cpp", "statements", "fundamentals"],
+      "front": "What is a statement in C++?",
+      "back": "A statement is an instruction that causes the program to perform some action. Statements are the smallest independent unit of computation in C++.",
+      "source": "1.1 - Statements and the structure of a program",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_1_002",
+      "lesson": "1.1",
+      "type": "cloze",
+      "tags": ["cpp", "statements", "syntax"],
+      "text": "Most (but not all) statements in C++ end with a {{c1::semicolon}} ({{c2::;}})",
+      "source": "1.1 - Statements and the structure of a program",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_1_003",
+      "lesson": "1.1",
+      "type": "basic",
+      "tags": ["cpp", "functions", "fundamentals"],
+      "front": "What is a function in C++?",
+      "back": "A function is a collection of statements that get executed sequentially (in order, from top to bottom).",
+      "source": "1.1 - Statements and the structure of a program",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_1_004",
+      "lesson": "1.1",
+      "type": "cloze",
+      "tags": ["cpp", "main", "syntax"],
+      "text": "Every C++ program must have a special function named {{c1::main}} (all lower case letters).",
+      "source": "1.1 - Statements and the structure of a program",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_1_005",
+      "lesson": "1.1",
+      "type": "basic",
+      "tags": ["cpp", "main", "execution"],
+      "front": "What happens when a C++ program is run?",
+      "back": "The statements inside of main are executed in sequential order. The program typically terminates after the last statement inside function main has been executed.",
+      "source": "1.1 - Statements and the structure of a program",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_1_006",
+      "lesson": "1.1",
+      "type": "cloze",
+      "tags": ["cpp", "iostream", "syntax"],
+      "text": "To use std::cout, you must include the {{c1::iostream}} library using {{c2::#include &lt;iostream&gt;}}",
+      "source": "1.1 - Statements and the structure of a program",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_1_007",
+      "lesson": "1.1",
+      "type": "code",
+      "tags": ["cpp", "hello-world", "syntax"],
+      "question": "What does this Hello World program output?",
+      "code": "#include &lt;iostream&gt;\n\nint main()\n{\n    std::cout &lt;&lt; \"Hello world!\";\n    return 0;\n}",
+      "answer": "Hello world!",
+      "explanation": "std::cout with the &lt;&lt; operator outputs the text \"Hello world!\" to the console.",
+      "source": "1.1 - Statements and the structure of a program",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_1_008",
+      "lesson": "1.1",
+      "type": "cloze",
+      "tags": ["cpp", "cout", "operators"],
+      "text": "{{c1::std::cout}} (which stands for \"character output\") and the {{c2::&lt;&lt;}} operator allow us to display information on the console.",
+      "source": "1.1 - Statements and the structure of a program",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_1_009",
+      "lesson": "1.1",
+      "type": "basic",
+      "tags": ["cpp", "return", "main"],
+      "front": "What does <code>return 0;</code> mean in the main function?",
+      "back": "It returns the integer value 0 to the operating system, indicating that the program ran successfully (\"everything went okay!\").",
+      "source": "1.1 - Statements and the structure of a program",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_1_010",
+      "lesson": "1.1",
+      "type": "basic",
+      "tags": ["cpp", "syntax", "errors"],
+      "front": "What is a syntax error?",
+      "back": "A syntax error occurs when your program violates the grammar rules of the C++ language. The compiler will halt compilation and issue an error message.",
+      "source": "1.1 - Statements and the structure of a program",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_1_011",
+      "lesson": "1.1",
+      "type": "code",
+      "tags": ["cpp", "syntax", "common-mistakes"],
+      "question": "What's wrong with this code?",
+      "code": "#include &lt;iostream&gt;\n\nint main()\n{\n    std::cout &lt;&lt; \"Hello world!\"\n    return 0;\n}",
+      "answer": "Missing semicolon after the std::cout statement",
+      "explanation": "Most statements in C++ must end with a semicolon. The line <code>std::cout &lt;&lt; \"Hello world!\"</code> is missing its semicolon.",
+      "source": "1.1 - Statements and the structure of a program",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch1_1_012",
+      "lesson": "1.1",
+      "type": "concept",
+      "tags": ["cpp", "best-practices", "debugging"],
+      "concept": "Why compilers may report errors on the line after where you'd conventionally fix the issue",
+      "explanation": "Compilers use different strategies for error reporting. Some report where they expected something (like a semicolon at the end of a statement), while others report where they were compiling when they detected the error (like finding a return statement when expecting a semicolon).",
+      "examples": [
+        "Clang: Reports line 5 for missing semicolon at end of line 5",
+        "Visual Studio: Reports line 6 when it encounters 'return' instead of expected semicolon",
+        "Best practice: If you can't find error on indicated line, check the prior line"
+      ],
+      "source": "1.1 - Statements and the structure of a program",
+      "difficulty": "medium"
+    }
+  ]
+}

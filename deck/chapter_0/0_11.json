@@ -1,0 +1,138 @@
+{
+  "chapter": "Chapter 0",
+  "chapter_title": "Introduction / Getting Started",
+  "lesson": "0.11",
+  "lesson_title": "Configuring your compiler: Warning and error levels",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch0_11_001",
+      "lesson": "0.11",
+      "type": "basic",
+      "tags": ["cpp", "compiler", "warnings"],
+      "front": "What is the difference between a compiler warning and a compiler error?",
+      "back": "Errors prevent compilation - the code won't compile. Warnings indicate potential problems but the code will still compile. Warnings often point to bugs or bad practices.",
+      "source": "0.11 - Configuring your compiler: Warning and error levels",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_11_002",
+      "lesson": "0.11",
+      "type": "cloze",
+      "tags": ["cpp", "compiler", "warnings"],
+      "text": "Compiler {{c1::errors}} prevent compilation, while {{c2::warnings}} indicate potential problems but allow compilation to continue.",
+      "source": "0.11 - Configuring your compiler: Warning and error levels",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_11_003",
+      "lesson": "0.11",
+      "type": "basic",
+      "tags": ["cpp", "compiler", "best-practices"],
+      "front": "Why should you fix all compiler warnings?",
+      "back": "Warnings usually indicate real bugs or code smell. Even if the code works now, warnings often lead to bugs later. It's much easier to fix warnings immediately than debug mysterious problems later.",
+      "source": "0.11 - Configuring your compiler: Warning and error levels",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_11_004",
+      "lesson": "0.11",
+      "type": "concept",
+      "tags": ["cpp", "compiler", "best-practices"],
+      "concept": "Why you should enable all warnings and treat them as errors",
+      "explanation": "Maximizing warnings catches problems early:<ul><li>Warnings often indicate real bugs (uninitialized variables, type mismatches)</li><li>Treating warnings as errors forces you to fix them</li><li>Prevents warning fatigue (ignoring warnings until a real one is missed)</li><li>Higher warning levels catch subtle bugs</li><li>Clean warning-free code is more maintainable</li></ul>Professional projects always enable maximum warnings.",
+      "examples": [
+        "Warning: unused variable → might be a typo or logic error",
+        "Warning: implicit conversion → potential data loss",
+        "Warning: comparison of signed/unsigned → can cause bugs"
+      ],
+      "source": "0.11 - Configuring your compiler: Warning and error levels",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_11_005",
+      "lesson": "0.11",
+      "type": "cloze",
+      "tags": ["cpp", "compiler", "visual-studio"],
+      "text": "In Visual Studio, set warning level to {{c1::/W4}} or {{c2::/Wall}} and enable {{c3::/WX}} to treat warnings as errors.",
+      "source": "0.11 - Configuring your compiler: Warning and error levels",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_11_006",
+      "lesson": "0.11",
+      "type": "basic",
+      "tags": ["cpp", "compiler", "visual-studio"],
+      "front": "What do the Visual Studio warning level flags /W0 through /W4 mean?",
+      "back": "/W0 = no warnings, /W1 = severe warnings only, /W2 = level 1 + more, /W3 = recommended (default), /W4 = all reasonable warnings (recommended for new code).",
+      "source": "0.11 - Configuring your compiler: Warning and error levels",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_11_007",
+      "lesson": "0.11",
+      "type": "cloze",
+      "tags": ["cpp", "compiler", "gcc-clang"],
+      "text": "In GCC/Clang, use {{c1::-Wall -Wextra}} to enable most warnings and {{c2::-Werror}} to treat warnings as errors.",
+      "source": "0.11 - Configuring your compiler: Warning and error levels",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_11_008",
+      "lesson": "0.11",
+      "type": "basic",
+      "tags": ["cpp", "compiler", "gcc-clang"],
+      "front": "What warnings do -Wall and -Wextra enable in GCC/Clang?",
+      "back": "-Wall enables common important warnings (despite the name, not all warnings). -Wextra enables additional warnings that are less common but still valuable.",
+      "source": "0.11 - Configuring your compiler: Warning and error levels",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_11_009",
+      "lesson": "0.11",
+      "type": "basic",
+      "tags": ["cpp", "compiler", "best-practices"],
+      "front": "What is the /WX flag (or -Werror) and why use it?",
+      "back": "/WX or -Werror treats all warnings as errors, causing compilation to fail. This forces you to fix warnings immediately rather than accumulating technical debt.",
+      "source": "0.11 - Configuring your compiler: Warning and error levels",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_11_010",
+      "lesson": "0.11",
+      "type": "code",
+      "tags": ["cpp", "warnings", "common-mistakes"],
+      "question": "What warning would this code likely generate?",
+      "code": "int main()\n{\n    int x;\n    int y = x + 5;\n    return 0;\n}",
+      "answer": "Warning: variable 'x' is uninitialized when used",
+      "explanation": "Using uninitialized variables is undefined behavior. A good warning level will catch this common mistake.",
+      "source": "0.11 - Configuring your compiler: Warning and error levels",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_11_011",
+      "lesson": "0.11",
+      "type": "concept",
+      "tags": ["cpp", "compiler", "workflow"],
+      "concept": "Building a zero-warning codebase",
+      "explanation": "Professional development maintains zero warnings:<ol><li>Enable maximum warning levels from day one</li><li>Treat warnings as errors (/WX or -Werror)</li><li>Fix warnings immediately as they appear</li><li>Never commit code with warnings</li><li>Use warning suppressions sparingly and document why</li></ol>Zero-warning policy prevents warning fatigue and catches bugs early.",
+      "examples": [
+        "Configure warnings in project settings, not per-file",
+        "Code review: reject PRs with warnings",
+        "CI/CD: build fails on any warning"
+      ],
+      "source": "0.11 - Configuring your compiler: Warning and error levels",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_11_012",
+      "lesson": "0.11",
+      "type": "basic",
+      "tags": ["cpp", "compiler", "best-practices"],
+      "front": "When is it acceptable to suppress a specific compiler warning?",
+      "back": "Only when you're certain the warning is a false positive and you've documented why. Suppression should be rare, localized, and always explained with comments.",
+      "source": "0.11 - Configuring your compiler: Warning and error levels",
+      "difficulty": "medium"
+    }
+  ]
+}

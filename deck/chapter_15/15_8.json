@@ -1,0 +1,189 @@
+{
+  "chapter": "Chapter 15",
+  "chapter_title": "More on Classes",
+  "lesson": "15.8",
+  "lesson_title": "Friend non-member functions",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch15_8_001",
+      "lesson": "15.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "friend"
+      ],
+      "text": "A {{c1::friend function}} is a non-member function that has been granted access to the {{c2::private and protected}} members of a class.",
+      "source": "15.8 - Friend non-member functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch15_8_002",
+      "lesson": "15.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "friend",
+        "syntax"
+      ],
+      "text": "To declare a friend function, use the {{c1::friend}} keyword inside the class: <code>{{c1::friend}} ReturnType functionName();</code>",
+      "source": "15.8 - Friend non-member functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch15_8_003",
+      "lesson": "15.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "friend"
+      ],
+      "text": "Friend functions are {{c1::not member functions}}, so they {{c2::do not have a this pointer}} and are not called using the {{c3::dot operator}}.",
+      "source": "15.8 - Friend non-member functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch15_8_004",
+      "lesson": "15.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "friend",
+        "best-practices"
+      ],
+      "text": "Friend functions are commonly used for {{c1::operator overloading}} (like {{c2::operator&lt;&lt;}}) where the class object is not the {{c3::left operand}}.",
+      "source": "15.8 - Friend non-member functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_8_005",
+      "lesson": "15.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "friend"
+      ],
+      "text": "The friend keyword can appear in any {{c1::access specifier section}} (public, private, protected) - the placement {{c2::doesn't matter}}.",
+      "source": "15.8 - Friend non-member functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_8_006",
+      "lesson": "15.8",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "classes",
+        "friend"
+      ],
+      "front": "What is the difference between a friend function and a member function?",
+      "back": "Friend functions:<ul><li>Are not member functions</li><li>Have no <code>this</code> pointer</li><li>Are called like regular functions, not with dot operator</li><li>But can access private members</li></ul>",
+      "source": "15.8 - Friend non-member functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch15_8_007",
+      "lesson": "15.8",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "classes",
+        "friend",
+        "best-practices"
+      ],
+      "front": "Why use friend functions instead of member functions for operator&lt;&lt; overloading?",
+      "back": "Because <code>std::cout &lt;&lt; obj</code> requires cout to be the left operand, which means the function cannot be a member of your class. It needs to be a non-member (friend) function.",
+      "source": "15.8 - Friend non-member functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_8_008",
+      "lesson": "15.8",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "classes",
+        "friend",
+        "syntax"
+      ],
+      "question": "Complete the friend function to print a Point.",
+      "code": "class Point {\n    int m_x, m_y;\npublic:\n    Point(int x, int y) : m_x{x}, m_y{y} {}\n    // Declare friend function here\n};\n\n// Define friend function\nvoid print(const Point&amp; p) {\n    std::cout &lt;&lt; '(' &lt;&lt; p.m_x &lt;&lt; ',' &lt;&lt; p.m_y &lt;&lt; ')';\n}",
+      "answer": "Inside class: <code>friend void print(const Point&amp; p);</code>",
+      "explanation": "Use <code>friend</code> keyword to grant the non-member function access to private members m_x and m_y.",
+      "source": "15.8 - Friend non-member functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch15_8_009",
+      "lesson": "15.8",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "classes",
+        "friend",
+        "operators"
+      ],
+      "question": "How do you declare operator&lt;&lt; as a friend for this class?",
+      "code": "class Value {\n    int m_value;\npublic:\n    Value(int v) : m_value{v} {}\n    // Declare operator&lt;&lt; as friend here\n};",
+      "answer": "<code>friend std::ostream&amp; operator&lt;&lt;(std::ostream&amp; out, const Value&amp; v);</code>",
+      "explanation": "Declare as friend so it can access private m_value. Returns ostream&amp; for chaining.",
+      "source": "15.8 - Friend non-member functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_8_010",
+      "lesson": "15.8",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "classes",
+        "friend",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this code?",
+      "code": "class Data {\n    int m_value;\npublic:\n    friend void print(const Data&amp; d);\n};\n\nint main() {\n    Data d;\n    d.print();  // ERROR!\n}",
+      "answer": "Friend functions are not member functions, so they cannot be called using the dot operator.",
+      "explanation": "Should be called as: <code>print(d);</code> not <code>d.print();</code>",
+      "source": "15.8 - Friend non-member functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_8_011",
+      "lesson": "15.8",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "classes",
+        "friend",
+        "best-practices"
+      ],
+      "concept": "When to use friend functions",
+      "explanation": "Friend functions are appropriate when:<ul><li>Overloading operators where the class object isn't the left operand (like operator&lt;&lt;)</li><li>A function needs access to private data of multiple classes</li><li>A function is conceptually part of the class interface but can't be a member</li><li>Use sparingly - they break encapsulation</li></ul>",
+      "examples": [
+        "friend std::ostream&amp; operator&lt;&lt;(std::ostream&amp; out, const MyClass&amp; obj);",
+        "friend bool areEqual(const MyClass&amp; a, const MyClass&amp; b);"
+      ],
+      "source": "15.8 - Friend non-member functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_8_012",
+      "lesson": "15.8",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "classes",
+        "friend"
+      ],
+      "front": "friend function",
+      "back": "A non-member function that has been granted access to the private and protected members of a class",
+      "source": "15.8 - Friend non-member functions",
+      "difficulty": "easy"
+    }
+  ]
+}

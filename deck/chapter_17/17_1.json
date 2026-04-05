@@ -1,0 +1,129 @@
+{
+  "chapter": "Chapter 17",
+  "chapter_title": "Arrays and Strings",
+  "lesson": "17.1",
+  "lesson_title": "Introduction to std::array",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch17_1_001",
+      "lesson": "17.1",
+      "type": "cloze",
+      "tags": ["cpp", "arrays", "std-array", "syntax"],
+      "text": "To include std::array in your program, add the header {{c1::&lt;array&gt;}}",
+      "source": "17.1 - Introduction to std::array",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_1_002",
+      "lesson": "17.1",
+      "type": "cloze",
+      "tags": ["cpp", "arrays", "std-array", "syntax"],
+      "text": "To declare a std::array of 5 ints, write {{c1::std::array&lt;int, 5&gt; arr;}} where the first template parameter is the {{c2::element type}} and the second is the {{c3::array length}}",
+      "source": "17.1 - Introduction to std::array",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_1_003",
+      "lesson": "17.1",
+      "type": "basic",
+      "tags": ["cpp", "arrays", "std-array", "fixed-size"],
+      "front": "What are the two categories of arrays in C++?",
+      "back": "Fixed-size arrays (length known at instantiation, cannot be changed) and dynamic arrays (can be resized at runtime)",
+      "source": "17.1 - Introduction to std::array",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_1_004",
+      "lesson": "17.1",
+      "type": "basic",
+      "tags": ["cpp", "arrays", "std-array", "constexpr"],
+      "front": "What is the primary advantage of std::array over std::vector?",
+      "back": "std::array supports constexpr in most contexts, allowing for compile-time optimization and more robust code. std::vector only supports constexpr in very limited contexts.",
+      "source": "17.1 - Introduction to std::array",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_1_005",
+      "lesson": "17.1",
+      "type": "cloze",
+      "tags": ["cpp", "arrays", "std-array", "syntax"],
+      "text": "To initialize a std::array with explicit values, use aggregate initialization: {{c1::std::array&lt;int, 5&gt; arr { 1, 2, 3, 4, 5 };}}",
+      "source": "17.1 - Introduction to std::array",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_1_006",
+      "lesson": "17.1",
+      "type": "code",
+      "tags": ["cpp", "arrays", "std-array", "omitted-length"],
+      "question": "What's wrong with this code?",
+      "code": "std::array&lt;int&gt; arr { 1, 2, 3, 4, 5 };",
+      "answer": "The array length template parameter is missing. std::array requires both the element type and array length.",
+      "explanation": "Unlike std::vector, std::array always requires you to specify the length as a template parameter: std::array&lt;int, 5&gt;",
+      "source": "17.1 - Introduction to std::array",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_1_007",
+      "lesson": "17.1",
+      "type": "cloze",
+      "tags": ["cpp", "arrays", "std-array", "initialization"],
+      "text": "To initialize a std::array to all zeros, use {{c1::std::array&lt;int, 5&gt; arr {};}} with empty braces",
+      "source": "17.1 - Introduction to std::array",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_1_008",
+      "lesson": "17.1",
+      "type": "basic",
+      "tags": ["cpp", "arrays", "std-array", "omitted-initializers"],
+      "front": "What happens if you provide fewer initializers than the array length in std::array?",
+      "back": "The remaining elements are value-initialized (initialized to zero for fundamental types). For example, std::array&lt;int, 5&gt; arr { 1, 2 }; results in { 1, 2, 0, 0, 0 }",
+      "source": "17.1 - Introduction to std::array",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_1_009",
+      "lesson": "17.1",
+      "type": "cloze",
+      "tags": ["cpp", "arrays", "std-array", "ctad"],
+      "text": "In C++17 and later, you can use CTAD to omit the template parameters: {{c1::std::array arr { 1, 2, 3, 4, 5 };}} and the compiler deduces the type",
+      "source": "17.1 - Introduction to std::array",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_1_010",
+      "lesson": "17.1",
+      "type": "basic",
+      "tags": ["cpp", "arrays", "std-array", "assignment"],
+      "front": "Can you assign one std::array to another using the assignment operator?",
+      "back": "Yes, std::array supports assignment. Both arrays must have the same element type and length. Example: arr1 = arr2;",
+      "source": "17.1 - Introduction to std::array",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_1_011",
+      "lesson": "17.1",
+      "type": "concept",
+      "tags": ["cpp", "arrays", "std-array", "best-practices"],
+      "concept": "When to use std::array vs std::vector",
+      "explanation": "Use std::array when:<ul><li>The array length is known at compile time and won't change</li><li>You need constexpr support</li><li>You want maximum performance</li></ul>Use std::vector when you need dynamic resizing or the size is determined at runtime.",
+      "examples": [
+        "std::array&lt;int, 12&gt; months;  // Fixed: always 12 months",
+        "std::vector&lt;int&gt; scores;      // Dynamic: user input determines size"
+      ],
+      "source": "17.1 - Introduction to std::array",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_1_012",
+      "lesson": "17.1",
+      "type": "cloze",
+      "tags": ["cpp", "arrays", "std-array", "constexpr"],
+      "text": "To create a compile-time constant array, declare it as {{c1::constexpr std::array&lt;int, 5&gt; arr { 1, 2, 3, 4, 5 };}}",
+      "source": "17.1 - Introduction to std::array",
+      "difficulty": "medium"
+    }
+  ]
+}

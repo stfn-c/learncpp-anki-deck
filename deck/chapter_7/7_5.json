@@ -1,0 +1,199 @@
+{
+  "chapter": "Chapter 7",
+  "chapter_title": "Scope, Duration, and Linkage",
+  "lesson": "7.5",
+  "lesson_title": "Variable shadowing (name hiding)",
+  "total_cards": 13,
+  "cards": [
+    {
+      "id": "ch7_5_001",
+      "lesson": "7.5",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "scope",
+        "terminology"
+      ],
+      "front": "Shadowing (name hiding)",
+      "back": "When a variable in a nested block has the same name as a variable in an outer block, the nested variable hides the outer variable in the nested block's scope.",
+      "source": "7.5 - Variable shadowing (name hiding)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_5_002",
+      "lesson": "7.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "scope",
+        "shadowing"
+      ],
+      "question": "What does this code print?",
+      "code": "int main()\n{\n    int apples{ 5 };\n    \n    {\n        int apples{ 10 };\n        std::cout &lt;&lt; apples &lt;&lt; '\\n';\n    }\n    \n    std::cout &lt;&lt; apples &lt;&lt; '\\n';\n    return 0;\n}",
+      "answer": "10<br>5",
+      "explanation": "The inner block's 'apples' shadows the outer 'apples'. Inside the inner block, it prints 10. After the inner block ends, the outer 'apples' is accessible again and prints 5.",
+      "source": "7.5 - Variable shadowing (name hiding)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_5_003",
+      "lesson": "7.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "shadowing",
+        "best-practices"
+      ],
+      "front": "Should you intentionally shadow variables?",
+      "back": "No. Avoid shadowing variables as it makes code harder to understand and can lead to subtle bugs. Most compilers will warn about shadowing if warnings are enabled.",
+      "source": "7.5 - Variable shadowing (name hiding)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_5_004",
+      "lesson": "7.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "shadowing",
+        "scope"
+      ],
+      "text": "When a local variable shadows a global variable, you can access the global using {{c1::::}} (the scope resolution operator with no prefix).",
+      "source": "7.5 - Variable shadowing (name hiding)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_5_005",
+      "lesson": "7.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "shadowing",
+        "globals"
+      ],
+      "front": "Can you access an outer local variable that has been shadowed by an inner local variable?",
+      "back": "No. There is no way to access a shadowed local variable from a nested block. Only shadowed global variables can be accessed using ::.",
+      "source": "7.5 - Variable shadowing (name hiding)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_5_006",
+      "lesson": "7.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "shadowing",
+        "common-mistakes"
+      ],
+      "question": "What's the problem with this code?",
+      "code": "int value{ 5 }; // global\n\nvoid printValue()\n{\n    std::cout &lt;&lt; value &lt;&lt; '\\n';\n}\n\nint main()\n{\n    int value{ 7 }; // shadows global\n    printValue(); // what does this print?\n    return 0;\n}",
+      "answer": "This prints 5, not 7. The function printValue() uses the global 'value', not the local one from main().",
+      "explanation": "Shadowing only affects the scope where the shadowing occurs. Functions called from that scope still see the outer variable, not the shadowing one.",
+      "source": "7.5 - Variable shadowing (name hiding)",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch7_5_007",
+      "lesson": "7.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "shadowing",
+        "compilers"
+      ],
+      "front": "What compiler warning flag helps detect variable shadowing?",
+      "back": "-Wshadow (for GCC/Clang). Enable this warning to catch accidental shadowing.",
+      "source": "7.5 - Variable shadowing (name hiding)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_5_008",
+      "lesson": "7.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "shadowing",
+        "syntax"
+      ],
+      "text": "To avoid shadowing, use {{c1::different names}} for variables in nested scopes, or limit variable scope so variables in different scopes {{c2::don't overlap}}.",
+      "source": "7.5 - Variable shadowing (name hiding)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_5_009",
+      "lesson": "7.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "shadowing",
+        "parameters"
+      ],
+      "front": "Can function parameters shadow global variables?",
+      "back": "Yes. Function parameters can shadow global variables with the same name. This is common but should be avoided or use 'g_' prefix for globals.",
+      "source": "7.5 - Variable shadowing (name hiding)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_5_010",
+      "lesson": "7.5",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "shadowing",
+        "best-practices"
+      ],
+      "concept": "Why shadowing is problematic",
+      "explanation": "Shadowing makes code confusing because:<ul><li>It's not obvious which variable is being used</li><li>It can lead to logic errors when you think you're using one variable but are using another</li><li>It makes debugging harder</li><li>Other developers reading the code may misunderstand which variable is in scope</li></ul>",
+      "examples": [
+        "// Bad: confusing shadowing",
+        "int count = 5;",
+        "{ int count = 10; /* uses inner */ }",
+        "",
+        "// Good: different names",
+        "int totalCount = 5;",
+        "{ int tempCount = 10; }"
+      ],
+      "source": "7.5 - Variable shadowing (name hiding)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_5_011",
+      "lesson": "7.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "shadowing",
+        "best-practices"
+      ],
+      "text": "Avoid {{c1::shadowing}} variables as it makes code harder to understand and can lead to {{c2::subtle bugs}}.",
+      "source": "7.5 - Variable shadowing (name hiding)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_5_012",
+      "lesson": "7.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "shadowing",
+        "compilers"
+      ],
+      "text": "Use the {{c1::-Wshadow}} compiler flag to get warnings about variable shadowing.",
+      "source": "7.5 - Variable shadowing (name hiding)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_5_013",
+      "lesson": "7.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "shadowing",
+        "scope"
+      ],
+      "text": "When a variable in a {{c1::nested block}} has the same name as a variable in an {{c2::outer block}}, the nested variable {{c3::hides}} the outer variable.",
+      "source": "7.5 - Variable shadowing (name hiding)",
+      "difficulty": "easy"
+    }
+  ]
+}

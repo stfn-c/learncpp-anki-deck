@@ -1,0 +1,185 @@
+{
+  "chapter": "Chapter 4",
+  "chapter_title": "Fundamental Data Types",
+  "lesson": "4.4",
+  "lesson_title": "Signed integers",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch4_4_001",
+      "lesson": "4.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "types",
+        "integers"
+      ],
+      "text": "A {{c1::signed}} integer can hold both {{c2::positive}} and {{c3::negative}} whole numbers, including {{c4::zero}}.",
+      "source": "4.4 - Signed integers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_4_002",
+      "lesson": "4.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "types",
+        "integers"
+      ],
+      "front": "What are the four primary signed integer types in C++?",
+      "back": "<ul><li>short (short int)</li><li>int</li><li>long (long int)</li><li>long long (long long int)</li></ul>",
+      "source": "4.4 - Signed integers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_4_003",
+      "lesson": "4.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "types",
+        "integers",
+        "syntax"
+      ],
+      "text": "By default, the keyword {{c1::int}} is equivalent to {{c2::signed int}}. The signed keyword is usually {{c3::omitted}}.",
+      "source": "4.4 - Signed integers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_4_004",
+      "lesson": "4.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "types",
+        "integers"
+      ],
+      "front": "What is the minimum guaranteed range for a signed int in C++?",
+      "back": "-32,768 to 32,767 (16-bit, 2 bytes minimum)<br>In practice, usually -2,147,483,648 to 2,147,483,647 (32-bit, 4 bytes)",
+      "source": "4.4 - Signed integers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch4_4_005",
+      "lesson": "4.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "types",
+        "integers",
+        "best-practices"
+      ],
+      "text": "Best practice: Prefer {{c1::int}} when storing integer values (unless space is at a premium).",
+      "source": "4.4 - Signed integers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_4_006",
+      "lesson": "4.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "integers",
+        "overflow",
+        "gotchas"
+      ],
+      "question": "What happens with this code (assuming 4-byte int)?",
+      "code": "int x{ 2147483647 };  // max int\nx = x + 1;\nstd::cout &lt;&lt; x;",
+      "answer": "Undefined behavior (integer overflow)",
+      "explanation": "Adding 1 to the maximum int value causes signed integer overflow, which is undefined behavior in C++. The result is unpredictable.",
+      "source": "4.4 - Signed integers",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch4_4_007",
+      "lesson": "4.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "integers",
+        "overflow"
+      ],
+      "text": "{{c1::Integer overflow}} occurs when a value is outside the range the type can store, resulting in {{c2::undefined behavior}}.",
+      "source": "4.4 - Signed integers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch4_4_008",
+      "lesson": "4.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "integers",
+        "operators"
+      ],
+      "front": "What is the result of dividing two integers in C++?",
+      "back": "Integer division: the result is an integer with the fractional part dropped.<br>Example: 7 / 3 = 2 (not 2.33...)",
+      "source": "4.4 - Signed integers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_4_009",
+      "lesson": "4.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "integers",
+        "operators"
+      ],
+      "question": "What does this code print?",
+      "code": "int x{ 7 };\nint y{ 3 };\nstd::cout &lt;&lt; x / y;",
+      "answer": "2",
+      "explanation": "Integer division truncates the decimal part. 7 / 3 = 2.33... becomes 2.",
+      "source": "4.4 - Signed integers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_4_010",
+      "lesson": "4.4",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "integers",
+        "best-practices"
+      ],
+      "concept": "When to use short, int, long, and long long",
+      "explanation": "Integer type selection:<ul><li><strong>int</strong>: Default choice for most integers (fastest on most systems)</li><li><strong>short</strong>: When saving memory is critical (e.g., large arrays)</li><li><strong>long/long long</strong>: When you need guaranteed larger ranges</li></ul>",
+      "examples": [
+        "int count{ 0 };              // good: default choice",
+        "short ages[10000];           // ok: memory savings",
+        "long long bigNum{ 9999999999 }; // ok: need large value"
+      ],
+      "source": "4.4 - Signed integers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch4_4_011",
+      "lesson": "4.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "integers",
+        "types"
+      ],
+      "text": "C++ does not guarantee an 8-bit signed integer type, but provides {{c1::std::int8_t}} if available on the system.",
+      "source": "4.4 - Signed integers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch4_4_012",
+      "lesson": "4.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "integers",
+        "overflow",
+        "best-practices"
+      ],
+      "front": "What are two ways to avoid integer overflow?",
+      "back": "<ul><li>Use a larger integer type (e.g., long long instead of int)</li><li>Validate inputs and calculations before performing them</li></ul>",
+      "source": "4.4 - Signed integers",
+      "difficulty": "medium"
+    }
+  ]
+}

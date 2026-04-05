@@ -1,0 +1,196 @@
+{
+  "chapter": "Chapter 13",
+  "chapter_title": "Compound Types: Enums and Structs",
+  "lesson": "13.3",
+  "lesson_title": "13.3 — Unscoped enumerator integral conversions",
+  "total_cards": 13,
+  "cards": [
+    {
+      "id": "ch13_3_001",
+      "lesson": "13.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "enum",
+        "type-conversion"
+      ],
+      "text": "Unscoped enumerators can be {{c1::implicitly converted}} to integral types, but integers {{c2::cannot}} be implicitly converted to enumerators.",
+      "source": "13.3 — Unscoped enumerator integral conversions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_3_002",
+      "lesson": "13.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "enum",
+        "type-conversion"
+      ],
+      "question": "Does this code compile?",
+      "code": "enum Color { red, green };\nint x = red;",
+      "answer": "Yes. Unscoped enumerators implicitly convert to int. x = 0.",
+      "explanation": "Implicit conversion from enumerator to int is allowed.",
+      "source": "13.3 — Unscoped enumerator integral conversions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_3_003",
+      "lesson": "13.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "enum",
+        "type-conversion"
+      ],
+      "question": "Does this code compile?",
+      "code": "enum Color { red, green };\nColor c = 0;",
+      "answer": "No, compile error. Cannot implicitly convert int to enum.",
+      "explanation": "Must use explicit cast: <code>Color c = static_cast&lt;Color&gt;(0);</code>",
+      "source": "13.3 — Unscoped enumerator integral conversions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_3_004",
+      "lesson": "13.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "enum",
+        "type-conversion"
+      ],
+      "text": "To convert an int to an unscoped enum: Color c = {{c1::static_cast&lt;Color&gt;}}(0);",
+      "source": "13.3 — Unscoped enumerator integral conversions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_3_005",
+      "lesson": "13.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "enum",
+        "iostream"
+      ],
+      "front": "Can you output an unscoped enumerator directly with std::cout?",
+      "back": "Yes, but it prints the integer value, not the enumerator name.<br>Example: <code>std::cout &lt;&lt; Color::red;</code> prints <code>0</code>",
+      "source": "13.3 — Unscoped enumerator integral conversions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_3_006",
+      "lesson": "13.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "enum",
+        "iostream"
+      ],
+      "question": "What does this print?",
+      "code": "enum Color { red = 5, green, blue };\nstd::cout &lt;&lt; green;",
+      "answer": "6",
+      "explanation": "Enumerators output as integers. green = red + 1 = 6.",
+      "source": "13.3 — Unscoped enumerator integral conversions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_3_007",
+      "lesson": "13.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "enum",
+        "type-conversion"
+      ],
+      "front": "Why doesn't C++ allow implicit conversion from int to enum?",
+      "back": "To prevent accidentally assigning invalid values to an enum variable that don't correspond to any defined enumerator.",
+      "source": "13.3 — Unscoped enumerator integral conversions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_3_008",
+      "lesson": "13.3",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "enum",
+        "type-conversion"
+      ],
+      "concept": "Enum to int conversions with unscoped enums",
+      "explanation": "Conversion rules for unscoped enums:<ul><li>Enum → int: Implicit (automatic)</li><li>Int → enum: Must use <code>static_cast</code></li><li>Outputting enum prints integer value</li><li>This asymmetry prevents accidental invalid enum values</li></ul>",
+      "examples": [
+        "int x = Color::red;  // OK: implicit",
+        "Color c = 5;  // Error: no implicit int→enum",
+        "Color c = static_cast&lt;Color&gt;(5);  // OK: explicit"
+      ],
+      "source": "13.3 — Unscoped enumerator integral conversions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_3_009",
+      "lesson": "13.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "enum",
+        "gotchas"
+      ],
+      "question": "What's problematic about this code?",
+      "code": "enum Color { red, green, blue };\nColor c = static_cast&lt;Color&gt;(100);",
+      "answer": "Compiles but creates invalid enum value (100 doesn't match any enumerator).",
+      "explanation": "Static cast doesn't validate the value. This can cause undefined behavior.",
+      "source": "13.3 — Unscoped enumerator integral conversions",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch13_3_010",
+      "lesson": "13.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "enum",
+        "iostream"
+      ],
+      "front": "How do you print an enumerator's name instead of its integer value?",
+      "back": "Write a custom function or use a switch statement to map values to strings. C++ doesn't have built-in enum-to-string conversion.",
+      "source": "13.3 — Unscoped enumerator integral conversions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_3_011",
+      "lesson": "13.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "enum"
+      ],
+      "text": "Unscoped enumerators {{c1::can}} implicitly convert to int, but integers {{c2::cannot}} implicitly convert to enumerators.",
+      "source": "13.3 — Unscoped enumerator integral conversions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_3_012",
+      "lesson": "13.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "enum"
+      ],
+      "text": "To assign an integer to an unscoped enum variable: Color c = {{c1::static_cast&lt;Color&gt;}}(5);",
+      "source": "13.3 — Unscoped enumerator integral conversions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_3_013",
+      "lesson": "13.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "enum"
+      ],
+      "text": "Unscoped enumerators {{c1::can}} implicitly convert to int, but integers {{c2::cannot}} implicitly convert to enumerators.",
+      "source": "13.3 — Unscoped enumerator integral conversions",
+      "difficulty": "medium"
+    }
+  ]
+}

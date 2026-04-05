@@ -1,0 +1,227 @@
+{
+  "chapter": "Chapter 13",
+  "chapter_title": "Compound Types: Enums and Structs",
+  "lesson": "13.2",
+  "lesson_title": "13.2 — Unscoped enumerations",
+  "total_cards": 16,
+  "cards": [
+    {
+      "id": "ch13_2_001",
+      "lesson": "13.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "enum",
+        "syntax"
+      ],
+      "text": "Unscoped enums are defined with {{c1::enum}} keyword: enum Color {{c2::{ red, green };}}}",
+      "source": "13.2 — Unscoped enumerations",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_2_002",
+      "lesson": "13.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "enum"
+      ],
+      "front": "What integer value does the first enumerator get by default?",
+      "back": "0 (zero). Subsequent enumerators get 1, 2, 3, etc.",
+      "source": "13.2 — Unscoped enumerations",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_2_003",
+      "lesson": "13.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "enum"
+      ],
+      "question": "What are the values of these enumerators?",
+      "code": "enum Color { red = 5, green, blue = 10, yellow };",
+      "answer": "red=5, green=6, blue=10, yellow=11",
+      "explanation": "Enumerators without explicit values get previous value + 1.",
+      "source": "13.2 — Unscoped enumerations",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_2_004",
+      "lesson": "13.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "enum"
+      ],
+      "text": "To set explicit values: enum Color { red {{c1::= 5}}, green {{c2::= 10}} };",
+      "source": "13.2 — Unscoped enumerations",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_2_005",
+      "lesson": "13.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "enum",
+        "common-mistakes"
+      ],
+      "front": "What are two main problems with unscoped enumerations?",
+      "back": "<ul><li>Name pollution (enumerators in same scope as enum)</li><li>Implicit conversion to int (loses type safety)</li></ul>",
+      "source": "13.2 — Unscoped enumerations",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_2_006",
+      "lesson": "13.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "enum",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this code?",
+      "code": "enum Color { red, green };\nenum Fruit { apple, red };",
+      "answer": "Compile error: 'red' defined in both enums causes naming conflict.",
+      "explanation": "Unscoped enumerators pollute the enclosing scope.",
+      "source": "13.2 — Unscoped enumerations",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_2_007",
+      "lesson": "13.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "enum",
+        "gotchas"
+      ],
+      "question": "Why does this compile despite being logically wrong?",
+      "code": "enum Color { red, blue };\nenum Fruit { apple, banana };\nif (red == apple) { }",
+      "answer": "Both implicitly convert to int (both 0), so it compares integers.",
+      "explanation": "Unscoped enumerators implicitly convert to int, losing type safety.",
+      "source": "13.2 — Unscoped enumerations",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_2_008",
+      "lesson": "13.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "enum"
+      ],
+      "text": "Unscoped enumerators {{c1::implicitly convert}} to int, causing {{c2::type safety}} issues.",
+      "source": "13.2 — Unscoped enumerations",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_2_009",
+      "lesson": "13.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "enum",
+        "iostream"
+      ],
+      "front": "What happens when you output an unscoped enumerator with std::cout?",
+      "back": "It prints the integer value, not the name.<br>Example: <code>red</code> prints as <code>0</code>",
+      "source": "13.2 — Unscoped enumerations",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_2_010",
+      "lesson": "13.2",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "enum",
+        "best-practices"
+      ],
+      "concept": "Avoiding unscoped enum problems",
+      "explanation": "Unscoped enums have issues with namespace pollution and implicit conversion. Solutions:<ul><li>Prefer <code>enum class</code> (scoped enums)</li><li>If using unscoped, prefix names (color_red)</li><li>Be aware of implicit int conversions</li></ul>",
+      "examples": [
+        "enum class Color { red };  // Preferred",
+        "enum Color { color_red };  // If unscoped",
+        "// Beware: red == apple compiles!"
+      ],
+      "source": "13.2 — Unscoped enumerations",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_2_011",
+      "lesson": "13.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "enum",
+        "naming"
+      ],
+      "front": "What naming convention helps avoid unscoped enum conflicts?",
+      "back": "Prefix enumerator names with the enum type:<br><code>enum Color { color_red, color_green };</code><br>Or use enum class instead.",
+      "source": "13.2 — Unscoped enumerations",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_2_012",
+      "lesson": "13.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "enum"
+      ],
+      "text": "By default, the first enumerator has value {{c1::0}}, and each subsequent enumerator has value {{c2::one greater}} than the previous.",
+      "source": "13.2 — Unscoped enumerations",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_2_013",
+      "lesson": "13.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "enum"
+      ],
+      "text": "Unscoped enumerators are placed in the {{c1::same scope}} as the enumeration, causing potential {{c2::naming conflicts}}.",
+      "source": "13.2 — Unscoped enumerations",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_2_014",
+      "lesson": "13.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "enum"
+      ],
+      "text": "When printing an unscoped enumerator, std::cout outputs the {{c1::integer value}}, not the {{c2::enumerator name}}.",
+      "source": "13.2 — Unscoped enumerations",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_2_015",
+      "lesson": "13.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "enum"
+      ],
+      "text": "By default, the first enumerator has value {{c1::0}}, and each subsequent enumerator has value {{c2::one greater}} than the previous.",
+      "source": "13.2 — Unscoped enumerations",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_2_016",
+      "lesson": "13.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "enum"
+      ],
+      "text": "Unscoped enumerators are placed in the {{c1::same scope}} as the enumeration, causing potential {{c2::naming conflicts}}.",
+      "source": "13.2 — Unscoped enumerations",
+      "difficulty": "medium"
+    }
+  ]
+}

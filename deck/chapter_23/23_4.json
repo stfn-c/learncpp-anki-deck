@@ -1,0 +1,209 @@
+{
+  "chapter": "Chapter 23",
+  "chapter_title": "Object Relationships",
+  "lesson": "23.4",
+  "lesson_title": "Association",
+  "total_cards": 14,
+  "cards": [
+    {
+      "id": "ch23_4_001",
+      "lesson": "23.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "association",
+        "relationships"
+      ],
+      "text": "{{c1::Association}} is a relationship where the class {{c2::uses-an}} otherwise unrelated object.",
+      "source": "23.4 - Association",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_4_002",
+      "lesson": "23.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "association",
+        "fundamentals"
+      ],
+      "front": "What is the key difference between association and composition/aggregation?",
+      "back": "In association, the associated object is otherwise unrelated to the class (not a part-of or whole/part relationship). It's simply an object the class uses.",
+      "source": "23.4 - Association",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_4_003",
+      "lesson": "23.4",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "association",
+        "fundamentals"
+      ],
+      "concept": "Requirements for an association relationship",
+      "explanation": "To qualify as association, an object and an associated object must have the following relationship:<ul><li>The associated object (member) is otherwise unrelated to the object (class)</li><li>The associated object can belong to more than one object at a time</li><li>The associated object does NOT have its existence managed by the object</li><li>The associated object may or may not know about the existence of the object</li></ul>",
+      "examples": [
+        "class Doctor {",
+        "    std::vector&lt;Patient*&gt; m_patients;  // Association",
+        "};",
+        "class Patient {",
+        "    std::vector&lt;Doctor*&gt; m_doctors;   // Reflexive association",
+        "};"
+      ],
+      "source": "23.4 - Association",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_4_004",
+      "lesson": "23.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "association",
+        "implementation"
+      ],
+      "text": "Associations may be implemented via {{c1::pointer}} or {{c2::reference}}, or by more indirect means such as holding the {{c3::index}} or {{c4::key}} of the associated object.",
+      "source": "23.4 - Association",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_4_005",
+      "lesson": "23.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "association",
+        "directionality"
+      ],
+      "front": "What are the possible directionalities of an association relationship?",
+      "back": "Association can be either unidirectional (one object knows about the other) or bidirectional (both objects know about each other).",
+      "source": "23.4 - Association",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_4_006",
+      "lesson": "23.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "association",
+        "terminology"
+      ],
+      "text": "In an association, the relationship verb is {{c1::uses-a}}, and the relationship type is {{c2::otherwise unrelated}}.",
+      "source": "23.4 - Association",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_4_007",
+      "lesson": "23.4",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "association",
+        "terminology"
+      ],
+      "front": "uses-a",
+      "back": "Association relationship verb - indicates the class uses an otherwise unrelated object",
+      "source": "23.4 - Association",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_4_008",
+      "lesson": "23.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "association",
+        "syntax"
+      ],
+      "question": "What type of relationship is demonstrated here?",
+      "code": "class Driver {\n    int m_carId;  // Stores ID of associated Car\npublic:\n    Driver(int carId) : m_carId{carId} {}\n    int getCarId() const { return m_carId; }\n};",
+      "answer": "Association",
+      "explanation": "The Driver uses-a Car (via its ID), but they are otherwise unrelated objects. The association is implemented indirectly by storing the Car's ID rather than a pointer or reference.",
+      "source": "23.4 - Association",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_4_009",
+      "lesson": "23.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "association",
+        "bidirectional"
+      ],
+      "front": "What is a reflexive association?",
+      "back": "A reflexive association (also called bidirectional association) is when both objects in the association know about each other. For example, a Doctor knows about their Patients, and each Patient knows about their Doctors.",
+      "source": "23.4 - Association",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_4_010",
+      "lesson": "23.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "association",
+        "multiplicity"
+      ],
+      "front": "Can an associated object belong to multiple objects at the same time?",
+      "back": "Yes. In an association, the associated object can belong to more than one object at a time, similar to aggregation.",
+      "source": "23.4 - Association",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_4_011",
+      "lesson": "23.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "association",
+        "vs-aggregation"
+      ],
+      "front": "What is the main difference between association and aggregation?",
+      "back": "In aggregation, the part is still conceptually part of the whole (whole/part relationship). In association, the objects are otherwise unrelated - one just uses the other without a part-of relationship.",
+      "source": "23.4 - Association",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch23_4_012",
+      "lesson": "23.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "association",
+        "awareness"
+      ],
+      "text": "Unlike composition and aggregation where the part never knows about the whole, in association the associated object {{c1::may or may not}} know about the existence of the object using it.",
+      "source": "23.4 - Association",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_4_013",
+      "lesson": "23.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "association",
+        "directionality"
+      ],
+      "text": "Association can be {{c1::unidirectional}} (one object knows about the other) or {{c2::bidirectional}} (both objects know about each other).",
+      "source": "23.4 - Association",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_4_014",
+      "lesson": "23.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "association",
+        "implementation"
+      ],
+      "text": "Associations can be implemented directly via {{c1::pointer or reference}}, or indirectly by holding an {{c2::index or key}}.",
+      "source": "23.4 - Association",
+      "difficulty": "medium"
+    }
+  ]
+}

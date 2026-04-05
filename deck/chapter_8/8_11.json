@@ -1,0 +1,151 @@
+{
+  "chapter": "Chapter 8",
+  "chapter_title": "Control Flow",
+  "lesson": "8.11",
+  "lesson_title": "Break and continue",
+  "total_cards": 13,
+  "cards": [
+    {
+      "id": "ch8_11_001",
+      "lesson": "8.11",
+      "type": "cloze",
+      "tags": ["cpp", "break", "syntax"],
+      "text": "The {{c1::break}} statement causes a switch or loop to terminate immediately, and execution continues with the next statement after the switch or loop.",
+      "source": "8.11 - Break and continue",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_11_002",
+      "lesson": "8.11",
+      "type": "basic",
+      "tags": ["cpp", "break", "fundamentals"],
+      "front": "What does break do in a loop?",
+      "back": "It immediately exits the loop, and execution continues with the first statement after the loop.",
+      "source": "8.11 - Break and continue",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_11_003",
+      "lesson": "8.11",
+      "type": "code",
+      "tags": ["cpp", "break", "syntax"],
+      "question": "What does this code print?",
+      "code": "for (int i = 0; i &lt; 10; ++i)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;if (i == 5)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; i &lt;&lt; ' ';<br>}",
+      "answer": "0 1 2 3 4",
+      "explanation": "When i equals 5, break exits the loop immediately. Numbers 0-4 are printed, then the loop terminates.",
+      "source": "8.11 - Break and continue",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_11_004",
+      "lesson": "8.11",
+      "type": "cloze",
+      "tags": ["cpp", "continue", "syntax"],
+      "text": "The {{c1::continue}} statement causes the current iteration of a loop to end, and execution jumps to the next iteration.",
+      "source": "8.11 - Break and continue",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_11_005",
+      "lesson": "8.11",
+      "type": "basic",
+      "tags": ["cpp", "continue", "fundamentals"],
+      "front": "What is the difference between break and continue in a loop?",
+      "back": "Break exits the loop entirely. Continue skips the rest of the current iteration and moves to the next iteration.",
+      "source": "8.11 - Break and continue",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_11_006",
+      "lesson": "8.11",
+      "type": "code",
+      "tags": ["cpp", "continue", "syntax"],
+      "question": "What does this code print?",
+      "code": "for (int i = 0; i &lt; 10; ++i)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;if (i % 2 == 0)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;continue;<br>&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; i &lt;&lt; ' ';<br>}",
+      "answer": "1 3 5 7 9",
+      "explanation": "When i is even, continue skips the cout and jumps to the next iteration. Only odd numbers are printed.",
+      "source": "8.11 - Break and continue",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_11_007",
+      "lesson": "8.11",
+      "type": "basic",
+      "tags": ["cpp", "break", "scope"],
+      "front": "In nested loops, what does break affect?",
+      "back": "Only the innermost loop containing the break. It does not exit outer loops.",
+      "source": "8.11 - Break and continue",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_11_008",
+      "lesson": "8.11",
+      "type": "code",
+      "tags": ["cpp", "break", "nested-loops"],
+      "question": "What does this code print?",
+      "code": "for (int i = 0; i &lt; 3; ++i)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;for (int j = 0; j &lt; 3; ++j)<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (j == 1)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; i &lt;&lt; j &lt;&lt; ' ';<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}",
+      "answer": "00 10 20",
+      "explanation": "Break only exits the inner loop when j==1. The outer loop continues normally. Each outer iteration prints the ij pair where j=0.",
+      "source": "8.11 - Break and continue",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch8_11_009",
+      "lesson": "8.11",
+      "type": "basic",
+      "tags": ["cpp", "continue", "for-loop"],
+      "front": "In a for loop, what happens after continue executes?",
+      "back": "Execution jumps to the end-expression (e.g., ++i), then the condition is checked before the next iteration.",
+      "source": "8.11 - Break and continue",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_11_010",
+      "lesson": "8.11",
+      "type": "basic",
+      "tags": ["cpp", "continue", "while-loop"],
+      "front": "What is the key difference in how continue works between for loops and while loops?",
+      "back": "In for loops, continue jumps to the end-expression. In while loops, it jumps directly to the condition check (potentially skipping update code).",
+      "source": "8.11 - Break and continue",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch8_11_011",
+      "lesson": "8.11",
+      "type": "concept",
+      "tags": ["cpp", "break", "best-practices"],
+      "concept": "When to use break in loops",
+      "explanation": "Use break when:<ul><li>You find what you're searching for and can exit early</li><li>An error condition occurs that makes continuing pointless</li><li>You want to exit an intentional infinite loop (while(true))</li><li>You need early termination based on a complex condition</li></ul>Don't overuse - if the loop condition can express the exit naturally, use that instead.",
+      "examples": [
+        "// Good: exit when found<br>while (true) {<br>&nbsp;&nbsp;&nbsp;&nbsp;if (found) break;<br>}",
+        "// Better: use condition<br>while (!found) { }"
+      ],
+      "source": "8.11 - Break and continue",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_11_012",
+      "lesson": "8.11",
+      "type": "concept",
+      "tags": ["cpp", "continue", "best-practices"],
+      "concept": "When to use continue in loops",
+      "explanation": "Use continue when:<ul><li>You want to skip certain iterations based on a condition</li><li>It makes the code more readable than nested ifs</li><li>You're filtering out unwanted values</li></ul>Be careful with while loops - continue skips the update statement, which can cause infinite loops if you're not careful.",
+      "examples": [
+        "// Good: skip even numbers<br>if (i % 2 == 0) continue;",
+        "// Dangerous in while loop<br>while (i &lt; 10) {<br>&nbsp;&nbsp;&nbsp;&nbsp;if (skip) continue;  // skips ++i!<br>&nbsp;&nbsp;&nbsp;&nbsp;++i;<br>}"
+      ],
+      "source": "8.11 - Break and continue",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_11_013",
+      "lesson": "8.11",
+      "type": "basic",
+      "tags": ["cpp", "break", "continue", "best-practices"],
+      "front": "Can you use break and continue outside of loops or switch statements?",
+      "back": "No, break and continue can only be used inside loops (break also works in switch). Using them elsewhere is a compile error.",
+      "source": "8.11 - Break and continue",
+      "difficulty": "easy"
+    }
+  ]
+}

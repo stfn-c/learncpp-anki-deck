@@ -1,0 +1,196 @@
+{
+  "chapter": "Chapter 26",
+  "chapter_title": "Templates and Classes",
+  "lesson": "26.4",
+  "lesson_title": "Class template specialization",
+  "total_cards": 13,
+  "cards": [
+    {
+      "id": "ch26_4_001",
+      "lesson": "26.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "class-specialization"
+      ],
+      "front": "What is class template specialization?",
+      "back": "A feature that allows you to provide a different implementation of a template class for a specific type or set of types.",
+      "source": "26.4 - Class template specialization",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch26_4_002",
+      "lesson": "26.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "class-specialization",
+        "syntax"
+      ],
+      "text": "To fully specialize a template class Storage&lt;T&gt; for type char*:<br>{{c1::template&lt;&gt;}}<br>{{c2::class Storage&lt;char*&gt; { ... };}}",
+      "source": "26.4 - Class template specialization",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_4_003",
+      "lesson": "26.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "class-specialization"
+      ],
+      "front": "Does a class template specialization need to have the same member functions as the primary template?",
+      "back": "No. A specialization can have completely different member functions and data members than the primary template.",
+      "source": "26.4 - Class template specialization",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_4_004",
+      "lesson": "26.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "templates",
+        "class-specialization"
+      ],
+      "question": "What does this code do?",
+      "code": "template &lt;typename T&gt;\nclass Storage {\n    T m_value;\npublic:\n    Storage(T value) : m_value{value} {}\n};\n\ntemplate&lt;&gt;\nclass Storage&lt;bool&gt; {\n    bool m_value;\npublic:\n    Storage(bool value) : m_value{value} {}\n    // Can have completely different interface\n};",
+      "answer": "Provides a full specialization of Storage for bool type with a potentially different implementation.",
+      "explanation": "The specialization can optimize storage or behavior for bool, and doesn't need to match the primary template's interface.",
+      "source": "26.4 - Class template specialization",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_4_005",
+      "lesson": "26.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "class-specialization"
+      ],
+      "text": "A class template specialization uses {{c1::template&lt;&gt;}} (empty angle brackets) because {{c2::all template parameters are specialized}}.",
+      "source": "26.4 - Class template specialization",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch26_4_006",
+      "lesson": "26.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "precedence"
+      ],
+      "front": "If both a primary template and a matching specialization exist, which does the compiler use?",
+      "back": "The compiler uses the more specialized version (the specialization) when the types match.",
+      "source": "26.4 - Class template specialization",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch26_4_007",
+      "lesson": "26.4",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "templates",
+        "class-specialization",
+        "use-cases"
+      ],
+      "concept": "When to use class template specialization",
+      "explanation": "Use class template specialization when:<ul><li>You need special handling for specific types (e.g., char* for string handling)</li><li>You can optimize for certain types (e.g., std::vector&lt;bool&gt; uses bit packing)</li><li>Certain types require fundamentally different implementations</li></ul>",
+      "examples": [
+        "template&lt;&gt; class Storage&lt;char*&gt; { // Deep copy strings };",
+        "template&lt;&gt; class Storage&lt;bool&gt; { // Bit-packed storage };"
+      ],
+      "source": "26.4 - Class template specialization",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_4_008",
+      "lesson": "26.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "class-specialization"
+      ],
+      "front": "Can you specialize just one member function of a template class without specializing the whole class?",
+      "back": "No. To change one member function for a specific type, you must fully specialize the entire class.",
+      "source": "26.4 - Class template specialization",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_4_009",
+      "lesson": "26.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "class-specialization"
+      ],
+      "text": "The primary template must be {{c1::declared}} before you can create a specialization of it.",
+      "source": "26.4 - Class template specialization",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch26_4_010",
+      "lesson": "26.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "std-library"
+      ],
+      "front": "What is a real-world example of class template specialization in the standard library?",
+      "back": "std::vector&lt;bool&gt; is a specialization that uses bit-packing to save space (though this is controversial due to non-standard behavior).",
+      "source": "26.4 - Class template specialization",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_4_011",
+      "lesson": "26.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "templates",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this code?",
+      "code": "template &lt;typename T&gt;\nclass Storage&lt;char*&gt; { // Missing template&lt;&gt;\n    // ...\n};",
+      "answer": "Missing template&lt;&gt; declaration. Should be: template&lt;&gt; class Storage&lt;char*&gt; { ... };",
+      "explanation": "Class specializations need the template&lt;&gt; prefix to indicate they are template specializations, not regular classes.",
+      "source": "26.4 - Class template specialization",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_4_012",
+      "lesson": "26.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "class-specialization"
+      ],
+      "text": "A class template specialization can have {{c1::completely different}} member functions and data members than the {{c2::primary template}}.",
+      "source": "26.4 - Class template specialization",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_4_013",
+      "lesson": "26.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "std-library"
+      ],
+      "text": "std::vector&lt;bool&gt; is a {{c1::specialization}} that uses {{c2::bit-packing}} to save space.",
+      "source": "26.4 - Class template specialization",
+      "difficulty": "medium"
+    }
+  ]
+}

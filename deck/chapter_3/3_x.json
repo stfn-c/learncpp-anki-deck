@@ -1,0 +1,186 @@
+{
+  "chapter": "Chapter 3",
+  "chapter_title": "Debugging C++ Programs",
+  "lesson": "3.x",
+  "lesson_title": "Chapter 3 summary and quiz",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch3_x_001",
+      "lesson": "3.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "errors",
+        "summary"
+      ],
+      "text": "The two main categories of errors are {{c1::syntax errors}} (invalid code) and {{c2::semantic errors}} (code that compiles but doesn't work correctly).",
+      "source": "3.x - Chapter 3 summary",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_x_002",
+      "lesson": "3.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "debugging",
+        "summary"
+      ],
+      "front": "What are the five steps of the debugging process?",
+      "back": "<ol><li>Find the problem</li><li>Understand the problem</li><li>Determine a fix</li><li>Repair the issue</li><li>Retest</li></ol>",
+      "source": "3.x - Chapter 3 summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_x_003",
+      "lesson": "3.x",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "debugging",
+        "summary"
+      ],
+      "concept": "Primary debugging techniques covered in Chapter 3",
+      "explanation": "<ul><li><strong>Code inspection</strong>: Reading code to find errors</li><li><strong>Print statements</strong>: Output values with std::cout/std::cerr</li><li><strong>Debugger stepping</strong>: Step into, over, out</li><li><strong>Breakpoints</strong>: Pause execution at specific lines</li><li><strong>Watch windows</strong>: Monitor variable values</li><li><strong>Call stack</strong>: View function call hierarchy</li></ul>",
+      "examples": [
+        "// Simple: add print statements",
+        "// Complex: use debugger with breakpoints"
+      ],
+      "source": "3.x - Chapter 3 summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_x_004",
+      "lesson": "3.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "debugger",
+        "summary"
+      ],
+      "text": "{{c1::Step into}} enters functions, {{c2::step over}} executes functions without entering them, and {{c3::step out}} returns from the current function.",
+      "source": "3.x - Chapter 3 summary",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_x_005",
+      "lesson": "3.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "debugging",
+        "best-practices",
+        "summary"
+      ],
+      "front": "What is the most important strategy for making debugging easier?",
+      "back": "Write code incrementally and test frequently. This localizes bugs to recently added code, making them much easier to find.",
+      "source": "3.x - Chapter 3 summary",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_x_006",
+      "lesson": "3.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "warnings",
+        "summary"
+      ],
+      "text": "Always compile with {{c1::warnings enabled}} and treat {{c2::warnings as errors}} to catch potential bugs early.",
+      "source": "3.x - Chapter 3 summary",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_x_007",
+      "lesson": "3.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "debugging",
+        "summary"
+      ],
+      "front": "Why use std::cerr instead of std::cout for debug output?",
+      "back": "std::cerr is unbuffered and outputs immediately. If the program crashes, buffered std::cout output might be lost.",
+      "source": "3.x - Chapter 3 summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_x_008",
+      "lesson": "3.x",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "best-practices",
+        "summary"
+      ],
+      "concept": "Bug prevention strategies",
+      "explanation": "Prevent bugs before they happen:<ul><li>Enable compiler warnings (-Wall -Wextra -Werror)</li><li>Use static analyzers (cppcheck, clang-tidy)</li><li>Initialize all variables</li><li>Write unit tests</li><li>Use const correctness</li><li>Code reviews</li><li>Write incrementally and test often</li></ul>",
+      "examples": [
+        "int x{0};  // Always initialize",
+        "const int max{100};  // Use const when appropriate"
+      ],
+      "source": "3.x - Chapter 3 summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_x_009",
+      "lesson": "3.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "call-stack",
+        "summary"
+      ],
+      "front": "What information does the call stack provide?",
+      "back": "The sequence of function calls that led to the current execution point, including function names, parameters, and local variables for each frame.",
+      "source": "3.x - Chapter 3 summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_x_010",
+      "lesson": "3.x",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "debugging",
+        "summary"
+      ],
+      "concept": "When to use each debugging technique",
+      "explanation": "<ul><li><strong>Small programs, obvious bugs</strong>: Code inspection</li><li><strong>Quick checks</strong>: Print statements</li><li><strong>Complex bugs</strong>: Integrated debugger</li><li><strong>Need to see execution flow</strong>: Stepping + call stack</li><li><strong>Track variable changes</strong>: Watch windows</li><li><strong>Skip to problem area</strong>: Breakpoints</li></ul>",
+      "examples": [
+        "// Syntax error \u2192 read the error message",
+        "// Logic error \u2192 use debugger with breakpoints",
+        "// Crash \u2192 check call stack"
+      ],
+      "source": "3.x - Chapter 3 summary",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch3_x_011",
+      "lesson": "3.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "debugging",
+        "summary"
+      ],
+      "text": "The most time-consuming part of debugging is {{c1::finding}} where the error is, not {{c2::fixing}} it.",
+      "source": "3.x - Chapter 3 summary",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_x_012",
+      "lesson": "3.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "debugger",
+        "summary"
+      ],
+      "text": "Breakpoints let you {{c1::run}} to a specific location then {{c2::pause}}, while stepping executes {{c3::line-by-line}}.",
+      "source": "3.x - Chapter 3 summary",
+      "difficulty": "easy"
+    }
+  ]
+}

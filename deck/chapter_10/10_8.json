@@ -1,0 +1,211 @@
+{
+  "chapter": "Chapter 10",
+  "chapter_title": "Type Conversion, Type Aliases, and Type Deduction",
+  "lesson": "10.8",
+  "lesson_title": "Type deduction for objects using the auto keyword",
+  "total_cards": 14,
+  "cards": [
+    {
+      "id": "ch10_8_001",
+      "lesson": "10.8",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "auto",
+        "type-deduction"
+      ],
+      "front": "What is type deduction in C++?",
+      "back": "A feature where the compiler automatically deduces (figures out) the type of an object from its initializer. The auto keyword enables type deduction for variables.",
+      "source": "10.8 - Type deduction for objects using the auto keyword",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_8_002",
+      "lesson": "10.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "auto",
+        "syntax"
+      ],
+      "text": "To use type deduction for a variable, use the {{c1::auto}} keyword instead of an explicit type: auto x = 5;",
+      "source": "10.8 - Type deduction for objects using the auto keyword",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_8_003",
+      "lesson": "10.8",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "auto",
+        "type-deduction"
+      ],
+      "question": "What type does the variable d get?",
+      "code": "auto d{ 5.0 };",
+      "answer": "double",
+      "explanation": "The compiler deduces the type from the initializer. 5.0 is a double literal, so d has type double.",
+      "source": "10.8 - Type deduction for objects using the auto keyword",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_8_004",
+      "lesson": "10.8",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "auto",
+        "requirements"
+      ],
+      "front": "Can you use auto without an initializer?",
+      "back": "No. Variables using auto MUST be initialized at definition because the compiler needs the initializer to deduce the type.<br>auto x; // Error!<br>auto y = 5; // OK",
+      "source": "10.8 - Type deduction for objects using the auto keyword",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_8_005",
+      "lesson": "10.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "auto",
+        "requirements"
+      ],
+      "text": "When using auto, the variable {{c1::must be initialized}} at definition because the compiler needs the {{c2::initializer}} to deduce the type.",
+      "source": "10.8 - Type deduction for objects using the auto keyword",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_8_006",
+      "lesson": "10.8",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "auto",
+        "best-practices"
+      ],
+      "concept": "Benefits of using auto",
+      "explanation": "Using auto provides several benefits:<ul><li>Reduces typing for complex type names</li><li>Avoids type mismatches and implicit conversions</li><li>Easier refactoring (change return type, auto adapts)</li><li>Can't forget to initialize (requires initializer)</li><li>Makes code more maintainable</li></ul>However, can reduce readability if type isn't obvious from context.",
+      "examples": [
+        "auto result = findStudent(id);  // don't need to know return type",
+        "auto iter = myMap.begin();      // much shorter than iterator type",
+        "auto d = 5.0;                   // clear from initializer"
+      ],
+      "source": "10.8 - Type deduction for objects using the auto keyword",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_8_007",
+      "lesson": "10.8",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "auto",
+        "type-dropping"
+      ],
+      "front": "What happens to const and references when using auto?",
+      "back": "auto drops const and reference qualifiers by default.<ul><li>const int → auto deduces int</li><li>int&amp; → auto deduces int</li><li>const int&amp; → auto deduces int</li></ul>To preserve them, use auto const, auto&amp;, or auto const&amp;.",
+      "source": "10.8 - Type deduction for objects using the auto keyword",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_8_008",
+      "lesson": "10.8",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "auto",
+        "const-reference"
+      ],
+      "question": "What types do these variables get?",
+      "code": "const int x{ 5 };\nauto a{ x };       // 1\nconst auto b{ x }; // 2\nauto& c{ x };      // 3",
+      "answer": "a: int (drops const)<br>b: const int (explicitly adds const)<br>c: const int&amp; (reference to const)",
+      "explanation": "auto drops const by default. To preserve const, you must add it explicitly. References are preserved when using auto&amp;.",
+      "source": "10.8 - Type deduction for objects using the auto keyword",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch10_8_009",
+      "lesson": "10.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "auto",
+        "type-dropping"
+      ],
+      "text": "auto drops {{c1::const}} and {{c2::reference}} qualifiers by default. To preserve them, use {{c3::const auto}} or {{c4::auto&amp;}}.",
+      "source": "10.8 - Type deduction for objects using the auto keyword",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_8_010",
+      "lesson": "10.8",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "auto",
+        "best-practices"
+      ],
+      "front": "When should you avoid using auto?",
+      "back": "Avoid auto when:<ul><li>The type is not obvious from context</li><li>You want to be explicit about the type for clarity</li><li>You specifically want a different type than what would be deduced</li><li>Documentation/readability would suffer</li></ul>",
+      "source": "10.8 - Type deduction for objects using the auto keyword",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_8_011",
+      "lesson": "10.8",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "auto",
+        "literals"
+      ],
+      "question": "What types are deduced?",
+      "code": "auto a{ 5 };     // 1\nauto b{ 5.0 };   // 2\nauto c{ 5.0f };  // 3\nauto d{ 'x' };   // 4",
+      "answer": "a: int<br>b: double<br>c: float<br>d: char",
+      "explanation": "auto deduces types based on literal suffixes: no suffix = int for integers, double for decimals; f suffix = float; char literals = char.",
+      "source": "10.8 - Type deduction for objects using the auto keyword",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_8_012",
+      "lesson": "10.8",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "auto",
+        "string-literals"
+      ],
+      "front": "What type does auto deduce for a string literal?",
+      "back": "const char* (pointer to const char), NOT std::string.<br>auto s = \"hello\"; // const char*<br>To get std::string, use: auto s = std::string{\"hello\"};",
+      "source": "10.8 - Type deduction for objects using the auto keyword",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_8_013",
+      "lesson": "10.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "auto",
+        "type-deduction"
+      ],
+      "text": "The {{c1::auto}} keyword enables {{c2::type deduction}}, allowing the compiler to deduce a variable's type from its {{c3::initializer}}.",
+      "source": "10.8 - Type deduction for objects using the auto keyword",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_8_014",
+      "lesson": "10.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "auto",
+        "const-reference"
+      ],
+      "text": "To preserve const when using auto, write {{c1::const auto}}. To preserve references, write {{c2::auto&amp;}}.",
+      "source": "10.8 - Type deduction for objects using the auto keyword",
+      "difficulty": "medium"
+    }
+  ]
+}

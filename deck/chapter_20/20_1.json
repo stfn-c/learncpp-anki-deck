@@ -1,0 +1,160 @@
+{
+  "chapter": "Chapter 20",
+  "chapter_title": "Functions",
+  "lesson": "20.1",
+  "lesson_title": "Function Pointers",
+  "total_cards": 15,
+  "cards": [
+    {
+      "id": "ch20_1_001",
+      "lesson": "20.1",
+      "type": "basic",
+      "tags": ["cpp", "function-pointers", "fundamentals"],
+      "front": "What do function pointers point to?",
+      "back": "Function pointers point to functions (not variables). They hold the address of a function in memory.",
+      "source": "20.1 - Function Pointers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch20_1_002",
+      "lesson": "20.1",
+      "type": "cloze",
+      "tags": ["cpp", "function-pointers", "syntax"],
+      "text": "To declare a function pointer that takes no arguments and returns an int: {{c1::int (*fcnPtr)();}",
+      "source": "20.1 - Function Pointers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_1_003",
+      "lesson": "20.1",
+      "type": "basic",
+      "tags": ["cpp", "function-pointers", "behavior"],
+      "front": "What happens when you print a function name (without parentheses) using std::cout?",
+      "back": "C++ converts the function to a function pointer, then to bool. Since non-null pointers evaluate to true, it prints 1 (or the function's address on some compilers).",
+      "source": "20.1 - Function Pointers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_1_004",
+      "lesson": "20.1",
+      "type": "cloze",
+      "tags": ["cpp", "function-pointers", "syntax"],
+      "text": "The parentheses around *fcnPtr in {{c1::int (*fcnPtr)()}} are necessary because {{c2::int* fcnPtr()}} would be interpreted as a function declaration returning int*.",
+      "source": "20.1 - Function Pointers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_1_005",
+      "lesson": "20.1",
+      "type": "code",
+      "tags": ["cpp", "function-pointers", "initialization"],
+      "question": "What's the difference between these two initializations?",
+      "code": "int (*fcnPtr1)() { &amp;foo };<br>int (*fcnPtr2)() { foo };",
+      "answer": "Both are equivalent. C++ implicitly converts a function into a function pointer if needed, so the &amp; is optional.",
+      "explanation": "Unlike fundamental types, C++ will implicitly convert a function into a function pointer when needed, so you don't need to use the address-of operator.",
+      "source": "20.1 - Function Pointers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_1_006",
+      "lesson": "20.1",
+      "type": "cloze",
+      "tags": ["cpp", "function-pointers", "const"],
+      "text": "To make a const function pointer (pointer itself is const), place const {{c1::after the asterisk}}: int (*{{c2::const}} fcnPtr)();",
+      "source": "20.1 - Function Pointers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_1_007",
+      "lesson": "20.1",
+      "type": "code",
+      "tags": ["cpp", "function-pointers", "common-mistakes"],
+      "question": "What's wrong with this assignment?",
+      "code": "int foo() { return 5; }<br>int (*fcnPtr)();<br>fcnPtr = foo();",
+      "answer": "This assigns the return value (int) instead of the function address. Should be: fcnPtr = foo; or fcnPtr = &amp;foo;",
+      "explanation": "Adding parentheses calls the function and returns an int. Without parentheses, you get the function pointer.",
+      "source": "20.1 - Function Pointers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_1_008",
+      "lesson": "20.1",
+      "type": "cloze",
+      "tags": ["cpp", "function-pointers", "calling"],
+      "text": "Two ways to call a function through a function pointer: explicit dereference {{c1::(*fcnPtr)(5)}} or implicit dereference {{c2::fcnPtr(5)}}.",
+      "source": "20.1 - Function Pointers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch20_1_009",
+      "lesson": "20.1",
+      "type": "basic",
+      "tags": ["cpp", "function-pointers", "best-practices"],
+      "front": "Why should you check if a function pointer is null before calling it?",
+      "back": "Dereferencing a null function pointer leads to undefined behavior, just like with regular pointers. Always check with if (fcnPtr) before calling.",
+      "source": "20.1 - Function Pointers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch20_1_010",
+      "lesson": "20.1",
+      "type": "basic",
+      "tags": ["cpp", "function-pointers", "default-arguments"],
+      "front": "Do default arguments work when calling functions through function pointers?",
+      "back": "No. Default arguments are resolved at compile-time, but function pointer calls are resolved at runtime, so default arguments are not applied.",
+      "source": "20.1 - Function Pointers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_1_011",
+      "lesson": "20.1",
+      "type": "cloze",
+      "tags": ["cpp", "function-pointers", "type-alias"],
+      "text": "To make function pointer syntax cleaner, use a type alias: {{c1::using ValidateFunction = bool(*)(int, int);}} Then use it as: {{c2::bool validate(int x, int y, ValidateFunction pfcn);}}",
+      "source": "20.1 - Function Pointers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_1_012",
+      "lesson": "20.1",
+      "type": "cloze",
+      "tags": ["cpp", "function-pointers", "std-function"],
+      "text": "Using std::function from &lt;functional&gt; header: {{c1::std::function&lt;bool(int, int)&gt; fcn;}} where return type and parameters go {{c2::inside angled brackets}}.",
+      "source": "20.1 - Function Pointers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_1_013",
+      "lesson": "20.1",
+      "type": "concept",
+      "tags": ["cpp", "function-pointers", "use-cases"],
+      "concept": "Primary use cases for function pointers",
+      "explanation": "Function pointers are useful for:<ul><li>Storing functions in arrays or containers</li><li>Passing functions as arguments to other functions (callbacks)</li><li>Allowing callers to customize behavior (e.g., sort order in sorting algorithms)</li></ul>",
+      "examples": [
+        "void sort(int* arr, int size, bool (*compare)(int, int));",
+        "std::function&lt;int(int, int)&gt; operations[4] = {add, sub, mul, div};"
+      ],
+      "source": "20.1 - Function Pointers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_1_014",
+      "lesson": "20.1",
+      "type": "basic",
+      "tags": ["cpp", "function-pointers", "std-function"],
+      "front": "What are two advantages of using std::function instead of raw function pointers?",
+      "back": "1) Cleaner, more readable syntax<br>2) Can be used with CTAD (Class Template Argument Deduction) for type inference",
+      "source": "20.1 - Function Pointers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_1_015",
+      "lesson": "20.1",
+      "type": "cloze",
+      "tags": ["cpp", "function-pointers", "auto"],
+      "text": "You can use {{c1::auto}} keyword to infer the type of a function pointer: auto fcnPtr{ {{c2::&amp;foo}} };",
+      "source": "20.1 - Function Pointers",
+      "difficulty": "easy"
+    }
+  ]
+}

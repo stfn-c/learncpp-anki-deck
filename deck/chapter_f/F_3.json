@@ -1,0 +1,194 @@
+{
+  "chapter": "Chapter F",
+  "chapter_title": "Introduction to Functions and Constexpr",
+  "lesson": "F.3",
+  "lesson_title": "Constexpr functions (part 3)",
+  "total_cards": 13,
+  "cards": [
+    {
+      "id": "chF_3_001",
+      "lesson": "F.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "consteval",
+        "functions"
+      ],
+      "front": "What is a consteval function?",
+      "back": "A function that MUST be evaluated at compile-time. Unlike constexpr functions which can evaluate at either compile-time or runtime, consteval functions can only evaluate at compile-time.",
+      "source": "F.3 - Constexpr functions (part 3)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "chF_3_002",
+      "lesson": "F.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "consteval",
+        "syntax"
+      ],
+      "text": "To create a function that must evaluate at compile-time, use {{c1::consteval}} instead of {{c2::constexpr}}.",
+      "source": "F.3 - Constexpr functions (part 3)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "chF_3_003",
+      "lesson": "F.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "consteval",
+        "vs-constexpr"
+      ],
+      "front": "What is the key difference between constexpr and consteval functions?",
+      "back": "<ul><li>constexpr: CAN evaluate at compile-time, MAY evaluate at runtime</li><li>consteval: MUST evaluate at compile-time, NEVER at runtime</li></ul>",
+      "source": "F.3 - Constexpr functions (part 3)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "chF_3_004",
+      "lesson": "F.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "consteval",
+        "common-mistakes"
+      ],
+      "question": "Why does this code fail to compile?",
+      "code": "consteval int square(int x)\n{\n    return x * x;\n}\n\nint main()\n{\n    int num{ 5 };\n    int result = square(num);\n    return 0;\n}",
+      "answer": "square() is a consteval function and must be evaluated at compile-time, but num is not a constant expression, so the function cannot be evaluated.",
+      "explanation": "consteval functions require all arguments to be constant expressions. To fix this, either make num constexpr or change square() to constexpr.",
+      "source": "F.3 - Constexpr functions (part 3)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "chF_3_005",
+      "lesson": "F.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "consteval",
+        "syntax"
+      ],
+      "text": "{{c1::consteval}} int getCompileTimeValue() { return {{c2::42}}; }",
+      "source": "F.3 - Constexpr functions (part 3)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "chF_3_006",
+      "lesson": "F.3",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "consteval",
+        "best-practices"
+      ],
+      "concept": "When to use consteval instead of constexpr",
+      "explanation": "Use consteval when:<ul><li>The function MUST execute at compile-time</li><li>You want to guarantee no runtime overhead</li><li>You want to catch errors if non-constant arguments are passed</li><li>The function is a helper for compile-time computation</li></ul>consteval provides stronger compile-time guarantees than constexpr.",
+      "examples": [
+        "consteval int getMagicNumber() { return 42; }  // Always compile-time",
+        "constexpr int square(int x) { return x*x; }    // Flexible (compile or runtime)"
+      ],
+      "source": "F.3 - Constexpr functions (part 3)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "chF_3_007",
+      "lesson": "F.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "consteval",
+        "errors"
+      ],
+      "front": "What happens if you try to call a consteval function with runtime arguments?",
+      "back": "The code will fail to compile. consteval functions require all arguments to be constant expressions known at compile-time.",
+      "source": "F.3 - Constexpr functions (part 3)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "chF_3_008",
+      "lesson": "F.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "consteval",
+        "guarantee"
+      ],
+      "text": "consteval functions are also called {{c1::immediate functions}} because they must produce an {{c2::immediate (compile-time) result}}.",
+      "source": "F.3 - Constexpr functions (part 3)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "chF_3_009",
+      "lesson": "F.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "consteval",
+        "C++20"
+      ],
+      "front": "In which C++ standard was consteval introduced?",
+      "back": "C++20. consteval is a C++20 feature.",
+      "source": "F.3 - Constexpr functions (part 3)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "chF_3_010",
+      "lesson": "F.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "consteval",
+        "compile-time"
+      ],
+      "question": "Is this code valid?",
+      "code": "consteval int getValue()\n{\n    return 100;\n}\n\nint main()\n{\n    constexpr int x = getValue();\n    return 0;\n}",
+      "answer": "Yes, this is valid.",
+      "explanation": "getValue() is consteval and returns a constant expression (100). It can be used to initialize a constexpr variable. The function will be evaluated at compile-time.",
+      "source": "F.3 - Constexpr functions (part 3)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "chF_3_011",
+      "lesson": "F.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "consteval",
+        "performance"
+      ],
+      "front": "What performance benefit does consteval provide over constexpr?",
+      "back": "consteval guarantees zero runtime overhead because the function is ALWAYS evaluated at compile-time. constexpr functions might evaluate at runtime, potentially adding overhead.",
+      "source": "F.3 - Constexpr functions (part 3)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "chF_3_012",
+      "lesson": "F.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "consteval",
+        "C++20"
+      ],
+      "text": "{{c1::consteval}} functions are also called {{c2::immediate functions}} and were introduced in {{c3::C++20}}.",
+      "source": "F.3 - Constexpr functions (part 3)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "chF_3_013",
+      "lesson": "F.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "consteval",
+        "vs-constexpr"
+      ],
+      "text": "Use {{c1::consteval}} when a function MUST execute at compile-time, and {{c2::constexpr}} when it CAN execute at compile-time but MAY execute at runtime.",
+      "source": "F.3 - Constexpr functions (part 3)",
+      "difficulty": "medium"
+    }
+  ]
+}

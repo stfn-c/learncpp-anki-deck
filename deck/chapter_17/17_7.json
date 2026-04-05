@@ -1,0 +1,129 @@
+{
+  "chapter": "Chapter 17",
+  "chapter_title": "Arrays and Strings",
+  "lesson": "17.7",
+  "lesson_title": "Introduction to C-style arrays",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch17_7_001",
+      "lesson": "17.7",
+      "type": "cloze",
+      "tags": ["cpp", "arrays", "c-style-arrays", "syntax"],
+      "text": "To declare a C-style array of 5 ints, write {{c1::int arr[5];}} where the length goes in {{c2::square brackets}}",
+      "source": "17.7 - Introduction to C-style arrays",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_7_002",
+      "lesson": "17.7",
+      "type": "basic",
+      "tags": ["cpp", "arrays", "c-style-arrays", "comparison"],
+      "front": "What is the main difference between C-style arrays and std::array?",
+      "back": "C-style arrays are a core language feature with minimal functionality, while std::array is a standard library class template that provides additional member functions, better safety, and doesn't decay to pointers.",
+      "source": "17.7 - Introduction to C-style arrays",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_7_003",
+      "lesson": "17.7",
+      "type": "cloze",
+      "tags": ["cpp", "c-style-arrays", "initialization"],
+      "text": "To initialize a C-style array with values, use: {{c1::int arr[5] { 1, 2, 3, 4, 5 };}} with braces",
+      "source": "17.7 - Introduction to C-style arrays",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_7_004",
+      "lesson": "17.7",
+      "type": "basic",
+      "tags": ["cpp", "c-style-arrays", "initialization"],
+      "front": "What happens if you don't initialize a C-style array in local scope?",
+      "back": "The elements contain indeterminate values (garbage). Unlike std::array with {}, there's no automatic zero-initialization unless you use explicit syntax like = {} or {}.",
+      "source": "17.7 - Introduction to C-style arrays",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_7_005",
+      "lesson": "17.7",
+      "type": "cloze",
+      "tags": ["cpp", "c-style-arrays", "omitted-length"],
+      "text": "When providing initializers, you can omit the array length: {{c1::int arr[] { 1, 2, 3 };}} and the compiler deduces the size",
+      "source": "17.7 - Introduction to C-style arrays",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_7_006",
+      "lesson": "17.7",
+      "type": "code",
+      "tags": ["cpp", "c-style-arrays", "common-mistakes"],
+      "question": "What's wrong with this code?",
+      "code": "int n = 5;\nint arr[n];",
+      "answer": "C-style array length must be a compile-time constant. Variable n is not constexpr.",
+      "explanation": "In standard C++, array lengths must be constant expressions. Some compilers support Variable Length Arrays (VLAs) as an extension, but this is not standard C++.",
+      "source": "17.7 - Introduction to C-style arrays",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_7_007",
+      "lesson": "17.7",
+      "type": "cloze",
+      "tags": ["cpp", "c-style-arrays", "subscript"],
+      "text": "C-style arrays support subscripting with {{c1::operator[]}} just like std::array, and also do {{c2::not}} perform bounds checking",
+      "source": "17.7 - Introduction to C-style arrays",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_7_008",
+      "lesson": "17.7",
+      "type": "basic",
+      "tags": ["cpp", "c-style-arrays", "assignment"],
+      "front": "Can you assign one C-style array to another using the = operator?",
+      "back": "No, C-style arrays don't support assignment. You must copy elements individually or use std::copy. This is a major limitation compared to std::array.",
+      "source": "17.7 - Introduction to C-style arrays",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_7_009",
+      "lesson": "17.7",
+      "type": "cloze",
+      "tags": ["cpp", "c-style-arrays", "sizeof"],
+      "text": "To get the size in bytes of a C-style array, use {{c1::sizeof(arr)}}, which returns the total bytes, not the element count",
+      "source": "17.7 - Introduction to C-style arrays",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_7_010",
+      "lesson": "17.7",
+      "type": "cloze",
+      "tags": ["cpp", "c-style-arrays", "length-calculation"],
+      "text": "To get the number of elements in a C-style array arr, use: {{c1::sizeof(arr) / sizeof(arr[0])}}",
+      "source": "17.7 - Introduction to C-style arrays",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_7_011",
+      "lesson": "17.7",
+      "type": "concept",
+      "tags": ["cpp", "c-style-arrays", "best-practices"],
+      "concept": "Why avoid C-style arrays in modern C++",
+      "explanation": "C-style arrays have significant limitations:<ul><li>No bounds checking</li><li>No built-in size() function</li><li>Decay to pointers when passed to functions</li><li>Cannot be assigned or compared directly</li><li>Limited constexpr support</li></ul>Prefer std::array or std::vector instead.",
+      "examples": [
+        "int arr[5];              // C-style: avoid",
+        "std::array&lt;int, 5&gt; arr;  // Prefer this"
+      ],
+      "source": "17.7 - Introduction to C-style arrays",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_7_012",
+      "lesson": "17.7",
+      "type": "basic",
+      "tags": ["cpp", "c-style-arrays", "range-based-for"],
+      "front": "Can you use range-based for loops with C-style arrays?",
+      "back": "Yes, range-based for loops work with C-style arrays of known size declared in the same scope. However, they don't work with arrays that have decayed to pointers.",
+      "source": "17.7 - Introduction to C-style arrays",
+      "difficulty": "medium"
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "chapter": "Chapter 10",
+  "chapter_title": "Type Conversion, Type Aliases, and Type Deduction",
+  "lesson": "10.x",
+  "lesson_title": "Chapter 10 summary and quiz",
+  "total_cards": 14,
+  "cards": [
+    {
+      "id": "ch10_x_001",
+      "lesson": "10.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "type-conversion",
+        "summary"
+      ],
+      "front": "What is the difference between implicit and explicit type conversion?",
+      "back": "Implicit type conversion is performed automatically by the compiler when needed. Explicit type conversion is requested by the programmer using a cast operator like static_cast.",
+      "source": "10.x - Chapter 10 summary",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_x_002",
+      "lesson": "10.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "type-conversion",
+        "summary"
+      ],
+      "front": "What is the key difference between numeric promotions and numeric conversions?",
+      "back": "Numeric promotions are always safe and value-preserving (no data loss), converting smaller types to larger ones. Numeric conversions may result in data loss and are not always safe.",
+      "source": "10.x - Chapter 10 summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_x_003",
+      "lesson": "10.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "brace-initialization",
+        "summary"
+      ],
+      "text": "{{c1::Brace initialization}} disallows {{c2::narrowing conversions}}, making it safer than copy initialization.",
+      "source": "10.x - Chapter 10 summary",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_x_004",
+      "lesson": "10.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "static_cast",
+        "summary"
+      ],
+      "front": "Why is static_cast preferred over C-style casts?",
+      "back": "static_cast is safer and more visible in code. It's easier to search for, more restrictive (won't do dangerous conversions), and the compiler can verify the cast is valid.",
+      "source": "10.x - Chapter 10 summary",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_x_005",
+      "lesson": "10.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "type-aliases",
+        "summary"
+      ],
+      "front": "Do type aliases create new distinct types?",
+      "back": "No. Type aliases are just alternative names (synonyms) for existing types. They don't create new types and are fully interchangeable with the original type.",
+      "source": "10.x - Chapter 10 summary",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_x_006",
+      "lesson": "10.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "type-aliases",
+        "summary"
+      ],
+      "text": "Modern C++ prefers {{c1::using}} over {{c2::typedef}} for creating type aliases because of better syntax and template support.",
+      "source": "10.x - Chapter 10 summary",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_x_007",
+      "lesson": "10.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "auto",
+        "summary"
+      ],
+      "front": "What does auto drop when deducing types, and how do you preserve them?",
+      "back": "auto drops const and reference qualifiers by default. To preserve them:<ul><li>Use const auto for const</li><li>Use auto&amp; for references</li><li>Use const auto&amp; for const references</li></ul>",
+      "source": "10.x - Chapter 10 summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_x_008",
+      "lesson": "10.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "arithmetic-conversions",
+        "summary"
+      ],
+      "front": "What do the usual arithmetic conversions ensure?",
+      "back": "They ensure that both operands of a binary operator are converted to the same type before the operation is performed, following a type hierarchy (long double &gt; double &gt; float &gt; promoted integral types).",
+      "source": "10.x - Chapter 10 summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_x_009",
+      "lesson": "10.x",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "best-practices",
+        "summary"
+      ],
+      "concept": "Key takeaways for type conversions and type safety",
+      "explanation": "Important principles from Chapter 10:<ul><li>Prefer brace initialization to prevent narrowing conversions</li><li>Use static_cast for explicit conversions, not C-style casts</li><li>Avoid mixing signed and unsigned types in operations</li><li>Be aware that narrowing conversions can lose data</li><li>Use auto when type is obvious, explicit types for clarity</li><li>Type aliases improve readability but don't add type safety</li></ul>",
+      "examples": [
+        "int x{ 3.5 };           // Error: good, prevents data loss",
+        "auto d = 5.0 / 3;      // OK: type clear from context",
+        "using ID = int;        // Documents purpose, easier to change"
+      ],
+      "source": "10.x - Chapter 10 summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_x_010",
+      "lesson": "10.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "type-conversion",
+        "summary"
+      ],
+      "front": "What are the 5 main categories of standard conversions?",
+      "back": "<ul><li>Numeric promotions (safe, value-preserving)</li><li>Numeric conversions (may lose data)</li><li>Qualification conversions (add/remove const/volatile)</li><li>Value transformations (lvalue to rvalue, etc.)</li><li>Pointer conversions</li></ul>",
+      "source": "10.x - Chapter 10 summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_x_011",
+      "lesson": "10.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "type-conversion",
+        "summary"
+      ],
+      "text": "{{c1::Implicit}} type conversion is automatic, while {{c2::explicit}} type conversion uses a cast operator.",
+      "source": "10.x - Chapter 10 summary",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_x_012",
+      "lesson": "10.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "promotions",
+        "summary"
+      ],
+      "text": "Numeric {{c1::promotions}} are always safe and value-preserving, while numeric {{c2::conversions}} may lose data.",
+      "source": "10.x - Chapter 10 summary",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_x_013",
+      "lesson": "10.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "auto",
+        "summary"
+      ],
+      "text": "When using auto for type deduction, you {{c1::must}} provide an initializer because the compiler needs it to deduce the type.",
+      "source": "10.x - Chapter 10 summary",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_x_014",
+      "lesson": "10.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "static_cast",
+        "summary"
+      ],
+      "text": "For explicit type conversion, use {{c1::static_cast}} instead of {{c2::C-style casts}} for better safety and visibility.",
+      "source": "10.x - Chapter 10 summary",
+      "difficulty": "easy"
+    }
+  ]
+}

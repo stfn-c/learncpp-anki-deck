@@ -1,0 +1,135 @@
+{
+  "chapter": "Chapter 1",
+  "chapter_title": "C++ Basics: Functions and Files",
+  "lesson": "1.9",
+  "lesson_title": "Introduction to literals and operators",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch1_9_001",
+      "lesson": "1.9",
+      "type": "basic",
+      "tags": ["cpp", "literals", "fundamentals"],
+      "front": "What is a literal in C++?",
+      "back": "A literal (or literal constant) is a fixed value inserted directly into the source code. Examples include 5, 3.14, \"Hello\", and true.",
+      "source": "1.9 - Introduction to literals and operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_9_002",
+      "lesson": "1.9",
+      "type": "cloze",
+      "tags": ["cpp", "literals", "examples"],
+      "text": "Examples of literals: {{c1::5}} (integer), {{c2::3.14}} (floating point), {{c3::\"Hello\"}} (string), {{c4::true}} (boolean).",
+      "source": "1.9 - Introduction to literals and operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_9_003",
+      "lesson": "1.9",
+      "type": "basic",
+      "tags": ["cpp", "operators", "fundamentals"],
+      "front": "What is an operator in C++?",
+      "back": "An operator is a symbol that tells the compiler to perform a mathematical or logical operation. Common operators include +, -, *, /, and =.",
+      "source": "1.9 - Introduction to literals and operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_9_004",
+      "lesson": "1.9",
+      "type": "cloze",
+      "tags": ["cpp", "operators", "terminology"],
+      "text": "The number of operands an operator takes is called its {{c1::arity}}. A {{c2::unary}} operator takes one operand, a {{c3::binary}} operator takes two, and a {{c4::ternary}} operator takes three.",
+      "source": "1.9 - Introduction to literals and operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch1_9_005",
+      "lesson": "1.9",
+      "type": "code",
+      "tags": ["cpp", "operators", "examples"],
+      "question": "In the expression <code>x = 5 + 3;</code>, identify the operators and their types",
+      "answer": "+ is a binary operator (addition)<br>= is a binary operator (assignment)",
+      "explanation": "The + operator takes two operands (5 and 3) and adds them. The = operator takes two operands (x and the result of 5+3) and assigns the right value to the left.",
+      "source": "1.9 - Introduction to literals and operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_9_006",
+      "lesson": "1.9",
+      "type": "reverse",
+      "tags": ["cpp", "operators", "symbols"],
+      "front": "+",
+      "back": "Addition operator (binary)",
+      "source": "1.9 - Introduction to literals and operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_9_007",
+      "lesson": "1.9",
+      "type": "reverse",
+      "tags": ["cpp", "operators", "symbols"],
+      "front": "-",
+      "back": "Subtraction operator (binary) or negation operator (unary)",
+      "source": "1.9 - Introduction to literals and operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_9_008",
+      "lesson": "1.9",
+      "type": "reverse",
+      "tags": ["cpp", "operators", "symbols"],
+      "front": "*",
+      "back": "Multiplication operator (binary) or dereference operator (unary)",
+      "source": "1.9 - Introduction to literals and operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_9_009",
+      "lesson": "1.9",
+      "type": "reverse",
+      "tags": ["cpp", "operators", "symbols"],
+      "front": "/",
+      "back": "Division operator (binary)",
+      "source": "1.9 - Introduction to literals and operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_9_010",
+      "lesson": "1.9",
+      "type": "code",
+      "tags": ["cpp", "operators", "unary"],
+      "question": "What is the value of x after this code executes?",
+      "code": "int x = 5;\nx = -x;",
+      "answer": "-5",
+      "explanation": "The unary minus operator (-) negates the value. So -x converts 5 to -5.",
+      "source": "1.9 - Introduction to literals and operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_9_011",
+      "lesson": "1.9",
+      "type": "basic",
+      "tags": ["cpp", "operators", "chaining"],
+      "front": "Can operators be chained together in a single expression?",
+      "back": "Yes. Operators can be chained together. For example: <code>2 * 3 + 4</code> chains multiplication and addition. The order of evaluation follows operator precedence rules.",
+      "source": "1.9 - Introduction to literals and operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch1_9_012",
+      "lesson": "1.9",
+      "type": "concept",
+      "tags": ["cpp", "operators", "return-values"],
+      "concept": "How operators produce values",
+      "explanation": "Most operators in C++ return a value (called a return value) that can be used:<ul><li>Arithmetic operators return the result of the calculation</li><li>The value can be assigned to a variable</li><li>The value can be used in another expression</li><li>Example: <code>x = 2 + 3;</code> - the + operator returns 5, which is then assigned to x</li></ul>",
+      "examples": [
+        "int x = 2 + 3;     // + returns 5",
+        "int y = 2 * (3 + 4); // Inner + returns 7, * returns 14",
+        "std::cout &lt;&lt; 5 + 2;  // Outputs 7"
+      ],
+      "source": "1.9 - Introduction to literals and operators",
+      "difficulty": "medium"
+    }
+  ]
+}

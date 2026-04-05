@@ -1,0 +1,180 @@
+{
+  "chapter": "Chapter 21",
+  "chapter_title": "Operator Overloading",
+  "lesson": "21.9",
+  "lesson_title": "Overloading the subscript operator",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch21_9_001",
+      "lesson": "21.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "subscript"
+      ],
+      "text": "The subscript operator {{c1::[]}} must be implemented as a {{c2::member function}}, not a friend or normal function.",
+      "source": "21.9 - Overloading the subscript operator",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch21_9_002",
+      "lesson": "21.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "subscript"
+      ],
+      "text": "operator[] should return by {{c1::reference}} to allow both reading and modifying: array[5] {{c2::=}} 10.",
+      "source": "21.9 - Overloading the subscript operator",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_9_003",
+      "lesson": "21.9",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "subscript"
+      ],
+      "question": "What does this subscript operator do?",
+      "code": "class IntList {\n    int m_data[10]{};\npublic:\n    int&amp; operator[](int index) {\n        return m_data[index];\n    }\n};",
+      "answer": "Allows accessing IntList elements using array syntax: list[3]. Returns reference to allow both reading and writing.",
+      "explanation": "Returns int&amp; so you can do: list[3] = 5; or int x = list[3];",
+      "source": "21.9 - Overloading the subscript operator",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_9_004",
+      "lesson": "21.9",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "subscript"
+      ],
+      "front": "Why do you need both const and non-const versions of operator[]?",
+      "back": "The non-const version (returns T&amp;) allows modification. The const version (returns const T&amp;) is called on const objects and prevents modification. This allows operator[] to work correctly with both const and non-const objects.",
+      "source": "21.9 - Overloading the subscript operator",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch21_9_005",
+      "lesson": "21.9",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "subscript"
+      ],
+      "question": "What's the const version of this operator[]?",
+      "code": "int&amp; operator[](int index) {\n    return m_data[index];\n}",
+      "answer": "const int&amp; operator[](int index) const { return m_data[index]; }",
+      "explanation": "Const version has const qualifier and returns const reference, preventing modification.",
+      "source": "21.9 - Overloading the subscript operator",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_9_006",
+      "lesson": "21.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "subscript"
+      ],
+      "text": "For const-correctness, provide two versions of operator[]:<br>{{c1::T&amp;}} operator[](int) for non-const objects<br>{{c2::const T&amp;}} operator[](int) {{c3::const}} for const objects",
+      "source": "21.9 - Overloading the subscript operator",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_9_007",
+      "lesson": "21.9",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "subscript"
+      ],
+      "front": "Can operator[] take types other than int as the index parameter?",
+      "back": "Yes. The parameter can be any type: string for maps, custom types, etc. For example: map[\"key\"] uses std::string as index. The parameter type depends on your use case.",
+      "source": "21.9 - Overloading the subscript operator",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_9_008",
+      "lesson": "21.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "subscript"
+      ],
+      "text": "operator[] typically does {{c1::not}} check bounds. For safety, provide a {{c2::at()}} function that throws an exception on invalid index.",
+      "source": "21.9 - Overloading the subscript operator",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_9_009",
+      "lesson": "21.9",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "subscript"
+      ],
+      "front": "Why must operator[] be a member function?",
+      "back": "The C++ standard requires operator[], operator(), operator-&gt;, and operator= to be member functions. This ensures they're called on an actual object and prevents ambiguity in overload resolution.",
+      "source": "21.9 - Overloading the subscript operator",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_9_010",
+      "lesson": "21.9",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "subscript"
+      ],
+      "concept": "Implementing operator[] for containers",
+      "explanation": "Standard pattern for subscript operator:<ul><li>Must be a member function</li><li>Return by reference (T&amp;) to allow modification</li><li>Provide const version (const T&amp; operator[] const)</li><li>Parameter type matches your indexing needs (int, string, etc.)</li><li>Usually no bounds checking (use at() for safety)</li></ul>",
+      "examples": [
+        "T&amp; operator[](int i) { return m_data[i]; }",
+        "const T&amp; operator[](int i) const { return m_data[i]; }"
+      ],
+      "source": "21.9 - Overloading the subscript operator",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch21_9_011",
+      "lesson": "21.9",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "subscript"
+      ],
+      "front": "What happens if you don't provide a const version of operator[]?",
+      "back": "Const objects won't be able to use operator[]. The compiler will give an error because calling a non-const member function on a const object is not allowed. Always provide both versions for full functionality.",
+      "source": "21.9 - Overloading the subscript operator",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_9_012",
+      "lesson": "21.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "subscript"
+      ],
+      "text": "std::vector&lt;T&gt;::operator[] does {{c1::not}} perform bounds checking, while std::vector&lt;T&gt;::{{c2::at}}() throws std::{{c3::out_of_range}} if the index is invalid.",
+      "source": "21.9 - Overloading the subscript operator",
+      "difficulty": "medium"
+    }
+  ]
+}

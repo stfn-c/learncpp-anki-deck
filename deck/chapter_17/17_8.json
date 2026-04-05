@@ -1,0 +1,144 @@
+{
+  "chapter": "Chapter 17",
+  "chapter_title": "Arrays and Strings",
+  "lesson": "17.8",
+  "lesson_title": "C-style array decay",
+  "total_cards": 13,
+  "cards": [
+    {
+      "id": "ch17_8_001",
+      "lesson": "17.8",
+      "type": "basic",
+      "tags": ["cpp", "arrays", "c-style-arrays", "decay"],
+      "front": "What is array decay in C++?",
+      "back": "Array decay is the implicit conversion of an array to a pointer to its first element. This happens when passing arrays to functions or in most expressions.",
+      "source": "17.8 - C-style array decay",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_8_002",
+      "lesson": "17.8",
+      "type": "cloze",
+      "tags": ["cpp", "c-style-arrays", "decay", "pointers"],
+      "text": "When a C-style array decays, it becomes a pointer to the {{c1::first element}} of the array, losing all {{c2::size information}}",
+      "source": "17.8 - C-style array decay",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_8_003",
+      "lesson": "17.8",
+      "type": "code",
+      "tags": ["cpp", "c-style-arrays", "decay", "sizeof"],
+      "question": "What does this print and why?",
+      "code": "void printSize(int arr[]) {\n    std::cout &lt;&lt; sizeof(arr);\n}\nint main() {\n    int arr[5] { 1, 2, 3, 4, 5 };\n    printSize(arr);\n}",
+      "answer": "Prints the size of a pointer (typically 4 or 8 bytes), not 20 bytes",
+      "explanation": "The array decayed to a pointer when passed to the function. sizeof(arr) in the function measures the pointer, not the array.",
+      "source": "17.8 - C-style array decay",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_8_004",
+      "lesson": "17.8",
+      "type": "cloze",
+      "tags": ["cpp", "c-style-arrays", "pass-by-reference"],
+      "text": "To prevent array decay when passing to a function, pass by {{c1::reference}}: void func({{c2::int (&amp;arr)[5]}})",
+      "source": "17.8 - C-style array decay",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_8_005",
+      "lesson": "17.8",
+      "type": "basic",
+      "tags": ["cpp", "c-style-arrays", "decay", "gotchas"],
+      "front": "What information is lost when a C-style array decays to a pointer?",
+      "back": "The array's length information is lost. The pointer only knows the address of the first element, not how many elements exist in the array.",
+      "source": "17.8 - C-style array decay",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_8_006",
+      "lesson": "17.8",
+      "type": "cloze",
+      "tags": ["cpp", "c-style-arrays", "function-parameter"],
+      "text": "The function parameters int arr[] and {{c1::int* arr}} are {{c2::exactly equivalent}} - both receive a pointer",
+      "source": "17.8 - C-style array decay",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_8_007",
+      "lesson": "17.8",
+      "type": "code",
+      "tags": ["cpp", "c-style-arrays", "decay"],
+      "question": "What's misleading about this function signature?",
+      "code": "void printArray(int arr[5]) {\n    // implementation\n}",
+      "answer": "The [5] is ignored - it's treated as int* arr. You can pass arrays of any size.",
+      "explanation": "The array size in function parameters is cosmetic and not enforced. It still decays to a pointer.",
+      "source": "17.8 - C-style array decay",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch17_8_008",
+      "lesson": "17.8",
+      "type": "concept",
+      "tags": ["cpp", "c-style-arrays", "decay", "best-practices"],
+      "concept": "Preventing array decay issues",
+      "explanation": "Solutions to array decay problems:<ul><li>Use std::array instead of C-style arrays</li><li>Pass by reference: void func(int (&amp;arr)[5])</li><li>Use templates for size preservation</li><li>Pass size as separate parameter alongside pointer</li></ul>Best: avoid C-style arrays entirely.",
+      "examples": [
+        "void func(int (&amp;arr)[5])  // Reference: no decay",
+        "void func(std::array&lt;int, 5&gt;&amp; arr)  // Better"
+      ],
+      "source": "17.8 - C-style array decay",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_8_009",
+      "lesson": "17.8",
+      "type": "cloze",
+      "tags": ["cpp", "c-style-arrays", "template"],
+      "text": "To write a function that accepts C-style arrays of any size without decay, use a {{c1::template}} with a {{c2::non-type parameter}} for the size",
+      "source": "17.8 - C-style array decay",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch17_8_010",
+      "lesson": "17.8",
+      "type": "basic",
+      "tags": ["cpp", "c-style-arrays", "std-array", "decay"],
+      "front": "Does std::array decay to a pointer when passed to functions?",
+      "back": "No, std::array does not decay. When passed by value, it's copied. When passed by reference, it maintains its type and size information.",
+      "source": "17.8 - C-style array decay",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_8_011",
+      "lesson": "17.8",
+      "type": "cloze",
+      "tags": ["cpp", "c-style-arrays", "decay", "address-of"],
+      "text": "To get a pointer to the first element explicitly without relying on decay, use {{c1::&amp;arr[0]}} or the array name itself",
+      "source": "17.8 - C-style array decay",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_8_012",
+      "lesson": "17.8",
+      "type": "basic",
+      "tags": ["cpp", "c-style-arrays", "decay", "contexts"],
+      "front": "In what contexts does array decay NOT occur?",
+      "back": "Array decay doesn't occur when:<ul><li>Using sizeof on the array</li><li>Taking address with &amp; operator</li><li>Initializing a reference to the array</li><li>In range-based for loops (C++11+)</li></ul>",
+      "source": "17.8 - C-style array decay",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch17_8_013",
+      "lesson": "17.8",
+      "type": "code",
+      "tags": ["cpp", "c-style-arrays", "decay", "common-pattern"],
+      "question": "Why pass both pointer and size?",
+      "code": "void printArray(int* arr, std::size_t size) {\n    for (std::size_t i = 0; i &lt; size; ++i)\n        std::cout &lt;&lt; arr[i];\n}",
+      "answer": "Because array decays to pointer, losing size info. Must pass size separately.",
+      "explanation": "This is the common C-style pattern to work around decay. Modern C++ should use std::array or std::span (C++20) instead.",
+      "source": "17.8 - C-style array decay",
+      "difficulty": "medium"
+    }
+  ]
+}

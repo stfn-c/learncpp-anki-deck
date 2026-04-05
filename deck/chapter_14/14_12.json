@@ -1,0 +1,116 @@
+{
+  "chapter": "Chapter 14",
+  "chapter_title": "Introduction to Classes",
+  "lesson": "14.12",
+  "lesson_title": "Delegating constructors",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "ch14_12_001",
+      "lesson": "14.12",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "constructors"],
+      "text": "A {{c1::delegating constructor}} is a constructor that calls another constructor from the same class to do the work of {{c2::initialization}}.",
+      "source": "14.12 - Delegating constructors",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_12_002",
+      "lesson": "14.12",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "constructors", "syntax"],
+      "text": "To delegate to another constructor, call it in the {{c1::member initializer list}}:<br>ClassName() {{c2:::}} {{c3::ClassName{0}}} { }",
+      "source": "14.12 - Delegating constructors",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_12_003",
+      "lesson": "14.12",
+      "type": "code",
+      "tags": ["cpp", "classes", "constructors"],
+      "question": "What does this code demonstrate?",
+      "code": "class Employee<br>{<br>private:<br>&nbsp;&nbsp;&nbsp;&nbsp;std::string m_name;<br>&nbsp;&nbsp;&nbsp;&nbsp;int m_id;<br>public:<br>&nbsp;&nbsp;&nbsp;&nbsp;Employee(std::string name, int id)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: m_name{name}, m_id{id} { }<br><br>&nbsp;&nbsp;&nbsp;&nbsp;Employee()<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Employee{\"Unnamed\", 0} { }<br>};",
+      "answer": "Constructor delegation. The default constructor delegates to the parameterized constructor.",
+      "explanation": "Instead of duplicating initialization logic, the default constructor calls the other constructor with default values.",
+      "source": "14.12 - Delegating constructors",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_12_004",
+      "lesson": "14.12",
+      "type": "concept",
+      "tags": ["cpp", "classes", "constructors", "best-practices"],
+      "concept": "Benefits of delegating constructors",
+      "explanation": "Delegating constructors:<ul><li>Reduce code duplication across multiple constructors</li><li>Centralize initialization logic in one place</li><li>Make code easier to maintain and modify</li><li>Ensure all constructors follow same initialization patterns</li></ul>",
+      "examples": [
+        "// Without delegation: duplicate code in each constructor",
+        "// With delegation: one constructor does the work, others delegate to it"
+      ],
+      "source": "14.12 - Delegating constructors",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_12_005",
+      "lesson": "14.12",
+      "type": "basic",
+      "tags": ["cpp", "classes", "constructors"],
+      "front": "Can you use both delegation and member initializer list in the same constructor?",
+      "back": "No. If a constructor delegates to another constructor, it cannot also initialize members in its own initializer list. It must choose one or the other.",
+      "source": "14.12 - Delegating constructors",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_12_006",
+      "lesson": "14.12",
+      "type": "code",
+      "tags": ["cpp", "classes", "constructors", "common-mistakes"],
+      "question": "What's wrong with this code?",
+      "code": "class Foo<br>{<br>public:<br>&nbsp;&nbsp;&nbsp;&nbsp;Foo(int x)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: m_x{x}, Foo{} { }  // error!<br>private:<br>&nbsp;&nbsp;&nbsp;&nbsp;int m_x;<br>};",
+      "answer": "Cannot mix delegation with member initialization. Must choose either delegation OR member initializer list, not both.",
+      "explanation": "When delegating, the delegating constructor cannot initialize any members itself - all initialization happens in the target constructor.",
+      "source": "14.12 - Delegating constructors",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_12_007",
+      "lesson": "14.12",
+      "type": "basic",
+      "tags": ["cpp", "classes", "constructors"],
+      "front": "Which constructor should contain the actual initialization logic when using delegation?",
+      "back": "The constructor with the most parameters should do the real work. Other constructors with fewer parameters delegate to it, providing default values for missing parameters.",
+      "source": "14.12 - Delegating constructors",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_12_008",
+      "lesson": "14.12",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "constructors", "best-practices"],
+      "text": "Best practice: Use delegating constructors to {{c1::reduce code duplication}} when you have multiple constructors that perform similar initialization.",
+      "source": "14.12 - Delegating constructors",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_12_009",
+      "lesson": "14.12",
+      "type": "code",
+      "tags": ["cpp", "classes", "constructors"],
+      "question": "How would you add a default constructor using delegation?",
+      "code": "class Fraction<br>{<br>public:<br>&nbsp;&nbsp;&nbsp;&nbsp;Fraction(int num, int den)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: m_num{num}, m_den{den} { }<br>&nbsp;&nbsp;&nbsp;&nbsp;// Add default constructor here<br>private:<br>&nbsp;&nbsp;&nbsp;&nbsp;int m_num, m_den;<br>};",
+      "answer": "Fraction() : Fraction{0, 1} { }",
+      "explanation": "The default constructor delegates to the parameterized constructor, passing default values of 0 and 1.",
+      "source": "14.12 - Delegating constructors",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_12_010",
+      "lesson": "14.12",
+      "type": "basic",
+      "tags": ["cpp", "classes", "constructors", "gotchas"],
+      "front": "Can constructors form a delegation chain (A delegates to B, B delegates to C)?",
+      "back": "Yes, but be careful! Each constructor can delegate to one other constructor. However, avoid circular delegation (infinite loops). The chain must eventually reach a constructor that does actual initialization.",
+      "source": "14.12 - Delegating constructors",
+      "difficulty": "hard"
+    }
+  ]
+}

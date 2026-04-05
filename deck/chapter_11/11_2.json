@@ -1,0 +1,194 @@
+{
+  "chapter": "Chapter 11",
+  "chapter_title": "Function Overloading and Function Templates",
+  "lesson": "11.2",
+  "lesson_title": "Function overload differentiation",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch11_2_001",
+      "lesson": "11.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "functions",
+        "overloading"
+      ],
+      "front": "What two function properties are used to differentiate overloaded functions?",
+      "back": "<ul><li>Number of parameters</li><li>Type of parameters (excluding typedefs, type aliases, and const on value parameters)</li></ul>",
+      "source": "11.2 - Function overload differentiation",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_2_002",
+      "lesson": "11.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "functions",
+        "overloading"
+      ],
+      "front": "Is the return type used to differentiate overloaded functions?",
+      "back": "No. The return type is not used for function overload differentiation.",
+      "source": "11.2 - Function overload differentiation",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_2_003",
+      "lesson": "11.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "functions",
+        "overloading"
+      ],
+      "question": "Are these two functions properly differentiated?",
+      "code": "int add(int x, int y);\nint add(int x, int y, int z);",
+      "answer": "Yes, they are differentiated by the number of parameters (2 vs 3).",
+      "explanation": "Functions with different numbers of parameters are considered distinct overloads.",
+      "source": "11.2 - Function overload differentiation",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_2_004",
+      "lesson": "11.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "functions",
+        "overloading",
+        "common-mistakes"
+      ],
+      "question": "Will this code compile?",
+      "code": "typedef int Height;\nusing Age = int;\n\nvoid print(int value);\nvoid print(Age value);\nvoid print(Height value);",
+      "answer": "No, it will not compile.",
+      "explanation": "Type aliases and typedefs are not distinct types. All three functions have the same signature: void print(int), so they are not differentiated.",
+      "source": "11.2 - Function overload differentiation",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_2_005",
+      "lesson": "11.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "overloading"
+      ],
+      "text": "For parameters passed by value, the {{c1::const}} qualifier is not considered for differentiation.",
+      "source": "11.2 - Function overload differentiation",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_2_006",
+      "lesson": "11.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "functions",
+        "overloading",
+        "common-mistakes"
+      ],
+      "question": "Are these functions differentiated?",
+      "code": "void print(int);\nvoid print(const int);",
+      "answer": "No, they are not differentiated.",
+      "explanation": "For pass-by-value parameters, const is ignored for overload differentiation. Both functions have the same signature.",
+      "source": "11.2 - Function overload differentiation",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_2_007",
+      "lesson": "11.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "functions",
+        "overloading"
+      ],
+      "question": "Are these functions properly differentiated?",
+      "code": "int add(int x, int y);\ndouble add(double x, double y);\ndouble add(int x, double y);\ndouble add(double x, int y);",
+      "answer": "Yes, all four functions are properly differentiated.",
+      "explanation": "Each function has a distinct list of parameter types, so they are all valid overloads.",
+      "source": "11.2 - Function overload differentiation",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_2_008",
+      "lesson": "11.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "overloading",
+        "pointers"
+      ],
+      "text": "For parameters passed by {{c1::(const) reference}} or {{c2::pointer}}, the const qualifier is considered for differentiation.",
+      "source": "11.2 - Function overload differentiation",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_2_009",
+      "lesson": "11.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "functions",
+        "overloading"
+      ],
+      "question": "Are these functions differentiated?",
+      "code": "void print(int&amp; x);\nvoid print(const int&amp; x);",
+      "answer": "Yes, they are differentiated.",
+      "explanation": "For reference parameters, const is considered for differentiation. These are two different overloads.",
+      "source": "11.2 - Function overload differentiation",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_2_010",
+      "lesson": "11.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "functions",
+        "overloading"
+      ],
+      "front": "Can you overload a function solely based on different return types?",
+      "back": "No. Return types are not used for overload differentiation. The functions must differ in number or type of parameters.",
+      "source": "11.2 - Function overload differentiation",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_2_011",
+      "lesson": "11.2",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "functions",
+        "overloading"
+      ],
+      "concept": "Why return type is not used for overload differentiation",
+      "explanation": "Return type is not used because function calls can appear in contexts where the return type is ignored (e.g., void context). The compiler wouldn't be able to determine which overload to call based solely on the return type.",
+      "examples": [
+        "// If return type differentiated overloads...",
+        "int getValue();",
+        "double getValue();",
+        "",
+        "getValue();  // Which one? Can't tell from return type!"
+      ],
+      "source": "11.2 - Function overload differentiation",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch11_2_012",
+      "lesson": "11.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "overloading"
+      ],
+      "text": "An overloaded function is differentiated so long as each function has a different {{c1::number of parameters}} or {{c2::list of parameter types}}.",
+      "source": "11.2 - Function overload differentiation",
+      "difficulty": "easy"
+    }
+  ]
+}

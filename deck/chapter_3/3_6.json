@@ -1,0 +1,226 @@
+{
+  "chapter": "Chapter 3",
+  "chapter_title": "Debugging C++ Programs",
+  "lesson": "3.6",
+  "lesson_title": "Using an integrated debugger: Stepping",
+  "total_cards": 15,
+  "cards": [
+    {
+      "id": "ch3_6_001",
+      "lesson": "3.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "debugger",
+        "fundamentals"
+      ],
+      "front": "What is an integrated debugger?",
+      "back": "A tool built into your IDE that lets you pause program execution, examine variables, and step through code line-by-line without modifying source code.",
+      "source": "3.6 - Using an integrated debugger: Stepping",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_6_002",
+      "lesson": "3.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "debugger",
+        "stepping"
+      ],
+      "text": "The three main stepping commands are {{c1::step into}}, {{c2::step over}}, and {{c3::step out}}.",
+      "source": "3.6 - Using an integrated debugger: Stepping",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_6_003",
+      "lesson": "3.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "debugger",
+        "stepping"
+      ],
+      "front": "What does 'step into' do in a debugger?",
+      "back": "Executes the next statement. If it's a function call, enters (steps into) that function so you can debug it line-by-line.",
+      "source": "3.6 - Using an integrated debugger: Stepping",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_6_004",
+      "lesson": "3.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "debugger",
+        "stepping"
+      ],
+      "front": "What does 'step over' do in a debugger?",
+      "back": "Executes the next statement. If it's a function call, executes the entire function without stepping into it.",
+      "source": "3.6 - Using an integrated debugger: Stepping",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_6_005",
+      "lesson": "3.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "debugger",
+        "stepping"
+      ],
+      "front": "What does 'step out' do in a debugger?",
+      "back": "Executes the rest of the current function and returns to the caller, stopping at the next statement after the function call.",
+      "source": "3.6 - Using an integrated debugger: Stepping",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_6_006",
+      "lesson": "3.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "debugger",
+        "compilation"
+      ],
+      "text": "To use a debugger effectively, compile your program in {{c1::debug}} mode, which includes debugging {{c2::symbols}} and disables {{c3::optimizations}}.",
+      "source": "3.6 - Using an integrated debugger: Stepping",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_6_007",
+      "lesson": "3.6",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "debugger",
+        "stepping"
+      ],
+      "concept": "When to use each stepping command",
+      "explanation": "<ul><li><strong>Step into</strong>: When you want to debug inside a function to see its execution</li><li><strong>Step over</strong>: When you trust a function works and just want to execute it</li><li><strong>Step out</strong>: When you're done debugging a function and want to return to caller</li></ul>",
+      "examples": [
+        "calculate(x); // Step into: debug calculate()",
+        "std::cout &lt;&lt; x; // Step over: just execute it",
+        "// In deep function: step out to return"
+      ],
+      "source": "3.6 - Using an integrated debugger: Stepping",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_6_008",
+      "lesson": "3.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "debugger",
+        "best-practices"
+      ],
+      "front": "Why should you avoid stepping into standard library functions?",
+      "back": "Standard library functions are well-tested and stepping into them clutters your debugging session. Use step over instead.",
+      "source": "3.6 - Using an integrated debugger: Stepping",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_6_009",
+      "lesson": "3.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "debugger",
+        "program-state"
+      ],
+      "text": "When the debugger is paused, you can {{c1::inspect}} variables, examine the {{c2::call stack}}, and even {{c3::modify}} values.",
+      "source": "3.6 - Using an integrated debugger: Stepping",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_6_010",
+      "lesson": "3.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "debugger",
+        "compilation"
+      ],
+      "front": "Why disable optimizations when debugging?",
+      "back": "Compiler optimizations can reorder code, eliminate variables, or inline functions, making the debugger's view not match your source code.",
+      "source": "3.6 - Using an integrated debugger: Stepping",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_6_011",
+      "lesson": "3.6",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "debugger",
+        "shortcuts"
+      ],
+      "front": "F11 (typical shortcut)",
+      "back": "Step into - Execute next line and enter functions",
+      "source": "3.6 - Using an integrated debugger: Stepping",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_6_012",
+      "lesson": "3.6",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "debugger",
+        "shortcuts"
+      ],
+      "front": "F10 (typical shortcut)",
+      "back": "Step over - Execute next line without entering functions",
+      "source": "3.6 - Using an integrated debugger: Stepping",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_6_013",
+      "lesson": "3.6",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "debugger",
+        "best-practices"
+      ],
+      "concept": "Advantages of integrated debugger over print statements",
+      "explanation": "<ul><li>No source code modifications needed</li><li>Can inspect any variable at any time</li><li>Can step through execution line by line</li><li>Can view call stack and execution history</li><li>Can modify variables to test fixes</li><li>More powerful for complex bugs</li></ul>",
+      "examples": [
+        "// Print: Must add std::cout, recompile",
+        "// Debugger: Just set breakpoint, run"
+      ],
+      "source": "3.6 - Using an integrated debugger: Stepping",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_6_014",
+      "lesson": "3.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "debugger",
+        "compilation"
+      ],
+      "text": "Debug builds include {{c1::debug symbols}} and disable {{c2::optimizations}} so the debugger view matches your source code.",
+      "source": "3.6 - Using an integrated debugger: Stepping",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_6_015",
+      "lesson": "3.6",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "debugger",
+        "stepping"
+      ],
+      "question": "Which stepping command would you use here and why?",
+      "code": "void trusted_library_function() { /* well-tested */ }\n\nvoid my_function() {\n    int result = trusted_library_function();\n    process(result);  // \u2190 Want to debug this\n}",
+      "answer": "Use <strong>step over</strong> on the trusted_library_function() call (don't need to debug it), then <strong>step into</strong> on the process() call.",
+      "explanation": "Step over trusted code to save time, step into code you need to debug.",
+      "source": "3.6 - Using an integrated debugger: Stepping",
+      "difficulty": "medium"
+    }
+  ]
+}

@@ -1,0 +1,186 @@
+{
+  "chapter": "Chapter 4",
+  "chapter_title": "Fundamental Data Types",
+  "lesson": "4.11",
+  "lesson_title": "Chars",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch4_11_001",
+      "lesson": "4.11",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "char",
+        "types"
+      ],
+      "text": "The {{c1::char}} data type is an integral type designed to hold a {{c2::character}}.",
+      "source": "4.11 - Chars",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_11_002",
+      "lesson": "4.11",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "char",
+        "syntax"
+      ],
+      "text": "Character literals are written using {{c1::single quotes}}: char c{{c2::{'a'}}}",
+      "source": "4.11 - Chars",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_11_003",
+      "lesson": "4.11",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "char",
+        "syntax"
+      ],
+      "question": "What's the correct way to initialize a char?",
+      "code": "char c1{ 'a' };  // 1\nchar c2{ \"a\" };  // 2",
+      "answer": "Line 1 is correct (single quotes)",
+      "explanation": "Characters use single quotes ('a'). Double quotes (\"a\") are for strings.",
+      "source": "4.11 - Chars",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_11_004",
+      "lesson": "4.11",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "char",
+        "memory"
+      ],
+      "front": "What is the size of a char in C++?",
+      "back": "Always 1 byte (by definition)",
+      "source": "4.11 - Chars",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_11_005",
+      "lesson": "4.11",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "char",
+        "output"
+      ],
+      "question": "What does this print?",
+      "code": "char c{ 'a' };\nstd::cout &lt;&lt; c;",
+      "answer": "a",
+      "explanation": "std::cout prints char variables as characters.",
+      "source": "4.11 - Chars",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_11_006",
+      "lesson": "4.11",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "char",
+        "ASCII"
+      ],
+      "text": "Characters are actually stored as {{c1::integers}} using the {{c2::ASCII}} encoding (or Unicode).",
+      "source": "4.11 - Chars",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch4_11_007",
+      "lesson": "4.11",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "char",
+        "conversion"
+      ],
+      "question": "What does this print?",
+      "code": "char c{ 'a' };\nstd::cout &lt;&lt; static_cast&lt;int&gt;(c);",
+      "answer": "97",
+      "explanation": "The ASCII value of 'a' is 97. Casting to int prints the numeric value instead of the character.",
+      "source": "4.11 - Chars",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch4_11_008",
+      "lesson": "4.11",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "char",
+        "escape-sequences",
+        "syntax"
+      ],
+      "text": "Special characters are written using {{c1::escape sequences}} that start with a {{c2::backslash}} (\\).",
+      "source": "4.11 - Chars",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_11_009",
+      "lesson": "4.11",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "char",
+        "escape-sequences"
+      ],
+      "front": "What are the most common escape sequences in C++?",
+      "back": "<ul><li>\\n - newline</li><li>\\t - tab</li><li>\\' - single quote</li><li>\\\" - double quote</li><li>\\\\ - backslash</li></ul>",
+      "source": "4.11 - Chars",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_11_010",
+      "lesson": "4.11",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "char",
+        "escape-sequences"
+      ],
+      "question": "What does this print?",
+      "code": "std::cout &lt;&lt; \"Hello\\nWorld\";",
+      "answer": "Hello\nWorld (on two lines)",
+      "explanation": "\\n is the newline escape sequence, which moves to the next line.",
+      "source": "4.11 - Chars",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_11_011",
+      "lesson": "4.11",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "char",
+        "gotchas"
+      ],
+      "text": "Whether char is signed or unsigned is {{c1::implementation-defined}}. Use {{c2::signed char}} or {{c3::unsigned char}} to be explicit.",
+      "source": "4.11 - Chars",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch4_11_012",
+      "lesson": "4.11",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "char",
+        "best-practices"
+      ],
+      "concept": "Best practices for using char",
+      "explanation": "When using char:<ul><li>Use char for single characters only</li><li>Use std::string for text</li><li>Don't use char for small integers (use int)</li><li>Be aware of signedness issues with non-ASCII</li></ul>",
+      "examples": [
+        "char grade{ 'A' };       // good: single character",
+        "std::string name{\"Bob\"}; // good: text",
+        "int count{ 5 };          // good: not char for number"
+      ],
+      "source": "4.11 - Chars",
+      "difficulty": "medium"
+    }
+  ]
+}

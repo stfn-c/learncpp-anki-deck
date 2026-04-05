@@ -1,0 +1,141 @@
+{
+  "chapter": "Chapter 8",
+  "chapter_title": "Control Flow",
+  "lesson": "8.2",
+  "lesson_title": "If statements and blocks",
+  "total_cards": 13,
+  "cards": [
+    {
+      "id": "ch8_2_001",
+      "lesson": "8.2",
+      "type": "cloze",
+      "tags": ["cpp", "if-statement", "syntax"],
+      "text": "Basic if statement syntax: {{c1::if (condition)}}<br>{{c2::&nbsp;&nbsp;&nbsp;&nbsp;statement;}}",
+      "source": "8.2 - If statements and blocks",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_2_002",
+      "lesson": "8.2",
+      "type": "cloze",
+      "tags": ["cpp", "if-statement", "syntax"],
+      "text": "If-else statement syntax: {{c1::if (condition)}}<br>{{c2::&nbsp;&nbsp;&nbsp;&nbsp;trueStatement;}}<br>{{c3::else}}<br>{{c4::&nbsp;&nbsp;&nbsp;&nbsp;falseStatement;}}",
+      "source": "8.2 - If statements and blocks",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_2_003",
+      "lesson": "8.2",
+      "type": "basic",
+      "tags": ["cpp", "if-statement", "fundamentals"],
+      "front": "What happens if an if statement's condition evaluates to false and there is no else clause?",
+      "back": "The if statement is skipped entirely and execution continues with the next statement after the if block.",
+      "source": "8.2 - If statements and blocks",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_2_004",
+      "lesson": "8.2",
+      "type": "cloze",
+      "tags": ["cpp", "blocks", "syntax"],
+      "text": "A {{c1::block}} (also called a {{c2::compound statement}}) is a group of statements treated as a single statement, defined using curly braces {{c3::{&nbsp;}}}.&nbsp;}}}",
+      "source": "8.2 - If statements and blocks",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_2_005",
+      "lesson": "8.2",
+      "type": "concept",
+      "tags": ["cpp", "if-statement", "best-practices"],
+      "concept": "Why always use blocks with if statements",
+      "explanation": "Even when an if statement only needs to execute a single statement, you should always use blocks (curly braces) because:<ul><li>It prevents bugs when adding more statements later</li><li>It makes the code more readable and less ambiguous</li><li>It's consistent and reduces cognitive load</li><li>It prevents the \"dangling else\" problem</li></ul>",
+      "examples": [
+        "// Bad: no braces<br>if (x &gt; 0)<br>&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; x;",
+        "// Good: use braces<br>if (x &gt; 0)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; x;<br>}"
+      ],
+      "source": "8.2 - If statements and blocks",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_2_006",
+      "lesson": "8.2",
+      "type": "basic",
+      "tags": ["cpp", "blocks", "scope"],
+      "front": "What is the scope of variables declared inside a block?",
+      "back": "Variables declared inside a block have block scope - they are only accessible from the point of declaration until the end of the block.",
+      "source": "8.2 - If statements and blocks",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_2_007",
+      "lesson": "8.2",
+      "type": "code",
+      "tags": ["cpp", "if-statement", "scope"],
+      "question": "What's wrong with this code?",
+      "code": "if (x &gt; 0)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;int y = 5;<br>}<br>std::cout &lt;&lt; y;",
+      "answer": "Variable y is out of scope. It was declared inside the if block and can't be accessed outside.",
+      "explanation": "Variables declared in a block have block scope and are destroyed when the block ends. To use y after the if statement, declare it before the if block.",
+      "source": "8.2 - If statements and blocks",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_2_008",
+      "lesson": "8.2",
+      "type": "cloze",
+      "tags": ["cpp", "if-statement", "syntax"],
+      "text": "Nested if statements: {{c1::if (condition1)}}<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;{{c2::if (condition2)}}<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// both conditions true<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}",
+      "source": "8.2 - If statements and blocks",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_2_009",
+      "lesson": "8.2",
+      "type": "basic",
+      "tags": ["cpp", "if-statement", "best-practices"],
+      "front": "Should you use nested if statements or logical AND (&&) when checking multiple conditions that must all be true?",
+      "back": "Use logical AND (&&) in a single if statement. It's more readable and efficient:<br>if (condition1 && condition2) is better than nested ifs.",
+      "source": "8.2 - If statements and blocks",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_2_010",
+      "lesson": "8.2",
+      "type": "cloze",
+      "tags": ["cpp", "if-statement", "syntax"],
+      "text": "The {{c1::else}} clause is attached to the closest unmatched {{c2::if}} statement in the same block.",
+      "source": "8.2 - If statements and blocks",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_2_011",
+      "lesson": "8.2",
+      "type": "code",
+      "tags": ["cpp", "if-statement", "common-mistakes"],
+      "question": "What's the problem with this code?",
+      "code": "if (x &gt; 0);<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; \"positive\";<br>}",
+      "answer": "There's a semicolon after the if condition, creating a null statement. The block always executes regardless of the condition.",
+      "explanation": "The semicolon ends the if statement with an empty statement. The block is not part of the if - it always executes. This is a common and subtle bug.",
+      "source": "8.2 - If statements and blocks",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch8_2_012",
+      "lesson": "8.2",
+      "type": "cloze",
+      "tags": ["cpp", "if-statement", "terminology"],
+      "text": "A {{c1::null statement}} is a statement consisting of just a semicolon. It does {{c2::nothing}}.",
+      "source": "8.2 - If statements and blocks",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_2_013",
+      "lesson": "8.2",
+      "type": "basic",
+      "tags": ["cpp", "blocks", "best-practices"],
+      "front": "Where should you place the opening brace of a block?",
+      "back": "On the same line as the statement that opens the block (e.g., if, while, for). This is the most common C++ style convention.",
+      "source": "8.2 - If statements and blocks",
+      "difficulty": "easy"
+    }
+  ]
+}

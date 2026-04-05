@@ -1,0 +1,139 @@
+{
+  "chapter": "Chapter 0",
+  "chapter_title": "Introduction / Getting Started",
+  "lesson": "0.12",
+  "lesson_title": "Configuring your compiler: Choosing a language standard",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch0_12_001",
+      "lesson": "0.12",
+      "type": "basic",
+      "tags": ["cpp", "standards", "versions"],
+      "front": "What is a C++ language standard?",
+      "back": "A language standard (like C++11, C++17, C++20) defines which features and syntax are available in C++. Newer standards add features while maintaining backward compatibility.",
+      "source": "0.12 - Configuring your compiler: Choosing a language standard",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_12_002",
+      "lesson": "0.12",
+      "type": "cloze",
+      "tags": ["cpp", "standards", "versions"],
+      "text": "Major C++ standards include C++98, C++11, C++14, C++17, {{c1::C++20}}, and {{c2::C++23}}, released approximately every {{c3::3 years}}.",
+      "source": "0.12 - Configuring your compiler: Choosing a language standard",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_12_003",
+      "lesson": "0.12",
+      "type": "basic",
+      "tags": ["cpp", "standards", "best-practices"],
+      "front": "Which C++ standard should you use for new projects?",
+      "back": "Use C++20 or C++23 if your compiler supports it. These are modern standards with the best features. Avoid older standards unless required for compatibility.",
+      "source": "0.12 - Configuring your compiler: Choosing a language standard",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_12_004",
+      "lesson": "0.12",
+      "type": "concept",
+      "tags": ["cpp", "standards", "best-practices"],
+      "concept": "Why you should use modern C++ standards",
+      "explanation": "Modern C++ (C++11 and later) is significantly better:<ul><li>Safer features (smart pointers, nullptr, auto)</li><li>More expressive (lambdas, range-for, structured bindings)</li><li>Better performance (move semantics, constexpr)</li><li>Easier to write correct code</li><li>Industry best practices assume C++11 minimum</li></ul>C++98/03 code is outdated and harder to maintain.",
+      "examples": [
+        "C++11: auto x = 5; instead of int x = 5;",
+        "C++11: for (auto val : vec) instead of iterators",
+        "C++17: if (auto it = map.find(key); it != map.end())",
+        "C++20: concepts for better template errors"
+      ],
+      "source": "0.12 - Configuring your compiler: Choosing a language standard",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_12_005",
+      "lesson": "0.12",
+      "type": "cloze",
+      "tags": ["cpp", "standards", "configuration"],
+      "text": "In Visual Studio, set the C++ language standard in Project Properties → C/C++ → Language → C++ Language Standard to {{c1::/std:c++20}} or {{c2::/std:c++latest}}.",
+      "source": "0.12 - Configuring your compiler: Choosing a language standard",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_12_006",
+      "lesson": "0.12",
+      "type": "basic",
+      "tags": ["cpp", "standards", "visual-studio"],
+      "front": "What does /std:c++latest mean in Visual Studio?",
+      "back": "/std:c++latest enables all the latest C++ features that Visual Studio supports, including experimental features. Useful for trying cutting-edge features but less stable.",
+      "source": "0.12 - Configuring your compiler: Choosing a language standard",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_12_007",
+      "lesson": "0.12",
+      "type": "cloze",
+      "tags": ["cpp", "standards", "gcc-clang"],
+      "text": "In GCC and Clang, set the C++ standard using {{c1::-std=c++20}} or {{c2::-std=c++23}} compiler flags.",
+      "source": "0.12 - Configuring your compiler: Choosing a language standard",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_12_008",
+      "lesson": "0.12",
+      "type": "basic",
+      "tags": ["cpp", "standards", "compatibility"],
+      "front": "Are newer C++ standards backward compatible with older standards?",
+      "back": "Mostly yes. C++ maintains strong backward compatibility, so C++98 code usually compiles in C++20. However, some deprecated features are eventually removed, and new keywords can conflict with old code.",
+      "source": "0.12 - Configuring your compiler: Choosing a language standard",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_12_009",
+      "lesson": "0.12",
+      "type": "basic",
+      "tags": ["cpp", "standards", "compiler-support"],
+      "front": "Why might you need to check if a compiler fully supports a C++ standard?",
+      "back": "Compilers implement new standards incrementally. A compiler might claim C++20 support but not implement all features yet. Check compiler documentation for feature support.",
+      "source": "0.12 - Configuring your compiler: Choosing a language standard",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_12_010",
+      "lesson": "0.12",
+      "type": "code",
+      "tags": ["cpp", "standards", "features"],
+      "question": "Which C++ standard introduced the auto keyword for type deduction?",
+      "code": "auto x = 5;      // compiler deduces type\nauto y = 3.14;   // compiler deduces type",
+      "answer": "C++11",
+      "explanation": "The auto keyword for automatic type deduction was introduced in C++11, making it easier to write generic and concise code.",
+      "source": "0.12 - Configuring your compiler: Choosing a language standard",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_12_011",
+      "lesson": "0.12",
+      "type": "basic",
+      "tags": ["cpp", "standards", "project-settings"],
+      "front": "Should you set the C++ standard per-file or per-project?",
+      "back": "Per-project. All files in a project should use the same C++ standard for consistency. Mixing standards within a project can cause confusing errors.",
+      "source": "0.12 - Configuring your compiler: Choosing a language standard",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_12_012",
+      "lesson": "0.12",
+      "type": "concept",
+      "tags": ["cpp", "standards", "best-practices"],
+      "concept": "Choosing the right C++ standard for your project",
+      "explanation": "Consider these factors when choosing a standard:<ul><li><b>New projects:</b> Use C++20 or C++23 for modern features</li><li><b>Compiler support:</b> Verify your compiler supports the features you need</li><li><b>Team/company policy:</b> Follow established standards</li><li><b>Library dependencies:</b> Some libraries require specific standards</li><li><b>Maintenance:</b> Don't use older standards unless absolutely necessary</li></ul>Once chosen, document it and configure all projects consistently.",
+      "examples": [
+        "Learning project: C++20 or C++23",
+        "Legacy codebase: match existing standard",
+        "Cross-platform: check compiler support on all platforms"
+      ],
+      "source": "0.12 - Configuring your compiler: Choosing a language standard",
+      "difficulty": "medium"
+    }
+  ]
+}

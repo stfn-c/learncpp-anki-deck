@@ -1,0 +1,138 @@
+{
+  "chapter": "Chapter 0",
+  "chapter_title": "Introduction / Getting Started",
+  "lesson": "0.7",
+  "lesson_title": "Compiling your first program",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch0_7_001",
+      "lesson": "0.7",
+      "type": "basic",
+      "tags": ["cpp", "projects", "fundamentals"],
+      "front": "What is a project in C++ development?",
+      "back": "A project is a container that holds all source files, images, data files, and settings needed to produce an executable. It saves IDE settings and remembers your working state.",
+      "source": "0.7 - Compiling your first program",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_7_002",
+      "lesson": "0.7",
+      "type": "cloze",
+      "tags": ["cpp", "projects", "best-practices"],
+      "text": "Each project corresponds to {{c1::one program}}. When creating a second program, you should create a {{c2::new project}}.",
+      "source": "0.7 - Compiling your first program",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_7_003",
+      "lesson": "0.7",
+      "type": "basic",
+      "tags": ["cpp", "projects", "console"],
+      "front": "What is a console project?",
+      "back": "A console project creates programs that run from the command line/terminal. They have no graphical interface and interact via text input/output.",
+      "source": "0.7 - Compiling your first program",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_7_004",
+      "lesson": "0.7",
+      "type": "concept",
+      "tags": ["cpp", "projects", "best-practices"],
+      "concept": "Best practice for organizing C++ projects",
+      "explanation": "Create a structured approach to projects:<ul><li>Create one project per program</li><li>Use descriptive project names</li><li>Organize projects in a dedicated folder</li><li>Keep related projects in subfolders</li><li>Don't reuse projects for different programs</li></ul>This keeps your work organized and makes projects easier to find and manage.",
+      "examples": [
+        "Projects/LearnCPP/Chapter01/HelloWorld/",
+        "Projects/LearnCPP/Chapter01/Calculator/",
+        "Projects/PersonalProjects/GameEngine/"
+      ],
+      "source": "0.7 - Compiling your first program",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_7_005",
+      "lesson": "0.7",
+      "type": "cloze",
+      "tags": ["cpp", "syntax", "hello-world"],
+      "text": "The classic first C++ program prints {{c1::Hello, world!}} using {{c2::std::cout &lt;&lt; \"Hello, world!\"}}.",
+      "source": "0.7 - Compiling your first program",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_7_006",
+      "lesson": "0.7",
+      "type": "code",
+      "tags": ["cpp", "syntax", "hello-world"],
+      "question": "What does this classic first program output?",
+      "code": "#include &lt;iostream&gt;\n\nint main()\n{\n    std::cout &lt;&lt; \"Hello, world!\";\n    return 0;\n}",
+      "answer": "Hello, world!",
+      "explanation": "This is the traditional first C++ program. It includes the iostream library, defines the main function, and outputs the text \"Hello, world!\" to the console.",
+      "source": "0.7 - Compiling your first program",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_7_007",
+      "lesson": "0.7",
+      "type": "basic",
+      "tags": ["cpp", "build", "process"],
+      "front": "What is the difference between building and running a program?",
+      "back": "Building compiles and links your code into an executable. Running executes that compiled program. Most IDEs have separate buttons/commands for build and run.",
+      "source": "0.7 - Compiling your first program",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_7_008",
+      "lesson": "0.7",
+      "type": "cloze",
+      "tags": ["cpp", "build", "shortcuts"],
+      "text": "In Visual Studio, press {{c1::Ctrl+Shift+B}} to build, {{c2::Ctrl+F5}} to run without debugging, or {{c3::F5}} to run with debugging.",
+      "source": "0.7 - Compiling your first program",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_7_009",
+      "lesson": "0.7",
+      "type": "basic",
+      "tags": ["cpp", "build", "common-mistakes"],
+      "front": "What should you do if your program compiles but the console window closes immediately?",
+      "back": "Use the IDE's \"run without debugging\" option (Ctrl+F5 in Visual Studio) or add code to wait for input before the program ends. The window closes because the program finished.",
+      "source": "0.7 - Compiling your first program",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_7_010",
+      "lesson": "0.7",
+      "type": "concept",
+      "tags": ["cpp", "build", "common-mistakes"],
+      "concept": "Why you might not see your program's output",
+      "explanation": "Common reasons the console closes too quickly:<ul><li>Program executes and terminates immediately</li><li>Running with debugging (F5) instead of without (Ctrl+F5)</li><li>IDE settings configured to close console automatically</li></ul>Solution: Use \"Run without debugging\" or configure IDE to keep console open.",
+      "examples": [
+        "Visual Studio: Use Ctrl+F5 instead of F5",
+        "Xcode: Product &gt; Run Without Building",
+        "Code::Blocks: Check \"Pause console\" option"
+      ],
+      "source": "0.7 - Compiling your first program",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_7_011",
+      "lesson": "0.7",
+      "type": "basic",
+      "tags": ["cpp", "projects", "files"],
+      "front": "What file extension do C++ source files typically use?",
+      "back": ".cpp (most common), though .cc, .cxx are also valid. Header files use .h, .hpp, or .hxx.",
+      "source": "0.7 - Compiling your first program",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_7_012",
+      "lesson": "0.7",
+      "type": "basic",
+      "tags": ["cpp", "build", "errors"],
+      "front": "If you get compiler errors after creating a new project, what should you check first?",
+      "back": "Check that you selected the correct project type (console application), chose the right language (C++), and that your IDE is properly configured with a C++ compiler.",
+      "source": "0.7 - Compiling your first program",
+      "difficulty": "easy"
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "chapter": "Chapter 16",
+  "chapter_title": "Introduction to Containers and Arrays",
+  "lesson": "16.8",
+  "lesson_title": "Range-based for loops (for-each)",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch16_8_001",
+      "lesson": "16.8",
+      "type": "cloze",
+      "tags": ["cpp", "loops", "syntax"],
+      "text": "A range-based for loop (for-each) has the syntax: {{c1::for (element_declaration : container)}}",
+      "source": "16.8 - Range-based for loops (for-each)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_8_002",
+      "lesson": "16.8",
+      "type": "code",
+      "tags": ["cpp", "loops", "syntax"],
+      "question": "Write a range-based for loop to print all elements",
+      "code": "std::vector&lt;int&gt; vec{10, 20, 30};",
+      "answer": "for (int val : vec)<br>&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; val &lt;&lt; ' ';",
+      "explanation": "Range-based for loop iterates through each element automatically.",
+      "source": "16.8 - Range-based for loops (for-each)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_8_003",
+      "lesson": "16.8",
+      "type": "cloze",
+      "tags": ["cpp", "loops", "best-practices"],
+      "text": "Use a range-based for loop when you need to access each element {{c1::sequentially}} and {{c2::don't need the index}}. They're simpler, more readable, and less {{c3::error-prone}}.",
+      "source": "16.8 - Range-based for loops (for-each)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_8_004",
+      "lesson": "16.8",
+      "type": "cloze",
+      "tags": ["cpp", "loops", "references"],
+      "text": "To modify elements in a range-based for loop, use a {{c1::reference}}: for ({{c2::int&amp;}} val : vec)",
+      "source": "16.8 - Range-based for loops (for-each)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_8_005",
+      "lesson": "16.8",
+      "type": "code",
+      "tags": ["cpp", "loops", "references"],
+      "question": "What does this code do?",
+      "code": "std::vector&lt;int&gt; v{1, 2, 3};\nfor (int&amp; val : v)\n    val *= 2;\nstd::cout &lt;&lt; v[0];",
+      "answer": "2",
+      "explanation": "The range-based for loop with reference (int&amp;) modifies each element in place, doubling values. v[0] becomes 2.",
+      "source": "16.8 - Range-based for loops (for-each)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_8_006",
+      "lesson": "16.8",
+      "type": "cloze",
+      "tags": ["cpp", "loops", "const"],
+      "text": "To read elements without copying and prevent modification, use {{c1::const auto&amp;}}: for ({{c1::const auto&amp;}} val : vec)",
+      "source": "16.8 - Range-based for loops (for-each)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_8_007",
+      "lesson": "16.8",
+      "type": "concept",
+      "tags": ["cpp", "loops", "best-practices"],
+      "concept": "Choosing the element type in range-based for loops",
+      "explanation": "Three common patterns:<ul><li>int val : vec → copies each element (OK for cheap types)</li><li>int&amp; val : vec → reference to modify elements</li><li>const auto&amp; val : vec → const reference (best for read-only)</li></ul>Use const auto&amp; as default for read-only to avoid copies and work with any type.",
+      "examples": [
+        "for (const auto&amp; val : vec)  // Best for read-only",
+        "for (auto&amp; val : vec)  // To modify elements",
+        "for (int val : vec)  // OK for int, but copies"
+      ],
+      "source": "16.8 - Range-based for loops (for-each)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_8_008",
+      "lesson": "16.8",
+      "type": "cloze",
+      "tags": ["cpp", "loops", "auto"],
+      "text": "const auto&amp; is preferred in range-based for loops because it {{c1::avoids copies}}, works with {{c2::any element type}}, and prevents {{c3::accidental modification}}.",
+      "source": "16.8 - Range-based for loops (for-each)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_8_009",
+      "lesson": "16.8",
+      "type": "code",
+      "tags": ["cpp", "loops", "common-mistakes"],
+      "question": "What's wrong with this code?",
+      "code": "std::vector&lt;int&gt; v{1, 2, 3};\nfor (int val : v)\n    val *= 2;  // try to double\nstd::cout &lt;&lt; v[0];",
+      "answer": "Outputs 1 (unchanged). val is a copy, so modifying it doesn't affect the vector.",
+      "explanation": "Need to use int&amp; val to modify the actual elements in the vector.",
+      "source": "16.8 - Range-based for loops (for-each)",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch16_8_010",
+      "lesson": "16.8",
+      "type": "basic",
+      "tags": ["cpp", "loops", "limitations"],
+      "front": "What are the main limitations of range-based for loops?",
+      "back": "<ul><li>Cannot access the element index directly</li><li>Always iterates forward through all elements</li><li>Cannot skip elements or iterate backwards</li><li>Cannot modify the container size during iteration</li></ul>",
+      "source": "16.8 - Range-based for loops (for-each)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_8_011",
+      "lesson": "16.8",
+      "type": "cloze",
+      "tags": ["cpp", "loops", "syntax"],
+      "text": "Range-based for loops were introduced in {{c1::C++11}} and are sometimes called {{c2::for-each}} loops.",
+      "source": "16.8 - Range-based for loops (for-each)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_8_012",
+      "lesson": "16.8",
+      "type": "code",
+      "tags": ["cpp", "loops", "auto"],
+      "question": "What type is val in this loop?",
+      "code": "std::vector&lt;std::string&gt; names{\"Alice\", \"Bob\"};\nfor (const auto&amp; val : names)\n    std::cout &lt;&lt; val;",
+      "answer": "const std::string&amp; (const reference to string)",
+      "explanation": "auto deduces the element type (std::string), and const&amp; makes it a const reference.",
+      "source": "16.8 - Range-based for loops (for-each)",
+      "difficulty": "medium"
+    }
+  ]
+}

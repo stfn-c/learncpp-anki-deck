@@ -1,0 +1,153 @@
+{
+  "chapter": "Chapter 11",
+  "chapter_title": "Function Overloading and Function Templates",
+  "lesson": "11.4",
+  "lesson_title": "Deleting functions",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "ch11_4_001",
+      "lesson": "11.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "syntax"
+      ],
+      "text": "To delete a function, use the {{c1::= delete}} specifier in the function declaration.",
+      "source": "11.4 - Deleting functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_4_002",
+      "lesson": "11.4",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "functions"
+      ],
+      "front": "Deleted function",
+      "back": "A function that has been explicitly disallowed from being called, marked with = delete",
+      "source": "11.4 - Deleting functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_4_003",
+      "lesson": "11.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "functions",
+        "syntax"
+      ],
+      "question": "What does this code do?",
+      "code": "void printInt(int x) = delete;",
+      "answer": "It declares the function printInt(int) as deleted, preventing it from being called.",
+      "explanation": "Any attempt to call this function will result in a compile error.",
+      "source": "11.4 - Deleting functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_4_004",
+      "lesson": "11.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "functions"
+      ],
+      "front": "What happens if you try to call a deleted function?",
+      "back": "The compiler will issue a compile error.",
+      "source": "11.4 - Deleting functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_4_005",
+      "lesson": "11.4",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "functions",
+        "best-practices"
+      ],
+      "concept": "Why delete specific overloads of a function",
+      "explanation": "Deleting specific overloads prevents unwanted implicit conversions and makes the interface more explicit. It's useful to prevent calling a function with certain types that might cause issues.",
+      "examples": [
+        "void printDouble(double x) { std::cout &lt;&lt; x; }",
+        "void printDouble(int x) = delete;  // Prevent implicit int-&gt;double conversion",
+        "",
+        "printDouble(5.5);  // OK",
+        "printDouble(5);    // Compile error - deleted"
+      ],
+      "source": "11.4 - Deleting functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_4_006",
+      "lesson": "11.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "functions",
+        "common-mistakes"
+      ],
+      "question": "Will this compile?",
+      "code": "void process(double x) {}\nvoid process(int x) = delete;\n\nprocess(5);",
+      "answer": "No, it will not compile.",
+      "explanation": "The call process(5) matches the deleted overload process(int), resulting in a compile error.",
+      "source": "11.4 - Deleting functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_4_007",
+      "lesson": "11.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions"
+      ],
+      "text": "Deleting functions is often used to {{c1::prevent implicit type conversions}} to specific overloads.",
+      "source": "11.4 - Deleting functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_4_008",
+      "lesson": "11.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "functions"
+      ],
+      "front": "Can you provide a definition for a deleted function?",
+      "back": "No. Deleted functions should not have a definition, only a declaration with = delete.",
+      "source": "11.4 - Deleting functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_4_009",
+      "lesson": "11.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "syntax"
+      ],
+      "text": "Syntax for deleting a function: {{c1::void functionName(params) = delete;}}",
+      "source": "11.4 - Deleting functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_4_010",
+      "lesson": "11.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "functions",
+        "best-practices"
+      ],
+      "front": "What is a common use case for deleting function overloads?",
+      "back": "To prevent implicit conversions that might cause unexpected behavior or loss of precision (e.g., preventing int arguments when only double should be allowed).",
+      "source": "11.4 - Deleting functions",
+      "difficulty": "medium"
+    }
+  ]
+}

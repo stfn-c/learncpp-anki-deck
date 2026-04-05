@@ -1,0 +1,136 @@
+{
+  "chapter": "Chapter 16",
+  "chapter_title": "Introduction to Containers and Arrays",
+  "lesson": "16.3",
+  "lesson_title": "std::vector and the unsigned length and subscript problem",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch16_3_001",
+      "lesson": "16.3",
+      "type": "basic",
+      "tags": ["cpp", "vector", "types"],
+      "front": "What type does std::vector::size() return?",
+      "back": "std::vector&lt;T&gt;::size_type, which is typically std::size_t (an unsigned integer type).",
+      "source": "16.3 - std::vector and the unsigned length and subscript problem",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_3_002",
+      "lesson": "16.3",
+      "type": "cloze",
+      "tags": ["cpp", "vector", "types"],
+      "text": "std::size_t is an {{c1::unsigned}} integer type, typically used for array indexing and loop counting.",
+      "source": "16.3 - std::vector and the unsigned length and subscript problem",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_3_003",
+      "lesson": "16.3",
+      "type": "code",
+      "tags": ["cpp", "vector", "common-mistakes"],
+      "question": "What's the problem with this code?",
+      "code": "std::vector&lt;int&gt; v{1, 2, 3};\nfor (std::size_t i{v.size() - 1}; i &gt;= 0; --i)\n    std::cout &lt;&lt; v[i];",
+      "answer": "Infinite loop. When i is 0 and decremented, it wraps around to the maximum unsigned value (not -1).",
+      "explanation": "Unsigned integers cannot go negative. i &gt;= 0 is always true for unsigned types, causing an infinite loop.",
+      "source": "16.3 - std::vector and the unsigned length and subscript problem",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch16_3_004",
+      "lesson": "16.3",
+      "type": "concept",
+      "tags": ["cpp", "vector", "best-practices"],
+      "concept": "Why avoid unsigned integers for loop counters and indices",
+      "explanation": "Unsigned integers cause problems:<ul><li>Wraparound behavior when going below 0 (underflow)</li><li>Comparisons like i &gt;= 0 are always true</li><li>Mixing signed and unsigned causes unexpected conversions</li><li>Difficult to catch off-by-one errors</li></ul>LearnCPP recommends using signed integers (like int) for indices and counters.",
+      "examples": [
+        "// Bad: unsigned can wrap\nfor (std::size_t i{n-1}; i &gt;= 0; --i)",
+        "// Good: use signed int\nfor (int i{n-1}; i &gt;= 0; --i)"
+      ],
+      "source": "16.3 - std::vector and the unsigned length and subscript problem",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_3_005",
+      "lesson": "16.3",
+      "type": "basic",
+      "tags": ["cpp", "vector", "best-practices"],
+      "front": "What does LearnCPP recommend using for vector indices instead of std::size_t?",
+      "back": "Signed integers like int or std::ptrdiff_t. This avoids wraparound issues and makes code safer and more intuitive.",
+      "source": "16.3 - std::vector and the unsigned length and subscript problem",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_3_006",
+      "lesson": "16.3",
+      "type": "cloze",
+      "tags": ["cpp", "vector", "length"],
+      "text": "To get the length of a vector as a signed integer, use {{c1::std::ssize()}} (C++20) or {{c2::static_cast&lt;int&gt;(vec.size())}}.",
+      "source": "16.3 - std::vector and the unsigned length and subscript problem",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_3_007",
+      "lesson": "16.3",
+      "type": "code",
+      "tags": ["cpp", "vector", "best-practices"],
+      "question": "How would you rewrite this safely?",
+      "code": "std::vector&lt;int&gt; v{1, 2, 3};\nfor (std::size_t i{0}; i &lt; v.size(); ++i)\n    std::cout &lt;&lt; v[i];",
+      "answer": "std::vector&lt;int&gt; v{1, 2, 3};<br>for (int i{0}; i &lt; std::ssize(v); ++i)<br>&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; v[i];",
+      "explanation": "Use signed int for the index and std::ssize() to get signed length, avoiding signed/unsigned comparison warnings.",
+      "source": "16.3 - std::vector and the unsigned length and subscript problem",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_3_008",
+      "lesson": "16.3",
+      "type": "basic",
+      "tags": ["cpp", "types", "signed-unsigned"],
+      "front": "What happens when you compare a signed int with an unsigned std::size_t?",
+      "back": "The signed int is implicitly converted to unsigned. If the signed value is negative, it converts to a large unsigned value, causing unexpected comparison results.",
+      "source": "16.3 - std::vector and the unsigned length and subscript problem",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch16_3_009",
+      "lesson": "16.3",
+      "type": "cloze",
+      "tags": ["cpp", "vector", "functions"],
+      "text": "The {{c1::std::ssize()}} function (C++20) returns the size of a container as a {{c2::signed}} integer type.",
+      "source": "16.3 - std::vector and the unsigned length and subscript problem",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_3_010",
+      "lesson": "16.3",
+      "type": "reverse",
+      "tags": ["cpp", "types"],
+      "front": "std::ptrdiff_t",
+      "back": "Signed integer type typically used for pointer differences and array indices",
+      "source": "16.3 - std::vector and the unsigned length and subscript problem",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_3_011",
+      "lesson": "16.3",
+      "type": "code",
+      "tags": ["cpp", "vector", "common-mistakes"],
+      "question": "What will this output if vec is empty?",
+      "code": "std::vector&lt;int&gt; vec;\nstd::cout &lt;&lt; vec.size() - 1;",
+      "answer": "A very large number (like 18446744073709551615 on 64-bit systems)",
+      "explanation": "vec.size() returns 0 (unsigned). Subtracting 1 from unsigned 0 wraps around to the maximum unsigned value.",
+      "source": "16.3 - std::vector and the unsigned length and subscript problem",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch16_3_012",
+      "lesson": "16.3",
+      "type": "basic",
+      "tags": ["cpp", "vector", "best-practices"],
+      "front": "Why is std::size_t problematic when used for loop counters that decrement?",
+      "back": "Because unsigned values cannot be negative. When decrementing from 0, they wrap to the maximum unsigned value instead of going to -1, causing infinite loops or unexpected behavior.",
+      "source": "16.3 - std::vector and the unsigned length and subscript problem",
+      "difficulty": "medium"
+    }
+  ]
+}

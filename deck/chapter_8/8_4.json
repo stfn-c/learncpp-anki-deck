@@ -1,0 +1,124 @@
+{
+  "chapter": "Chapter 8",
+  "chapter_title": "Control Flow",
+  "lesson": "8.4",
+  "lesson_title": "Constexpr if statements",
+  "total_cards": 11,
+  "cards": [
+    {
+      "id": "ch8_4_001",
+      "lesson": "8.4",
+      "type": "cloze",
+      "tags": ["cpp", "constexpr", "syntax"],
+      "text": "A constexpr if statement syntax: {{c1::if constexpr (condition)}}<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;// statement<br>}",
+      "source": "8.4 - Constexpr if statements",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_4_002",
+      "lesson": "8.4",
+      "type": "basic",
+      "tags": ["cpp", "constexpr", "fundamentals"],
+      "front": "What is the key difference between if and if constexpr?",
+      "back": "if constexpr is evaluated at compile-time and the condition must be a constant expression. Regular if is evaluated at runtime.",
+      "source": "8.4 - Constexpr if statements",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_4_003",
+      "lesson": "8.4",
+      "type": "basic",
+      "tags": ["cpp", "constexpr", "compile-time"],
+      "front": "What happens to the non-taken branch of an if constexpr statement?",
+      "back": "The non-taken branch is discarded at compile-time and does not appear in the compiled program. It's as if that code never existed.",
+      "source": "8.4 - Constexpr if statements",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_4_004",
+      "lesson": "8.4",
+      "type": "cloze",
+      "tags": ["cpp", "constexpr", "requirements"],
+      "text": "The condition in an if constexpr statement must be a {{c1::constant expression}} that can be evaluated at {{c2::compile-time}}.",
+      "source": "8.4 - Constexpr if statements",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_4_005",
+      "lesson": "8.4",
+      "type": "code",
+      "tags": ["cpp", "constexpr", "syntax"],
+      "question": "Will this compile?",
+      "code": "int x = 5;<br>if constexpr (x &gt; 3)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; \"yes\";<br>}",
+      "answer": "No, it will not compile.",
+      "explanation": "The condition must be a constant expression. Even though x is initialized to 5, it's not a const or constexpr variable, so x &gt; 3 is not a constant expression.",
+      "source": "8.4 - Constexpr if statements",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_4_006",
+      "lesson": "8.4",
+      "type": "code",
+      "tags": ["cpp", "constexpr", "syntax"],
+      "question": "Will this compile?",
+      "code": "constexpr int x = 5;<br>if constexpr (x &gt; 3)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; \"yes\";<br>}",
+      "answer": "Yes, this will compile.",
+      "explanation": "x is constexpr, so x &gt; 3 is a constant expression that can be evaluated at compile-time. The compiler will evaluate it to true and discard the else branch if present.",
+      "source": "8.4 - Constexpr if statements",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_4_007",
+      "lesson": "8.4",
+      "type": "basic",
+      "tags": ["cpp", "constexpr", "use-cases"],
+      "front": "What is the primary use case for if constexpr in modern C++?",
+      "back": "Template metaprogramming - to conditionally compile different code paths based on template parameters or type traits, evaluated at compile-time.",
+      "source": "8.4 - Constexpr if statements",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_4_008",
+      "lesson": "8.4",
+      "type": "concept",
+      "tags": ["cpp", "constexpr", "best-practices"],
+      "concept": "When to use if constexpr vs regular if",
+      "explanation": "Use if constexpr when:<ul><li>The condition can be evaluated at compile-time</li><li>You want to eliminate dead code from the binary</li><li>Working with templates and type traits</li><li>Optimizing performance-critical code</li></ul>Use regular if when:<ul><li>The condition depends on runtime values</li><li>You need runtime flexibility</li><li>The condition involves user input or external data</li></ul>",
+      "examples": [
+        "if constexpr (sizeof(int) == 4) { /* compile-time */ }",
+        "if (userInput &gt; 0) { /* runtime */ }"
+      ],
+      "source": "8.4 - Constexpr if statements",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch8_4_009",
+      "lesson": "8.4",
+      "type": "cloze",
+      "tags": ["cpp", "constexpr", "terminology"],
+      "text": "Code that is removed during compilation and doesn't appear in the final executable is called {{c1::dead code}} or {{c2::unreachable code}}.",
+      "source": "8.4 - Constexpr if statements",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_4_010",
+      "lesson": "8.4",
+      "type": "basic",
+      "tags": ["cpp", "constexpr", "cpp-version"],
+      "front": "In which C++ standard was if constexpr introduced?",
+      "back": "C++17",
+      "source": "8.4 - Constexpr if statements",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_4_011",
+      "lesson": "8.4",
+      "type": "basic",
+      "tags": ["cpp", "constexpr", "benefits"],
+      "front": "What are the two main benefits of using if constexpr?",
+      "back": "1) Smaller binary size (dead code is eliminated)<br>2) Faster execution (no runtime conditional evaluation needed)",
+      "source": "8.4 - Constexpr if statements",
+      "difficulty": "medium"
+    }
+  ]
+}

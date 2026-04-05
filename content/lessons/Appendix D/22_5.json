@@ -1,0 +1,169 @@
+{
+  "url": "https://www.learncpp.com/cpp-tutorial/stdstring-assignment-and-swapping/",
+  "title": "22.5 \u2014 std::string assignment and swapping",
+  "sections": [
+    {
+      "heading": null,
+      "content": [
+        {
+          "text": "String assignmentThe easiest way to assign a value to a string is to use the overloaded operator= function. There is also an assign() member function that duplicates some of this functionality.string& string::operator= (const string& str)string& string::assign (const string& str)string& string::operator= (const char* str)string& string::assign (const char* str)string& string::operator= (char c)These functions assign values of various types to the string.These functions return *this so they can be \u201cchained\u201d.Note that there is no assign() function that takes a single char.Sample code:std::string sString;\n\n// Assign a string value\nsString = std::string(\"One\");\nstd::cout << sString << '\\n';\n\nconst std::string sTwo(\"Two\");\nsString.assign(sTwo);\nstd::cout << sString << '\\n';\n\n// Assign a C-style string\nsString = \"Three\";\nstd::cout << sString << '\\n';\n\nsString.assign(\"Four\");\nstd::cout << sString << '\\n';\n\n// Assign a char\nsString = '5';\nstd::cout << sString << '\\n';\n\n// Chain assignment\nstd::string sOther;\nsString = sOther = \"Six\";\nstd::cout << sString << ' ' << sOther << '\\n';Output:One\nTwo\nThree\nFour\n5\nSix SixThe assign() member function also comes in a few other flavors:string& string::assign (const string& str, size_type index, size_type len)Assigns a substring of str, starting from index, and of length lenThrows an out_of_range exception if the index is out of boundsReturns *this so it can be \u201cchained\u201d.Sample code:const std::string sSource(\"abcdefg\");\nstd::string sDest;\n\nsDest.assign(sSource, 2, 4); // assign a substring of source from index 2 of length 4\nstd::cout << sDest << '\\n';Output:cdefstring& string::assign (const char* chars, size_type len)Assigns len characters from the C-style array charsThrows an length_error exception if the result exceeds the maximum number of charactersReturns *this so it can be \u201cchained\u201d.Sample code:std::string sDest;\n\nsDest.assign(\"abcdefg\", 4);\nstd::cout << sDest << '\\n';Output:abcdThis function is potentially dangerous and its use is not recommended.string& string::assign (size_type len, char c)Assigns len occurrences of the character cThrows a length_error exception if the result exceeds the maximum number of charactersReturns *this so it can be \u201cchained\u201d.Sample code:std::string sDest;\n\nsDest.assign(4, 'g');\nstd::cout << sDest << '\\n';Output:ggggSwappingIf you have two strings and want to swap their values, there are two functions both named swap() that you can use.void string::swap (string& str)void swap (string& str1, string& str2)Both functions swap the value of the two strings. The member function swaps *this and str, the global function swaps str1 and str2.These functions are efficient and should be used instead of assignments to perform a string swap.Sample code:std::string sStr1(\"red\");\nstd::string sStr2(\"blue\");\n\nstd::cout << sStr1 << ' ' << sStr2 << '\\n';\nswap(sStr1, sStr2);\nstd::cout << sStr1 << ' ' << sStr2 << '\\n';\nsStr1.swap(sStr2);\nstd::cout << sStr1 << ' ' << sStr2 << '\\n';Output:red blue\nblue red\nred blueNext lesson22.6std::string appendingBack to table of contentsPrevious lesson22.4std::string character access and conversion to C-style arrays"
+        },
+        {
+          "text": "The easiest way to assign a value to a string is to use the overloaded operator= function. There is also an assign() member function that duplicates some of this functionality.string& string::operator= (const string& str)string& string::assign (const string& str)string& string::operator= (const char* str)string& string::assign (const char* str)string& string::operator= (char c)These functions assign values of various types to the string.These functions return *this so they can be \u201cchained\u201d.Note that there is no assign() function that takes a single char.Sample code:std::string sString;\n\n// Assign a string value\nsString = std::string(\"One\");\nstd::cout << sString << '\\n';\n\nconst std::string sTwo(\"Two\");\nsString.assign(sTwo);\nstd::cout << sString << '\\n';\n\n// Assign a C-style string\nsString = \"Three\";\nstd::cout << sString << '\\n';\n\nsString.assign(\"Four\");\nstd::cout << sString << '\\n';\n\n// Assign a char\nsString = '5';\nstd::cout << sString << '\\n';\n\n// Chain assignment\nstd::string sOther;\nsString = sOther = \"Six\";\nstd::cout << sString << ' ' << sOther << '\\n';Output:One\nTwo\nThree\nFour\n5\nSix SixThe assign() member function also comes in a few other flavors:string& string::assign (const string& str, size_type index, size_type len)Assigns a substring of str, starting from index, and of length lenThrows an out_of_range exception if the index is out of boundsReturns *this so it can be \u201cchained\u201d.Sample code:const std::string sSource(\"abcdefg\");\nstd::string sDest;\n\nsDest.assign(sSource, 2, 4); // assign a substring of source from index 2 of length 4\nstd::cout << sDest << '\\n';Output:cdefstring& string::assign (const char* chars, size_type len)Assigns len characters from the C-style array charsThrows an length_error exception if the result exceeds the maximum number of charactersReturns *this so it can be \u201cchained\u201d.Sample code:std::string sDest;\n\nsDest.assign(\"abcdefg\", 4);\nstd::cout << sDest << '\\n';Output:abcdThis function is potentially dangerous and its use is not recommended.string& string::assign (size_type len, char c)Assigns len occurrences of the character cThrows a length_error exception if the result exceeds the maximum number of charactersReturns *this so it can be \u201cchained\u201d.Sample code:std::string sDest;\n\nsDest.assign(4, 'g');\nstd::cout << sDest << '\\n';Output:ggggSwappingIf you have two strings and want to swap their values, there are two functions both named swap() that you can use.void string::swap (string& str)void swap (string& str1, string& str2)Both functions swap the value of the two strings. The member function swaps *this and str, the global function swaps str1 and str2.These functions are efficient and should be used instead of assignments to perform a string swap.Sample code:std::string sStr1(\"red\");\nstd::string sStr2(\"blue\");\n\nstd::cout << sStr1 << ' ' << sStr2 << '\\n';\nswap(sStr1, sStr2);\nstd::cout << sStr1 << ' ' << sStr2 << '\\n';\nsStr1.swap(sStr2);\nstd::cout << sStr1 << ' ' << sStr2 << '\\n';Output:red blue\nblue red\nred blueNext lesson22.6std::string appendingBack to table of contentsPrevious lesson22.4std::string character access and conversion to C-style arrays"
+        },
+        {
+          "text": "string& string::operator= (const string& str)string& string::assign (const string& str)string& string::operator= (const char* str)string& string::assign (const char* str)string& string::operator= (char c)These functions assign values of various types to the string.These functions return *this so they can be \u201cchained\u201d.Note that there is no assign() function that takes a single char.Sample code:std::string sString;\n\n// Assign a string value\nsString = std::string(\"One\");\nstd::cout << sString << '\\n';\n\nconst std::string sTwo(\"Two\");\nsString.assign(sTwo);\nstd::cout << sString << '\\n';\n\n// Assign a C-style string\nsString = \"Three\";\nstd::cout << sString << '\\n';\n\nsString.assign(\"Four\");\nstd::cout << sString << '\\n';\n\n// Assign a char\nsString = '5';\nstd::cout << sString << '\\n';\n\n// Chain assignment\nstd::string sOther;\nsString = sOther = \"Six\";\nstd::cout << sString << ' ' << sOther << '\\n';Output:One\nTwo\nThree\nFour\n5\nSix Six"
+        },
+        {
+          "text": "string& string::operator= (const string& str)string& string::assign (const string& str)string& string::operator= (const char* str)string& string::assign (const char* str)string& string::operator= (char c)These functions assign values of various types to the string.These functions return *this so they can be \u201cchained\u201d.Note that there is no assign() function that takes a single char.Sample code:std::string sString;\n\n// Assign a string value\nsString = std::string(\"One\");\nstd::cout << sString << '\\n';\n\nconst std::string sTwo(\"Two\");\nsString.assign(sTwo);\nstd::cout << sString << '\\n';\n\n// Assign a C-style string\nsString = \"Three\";\nstd::cout << sString << '\\n';\n\nsString.assign(\"Four\");\nstd::cout << sString << '\\n';\n\n// Assign a char\nsString = '5';\nstd::cout << sString << '\\n';\n\n// Chain assignment\nstd::string sOther;\nsString = sOther = \"Six\";\nstd::cout << sString << ' ' << sOther << '\\n';Output:One\nTwo\nThree\nFour\n5\nSix Six"
+        },
+        {
+          "text": "These functions assign values of various types to the string.These functions return *this so they can be \u201cchained\u201d.Note that there is no assign() function that takes a single char.Sample code:std::string sString;\n\n// Assign a string value\nsString = std::string(\"One\");\nstd::cout << sString << '\\n';\n\nconst std::string sTwo(\"Two\");\nsString.assign(sTwo);\nstd::cout << sString << '\\n';\n\n// Assign a C-style string\nsString = \"Three\";\nstd::cout << sString << '\\n';\n\nsString.assign(\"Four\");\nstd::cout << sString << '\\n';\n\n// Assign a char\nsString = '5';\nstd::cout << sString << '\\n';\n\n// Chain assignment\nstd::string sOther;\nsString = sOther = \"Six\";\nstd::cout << sString << ' ' << sOther << '\\n';Output:One\nTwo\nThree\nFour\n5\nSix Six"
+        },
+        {
+          "list": [
+            "These functions assign values of various types to the string.These functions return *this so they can be \u201cchained\u201d.Note that there is no assign() function that takes a single char.",
+            "These functions return *this so they can be \u201cchained\u201d.Note that there is no assign() function that takes a single char.",
+            "Note that there is no assign() function that takes a single char."
+          ]
+        },
+        {
+          "text": "Sample code:std::string sString;\n\n// Assign a string value\nsString = std::string(\"One\");\nstd::cout << sString << '\\n';\n\nconst std::string sTwo(\"Two\");\nsString.assign(sTwo);\nstd::cout << sString << '\\n';\n\n// Assign a C-style string\nsString = \"Three\";\nstd::cout << sString << '\\n';\n\nsString.assign(\"Four\");\nstd::cout << sString << '\\n';\n\n// Assign a char\nsString = '5';\nstd::cout << sString << '\\n';\n\n// Chain assignment\nstd::string sOther;\nsString = sOther = \"Six\";\nstd::cout << sString << ' ' << sOther << '\\n';Output:One\nTwo\nThree\nFour\n5\nSix Six"
+        },
+        {
+          "code": "std::string sString;\n\n// Assign a string value\nsString = std::string(\"One\");\nstd::cout << sString << '\\n';\n\nconst std::string sTwo(\"Two\");\nsString.assign(sTwo);\nstd::cout << sString << '\\n';\n\n// Assign a C-style string\nsString = \"Three\";\nstd::cout << sString << '\\n';\n\nsString.assign(\"Four\");\nstd::cout << sString << '\\n';\n\n// Assign a char\nsString = '5';\nstd::cout << sString << '\\n';\n\n// Chain assignment\nstd::string sOther;\nsString = sOther = \"Six\";\nstd::cout << sString << ' ' << sOther << '\\n';"
+        },
+        {
+          "text": "Output:One\nTwo\nThree\nFour\n5\nSix Six"
+        },
+        {
+          "code": "One\nTwo\nThree\nFour\n5\nSix Six\n"
+        },
+        {
+          "text": "The assign() member function also comes in a few other flavors:string& string::assign (const string& str, size_type index, size_type len)Assigns a substring of str, starting from index, and of length lenThrows an out_of_range exception if the index is out of boundsReturns *this so it can be \u201cchained\u201d.Sample code:const std::string sSource(\"abcdefg\");\nstd::string sDest;\n\nsDest.assign(sSource, 2, 4); // assign a substring of source from index 2 of length 4\nstd::cout << sDest << '\\n';Output:cdefstring& string::assign (const char* chars, size_type len)Assigns len characters from the C-style array charsThrows an length_error exception if the result exceeds the maximum number of charactersReturns *this so it can be \u201cchained\u201d.Sample code:std::string sDest;\n\nsDest.assign(\"abcdefg\", 4);\nstd::cout << sDest << '\\n';Output:abcdThis function is potentially dangerous and its use is not recommended.string& string::assign (size_type len, char c)Assigns len occurrences of the character cThrows a length_error exception if the result exceeds the maximum number of charactersReturns *this so it can be \u201cchained\u201d.Sample code:std::string sDest;\n\nsDest.assign(4, 'g');\nstd::cout << sDest << '\\n';Output:ggggSwappingIf you have two strings and want to swap their values, there are two functions both named swap() that you can use.void string::swap (string& str)void swap (string& str1, string& str2)Both functions swap the value of the two strings. The member function swaps *this and str, the global function swaps str1 and str2.These functions are efficient and should be used instead of assignments to perform a string swap.Sample code:std::string sStr1(\"red\");\nstd::string sStr2(\"blue\");\n\nstd::cout << sStr1 << ' ' << sStr2 << '\\n';\nswap(sStr1, sStr2);\nstd::cout << sStr1 << ' ' << sStr2 << '\\n';\nsStr1.swap(sStr2);\nstd::cout << sStr1 << ' ' << sStr2 << '\\n';Output:red blue\nblue red\nred blueNext lesson22.6std::string appendingBack to table of contentsPrevious lesson22.4std::string character access and conversion to C-style arrays"
+        },
+        {
+          "text": "string& string::assign (const string& str, size_type index, size_type len)Assigns a substring of str, starting from index, and of length lenThrows an out_of_range exception if the index is out of boundsReturns *this so it can be \u201cchained\u201d.Sample code:const std::string sSource(\"abcdefg\");\nstd::string sDest;\n\nsDest.assign(sSource, 2, 4); // assign a substring of source from index 2 of length 4\nstd::cout << sDest << '\\n';Output:cdef"
+        },
+        {
+          "text": "string& string::assign (const string& str, size_type index, size_type len)Assigns a substring of str, starting from index, and of length lenThrows an out_of_range exception if the index is out of boundsReturns *this so it can be \u201cchained\u201d.Sample code:const std::string sSource(\"abcdefg\");\nstd::string sDest;\n\nsDest.assign(sSource, 2, 4); // assign a substring of source from index 2 of length 4\nstd::cout << sDest << '\\n';Output:cdef"
+        },
+        {
+          "text": "Assigns a substring of str, starting from index, and of length lenThrows an out_of_range exception if the index is out of boundsReturns *this so it can be \u201cchained\u201d.Sample code:const std::string sSource(\"abcdefg\");\nstd::string sDest;\n\nsDest.assign(sSource, 2, 4); // assign a substring of source from index 2 of length 4\nstd::cout << sDest << '\\n';Output:cdef"
+        },
+        {
+          "list": [
+            "Assigns a substring of str, starting from index, and of length lenThrows an out_of_range exception if the index is out of boundsReturns *this so it can be \u201cchained\u201d.",
+            "Throws an out_of_range exception if the index is out of boundsReturns *this so it can be \u201cchained\u201d.",
+            "Returns *this so it can be \u201cchained\u201d."
+          ]
+        },
+        {
+          "text": "Sample code:const std::string sSource(\"abcdefg\");\nstd::string sDest;\n\nsDest.assign(sSource, 2, 4); // assign a substring of source from index 2 of length 4\nstd::cout << sDest << '\\n';Output:cdef"
+        },
+        {
+          "code": "const std::string sSource(\"abcdefg\");\nstd::string sDest;\n\nsDest.assign(sSource, 2, 4); // assign a substring of source from index 2 of length 4\nstd::cout << sDest << '\\n';"
+        },
+        {
+          "text": "Output:cdef"
+        },
+        {
+          "code": "cdef\n"
+        },
+        {
+          "text": "string& string::assign (const char* chars, size_type len)Assigns len characters from the C-style array charsThrows an length_error exception if the result exceeds the maximum number of charactersReturns *this so it can be \u201cchained\u201d.Sample code:std::string sDest;\n\nsDest.assign(\"abcdefg\", 4);\nstd::cout << sDest << '\\n';Output:abcdThis function is potentially dangerous and its use is not recommended."
+        },
+        {
+          "text": "string& string::assign (const char* chars, size_type len)Assigns len characters from the C-style array charsThrows an length_error exception if the result exceeds the maximum number of charactersReturns *this so it can be \u201cchained\u201d.Sample code:std::string sDest;\n\nsDest.assign(\"abcdefg\", 4);\nstd::cout << sDest << '\\n';Output:abcdThis function is potentially dangerous and its use is not recommended."
+        },
+        {
+          "text": "Assigns len characters from the C-style array charsThrows an length_error exception if the result exceeds the maximum number of charactersReturns *this so it can be \u201cchained\u201d.Sample code:std::string sDest;\n\nsDest.assign(\"abcdefg\", 4);\nstd::cout << sDest << '\\n';Output:abcdThis function is potentially dangerous and its use is not recommended."
+        },
+        {
+          "list": [
+            "Assigns len characters from the C-style array charsThrows an length_error exception if the result exceeds the maximum number of charactersReturns *this so it can be \u201cchained\u201d.",
+            "Throws an length_error exception if the result exceeds the maximum number of charactersReturns *this so it can be \u201cchained\u201d.",
+            "Returns *this so it can be \u201cchained\u201d."
+          ]
+        },
+        {
+          "text": "Sample code:std::string sDest;\n\nsDest.assign(\"abcdefg\", 4);\nstd::cout << sDest << '\\n';Output:abcdThis function is potentially dangerous and its use is not recommended."
+        },
+        {
+          "code": "std::string sDest;\n\nsDest.assign(\"abcdefg\", 4);\nstd::cout << sDest << '\\n';"
+        },
+        {
+          "text": "Output:abcdThis function is potentially dangerous and its use is not recommended."
+        },
+        {
+          "code": "abcd\n"
+        },
+        {
+          "text": "This function is potentially dangerous and its use is not recommended."
+        },
+        {
+          "text": "string& string::assign (size_type len, char c)Assigns len occurrences of the character cThrows a length_error exception if the result exceeds the maximum number of charactersReturns *this so it can be \u201cchained\u201d.Sample code:std::string sDest;\n\nsDest.assign(4, 'g');\nstd::cout << sDest << '\\n';Output:gggg"
+        },
+        {
+          "text": "string& string::assign (size_type len, char c)Assigns len occurrences of the character cThrows a length_error exception if the result exceeds the maximum number of charactersReturns *this so it can be \u201cchained\u201d.Sample code:std::string sDest;\n\nsDest.assign(4, 'g');\nstd::cout << sDest << '\\n';Output:gggg"
+        },
+        {
+          "text": "Assigns len occurrences of the character cThrows a length_error exception if the result exceeds the maximum number of charactersReturns *this so it can be \u201cchained\u201d.Sample code:std::string sDest;\n\nsDest.assign(4, 'g');\nstd::cout << sDest << '\\n';Output:gggg"
+        },
+        {
+          "list": [
+            "Assigns len occurrences of the character cThrows a length_error exception if the result exceeds the maximum number of charactersReturns *this so it can be \u201cchained\u201d.",
+            "Throws a length_error exception if the result exceeds the maximum number of charactersReturns *this so it can be \u201cchained\u201d.",
+            "Returns *this so it can be \u201cchained\u201d."
+          ]
+        },
+        {
+          "text": "Sample code:std::string sDest;\n\nsDest.assign(4, 'g');\nstd::cout << sDest << '\\n';Output:gggg"
+        },
+        {
+          "code": "std::string sDest;\n\nsDest.assign(4, 'g');\nstd::cout << sDest << '\\n';"
+        },
+        {
+          "text": "Output:gggg"
+        },
+        {
+          "code": "gggg\n"
+        },
+        {
+          "text": "SwappingIf you have two strings and want to swap their values, there are two functions both named swap() that you can use.void string::swap (string& str)void swap (string& str1, string& str2)Both functions swap the value of the two strings. The member function swaps *this and str, the global function swaps str1 and str2.These functions are efficient and should be used instead of assignments to perform a string swap.Sample code:std::string sStr1(\"red\");\nstd::string sStr2(\"blue\");\n\nstd::cout << sStr1 << ' ' << sStr2 << '\\n';\nswap(sStr1, sStr2);\nstd::cout << sStr1 << ' ' << sStr2 << '\\n';\nsStr1.swap(sStr2);\nstd::cout << sStr1 << ' ' << sStr2 << '\\n';Output:red blue\nblue red\nred blueNext lesson22.6std::string appendingBack to table of contentsPrevious lesson22.4std::string character access and conversion to C-style arrays"
+        },
+        {
+          "text": "If you have two strings and want to swap their values, there are two functions both named swap() that you can use.void string::swap (string& str)void swap (string& str1, string& str2)Both functions swap the value of the two strings. The member function swaps *this and str, the global function swaps str1 and str2.These functions are efficient and should be used instead of assignments to perform a string swap.Sample code:std::string sStr1(\"red\");\nstd::string sStr2(\"blue\");\n\nstd::cout << sStr1 << ' ' << sStr2 << '\\n';\nswap(sStr1, sStr2);\nstd::cout << sStr1 << ' ' << sStr2 << '\\n';\nsStr1.swap(sStr2);\nstd::cout << sStr1 << ' ' << sStr2 << '\\n';Output:red blue\nblue red\nred blueNext lesson22.6std::string appendingBack to table of contentsPrevious lesson22.4std::string character access and conversion to C-style arrays"
+        },
+        {
+          "text": "void string::swap (string& str)void swap (string& str1, string& str2)Both functions swap the value of the two strings. The member function swaps *this and str, the global function swaps str1 and str2.These functions are efficient and should be used instead of assignments to perform a string swap.Sample code:std::string sStr1(\"red\");\nstd::string sStr2(\"blue\");\n\nstd::cout << sStr1 << ' ' << sStr2 << '\\n';\nswap(sStr1, sStr2);\nstd::cout << sStr1 << ' ' << sStr2 << '\\n';\nsStr1.swap(sStr2);\nstd::cout << sStr1 << ' ' << sStr2 << '\\n';Output:red blue\nblue red\nred blue"
+        },
+        {
+          "text": "void string::swap (string& str)void swap (string& str1, string& str2)Both functions swap the value of the two strings. The member function swaps *this and str, the global function swaps str1 and str2.These functions are efficient and should be used instead of assignments to perform a string swap.Sample code:std::string sStr1(\"red\");\nstd::string sStr2(\"blue\");\n\nstd::cout << sStr1 << ' ' << sStr2 << '\\n';\nswap(sStr1, sStr2);\nstd::cout << sStr1 << ' ' << sStr2 << '\\n';\nsStr1.swap(sStr2);\nstd::cout << sStr1 << ' ' << sStr2 << '\\n';Output:red blue\nblue red\nred blue"
+        },
+        {
+          "text": "Both functions swap the value of the two strings. The member function swaps *this and str, the global function swaps str1 and str2.These functions are efficient and should be used instead of assignments to perform a string swap.Sample code:std::string sStr1(\"red\");\nstd::string sStr2(\"blue\");\n\nstd::cout << sStr1 << ' ' << sStr2 << '\\n';\nswap(sStr1, sStr2);\nstd::cout << sStr1 << ' ' << sStr2 << '\\n';\nsStr1.swap(sStr2);\nstd::cout << sStr1 << ' ' << sStr2 << '\\n';Output:red blue\nblue red\nred blue"
+        },
+        {
+          "list": [
+            "Both functions swap the value of the two strings. The member function swaps *this and str, the global function swaps str1 and str2.These functions are efficient and should be used instead of assignments to perform a string swap.",
+            "These functions are efficient and should be used instead of assignments to perform a string swap."
+          ]
+        },
+        {
+          "text": "Sample code:std::string sStr1(\"red\");\nstd::string sStr2(\"blue\");\n\nstd::cout << sStr1 << ' ' << sStr2 << '\\n';\nswap(sStr1, sStr2);\nstd::cout << sStr1 << ' ' << sStr2 << '\\n';\nsStr1.swap(sStr2);\nstd::cout << sStr1 << ' ' << sStr2 << '\\n';Output:red blue\nblue red\nred blue"
+        },
+        {
+          "code": "std::string sStr1(\"red\");\nstd::string sStr2(\"blue\");\n\nstd::cout << sStr1 << ' ' << sStr2 << '\\n';\nswap(sStr1, sStr2);\nstd::cout << sStr1 << ' ' << sStr2 << '\\n';\nsStr1.swap(sStr2);\nstd::cout << sStr1 << ' ' << sStr2 << '\\n';"
+        },
+        {
+          "text": "Output:red blue\nblue red\nred blue"
+        },
+        {
+          "code": "red blue\nblue red\nred blue\n"
+        }
+      ]
+    }
+  ],
+  "quiz": []
+}

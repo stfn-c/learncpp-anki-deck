@@ -1,0 +1,184 @@
+{
+  "chapter": "Chapter 18",
+  "chapter_title": "Basic standard library algorithms",
+  "lesson": "18.1",
+  "lesson_title": "Sorting an array using selection sort",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch18_1_001",
+      "lesson": "18.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "sorting",
+        "algorithms"
+      ],
+      "front": "What is the purpose of sorting an array?",
+      "back": "Arranging all elements in a particular order, which makes:<ul><li>Searching more efficient</li><li>Finding extremes easier (min/max at start/end)</li><li>Data presentation more organized</li></ul>",
+      "source": "18.1 - Sorting an array using selection sort",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch18_1_002",
+      "lesson": "18.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "standard-library",
+        "utility"
+      ],
+      "text": "To swap two values in C++, use {{c1::std::swap(x, y)}} from the {{c2::&lt;utility&gt;}} header.",
+      "source": "18.1 - Sorting an array using selection sort",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch18_1_003",
+      "lesson": "18.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "sorting",
+        "selection-sort"
+      ],
+      "front": "What are the main steps of selection sort?",
+      "back": "<ul><li>Starting at index 0, find the smallest element in the entire array</li><li>Swap it with the element at index 0</li><li>Repeat for subsequent indices until done</li></ul>",
+      "source": "18.1 - Sorting an array using selection sort",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch18_1_004",
+      "lesson": "18.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "sorting",
+        "selection-sort"
+      ],
+      "text": "In selection sort, the outer loop can stop at {{c1::length - 1}} instead of length because the last element will already be {{c2::sorted}} by that point.",
+      "source": "18.1 - Sorting an array using selection sort",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch18_1_005",
+      "lesson": "18.1",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "sorting",
+        "selection-sort"
+      ],
+      "question": "What does this selection sort code fragment do?",
+      "code": "int smallestIndex{ startIndex };\nfor (int currentIndex{ startIndex + 1 }; currentIndex &lt; length; ++currentIndex)\n{\n    if (array[currentIndex] &lt; array[smallestIndex])\n        smallestIndex = currentIndex;\n}",
+      "answer": "Finds the index of the smallest element in the remaining unsorted portion of the array.",
+      "explanation": "It starts by assuming startIndex is the smallest, then checks all subsequent elements. If a smaller element is found, it updates smallestIndex.",
+      "source": "18.1 - Sorting an array using selection sort",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch18_1_006",
+      "lesson": "18.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "standard-library",
+        "algorithm",
+        "sorting"
+      ],
+      "text": "To sort an array using the standard library, call {{c1::std::sort(std::begin(array), std::end(array))}} from the {{c2::&lt;algorithm&gt;}} header.",
+      "source": "18.1 - Sorting an array using selection sort",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch18_1_007",
+      "lesson": "18.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "standard-library",
+        "sorting"
+      ],
+      "front": "What order does std::sort use by default?",
+      "back": "Ascending order, using operator&lt; to compare pairs of elements.",
+      "source": "18.1 - Sorting an array using selection sort",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch18_1_008",
+      "lesson": "18.1",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "sorting",
+        "performance"
+      ],
+      "concept": "When sorting is worth the cost",
+      "explanation": "Sorting is expensive, but can enable:<ul><li>Binary search (1M elements searchable with only 20 comparisons)</li><li>Immediate access to min/max values</li><li>Early termination when searching alphabetically</li></ul>Only worth it if you'll search the array many times.",
+      "examples": [
+        "// Unsorted: must check all elements for max",
+        "// Sorted: max is at array[0] or array[length-1]"
+      ],
+      "source": "18.1 - Sorting an array using selection sort",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch18_1_009",
+      "lesson": "18.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "sorting",
+        "bubble-sort"
+      ],
+      "text": "Bubble sort works by comparing {{c1::adjacent pairs}} of elements and swapping them if needed, causing larger elements to \"bubble\" to the {{c2::end}} of the array.",
+      "source": "18.1 - Sorting an array using selection sort",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch18_1_010",
+      "lesson": "18.1",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "sorting",
+        "selection-sort",
+        "common-mistakes"
+      ],
+      "question": "How would you modify selection sort to sort in descending order?",
+      "code": "if (array[currentIndex] &lt; array[smallestIndex])\n    smallestIndex = currentIndex;",
+      "answer": "Change &lt; to &gt; and rename smallestIndex to largestIndex",
+      "explanation": "Instead of finding the smallest element, find the largest element for each position: if (array[currentIndex] &gt; array[largestIndex])",
+      "source": "18.1 - Sorting an array using selection sort",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch18_1_011",
+      "lesson": "18.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "sorting",
+        "bubble-sort",
+        "optimization"
+      ],
+      "front": "What are two common optimizations for bubble sort?",
+      "back": "<ul><li>Don't recheck elements that are already sorted at the end</li><li>If no swaps occur in an iteration, the array is sorted - terminate early</li></ul>",
+      "source": "18.1 - Sorting an array using selection sort",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch18_1_012",
+      "lesson": "18.1",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "loops",
+        "terminology"
+      ],
+      "front": "nested loop",
+      "back": "A loop inside another loop, commonly used in sorting algorithms (outer loop for position, inner loop to find element)",
+      "source": "18.1 - Sorting an array using selection sort",
+      "difficulty": "easy"
+    }
+  ]
+}

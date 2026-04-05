@@ -1,0 +1,150 @@
+{
+  "chapter": "Chapter 12",
+  "chapter_title": "Compound Types: References and Pointers",
+  "lesson": "12.4",
+  "lesson_title": "Lvalue references to const",
+  "total_cards": 9,
+  "cards": [
+    {
+      "id": "ch12_4_001",
+      "lesson": "12.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "references",
+        "const",
+        "syntax"
+      ],
+      "text": "A reference to const is declared as {{c1::const int&amp; ref = x;}}, which means ref cannot be used to {{c2::modify}} the value it references.",
+      "source": "12.4 - Lvalue references to const",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_4_002",
+      "lesson": "12.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "references",
+        "const"
+      ],
+      "front": "Can a reference to const bind to a non-const lvalue?",
+      "back": "Yes. A const reference can bind to both const and non-const lvalues. It simply means you cannot modify the value through that reference.",
+      "source": "12.4 - Lvalue references to const",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_4_003",
+      "lesson": "12.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "references",
+        "const",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this code?",
+      "code": "int x = 5;<br>const int&amp; ref = x;<br>ref = 10;  // error",
+      "answer": "Cannot modify through a const reference. Even though x is non-const, ref is a const reference so cannot be used to modify x.",
+      "explanation": "A const reference promises not to modify the referenced value, even if the underlying object is non-const.",
+      "source": "12.4 - Lvalue references to const",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_4_004",
+      "lesson": "12.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "references",
+        "const",
+        "rvalue"
+      ],
+      "text": "Unlike non-const lvalue references, const lvalue references {{c1::can}} bind to {{c2::rvalues}}. The rvalue is converted to a temporary object.",
+      "source": "12.4 - Lvalue references to const",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_4_005",
+      "lesson": "12.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "references",
+        "const"
+      ],
+      "question": "Why does this code compile?",
+      "code": "const int&amp; ref = 5;  // OK",
+      "answer": "Const lvalue references can bind to rvalues. The compiler creates a temporary object to hold the value 5, and ref binds to that temporary.",
+      "explanation": "This is a special exception for const references - they extend the lifetime of temporary objects.",
+      "source": "12.4 - Lvalue references to const",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_4_006",
+      "lesson": "12.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "references",
+        "const",
+        "lifetime"
+      ],
+      "front": "What happens to the lifetime of a temporary object bound to a const reference?",
+      "back": "The lifetime of the temporary is extended to match the lifetime of the const reference. This prevents the temporary from being destroyed immediately.",
+      "source": "12.4 - Lvalue references to const",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_4_007",
+      "lesson": "12.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "references",
+        "const",
+        "common-mistakes"
+      ],
+      "question": "Which lines cause errors?",
+      "code": "int x = 5;<br>int&amp; ref1 = x;        // 1<br>int&amp; ref2 = 5;        // 2<br>const int&amp; ref3 = x;  // 3<br>const int&amp; ref4 = 5;  // 4",
+      "answer": "Line 2 causes an error. Non-const references cannot bind to rvalues.",
+      "explanation": "Lines 1, 3, and 4 are valid. Line 3 shows const reference to non-const lvalue, line 4 shows const reference to rvalue.",
+      "source": "12.4 - Lvalue references to const",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_4_008",
+      "lesson": "12.4",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "references",
+        "const",
+        "best-practices"
+      ],
+      "concept": "Why const lvalue references are useful",
+      "explanation": "Const lvalue references provide important benefits:<ul><li>Can bind to both lvalues and rvalues</li><li>Prevent accidental modification</li><li>Enable temporary lifetime extension</li><li>Commonly used for function parameters</li><li>Allow passing literals and expressions directly</li></ul>",
+      "examples": [
+        "void print(const int& x);  // Can accept any int expression",
+        "print(5);       // OK: binds to literal",
+        "print(y + 2);   // OK: binds to temporary",
+        "print(z);       // OK: binds to variable"
+      ],
+      "source": "12.4 - Lvalue references to const",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_4_009",
+      "lesson": "12.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "references",
+        "const"
+      ],
+      "text": "A const reference can bind to {{c1::lvalues}}, {{c2::non-modifiable lvalues}}, and {{c3::rvalues}}, making it very versatile.",
+      "source": "12.4 - Lvalue references to const",
+      "difficulty": "medium"
+    }
+  ]
+}

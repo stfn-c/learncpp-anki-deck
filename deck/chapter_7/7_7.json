@@ -1,0 +1,255 @@
+{
+  "chapter": "Chapter 7",
+  "chapter_title": "Scope, Duration, and Linkage",
+  "lesson": "7.7",
+  "lesson_title": "External linkage and variable forward declarations",
+  "total_cards": 17,
+  "cards": [
+    {
+      "id": "ch7_7_001",
+      "lesson": "7.7",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "linkage",
+        "terminology"
+      ],
+      "front": "External linkage",
+      "back": "An identifier with external linkage can be seen and used from other translation units (files). Functions and non-const global variables have external linkage by default.",
+      "source": "7.7 - External linkage and variable forward declarations",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_7_002",
+      "lesson": "7.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "linkage",
+        "syntax"
+      ],
+      "text": "To forward declare a global variable from another file, use the {{c1::extern}} keyword: {{c2::extern int g_value;}}",
+      "source": "7.7 - External linkage and variable forward declarations",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_7_003",
+      "lesson": "7.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "linkage",
+        "forward-declarations"
+      ],
+      "front": "What's the difference between 'int g_x;' and 'extern int g_x;'?",
+      "back": "'int g_x;' is a definition (creates the variable). 'extern int g_x;' is a forward declaration (tells the compiler the variable exists elsewhere).",
+      "source": "7.7 - External linkage and variable forward declarations",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_7_004",
+      "lesson": "7.7",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "linkage",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this code?",
+      "code": "// a.cpp\nint g_value{ 5 };\n\n// b.cpp\nint g_value; // forward declaration attempt",
+      "answer": "This is a redefinition, not a forward declaration. Use 'extern int g_value;' in b.cpp instead.",
+      "explanation": "Without 'extern', this creates a new variable definition, causing a multiple definition error. Use 'extern' to forward declare a variable defined elsewhere.",
+      "source": "7.7 - External linkage and variable forward declarations",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_7_005",
+      "lesson": "7.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "linkage",
+        "functions"
+      ],
+      "front": "What is the default linkage for functions?",
+      "back": "External linkage. Functions are external by default, which is why you can call functions defined in other files.",
+      "source": "7.7 - External linkage and variable forward declarations",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_7_006",
+      "lesson": "7.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "linkage",
+        "variables"
+      ],
+      "front": "What is the default linkage for non-const global variables?",
+      "back": "External linkage. Non-const global variables have external linkage by default.",
+      "source": "7.7 - External linkage and variable forward declarations",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_7_007",
+      "lesson": "7.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "linkage",
+        "constants"
+      ],
+      "text": "To give a const global variable external linkage, use {{c1::extern const int g_value{ 5 };}} in the definition and {{c2::extern const int g_value;}} in the forward declaration.",
+      "source": "7.7 - External linkage and variable forward declarations",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_7_008",
+      "lesson": "7.7",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "linkage",
+        "syntax"
+      ],
+      "question": "How do you make this const global variable accessible from other files?",
+      "code": "// a.cpp\nconst int g_max{ 100 }; // currently internal linkage",
+      "answer": "extern const int g_max{ 100 };",
+      "explanation": "Const globals have internal linkage by default. Adding 'extern' gives them external linkage, making them accessible from other files (with a forward declaration).",
+      "source": "7.7 - External linkage and variable forward declarations",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_7_009",
+      "lesson": "7.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "linkage",
+        "forward-declarations"
+      ],
+      "front": "Can an extern declaration include an initializer?",
+      "back": "Yes, but then it becomes a definition, not just a forward declaration. This defeats the purpose of using extern for forward declarations.",
+      "source": "7.7 - External linkage and variable forward declarations",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch7_7_010",
+      "lesson": "7.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "linkage",
+        "best-practices"
+      ],
+      "front": "Where should extern forward declarations for global variables be placed?",
+      "back": "In a header file that can be included wherever the variable is needed. This ensures consistency and avoids errors from manual duplication.",
+      "source": "7.7 - External linkage and variable forward declarations",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_7_011",
+      "lesson": "7.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "linkage",
+        "terminology"
+      ],
+      "text": "A variable forward declaration using {{c1::extern}} tells the compiler about a variable {{c2::defined elsewhere}}, without creating a new variable.",
+      "source": "7.7 - External linkage and variable forward declarations",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_7_012",
+      "lesson": "7.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "linkage",
+        "functions"
+      ],
+      "front": "Do function forward declarations need the 'extern' keyword?",
+      "back": "No. Functions have external linkage by default, so 'extern' is optional and typically omitted from function forward declarations.",
+      "source": "7.7 - External linkage and variable forward declarations",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_7_013",
+      "lesson": "7.7",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "linkage",
+        "best-practices"
+      ],
+      "concept": "Pattern for sharing global variables across files",
+      "explanation": "Best practice for sharing global variables:<ul><li>Define the variable in one .cpp file with external linkage</li><li>Create a header file with an extern forward declaration</li><li>Include the header in any file that needs to use the variable</li><li>This ensures consistency and prevents errors</li></ul>",
+      "examples": [
+        "// constants.cpp",
+        "extern const int g_max{ 100 };",
+        "",
+        "// constants.h",
+        "extern const int g_max;",
+        "",
+        "// main.cpp",
+        "#include \"constants.h\"",
+        "// can now use g_max"
+      ],
+      "source": "7.7 - External linkage and variable forward declarations",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_7_014",
+      "lesson": "7.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "linkage",
+        "functions"
+      ],
+      "text": "Functions have {{c1::external linkage}} by default, which is why you can call functions {{c2::defined in other files}}.",
+      "source": "7.7 - External linkage and variable forward declarations",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_7_015",
+      "lesson": "7.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "linkage",
+        "forward-declarations"
+      ],
+      "text": "A variable forward declaration uses {{c1::extern}} without an {{c2::initializer}}: extern int g_value;",
+      "source": "7.7 - External linkage and variable forward declarations",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_7_016",
+      "lesson": "7.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "linkage",
+        "extern"
+      ],
+      "text": "To give a const global external linkage: {{c1::extern const}} int g_value{{c2::{ 5 };}} in the definition, and {{c3::extern const int g_value;}} in the forward declaration.",
+      "source": "7.7 - External linkage and variable forward declarations",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch7_7_017",
+      "lesson": "7.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "linkage",
+        "one-definition-rule"
+      ],
+      "text": "Variables with {{c1::external linkage}} can be seen and used from {{c2::other translation units}}, while variables with internal linkage are limited to {{c3::a single file}}.",
+      "source": "7.7 - External linkage and variable forward declarations",
+      "difficulty": "medium"
+    }
+  ]
+}

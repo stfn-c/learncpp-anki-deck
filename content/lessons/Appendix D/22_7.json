@@ -1,0 +1,165 @@
+{
+  "url": "https://www.learncpp.com/cpp-tutorial/stdstring-inserting/",
+  "title": "22.7 \u2014 std::string inserting",
+  "sections": [
+    {
+      "heading": null,
+      "content": [
+        {
+          "text": "InsertingInserting characters into an existing string can be done via the insert() function.string& string::insert (size_type index, const string& str)string& string::insert (size_type index, const char* str)Both functions insert the characters of str into the string at indexBoth function return *this so they can be \u201cchained\u201d.Both functions throw out_of_range if index is invalidBoth functions throw a length_error exception if the result exceeds the maximum number of characters.In the C-style string version, str must not be NULL.Sample code:string sString(\"aaaa\");\ncout << sString << endl;\n\nsString.insert(2, string(\"bbbb\"));\ncout << sString << endl;\n\nsString.insert(4, \"cccc\");\ncout << sString << endl;Output:aaaa\naabbbbaa\naabbccccbbaaHere\u2019s a crazy version of insert() that allows you to insert a substring into a string at an arbitrary index:string& string::insert (size_type index, const string& str, size_type startindex, size_type num)This function inserts num characters str, starting from startindex, into the string at index.Returns *this so it can be \u201cchained\u201d.Throws an out_of_range if index or startindex is out of boundsThrows a length_error exception if the result exceeds the maximum number of characters.Sample code:string sString(\"aaaa\");\n\nconst string sInsert(\"01234567\");\nsString.insert(2, sInsert, 3, 4); // insert substring of sInsert from index [3,7) into sString at index 2\ncout << sString << endl;Output:aa3456aaThere is a flavor of insert() that inserts the first portion of a C-style string:string& string::insert(size_type index, const char* str, size_type len)Inserts len characters of str into the string at indexReturns *this so it can be \u201cchained\u201d.Throws an out_of_range exception if the index is invalidThrows a length_error exception if the result exceeds the maximum number of characters.Ignores special characters (such as \u201d)Sample code:string sString(\"aaaa\");\n\nsString.insert(2, \"bcdef\", 3);\ncout << sString << endl;Output:aabcdaaThere\u2019s also a flavor of insert() that inserts the same character multiple times:string& string::insert(size_type index, size_type num, char c)Inserts num instances of char c into the string at indexReturns *this so it can be \u201cchained\u201d.Throws an out_of_range exception if the index is invalidThrows a length_error exception if the result exceeds the maximum number of characters.Sample code:string sString(\"aaaa\");\n\nsString.insert(2, 4, 'c');\ncout << sString << endl;Output:aaccccaaAnd finally, the insert() function also has three different versions that use iterators:void insert(iterator it, size_type num, char c)iterator string::insert(iterator it, char c)void string::insert(iterator it, InputIterator begin, InputIterator end)The first function inserts num instances of the character c before the iterator it.The second inserts a single character c before the iterator it, and returns an iterator to the position of the character inserted.The third inserts all characters between [begin,end) before the iterator it.All functions throw a length_error exception if the result exceeds the maximum number of characters.Next lessonNo next lessonBack to table of contentsPrevious lesson22.6std::string appending"
+        },
+        {
+          "text": "Inserting characters into an existing string can be done via the insert() function.string& string::insert (size_type index, const string& str)string& string::insert (size_type index, const char* str)Both functions insert the characters of str into the string at indexBoth function return *this so they can be \u201cchained\u201d.Both functions throw out_of_range if index is invalidBoth functions throw a length_error exception if the result exceeds the maximum number of characters.In the C-style string version, str must not be NULL.Sample code:string sString(\"aaaa\");\ncout << sString << endl;\n\nsString.insert(2, string(\"bbbb\"));\ncout << sString << endl;\n\nsString.insert(4, \"cccc\");\ncout << sString << endl;Output:aaaa\naabbbbaa\naabbccccbbaaHere\u2019s a crazy version of insert() that allows you to insert a substring into a string at an arbitrary index:string& string::insert (size_type index, const string& str, size_type startindex, size_type num)This function inserts num characters str, starting from startindex, into the string at index.Returns *this so it can be \u201cchained\u201d.Throws an out_of_range if index or startindex is out of boundsThrows a length_error exception if the result exceeds the maximum number of characters.Sample code:string sString(\"aaaa\");\n\nconst string sInsert(\"01234567\");\nsString.insert(2, sInsert, 3, 4); // insert substring of sInsert from index [3,7) into sString at index 2\ncout << sString << endl;Output:aa3456aaThere is a flavor of insert() that inserts the first portion of a C-style string:string& string::insert(size_type index, const char* str, size_type len)Inserts len characters of str into the string at indexReturns *this so it can be \u201cchained\u201d.Throws an out_of_range exception if the index is invalidThrows a length_error exception if the result exceeds the maximum number of characters.Ignores special characters (such as \u201d)Sample code:string sString(\"aaaa\");\n\nsString.insert(2, \"bcdef\", 3);\ncout << sString << endl;Output:aabcdaaThere\u2019s also a flavor of insert() that inserts the same character multiple times:string& string::insert(size_type index, size_type num, char c)Inserts num instances of char c into the string at indexReturns *this so it can be \u201cchained\u201d.Throws an out_of_range exception if the index is invalidThrows a length_error exception if the result exceeds the maximum number of characters.Sample code:string sString(\"aaaa\");\n\nsString.insert(2, 4, 'c');\ncout << sString << endl;Output:aaccccaaAnd finally, the insert() function also has three different versions that use iterators:void insert(iterator it, size_type num, char c)iterator string::insert(iterator it, char c)void string::insert(iterator it, InputIterator begin, InputIterator end)The first function inserts num instances of the character c before the iterator it.The second inserts a single character c before the iterator it, and returns an iterator to the position of the character inserted.The third inserts all characters between [begin,end) before the iterator it.All functions throw a length_error exception if the result exceeds the maximum number of characters.Next lessonNo next lessonBack to table of contentsPrevious lesson22.6std::string appending"
+        },
+        {
+          "text": "string& string::insert (size_type index, const string& str)string& string::insert (size_type index, const char* str)Both functions insert the characters of str into the string at indexBoth function return *this so they can be \u201cchained\u201d.Both functions throw out_of_range if index is invalidBoth functions throw a length_error exception if the result exceeds the maximum number of characters.In the C-style string version, str must not be NULL.Sample code:string sString(\"aaaa\");\ncout << sString << endl;\n\nsString.insert(2, string(\"bbbb\"));\ncout << sString << endl;\n\nsString.insert(4, \"cccc\");\ncout << sString << endl;Output:aaaa\naabbbbaa\naabbccccbbaa"
+        },
+        {
+          "text": "string& string::insert (size_type index, const string& str)string& string::insert (size_type index, const char* str)Both functions insert the characters of str into the string at indexBoth function return *this so they can be \u201cchained\u201d.Both functions throw out_of_range if index is invalidBoth functions throw a length_error exception if the result exceeds the maximum number of characters.In the C-style string version, str must not be NULL.Sample code:string sString(\"aaaa\");\ncout << sString << endl;\n\nsString.insert(2, string(\"bbbb\"));\ncout << sString << endl;\n\nsString.insert(4, \"cccc\");\ncout << sString << endl;Output:aaaa\naabbbbaa\naabbccccbbaa"
+        },
+        {
+          "text": "Both functions insert the characters of str into the string at indexBoth function return *this so they can be \u201cchained\u201d.Both functions throw out_of_range if index is invalidBoth functions throw a length_error exception if the result exceeds the maximum number of characters.In the C-style string version, str must not be NULL.Sample code:string sString(\"aaaa\");\ncout << sString << endl;\n\nsString.insert(2, string(\"bbbb\"));\ncout << sString << endl;\n\nsString.insert(4, \"cccc\");\ncout << sString << endl;Output:aaaa\naabbbbaa\naabbccccbbaa"
+        },
+        {
+          "list": [
+            "Both functions insert the characters of str into the string at indexBoth function return *this so they can be \u201cchained\u201d.Both functions throw out_of_range if index is invalidBoth functions throw a length_error exception if the result exceeds the maximum number of characters.In the C-style string version, str must not be NULL.",
+            "Both function return *this so they can be \u201cchained\u201d.Both functions throw out_of_range if index is invalidBoth functions throw a length_error exception if the result exceeds the maximum number of characters.In the C-style string version, str must not be NULL.",
+            "Both functions throw out_of_range if index is invalidBoth functions throw a length_error exception if the result exceeds the maximum number of characters.In the C-style string version, str must not be NULL.",
+            "Both functions throw a length_error exception if the result exceeds the maximum number of characters.In the C-style string version, str must not be NULL.",
+            "In the C-style string version, str must not be NULL."
+          ]
+        },
+        {
+          "text": "Sample code:string sString(\"aaaa\");\ncout << sString << endl;\n\nsString.insert(2, string(\"bbbb\"));\ncout << sString << endl;\n\nsString.insert(4, \"cccc\");\ncout << sString << endl;Output:aaaa\naabbbbaa\naabbccccbbaa"
+        },
+        {
+          "code": "string sString(\"aaaa\");\ncout << sString << endl;\n\nsString.insert(2, string(\"bbbb\"));\ncout << sString << endl;\n\nsString.insert(4, \"cccc\");\ncout << sString << endl;"
+        },
+        {
+          "text": "Output:aaaa\naabbbbaa\naabbccccbbaa"
+        },
+        {
+          "code": "aaaa\naabbbbaa\naabbccccbbaa\n"
+        },
+        {
+          "text": "Here\u2019s a crazy version of insert() that allows you to insert a substring into a string at an arbitrary index:string& string::insert (size_type index, const string& str, size_type startindex, size_type num)This function inserts num characters str, starting from startindex, into the string at index.Returns *this so it can be \u201cchained\u201d.Throws an out_of_range if index or startindex is out of boundsThrows a length_error exception if the result exceeds the maximum number of characters.Sample code:string sString(\"aaaa\");\n\nconst string sInsert(\"01234567\");\nsString.insert(2, sInsert, 3, 4); // insert substring of sInsert from index [3,7) into sString at index 2\ncout << sString << endl;Output:aa3456aaThere is a flavor of insert() that inserts the first portion of a C-style string:string& string::insert(size_type index, const char* str, size_type len)Inserts len characters of str into the string at indexReturns *this so it can be \u201cchained\u201d.Throws an out_of_range exception if the index is invalidThrows a length_error exception if the result exceeds the maximum number of characters.Ignores special characters (such as \u201d)Sample code:string sString(\"aaaa\");\n\nsString.insert(2, \"bcdef\", 3);\ncout << sString << endl;Output:aabcdaaThere\u2019s also a flavor of insert() that inserts the same character multiple times:string& string::insert(size_type index, size_type num, char c)Inserts num instances of char c into the string at indexReturns *this so it can be \u201cchained\u201d.Throws an out_of_range exception if the index is invalidThrows a length_error exception if the result exceeds the maximum number of characters.Sample code:string sString(\"aaaa\");\n\nsString.insert(2, 4, 'c');\ncout << sString << endl;Output:aaccccaaAnd finally, the insert() function also has three different versions that use iterators:void insert(iterator it, size_type num, char c)iterator string::insert(iterator it, char c)void string::insert(iterator it, InputIterator begin, InputIterator end)The first function inserts num instances of the character c before the iterator it.The second inserts a single character c before the iterator it, and returns an iterator to the position of the character inserted.The third inserts all characters between [begin,end) before the iterator it.All functions throw a length_error exception if the result exceeds the maximum number of characters.Next lessonNo next lessonBack to table of contentsPrevious lesson22.6std::string appending"
+        },
+        {
+          "text": "string& string::insert (size_type index, const string& str, size_type startindex, size_type num)This function inserts num characters str, starting from startindex, into the string at index.Returns *this so it can be \u201cchained\u201d.Throws an out_of_range if index or startindex is out of boundsThrows a length_error exception if the result exceeds the maximum number of characters.Sample code:string sString(\"aaaa\");\n\nconst string sInsert(\"01234567\");\nsString.insert(2, sInsert, 3, 4); // insert substring of sInsert from index [3,7) into sString at index 2\ncout << sString << endl;Output:aa3456aa"
+        },
+        {
+          "text": "string& string::insert (size_type index, const string& str, size_type startindex, size_type num)This function inserts num characters str, starting from startindex, into the string at index.Returns *this so it can be \u201cchained\u201d.Throws an out_of_range if index or startindex is out of boundsThrows a length_error exception if the result exceeds the maximum number of characters.Sample code:string sString(\"aaaa\");\n\nconst string sInsert(\"01234567\");\nsString.insert(2, sInsert, 3, 4); // insert substring of sInsert from index [3,7) into sString at index 2\ncout << sString << endl;Output:aa3456aa"
+        },
+        {
+          "text": "This function inserts num characters str, starting from startindex, into the string at index.Returns *this so it can be \u201cchained\u201d.Throws an out_of_range if index or startindex is out of boundsThrows a length_error exception if the result exceeds the maximum number of characters.Sample code:string sString(\"aaaa\");\n\nconst string sInsert(\"01234567\");\nsString.insert(2, sInsert, 3, 4); // insert substring of sInsert from index [3,7) into sString at index 2\ncout << sString << endl;Output:aa3456aa"
+        },
+        {
+          "list": [
+            "This function inserts num characters str, starting from startindex, into the string at index.Returns *this so it can be \u201cchained\u201d.Throws an out_of_range if index or startindex is out of boundsThrows a length_error exception if the result exceeds the maximum number of characters.",
+            "Returns *this so it can be \u201cchained\u201d.Throws an out_of_range if index or startindex is out of boundsThrows a length_error exception if the result exceeds the maximum number of characters.",
+            "Throws an out_of_range if index or startindex is out of boundsThrows a length_error exception if the result exceeds the maximum number of characters.",
+            "Throws a length_error exception if the result exceeds the maximum number of characters."
+          ]
+        },
+        {
+          "text": "Sample code:string sString(\"aaaa\");\n\nconst string sInsert(\"01234567\");\nsString.insert(2, sInsert, 3, 4); // insert substring of sInsert from index [3,7) into sString at index 2\ncout << sString << endl;Output:aa3456aa"
+        },
+        {
+          "code": "string sString(\"aaaa\");\n\nconst string sInsert(\"01234567\");\nsString.insert(2, sInsert, 3, 4); // insert substring of sInsert from index [3,7) into sString at index 2\ncout << sString << endl;"
+        },
+        {
+          "text": "Output:aa3456aa"
+        },
+        {
+          "code": "aa3456aa\n"
+        },
+        {
+          "text": "There is a flavor of insert() that inserts the first portion of a C-style string:string& string::insert(size_type index, const char* str, size_type len)Inserts len characters of str into the string at indexReturns *this so it can be \u201cchained\u201d.Throws an out_of_range exception if the index is invalidThrows a length_error exception if the result exceeds the maximum number of characters.Ignores special characters (such as \u201d)Sample code:string sString(\"aaaa\");\n\nsString.insert(2, \"bcdef\", 3);\ncout << sString << endl;Output:aabcdaaThere\u2019s also a flavor of insert() that inserts the same character multiple times:string& string::insert(size_type index, size_type num, char c)Inserts num instances of char c into the string at indexReturns *this so it can be \u201cchained\u201d.Throws an out_of_range exception if the index is invalidThrows a length_error exception if the result exceeds the maximum number of characters.Sample code:string sString(\"aaaa\");\n\nsString.insert(2, 4, 'c');\ncout << sString << endl;Output:aaccccaaAnd finally, the insert() function also has three different versions that use iterators:void insert(iterator it, size_type num, char c)iterator string::insert(iterator it, char c)void string::insert(iterator it, InputIterator begin, InputIterator end)The first function inserts num instances of the character c before the iterator it.The second inserts a single character c before the iterator it, and returns an iterator to the position of the character inserted.The third inserts all characters between [begin,end) before the iterator it.All functions throw a length_error exception if the result exceeds the maximum number of characters.Next lessonNo next lessonBack to table of contentsPrevious lesson22.6std::string appending"
+        },
+        {
+          "text": "string& string::insert(size_type index, const char* str, size_type len)Inserts len characters of str into the string at indexReturns *this so it can be \u201cchained\u201d.Throws an out_of_range exception if the index is invalidThrows a length_error exception if the result exceeds the maximum number of characters.Ignores special characters (such as \u201d)Sample code:string sString(\"aaaa\");\n\nsString.insert(2, \"bcdef\", 3);\ncout << sString << endl;Output:aabcdaa"
+        },
+        {
+          "text": "string& string::insert(size_type index, const char* str, size_type len)Inserts len characters of str into the string at indexReturns *this so it can be \u201cchained\u201d.Throws an out_of_range exception if the index is invalidThrows a length_error exception if the result exceeds the maximum number of characters.Ignores special characters (such as \u201d)Sample code:string sString(\"aaaa\");\n\nsString.insert(2, \"bcdef\", 3);\ncout << sString << endl;Output:aabcdaa"
+        },
+        {
+          "text": "Inserts len characters of str into the string at indexReturns *this so it can be \u201cchained\u201d.Throws an out_of_range exception if the index is invalidThrows a length_error exception if the result exceeds the maximum number of characters.Ignores special characters (such as \u201d)Sample code:string sString(\"aaaa\");\n\nsString.insert(2, \"bcdef\", 3);\ncout << sString << endl;Output:aabcdaa"
+        },
+        {
+          "list": [
+            "Inserts len characters of str into the string at indexReturns *this so it can be \u201cchained\u201d.Throws an out_of_range exception if the index is invalidThrows a length_error exception if the result exceeds the maximum number of characters.Ignores special characters (such as \u201d)",
+            "Returns *this so it can be \u201cchained\u201d.Throws an out_of_range exception if the index is invalidThrows a length_error exception if the result exceeds the maximum number of characters.Ignores special characters (such as \u201d)",
+            "Throws an out_of_range exception if the index is invalidThrows a length_error exception if the result exceeds the maximum number of characters.Ignores special characters (such as \u201d)",
+            "Throws a length_error exception if the result exceeds the maximum number of characters.Ignores special characters (such as \u201d)",
+            "Ignores special characters (such as \u201d)"
+          ]
+        },
+        {
+          "text": "Sample code:string sString(\"aaaa\");\n\nsString.insert(2, \"bcdef\", 3);\ncout << sString << endl;Output:aabcdaa"
+        },
+        {
+          "code": "string sString(\"aaaa\");\n\nsString.insert(2, \"bcdef\", 3);\ncout << sString << endl;"
+        },
+        {
+          "text": "Output:aabcdaa"
+        },
+        {
+          "code": "aabcdaa\n"
+        },
+        {
+          "text": "There\u2019s also a flavor of insert() that inserts the same character multiple times:string& string::insert(size_type index, size_type num, char c)Inserts num instances of char c into the string at indexReturns *this so it can be \u201cchained\u201d.Throws an out_of_range exception if the index is invalidThrows a length_error exception if the result exceeds the maximum number of characters.Sample code:string sString(\"aaaa\");\n\nsString.insert(2, 4, 'c');\ncout << sString << endl;Output:aaccccaaAnd finally, the insert() function also has three different versions that use iterators:void insert(iterator it, size_type num, char c)iterator string::insert(iterator it, char c)void string::insert(iterator it, InputIterator begin, InputIterator end)The first function inserts num instances of the character c before the iterator it.The second inserts a single character c before the iterator it, and returns an iterator to the position of the character inserted.The third inserts all characters between [begin,end) before the iterator it.All functions throw a length_error exception if the result exceeds the maximum number of characters.Next lessonNo next lessonBack to table of contentsPrevious lesson22.6std::string appending"
+        },
+        {
+          "text": "string& string::insert(size_type index, size_type num, char c)Inserts num instances of char c into the string at indexReturns *this so it can be \u201cchained\u201d.Throws an out_of_range exception if the index is invalidThrows a length_error exception if the result exceeds the maximum number of characters.Sample code:string sString(\"aaaa\");\n\nsString.insert(2, 4, 'c');\ncout << sString << endl;Output:aaccccaa"
+        },
+        {
+          "text": "string& string::insert(size_type index, size_type num, char c)Inserts num instances of char c into the string at indexReturns *this so it can be \u201cchained\u201d.Throws an out_of_range exception if the index is invalidThrows a length_error exception if the result exceeds the maximum number of characters.Sample code:string sString(\"aaaa\");\n\nsString.insert(2, 4, 'c');\ncout << sString << endl;Output:aaccccaa"
+        },
+        {
+          "text": "Inserts num instances of char c into the string at indexReturns *this so it can be \u201cchained\u201d.Throws an out_of_range exception if the index is invalidThrows a length_error exception if the result exceeds the maximum number of characters.Sample code:string sString(\"aaaa\");\n\nsString.insert(2, 4, 'c');\ncout << sString << endl;Output:aaccccaa"
+        },
+        {
+          "list": [
+            "Inserts num instances of char c into the string at indexReturns *this so it can be \u201cchained\u201d.Throws an out_of_range exception if the index is invalidThrows a length_error exception if the result exceeds the maximum number of characters.",
+            "Returns *this so it can be \u201cchained\u201d.Throws an out_of_range exception if the index is invalidThrows a length_error exception if the result exceeds the maximum number of characters.",
+            "Throws an out_of_range exception if the index is invalidThrows a length_error exception if the result exceeds the maximum number of characters.",
+            "Throws a length_error exception if the result exceeds the maximum number of characters."
+          ]
+        },
+        {
+          "text": "Sample code:string sString(\"aaaa\");\n\nsString.insert(2, 4, 'c');\ncout << sString << endl;Output:aaccccaa"
+        },
+        {
+          "code": "string sString(\"aaaa\");\n\nsString.insert(2, 4, 'c');\ncout << sString << endl;"
+        },
+        {
+          "text": "Output:aaccccaa"
+        },
+        {
+          "code": "aaccccaa\n"
+        },
+        {
+          "text": "And finally, the insert() function also has three different versions that use iterators:void insert(iterator it, size_type num, char c)iterator string::insert(iterator it, char c)void string::insert(iterator it, InputIterator begin, InputIterator end)The first function inserts num instances of the character c before the iterator it.The second inserts a single character c before the iterator it, and returns an iterator to the position of the character inserted.The third inserts all characters between [begin,end) before the iterator it.All functions throw a length_error exception if the result exceeds the maximum number of characters.Next lessonNo next lessonBack to table of contentsPrevious lesson22.6std::string appending"
+        },
+        {
+          "text": "void insert(iterator it, size_type num, char c)iterator string::insert(iterator it, char c)void string::insert(iterator it, InputIterator begin, InputIterator end)The first function inserts num instances of the character c before the iterator it.The second inserts a single character c before the iterator it, and returns an iterator to the position of the character inserted.The third inserts all characters between [begin,end) before the iterator it.All functions throw a length_error exception if the result exceeds the maximum number of characters."
+        },
+        {
+          "text": "void insert(iterator it, size_type num, char c)iterator string::insert(iterator it, char c)void string::insert(iterator it, InputIterator begin, InputIterator end)The first function inserts num instances of the character c before the iterator it.The second inserts a single character c before the iterator it, and returns an iterator to the position of the character inserted.The third inserts all characters between [begin,end) before the iterator it.All functions throw a length_error exception if the result exceeds the maximum number of characters."
+        },
+        {
+          "text": "The first function inserts num instances of the character c before the iterator it.The second inserts a single character c before the iterator it, and returns an iterator to the position of the character inserted.The third inserts all characters between [begin,end) before the iterator it.All functions throw a length_error exception if the result exceeds the maximum number of characters."
+        },
+        {
+          "list": [
+            "The first function inserts num instances of the character c before the iterator it.The second inserts a single character c before the iterator it, and returns an iterator to the position of the character inserted.The third inserts all characters between [begin,end) before the iterator it.All functions throw a length_error exception if the result exceeds the maximum number of characters.",
+            "The second inserts a single character c before the iterator it, and returns an iterator to the position of the character inserted.The third inserts all characters between [begin,end) before the iterator it.All functions throw a length_error exception if the result exceeds the maximum number of characters.",
+            "The third inserts all characters between [begin,end) before the iterator it.All functions throw a length_error exception if the result exceeds the maximum number of characters.",
+            "All functions throw a length_error exception if the result exceeds the maximum number of characters."
+          ]
+        }
+      ]
+    }
+  ],
+  "quiz": []
+}

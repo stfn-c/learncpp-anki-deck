@@ -1,0 +1,157 @@
+{
+  "chapter": "Chapter 15",
+  "chapter_title": "More on Classes",
+  "lesson": "15.x",
+  "lesson_title": "Chapter 15 summary and quiz",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "ch15_x_001",
+      "lesson": "15.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "this-pointer"
+      ],
+      "text": "The {{c1::this}} pointer is implicitly passed to all non-static member functions and points to the {{c2::object the function was called on}}.",
+      "source": "15.x - Chapter 15 summary",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch15_x_002",
+      "lesson": "15.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "destructors"
+      ],
+      "text": "Destructors are called automatically when an object {{c1::goes out of scope}} and are used to {{c2::clean up resources}} like dynamically allocated memory.",
+      "source": "15.x - Chapter 15 summary",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch15_x_003",
+      "lesson": "15.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "static"
+      ],
+      "text": "Static member variables are {{c1::shared by all objects}} of the class and must be {{c2::defined outside the class}} definition.",
+      "source": "15.x - Chapter 15 summary",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch15_x_004",
+      "lesson": "15.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "friend"
+      ],
+      "text": "Friend functions and friend classes can access {{c1::private and protected}} members, but friendship is {{c2::not reciprocal}} or {{c3::transitive}}.",
+      "source": "15.x - Chapter 15 summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_x_005",
+      "lesson": "15.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "classes",
+        "summary"
+      ],
+      "front": "What are the three types of members a class can have in terms of scope?",
+      "back": "<ul><li>Non-static members: belong to each object</li><li>Static members: shared by all objects</li><li>Friend functions: not members, but have access to private data</li></ul>",
+      "source": "15.x - Chapter 15 summary",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch15_x_006",
+      "lesson": "15.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "classes",
+        "templates"
+      ],
+      "front": "Why must class template member functions typically be defined in header files?",
+      "back": "Because the compiler needs the full definition to instantiate the template with specific types. Separating into .cpp files would cause linker errors.",
+      "source": "15.x - Chapter 15 summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_x_007",
+      "lesson": "15.x",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "classes",
+        "summary"
+      ],
+      "question": "What's wrong with this class design?",
+      "code": "class Resource {\n    int* m_data;\npublic:\n    Resource(int size) { m_data = new int[size]; }\n    // Missing destructor!\n};\n\nint main() {\n    Resource r(100);\n    // r goes out of scope\n}",
+      "answer": "Memory leak - the class allocates memory but never deletes it.",
+      "explanation": "Need to add destructor: <code>~Resource() { delete[] m_data; }</code> to implement RAII properly.",
+      "source": "15.x - Chapter 15 summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_x_008",
+      "lesson": "15.x",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "classes",
+        "summary"
+      ],
+      "question": "Which members can this static member function access?",
+      "code": "class MyClass {\n    int m_value;              // non-static\n    static int s_count;       // static\npublic:\n    static void printInfo() {\n        // Which variables can printInfo access?\n    }\n};",
+      "answer": "Only s_count (static member). Cannot access m_value (non-static member).",
+      "explanation": "Static member functions have no <code>this</code> pointer, so they can only access static members.",
+      "source": "15.x - Chapter 15 summary",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch15_x_009",
+      "lesson": "15.x",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "classes",
+        "best-practices"
+      ],
+      "concept": "Key principles of class organization in Chapter 15",
+      "explanation": "Best practices covered in Chapter 15:<ul><li>Separate class definitions (.h) from implementations (.cpp)</li><li>Use RAII for automatic resource management</li><li>Use static members for class-wide data and behavior</li><li>Use friend functions sparingly (they break encapsulation)</li><li>Put template code in headers</li><li>Use nested types to organize related types</li></ul>",
+      "examples": [
+        "class ResourceManager {",
+        "    Resource* m_res;",
+        "public:",
+        "    ResourceManager() { m_res = acquire(); }  // RAII",
+        "    ~ResourceManager() { release(m_res); }    // RAII",
+        "};"
+      ],
+      "source": "15.x - Chapter 15 summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_x_010",
+      "lesson": "15.x",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "classes",
+        "raii"
+      ],
+      "front": "RAII",
+      "back": "Resource Acquisition Is Initialization - an idiom where resources are acquired in constructors and released in destructors",
+      "source": "15.x - Chapter 15 summary",
+      "difficulty": "easy"
+    }
+  ]
+}

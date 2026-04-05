@@ -1,0 +1,123 @@
+{
+  "chapter": "Chapter 2",
+  "chapter_title": "C++ Basics: Functions and Files",
+  "lesson": "2.6",
+  "lesson_title": "Why functions are useful, and how to use them effectively",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "ch2_6_001",
+      "lesson": "2.6",
+      "type": "concept",
+      "tags": ["cpp", "functions", "best-practices"],
+      "concept": "Why functions are useful",
+      "explanation": "Functions provide key benefits:<ul><li><strong>Organization:</strong> Break large programs into manageable pieces</li><li><strong>Reusability:</strong> Write once, use many times</li><li><strong>Testing:</strong> Easier to test individual functions</li><li><strong>Readability:</strong> Good names make code self-documenting</li><li><strong>Maintainability:</strong> Fix bugs in one place</li></ul>",
+      "examples": [
+        "// Reusable",
+        "int max(int a, int b) { return (a &gt; b) ? a : b; }",
+        "// Call many times",
+        "int x = max(3, 5);",
+        "int y = max(10, 2);"
+      ],
+      "source": "2.6 - Why functions are useful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_6_002",
+      "lesson": "2.6",
+      "type": "basic",
+      "tags": ["cpp", "functions", "best-practices"],
+      "front": "What is the DRY principle and how do functions help?",
+      "back": "DRY stands for \"Don't Repeat Yourself\". Functions help by allowing you to write code once and reuse it, rather than copying and pasting.",
+      "source": "2.6 - Why functions are useful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_6_003",
+      "lesson": "2.6",
+      "type": "cloze",
+      "tags": ["cpp", "functions", "best-practices"],
+      "text": "Functions should ideally do {{c1::one}} thing well. A function that does too many things is harder to {{c2::understand}}, {{c3::test}}, and {{c4::reuse}}.",
+      "source": "2.6 - Why functions are useful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_6_004",
+      "lesson": "2.6",
+      "type": "basic",
+      "tags": ["cpp", "functions", "best-practices"],
+      "front": "Should function names describe what the function does or how it does it?",
+      "back": "Function names should describe <strong>what</strong> the function does, not <strong>how</strong> it does it. This makes code more readable and maintainable.",
+      "source": "2.6 - Why functions are useful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_6_005",
+      "lesson": "2.6",
+      "type": "concept",
+      "tags": ["cpp", "functions", "best-practices"],
+      "concept": "Good function naming conventions",
+      "explanation": "Effective function names:<ul><li>Use verbs for action functions: calculateTotal(), printReport()</li><li>Be specific and descriptive: getUserInput() not get()</li><li>Match the level of abstraction</li><li>Avoid abbreviations unless widely known</li></ul>",
+      "examples": [
+        "// Good",
+        "int calculateAverage(int a, int b);",
+        "bool isValidEmail(string email);",
+        "",
+        "// Poor",
+        "int calc(int a, int b);",
+        "bool check(string s);"
+      ],
+      "source": "2.6 - Why functions are useful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_6_006",
+      "lesson": "2.6",
+      "type": "basic",
+      "tags": ["cpp", "functions", "best-practices"],
+      "front": "How long should a function typically be?",
+      "back": "Functions should be as short as practical - typically a few lines to a screenful. If a function is too long, consider breaking it into smaller helper functions.",
+      "source": "2.6 - Why functions are useful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_6_007",
+      "lesson": "2.6",
+      "type": "cloze",
+      "tags": ["cpp", "functions", "best-practices"],
+      "text": "Code that appears in more than one place should usually be made into a {{c1::function}} to avoid {{c2::duplication}}.",
+      "source": "2.6 - Why functions are useful",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_6_008",
+      "lesson": "2.6",
+      "type": "basic",
+      "tags": ["cpp", "functions", "best-practices"],
+      "front": "What are the benefits of breaking a large function into smaller functions?",
+      "back": "Smaller functions are:<ul><li>Easier to understand</li><li>Easier to test</li><li>More reusable</li><li>Easier to debug</li><li>Less prone to errors</li></ul>",
+      "source": "2.6 - Why functions are useful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_6_009",
+      "lesson": "2.6",
+      "type": "basic",
+      "tags": ["cpp", "functions", "testing"],
+      "front": "Why are functions easier to test than large blocks of code?",
+      "back": "Functions can be tested in isolation with specific inputs and expected outputs, making it easier to verify correctness and find bugs.",
+      "source": "2.6 - Why functions are useful",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_6_010",
+      "lesson": "2.6",
+      "type": "basic",
+      "tags": ["cpp", "functions", "best-practices"],
+      "front": "What is a helper function?",
+      "back": "A helper function is a small function that performs a specific sub-task for a larger function, improving code organization and reusability.",
+      "source": "2.6 - Why functions are useful",
+      "difficulty": "easy"
+    }
+  ]
+}

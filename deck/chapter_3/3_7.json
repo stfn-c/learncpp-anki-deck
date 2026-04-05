@@ -1,0 +1,212 @@
+{
+  "chapter": "Chapter 3",
+  "chapter_title": "Debugging C++ Programs",
+  "lesson": "3.7",
+  "lesson_title": "Using an integrated debugger: Breakpoints",
+  "total_cards": 14,
+  "cards": [
+    {
+      "id": "ch3_7_001",
+      "lesson": "3.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "debugger",
+        "breakpoints"
+      ],
+      "front": "What is a breakpoint in debugging?",
+      "back": "A marker you set on a line of code that tells the debugger to pause program execution when that line is reached.",
+      "source": "3.7 - Using an integrated debugger: Breakpoints",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_7_002",
+      "lesson": "3.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "debugger",
+        "breakpoints"
+      ],
+      "text": "Setting a breakpoint allows you to {{c1::run}} the program normally until the breakpoint is hit, then {{c2::pause}} execution to inspect state.",
+      "source": "3.7 - Using an integrated debugger: Breakpoints",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_7_003",
+      "lesson": "3.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "debugger",
+        "breakpoints"
+      ],
+      "front": "What happens when a breakpoint is hit?",
+      "back": "The program pauses execution BEFORE executing that line. You can then inspect variables, examine the call stack, and step through code.",
+      "source": "3.7 - Using an integrated debugger: Breakpoints",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_7_004",
+      "lesson": "3.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "debugger",
+        "run-continue"
+      ],
+      "text": "The {{c1::Run}} or {{c2::Continue}} command tells the debugger to execute normally until the next {{c3::breakpoint}} or program end.",
+      "source": "3.7 - Using an integrated debugger: Breakpoints",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_7_005",
+      "lesson": "3.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "debugger",
+        "breakpoints"
+      ],
+      "front": "What's the difference between Run and Continue in a debugger?",
+      "back": "Run: Start debugging from the beginning<br>Continue: Resume execution from current paused position<br><br>Both execute until next breakpoint or program end.",
+      "source": "3.7 - Using an integrated debugger: Breakpoints",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_7_006",
+      "lesson": "3.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "debugger",
+        "breakpoints"
+      ],
+      "text": "You can set {{c1::multiple}} breakpoints in a program, and the debugger will pause at {{c2::each}} one as it's encountered.",
+      "source": "3.7 - Using an integrated debugger: Breakpoints",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_7_007",
+      "lesson": "3.7",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "debugger",
+        "breakpoints"
+      ],
+      "concept": "Strategic breakpoint placement",
+      "explanation": "Set breakpoints at strategic locations:<ul><li>Start of suspect function</li><li>Before suspected problem code</li><li>In conditional branches to see which executes</li><li>In loops (especially first iteration)</li><li>After function calls that might fail</li></ul>",
+      "examples": [
+        "// Set breakpoint at function entry",
+        "// Set breakpoint before crash location",
+        "// Set in if-block to verify it executes"
+      ],
+      "source": "3.7 - Using an integrated debugger: Breakpoints",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_7_008",
+      "lesson": "3.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "debugger",
+        "breakpoints"
+      ],
+      "front": "How do you typically set a breakpoint in an IDE?",
+      "back": "Click in the left margin next to the line number, or press F9 (typical shortcut) on the desired line.",
+      "source": "3.7 - Using an integrated debugger: Breakpoints",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_7_009",
+      "lesson": "3.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "debugger",
+        "breakpoints"
+      ],
+      "front": "What is a conditional breakpoint?",
+      "back": "A breakpoint that only pauses execution when a specified condition is true (e.g., when x &gt; 100). Available in most modern debuggers.",
+      "source": "3.7 - Using an integrated debugger: Breakpoints",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_7_010",
+      "lesson": "3.7",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "debugger",
+        "workflow"
+      ],
+      "concept": "Typical debugging workflow with breakpoints",
+      "explanation": "Common debugging workflow:<ol><li>Set breakpoint where you suspect problem</li><li>Run program in debug mode</li><li>Program pauses at breakpoint</li><li>Inspect variables and program state</li><li>Step through code or continue to next breakpoint</li><li>Identify issue and fix</li><li>Remove breakpoints and retest</li></ol>",
+      "examples": [
+        "// Suspect calculate() is wrong",
+        "// Set breakpoint at start of calculate()",
+        "// Run, inspect parameters, step through"
+      ],
+      "source": "3.7 - Using an integrated debugger: Breakpoints",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_7_011",
+      "lesson": "3.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "debugger",
+        "breakpoints"
+      ],
+      "text": "Breakpoints are {{c1::non-intrusive}} - they don't require modifying your {{c2::source code}} and can be easily enabled or disabled.",
+      "source": "3.7 - Using an integrated debugger: Breakpoints",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_7_012",
+      "lesson": "3.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "debugger",
+        "breakpoints"
+      ],
+      "front": "Why are breakpoints better than stepping from the start of main()?",
+      "back": "Breakpoints let you run at full speed to the problem area, instead of slowly stepping through hundreds of lines of working code first.",
+      "source": "3.7 - Using an integrated debugger: Breakpoints",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_7_013",
+      "lesson": "3.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "debugger",
+        "breakpoints"
+      ],
+      "text": "A breakpoint causes execution to {{c1::pause}} {{c2::before}} executing the marked line, allowing you to inspect program state.",
+      "source": "3.7 - Using an integrated debugger: Breakpoints",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_7_014",
+      "lesson": "3.7",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "debugger",
+        "breakpoints"
+      ],
+      "question": "Where should you set a breakpoint to debug this crash?",
+      "code": "void process(int* ptr) {\n    *ptr = 42;  // Crashes here with nullptr\n}\n\nint main() {\n    int* p = nullptr;\n    process(p);\n}",
+      "answer": "Set breakpoint at the start of process() function or on the int* p = nullptr; line to inspect the pointer value before the crash.",
+      "explanation": "Setting the breakpoint before the crash lets you examine why ptr is null.",
+      "source": "3.7 - Using an integrated debugger: Breakpoints",
+      "difficulty": "medium"
+    }
+  ]
+}

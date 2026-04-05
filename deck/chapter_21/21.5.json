@@ -1,0 +1,167 @@
+{
+  "chapter": "Chapter 21",
+  "chapter_title": "Operator Overloading",
+  "lesson": "21.5",
+  "lesson_title": "Overloading operators using member functions",
+  "total_cards": 11,
+  "cards": [
+    {
+      "id": "ch21_5_001",
+      "lesson": "21.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "member-functions"
+      ],
+      "text": "When overloading a binary operator as a member function, the {{c1::left}} operand becomes the implicit {{c2::*this}} object, and you only need {{c3::one}} explicit parameter for the right operand.",
+      "source": "21.5 - Overloading operators using member functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_5_002",
+      "lesson": "21.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "member-functions"
+      ],
+      "front": "Which operators MUST be overloaded as member functions?",
+      "back": "<ul><li>Assignment operator (=)</li><li>Subscript operator ([])</li><li>Function call operator (())</li><li>Member selection operator (-&gt;)</li></ul>The compiler requires these to be members.",
+      "source": "21.5 - Overloading operators using member functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_5_003",
+      "lesson": "21.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "member-functions"
+      ],
+      "question": "What does this member function operator do?",
+      "code": "class Cents {\n    int m_cents{};\npublic:\n    Cents&amp; operator+=(const Cents&amp; rhs) {\n        m_cents += rhs.m_cents;\n        return *this;\n    }\n};",
+      "answer": "Overloads operator+= as a member function. Adds rhs.m_cents to m_cents and returns a reference to *this for chaining.",
+      "explanation": "Compound assignment operators modify the left operand (*this) and return *this by reference to allow chaining (e.g., a += b += c).",
+      "source": "21.5 - Overloading operators using member functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_5_004",
+      "lesson": "21.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "member-functions"
+      ],
+      "text": "Compound assignment operators (+=, -=, *=, /=) should return {{c1::*this}} by {{c2::reference}} to allow chaining and match built-in behavior.",
+      "source": "21.5 - Overloading operators using member functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch21_5_005",
+      "lesson": "21.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "member-functions"
+      ],
+      "front": "Why can't member function operator overloads provide symmetric operations like friend functions?",
+      "back": "Member functions require the left operand to be an object of the class (*this). So myObj + 5 works, but 5 + myObj doesn't (can't call int::operator+). Friend functions allow both operands to be converted symmetrically.",
+      "source": "21.5 - Overloading operators using member functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_5_006",
+      "lesson": "21.5",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "best-practices"
+      ],
+      "concept": "When to use member vs friend function operator overloads",
+      "explanation": "General guidelines:<ul><li><b>Member functions:</b> =, [], (), -&gt;, and compound assignments (+=, -=, etc.)</li><li><b>Friend functions:</b> Symmetric binary operators (+, -, *, /, ==, &lt;, etc.) and I/O operators (&lt;&lt;, &gt;&gt;)</li><li><b>Unary operators:</b> Can be either, but typically members</li></ul>",
+      "examples": [
+        "Cents&amp; operator+=(const Cents&amp; c);  // Member: modifies *this",
+        "friend Cents operator+(const Cents&amp; c1, const Cents&amp; c2);  // Friend: symmetric"
+      ],
+      "source": "21.5 - Overloading operators using member functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_5_007",
+      "lesson": "21.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "member-functions"
+      ],
+      "text": "As a member function, operator+ is declared as: Cents {{c1::operator+}}(const Cents&amp; {{c2::rhs}}) with only {{c3::one}} parameter, since *this is the left operand.",
+      "source": "21.5 - Overloading operators using member functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch21_5_008",
+      "lesson": "21.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "return-types"
+      ],
+      "front": "What should operator+= return, and why?",
+      "back": "It should return a reference to *this (ClassName&amp;). This allows chaining (a += b += c) and matches the behavior of built-in types where (a += b) returns a reference to a.",
+      "source": "21.5 - Overloading operators using member functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_5_009",
+      "lesson": "21.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this operator+ implementation?",
+      "code": "class Cents {\npublic:\n    Cents operator+(const Cents&amp; rhs) {\n        m_cents += rhs.m_cents;  // Modifies *this\n        return *this;\n    }\n};",
+      "answer": "operator+ should not modify the left operand. It should create and return a new object. Use operator+= if you want to modify in place.",
+      "explanation": "Arithmetic operators should not have side effects. They should return a new value, while compound assignment operators modify in place.",
+      "source": "21.5 - Overloading operators using member functions",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch21_5_010",
+      "lesson": "21.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "member-functions"
+      ],
+      "front": "Can you implement operator+ in terms of operator+=?",
+      "back": "Yes. Common pattern: implement operator+= first (as member), then implement operator+ using it: Cents operator+(Cents lhs, const Cents&amp; rhs) { return lhs += rhs; }. This reduces code duplication.",
+      "source": "21.5 - Overloading operators using member functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_5_011",
+      "lesson": "21.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "member-functions"
+      ],
+      "text": "The assignment operator (=) must be a {{c1::member function}}. If you don't provide one, the compiler generates a {{c2::default}} version that does memberwise assignment.",
+      "source": "21.5 - Overloading operators using member functions",
+      "difficulty": "easy"
+    }
+  ]
+}

@@ -1,0 +1,198 @@
+{
+  "chapter": "Chapter 6",
+  "chapter_title": "Operators",
+  "lesson": "6.3",
+  "lesson_title": "Remainder and exponentiation",
+  "total_cards": 13,
+  "cards": [
+    {
+      "id": "ch6_3_001",
+      "lesson": "6.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operators",
+        "remainder"
+      ],
+      "text": "The remainder operator is written as {{c1::%}} and is also commonly called the {{c2::modulo}} or {{c3::mod}} operator.",
+      "source": "6.3 - Remainder and exponentiation",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_3_002",
+      "lesson": "6.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operators",
+        "remainder"
+      ],
+      "front": "What is a common use case for the remainder operator?",
+      "back": "Determining if a number is even or odd. If x % 2 == 0, the number is even; if x % 2 == 1, it's odd.",
+      "source": "6.3 - Remainder and exponentiation",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_3_003",
+      "lesson": "6.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operators",
+        "remainder"
+      ],
+      "question": "What does this code do?",
+      "code": "if (year % 4 == 0)\n    std::cout &lt;&lt; \"Leap year\\n\";",
+      "answer": "Checks if year is divisible by 4 (simplified leap year check)",
+      "explanation": "If year % 4 equals 0, then year is evenly divisible by 4 with no remainder, which is one condition for a leap year.",
+      "source": "6.3 - Remainder and exponentiation",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch6_3_004",
+      "lesson": "6.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operators",
+        "remainder"
+      ],
+      "text": "The sign of the result of the remainder operator matches the sign of the {{c1::dividend}} (first operand). So -7 % 3 = {{c2::-1}}, not 2.",
+      "source": "6.3 - Remainder and exponentiation",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch6_3_005",
+      "lesson": "6.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operators",
+        "exponentiation"
+      ],
+      "front": "Does C++ have a built-in exponentiation operator?",
+      "back": "No. You must use std::pow() from &lt;cmath&gt; or write your own. The ^ operator is bitwise XOR, not exponentiation.",
+      "source": "6.3 - Remainder and exponentiation",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_3_006",
+      "lesson": "6.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operators",
+        "exponentiation"
+      ],
+      "text": "To calculate 2 to the power of 3, use {{c1::std::pow(2, 3)}} from the {{c2::&lt;cmath&gt;}} header. The result is {{c3::8.0}} (a double).",
+      "source": "6.3 - Remainder and exponentiation",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_3_007",
+      "lesson": "6.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operators",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this code for calculating 2^3?",
+      "code": "int result = 2 ^ 3;",
+      "answer": "^ is bitwise XOR, not exponentiation. Result is 1, not 8.",
+      "explanation": "In C++, ^ is the bitwise XOR operator. 2 ^ 3 performs XOR: 010 ^ 011 = 001 = 1. Use std::pow(2, 3) for exponentiation.",
+      "source": "6.3 - Remainder and exponentiation",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch6_3_008",
+      "lesson": "6.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operators",
+        "exponentiation"
+      ],
+      "front": "Why should you avoid std::pow() for integer exponentiation?",
+      "back": "std::pow() uses floating point math, which can introduce rounding errors. For integer powers, a custom integer function is more accurate and efficient.",
+      "source": "6.3 - Remainder and exponentiation",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch6_3_009",
+      "lesson": "6.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operators",
+        "remainder"
+      ],
+      "question": "What does this output?",
+      "code": "std::cout &lt;&lt; 17 % 5;",
+      "answer": "2",
+      "explanation": "17 / 5 = 3 with remainder 2, so 17 % 5 = 2.",
+      "source": "6.3 - Remainder and exponentiation",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_3_010",
+      "lesson": "6.3",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "operators",
+        "remainder",
+        "best-practices"
+      ],
+      "concept": "Wrapping values with remainder operator",
+      "explanation": "The remainder operator is useful for wrapping values within a range. For example, to wrap indices in an array or cycle through days of the week.",
+      "examples": [
+        "index = (index + 1) % arraySize;  // Wrap to start",
+        "dayOfWeek = (dayOfWeek + 1) % 7;  // 0-6 cycling",
+        "if (x % 2 == 0) // Check if even"
+      ],
+      "source": "6.3 - Remainder and exponentiation",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch6_3_011",
+      "lesson": "6.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operators",
+        "exponentiation"
+      ],
+      "front": "What type does std::pow() return?",
+      "back": "double (floating point). If you need an integer result, you must cast it: static_cast&lt;int&gt;(std::pow(2, 3)).",
+      "source": "6.3 - Remainder and exponentiation",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_3_012",
+      "lesson": "6.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operators",
+        "exponentiation"
+      ],
+      "text": "C++ does not have an exponentiation operator. Use {{c1::std::pow()}} from {{c2::&lt;cmath&gt;}} header. The ^ operator is {{c3::bitwise XOR}}, not exponentiation.",
+      "source": "6.3 - Remainder and exponentiation",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_3_013",
+      "lesson": "6.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operators",
+        "remainder"
+      ],
+      "text": "The remainder operator {{c1::preserves}} the sign of the {{c2::dividend}}. Example: -7 % 3 = {{c3::-1}}.",
+      "source": "6.3 - Remainder and exponentiation",
+      "difficulty": "medium"
+    }
+  ]
+}

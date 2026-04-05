@@ -1,0 +1,187 @@
+{
+  "chapter": "Chapter 22",
+  "chapter_title": "Move Semantics and Smart Pointers",
+  "lesson": "22.4",
+  "lesson_title": "std::move",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch22_4_001",
+      "lesson": "22.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "std-move",
+        "headers"
+      ],
+      "text": "std::move is defined in the {{c1::&lt;utility&gt;}} header.",
+      "source": "22.4 - std::move",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch22_4_002",
+      "lesson": "22.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "std-move",
+        "move-semantics"
+      ],
+      "text": "std::move {{c1::casts}} an l-value to an {{c2::r-value reference}}, allowing it to be moved rather than copied.",
+      "source": "22.4 - std::move",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch22_4_003",
+      "lesson": "22.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "std-move",
+        "gotchas"
+      ],
+      "front": "What does std::move actually do to the object you pass it?",
+      "back": "Nothing! std::move doesn't move anything. It only casts the object to an r-value reference. The actual move happens when that r-value is used (e.g., in a move constructor).",
+      "source": "22.4 - std::move",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_4_004",
+      "lesson": "22.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "std-move",
+        "syntax"
+      ],
+      "question": "How do you move an l-value into a function or variable?",
+      "code": "std::string str1 = \"Hello\";\nstd::string str2 = /* what goes here? */;\n\nvoid func(std::string&& s) { }\nfunc(/* what goes here? */);",
+      "answer": "str2 = std::move(str1); and func(std::move(str1));",
+      "explanation": "std::move casts the l-value str1 to an r-value reference, enabling move semantics.",
+      "source": "22.4 - std::move",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch22_4_005",
+      "lesson": "22.4",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "std-move",
+        "best-practices"
+      ],
+      "concept": "When to use std::move",
+      "explanation": "Use std::move when:<ul><li>You want to transfer ownership of an l-value's resources</li><li>You're done using an object and want to move it into a container/function</li><li>Implementing move operations</li></ul>Don't use when:<ul><li>On const objects (move disabled)</li><li>You still need to use the object</li></ul>",
+      "examples": [
+        "std::vector&lt;std::string&gt; vec;",
+        "std::string str = \"hello\";",
+        "vec.push_back(std::move(str)); // good: done with str",
+        "// str is now in moved-from state, don't use it"
+      ],
+      "source": "22.4 - std::move",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_4_006",
+      "lesson": "22.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "std-move",
+        "swap"
+      ],
+      "question": "How can you implement swap using std::move?",
+      "code": "template &lt;typename T&gt;\nvoid swap(T& a, T& b)\n{\n    /* fill in using std::move */\n}",
+      "answer": "T temp = std::move(a);<br>a = std::move(b);<br>b = std::move(temp);",
+      "explanation": "Using std::move for swap is more efficient than copying, especially for expensive-to-copy types like std::string or std::vector.",
+      "source": "22.4 - std::move",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_4_007",
+      "lesson": "22.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "std-move",
+        "const"
+      ],
+      "text": "Calling std::move on a {{c1::const}} object will invoke the {{c2::copy}} constructor/assignment, not the move version, because const r-value references can bind to const l-value references.",
+      "source": "22.4 - std::move",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch22_4_008",
+      "lesson": "22.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "std-move",
+        "gotchas"
+      ],
+      "front": "What can you safely do with an object after calling std::move on it?",
+      "back": "You can:<ul><li>Destroy it (call destructor)</li><li>Assign a new value to it</li></ul>You should NOT:<ul><li>Use its value</li><li>Call methods that depend on its value</li></ul>It's in a valid but unspecified state.",
+      "source": "22.4 - std::move",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_4_009",
+      "lesson": "22.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "std-move",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this code?",
+      "code": "std::string str = \"Hello\";\nstd::string copy = std::move(str);\nstd::cout &lt;&lt; str; // print original",
+      "answer": "Using str after it's been moved from is undefined behavior. str is in a valid but unspecified state.",
+      "explanation": "After std::move(str), the string has likely been moved, so accessing it may print empty string or garbage. Don't use objects after moving from them.",
+      "source": "22.4 - std::move",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch22_4_010",
+      "lesson": "22.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "std-move",
+        "rvo"
+      ],
+      "text": "Don't use std::move on {{c1::return values}} - it can prevent {{c2::Return Value Optimization (RVO)}} and actually make code slower.",
+      "source": "22.4 - std::move",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_4_011",
+      "lesson": "22.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "std-move",
+        "best-practices"
+      ],
+      "question": "Why should you avoid std::move here?",
+      "code": "std::string makeString() {\n    std::string str = \"Hello\";\n    return std::move(str); // bad!\n}",
+      "answer": "Don't use std::move on return values. The compiler already treats the return value as an r-value, and std::move prevents RVO optimization.",
+      "explanation": "Correct: return str; (no std::move). The compiler will automatically move or optimize away the copy.",
+      "source": "22.4 - std::move",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_4_012",
+      "lesson": "22.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "std-move",
+        "std-forward"
+      ],
+      "front": "What's the difference between std::move and std::forward?",
+      "back": "std::move unconditionally casts to an r-value reference.<br>std::forward conditionally casts based on template argument, preserving the value category (used in perfect forwarding).",
+      "source": "22.4 - std::move",
+      "difficulty": "hard"
+    }
+  ]
+}

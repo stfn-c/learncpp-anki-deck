@@ -1,0 +1,109 @@
+{
+  "chapter": "Chapter 4",
+  "chapter_title": "Fundamental Data Types",
+  "lesson": "4.2",
+  "lesson_title": "Void",
+  "total_cards": 7,
+  "cards": [
+    {
+      "id": "ch4_2_001",
+      "lesson": "4.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "void",
+        "types"
+      ],
+      "text": "Void is an {{c1::incomplete type}} that cannot be {{c2::instantiated}}.",
+      "source": "4.2 - Void",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_2_002",
+      "lesson": "4.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "void",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this code?",
+      "code": "void value;",
+      "answer": "Cannot declare a variable of type void",
+      "explanation": "Void is an incomplete type and cannot be used to create variables. It's only used for function return types and void pointers.",
+      "source": "4.2 - Void",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_2_003",
+      "lesson": "4.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "void",
+        "functions"
+      ],
+      "front": "What are the two main uses of the void keyword in C++?",
+      "back": "<ul><li>Indicate a function does not return a value</li><li>Create void pointers (void*) that can point to any type</li></ul>",
+      "source": "4.2 - Void",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_2_004",
+      "lesson": "4.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "void",
+        "functions",
+        "syntax"
+      ],
+      "text": "A function that does not return a value has return type {{c1::void}}.",
+      "source": "4.2 - Void",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_2_005",
+      "lesson": "4.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "void",
+        "functions"
+      ],
+      "question": "What does this function return?",
+      "code": "void printHello()\n{\n    std::cout &lt;&lt; \"Hello\";\n}",
+      "answer": "Nothing (void)",
+      "explanation": "Functions with void return type don't return any value. They're called for their side effects (like printing).",
+      "source": "4.2 - Void",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_2_006",
+      "lesson": "4.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "void",
+        "functions"
+      ],
+      "front": "How do you early return from a void function?",
+      "back": "Use <code>return;</code> with no value (or omit return and let function end naturally)",
+      "source": "4.2 - Void",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_2_007",
+      "lesson": "4.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "void",
+        "best-practices"
+      ],
+      "text": "In modern C++, void is mostly seen as a function {{c1::return type}}.",
+      "source": "4.2 - Void",
+      "difficulty": "easy"
+    }
+  ]
+}

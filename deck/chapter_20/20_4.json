@@ -1,0 +1,139 @@
+{
+  "chapter": "Chapter 20",
+  "chapter_title": "Functions",
+  "lesson": "20.4",
+  "lesson_title": "Command line arguments",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch20_4_001",
+      "lesson": "20.4",
+      "type": "cloze",
+      "tags": ["cpp", "command-line", "syntax"],
+      "text": "To accept command line arguments, main function signature is: {{c1::int main(int argc, char* argv[])}} or {{c2::int main(int argc, char** argv)}}",
+      "source": "20.4 - Command line arguments",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch20_4_002",
+      "lesson": "20.4",
+      "type": "basic",
+      "tags": ["cpp", "command-line", "argc"],
+      "front": "What does argc represent in main(int argc, char* argv[])?",
+      "back": "argc (argument count) is the number of command line arguments passed, including the program name itself. It's always at least 1.",
+      "source": "20.4 - Command line arguments",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch20_4_003",
+      "lesson": "20.4",
+      "type": "basic",
+      "tags": ["cpp", "command-line", "argv"],
+      "front": "What does argv represent in main(int argc, char* argv[])?",
+      "back": "argv (argument vector) is an array of C-style strings containing the command line arguments. argv[0] is the program name, argv[1] is the first argument, etc.",
+      "source": "20.4 - Command line arguments",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch20_4_004",
+      "lesson": "20.4",
+      "type": "code",
+      "tags": ["cpp", "command-line", "example"],
+      "question": "If you run: ./program hello world<br>What are argc and argv values?",
+      "code": "int main(int argc, char* argv[])<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;// argc = ?<br>&nbsp;&nbsp;&nbsp;&nbsp;// argv[0] = ?<br>&nbsp;&nbsp;&nbsp;&nbsp;// argv[1] = ?<br>&nbsp;&nbsp;&nbsp;&nbsp;// argv[2] = ?<br>}",
+      "answer": "argc = 3<br>argv[0] = \"./program\"<br>argv[1] = \"hello\"<br>argv[2] = \"world\"",
+      "explanation": "argc counts all arguments including program name. argv is zero-indexed with program name at index 0.",
+      "source": "20.4 - Command line arguments",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_4_005",
+      "lesson": "20.4",
+      "type": "cloze",
+      "tags": ["cpp", "command-line", "types"],
+      "text": "Command line arguments are always passed as {{c1::C-style strings (char*)}}. To use them as numbers, you must {{c2::convert them}} using functions like std::stoi or std::atoi.",
+      "source": "20.4 - Command line arguments",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_4_006",
+      "lesson": "20.4",
+      "type": "code",
+      "tags": ["cpp", "command-line", "conversion"],
+      "question": "How do you convert command line arguments to integers?",
+      "code": "// Running: ./program 42 100<br>int main(int argc, char* argv[])<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;// Convert argv[1] to int?<br>}",
+      "answer": "int num1 = std::stoi(argv[1]);<br>int num2 = std::stoi(argv[2]);<br><br>Or using C-style:<br>int num1 = std::atoi(argv[1]);",
+      "explanation": "std::stoi (C++11) is preferred over atoi because it provides better error handling.",
+      "source": "20.4 - Command line arguments",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_4_007",
+      "lesson": "20.4",
+      "type": "basic",
+      "tags": ["cpp", "command-line", "best-practices"],
+      "front": "What should you check before accessing argv[1], argv[2], etc.?",
+      "back": "Always check that argc is large enough. If argc &lt;= 1, there are no user-provided arguments (only program name).",
+      "source": "20.4 - Command line arguments",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch20_4_008",
+      "lesson": "20.4",
+      "type": "code",
+      "tags": ["cpp", "command-line", "validation"],
+      "question": "What's the proper way to validate command line arguments?",
+      "code": "int main(int argc, char* argv[])<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;// Need 2 arguments from user<br>&nbsp;&nbsp;&nbsp;&nbsp;// What should you check?<br>}",
+      "answer": "if (argc &lt; 3) // argc includes program name<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;std::cerr &lt;&lt; \"Usage: \" &lt;&lt; argv[0] &lt;&lt; \" &lt;arg1&gt; &lt;arg2&gt;\\n\";<br>&nbsp;&nbsp;&nbsp;&nbsp;return 1;<br>}",
+      "explanation": "Check argc first to ensure arguments exist. Use std::cerr for error messages. Return non-zero to indicate error.",
+      "source": "20.4 - Command line arguments",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_4_009",
+      "lesson": "20.4",
+      "type": "cloze",
+      "tags": ["cpp", "command-line", "strings"],
+      "text": "To use command line arguments as std::string, convert using: {{c1::std::string str(argv[1]);}} or {{c2::std::string str = argv[1];}}",
+      "source": "20.4 - Command line arguments",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch20_4_010",
+      "lesson": "20.4",
+      "type": "basic",
+      "tags": ["cpp", "command-line", "special-cases"],
+      "front": "How do you pass a command line argument that contains spaces?",
+      "back": "Enclose it in quotes: ./program \"hello world\"<br>This will be treated as a single argument in argv[1].",
+      "source": "20.4 - Command line arguments",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_4_011",
+      "lesson": "20.4",
+      "type": "concept",
+      "tags": ["cpp", "command-line", "use-cases"],
+      "concept": "Common use cases for command line arguments",
+      "explanation": "Command line arguments are commonly used for:<ul><li>Specifying input/output files</li><li>Setting configuration options or flags</li><li>Controlling program behavior without recompiling</li><li>Batch processing and automation</li><li>Tool integration in build systems</li></ul>",
+      "examples": [
+        "./compiler input.cpp -o output",
+        "./grep pattern file.txt",
+        "./server --port 8080 --verbose"
+      ],
+      "source": "20.4 - Command line arguments",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_4_012",
+      "lesson": "20.4",
+      "type": "code",
+      "tags": ["cpp", "command-line", "iteration"],
+      "question": "How do you iterate through all command line arguments?",
+      "code": "int main(int argc, char* argv[])<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;// Print all arguments<br>}",
+      "answer": "for (int i = 0; i &lt; argc; ++i)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; \"argv[\" &lt;&lt; i &lt;&lt; \"]: \" &lt;&lt; argv[i] &lt;&lt; '\\n';<br>}<br><br>Or skip program name:<br>for (int i = 1; i &lt; argc; ++i)",
+      "explanation": "Loop from 0 to argc (exclusive). Start from index 1 if you want to skip the program name.",
+      "source": "20.4 - Command line arguments",
+      "difficulty": "easy"
+    }
+  ]
+}

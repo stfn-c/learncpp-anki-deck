@@ -1,0 +1,178 @@
+{
+  "chapter": "Chapter 20",
+  "chapter_title": "Functions",
+  "lesson": "20.6",
+  "lesson_title": "Introduction to lambdas (anonymous functions)",
+  "total_cards": 16,
+  "cards": [
+    {
+      "id": "ch20_6_001",
+      "lesson": "20.6",
+      "type": "basic",
+      "tags": ["cpp", "lambdas", "fundamentals"],
+      "front": "What is a lambda expression in C++?",
+      "back": "A lambda is an anonymous function (function without a name) that can be defined inline and used where needed, often as a callback or for short operations.",
+      "source": "20.6 - Introduction to lambdas (anonymous functions)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch20_6_002",
+      "lesson": "20.6",
+      "type": "cloze",
+      "tags": ["cpp", "lambdas", "syntax"],
+      "text": "Basic lambda syntax: {{c1::[captures](parameters) -&gt; return_type { body }}} where the {{c2::capture clause []}} and {{c3::parameter list ()}} are required.",
+      "source": "20.6 - Introduction to lambdas (anonymous functions)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_6_003",
+      "lesson": "20.6",
+      "type": "code",
+      "tags": ["cpp", "lambdas", "basic-example"],
+      "question": "What does this lambda do?",
+      "code": "auto greet = [](){ std::cout &lt;&lt; \"Hello!\\n\"; };<br>greet();",
+      "answer": "Defines a lambda that prints \"Hello!\" and stores it in variable greet, then calls it.<br>Output: Hello!",
+      "explanation": "[] is empty capture, () is empty parameter list. Lambda is stored in auto variable and called like a normal function.",
+      "source": "20.6 - Introduction to lambdas (anonymous functions)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch20_6_004",
+      "lesson": "20.6",
+      "type": "cloze",
+      "tags": ["cpp", "lambdas", "syntax"],
+      "text": "A lambda with no captures is denoted by {{c1::empty square brackets []}}. This is called a {{c2::stateless}} lambda.",
+      "source": "20.6 - Introduction to lambdas (anonymous functions)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch20_6_005",
+      "lesson": "20.6",
+      "type": "code",
+      "tags": ["cpp", "lambdas", "parameters"],
+      "question": "What does this lambda compute?",
+      "code": "auto add = [](int x, int y) { return x + y; };<br>int result = add(3, 4);",
+      "answer": "result = 7<br>Lambda takes two int parameters and returns their sum.",
+      "explanation": "Lambda parameters work like normal function parameters. Return type is deduced automatically as int.",
+      "source": "20.6 - Introduction to lambdas (anonymous functions)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch20_6_006",
+      "lesson": "20.6",
+      "type": "cloze",
+      "tags": ["cpp", "lambdas", "return-type"],
+      "text": "Lambda return type can be {{c1::automatically deduced}} by the compiler. Explicit return type is specified using {{c2::-&gt; returnType}} syntax after parameters.",
+      "source": "20.6 - Introduction to lambdas (anonymous functions)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_6_007",
+      "lesson": "20.6",
+      "type": "code",
+      "tags": ["cpp", "lambdas", "explicit-return"],
+      "question": "When do you need to specify an explicit return type?",
+      "code": "auto lambda1 = [](bool flag) { return flag ? 1 : 2.5; }; // ?<br>auto lambda2 = [](bool flag) -&gt; double { return flag ? 1 : 2.5; }; // ?",
+      "answer": "lambda1 may cause issues - compiler might not deduce return type correctly for mixed int/double.<br>lambda2 explicitly returns double, ensuring correct type.",
+      "explanation": "Use explicit return type when: multiple return statements with different types, or when auto deduction might be ambiguous.",
+      "source": "20.6 - Introduction to lambdas (anonymous functions)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_6_008",
+      "lesson": "20.6",
+      "type": "cloze",
+      "tags": ["cpp", "lambdas", "std-function"],
+      "text": "Lambdas can be stored in {{c1::auto}} variables (preferred) or {{c2::std::function&lt;returnType(params)&gt;}} objects.",
+      "source": "20.6 - Introduction to lambdas (anonymous functions)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_6_009",
+      "lesson": "20.6",
+      "type": "code",
+      "tags": ["cpp", "lambdas", "inline-usage"],
+      "question": "How are lambdas commonly used with STL algorithms?",
+      "code": "std::vector&lt;int&gt; v{3, 1, 4, 1, 5};<br>std::sort(v.begin(), v.end(), <br>&nbsp;&nbsp;&nbsp;&nbsp;[](int a, int b) { return a &gt; b; });",
+      "answer": "Lambda is passed directly as the comparison function to std::sort.<br>This sorts the vector in descending order (greater element first).",
+      "explanation": "Lambdas are perfect for short callback functions - no need to define a separate named function.",
+      "source": "20.6 - Introduction to lambdas (anonymous functions)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_6_010",
+      "lesson": "20.6",
+      "type": "basic",
+      "tags": ["cpp", "lambdas", "advantages"],
+      "front": "What are the main advantages of lambdas over regular functions?",
+      "back": "<ul><li>Defined at point of use (better locality)</li><li>No need to name simple functions</li><li>Can capture local variables (closures)</li><li>Compiler can inline them more easily</li></ul>",
+      "source": "20.6 - Introduction to lambdas (anonymous functions)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_6_011",
+      "lesson": "20.6",
+      "type": "cloze",
+      "tags": ["cpp", "lambdas", "type"],
+      "text": "Each lambda has a unique anonymous {{c1::type}} generated by the compiler. This is why we use {{c2::auto}} to store lambdas.",
+      "source": "20.6 - Introduction to lambdas (anonymous functions)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_6_012",
+      "lesson": "20.6",
+      "type": "basic",
+      "tags": ["cpp", "lambdas", "when-to-use"],
+      "front": "When should you use a lambda instead of a regular function?",
+      "back": "Use lambdas for:<ul><li>Short, one-off operations</li><li>Callbacks passed to algorithms</li><li>When you need to capture local variables</li><li>When the function is only used once</li></ul>Use regular functions for complex logic or reusable code.",
+      "source": "20.6 - Introduction to lambdas (anonymous functions)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_6_013",
+      "lesson": "20.6",
+      "type": "code",
+      "tags": ["cpp", "lambdas", "type-deduction"],
+      "question": "What's the difference between these two declarations?",
+      "code": "auto func1 = [](int x) { return x * 2; };<br>std::function&lt;int(int)&gt; func2 = [](int x) { return x * 2; };",
+      "answer": "auto (func1) stores the lambda's unique type directly (faster, no overhead).<br>std::function (func2) is a type-erased wrapper (more flexible but slight overhead).",
+      "explanation": "Prefer auto for lambdas when possible. Use std::function when you need a common type for different lambdas.",
+      "source": "20.6 - Introduction to lambdas (anonymous functions)",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch20_6_014",
+      "lesson": "20.6",
+      "type": "cloze",
+      "tags": ["cpp", "lambdas", "immediate-invocation"],
+      "text": "You can immediately invoke a lambda: {{c1::[](){ std::cout &lt;&lt; \"Hi!\"; }();}} Notice the {{c2::extra parentheses ()}} at the end to call it.",
+      "source": "20.6 - Introduction to lambdas (anonymous functions)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_6_015",
+      "lesson": "20.6",
+      "type": "concept",
+      "tags": ["cpp", "lambdas", "use-cases"],
+      "concept": "Common use cases for lambdas",
+      "explanation": "Lambdas excel at:<ul><li>Custom comparators for sorting/searching</li><li>Predicates for filtering (std::find_if, std::remove_if)</li><li>Transformation functions (std::transform)</li><li>Event handlers and callbacks</li><li>Short utility operations that don't deserve a named function</li></ul>",
+      "examples": [
+        "std::sort(v.begin(), v.end(), [](int a, int b){ return a &lt; b; });",
+        "auto it = std::find_if(v.begin(), v.end(), [](int x){ return x &gt; 10; });",
+        "std::for_each(v.begin(), v.end(), [](int x){ std::cout &lt;&lt; x; });"
+      ],
+      "source": "20.6 - Introduction to lambdas (anonymous functions)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_6_016",
+      "lesson": "20.6",
+      "type": "basic",
+      "tags": ["cpp", "lambdas", "cpp-version"],
+      "front": "When were lambdas introduced to C++?",
+      "back": "C++11. They've been enhanced in later standards (C++14, C++17, C++20) with features like generic lambdas and constexpr lambdas.",
+      "source": "20.6 - Introduction to lambdas (anonymous functions)",
+      "difficulty": "easy"
+    }
+  ]
+}

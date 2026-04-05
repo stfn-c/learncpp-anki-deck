@@ -1,0 +1,196 @@
+{
+  "chapter": "Chapter 13",
+  "chapter_title": "Compound Types: Enums and Structs",
+  "lesson": "13.1",
+  "lesson_title": "13.1 — Introduction to program-defined (user-defined) types",
+  "total_cards": 14,
+  "cards": [
+    {
+      "id": "ch13_1_001",
+      "lesson": "13.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "types",
+        "user-defined"
+      ],
+      "text": "Types defined by programmers are called {{c1::program-defined types}} (also {{c2::user-defined types}}).",
+      "source": "13.1 — Introduction to program-defined (user-defined) types",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_1_002",
+      "lesson": "13.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "types"
+      ],
+      "front": "What are the two main categories of types in C++?",
+      "back": "<ul><li>Fundamental types (int, double, char, etc.)</li><li>Program-defined types (enums, structs, classes)</li></ul>",
+      "source": "13.1 — Introduction to program-defined (user-defined) types",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_1_003",
+      "lesson": "13.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "enum",
+        "syntax"
+      ],
+      "text": "The simplest program-defined type is the {{c1::enumerated type}} using keyword {{c2::enum}}.",
+      "source": "13.1 — Introduction to program-defined (user-defined) types",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_1_004",
+      "lesson": "13.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "terminology"
+      ],
+      "front": "What is the difference between an enumeration and an enumerator?",
+      "back": "<strong>Enumeration:</strong> The type itself (e.g., Color)<br><strong>Enumerator:</strong> Named constant within it (e.g., red, green)",
+      "source": "13.1 — Introduction to program-defined (user-defined) types",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_1_005",
+      "lesson": "13.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "struct",
+        "syntax"
+      ],
+      "text": "To define a struct: {{c1::struct}} Employee {{c2::{<br>&nbsp;&nbsp;int id;<br>&nbsp;&nbsp;double wage;<br>};}}}",
+      "source": "13.1 — Introduction to program-defined (user-defined) types",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_1_006",
+      "lesson": "13.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "struct",
+        "class"
+      ],
+      "front": "What is the main difference between struct and class keywords in C++?",
+      "back": "Default member access level:<br><ul><li><strong>struct:</strong> public by default</li><li><strong>class:</strong> private by default</li></ul>",
+      "source": "13.1 — Introduction to program-defined (user-defined) types",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_1_007",
+      "lesson": "13.1",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "types",
+        "design"
+      ],
+      "concept": "When to create program-defined types",
+      "explanation": "Create custom types when:<ul><li>Modeling real-world entities with multiple properties</li><li>Grouping related constants</li><li>Needing better type safety than built-ins</li><li>Representing domain-specific concepts</li></ul>",
+      "examples": [
+        "struct Point { int x; int y; };",
+        "enum DayOfWeek { mon, tue, wed };",
+        "class Fraction { int num, denom; };"
+      ],
+      "source": "13.1 — Introduction to program-defined (user-defined) types",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_1_008",
+      "lesson": "13.1",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "enum"
+      ],
+      "question": "What does this define?",
+      "code": "enum Color { red, green, blue };",
+      "answer": "An enumerated type named Color with three enumerators: red, green, and blue.",
+      "explanation": "Enumerations group related named constants under a type name.",
+      "source": "13.1 — Introduction to program-defined (user-defined) types",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_1_009",
+      "lesson": "13.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "struct"
+      ],
+      "text": "Members of a struct are accessed using the {{c1::member selection operator}} ({{c2::.}}).",
+      "source": "13.1 — Introduction to program-defined (user-defined) types",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_1_010",
+      "lesson": "13.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "enum"
+      ],
+      "text": "In C++, {{c1::enum}} defines an unscoped enumeration while {{c2::enum class}} defines a scoped enumeration.",
+      "source": "13.1 — Introduction to program-defined (user-defined) types",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_1_011",
+      "lesson": "13.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "struct",
+        "class"
+      ],
+      "text": "The {{c1::struct}} keyword defines a class with {{c2::public}} default access, while {{c3::class}} has {{c4::private}} default access.",
+      "source": "13.1 — Introduction to program-defined (user-defined) types",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_1_012",
+      "lesson": "13.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "types"
+      ],
+      "text": "C++ has two type categories: {{c1::fundamental types}} (built-in like int) and {{c2::program-defined types}} (user-created).",
+      "source": "13.1 — Introduction to program-defined (user-defined) types",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_1_013",
+      "lesson": "13.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "enum"
+      ],
+      "text": "In C++, {{c1::enum}} defines an unscoped enumeration while {{c2::enum class}} defines a scoped enumeration.",
+      "source": "13.1 — Introduction to program-defined (user-defined) types",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_1_014",
+      "lesson": "13.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "struct",
+        "class"
+      ],
+      "text": "The {{c1::struct}} keyword defines a class with {{c2::public}} default access, while {{c3::class}} has {{c4::private}} default access.",
+      "source": "13.1 — Introduction to program-defined (user-defined) types",
+      "difficulty": "medium"
+    }
+  ]
+}

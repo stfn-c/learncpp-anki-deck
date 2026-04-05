@@ -1,0 +1,160 @@
+{
+  "chapter": "Chapter 2",
+  "chapter_title": "C++ Basics: Functions and Files",
+  "lesson": "2.3",
+  "lesson_title": "Void functions (non-value returning functions)",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "ch2_3_001",
+      "lesson": "2.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "void",
+        "syntax"
+      ],
+      "text": "A function that does not return a value has a return type of {{c1::void}}.",
+      "source": "2.3 - Void functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_3_002",
+      "lesson": "2.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "void"
+      ],
+      "source": "2.3 - Void functions",
+      "difficulty": "easy",
+      "text": "A void function does {{c1::not}} need a return statement. If present, it should be just {{c2::return;}} without a value."
+    },
+    {
+      "id": "ch2_3_003",
+      "lesson": "2.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "void",
+        "syntax"
+      ],
+      "text": "To return early from a void function, use {{c1::return;}} without any value.",
+      "source": "2.3 - Void functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_3_004",
+      "lesson": "2.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "functions",
+        "void"
+      ],
+      "question": "Is this void function valid?",
+      "code": "void printHello() {<br>  std::cout &lt;&lt; \"Hello!\\n\";<br>  return;<br>}",
+      "answer": "Yes, this is valid. The return statement is optional in void functions, but allowed for early exit.",
+      "explanation": "Void functions can optionally use return; to exit early, though it's not required at the end of the function.",
+      "source": "2.3 - Void functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_3_005",
+      "lesson": "2.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "functions",
+        "void",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this code?",
+      "code": "void printValue() {<br>  std::cout &lt;&lt; \"Value\";<br>  return 5;  // Error!<br>}",
+      "answer": "Error: A void function cannot return a value.",
+      "explanation": "The return type void means the function returns nothing. Attempting to return a value causes a compilation error.",
+      "source": "2.3 - Void functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_3_006",
+      "lesson": "2.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "void"
+      ],
+      "source": "2.3 - Void functions",
+      "difficulty": "medium",
+      "text": "Void functions don't {{c1::return a value}}, so you cannot use them in {{c2::expressions}} or assign their result to a {{c3::variable}}."
+    },
+    {
+      "id": "ch2_3_007",
+      "lesson": "2.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "functions",
+        "void",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this code?",
+      "code": "void doSomething() { }<br><br>int main() {<br>  int x = doSomething();  // Error!<br>  return 0;<br>}",
+      "answer": "Error: Cannot assign the result of a void function to a variable.",
+      "explanation": "Void functions don't return values, so you cannot capture or use their result.",
+      "source": "2.3 - Void functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_3_008",
+      "lesson": "2.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "void"
+      ],
+      "text": "Void functions are also called {{c1::non-value returning}} functions or {{c2::procedures}}.",
+      "source": "2.3 - Void functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_3_009",
+      "lesson": "2.3",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "functions",
+        "void",
+        "best-practices"
+      ],
+      "concept": "When to use void functions",
+      "explanation": "Use void functions when you want to perform an action but don't need to return a result:<ul><li>Printing output to console or file</li><li>Modifying global state</li><li>Performing I/O operations</li><li>Calling other functions for their side effects</li></ul>",
+      "examples": [
+        "void printMenu() { std::cout << \"Menu\\n\"; }",
+        "void logError(std::string msg) { /* write to log */ }",
+        "void updateDisplay() { /* refresh UI */ }"
+      ],
+      "source": "2.3 - Void functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_3_010",
+      "lesson": "2.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "void",
+        "main"
+      ],
+      "source": "2.3 - Void functions",
+      "difficulty": "medium",
+      "text": "main() is not a void function because it returns an {{c1::int}} status code to indicate whether the program ran {{c2::successfully}} (0) or had an {{c3::error}} (non-zero)."
+    }
+  ]
+}

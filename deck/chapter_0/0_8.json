@@ -1,0 +1,135 @@
+{
+  "chapter": "Chapter 0",
+  "chapter_title": "Introduction / Getting Started",
+  "lesson": "0.8",
+  "lesson_title": "A few common C++ problems",
+  "total_cards": 11,
+  "cards": [
+    {
+      "id": "ch0_8_001",
+      "lesson": "0.8",
+      "type": "code",
+      "tags": ["cpp", "errors", "common-mistakes"],
+      "question": "What's wrong with this program that won't compile?",
+      "code": "#include &lt;iostream&gt;\n\nint main()\n{\n    std::cout &lt;&lt; \"Hello, world!\";\n    return 0\n}",
+      "answer": "Missing semicolon after return 0",
+      "explanation": "Every statement in C++ must end with a semicolon. The return statement is missing its semicolon before the closing brace.",
+      "source": "0.8 - A few common C++ problems",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_8_002",
+      "lesson": "0.8",
+      "type": "cloze",
+      "tags": ["cpp", "syntax", "common-mistakes"],
+      "text": "One of the most common beginner mistakes is forgetting the {{c1::semicolon}} at the end of a {{c2::statement}}.",
+      "source": "0.8 - A few common C++ problems",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_8_003",
+      "lesson": "0.8",
+      "type": "code",
+      "tags": ["cpp", "errors", "common-mistakes"],
+      "question": "Why does this code produce a compiler error?",
+      "code": "#include &lt;iostream&gt;\n\nint main()\n{\n    std::cout &lt;&lt; \"Hello, world!\";\n    Return 0;\n}",
+      "answer": "'Return' is capitalized - should be lowercase 'return'",
+      "explanation": "C++ is case-sensitive. Keywords like 'return', 'int', 'if' must be lowercase. 'Return' is treated as an undefined identifier.",
+      "source": "0.8 - A few common C++ problems",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_8_004",
+      "lesson": "0.8",
+      "type": "basic",
+      "tags": ["cpp", "syntax", "fundamentals"],
+      "front": "Is C++ case-sensitive?",
+      "back": "Yes. C++ is fully case-sensitive. 'main', 'Main', and 'MAIN' are three different identifiers. Keywords must be lowercase.",
+      "source": "0.8 - A few common C++ problems",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_8_005",
+      "lesson": "0.8",
+      "type": "code",
+      "tags": ["cpp", "errors", "common-mistakes"],
+      "question": "What's the problem with this code?",
+      "code": "#include &lt;iostream&gt;\n\nint main()\n(\n    std::cout &lt;&lt; \"Hello, world!\";\n    return 0;\n)",
+      "answer": "Using parentheses ( ) instead of curly braces { } for the function body",
+      "explanation": "Function bodies must be enclosed in curly braces { }, not parentheses. Parentheses are used for function parameters.",
+      "source": "0.8 - A few common C++ problems",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_8_006",
+      "lesson": "0.8",
+      "type": "concept",
+      "tags": ["cpp", "errors", "debugging"],
+      "concept": "How to read and fix compiler errors effectively",
+      "explanation": "Compiler errors can be intimidating but follow a pattern:<ul><li>Find the line number where the error occurred</li><li>Read the error message (even if confusing)</li><li>Look for common issues: missing semicolons, typos, case errors</li><li>Fix the FIRST error first (later errors may cascade)</li><li>Check the line mentioned AND the line before it</li></ul>",
+      "examples": [
+        "error C2143: missing ';' before '}' → check for missing semicolon",
+        "error: 'Return' was not declared → check capitalization",
+        "error: expected ';' before 'std' → previous line missing semicolon"
+      ],
+      "source": "0.8 - A few common C++ problems",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_8_007",
+      "lesson": "0.8",
+      "type": "cloze",
+      "tags": ["cpp", "errors", "debugging"],
+      "text": "When you have multiple compiler errors, fix the {{c1::first}} error first, as later errors may {{c2::cascade}} from earlier ones.",
+      "source": "0.8 - A few common C++ problems",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_8_008",
+      "lesson": "0.8",
+      "type": "basic",
+      "tags": ["cpp", "errors", "common-mistakes"],
+      "front": "Why might a compiler error point to the wrong line?",
+      "back": "The error might actually be on a previous line (like a missing semicolon). The compiler only detects the error when it reaches a point where the syntax doesn't make sense.",
+      "source": "0.8 - A few common C++ problems",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_8_009",
+      "lesson": "0.8",
+      "type": "code",
+      "tags": ["cpp", "errors", "common-mistakes"],
+      "question": "What will happen when this code runs?",
+      "code": "#include &lt;iostream&gt;\n\nint main()\n{\n    std::cout &lt;&lt; \"Hello, world!\";\n    // return 0;  commented out\n}",
+      "answer": "Undefined behavior (may work or may not). Main should return an int value.",
+      "explanation": "The main function is declared to return int, but doesn't return a value. This is technically undefined behavior, though many compilers implicitly return 0.",
+      "source": "0.8 - A few common C++ problems",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_8_010",
+      "lesson": "0.8",
+      "type": "basic",
+      "tags": ["cpp", "debugging", "best-practices"],
+      "front": "What should you do if you can't understand a compiler error message?",
+      "back": "Copy the error message and search online (Google, Stack Overflow). Many compiler errors are common, and others have encountered and explained them.",
+      "source": "0.8 - A few common C++ problems",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_8_011",
+      "lesson": "0.8",
+      "type": "concept",
+      "tags": ["cpp", "best-practices", "debugging"],
+      "concept": "Preventing common syntax errors",
+      "explanation": "Best practices to avoid syntax errors:<ul><li>Type carefully and check for typos</li><li>Use an IDE with syntax highlighting</li><li>Let IDE auto-complete identifiers</li><li>Compile frequently (after small changes)</li><li>Fix errors immediately before writing more code</li><li>Use IDE auto-formatting to spot mismatched braces</li></ul>",
+      "examples": [
+        "Compile after adding each function",
+        "Use IDE's 'format document' to check brace matching",
+        "Enable all compiler warnings"
+      ],
+      "source": "0.8 - A few common C++ problems",
+      "difficulty": "medium"
+    }
+  ]
+}

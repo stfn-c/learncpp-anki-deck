@@ -1,0 +1,212 @@
+{
+  "chapter": "Chapter 6",
+  "chapter_title": "Operators",
+  "lesson": "6.2",
+  "lesson_title": "Arithmetic operators",
+  "total_cards": 14,
+  "cards": [
+    {
+      "id": "ch6_2_001",
+      "lesson": "6.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operators",
+        "arithmetic"
+      ],
+      "text": "The five basic arithmetic operators in C++ are {{c1::+}} (addition), {{c2::-}} (subtraction), {{c3::*}} (multiplication), {{c4::/}} (division), and {{c5::%}} (remainder/modulo)",
+      "source": "6.2 - Arithmetic operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_2_002",
+      "lesson": "6.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operators",
+        "division"
+      ],
+      "question": "What does this code output?",
+      "code": "std::cout &lt;&lt; 7 / 2;",
+      "answer": "3",
+      "explanation": "Integer division truncates the result. 7 / 2 = 3.5, but since both operands are integers, the result is truncated to 3.",
+      "source": "6.2 - Arithmetic operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch6_2_003",
+      "lesson": "6.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operators",
+        "remainder"
+      ],
+      "front": "What does the remainder operator (%) return?",
+      "back": "The remainder after performing integer division. For example, 7 % 2 = 1 (because 7 / 2 = 3 with remainder 1).",
+      "source": "6.2 - Arithmetic operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_2_004",
+      "lesson": "6.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operators",
+        "remainder"
+      ],
+      "question": "What does this code output?",
+      "code": "std::cout &lt;&lt; -5 % 2;",
+      "answer": "-1",
+      "explanation": "The remainder operator preserves the sign of the dividend. -5 / 2 = -2 remainder -1, so -5 % 2 = -1.",
+      "source": "6.2 - Arithmetic operators",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch6_2_005",
+      "lesson": "6.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operators",
+        "remainder"
+      ],
+      "text": "The remainder operator {{c1::%}} only works with {{c2::integer}} operands. Using it with floating point numbers causes a {{c3::compilation error}}.",
+      "source": "6.2 - Arithmetic operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch6_2_006",
+      "lesson": "6.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operators",
+        "division"
+      ],
+      "front": "How do you perform floating point division instead of integer division?",
+      "back": "Make at least one operand a floating point number. For example: 7.0 / 2, or 7 / 2.0, or static_cast&lt;double&gt;(7) / 2.",
+      "source": "6.2 - Arithmetic operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_2_007",
+      "lesson": "6.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operators",
+        "syntax"
+      ],
+      "text": "Unary operators take {{c1::one}} operand, while binary operators take {{c2::two}} operands. The minus operator can be both: -5 is {{c3::unary}}, while 5 - 3 is {{c4::binary}}.",
+      "source": "6.2 - Arithmetic operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_2_008",
+      "lesson": "6.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operators",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this code?",
+      "code": "int x = 5;\nint y = 0;\nint result = x / y;",
+      "answer": "Division by zero causes undefined behavior",
+      "explanation": "Dividing by zero is undefined behavior. The program may crash, produce garbage values, or appear to work. Always check that the divisor is not zero before dividing.",
+      "source": "6.2 - Arithmetic operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch6_2_009",
+      "lesson": "6.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operators",
+        "arithmetic"
+      ],
+      "text": "The unary plus operator {{c1::+}} returns the value of the operand (e.g., +5 = 5), while unary minus {{c2::-}} returns the negation (e.g., -5).",
+      "source": "6.2 - Arithmetic operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_2_010",
+      "lesson": "6.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operators",
+        "arithmetic"
+      ],
+      "question": "What value is printed?",
+      "code": "std::cout &lt;&lt; 8 % 3;",
+      "answer": "2",
+      "explanation": "8 divided by 3 is 2 with remainder 2. So 8 % 3 = 2.",
+      "source": "6.2 - Arithmetic operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_2_011",
+      "lesson": "6.2",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "operators",
+        "gotchas"
+      ],
+      "concept": "Integer division truncation gotcha",
+      "explanation": "Integer division always truncates (rounds toward zero), not rounds. This can cause unexpected results if you forget that both operands are integers.",
+      "examples": [
+        "7 / 2 = 3      // Not 3.5, truncated",
+        "7.0 / 2 = 3.5  // At least one float = float division",
+        "-7 / 2 = -3    // Truncates toward zero, not down"
+      ],
+      "source": "6.2 - Arithmetic operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch6_2_012",
+      "lesson": "6.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operators",
+        "arithmetic"
+      ],
+      "front": "What happens when you divide an integer by zero?",
+      "back": "Undefined behavior. The program may crash, produce a garbage value, or appear to work. This is a serious error that must be prevented.",
+      "source": "6.2 - Arithmetic operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_2_013",
+      "lesson": "6.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operators",
+        "division"
+      ],
+      "text": "To perform floating point division, at least {{c1::one}} operand must be a {{c2::floating point}} type. Example: {{c3::7.0 / 2}} = 3.5",
+      "source": "6.2 - Arithmetic operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_2_014",
+      "lesson": "6.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operators",
+        "arithmetic"
+      ],
+      "text": "The five arithmetic operators are {{c1::+}}, {{c2::-}}, {{c3::*}}, {{c4::/}}, and {{c5::%}}",
+      "source": "6.2 - Arithmetic operators",
+      "difficulty": "easy"
+    }
+  ]
+}

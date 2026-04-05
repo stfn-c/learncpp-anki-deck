@@ -1,0 +1,140 @@
+{
+  "chapter": "Chapter 9",
+  "chapter_title": "Error Detection and Handling",
+  "lesson": "9.2",
+  "lesson_title": "Code coverage",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch9_2_001",
+      "lesson": "9.2",
+      "type": "cloze",
+      "tags": ["cpp", "testing", "terminology"],
+      "text": "The term {{c1::code coverage}} is used to describe how much of the source code of a program is executed while testing.",
+      "source": "9.2 - Code coverage",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch9_2_002",
+      "lesson": "9.2",
+      "type": "cloze",
+      "tags": ["cpp", "testing", "coverage"],
+      "text": "{{c1::Statement coverage}} refers to the percentage of statements in your code that have been exercised by your testing routines.",
+      "source": "9.2 - Code coverage",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch9_2_003",
+      "lesson": "9.2",
+      "type": "basic",
+      "tags": ["cpp", "testing", "coverage"],
+      "front": "What is branch coverage?",
+      "back": "Branch coverage refers to the percentage of branches that have been executed, with each possible branch (true/false) counted separately. An if statement has 2 branches, a switch can have many branches.",
+      "source": "9.2 - Code coverage",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch9_2_004",
+      "lesson": "9.2",
+      "type": "code",
+      "tags": ["cpp", "testing", "coverage"],
+      "question": "How many function calls are needed for 100% branch coverage of this function?",
+      "code": "int foo(int x, int y)\n{\n    int z{ y };\n    if (x &gt; y)\n    {\n        z = x;\n    }\n    return z;\n}",
+      "answer": "2 calls",
+      "explanation": "You need two calls: one where x &gt; y (e.g., foo(1, 0)) and one where x &lt;= y (e.g., foo(0, 1)). This tests both the true and false branches of the if statement.",
+      "source": "9.2 - Code coverage",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch9_2_005",
+      "lesson": "9.2",
+      "type": "code",
+      "tags": ["cpp", "testing", "coverage"],
+      "question": "How many function calls are needed for 100% branch coverage?",
+      "code": "void compare(int x, int y)\n{\n    if (x &gt; y)\n        std::cout &lt;&lt; x &lt;&lt; \" is greater than \" &lt;&lt; y &lt;&lt; '\\n';\n    else if (x &lt; y)\n        std::cout &lt;&lt; x &lt;&lt; \" is less than \" &lt;&lt; y &lt;&lt; '\\n';\n    else\n        std::cout &lt;&lt; x &lt;&lt; \" is equal to \" &lt;&lt; y &lt;&lt; '\\n';\n}",
+      "answer": "3 calls",
+      "explanation": "You need three calls: compare(1, 0) for x &gt; y, compare(0, 1) for x &lt; y, and compare(0, 0) for x == y. This covers all three branches.",
+      "source": "9.2 - Code coverage",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch9_2_006",
+      "lesson": "9.2",
+      "type": "cloze",
+      "tags": ["cpp", "testing", "best-practices"],
+      "text": "Best practice: Aim for {{c1::100% branch coverage}} of your code.",
+      "source": "9.2 - Code coverage",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch9_2_007",
+      "lesson": "9.2",
+      "type": "cloze",
+      "tags": ["cpp", "testing", "loops"],
+      "text": "{{c1::Loop coverage}} (informally called the {{c2::0, 1, 2 test}}) says that if you have a loop, you should ensure it works properly when it iterates {{c3::0 times}}, {{c4::1 time}}, and {{c5::2 times}}.",
+      "source": "9.2 - Code coverage",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch9_2_008",
+      "lesson": "9.2",
+      "type": "basic",
+      "tags": ["cpp", "testing", "loops"],
+      "front": "Why is testing a loop with 2 iterations sufficient for all larger iteration counts?",
+      "back": "If the loop works correctly for 2 iterations, it should work correctly for all iterations greater than 2, since the loop mechanism is proven to work multiple times. A loop can't execute a negative number of times.",
+      "source": "9.2 - Code coverage",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch9_2_009",
+      "lesson": "9.2",
+      "type": "cloze",
+      "tags": ["cpp", "testing", "best-practices"],
+      "text": "Best practice: Use the {{c1::0, 1, 2 test}} to ensure your loops work correctly with different number of iterations.",
+      "source": "9.2 - Code coverage",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch9_2_010",
+      "lesson": "9.2",
+      "type": "concept",
+      "tags": ["cpp", "testing", "input-categories"],
+      "concept": "Categories of input values to test for integers",
+      "explanation": "When testing functions that accept integer parameters, make sure you've considered how your function handles:<ul><li>Negative values</li><li>Zero</li><li>Positive values</li><li>Overflow (if relevant)</li></ul>Testing representative values from each category helps ensure your function handles all cases correctly.",
+      "examples": [
+        "// Test square root function with: 4 (positive), 0 (zero), -5 (negative)",
+        "int result = squareRoot(4);  // normal case",
+        "int result = squareRoot(0);  // edge case",
+        "int result = squareRoot(-5); // error case"
+      ],
+      "source": "9.2 - Code coverage",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch9_2_011",
+      "lesson": "9.2",
+      "type": "basic",
+      "tags": ["cpp", "testing", "floating-point"],
+      "front": "What are good double values to test with to catch precision issues?",
+      "back": "Test with 0.1 and -0.1 (numbers slightly larger than expected) and 0.7 and -0.7 (numbers slightly smaller than expected) to catch rounding/precision problems.",
+      "source": "9.2 - Code coverage",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch9_2_012",
+      "lesson": "9.2",
+      "type": "concept",
+      "tags": ["cpp", "testing", "strings"],
+      "concept": "Categories of string input to test",
+      "explanation": "When testing functions that accept string parameters, make sure you've considered:<ul><li>Empty string (&quot;&quot;)</li><li>Alphanumeric string (&quot;abc123&quot;)</li><li>Strings with whitespace - leading, trailing, and inner</li><li>Strings that are all whitespace (&quot;   &quot;)</li></ul>Each category can expose different bugs in string handling code.",
+      "examples": [
+        "processString(\"\");           // empty",
+        "processString(\"hello\");      // normal",
+        "processString(\"  hello  \");  // whitespace",
+        "processString(\"   \");         // all whitespace"
+      ],
+      "source": "9.2 - Code coverage",
+      "difficulty": "medium"
+    }
+  ]
+}

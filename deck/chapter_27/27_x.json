@@ -1,0 +1,178 @@
+{
+  "chapter": "Chapter 27",
+  "chapter_title": "Exception Handling and Error Handling",
+  "lesson": "27.x",
+  "lesson_title": "27.x — Chapter 27 summary and quiz",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch27_x_001",
+      "lesson": "27.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "fundamentals"
+      ],
+      "text": "Exceptions provide a way to handle {{c1::errors}} that separate error handling from normal code flow, allowing functions to {{c2::return values}} while still signaling errors.",
+      "source": "27.x - Chapter 27 summary",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch27_x_002",
+      "lesson": "27.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "fundamentals"
+      ],
+      "front": "What are the three main components of C++ exception handling?",
+      "back": "throw (raising exceptions), try (detecting exceptions), and catch (handling exceptions).",
+      "source": "27.x - Chapter 27 summary",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch27_x_003",
+      "lesson": "27.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "best-practices"
+      ],
+      "text": "Best practice: Throw exceptions by {{c1::value}}, catch them by {{c2::const reference}}, and derive custom exception classes from {{c3::std::exception}}.",
+      "source": "27.x - Chapter 27 summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_x_004",
+      "lesson": "27.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "raii"
+      ],
+      "front": "Why is RAII critical for exception safety?",
+      "back": "RAII ensures resources are automatically cleaned up during stack unwinding when exceptions are thrown, preventing resource leaks.",
+      "source": "27.x - Chapter 27 summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_x_005",
+      "lesson": "27.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "destructors"
+      ],
+      "text": "Destructors should {{c1::never throw}} exceptions. If a destructor throws during stack unwinding, {{c2::std::terminate()}} is called.",
+      "source": "27.x - Chapter 27 summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_x_006",
+      "lesson": "27.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "best-practices"
+      ],
+      "front": "When should you use exceptions vs other error handling methods?",
+      "back": "Use exceptions for:<ul><li>Exceptional circumstances, not normal flow</li><li>Errors that need to propagate through call stack</li><li>Constructor failures</li><li>Deep call chains where return codes are unwieldy</li></ul>Avoid for performance-critical code with frequent errors.",
+      "source": "27.x - Chapter 27 summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_x_007",
+      "lesson": "27.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "noexcept"
+      ],
+      "text": "Mark functions {{c1::noexcept}} when they won't throw, especially {{c2::move constructors}}, {{c3::move assignment}}, and {{c4::destructors}}. This enables STL optimizations.",
+      "source": "27.x - Chapter 27 summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_x_008",
+      "lesson": "27.x",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "best-practices"
+      ],
+      "concept": "Key exception handling best practices",
+      "explanation": "Follow these guidelines for robust exception handling:<ul><li>Use RAII for all resource management</li><li>Throw by value, catch by const reference</li><li>Derive from std::exception</li><li>Don't throw from destructors</li><li>Mark move ops noexcept when possible</li><li>Use exceptions for exceptional cases only</li><li>Order catch blocks from specific to general</li><li>Wrap main() in try-catch</li></ul>",
+      "examples": [
+        "class MyError : public std::exception { };",
+        "try { throw MyError(); }",
+        "catch (const MyError&amp; e) { /* specific */ }",
+        "catch (const std::exception&amp; e) { /* general */ }",
+        "catch (...) { /* unknown */ }"
+      ],
+      "source": "27.x - Chapter 27 summary",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch27_x_009",
+      "lesson": "27.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "stack-unwinding"
+      ],
+      "front": "What is stack unwinding and when does it occur?",
+      "back": "Stack unwinding is the process of calling destructors for all local objects and removing function calls from the call stack when searching for an exception handler.",
+      "source": "27.x - Chapter 27 summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_x_010",
+      "lesson": "27.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "best-practices"
+      ],
+      "text": "The {{c1::basic}} exception safety guarantee ensures no resource leaks and valid state. The {{c2::strong}} guarantee ensures either complete success or no effect. The {{c3::nothrow}} guarantee ensures no exceptions are thrown.",
+      "source": "27.x - Chapter 27 summary",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch27_x_011",
+      "lesson": "27.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "move-semantics"
+      ],
+      "front": "Why do STL containers use std::move_if_noexcept during reallocation?",
+      "back": "To maintain the strong exception guarantee by using move when safe (noexcept) and copy otherwise, ensuring the original data remains intact if an exception is thrown.",
+      "source": "27.x - Chapter 27 summary",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch27_x_012",
+      "lesson": "27.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "fundamentals"
+      ],
+      "text": "Exception handling separates {{c1::error handling}} from normal code, uses {{c2::stack unwinding}} to find handlers, requires {{c3::RAII}} for safety, and should be combined with {{c4::noexcept}} for optimization.",
+      "source": "27.x - Chapter 27 summary",
+      "difficulty": "medium"
+    }
+  ]
+}

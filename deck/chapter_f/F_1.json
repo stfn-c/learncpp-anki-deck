@@ -1,0 +1,208 @@
+{
+  "chapter": "Chapter F",
+  "chapter_title": "Introduction to Functions and Constexpr",
+  "lesson": "F.1",
+  "lesson_title": "Constexpr functions",
+  "total_cards": 14,
+  "cards": [
+    {
+      "id": "chF_1_001",
+      "lesson": "F.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "functions"
+      ],
+      "front": "What is a constexpr function?",
+      "back": "A function that is allowed to be called in a constant expression. It's declared using the constexpr keyword before the return type.",
+      "source": "F.1 - Constexpr functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "chF_1_002",
+      "lesson": "F.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "syntax"
+      ],
+      "text": "To make a function a constexpr function, use {{c1::constexpr}} keyword {{c2::before the return type}}.",
+      "source": "F.1 - Constexpr functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "chF_1_003",
+      "lesson": "F.1",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "common-mistakes"
+      ],
+      "question": "Why does this code fail to compile?",
+      "code": "double calcCircumference(double radius)\n{\n    constexpr double pi { 3.14159265359 };\n    return 2.0 * pi * radius;\n}\n\nint main()\n{\n    constexpr double circumference { calcCircumference(3.0) };\n    return 0;\n}",
+      "answer": "calcCircumference() is not a constexpr function, so it cannot be called in a constant expression (the initializer for constexpr variable circumference).",
+      "explanation": "Normal function calls are not allowed in constant expressions. To fix this, add constexpr before the return type of calcCircumference().",
+      "source": "F.1 - Constexpr functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "chF_1_004",
+      "lesson": "F.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "syntax"
+      ],
+      "text": "{{c1::constexpr}} double calcCircumference(double radius) { return 2.0 * {{c2::3.14159}} * radius; }",
+      "source": "F.1 - Constexpr functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "chF_1_005",
+      "lesson": "F.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "compile-time"
+      ],
+      "front": "When is a constexpr function guaranteed to be evaluated at compile-time?",
+      "back": "When it's used in a context that requires a constant expression (such as initializing a constexpr variable) AND all its arguments are constant expressions.",
+      "source": "F.1 - Constexpr functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "chF_1_006",
+      "lesson": "F.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "runtime"
+      ],
+      "front": "Can a constexpr function be evaluated at runtime?",
+      "back": "Yes. When a constexpr function is called with non-constant expression arguments, it evaluates at runtime and returns a non-constexpr result.",
+      "source": "F.1 - Constexpr functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "chF_1_007",
+      "lesson": "F.1",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "best-practices"
+      ],
+      "concept": "Why constexpr functions can evaluate at both compile-time and runtime",
+      "explanation": "Allowing constexpr functions to evaluate at both times means you can use a single function for both cases. Otherwise, you'd need separate functions with different names for compile-time and runtime, leading to code duplication.",
+      "examples": [
+        "constexpr int max(int x, int y) { return x &gt; y ? x : y; }",
+        "constexpr int a = max(5, 3);  // compile-time",
+        "int b = max(x, y);            // runtime if x,y not constexpr"
+      ],
+      "source": "F.1 - Constexpr functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "chF_1_008",
+      "lesson": "F.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "compile-time"
+      ],
+      "text": "When a function call is evaluated at compile-time, the compiler {{c1::calculates the return value}} and then {{c2::replaces the function call with the return value}}.",
+      "source": "F.1 - Constexpr functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "chF_1_009",
+      "lesson": "F.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "requirements"
+      ],
+      "front": "What two requirements must be met for a constexpr function to evaluate at compile-time?",
+      "back": "<ul><li>The call to the constexpr function must have arguments that are known at compile-time (constant expressions)</li><li>All statements and expressions within the constexpr function must be evaluatable at compile-time</li></ul>",
+      "source": "F.1 - Constexpr functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "chF_1_010",
+      "lesson": "F.1",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "runtime"
+      ],
+      "question": "Will this constexpr function call be evaluated at compile-time or runtime?",
+      "code": "constexpr int greater(int x, int y)\n{\n    return (x &gt; y ? x : y);\n}\n\nint main()\n{\n    int x{ 5 };\n    int y{ 6 };\n    std::cout &lt;&lt; greater(x, y);\n    return 0;\n}",
+      "answer": "Runtime",
+      "explanation": "Even though greater() is a constexpr function, the arguments x and y are not constant expressions, so the function call must be evaluated at runtime.",
+      "source": "F.1 - Constexpr functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "chF_1_011",
+      "lesson": "F.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "behavior"
+      ],
+      "front": "What happens when a constexpr function is evaluated at runtime?",
+      "back": "It evaluates just like a normal (non-constexpr) function would. The constexpr keyword has no effect in this case.",
+      "source": "F.1 - Constexpr functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "chF_1_012",
+      "lesson": "F.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "purpose"
+      ],
+      "text": "The constexpr keyword signals to the {{c1::compiler and other developers}} that a function can be {{c2::used in a constant expression}}.",
+      "source": "F.1 - Constexpr functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "chF_1_013",
+      "lesson": "F.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "constant-expressions"
+      ],
+      "text": "Normal function calls are {{c1::not allowed}} in {{c2::constant expressions}}, which is why we need {{c3::constexpr functions}}.",
+      "source": "F.1 - Constexpr functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "chF_1_014",
+      "lesson": "F.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "evaluation"
+      ],
+      "text": "A constexpr function evaluates at {{c1::compile-time}} when used in a required constant expression, or at {{c2::runtime}} when called with non-constexpr arguments.",
+      "source": "F.1 - Constexpr functions",
+      "difficulty": "medium"
+    }
+  ]
+}

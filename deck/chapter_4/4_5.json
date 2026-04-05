@@ -1,0 +1,171 @@
+{
+  "chapter": "Chapter 4",
+  "chapter_title": "Fundamental Data Types",
+  "lesson": "4.5",
+  "lesson_title": "Unsigned integers, and why to avoid them",
+  "total_cards": 11,
+  "cards": [
+    {
+      "id": "ch4_5_001",
+      "lesson": "4.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "types",
+        "unsigned"
+      ],
+      "text": "An {{c1::unsigned}} integer can only hold {{c2::non-negative}} whole numbers (0 and positive).",
+      "source": "4.5 - Unsigned integers, and why to avoid them",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_5_002",
+      "lesson": "4.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "unsigned",
+        "syntax"
+      ],
+      "text": "To define an unsigned integer, use the {{c1::unsigned}} keyword: unsigned int x;",
+      "source": "4.5 - Unsigned integers, and why to avoid them",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_5_003",
+      "lesson": "4.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "types",
+        "unsigned"
+      ],
+      "front": "What are the unsigned integer types in C++?",
+      "back": "<ul><li>unsigned short</li><li>unsigned int</li><li>unsigned long</li><li>unsigned long long</li></ul>",
+      "source": "4.5 - Unsigned integers, and why to avoid them",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_5_004",
+      "lesson": "4.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "unsigned",
+        "wraparound",
+        "gotchas"
+      ],
+      "question": "What does this code print (assuming 4-byte unsigned int)?",
+      "code": "unsigned int x{ 0 };\nx = x - 1;\nstd::cout &lt;&lt; x;",
+      "answer": "4294967295 (wraps around to maximum value)",
+      "explanation": "Unsigned integers wrap around when going below 0. 0 - 1 wraps to the maximum unsigned value (2^32 - 1 for 4-byte unsigned int).",
+      "source": "4.5 - Unsigned integers, and why to avoid them",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch4_5_005",
+      "lesson": "4.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "unsigned",
+        "wraparound"
+      ],
+      "text": "If an unsigned value goes out of range, it {{c1::wraps around}} using modulo arithmetic. This is {{c2::defined behavior}} (not undefined).",
+      "source": "4.5 - Unsigned integers, and why to avoid them",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch4_5_006",
+      "lesson": "4.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "unsigned",
+        "common-mistakes",
+        "loops"
+      ],
+      "question": "What's wrong with this countdown loop?",
+      "code": "for (unsigned int i{ 10 }; i &gt;= 0; --i)\n{\n    std::cout &lt;&lt; i &lt;&lt; ' ';\n}",
+      "answer": "Infinite loop - unsigned i never becomes less than 0",
+      "explanation": "When i reaches 0 and decrements, it wraps around to the maximum unsigned value. The condition i &gt;= 0 is always true for unsigned.",
+      "source": "4.5 - Unsigned integers, and why to avoid them",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch4_5_007",
+      "lesson": "4.5",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "unsigned",
+        "best-practices"
+      ],
+      "concept": "Why to avoid unsigned integers",
+      "explanation": "Avoid unsigned integers because:<ul><li>Wraparound behavior causes subtle bugs</li><li>Mixing signed and unsigned causes unexpected conversions</li><li>Doesn't prevent negative numbers (just wraps them)</li><li>Makes code harder to reason about</li></ul>",
+      "examples": [
+        "int count{ 0 };      // good: use signed",
+        "unsigned count{ 0 }; // avoid: wraparound bugs"
+      ],
+      "source": "4.5 - Unsigned integers, and why to avoid them",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch4_5_008",
+      "lesson": "4.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "unsigned",
+        "best-practices"
+      ],
+      "text": "Best practice: Favor {{c1::signed}} integers over unsigned integers for holding quantities and mathematical operations.",
+      "source": "4.5 - Unsigned integers, and why to avoid them",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_5_009",
+      "lesson": "4.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "unsigned",
+        "best-practices"
+      ],
+      "front": "When should you use unsigned integers?",
+      "back": "Rare cases:<ul><li>Bit manipulation</li><li>Well-defined wraparound behavior is needed</li><li>Interfacing with libraries that require unsigned</li></ul>Generally prefer signed integers.",
+      "source": "4.5 - Unsigned integers, and why to avoid them",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch4_5_010",
+      "lesson": "4.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "unsigned",
+        "gotchas"
+      ],
+      "question": "What does this print?",
+      "code": "int s{ -1 };\nunsigned int u{ 1 };\nif (s &lt; u)\n    std::cout &lt;&lt; \"less\";\nelse\n    std::cout &lt;&lt; \"greater\";",
+      "answer": "greater",
+      "explanation": "When comparing signed and unsigned, the signed value is converted to unsigned. -1 becomes a very large unsigned number (wraparound), making it greater than 1.",
+      "source": "4.5 - Unsigned integers, and why to avoid them",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch4_5_011",
+      "lesson": "4.5",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "types",
+        "unsigned"
+      ],
+      "front": "std::size_t",
+      "back": "Unsigned integral type used for sizes and lengths (e.g., sizeof, array indices). Despite being unsigned, prefer signed for counters.",
+      "source": "4.5 - Unsigned integers, and why to avoid them",
+      "difficulty": "medium"
+    }
+  ]
+}

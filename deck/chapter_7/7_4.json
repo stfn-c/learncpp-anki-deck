@@ -1,0 +1,210 @@
+{
+  "chapter": "Chapter 7",
+  "chapter_title": "Scope, Duration, and Linkage",
+  "lesson": "7.4",
+  "lesson_title": "Introduction to global variables",
+  "total_cards": 14,
+  "cards": [
+    {
+      "id": "ch7_4_001",
+      "lesson": "7.4",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "variables",
+        "terminology"
+      ],
+      "front": "Global variable",
+      "back": "A variable defined outside of a function. Global variables have file scope and static duration.",
+      "source": "7.4 - Introduction to global variables",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_4_002",
+      "lesson": "7.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "scope",
+        "terminology"
+      ],
+      "text": "An identifier with {{c1::file scope}} (also called {{c2::global scope}} or {{c3::global namespace scope}}) can be seen and used from the point of declaration until the end of the file.",
+      "source": "7.4 - Introduction to global variables",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_4_003",
+      "lesson": "7.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "globals",
+        "initialization"
+      ],
+      "front": "What value do global variables have if not explicitly initialized?",
+      "back": "Zero-initialized by default (unlike local variables which are uninitialized).",
+      "source": "7.4 - Introduction to global variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_4_004",
+      "lesson": "7.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "variables",
+        "terminology"
+      ],
+      "text": "Global variables have {{c1::file scope}} and {{c2::static duration}} by default.",
+      "source": "7.4 - Introduction to global variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_4_005",
+      "lesson": "7.4",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "duration",
+        "terminology"
+      ],
+      "front": "Static duration",
+      "back": "Variables with static duration are created when the program starts and destroyed when the program ends.",
+      "source": "7.4 - Introduction to global variables",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_4_006",
+      "lesson": "7.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "globals",
+        "naming"
+      ],
+      "front": "What naming convention is commonly used for global variables?",
+      "back": "Prefix global variable names with 'g_' or 'g' to distinguish them from local variables (e.g., g_count or gCount).",
+      "source": "7.4 - Introduction to global variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_4_007",
+      "lesson": "7.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "globals",
+        "shadowing"
+      ],
+      "question": "What does this code print?",
+      "code": "int value{ 5 }; // global\n\nint main()\n{\n    int value{ 7 }; // local\n    std::cout &lt;&lt; value;\n    return 0;\n}",
+      "answer": "7",
+      "explanation": "The local variable 'value' shadows (hides) the global variable 'value'. The local variable is used within its scope.",
+      "source": "7.4 - Introduction to global variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_4_008",
+      "lesson": "7.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "globals",
+        "syntax"
+      ],
+      "text": "To access a shadowed global variable, use the {{c1::scope resolution operator}} with no namespace name: {{c2::::variable_name}}",
+      "source": "7.4 - Introduction to global variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_4_009",
+      "lesson": "7.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "globals",
+        "syntax"
+      ],
+      "question": "How do you access the global variable 'value' when it's shadowed by a local variable?",
+      "code": "int value{ 5 }; // global\n\nint main()\n{\n    int value{ 7 }; // local shadows global\n    // How to access global value?\n}",
+      "answer": "::value",
+      "explanation": "The scope resolution operator with no namespace prefix (::value) accesses the global namespace explicitly.",
+      "source": "7.4 - Introduction to global variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_4_010",
+      "lesson": "7.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "globals",
+        "best-practices"
+      ],
+      "front": "Why should you avoid using global variables when possible?",
+      "back": "Global variables make programs harder to understand, can be modified from anywhere (making bugs hard to track), and tight coupling reduces modularity and reusability.",
+      "source": "7.4 - Introduction to global variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_4_011",
+      "lesson": "7.4",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "globals",
+        "best-practices"
+      ],
+      "concept": "When global constants are acceptable",
+      "explanation": "While non-const global variables should be avoided, global constants (const or constexpr) are generally acceptable because:<ul><li>They cannot be modified, so they don't create unexpected dependencies</li><li>They help avoid magic numbers</li><li>They provide a single source of truth for constant values</li></ul>",
+      "examples": [
+        "// Good: global constant",
+        "constexpr double gravity{ 9.8 };",
+        "",
+        "// Bad: non-const global",
+        "int g_score{ 0 }; // mutable global"
+      ],
+      "source": "7.4 - Introduction to global variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_4_012",
+      "lesson": "7.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "globals",
+        "initialization"
+      ],
+      "text": "Global variables are {{c1::zero-initialized}} by default, unlike local variables which are {{c2::uninitialized}}.",
+      "source": "7.4 - Introduction to global variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_4_013",
+      "lesson": "7.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "globals",
+        "naming"
+      ],
+      "text": "Prefix global variable names with {{c1::g_}} or {{c2::g}} to distinguish them from local variables (e.g., {{c3::g_count}}).",
+      "source": "7.4 - Introduction to global variables",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_4_014",
+      "lesson": "7.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "globals",
+        "duration"
+      ],
+      "text": "Variables with {{c1::static duration}} are created when the {{c2::program starts}} and destroyed when the {{c3::program ends}}.",
+      "source": "7.4 - Introduction to global variables",
+      "difficulty": "easy"
+    }
+  ]
+}

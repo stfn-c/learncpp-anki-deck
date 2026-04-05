@@ -1,0 +1,154 @@
+{
+  "chapter": "Chapter 5",
+  "chapter_title": "Constants and Strings",
+  "lesson": "5.8",
+  "lesson_title": "Introduction to std::string_view",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "ch5_5_8_001",
+      "lesson": "5.8",
+      "type": "cloze",
+      "text": "To use std::string_view, include the header {{c1::&lt;string_view&gt;}} (C++17).",
+      "tags": [
+        "cpp",
+        "string_view",
+        "headers",
+        "syntax"
+      ],
+      "source": "5.8 - Introduction to std::string_view",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch5_5_8_002",
+      "lesson": "5.8",
+      "type": "cloze",
+      "text": "std::string_view provides a {{c1::read-only}} view of a string without making a copy.",
+      "tags": [
+        "cpp",
+        "string_view",
+        "fundamentals"
+      ],
+      "source": "5.8 - Introduction to std::string_view",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch5_5_8_003",
+      "lesson": "5.8",
+      "type": "cloze",
+      "text": "Best practice for function parameters: use {{c1::std::string_view}} instead of {{c2::const std::string&amp;}} for read-only string parameters.",
+      "tags": [
+        "cpp",
+        "string_view",
+        "best-practices"
+      ],
+      "source": "5.8 - Introduction to std::string_view",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch5_5_8_004",
+      "lesson": "5.8",
+      "type": "cloze",
+      "text": "std::string_view is {{c1::cheap to copy}} because it only stores a pointer and length, not the actual string data.",
+      "tags": [
+        "cpp",
+        "string_view",
+        "performance"
+      ],
+      "source": "5.8 - Introduction to std::string_view",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch5_5_8_005",
+      "lesson": "5.8",
+      "type": "code",
+      "question": "What's more efficient and why?",
+      "code": "// Option 1\nvoid printString(const std::string&amp; str) &#123;\n  std::cout &lt;&lt; str;\n&#125;\n\n// Option 2\nvoid printString(std::string_view str) &#123;\n  std::cout &lt;&lt; str;\n&#125;",
+      "answer": "Option 2 is more efficient. string_view can accept both C-style strings and std::string without conversion, while const std::string&amp; may require creating a temporary std::string object.",
+      "explanation": "string_view provides a lightweight view without copying or conversion overhead.",
+      "tags": [
+        "cpp",
+        "string_view",
+        "performance"
+      ],
+      "source": "5.8 - Introduction to std::string_view",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch5_5_8_006",
+      "lesson": "5.8",
+      "type": "code",
+      "question": "What does this code demonstrate?",
+      "code": "#include &lt;string_view&gt;\nvoid print(std::string_view sv) &#123;\n  std::cout &lt;&lt; sv;\n&#125;\n\nstd::string s&#123; \"Hello\" &#125;;\nprint(s);  // OK\nprint(\"World\");  // OK",
+      "answer": "string_view can accept both std::string and C-style string literals without conversion.",
+      "explanation": "This flexibility makes string_view ideal for function parameters that need to accept different string types.",
+      "tags": [
+        "cpp",
+        "string_view",
+        "flexibility"
+      ],
+      "source": "5.8 - Introduction to std::string_view",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch5_5_8_007",
+      "lesson": "5.8",
+      "type": "basic",
+      "front": "What are the two main benefits of std::string_view over const std::string&amp;?",
+      "back": "<ul><li>No copies or conversions when passing C-style strings</li><li>Cheap to copy (pass by value) - just pointer + length</li></ul>",
+      "tags": [
+        "cpp",
+        "string_view",
+        "performance"
+      ],
+      "source": "5.8 - Introduction to std::string_view",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch5_5_8_008",
+      "lesson": "5.8",
+      "type": "basic",
+      "front": "Can you modify a string through a std::string_view?",
+      "back": "No, std::string_view is read-only. It provides a view of the string but doesn't allow modification.",
+      "tags": [
+        "cpp",
+        "string_view",
+        "fundamentals"
+      ],
+      "source": "5.8 - Introduction to std::string_view",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch5_5_8_009",
+      "lesson": "5.8",
+      "type": "concept",
+      "concept": "When to use std::string_view",
+      "explanation": "Use std::string_view for:<ul><li>Function parameters (read-only strings)</li><li>Avoiding unnecessary copies</li><li>Working with both std::string and C-strings</li></ul>Don't use for:<ul><li>Storing strings (lifetime issues)</li><li>Functions that need to modify strings</li><li>Return values (usually)</li></ul>",
+      "examples": [
+        "void process(std::string_view sv);  // Good for parameters",
+        "std::string_view sv&#123; \"Hello\" &#125;;  // View of literal"
+      ],
+      "tags": [
+        "cpp",
+        "string_view",
+        "best-practices"
+      ],
+      "source": "5.8 - Introduction to std::string_view",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch5_5_8_010",
+      "lesson": "5.8",
+      "type": "reverse",
+      "front": "std::string_view",
+      "back": "Lightweight read-only view of a string that doesn't own the data (C++17)",
+      "tags": [
+        "cpp",
+        "string_view",
+        "terminology"
+      ],
+      "source": "5.8 - Introduction to std::string_view",
+      "difficulty": "medium"
+    }
+  ]
+}

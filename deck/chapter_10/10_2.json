@@ -1,0 +1,208 @@
+{
+  "chapter": "Chapter 10",
+  "chapter_title": "Type Conversion, Type Aliases, and Type Deduction",
+  "lesson": "10.2",
+  "lesson_title": "Floating-point and integral promotion",
+  "total_cards": 14,
+  "cards": [
+    {
+      "id": "ch10_2_001",
+      "lesson": "10.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "type-conversion",
+        "promotions"
+      ],
+      "front": "What is a numeric promotion?",
+      "back": "A type conversion from a smaller numeric type to a larger numeric type that is value-preserving (no data loss) and safe. Includes integral promotion and floating-point promotion.",
+      "source": "10.2 - Floating-point and integral promotion",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_2_002",
+      "lesson": "10.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "type-conversion",
+        "promotions"
+      ],
+      "text": "A numeric promotion is {{c1::value-preserving}}, meaning no data or precision is lost in the conversion.",
+      "source": "10.2 - Floating-point and integral promotion",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_2_003",
+      "lesson": "10.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "integral-promotion",
+        "promotions"
+      ],
+      "front": "What types are covered by integral promotion?",
+      "back": "Integral promotion converts smaller integral types to int or unsigned int:<ul><li>signed char, short → int</li><li>unsigned char, unsigned short → int (if int can hold all values) or unsigned int</li><li>char → int or unsigned int (implementation-defined)</li><li>bool → int (false=0, true=1)</li></ul>",
+      "source": "10.2 - Floating-point and integral promotion",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_2_004",
+      "lesson": "10.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "integral-promotion",
+        "syntax"
+      ],
+      "text": "Integral promotion converts smaller integral types to {{c1::int}} or {{c2::unsigned int}}.",
+      "source": "10.2 - Floating-point and integral promotion",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_2_005",
+      "lesson": "10.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "integral-promotion",
+        "bool"
+      ],
+      "question": "What does this code print?",
+      "code": "#include &lt;iostream&gt;\n\nint main()\n{\n    bool b{ true };\n    std::cout &lt;&lt; b &lt;&lt; '\\n';\n    std::cout &lt;&lt; !b &lt;&lt; '\\n';\n    return 0;\n}",
+      "answer": "1<br>0",
+      "explanation": "bool values are promoted to int when used with std::cout. true promotes to 1, and !true (false) promotes to 0.",
+      "source": "10.2 - Floating-point and integral promotion",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_2_006",
+      "lesson": "10.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "floating-point-promotion",
+        "promotions"
+      ],
+      "front": "What is floating-point promotion?",
+      "back": "The conversion of float to double. This is the only floating-point promotion in C++.",
+      "source": "10.2 - Floating-point and integral promotion",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_2_007",
+      "lesson": "10.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "floating-point-promotion",
+        "syntax"
+      ],
+      "text": "The only floating-point promotion in C++ converts {{c1::float}} to {{c2::double}}.",
+      "source": "10.2 - Floating-point and integral promotion",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_2_008",
+      "lesson": "10.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "integral-promotion",
+        "operators"
+      ],
+      "question": "What type conversion happens in this code?",
+      "code": "short a{ 4 };\nshort b{ 5 };\nstd::cout &lt;&lt; a + b &lt;&lt; '\\n';",
+      "answer": "Both short operands a and b are promoted to int via integral promotion. The addition is performed on int values, and the result is type int.",
+      "explanation": "The binary arithmetic operator + requires both operands to be the same type. Since short is smaller than int, both operands are promoted to int before the addition.",
+      "source": "10.2 - Floating-point and integral promotion",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_2_009",
+      "lesson": "10.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "promotions",
+        "best-practices"
+      ],
+      "front": "Why do numeric promotions exist in C++?",
+      "back": "Processors are typically optimized for operations on a specific size of data (often int or double). Promotions allow smaller types to be converted to the processor's preferred size for more efficient operations.",
+      "source": "10.2 - Floating-point and integral promotion",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_2_010",
+      "lesson": "10.2",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "promotions",
+        "signed-unsigned"
+      ],
+      "concept": "Unsigned integral promotion rules",
+      "explanation": "Unsigned types promote based on whether int can hold all values:<ul><li>If int can hold all values: promote to int</li><li>If int cannot hold all values: promote to unsigned int</li></ul>This depends on the size of the type and the size of int on the system.",
+      "examples": [
+        "// On most systems (int is 4 bytes):",
+        "unsigned char → int  // int can hold 0-255",
+        "unsigned short → int // int can hold 0-65535"
+      ],
+      "source": "10.2 - Floating-point and integral promotion",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch10_2_011",
+      "lesson": "10.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "integral-promotion",
+        "bool"
+      ],
+      "text": "When bool is promoted to int, {{c1::false}} becomes {{c2::0}} and {{c3::true}} becomes {{c4::1}}.",
+      "source": "10.2 - Floating-point and integral promotion",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_2_012",
+      "lesson": "10.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "promotions",
+        "safety"
+      ],
+      "front": "Are numeric promotions safe to use?",
+      "back": "Yes. Numeric promotions are always safe because they are value-preserving - no data or precision is lost during the conversion.",
+      "source": "10.2 - Floating-point and integral promotion",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_2_013",
+      "lesson": "10.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "integral-promotion",
+        "operators"
+      ],
+      "text": "When binary operators work with operands smaller than int, the operands are first {{c1::promoted to int}} via integral promotion.",
+      "source": "10.2 - Floating-point and integral promotion",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_2_014",
+      "lesson": "10.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "promotions",
+        "safety"
+      ],
+      "text": "Numeric promotions are {{c1::value-preserving}} and {{c2::safe}}, meaning they never lose data or precision.",
+      "source": "10.2 - Floating-point and integral promotion",
+      "difficulty": "easy"
+    }
+  ]
+}

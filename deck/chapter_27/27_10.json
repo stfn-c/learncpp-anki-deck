@@ -1,0 +1,198 @@
+{
+  "chapter": "Chapter 27",
+  "chapter_title": "Exception Handling and Error Handling",
+  "lesson": "27.10",
+  "lesson_title": "27.10 — std::move_if_noexcept",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch27_10_001",
+      "lesson": "27.10",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "move-semantics",
+        "standard-library"
+      ],
+      "text": "{{c1::std::move_if_noexcept}} returns a {{c2::move}} rvalue reference if the move constructor is noexcept, otherwise returns a {{c3::copy}} lvalue reference.",
+      "source": "27.10 - std::move_if_noexcept",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_10_002",
+      "lesson": "27.10",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "move-semantics",
+        "syntax"
+      ],
+      "question": "What does std::move_if_noexcept do here?",
+      "code": "T temp{std::move_if_noexcept(obj)};",
+      "answer": "If T's move constructor is noexcept, it moves obj. Otherwise, it copies obj for exception safety.",
+      "explanation": "move_if_noexcept enables strong exception guarantee by using move only when safe (noexcept), falling back to copy otherwise.",
+      "source": "27.10 - std::move_if_noexcept",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch27_10_003",
+      "lesson": "27.10",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "best-practices"
+      ],
+      "front": "What is the strong exception guarantee?",
+      "back": "If an operation throws an exception, program state remains unchanged (rollback). Either the operation completes successfully or has no effect.",
+      "source": "27.10 - std::move_if_noexcept",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_10_004",
+      "lesson": "27.10",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "move-semantics",
+        "gotchas"
+      ],
+      "question": "Why is move problematic during vector reallocation?",
+      "code": "// vector reallocates\nfor (size_t i = 0; i &lt; oldSize; ++i) {\n    new_array[i] = std::move(old_array[i]);\n    // if this throws, old_array[i] is moved-from!\n}",
+      "answer": "If move constructor throws after moving some elements, the old array is partially moved-from and can't be restored, violating the strong exception guarantee.",
+      "explanation": "After a move, the source object is in a valid but unspecified state. If the move throws, we can't restore the original state.",
+      "source": "27.10 - std::move_if_noexcept",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch27_10_005",
+      "lesson": "27.10",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "move-semantics"
+      ],
+      "text": "std::move_if_noexcept solves the strong exception guarantee problem by using {{c1::move}} when safe (noexcept) and {{c2::copy}} when necessary, allowing {{c3::rollback}} if an exception occurs.",
+      "source": "27.10 - std::move_if_noexcept",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch27_10_006",
+      "lesson": "27.10",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "move-semantics",
+        "best-practices"
+      ],
+      "question": "How does this provide strong exception guarantee?",
+      "code": "for (size_t i = 0; i &lt; oldSize; ++i) {\n    new_array[i] = std::move_if_noexcept(old_array[i]);\n}",
+      "answer": "If move is noexcept, uses fast move. If not, copies so old_array stays intact if an exception is thrown.",
+      "explanation": "With copy, if an exception occurs, old_array is unchanged and we can deallocate new_array. Strong guarantee maintained.",
+      "source": "27.10 - std::move_if_noexcept",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch27_10_007",
+      "lesson": "27.10",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "move-semantics",
+        "containers"
+      ],
+      "front": "When does std::vector use move operations during reallocation?",
+      "back": "std::vector uses move_if_noexcept, so it only moves elements if the move constructor is noexcept. Otherwise, it copies elements for exception safety.",
+      "source": "27.10 - std::move_if_noexcept",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_10_008",
+      "lesson": "27.10",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "move-semantics",
+        "best-practices"
+      ],
+      "text": "You should mark move constructors and move assignment operators {{c1::noexcept}} whenever possible to enable {{c2::optimizations}} in STL containers like vector, which use {{c3::std::move_if_noexcept}}.",
+      "source": "27.10 - std::move_if_noexcept",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_10_009",
+      "lesson": "27.10",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "move-semantics",
+        "best-practices"
+      ],
+      "concept": "How move_if_noexcept provides exception safety",
+      "explanation": "move_if_noexcept enables both performance and safety:<ul><li>Uses fast move when guaranteed safe (noexcept)</li><li>Falls back to copy when move might throw</li><li>Maintains strong exception guarantee</li><li>STL containers use this for reallocation</li><li>Incentivizes marking moves noexcept</li></ul>",
+      "examples": [
+        "class MyClass {",
+        "    // Mark noexcept for vector optimization",
+        "    MyClass(MyClass&amp;&amp;) noexcept;",
+        "};",
+        "",
+        "std::vector&lt;MyClass&gt; vec;",
+        "vec.push_back(x);  // uses move during reallocation"
+      ],
+      "source": "27.10 - std::move_if_noexcept",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch27_10_010",
+      "lesson": "27.10",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "best-practices"
+      ],
+      "question": "Why use move_if_noexcept in this swap?",
+      "code": "template&lt;typename T&gt;\nvoid swap(T&amp; a, T&amp; b) {\n    T temp{std::move_if_noexcept(a)};\n    a = std::move_if_noexcept(b);\n    b = std::move_if_noexcept(temp);\n}",
+      "answer": "To provide strong exception guarantee. If moves might throw, it copies instead, leaving originals intact if exception occurs.",
+      "explanation": "move_if_noexcept ensures that if an operation throws, we can recover. With regular move, we'd lose data from moved-from objects.",
+      "source": "27.10 - std::move_if_noexcept",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch27_10_011",
+      "lesson": "27.10",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "move-semantics"
+      ],
+      "front": "What does std::move_if_noexcept return for a type with a throwing move constructor?",
+      "back": "It returns a const lvalue reference (const T&amp;), which causes the copy constructor to be used instead of the move constructor.",
+      "source": "27.10 - std::move_if_noexcept",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch27_10_012",
+      "lesson": "27.10",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "move-semantics",
+        "performance"
+      ],
+      "text": "If a class's move constructor is not marked noexcept, STL containers will {{c1::copy}} instead of move during reallocation, potentially causing {{c2::significant performance}} degradation for large objects.",
+      "source": "27.10 - std::move_if_noexcept",
+      "difficulty": "medium"
+    }
+  ]
+}

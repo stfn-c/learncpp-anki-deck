@@ -1,0 +1,287 @@
+{
+  "chapter": "Chapter 19",
+  "chapter_title": "Dynamic memory allocation",
+  "lesson": "19.1",
+  "lesson_title": "Dynamic memory allocation with new and delete",
+  "total_cards": 19,
+  "cards": [
+    {
+      "id": "ch19_1_001",
+      "lesson": "19.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "dynamic-memory",
+        "syntax",
+        "new"
+      ],
+      "text": "To dynamically allocate a single integer and store its address: {{c1::int* ptr{ new int };}}",
+      "source": "19.1 - Dynamic memory allocation with new and delete",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch19_1_002",
+      "lesson": "19.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "dynamic-memory",
+        "syntax",
+        "delete"
+      ],
+      "text": "To deallocate dynamically allocated memory pointed to by ptr: {{c1::delete ptr;}}<br>Then set ptr to: {{c2::ptr = nullptr;}}",
+      "source": "19.1 - Dynamic memory allocation with new and delete",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch19_1_003",
+      "lesson": "19.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "memory",
+        "fundamentals"
+      ],
+      "front": "What are the three basic types of memory allocation in C++?",
+      "back": "<ul><li>Static memory allocation (for static and global variables)</li><li>Automatic memory allocation (for function parameters and local variables)</li><li>Dynamic memory allocation (using new/delete)</li></ul>",
+      "source": "19.1 - Dynamic memory allocation with new and delete",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch19_1_004",
+      "lesson": "19.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "memory",
+        "heap",
+        "stack"
+      ],
+      "front": "Where does dynamically allocated memory come from, and how does it compare to the stack?",
+      "back": "Dynamic memory comes from the <strong>heap</strong>, which is a much larger pool of memory managed by the operating system (can be gigabytes). The stack is typically limited (e.g., 1MB in Visual Studio by default).",
+      "source": "19.1 - Dynamic memory allocation with new and delete",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch19_1_005",
+      "lesson": "19.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "dynamic-memory",
+        "initialization"
+      ],
+      "text": "Two ways to initialize a dynamically allocated int:<br>Direct initialization: {{c1::int* ptr1{ new int(5) };}}<br>Uniform initialization: {{c2::int* ptr2{ new int{6} };}}",
+      "source": "19.1 - Dynamic memory allocation with new and delete",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch19_1_006",
+      "lesson": "19.1",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "pointers",
+        "dangling-pointer"
+      ],
+      "front": "Dangling pointer",
+      "back": "A pointer that is pointing to deallocated memory",
+      "source": "19.1 - Dynamic memory allocation with new and delete",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch19_1_007",
+      "lesson": "19.1",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "pointers",
+        "common-mistakes",
+        "dangling-pointer"
+      ],
+      "question": "What's wrong with this code?",
+      "code": "int* ptr{ new int };\n*ptr = 7;\ndelete ptr;\nstd::cout &lt;&lt; *ptr;",
+      "answer": "After delete, ptr becomes a dangling pointer. Dereferencing it causes undefined behavior.",
+      "explanation": "Once memory is deleted, the pointer still contains the old address but that memory has been returned to the OS. Accessing it is undefined behavior.",
+      "source": "19.1 - Dynamic memory allocation with new and delete",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch19_1_008",
+      "lesson": "19.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "delete",
+        "memory"
+      ],
+      "front": "What does the delete operator actually do to memory?",
+      "back": "It returns the memory being pointed to back to the operating system. It does NOT delete the pointer variable itself - the pointer variable still exists with the same scope.",
+      "source": "19.1 - Dynamic memory allocation with new and delete",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch19_1_009",
+      "lesson": "19.1",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "best-practices",
+        "pointers"
+      ],
+      "concept": "Setting deleted pointers to nullptr",
+      "explanation": "Set deleted pointers to nullptr unless they are going out of scope immediately afterward. This prevents accidentally using a dangling pointer.",
+      "examples": [
+        "delete ptr;      // deallocate memory",
+        "ptr = nullptr;  // now ptr is clearly not pointing to valid memory"
+      ],
+      "source": "19.1 - Dynamic memory allocation with new and delete",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch19_1_010",
+      "lesson": "19.1",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "memory",
+        "memory-leak"
+      ],
+      "front": "Memory leak",
+      "back": "When a program loses the address of dynamically allocated memory before deallocating it, making that memory impossible to delete",
+      "source": "19.1 - Dynamic memory allocation with new and delete",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch19_1_011",
+      "lesson": "19.1",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "memory-leak",
+        "common-mistakes"
+      ],
+      "question": "Why does this function cause a memory leak?",
+      "code": "void doSomething()\n{\n    int* ptr{ new int{} };\n}",
+      "answer": "When the function ends, ptr goes out of scope and is destroyed, but the dynamically allocated memory is not deleted. The program loses the address and can never delete it.",
+      "explanation": "The pointer variable follows normal scoping rules and is destroyed, but the heap memory persists until explicitly deleted.",
+      "source": "19.1 - Dynamic memory allocation with new and delete",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch19_1_012",
+      "lesson": "19.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "dynamic-memory",
+        "error-handling"
+      ],
+      "text": "To have new return nullptr instead of throwing an exception when allocation fails: {{c1::int* value{ new (std::nothrow) int{} };}}<br>Then check: {{c2::if (!value) { /* handle error */ }}}",
+      "source": "19.1 - Dynamic memory allocation with new and delete",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch19_1_013",
+      "lesson": "19.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "delete",
+        "nullptr"
+      ],
+      "front": "What happens when you delete a null pointer?",
+      "back": "Nothing happens - it's safe and does nothing. There is no need to check if a pointer is null before deleting it.",
+      "source": "19.1 - Dynamic memory allocation with new and delete",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch19_1_014",
+      "lesson": "19.1",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "memory-leak",
+        "common-mistakes"
+      ],
+      "question": "Why does this cause a memory leak?",
+      "code": "int* ptr{ new int{} };\nptr = new int{};",
+      "answer": "The address from the second allocation overwrites the address of the first allocation. The first allocated memory can never be deleted - it's a memory leak.",
+      "explanation": "You must delete the first allocation before allocating again, or use a different pointer variable.",
+      "source": "19.1 - Dynamic memory allocation with new and delete",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch19_1_015",
+      "lesson": "19.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "performance",
+        "heap",
+        "stack"
+      ],
+      "front": "Why is accessing heap-allocated objects generally slower than stack-allocated objects?",
+      "back": "Stack objects: compiler knows the address directly, goes there in one step.<br>Heap objects: accessed via pointer, requires two steps: (1) get address from pointer, (2) access value at that address.",
+      "source": "19.1 - Dynamic memory allocation with new and delete",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch19_1_016",
+      "lesson": "19.1",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "best-practices",
+        "dynamic-memory"
+      ],
+      "concept": "When to use dynamic memory allocation",
+      "explanation": "Use dynamic allocation when:<ul><li>The size of memory needed is not known at compile time (e.g., user input)</li><li>You need more memory than the stack can provide (stack is limited, often ~1MB)</li><li>You need memory that persists beyond the current scope</li><li>Array size needs to be determined at runtime</li></ul>",
+      "examples": [
+        "char name[25];          // bad: fixed size, wasted memory",
+        "char* name{ new char[length] };  // good: size from user input"
+      ],
+      "source": "19.1 - Dynamic memory allocation with new and delete",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch19_1_017",
+      "lesson": "19.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "memory",
+        "terminology"
+      ],
+      "text": "The three types of memory allocation: {{c1::static}} (global/static vars), {{c2::automatic}} (local vars/params), {{c3::dynamic}} (heap allocation)",
+      "source": "19.1 - Dynamic memory allocation with new and delete",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch19_1_018",
+      "lesson": "19.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "memory",
+        "heap"
+      ],
+      "text": "Dynamic memory is allocated from the {{c1::heap}}, which can be {{c2::gigabytes}} in size, much larger than the {{c3::stack}} (typically ~1MB).",
+      "source": "19.1 - Dynamic memory allocation with new and delete",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch19_1_019",
+      "lesson": "19.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "pointers",
+        "best-practices"
+      ],
+      "text": "Best practice: {{c1::Set deleted pointers to nullptr}} unless they are going out of scope immediately afterward.",
+      "source": "19.1 - Dynamic memory allocation with new and delete",
+      "difficulty": "easy"
+    }
+  ]
+}

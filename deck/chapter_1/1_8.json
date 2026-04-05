@@ -1,0 +1,121 @@
+{
+  "chapter": "Chapter 1",
+  "chapter_title": "C++ Basics: Functions and Files",
+  "lesson": "1.8",
+  "lesson_title": "Whitespace and basic formatting",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "ch1_8_001",
+      "lesson": "1.8",
+      "type": "basic",
+      "tags": ["cpp", "whitespace", "fundamentals"],
+      "front": "What is whitespace in C++?",
+      "back": "Whitespace refers to characters used for formatting purposes: spaces, tabs, and newlines. The compiler generally ignores whitespace (with some exceptions).",
+      "source": "1.8 - Whitespace and basic formatting",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_8_002",
+      "lesson": "1.8",
+      "type": "cloze",
+      "tags": ["cpp", "whitespace", "rules"],
+      "text": "Some language elements must be {{c1::whitespace-separated}}, such as when two keywords or identifiers are placed next to each other (e.g., {{c2::int main}}).",
+      "source": "1.8 - Whitespace and basic formatting",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_8_003",
+      "lesson": "1.8",
+      "type": "code",
+      "tags": ["cpp", "whitespace", "syntax"],
+      "question": "Are these two code snippets equivalent?",
+      "code": "// Version 1:\nint main() { std::cout &lt;&lt; \"Hello\"; return 0; }\n\n// Version 2:\nint main()\n{\n    std::cout &lt;&lt; \"Hello\";\n    return 0;\n}",
+      "answer": "Yes, they are functionally equivalent",
+      "explanation": "The compiler treats them the same way because whitespace (beyond required separation) is ignored. However, Version 2 is much more readable and is the preferred style.",
+      "source": "1.8 - Whitespace and basic formatting",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_8_004",
+      "lesson": "1.8",
+      "type": "concept",
+      "tags": ["cpp", "formatting", "best-practices"],
+      "concept": "Why proper code formatting matters",
+      "explanation": "Proper formatting is critical for code readability and maintainability:<ul><li>Makes code structure visually clear</li><li>Shows relationships between code blocks</li><li>Reduces errors by making mistakes more obvious</li><li>Helps other developers (and future you) understand the code</li><li>Professional code is always well-formatted</li></ul>",
+      "examples": [
+        "// Bad: hard to read\nint main(){std::cout&lt;&lt;\"Hi\";return 0;}",
+        "// Good: clear structure\nint main()\n{\n    std::cout &lt;&lt; \"Hi\";\n    return 0;\n}"
+      ],
+      "source": "1.8 - Whitespace and basic formatting",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch1_8_005",
+      "lesson": "1.8",
+      "type": "cloze",
+      "tags": ["cpp", "formatting", "best-practices"],
+      "text": "Each statement within curly braces should start one tab (or {{c1::4 spaces}}) in from the opening brace. This is called {{c2::indentation}}.",
+      "source": "1.8 - Whitespace and basic formatting",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_8_006",
+      "lesson": "1.8",
+      "type": "concept",
+      "tags": ["cpp", "formatting", "braces"],
+      "concept": "Common brace styles in C++",
+      "explanation": "There are different styles for placing curly braces:<br><br><strong>Allman style (preferred for beginners):</strong><br>Opening brace on its own line<br><br><strong>K&R style:</strong><br>Opening brace on same line as statement<br><br>Both are acceptable. Choose one and be consistent throughout your codebase.",
+      "examples": [
+        "// Allman style:\nint main()\n{\n    // code\n}",
+        "// K&R style:\nint main() {\n    // code\n}"
+      ],
+      "source": "1.8 - Whitespace and basic formatting",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch1_8_007",
+      "lesson": "1.8",
+      "type": "basic",
+      "tags": ["cpp", "whitespace", "strings"],
+      "front": "Does whitespace inside quoted text (strings) get ignored by the compiler?",
+      "back": "No. Whitespace inside quoted text is not ignored. \"Hello World\" is different from \"HelloWorld\".",
+      "source": "1.8 - Whitespace and basic formatting",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_8_008",
+      "lesson": "1.8",
+      "type": "basic",
+      "tags": ["cpp", "formatting", "best-practices"],
+      "front": "Should you use tabs or spaces for indentation?",
+      "back": "Either is acceptable, but spaces are generally preferred (often 4 spaces per indentation level). Most importantly, be consistent within a project. Modern editors can convert tabs to spaces automatically.",
+      "source": "1.8 - Whitespace and basic formatting",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch1_8_009",
+      "lesson": "1.8",
+      "type": "cloze",
+      "tags": ["cpp", "formatting", "operators"],
+      "text": "It's conventional to put spaces around binary operators: {{c1::x = 2 + 3;}} rather than {{c2::x=2+3;}}",
+      "source": "1.8 - Whitespace and basic formatting",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_8_010",
+      "lesson": "1.8",
+      "type": "concept",
+      "tags": ["cpp", "formatting", "best-practices"],
+      "concept": "Automatic code formatting tools",
+      "explanation": "Use automatic code formatters to maintain consistent style:<ul><li>Eliminates debates about formatting style</li><li>Ensures consistency across the codebase</li><li>Saves time - no manual formatting needed</li><li>Common tools: clang-format, VS Code formatters</li><li>Can enforce team/project style guidelines</li></ul>",
+      "examples": [
+        "clang-format can auto-format your code",
+        "Most IDEs have built-in formatters",
+        "Can run on save or as pre-commit hook"
+      ],
+      "source": "1.8 - Whitespace and basic formatting",
+      "difficulty": "medium"
+    }
+  ]
+}

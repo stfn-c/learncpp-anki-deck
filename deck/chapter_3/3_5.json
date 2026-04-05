@@ -1,0 +1,158 @@
+{
+  "chapter": "Chapter 3",
+  "chapter_title": "Debugging C++ Programs",
+  "lesson": "3.5",
+  "lesson_title": "More debugging tactics",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "ch3_5_001",
+      "lesson": "3.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "debugging",
+        "techniques"
+      ],
+      "text": "When debugging, you can use {{c1::conditional}} statements to print values only when specific conditions are met, reducing output clutter.",
+      "source": "3.5 - More debugging tactics",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_5_002",
+      "lesson": "3.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "debugging",
+        "conditional"
+      ],
+      "question": "What debugging technique is shown here?",
+      "code": "if (x &lt; 0)\n    std::cerr &lt;&lt; \"ERROR: x is negative: \" &lt;&lt; x &lt;&lt; '\\n';",
+      "answer": "Conditional debugging - only prints when an error condition (x &lt; 0) is detected.",
+      "explanation": "This is more efficient than printing every value of x.",
+      "source": "3.5 - More debugging tactics",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_5_003",
+      "lesson": "3.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "debugging",
+        "std"
+      ],
+      "front": "What's the difference between std::cout and std::cerr?",
+      "back": "std::cout is for normal output (buffered), std::cerr is for error messages (unbuffered, appears immediately).",
+      "source": "3.5 - More debugging tactics",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_5_004",
+      "lesson": "3.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "debugging",
+        "std"
+      ],
+      "text": "Use {{c1::std::cerr}} for debug/error output instead of std::cout because it's {{c2::unbuffered}} and outputs immediately.",
+      "source": "3.5 - More debugging tactics",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_5_005",
+      "lesson": "3.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "debugging",
+        "logging"
+      ],
+      "front": "Why might std::cerr be better than std::cout for debugging?",
+      "back": "std::cerr is unbuffered so output appears immediately. This is critical if your program crashes - buffered std::cout output might be lost.",
+      "source": "3.5 - More debugging tactics",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_5_006",
+      "lesson": "3.5",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "debugging",
+        "log-file"
+      ],
+      "concept": "Using log files for debugging",
+      "explanation": "Redirect debug output to a file instead of console:<ul><li>Provides a permanent record</li><li>Doesn't clutter console output</li><li>Can be analyzed later or searched</li><li>Useful for long-running programs</li></ul>",
+      "examples": [
+        "std::ofstream logfile(\"debug.log\");",
+        "logfile &lt;&lt; \"Debug info: x = \" &lt;&lt; x;"
+      ],
+      "source": "3.5 - More debugging tactics",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_5_007",
+      "lesson": "3.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "debugging",
+        "function"
+      ],
+      "text": "Print statements at function {{c1::entry}} and {{c2::exit}} help you trace program {{c3::execution flow}}.",
+      "source": "3.5 - More debugging tactics",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_5_008",
+      "lesson": "3.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "debugging",
+        "function-tracing"
+      ],
+      "question": "What debugging pattern is this demonstrating?",
+      "code": "int calculate(int x) {\n    std::cerr &lt;&lt; \"calculate() called with x=\" &lt;&lt; x &lt;&lt; '\\n';\n    int result = x * 2;\n    std::cerr &lt;&lt; \"calculate() returning \" &lt;&lt; result &lt;&lt; '\\n';\n    return result;\n}",
+      "answer": "Function entry/exit tracing - logs when function is called (with parameters) and when it returns (with result).",
+      "explanation": "This helps track program execution flow and verify function inputs/outputs.",
+      "source": "3.5 - More debugging tactics",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_5_009",
+      "lesson": "3.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "debugging",
+        "strategy"
+      ],
+      "front": "When should you use conditional debug output instead of unconditional output?",
+      "back": "When debugging loops or frequently called code where printing every iteration would create too much output. Only print when specific conditions occur.",
+      "source": "3.5 - More debugging tactics",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_5_010",
+      "lesson": "3.5",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "debugging",
+        "best-practices"
+      ],
+      "concept": "Strategic placement of debug output",
+      "explanation": "Place debug statements at strategic locations:<ul><li>Function entry/exit points</li><li>Before/after important calculations</li><li>Inside conditional blocks to verify which path executes</li><li>In loops (conditionally if many iterations)</li><li>After external operations (file I/O, etc.)</li></ul>",
+      "examples": [
+        "std::cerr &lt;&lt; \"Entering loop\\n\";",
+        "if (error_condition) std::cerr &lt;&lt; \"ERROR\\n\";"
+      ],
+      "source": "3.5 - More debugging tactics",
+      "difficulty": "medium"
+    }
+  ]
+}

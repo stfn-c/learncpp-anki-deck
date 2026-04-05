@@ -1,0 +1,114 @@
+{
+  "chapter": "Chapter 25",
+  "chapter_title": "Virtual Functions",
+  "lesson": "25.5",
+  "lesson_title": "Early binding and late binding",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "ch25_5_001",
+      "lesson": "25.5",
+      "type": "reverse",
+      "tags": ["cpp", "binding", "terminology"],
+      "front": "early binding",
+      "back": "When the compiler or linker directly associates a function call with a specific function at compile time (also called static binding)",
+      "source": "25.5 - Early binding and late binding",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_5_002",
+      "lesson": "25.5",
+      "type": "reverse",
+      "tags": ["cpp", "binding", "terminology"],
+      "front": "late binding",
+      "back": "When the function call is resolved at runtime based on the actual type of the object (also called dynamic binding)",
+      "source": "25.5 - Early binding and late binding",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_5_003",
+      "lesson": "25.5",
+      "type": "cloze",
+      "tags": ["cpp", "binding", "virtual-functions"],
+      "text": "Non-virtual functions use {{c1::early binding}}, while virtual functions use {{c2::late binding}}.",
+      "source": "25.5 - Early binding and late binding",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_5_004",
+      "lesson": "25.5",
+      "type": "basic",
+      "tags": ["cpp", "binding", "performance"],
+      "front": "What are the advantages of early binding over late binding?",
+      "back": "<ul><li>Faster execution (direct function call)</li><li>No runtime overhead</li><li>Can be optimized better by the compiler (inlining, etc.)</li></ul>",
+      "source": "25.5 - Early binding and late binding",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_5_005",
+      "lesson": "25.5",
+      "type": "basic",
+      "tags": ["cpp", "binding", "polymorphism"],
+      "front": "What are the advantages of late binding over early binding?",
+      "back": "<ul><li>Enables runtime polymorphism</li><li>Allows base class pointers/references to call derived class functions</li><li>More flexible - works with types not known at compile time</li></ul>",
+      "source": "25.5 - Early binding and late binding",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_5_006",
+      "lesson": "25.5",
+      "type": "cloze",
+      "tags": ["cpp", "binding", "terminology"],
+      "text": "Early binding is also called {{c1::static binding}}, and late binding is also called {{c2::dynamic binding}}.",
+      "source": "25.5 - Early binding and late binding",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_5_007",
+      "lesson": "25.5",
+      "type": "code",
+      "tags": ["cpp", "binding", "virtual-functions"],
+      "question": "Which function calls use early binding and which use late binding?",
+      "code": "class Base {\npublic:\n    void nonVirtual() { }\n    virtual void virtualFunc() { }\n};\n\nBase* ptr = new Derived();\nptr-&gt;nonVirtual();   // ?\nptr-&gt;virtualFunc();  // ?",
+      "answer": "nonVirtual() uses early binding (resolved at compile time to Base::nonVirtual)<br>virtualFunc() uses late binding (resolved at runtime to most-derived version)",
+      "explanation": "Non-virtual functions are resolved at compile time based on the pointer type. Virtual functions are resolved at runtime based on the actual object type.",
+      "source": "25.5 - Early binding and late binding",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_5_008",
+      "lesson": "25.5",
+      "type": "basic",
+      "tags": ["cpp", "binding", "performance"],
+      "front": "Why is late binding slower than early binding?",
+      "back": "Late binding requires:<ul><li>A runtime lookup in the vtable to find the correct function</li><li>An extra indirection through the vptr</li><li>Cannot be inlined by the compiler</li></ul>This adds overhead compared to a direct function call.",
+      "source": "25.5 - Early binding and late binding",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_5_009",
+      "lesson": "25.5",
+      "type": "concept",
+      "tags": ["cpp", "binding", "virtual-functions"],
+      "concept": "When binding occurs for different function types",
+      "explanation": "Early binding (compile-time):<ul><li>Non-virtual member functions</li><li>Static functions</li><li>Global functions</li><li>Virtual functions called on objects (not pointers/references)</li></ul>Late binding (runtime):<ul><li>Virtual functions called through pointers or references</li></ul>",
+      "examples": [
+        "Derived d;",
+        "d.virtualFunc();      // Early binding (object)",
+        "Base* ptr = &amp;d;",
+        "ptr-&gt;virtualFunc();   // Late binding (pointer)"
+      ],
+      "source": "25.5 - Early binding and late binding",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch25_5_010",
+      "lesson": "25.5",
+      "type": "cloze",
+      "tags": ["cpp", "binding", "virtual-functions"],
+      "text": "Late binding allows the program to decide which function to call at {{c1::runtime}} based on the {{c2::actual type}} of the object, not the type of the pointer or reference.",
+      "source": "25.5 - Early binding and late binding",
+      "difficulty": "easy"
+    }
+  ]
+}

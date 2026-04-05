@@ -1,0 +1,125 @@
+{
+  "chapter": "Chapter 1",
+  "chapter_title": "C++ Basics: Functions and Files",
+  "lesson": "1.11",
+  "lesson_title": "Developing your first program",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "ch1_11_001",
+      "lesson": "1.11",
+      "type": "concept",
+      "tags": ["cpp", "development", "best-practices"],
+      "concept": "Steps for developing a C++ program",
+      "explanation": "Follow these steps when developing a program:<ul><li>1. Define the problem you want to solve clearly</li><li>2. Design the solution (algorithm, data structures)</li><li>3. Write the code incrementally</li><li>4. Compile and test frequently</li><li>5. Debug and refine</li></ul>",
+      "examples": [
+        "Problem: Add two numbers input by user",
+        "Solution: Read two integers, add them, output result",
+        "Write code step-by-step, testing each addition"
+      ],
+      "source": "1.11 - Developing your first program",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch1_11_002",
+      "lesson": "1.11",
+      "type": "basic",
+      "tags": ["cpp", "development", "best-practices"],
+      "front": "Why should you write and test code incrementally rather than writing everything at once?",
+      "back": "Incremental development makes it easier to:<ul><li>Find bugs (you know recent changes caused them)</li><li>Ensure each piece works before moving on</li><li>Maintain working code at each step</li><li>Avoid overwhelming complexity</li></ul>",
+      "source": "1.11 - Developing your first program",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch1_11_003",
+      "lesson": "1.11",
+      "type": "code",
+      "tags": ["cpp", "user-input", "syntax"],
+      "question": "What does this program do?",
+      "code": "#include &lt;iostream&gt;\n\nint main()\n{\n    std::cout &lt;&lt; \"Enter a number: \";\n    int x{};\n    std::cin &gt;&gt; x;\n    std::cout &lt;&lt; \"You entered \" &lt;&lt; x &lt;&lt; '\\n';\n    return 0;\n}",
+      "answer": "Prompts user to enter a number, reads it into variable x, then outputs what the user entered",
+      "explanation": "This demonstrates basic input/output: prompting the user with cout, reading input with cin, and displaying the result.",
+      "source": "1.11 - Developing your first program",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_11_004",
+      "lesson": "1.11",
+      "type": "cloze",
+      "tags": ["cpp", "user-input", "best-practices"],
+      "text": "When asking for user input, always {{c1::prompt}} the user first so they know what to enter. Example: {{c2::std::cout &lt;&lt; \"Enter your age: \";}}",
+      "source": "1.11 - Developing your first program",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_11_005",
+      "lesson": "1.11",
+      "type": "code",
+      "tags": ["cpp", "user-input", "multiple-values"],
+      "question": "How can you read two numbers from user input?",
+      "code": "int x{};\nint y{};\nstd::cout &lt;&lt; \"Enter two numbers: \";\nstd::cin &gt;&gt; x &gt;&gt; y;",
+      "answer": "This reads two numbers separated by whitespace (space, tab, or enter)",
+      "explanation": "The extraction operator &gt;&gt; can be chained to read multiple values. The user can enter them separated by any whitespace.",
+      "source": "1.11 - Developing your first program",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_11_006",
+      "lesson": "1.11",
+      "type": "basic",
+      "tags": ["cpp", "debugging", "best-practices"],
+      "front": "What should you do if your program doesn't compile?",
+      "back": "Read the compiler error messages carefully. They tell you:<ul><li>What file and line has the error</li><li>What the compiler expected vs. what it found</li><li>Start fixing from the first error (later ones may be cascading)</li></ul>",
+      "source": "1.11 - Developing your first program",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_11_007",
+      "lesson": "1.11",
+      "type": "concept",
+      "tags": ["cpp", "debugging", "best-practices"],
+      "concept": "How to debug a program that compiles but produces wrong output",
+      "explanation": "When output is incorrect:<ul><li>Check your algorithm/logic - trace through on paper</li><li>Add output statements to see intermediate values</li><li>Use a debugger to step through code</li><li>Verify input is being read correctly</li><li>Check operator precedence in calculations</li></ul>",
+      "examples": [
+        "// Debug with output:\nstd::cout &lt;&lt; \"x = \" &lt;&lt; x &lt;&lt; '\\n';",
+        "// Check calculation:\nint sum = x + y;\nstd::cout &lt;&lt; \"sum = \" &lt;&lt; sum &lt;&lt; '\\n';"
+      ],
+      "source": "1.11 - Developing your first program",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch1_11_008",
+      "lesson": "1.11",
+      "type": "basic",
+      "tags": ["cpp", "comments", "best-practices"],
+      "front": "When should you add comments to your code?",
+      "back": "Add comments to:<ul><li>Explain the purpose of the program or function</li><li>Describe complex algorithms or logic</li><li>Clarify non-obvious code</li><li>Note assumptions or limitations</li><li>Don't comment obvious code</li></ul>",
+      "source": "1.11 - Developing your first program",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_11_009",
+      "lesson": "1.11",
+      "type": "cloze",
+      "tags": ["cpp", "testing", "best-practices"],
+      "text": "After writing code, {{c1::test}} it with different inputs including {{c2::edge cases}} (like 0, negative numbers, very large numbers) to ensure it works correctly.",
+      "source": "1.11 - Developing your first program",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch1_11_010",
+      "lesson": "1.11",
+      "type": "concept",
+      "tags": ["cpp", "development", "workflow"],
+      "concept": "The edit-compile-test cycle",
+      "explanation": "Professional development follows a cycle:<ul><li>1. Edit: Write or modify code</li><li>2. Compile: Check for syntax errors</li><li>3. Test: Run and verify correct behavior</li><li>4. Debug: If bugs found, return to step 1</li><li>5. Repeat: Continue until program works correctly</li></ul>Keep iterations small for faster debugging.",
+      "examples": [
+        "Add one feature → compile → test → repeat",
+        "Don't write 100 lines then compile",
+        "Test each small addition immediately"
+      ],
+      "source": "1.11 - Developing your first program",
+      "difficulty": "medium"
+    }
+  ]
+}

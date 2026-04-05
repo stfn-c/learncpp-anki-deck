@@ -1,0 +1,132 @@
+{
+  "chapter": "Chapter 16",
+  "chapter_title": "Introduction to Containers and Arrays",
+  "lesson": "16.2",
+  "lesson_title": "Introduction to std::vector and list constructors",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch16_2_001",
+      "lesson": "16.2",
+      "type": "cloze",
+      "tags": ["cpp", "vector", "syntax"],
+      "text": "To use std::vector, include the {{c1::&lt;vector&gt;}} header.",
+      "source": "16.2 - Introduction to std::vector and list constructors",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_2_002",
+      "lesson": "16.2",
+      "type": "cloze",
+      "tags": ["cpp", "vector", "syntax"],
+      "text": "To declare an empty std::vector of integers: {{c1::std::vector&lt;int&gt; v;}}<br>To declare with specific values: {{c2::std::vector&lt;int&gt; v{ 1, 2, 3 };}}",
+      "source": "16.2 - Introduction to std::vector and list constructors",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_2_003",
+      "lesson": "16.2",
+      "type": "basic",
+      "tags": ["cpp", "vector", "initialization"],
+      "front": "What is the difference between std::vector&lt;int&gt; v(5) and std::vector&lt;int&gt; v{5}?",
+      "back": "std::vector&lt;int&gt; v(5) creates a vector with 5 value-initialized elements (all zeros).<br>std::vector&lt;int&gt; v{5} creates a vector with one element: the value 5.",
+      "source": "16.2 - Introduction to std::vector and list constructors",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch16_2_004",
+      "lesson": "16.2",
+      "type": "cloze",
+      "tags": ["cpp", "vector", "syntax"],
+      "text": "To create a vector with 10 elements, each initialized to 7: {{c1::std::vector&lt;int&gt; v(10, 7);}}",
+      "source": "16.2 - Introduction to std::vector and list constructors",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_2_005",
+      "lesson": "16.2",
+      "type": "code",
+      "tags": ["cpp", "vector", "common-mistakes"],
+      "question": "What's the problem with this code?",
+      "code": "std::vector&lt;int&gt; v(5, 10);\nstd::cout &lt;&lt; v.size();",
+      "answer": "No problem - this creates a vector with 5 elements, each initialized to 10. Outputs: 5",
+      "explanation": "The parenthesis initialization syntax (count, value) is valid. This creates 5 elements with value 10.",
+      "source": "16.2 - Introduction to std::vector and list constructors",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_2_006",
+      "lesson": "16.2",
+      "type": "basic",
+      "tags": ["cpp", "initialization", "best-practices"],
+      "front": "What is list initialization (or uniform initialization)?",
+      "back": "A C++11 feature using curly braces {} to initialize objects. For containers, it allows initializing with a list of values: std::vector&lt;int&gt; v{1, 2, 3, 4};",
+      "source": "16.2 - Introduction to std::vector and list constructors",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_2_007",
+      "lesson": "16.2",
+      "type": "cloze",
+      "tags": ["cpp", "vector", "access"],
+      "text": "To access an element in a vector by index, use the {{c1::subscript operator []}} or the {{c2::at()}} member function.",
+      "source": "16.2 - Introduction to std::vector and list constructors",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_2_008",
+      "lesson": "16.2",
+      "type": "basic",
+      "tags": ["cpp", "vector", "access"],
+      "front": "What is the difference between vector[index] and vector.at(index)?",
+      "back": "vector[index] does not perform bounds checking (undefined behavior if out of range).<br>vector.at(index) performs bounds checking and throws std::out_of_range exception if index is invalid.",
+      "source": "16.2 - Introduction to std::vector and list constructors",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_2_009",
+      "lesson": "16.2",
+      "type": "cloze",
+      "tags": ["cpp", "vector", "syntax"],
+      "text": "To get the length of a vector, use the {{c1::size()}} or {{c1::length()}} member function.",
+      "source": "16.2 - Introduction to std::vector and list constructors",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_2_010",
+      "lesson": "16.2",
+      "type": "concept",
+      "tags": ["cpp", "vector", "best-practices"],
+      "concept": "Why use brace initialization for std::vector when possible",
+      "explanation": "Brace initialization (list initialization) is preferred because:<ul><li>More intuitive syntax for initializing with values</li><li>Consistent with modern C++ style</li><li>Avoids confusion with constructor overloads</li><li>Cannot narrow (safer)</li></ul>",
+      "examples": [
+        "std::vector&lt;int&gt; v{1, 2, 3, 4};  // Preferred",
+        "std::vector&lt;int&gt; v = {1, 2, 3};  // Also OK",
+        "std::vector&lt;int&gt; v(10);  // Use () for count"
+      ],
+      "source": "16.2 - Introduction to std::vector and list constructors",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_2_011",
+      "lesson": "16.2",
+      "type": "cloze",
+      "tags": ["cpp", "vector", "templates"],
+      "text": "std::vector is a {{c1::class template}}, so you must specify the {{c2::element type}} as a template argument: std::vector&lt;{{c2::int}}&gt;.",
+      "source": "16.2 - Introduction to std::vector and list constructors",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_2_012",
+      "lesson": "16.2",
+      "type": "code",
+      "tags": ["cpp", "vector", "initialization"],
+      "question": "What does this code output?",
+      "code": "std::vector&lt;int&gt; v1{5};\nstd::vector&lt;int&gt; v2(5);\nstd::cout &lt;&lt; v1.size() &lt;&lt; ' ' &lt;&lt; v2.size();",
+      "answer": "1 5",
+      "explanation": "v1 uses brace initialization: creates 1 element with value 5.<br>v2 uses parenthesis: creates 5 value-initialized elements.",
+      "source": "16.2 - Introduction to std::vector and list constructors",
+      "difficulty": "hard"
+    }
+  ]
+}

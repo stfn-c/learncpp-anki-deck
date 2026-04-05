@@ -1,0 +1,207 @@
+{
+  "chapter": "Chapter 26",
+  "chapter_title": "Templates and Classes",
+  "lesson": "26.1",
+  "lesson_title": "Template classes",
+  "total_cards": 14,
+  "cards": [
+    {
+      "id": "ch26_1_001",
+      "lesson": "26.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "fundamentals"
+      ],
+      "front": "What problem do template classes solve?",
+      "back": "They allow you to write a class once that works with many different data types, avoiding code duplication (e.g., writing separate IntArray, DoubleArray, etc.).",
+      "source": "26.1 - Template classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch26_1_002",
+      "lesson": "26.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "syntax"
+      ],
+      "text": "To declare a template class: {{c1::template &lt;typename T&gt;}}<br>{{c2::class Array { ... };}}",
+      "source": "26.1 - Template classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch26_1_003",
+      "lesson": "26.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "instantiation"
+      ],
+      "text": "To instantiate a template class for int: {{c1::Array&lt;int&gt; intArray;}}",
+      "source": "26.1 - Template classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch26_1_004",
+      "lesson": "26.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "compilation"
+      ],
+      "front": "When does the compiler instantiate a template class?",
+      "back": "Only when the template class is actually used (e.g., as the type of an object). If you never use it, the compiler won't compile it.",
+      "source": "26.1 - Template classes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_1_005",
+      "lesson": "26.1",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "templates",
+        "member-functions"
+      ],
+      "question": "What's required when defining a templated member function outside the class?",
+      "code": "template &lt;typename T&gt;\nclass Array {\n    T&amp; operator[](int index);\n};\n\n// Outside definition:",
+      "answer": "template &lt;typename T&gt;<br>T&amp; Array&lt;T&gt;::operator[](int index) { ... }",
+      "explanation": "Each templated member function defined outside the class needs:<ul><li>Its own template declaration</li><li>The class name qualified with template parameters (Array&lt;T&gt;)</li></ul>",
+      "source": "26.1 - Template classes",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch26_1_006",
+      "lesson": "26.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "naming"
+      ],
+      "front": "What is the full name of a templated class?",
+      "back": "The class name plus template parameters, e.g., Array&lt;T&gt;. Inside the class, you can use just Array, but outside you must use Array&lt;T&gt;.",
+      "source": "26.1 - Template classes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_1_007",
+      "lesson": "26.1",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "templates",
+        "best-practices",
+        "file-organization"
+      ],
+      "concept": "Why can't you split template class definitions and implementations across .h and .cpp files?",
+      "explanation": "Templates are stencils, not actual code. When main.cpp uses Array&lt;int&gt;, the compiler needs to see the full template definition to instantiate it. If the implementation is in Array.cpp (compiled separately), the linker will fail because the template was never instantiated there.",
+      "examples": [
+        "// Array.h - contains full template definition",
+        "// Array.cpp - DON'T do this with templates!",
+        "// Better: Put everything in Array.h"
+      ],
+      "source": "26.1 - Template classes",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch26_1_008",
+      "lesson": "26.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "best-practices"
+      ],
+      "front": "What is the recommended way to organize template class code?",
+      "back": "Put all template class code (definition and member function implementations) in the header file.",
+      "source": "26.1 - Template classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch26_1_009",
+      "lesson": "26.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "file-organization"
+      ],
+      "text": "An alternative to putting all template code in the .h file is to use a {{c1::.inl}} file (for inline) and {{c2::#include it at the bottom of the header}}.",
+      "source": "26.1 - Template classes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_1_010",
+      "lesson": "26.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "gotchas"
+      ],
+      "front": "What happens if your compiler treats a .inl file as a separate compilation unit?",
+      "back": "You'll get duplicate definition errors because the .inl gets compiled twice: once directly and once when included in the .cpp file.",
+      "source": "26.1 - Template classes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_1_011",
+      "lesson": "26.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "explicit-instantiation"
+      ],
+      "text": "To explicitly instantiate a template class: {{c1::template class Array&lt;int&gt;;}}",
+      "source": "26.1 - Template classes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_1_012",
+      "lesson": "26.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "use-cases"
+      ],
+      "front": "Why are template classes ideal for container classes?",
+      "back": "Because containers should work with many different data types, and templates allow you to write the container once without duplicating code for each type.",
+      "source": "26.1 - Template classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch26_1_013",
+      "lesson": "26.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "instantiation"
+      ],
+      "text": "When you use Array&lt;int&gt;, the compiler {{c1::stencils out a copy}} of the template with {{c2::T replaced by int}}.",
+      "source": "26.1 - Template classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch26_1_014",
+      "lesson": "26.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "syntax"
+      ],
+      "text": "Inside a template class, you can use {{c1::Array}} instead of {{c2::Array&lt;T&gt;}} because the template arguments are implicit.",
+      "source": "26.1 - Template classes",
+      "difficulty": "medium"
+    }
+  ]
+}

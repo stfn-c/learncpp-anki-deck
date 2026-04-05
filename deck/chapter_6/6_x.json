@@ -1,0 +1,180 @@
+{
+  "chapter": "Chapter 6",
+  "chapter_title": "Operators",
+  "lesson": "6.x",
+  "lesson_title": "Chapter 6 summary and quiz",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch6_x_001",
+      "lesson": "6.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operators",
+        "best-practices"
+      ],
+      "front": "When should you use parentheses with operators?",
+      "back": "Always use parentheses to disambiguate the precedence of operators if there is any question or opportunity for confusion. This improves code clarity.",
+      "source": "6.x - Chapter 6 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_x_002",
+      "lesson": "6.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operators",
+        "remainder"
+      ],
+      "text": "The remainder operator {{c1::%}} returns the {{c2::remainder}} from an integer division. For example, 7 % 3 = {{c3::1}}.",
+      "source": "6.x - Chapter 6 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_x_003",
+      "lesson": "6.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operators",
+        "increment"
+      ],
+      "front": "Why should you prefer prefix increment/decrement over postfix?",
+      "back": "Prefix (++x) is more efficient because it doesn't create a temporary copy of the old value. Postfix (x++) must store the old value to return it.",
+      "source": "6.x - Chapter 6 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_x_004",
+      "lesson": "6.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operators",
+        "side-effects"
+      ],
+      "front": "What is the rule about using variables with side effects in a statement?",
+      "back": "Do not use a variable that has a side effect applied more than once in a given statement. This causes undefined behavior.",
+      "source": "6.x - Chapter 6 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch6_x_005",
+      "lesson": "6.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operators",
+        "comma"
+      ],
+      "front": "When is it acceptable to use the comma operator?",
+      "back": "Only in for loops. Otherwise, write separate statements for better readability.",
+      "source": "6.x - Chapter 6 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_x_006",
+      "lesson": "6.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operators",
+        "conditional"
+      ],
+      "text": "The conditional operator syntax is {{c1::condition ? expressionIfTrue : expressionIfFalse}}. Parenthesize the entire operator when used in {{c2::compound expressions}}.",
+      "source": "6.x - Chapter 6 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_x_007",
+      "lesson": "6.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operators",
+        "relational"
+      ],
+      "front": "Why should you avoid using == and != with floating point numbers?",
+      "back": "Floating point rounding errors make exact equality comparisons unreliable. Use epsilon comparison instead: std::abs(a - b) &lt; epsilon.",
+      "source": "6.x - Chapter 6 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch6_x_008",
+      "lesson": "6.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operators",
+        "logical"
+      ],
+      "front": "What are the three logical operators and what do they do?",
+      "back": "! (NOT) - negates a boolean<br>&amp;&amp; (AND) - true if both operands are true<br>|| (OR) - true if at least one operand is true",
+      "source": "6.x - Chapter 6 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_x_009",
+      "lesson": "6.x",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operators",
+        "quiz"
+      ],
+      "question": "Complete this function to return \"apple\" for 1, \"apples\" otherwise:",
+      "code": "std::string_view pluralize(int num)\n{\n    // Your code here\n}",
+      "answer": "return (num == 1) ? \"apple\" : \"apples\";",
+      "explanation": "Use the conditional operator to return one of two string values based on whether num equals 1.",
+      "source": "6.x - Chapter 6 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch6_x_010",
+      "lesson": "6.x",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "operators",
+        "best-practices"
+      ],
+      "concept": "Chapter 6 key takeaways",
+      "explanation": "Chapter 6 covers C++ operators and their proper use:<ul><li>Use parentheses to clarify precedence</li><li>Prefer prefix increment over postfix</li><li>Avoid side effects in complex expressions</li><li>Don't use comma operator except in for loops</li><li>Use conditional operator for simple conditions</li><li>Never use == with floats</li><li>Leverage short-circuit evaluation for safety and efficiency</li></ul>",
+      "examples": [
+        "++x;              // Prefer prefix",
+        "(x &gt; 0) ? a : b  // Conditional for simple cases",
+        "std::abs(f1 - f2) &lt; epsilon  // Float comparison"
+      ],
+      "source": "6.x - Chapter 6 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch6_x_011",
+      "lesson": "6.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operators",
+        "best-practices"
+      ],
+      "text": "Always prefer {{c1::prefix}} increment (++x) over {{c2::postfix}} (x++) because it's more {{c3::efficient}}.",
+      "source": "6.x - Chapter 6 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_x_012",
+      "lesson": "6.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operators",
+        "floating-point"
+      ],
+      "text": "Never use {{c1::==}} or {{c2::!=}} to compare floating point numbers. Instead, check if {{c3::std::abs(a - b) &lt; epsilon}}.",
+      "source": "6.x - Chapter 6 summary and quiz",
+      "difficulty": "medium"
+    }
+  ]
+}

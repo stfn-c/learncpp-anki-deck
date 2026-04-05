@@ -1,0 +1,189 @@
+{
+  "chapter": "Chapter 27",
+  "chapter_title": "Exception Handling and Error Handling",
+  "lesson": "27.6",
+  "lesson_title": "27.6 — Rethrowing exceptions",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch27_6_001",
+      "lesson": "27.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "syntax"
+      ],
+      "text": "To rethrow an exception from within a catch block, use {{c1::throw;}} without an expression. This rethrows the {{c2::original exception}} object.",
+      "source": "27.6 - Rethrowing exceptions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_6_002",
+      "lesson": "27.6",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "syntax"
+      ],
+      "question": "What does the throw; statement do here?",
+      "code": "try {\n    processData();\n}\ncatch (const std::exception&amp; e) {\n    logError(e.what());\n    throw;  // rethrow\n}",
+      "answer": "It rethrows the same exception that was caught, allowing it to propagate to outer handlers.",
+      "explanation": "The bare throw; statement rethrows the current exception. This is useful for logging or cleanup before propagating the error.",
+      "source": "27.6 - Rethrowing exceptions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_6_003",
+      "lesson": "27.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "best-practices"
+      ],
+      "front": "What are common reasons to catch and rethrow an exception?",
+      "back": "Common reasons include:<ul><li>Logging the exception</li><li>Cleanup or resource management</li><li>Adding context information</li><li>Converting to a different exception type</li><li>Partial handling before propagating</li></ul>",
+      "source": "27.6 - Rethrowing exceptions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_6_004",
+      "lesson": "27.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "gotchas"
+      ],
+      "text": "Using {{c1::throw;}} rethrows the original exception, while {{c2::throw e;}} throws a new copy of the exception, which can cause {{c3::object slicing}} if e is a base class reference.",
+      "source": "27.6 - Rethrowing exceptions",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch27_6_005",
+      "lesson": "27.6",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "gotchas"
+      ],
+      "question": "What's the problem with using 'throw e;' here?",
+      "code": "try {\n    throw DerivedError();\n}\ncatch (const BaseError&amp; e) {\n    log(e);\n    throw e;  // rethrow?\n}",
+      "answer": "throw e; creates a new BaseError copy, slicing off the DerivedError parts. Use throw; instead.",
+      "explanation": "throw e; throws a new exception of type BaseError (the parameter type), causing slicing. throw; preserves the actual DerivedError object.",
+      "source": "27.6 - Rethrowing exceptions",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch27_6_006",
+      "lesson": "27.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "syntax"
+      ],
+      "text": "You can rethrow from a catch-all handler using {{c1::throw;}} even though you don't have access to the {{c2::exception object}}.",
+      "source": "27.6 - Rethrowing exceptions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_6_007",
+      "lesson": "27.6",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "syntax"
+      ],
+      "question": "Will this code properly rethrow unknown exceptions?",
+      "code": "try {\n    processData();\n}\ncatch (const std::exception&amp; e) {\n    handleKnown(e);\n}\ncatch (...) {\n    cleanup();\n    throw;  // rethrow\n}",
+      "answer": "Yes, throw; in the catch-all handler rethrows the original exception.",
+      "explanation": "throw; works in catch-all handlers to rethrow the exception even though you can't access it.",
+      "source": "27.6 - Rethrowing exceptions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_6_008",
+      "lesson": "27.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "gotchas"
+      ],
+      "front": "What happens if you use throw; outside of a catch block?",
+      "back": "std::terminate() is called immediately. The throw; statement can only be used inside a catch block to rethrow the current exception.",
+      "source": "27.6 - Rethrowing exceptions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_6_009",
+      "lesson": "27.6",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "best-practices"
+      ],
+      "concept": "Common exception rethrowing patterns",
+      "explanation": "Rethrowing is useful for several patterns:<ul><li>Logging: Catch, log details, rethrow for upper handlers</li><li>Cleanup: Catch, perform cleanup, rethrow</li><li>Translation: Catch one type, throw different type</li><li>Filtering: Catch specific exceptions, rethrow others</li></ul>Always use throw; not throw e; to avoid slicing.",
+      "examples": [
+        "try { operation(); }",
+        "catch (const Exception&amp; e) {",
+        "    logger.error(e.what());",
+        "    cleanup();",
+        "    throw;  // rethrow to caller",
+        "}"
+      ],
+      "source": "27.6 - Rethrowing exceptions",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch27_6_010",
+      "lesson": "27.6",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "best-practices"
+      ],
+      "question": "What pattern is being used here?",
+      "code": "try {\n    lowLevelOperation();\n}\ncatch (const LowLevelError&amp; e) {\n    throw HighLevelError(\n        \"Operation failed: \" + \n        std::string(e.what())\n    );\n}",
+      "answer": "Exception translation - converting a low-level exception into a higher-level one with added context.",
+      "explanation": "This catches a low-level exception and throws a new higher-level exception, hiding implementation details from callers.",
+      "source": "27.6 - Rethrowing exceptions",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch27_6_011",
+      "lesson": "27.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "fundamentals"
+      ],
+      "text": "Using {{c1::throw;}} preserves the {{c2::exact type}} and {{c3::value}} of the original exception, including all derived class information.",
+      "source": "27.6 - Rethrowing exceptions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_6_012",
+      "lesson": "27.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "fundamentals"
+      ],
+      "front": "Can a rethrown exception be caught by an outer try-catch block?",
+      "back": "Yes, when you rethrow an exception with throw;, it propagates up the call stack and can be caught by any outer try-catch block.",
+      "source": "27.6 - Rethrowing exceptions",
+      "difficulty": "easy"
+    }
+  ]
+}

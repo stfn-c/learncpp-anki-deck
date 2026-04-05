@@ -1,0 +1,185 @@
+{
+  "chapter": "Chapter 26",
+  "chapter_title": "Templates and Classes",
+  "lesson": "26.6",
+  "lesson_title": "Partial template specialization for pointers",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch26_6_001",
+      "lesson": "26.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "pointers",
+        "partial-specialization"
+      ],
+      "text": "To create a partial specialization for pointer types: {{c1::template &lt;typename T&gt;}}<br>{{c2::class Storage&lt;T*&gt; { ... };}}",
+      "source": "26.6 - Partial template specialization for pointers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_6_002",
+      "lesson": "26.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "pointers"
+      ],
+      "front": "Why would you create a partial specialization specifically for pointer types?",
+      "back": "To handle pointer-specific concerns like:<ul><li>Deep copying (copy pointed-to value, not just pointer)</li><li>Memory management</li><li>NULL/nullptr validation</li><li>Avoiding dangling pointers</li></ul>",
+      "source": "26.6 - Partial template specialization for pointers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_6_003",
+      "lesson": "26.6",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "templates",
+        "pointers"
+      ],
+      "question": "What types match this specialization?",
+      "code": "template &lt;typename T&gt;\nclass Storage&lt;T*&gt; {\n    T* m_value;\npublic:\n    Storage(T* value) { ... }\n};",
+      "answer": "Any pointer type: int*, double*, char*, std::string*, MyClass*, etc.",
+      "explanation": "The T* pattern matches when the template argument is a pointer to any type T.",
+      "source": "26.6 - Partial template specialization for pointers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch26_6_004",
+      "lesson": "26.6",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "templates",
+        "pointers",
+        "memory-management"
+      ],
+      "concept": "Deep copy in pointer specialization",
+      "explanation": "When storing pointers, you often want to copy the pointed-to value (deep copy) rather than just the pointer (shallow copy). This prevents:<ul><li>Multiple objects owning the same memory</li><li>Dangling pointers when original is deleted</li><li>Unexpected sharing of data</li></ul>",
+      "examples": [
+        "// Shallow: m_value = value; // Just copy pointer",
+        "// Deep: m_value = new T(*value); // Copy pointed-to object"
+      ],
+      "source": "26.6 - Partial template specialization for pointers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_6_005",
+      "lesson": "26.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "pointers"
+      ],
+      "text": "For Storage&lt;int*&gt;, the compiler will use {{c1::the pointer specialization (Storage&lt;T*&gt;)}} instead of {{c2::the primary template (Storage&lt;T&gt;)}}.",
+      "source": "26.6 - Partial template specialization for pointers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch26_6_006",
+      "lesson": "26.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "pointers"
+      ],
+      "front": "If you have Storage&lt;int**&gt; (pointer to pointer), which template is used?",
+      "back": "The pointer specialization Storage&lt;T*&gt; is used, where T = int*.",
+      "source": "26.6 - Partial template specialization for pointers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_6_007",
+      "lesson": "26.6",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "templates",
+        "pointers",
+        "memory-management"
+      ],
+      "question": "What memory management issue does this pointer specialization solve?",
+      "code": "template &lt;typename T&gt;\nclass Storage&lt;T*&gt; {\n    T* m_value;\npublic:\n    Storage(T* value) : m_value(new T(*value)) {}\n    ~Storage() { delete m_value; }\n};",
+      "answer": "It performs deep copying and automatic cleanup. The constructor copies the pointed-to value, and the destructor deletes it.",
+      "explanation": "This prevents dangling pointers and ensures the Storage owns its data. Without this, deleting the original pointer would invalidate Storage's pointer.",
+      "source": "26.6 - Partial template specialization for pointers",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch26_6_008",
+      "lesson": "26.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "pointers",
+        "gotchas"
+      ],
+      "front": "What happens if you pass a null pointer to Storage&lt;T*&gt; that dereferences it?",
+      "back": "Undefined behavior / crash when trying to dereference the null pointer (e.g., new T(*value) where value is null).",
+      "source": "26.6 - Partial template specialization for pointers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_6_009",
+      "lesson": "26.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "pointers"
+      ],
+      "text": "A pointer specialization can provide {{c1::different member functions}} or {{c2::additional safety checks}} compared to the primary template.",
+      "source": "26.6 - Partial template specialization for pointers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch26_6_010",
+      "lesson": "26.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "pointers",
+        "best-practices"
+      ],
+      "front": "In modern C++, what is a better alternative to manually managing pointers in template classes?",
+      "back": "Use smart pointers (std::unique_ptr, std::shared_ptr) which handle memory management automatically.",
+      "source": "26.6 - Partial template specialization for pointers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_6_011",
+      "lesson": "26.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "pointers"
+      ],
+      "text": "A pointer specialization typically performs {{c1::deep copying}} to copy the {{c2::pointed-to value}}, not just the pointer.",
+      "source": "26.6 - Partial template specialization for pointers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_6_012",
+      "lesson": "26.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "pointers"
+      ],
+      "text": "For Storage&lt;int**&gt;, the pointer specialization is used where T = {{c1::int*}}.",
+      "source": "26.6 - Partial template specialization for pointers",
+      "difficulty": "medium"
+    }
+  ]
+}

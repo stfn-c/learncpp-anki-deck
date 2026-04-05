@@ -1,0 +1,180 @@
+{
+  "chapter": "Chapter 4",
+  "chapter_title": "Fundamental Data Types",
+  "lesson": "4.6",
+  "lesson_title": "Fixed-width integers and size_t",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch4_6_001",
+      "lesson": "4.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "types",
+        "fixed-width"
+      ],
+      "front": "Why were fixed-width integers introduced in C++11?",
+      "back": "To guarantee integer sizes across all systems, since standard types (int, long) can vary in size between platforms.",
+      "source": "4.6 - Fixed-width integers and size_t",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_6_002",
+      "lesson": "4.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "types",
+        "fixed-width",
+        "syntax"
+      ],
+      "text": "Fixed-width integers are defined in the {{c1::&lt;cstdint&gt;}} header and use names like {{c2::std::int32_t}}.",
+      "source": "4.6 - Fixed-width integers and size_t",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_6_003",
+      "lesson": "4.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "types",
+        "fixed-width"
+      ],
+      "front": "What are the common fixed-width signed integer types?",
+      "back": "<ul><li>std::int8_t (1 byte)</li><li>std::int16_t (2 bytes)</li><li>std::int32_t (4 bytes)</li><li>std::int64_t (8 bytes)</li></ul>",
+      "source": "4.6 - Fixed-width integers and size_t",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_6_004",
+      "lesson": "4.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "types",
+        "fixed-width",
+        "gotchas"
+      ],
+      "text": "Fixed-width integers are {{c1::optional}} - they are only defined if the system supports them with {{c2::no performance penalty}}.",
+      "source": "4.6 - Fixed-width integers and size_t",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch4_6_005",
+      "lesson": "4.6",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "fixed-width",
+        "syntax"
+      ],
+      "question": "What's needed to use std::int32_t?",
+      "code": "#include &lt;cstdint&gt;\n\nint main()\n{\n    std::int32_t x{ 42 };\n    return 0;\n}",
+      "answer": "Include &lt;cstdint&gt; header",
+      "explanation": "Fixed-width integers are defined in the &lt;cstdint&gt; header, which must be included.",
+      "source": "4.6 - Fixed-width integers and size_t",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_6_006",
+      "lesson": "4.6",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "fixed-width",
+        "best-practices"
+      ],
+      "concept": "When to use fixed-width integers",
+      "explanation": "Use fixed-width integers when:<ul><li>Storing data to file/network (guaranteed size)</li><li>Specific bit-width is required (e.g., 32-bit algorithm)</li><li>Platform independence is critical</li></ul>Otherwise prefer int for performance.",
+      "examples": [
+        "std::int32_t fileData;  // good: file format",
+        "int counter;            // good: general use"
+      ],
+      "source": "4.6 - Fixed-width integers and size_t",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch4_6_007",
+      "lesson": "4.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "fixed-width",
+        "gotchas"
+      ],
+      "front": "What are the downsides of fixed-width integers?",
+      "back": "<ul><li>Not guaranteed to be defined on all systems</li><li>May be slower than int on some architectures</li><li>Can cause unexpected behavior with integer promotion</li></ul>",
+      "source": "4.6 - Fixed-width integers and size_t",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch4_6_008",
+      "lesson": "4.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "types",
+        "fixed-width"
+      ],
+      "text": "{{c1::std::int_fast32_t}} is the fastest signed integer type with at least 32 bits. {{c2::std::int_least32_t}} is the smallest with at least 32 bits.",
+      "source": "4.6 - Fixed-width integers and size_t",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch4_6_009",
+      "lesson": "4.6",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "types",
+        "size_t"
+      ],
+      "front": "std::size_t",
+      "back": "Unsigned integer type guaranteed to hold the size of the largest object. Returned by sizeof and used for array indexing.",
+      "source": "4.6 - Fixed-width integers and size_t",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_6_010",
+      "lesson": "4.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "size_t",
+        "syntax"
+      ],
+      "text": "std::size_t is defined in the {{c1::&lt;cstddef&gt;}} header and is returned by the {{c2::sizeof}} operator.",
+      "source": "4.6 - Fixed-width integers and size_t",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_6_011",
+      "lesson": "4.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "size_t",
+        "gotchas"
+      ],
+      "front": "Why is using std::size_t for array indices problematic?",
+      "back": "Because it's unsigned, which can cause wraparound bugs in loops and comparisons. Prefer signed types even for indices.",
+      "source": "4.6 - Fixed-width integers and size_t",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch4_6_012",
+      "lesson": "4.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "best-practices",
+        "types"
+      ],
+      "text": "Best practice: Prefer {{c1::int}} for general purpose integers. Use {{c2::std::int_fast#_t}} when performance matters and size doesn't.",
+      "source": "4.6 - Fixed-width integers and size_t",
+      "difficulty": "medium"
+    }
+  ]
+}

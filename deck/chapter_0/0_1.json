@@ -1,0 +1,111 @@
+{
+  "chapter": "Chapter 0",
+  "chapter_title": "Introduction / Getting Started",
+  "lesson": "0.1",
+  "lesson_title": "Introduction to these tutorials",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "ch0_1_001",
+      "lesson": "0.1",
+      "type": "basic",
+      "tags": ["cpp", "fundamentals", "learning"],
+      "front": "What are the two main goals of the LearnCPP tutorials?",
+      "back": "<ul><li>Teach C++ programming from scratch</li><li>Provide a comprehensive reference for programmers</li></ul>",
+      "source": "0.1 - Introduction to these tutorials",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_1_002",
+      "lesson": "0.1",
+      "type": "cloze",
+      "tags": ["cpp", "learning", "fundamentals"],
+      "text": "The LearnCPP tutorials are designed for {{c1::complete beginners}} and assume {{c2::no prior programming experience}}.",
+      "source": "0.1 - Introduction to these tutorials",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_1_003",
+      "lesson": "0.1",
+      "type": "basic",
+      "tags": ["cpp", "learning", "best-practices"],
+      "front": "Why should you read the tutorials sequentially rather than jumping to specific topics?",
+      "back": "Each lesson builds on concepts from previous lessons. Skipping lessons may result in missing important foundational knowledge needed to understand later topics.",
+      "source": "0.1 - Introduction to these tutorials",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_1_004",
+      "lesson": "0.1",
+      "type": "cloze",
+      "tags": ["cpp", "learning", "practice"],
+      "text": "To learn programming effectively, you should {{c1::type in and compile}} the examples yourself rather than just {{c2::copying and pasting}} them.",
+      "source": "0.1 - Introduction to these tutorials",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_1_005",
+      "lesson": "0.1",
+      "type": "basic",
+      "tags": ["cpp", "learning", "best-practices"],
+      "front": "What should you do when you encounter a quiz question you cannot answer?",
+      "back": "Review the lesson material before checking the answer. The quizzes test your understanding of the material just covered.",
+      "source": "0.1 - Introduction to these tutorials",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_1_006",
+      "lesson": "0.1",
+      "type": "concept",
+      "tags": ["cpp", "learning", "best-practices"],
+      "concept": "The importance of experimentation in learning C++",
+      "explanation": "Experimenting with code examples helps you learn how C++ works in practice. Try modifying examples, breaking them intentionally, and predicting what will happen before running the code.",
+      "examples": [
+        "Change variable values and observe output",
+        "Remove semicolons to see compiler errors",
+        "Modify code examples to solve different problems"
+      ],
+      "source": "0.1 - Introduction to these tutorials",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_1_007",
+      "lesson": "0.1",
+      "type": "basic",
+      "tags": ["cpp", "learning", "tutorials"],
+      "front": "What makes the LearnCPP tutorials different from a traditional textbook?",
+      "back": "They are free, online, regularly updated with modern C++ practices, and designed to be more accessible and practical than traditional textbooks.",
+      "source": "0.1 - Introduction to these tutorials",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_1_008",
+      "lesson": "0.1",
+      "type": "cloze",
+      "tags": ["cpp", "learning", "fundamentals"],
+      "text": "These tutorials cover C++ through {{c1::C++20}}, with some coverage of {{c2::C++23}} features.",
+      "source": "0.1 - Introduction to these tutorials",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_1_009",
+      "lesson": "0.1",
+      "type": "basic",
+      "tags": ["cpp", "learning", "best-practices"],
+      "front": "Why is it important to do the practice problems and exercises?",
+      "back": "Practice problems reinforce learning and help identify gaps in understanding. They provide hands-on experience applying concepts from the lessons.",
+      "source": "0.1 - Introduction to these tutorials",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_1_010",
+      "lesson": "0.1",
+      "type": "basic",
+      "tags": ["cpp", "learning", "community"],
+      "front": "What should you do if you get stuck on a problem or concept?",
+      "back": "Try to solve it yourself first, re-read the relevant lesson, then ask for help in the comments section or programming communities if still stuck.",
+      "source": "0.1 - Introduction to these tutorials",
+      "difficulty": "easy"
+    }
+  ]
+}

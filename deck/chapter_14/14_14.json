@@ -1,0 +1,133 @@
+{
+  "chapter": "Chapter 14",
+  "chapter_title": "Introduction to Classes",
+  "lesson": "14.14",
+  "lesson_title": "Introduction to the copy constructor",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch14_14_001",
+      "lesson": "14.14",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "copy-constructor"],
+      "text": "A {{c1::copy constructor}} is a special constructor used to create a new object as a {{c2::copy}} of an existing object of the same type.",
+      "source": "14.14 - Introduction to the copy constructor",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_14_002",
+      "lesson": "14.14",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "copy-constructor", "syntax"],
+      "text": "Copy constructor signature:<br>{{c1::ClassName}}(const {{c2::ClassName}}&amp; {{c3::other}})",
+      "source": "14.14 - Introduction to the copy constructor",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_14_003",
+      "lesson": "14.14",
+      "type": "code",
+      "tags": ["cpp", "classes", "copy-constructor", "syntax"],
+      "question": "Define a copy constructor for this class:",
+      "code": "class Fraction<br>{<br>private:<br>&nbsp;&nbsp;&nbsp;&nbsp;int m_num;<br>&nbsp;&nbsp;&nbsp;&nbsp;int m_den;<br>public:<br>&nbsp;&nbsp;&nbsp;&nbsp;Fraction(int num, int den)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: m_num{num}, m_den{den} { }<br>&nbsp;&nbsp;&nbsp;&nbsp;// Add copy constructor<br>};",
+      "answer": "Fraction(const Fraction&amp; f)<br>&nbsp;&nbsp;&nbsp;&nbsp;: m_num{f.m_num}, m_den{f.m_den} { }",
+      "explanation": "Copy constructor takes a const reference to another Fraction and copies its members.",
+      "source": "14.14 - Introduction to the copy constructor",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_14_004",
+      "lesson": "14.14",
+      "type": "basic",
+      "tags": ["cpp", "classes", "copy-constructor"],
+      "front": "When is the copy constructor called?",
+      "back": "<ul><li>When initializing a new object from an existing object</li><li>When passing an object by value to a function</li><li>When returning an object by value from a function (unless elided)</li></ul>",
+      "source": "14.14 - Introduction to the copy constructor",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_14_005",
+      "lesson": "14.14",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "copy-constructor"],
+      "text": "If you don't provide a copy constructor, the compiler generates an {{c1::implicit copy constructor}} that performs a {{c2::memberwise copy}} (shallow copy) of all members.",
+      "source": "14.14 - Introduction to the copy constructor",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_14_006",
+      "lesson": "14.14",
+      "type": "code",
+      "tags": ["cpp", "classes", "copy-constructor"],
+      "question": "How many times is the copy constructor called?",
+      "code": "Fraction f1{3, 4};<br>Fraction f2{f1};       // 1<br>Fraction f3 = f1;      // 2<br>printFraction(f1);    // 3 (pass by value)<br>Fraction f4 = getFraction();  // 4 (return by value)",
+      "answer": "Potentially 4 times, but copy elision may eliminate some of these copies (especially 4).",
+      "explanation": "Copy constructor is called when copying objects. Modern compilers often elide copies when possible.",
+      "source": "14.14 - Introduction to the copy constructor",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_14_007",
+      "lesson": "14.14",
+      "type": "basic",
+      "tags": ["cpp", "classes", "copy-constructor"],
+      "front": "Why must the copy constructor parameter be a const reference?",
+      "back": "If it took the parameter by value, calling the copy constructor would require making a copy, which would call the copy constructor again, creating infinite recursion. Reference is required; const is best practice.",
+      "source": "14.14 - Introduction to the copy constructor",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_14_008",
+      "lesson": "14.14",
+      "type": "concept",
+      "tags": ["cpp", "classes", "copy-constructor", "best-practices"],
+      "concept": "When you need to write a custom copy constructor",
+      "explanation": "Write a custom copy constructor when:<ul><li>Class manages dynamic memory (need deep copy, not shallow)</li><li>Class manages other resources (file handles, network connections)</li><li>Default memberwise copy would be incorrect or insufficient</li><li>Need to perform additional actions during copying</li></ul>For simple classes with only fundamental types or members that copy properly, the implicit copy constructor is fine.",
+      "examples": [
+        "// Need custom: class String { char* m_data; };  // dynamic memory",
+        "// Implicit OK: class Point { int x, y; };  // just ints"
+      ],
+      "source": "14.14 - Introduction to the copy constructor",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch14_14_009",
+      "lesson": "14.14",
+      "type": "reverse",
+      "tags": ["cpp", "classes", "terminology"],
+      "front": "Shallow copy",
+      "back": "A memberwise copy that copies pointer values directly, resulting in two pointers pointing to the same memory",
+      "source": "14.14 - Introduction to the copy constructor",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_14_010",
+      "lesson": "14.14",
+      "type": "reverse",
+      "tags": ["cpp", "classes", "terminology"],
+      "front": "Deep copy",
+      "back": "A copy that allocates new memory and copies the pointed-to data, resulting in two independent copies",
+      "source": "14.14 - Introduction to the copy constructor",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_14_011",
+      "lesson": "14.14",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "copy-constructor", "best-practices"],
+      "text": "Best practice: Pass class objects by {{c1::const reference}} instead of by value to {{c2::avoid unnecessary copies}} and improve performance.",
+      "source": "14.14 - Introduction to the copy constructor",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_14_012",
+      "lesson": "14.14",
+      "type": "basic",
+      "tags": ["cpp", "classes", "copy-constructor"],
+      "front": "How can you prevent a class from being copied?",
+      "back": "Delete the copy constructor: ClassName(const ClassName&amp;) = delete;<br>This causes a compile error if anyone tries to copy an object of that class.",
+      "source": "14.14 - Introduction to the copy constructor",
+      "difficulty": "medium"
+    }
+  ]
+}

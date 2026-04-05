@@ -1,0 +1,120 @@
+{
+  "chapter": "Chapter 1",
+  "chapter_title": "C++ Basics: Functions and Files",
+  "lesson": "1.2",
+  "lesson_title": "Comments",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "ch1_2_001",
+      "lesson": "1.2",
+      "type": "basic",
+      "tags": ["cpp", "comments", "fundamentals"],
+      "front": "What is a comment in C++?",
+      "back": "A comment is a programmer-readable note inserted directly into the source code. Comments are ignored by the compiler and are for the programmer's use only.",
+      "source": "1.2 - Comments",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_2_002",
+      "lesson": "1.2",
+      "type": "cloze",
+      "tags": ["cpp", "comments", "syntax"],
+      "text": "A single-line comment begins with {{c1:://}} and tells the compiler to ignore everything from that symbol to the end of the line.",
+      "source": "1.2 - Comments",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_2_003",
+      "lesson": "1.2",
+      "type": "cloze",
+      "tags": ["cpp", "comments", "syntax"],
+      "text": "A multi-line comment begins with {{c1::/*}} and ends with {{c2::*/}}. Everything between the symbols is ignored.",
+      "source": "1.2 - Comments",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_2_004",
+      "lesson": "1.2",
+      "type": "code",
+      "tags": ["cpp", "comments", "syntax"],
+      "question": "Which lines are comments in this code?",
+      "code": "// This is a single-line comment\nint x = 5; // This is also a comment\n/* This is a\n   multi-line comment */\nint y = 10;",
+      "answer": "Lines 1, 2 (after the code), and lines 3-4 are all comments",
+      "explanation": "Single-line comments start with // and multi-line comments are enclosed in /* */. Comments can appear on their own line or after code on the same line.",
+      "source": "1.2 - Comments",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_2_005",
+      "lesson": "1.2",
+      "type": "code",
+      "tags": ["cpp", "comments", "common-mistakes"],
+      "question": "What's wrong with this comment?",
+      "code": "/* This is a comment\n   /* This is a nested comment */\n   End of outer comment */",
+      "answer": "Multi-line comments cannot be nested in C++",
+      "explanation": "When the compiler encounters the first */, it assumes the comment block is complete, even if you intended it to be a nested comment. This can cause unexpected syntax errors.",
+      "source": "1.2 - Comments",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch1_2_006",
+      "lesson": "1.2",
+      "type": "concept",
+      "tags": ["cpp", "comments", "best-practices"],
+      "concept": "When to use comments in your code",
+      "explanation": "At the library, program, or function level, use comments to describe <em>what</em> the code does. Inside the library, program, or function, use comments to describe <em>how</em> the code is going to accomplish its goal.",
+      "examples": [
+        "// Calculate student's final grade (what)",
+        "// Use weighted average: 40% midterm, 60% final (how)",
+        "// Bad: x = x + 1; // Add 1 to x (obvious from code)"
+      ],
+      "source": "1.2 - Comments",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch1_2_007",
+      "lesson": "1.2",
+      "type": "cloze",
+      "tags": ["cpp", "comments", "best-practices"],
+      "text": "Comments should be written in a way that makes sense to someone who has {{c1::no idea what the code does}}. Assume the person reading the comments {{c2::understands C++ syntax}}.",
+      "source": "1.2 - Comments",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch1_2_008",
+      "lesson": "1.2",
+      "type": "basic",
+      "tags": ["cpp", "comments", "best-practices"],
+      "front": "Should you comment obvious code like <code>x = 5;</code>?",
+      "back": "No. Programmers often have to read through other people's code. If the code is obvious, don't comment it. Comments should add value by explaining <em>why</em> something is done, not just restating what the code does.",
+      "source": "1.2 - Comments",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_2_009",
+      "lesson": "1.2",
+      "type": "basic",
+      "tags": ["cpp", "comments", "workflow"],
+      "front": "What is one common use of comments during development?",
+      "back": "Commenting out code (replacing it with a comment) to temporarily exclude it from being compiled. This is useful for debugging or testing alternative implementations.",
+      "source": "1.2 - Comments",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch1_2_010",
+      "lesson": "1.2",
+      "type": "concept",
+      "tags": ["cpp", "comments", "gotchas"],
+      "concept": "Why you should avoid leaving commented-out code in production",
+      "explanation": "Commented-out code makes your codebase harder to maintain and understand:<ul><li>Future readers don't know why it's there</li><li>They can't tell if it's safe to delete</li><li>It clutters the code</li><li>Version control systems (like git) already preserve old code</li></ul>",
+      "examples": [
+        "// int oldCalculation = x * 2; // Why is this here?",
+        "Use git to access old code instead",
+        "Remove commented code before committing"
+      ],
+      "source": "1.2 - Comments",
+      "difficulty": "medium"
+    }
+  ]
+}

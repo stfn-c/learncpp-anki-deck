@@ -1,0 +1,124 @@
+{
+  "chapter": "Chapter 2",
+  "chapter_title": "C++ Basics: Functions and Files",
+  "lesson": "2.12",
+  "lesson_title": "Header guards",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "ch2_12_001",
+      "lesson": "2.12",
+      "type": "basic",
+      "tags": ["cpp", "headers", "header-guards"],
+      "front": "What problem do header guards solve?",
+      "back": "Header guards prevent a header file from being #included multiple times in the same compilation unit, which would cause duplicate definition errors.",
+      "source": "2.12 - Header guards",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_12_002",
+      "lesson": "2.12",
+      "type": "cloze",
+      "tags": ["cpp", "headers", "header-guards", "syntax"],
+      "text": "Header guards use {{c1::#ifndef}}, {{c2::#define}}, and {{c3::#endif}} preprocessor directives to prevent multiple inclusion.",
+      "source": "2.12 - Header guards",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_12_003",
+      "lesson": "2.12",
+      "type": "code",
+      "tags": ["cpp", "headers", "header-guards", "syntax"],
+      "question": "Write proper header guards for a file named math.h",
+      "code": "",
+      "answer": "#ifndef MATH_H<br>#define MATH_H<br><br>// header content<br><br>#endif",
+      "explanation": "The guard macro name typically matches the filename in uppercase, with underscores instead of dots.",
+      "source": "2.12 - Header guards",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_12_004",
+      "lesson": "2.12",
+      "type": "basic",
+      "tags": ["cpp", "headers", "header-guards"],
+      "front": "How do header guards work?",
+      "back": "First inclusion: ifndef succeeds, define sets the macro, content included. Subsequent inclusions: ifndef fails (macro already defined), content skipped.",
+      "source": "2.12 - Header guards",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_12_005",
+      "lesson": "2.12",
+      "type": "cloze",
+      "tags": ["cpp", "headers", "header-guards"],
+      "text": "The header guard macro name should be {{c1::unique}} to avoid conflicts. Typically use {{c2::FILENAME_H}} or {{c3::PROJECT_FILENAME_H}}.",
+      "source": "2.12 - Header guards",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_12_006",
+      "lesson": "2.12",
+      "type": "basic",
+      "tags": ["cpp", "headers", "pragma-once"],
+      "front": "What is #pragma once?",
+      "back": "#pragma once is a non-standard but widely supported alternative to header guards that ensures a header is included only once per compilation.",
+      "source": "2.12 - Header guards",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_12_007",
+      "lesson": "2.12",
+      "type": "code",
+      "tags": ["cpp", "headers", "pragma-once"],
+      "question": "Rewrite this header guard using #pragma once",
+      "code": "#ifndef MATH_H<br>#define MATH_H<br>// content<br>#endif",
+      "answer": "#pragma once<br>// content",
+      "explanation": "#pragma once is simpler and achieves the same result as traditional header guards.",
+      "source": "2.12 - Header guards",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_12_008",
+      "lesson": "2.12",
+      "type": "basic",
+      "tags": ["cpp", "headers", "header-guards", "pragma-once"],
+      "front": "What are the advantages of #pragma once over traditional header guards?",
+      "back": "Advantages:<ul><li>Simpler, less code</li><li>No risk of macro name collisions</li><li>Potentially faster compilation</li></ul>Disadvantage: Not part of C++ standard (but widely supported).",
+      "source": "2.12 - Header guards",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_12_009",
+      "lesson": "2.12",
+      "type": "concept",
+      "tags": ["cpp", "headers", "header-guards", "best-practices"],
+      "concept": "Best practices for header guards",
+      "explanation": "Guidelines for header guards:<ul><li>ALWAYS use header guards in every header file</li><li>Use unique macro names (include project/path if needed)</li><li>Wrap entire header content (except comments before guard)</li><li>Or use #pragma once for simplicity</li><li>Never define guard macros elsewhere in code</li></ul>",
+      "examples": [
+        "// Traditional",
+        "#ifndef PROJECT_MATH_H",
+        "#define PROJECT_MATH_H",
+        "// declarations",
+        "#endif  // PROJECT_MATH_H",
+        "",
+        "// Modern",
+        "#pragma once",
+        "// declarations"
+      ],
+      "source": "2.12 - Header guards",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_12_010",
+      "lesson": "2.12",
+      "type": "code",
+      "tags": ["cpp", "headers", "header-guards", "common-mistakes"],
+      "question": "What's wrong with this header guard?",
+      "code": "#ifndef MATH_H<br>int add(int a, int b);<br>#endif<br>#define MATH_H",
+      "answer": "#define must come right after #ifndef, before the content. This doesn't properly guard the header.",
+      "explanation": "The #define needs to be placed after #ifndef to set the guard macro before any content.",
+      "source": "2.12 - Header guards",
+      "difficulty": "medium"
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "chapter": "Chapter 8",
+  "chapter_title": "Control Flow",
+  "lesson": "8.8",
+  "lesson_title": "Introduction to loops and while statements",
+  "total_cards": 13,
+  "cards": [
+    {
+      "id": "ch8_8_001",
+      "lesson": "8.8",
+      "type": "basic",
+      "tags": ["cpp", "loops", "fundamentals"],
+      "front": "What is a loop in programming?",
+      "back": "A control flow construct that repeatedly executes a sequence of statements until some condition is no longer met.",
+      "source": "8.8 - Introduction to loops and while statements",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_8_002",
+      "lesson": "8.8",
+      "type": "cloze",
+      "tags": ["cpp", "loops", "terminology"],
+      "text": "Each execution of the loop's statements is called an {{c1::iteration}}.",
+      "source": "8.8 - Introduction to loops and while statements",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_8_003",
+      "lesson": "8.8",
+      "type": "cloze",
+      "tags": ["cpp", "while-loop", "syntax"],
+      "text": "While loop syntax:<br>{{c1::while (condition)}}<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;{{c2::// statements to repeat}}<br>}",
+      "source": "8.8 - Introduction to loops and while statements",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_8_004",
+      "lesson": "8.8",
+      "type": "basic",
+      "tags": ["cpp", "while-loop", "fundamentals"],
+      "front": "When does a while loop check its condition?",
+      "back": "Before each iteration (including the first). If the condition is false initially, the loop body never executes.",
+      "source": "8.8 - Introduction to loops and while statements",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_8_005",
+      "lesson": "8.8",
+      "type": "code",
+      "tags": ["cpp", "while-loop", "syntax"],
+      "question": "What does this code print?",
+      "code": "int count = 0;<br>while (count &lt; 3)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; count &lt;&lt; ' ';<br>&nbsp;&nbsp;&nbsp;&nbsp;++count;<br>}",
+      "answer": "0 1 2",
+      "explanation": "The loop runs while count &lt; 3. It prints 0, 1, 2, then when count becomes 3, the condition is false and the loop stops.",
+      "source": "8.8 - Introduction to loops and while statements",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_8_006",
+      "lesson": "8.8",
+      "type": "basic",
+      "tags": ["cpp", "loops", "terminology"],
+      "front": "What is an infinite loop?",
+      "back": "A loop whose condition never becomes false, causing it to run forever (or until the program is terminated).",
+      "source": "8.8 - Introduction to loops and while statements",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_8_007",
+      "lesson": "8.8",
+      "type": "cloze",
+      "tags": ["cpp", "while-loop", "syntax"],
+      "text": "An intentional infinite loop can be written as: {{c1::while (true)}} { }",
+      "source": "8.8 - Introduction to loops and while statements",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_8_008",
+      "lesson": "8.8",
+      "type": "code",
+      "tags": ["cpp", "while-loop", "common-mistakes"],
+      "question": "What's wrong with this code?",
+      "code": "int count = 0;<br>while (count &lt; 5)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; count;<br>}",
+      "answer": "Infinite loop - count is never incremented, so the condition is always true.",
+      "explanation": "The loop body doesn't modify count, so count &lt; 5 is always true. This creates an infinite loop. You must update the loop variable inside the loop.",
+      "source": "8.8 - Introduction to loops and while statements",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_8_009",
+      "lesson": "8.8",
+      "type": "cloze",
+      "tags": ["cpp", "loops", "terminology"],
+      "text": "A variable that controls how many times a loop executes is called a {{c1::loop counter}} or {{c2::loop variable}}.",
+      "source": "8.8 - Introduction to loops and while statements",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_8_010",
+      "lesson": "8.8",
+      "type": "basic",
+      "tags": ["cpp", "while-loop", "best-practices"],
+      "front": "Should you declare the loop counter inside or outside the while loop?",
+      "back": "Outside, before the loop. While loops don't have a built-in initialization section (unlike for loops), so the counter must be declared beforehand.",
+      "source": "8.8 - Introduction to loops and while statements",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_8_011",
+      "lesson": "8.8",
+      "type": "concept",
+      "tags": ["cpp", "while-loop", "best-practices"],
+      "concept": "While loop components",
+      "explanation": "Every while loop needs three components to work correctly:<ul><li><strong>Initialization</strong>: Set up the loop counter (before the loop)</li><li><strong>Condition</strong>: Test to determine if loop should continue</li><li><strong>Update</strong>: Modify the loop counter (inside the loop)</li></ul>Forgetting any component causes bugs - most commonly forgetting to update creates an infinite loop.",
+      "examples": [
+        "int i = 0;        // initialization<br>while (i &lt; 10)   // condition<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; i;<br>&nbsp;&nbsp;&nbsp;&nbsp;++i;          // update<br>}"
+      ],
+      "source": "8.8 - Introduction to loops and while statements",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_8_012",
+      "lesson": "8.8",
+      "type": "code",
+      "tags": ["cpp", "while-loop", "common-mistakes"],
+      "question": "What does this code do?",
+      "code": "int count = 5;<br>while (count &gt; 0);<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; count;<br>&nbsp;&nbsp;&nbsp;&nbsp;--count;<br>}",
+      "answer": "Infinite loop - the semicolon after while creates a null statement.",
+      "explanation": "The semicolon after the condition makes the loop body empty (null statement). The block below is not part of the loop. This creates an infinite loop.",
+      "source": "8.8 - Introduction to loops and while statements",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch8_8_013",
+      "lesson": "8.8",
+      "type": "basic",
+      "tags": ["cpp", "while-loop", "best-practices"],
+      "front": "What happens if a while loop's condition is false on the first check?",
+      "back": "The loop body is skipped entirely and never executes. Execution continues with the statement after the loop.",
+      "source": "8.8 - Introduction to loops and while statements",
+      "difficulty": "easy"
+    }
+  ]
+}

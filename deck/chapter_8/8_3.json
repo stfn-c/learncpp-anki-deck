@@ -1,0 +1,143 @@
+{
+  "chapter": "Chapter 8",
+  "chapter_title": "Control Flow",
+  "lesson": "8.3",
+  "lesson_title": "Common if statement problems",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch8_3_001",
+      "lesson": "8.3",
+      "type": "code",
+      "tags": ["cpp", "if-statement", "common-mistakes"],
+      "question": "What's wrong with this code?",
+      "code": "if (x = 5)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; \"x is 5\";<br>}",
+      "answer": "Using assignment (=) instead of comparison (==). This assigns 5 to x and always evaluates to true.",
+      "explanation": "The single = is assignment, not comparison. The expression (x = 5) assigns 5 to x, then evaluates to 5 (non-zero, which is true). Use == for comparison.",
+      "source": "8.3 - Common if statement problems",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_3_002",
+      "lesson": "8.3",
+      "type": "cloze",
+      "tags": ["cpp", "operators", "comparison"],
+      "text": "For equality comparison, use {{c1::==}} (equality operator).<br>For assignment, use {{c2::=}} (assignment operator).",
+      "source": "8.3 - Common if statement problems",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_3_003",
+      "lesson": "8.3",
+      "type": "concept",
+      "tags": ["cpp", "if-statement", "best-practices"],
+      "concept": "Preventing assignment in conditionals",
+      "explanation": "To prevent accidentally using assignment (=) instead of comparison (==) in if conditions, many developers use these techniques:<ul><li>Turn on compiler warnings (most compilers warn about this)</li><li>Use constants on the left side: if (5 == x) instead of if (x == 5) - this causes a compile error if you use =</li><li>Modern C++ compilers with -Wall or -Wextra will warn about this</li></ul>",
+      "examples": [
+        "if (5 == x)  // Good: constant on left",
+        "if (x == 5)  // OK but risky",
+        "if (x = 5)   // Bug: assignment!"
+      ],
+      "source": "8.3 - Common if statement problems",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_3_004",
+      "lesson": "8.3",
+      "type": "code",
+      "tags": ["cpp", "if-statement", "common-mistakes"],
+      "question": "What will this code print?",
+      "code": "int x = 3;<br>if (x &gt; 5)<br>&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; \"a\";<br>&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; \"b\";",
+      "answer": "b",
+      "explanation": "Without braces, only the first statement (std::cout &lt;&lt; \"a\") is part of the if. The second statement (std::cout &lt;&lt; \"b\") always executes. Indentation is misleading - always use braces!",
+      "source": "8.3 - Common if statement problems",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch8_3_005",
+      "lesson": "8.3",
+      "type": "basic",
+      "tags": ["cpp", "if-statement", "best-practices"],
+      "front": "What is the dangling else problem?",
+      "back": "When nested if statements don't use braces, it's ambiguous which if an else belongs to. The else attaches to the nearest if, which may not be what the programmer intended.",
+      "source": "8.3 - Common if statement problems",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_3_006",
+      "lesson": "8.3",
+      "type": "code",
+      "tags": ["cpp", "if-statement", "dangling-else"],
+      "question": "Which if does the else belong to in this code?",
+      "code": "if (x &gt; 0)<br>&nbsp;&nbsp;&nbsp;&nbsp;if (y &gt; 0)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; \"both positive\";<br>&nbsp;&nbsp;&nbsp;&nbsp;else<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; \"????\";",
+      "answer": "The else belongs to the inner if (y &gt; 0), not the outer if (x &gt; 0).",
+      "explanation": "An else clause is attached to the nearest unmatched if in the same block. Despite the misleading indentation, the else pairs with if (y &gt; 0). Always use braces to avoid this ambiguity!",
+      "source": "8.3 - Common if statement problems",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch8_3_007",
+      "lesson": "8.3",
+      "type": "cloze",
+      "tags": ["cpp", "if-statement", "best-practices"],
+      "text": "To avoid the dangling else problem, always use {{c1::braces}} (curly brackets) with nested if statements.",
+      "source": "8.3 - Common if statement problems",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_3_008",
+      "lesson": "8.3",
+      "type": "code",
+      "tags": ["cpp", "if-statement", "common-mistakes"],
+      "question": "What's wrong with this code?",
+      "code": "if (x &gt; 0 && y &gt; 0);<br>std::cout &lt;&lt; \"both positive\";",
+      "answer": "Semicolon after the if condition creates a null statement. The cout always executes regardless of the condition.",
+      "explanation": "The semicolon terminates the if with an empty statement. The cout is not part of the if. This is a very common and subtle bug.",
+      "source": "8.3 - Common if statement problems",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_3_009",
+      "lesson": "8.3",
+      "type": "basic",
+      "tags": ["cpp", "if-statement", "best-practices"],
+      "front": "Why is it recommended to avoid using == and != with floating point values?",
+      "back": "Floating point values can have small rounding errors, so two values that should be equal may not compare as exactly equal. Use an epsilon comparison instead.",
+      "source": "8.3 - Common if statement problems",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_3_010",
+      "lesson": "8.3",
+      "type": "cloze",
+      "tags": ["cpp", "if-statement", "syntax"],
+      "text": "To chain multiple conditions where only one should be true, use {{c1::if}} for the first, {{c2::else if}} for middle conditions, and {{c3::else}} for the default case.",
+      "source": "8.3 - Common if statement problems",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_3_011",
+      "lesson": "8.3",
+      "type": "basic",
+      "tags": ["cpp", "if-statement", "fundamentals"],
+      "front": "In an if-else if-else chain, what happens when one condition is true?",
+      "back": "When a condition is true, its associated statement executes and the rest of the chain is skipped. Only one block in the chain will execute.",
+      "source": "8.3 - Common if statement problems",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_3_012",
+      "lesson": "8.3",
+      "type": "concept",
+      "tags": ["cpp", "if-statement", "best-practices"],
+      "concept": "Best practices for if statements",
+      "explanation": "Follow these rules to avoid common if statement bugs:<ul><li>Always use braces { } even for single statements</li><li>Use == for comparison, not = (assignment)</li><li>Watch for semicolons after if conditions (creates null statement)</li><li>Be aware of the dangling else problem in nested ifs</li><li>Don't compare floating point values with == or !=</li><li>Use proper indentation (but don't trust it without braces)</li></ul>",
+      "examples": [
+        "// Good<br>if (x == 5) {<br>&nbsp;&nbsp;&nbsp;&nbsp;doSomething();<br>}",
+        "// Bad<br>if (x = 5);  // assignment + null statement<br>&nbsp;&nbsp;&nbsp;&nbsp;doSomething();  // always executes"
+      ],
+      "source": "8.3 - Common if statement problems",
+      "difficulty": "medium"
+    }
+  ]
+}

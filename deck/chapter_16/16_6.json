@@ -1,0 +1,134 @@
+{
+  "chapter": "Chapter 16",
+  "chapter_title": "Introduction to Containers and Arrays",
+  "lesson": "16.6",
+  "lesson_title": "Arrays and loops",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch16_6_001",
+      "lesson": "16.6",
+      "type": "cloze",
+      "tags": ["cpp", "vector", "loops"],
+      "text": "To iterate through all elements of a vector with indices, use a {{c1::for loop}} with index from {{c2::0}} to {{c3::std::ssize(vec) - 1}} or {{c3::vec.size() - 1}}.",
+      "source": "16.6 - Arrays and loops",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_6_002",
+      "lesson": "16.6",
+      "type": "code",
+      "tags": ["cpp", "vector", "loops"],
+      "question": "Write a loop to print all elements of a vector using indices",
+      "code": "std::vector&lt;int&gt; vec{10, 20, 30};",
+      "answer": "for (int i{0}; i &lt; std::ssize(vec); ++i)<br>&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; vec[i] &lt;&lt; ' ';",
+      "explanation": "Use signed int for index, std::ssize() for signed length, iterate from 0 to size-1.",
+      "source": "16.6 - Arrays and loops",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_6_003",
+      "lesson": "16.6",
+      "type": "cloze",
+      "tags": ["cpp", "loops", "iteration"],
+      "text": "Three main ways to iterate a vector: {{c1::index-based}} for loop, {{c2::iterator-based}} for loop, and {{c3::range-based}} for loop.",
+      "source": "16.6 - Arrays and loops",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_6_004",
+      "lesson": "16.6",
+      "type": "cloze",
+      "tags": ["cpp", "vector", "iteration"],
+      "text": "The most common way to iterate through a vector when you need the index is an {{c1::index-based for loop}}. The most common way when you only need values is a {{c2::range-based for loop}}.",
+      "source": "16.6 - Arrays and loops",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_6_005",
+      "lesson": "16.6",
+      "type": "code",
+      "tags": ["cpp", "vector", "loops"],
+      "question": "What does this code output?",
+      "code": "std::vector&lt;int&gt; v{1, 2, 3, 4};\nfor (int i{0}; i &lt; std::ssize(v); ++i)\n    v[i] *= 2;\nstd::cout &lt;&lt; v[2];",
+      "answer": "6",
+      "explanation": "The loop doubles each element. v[2] was 3, becomes 6.",
+      "source": "16.6 - Arrays and loops",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_6_006",
+      "lesson": "16.6",
+      "type": "concept",
+      "tags": ["cpp", "loops", "best-practices"],
+      "concept": "When to use index-based vs range-based for loops",
+      "explanation": "Use index-based when:<ul><li>You need the index position</li><li>You need to access multiple elements at once (e.g., i and i+1)</li><li>You need to iterate in reverse or skip elements</li></ul>Use range-based when:<ul><li>You only need to access elements sequentially</li><li>Simpler and more readable</li><li>Less error-prone</li></ul>",
+      "examples": [
+        "for (int i{0}; i &lt; std::ssize(v); ++i)  // need index",
+        "for (const auto&amp; val : v)  // just values"
+      ],
+      "source": "16.6 - Arrays and loops",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_6_007",
+      "lesson": "16.6",
+      "type": "code",
+      "tags": ["cpp", "vector", "common-mistakes"],
+      "question": "What's the problem with this loop?",
+      "code": "std::vector&lt;int&gt; v{1, 2, 3};\nfor (int i{0}; i &lt;= v.size(); ++i)\n    std::cout &lt;&lt; v[i];",
+      "answer": "Off-by-one error and signed/unsigned comparison. Should be i &lt; std::ssize(v), not &lt;=",
+      "explanation": "Using &lt;= goes one past the end (undefined behavior). Also comparing signed int with unsigned size().",
+      "source": "16.6 - Arrays and loops",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch16_6_008",
+      "lesson": "16.6",
+      "type": "cloze",
+      "tags": ["cpp", "loops", "syntax"],
+      "text": "To iterate backwards through a vector with indices: {{c1::for (int i{std::ssize(vec) - 1}; i &gt;= 0; --i)}}",
+      "source": "16.6 - Arrays and loops",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_6_009",
+      "lesson": "16.6",
+      "type": "cloze",
+      "tags": ["cpp", "vector", "loops"],
+      "text": "You can't easily iterate backwards using std::size_t because it's {{c1::unsigned}}. When i is 0 and decremented, it {{c2::wraps}} to the {{c3::maximum unsigned value}} instead of -1.",
+      "source": "16.6 - Arrays and loops",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_6_010",
+      "lesson": "16.6",
+      "type": "code",
+      "tags": ["cpp", "vector", "loops"],
+      "question": "Write a loop to iterate backwards and print vector elements",
+      "code": "std::vector&lt;int&gt; vec{10, 20, 30};",
+      "answer": "for (int i{std::ssize(vec) - 1}; i &gt;= 0; --i)<br>&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; vec[i] &lt;&lt; ' ';",
+      "explanation": "Start at size-1, use signed int, decrement until i &lt; 0.",
+      "source": "16.6 - Arrays and loops",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_6_011",
+      "lesson": "16.6",
+      "type": "cloze",
+      "tags": ["cpp", "vector", "access"],
+      "text": "Accessing a vector index beyond its size causes {{c1::undefined behavior}}. Always ensure index is within valid range {{c2::[0, size-1]}}.",
+      "source": "16.6 - Arrays and loops",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_6_012",
+      "lesson": "16.6",
+      "type": "cloze",
+      "tags": ["cpp", "loops", "best-practices"],
+      "text": "When iterating through a vector, prefer {{c1::range-based for loops}} for simplicity when you don't need indices, and {{c2::index-based loops}} when you need positional information.",
+      "source": "16.6 - Arrays and loops",
+      "difficulty": "easy"
+    }
+  ]
+}

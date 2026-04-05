@@ -1,0 +1,186 @@
+{
+  "chapter": "Chapter 27",
+  "chapter_title": "Exception Handling and Error Handling",
+  "lesson": "27.1",
+  "lesson_title": "27.1 — The need for exceptions",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch27_1_001",
+      "lesson": "27.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "error-handling"
+      ],
+      "text": "Three error handling methods discussed before exceptions are {{c1::assert()}}, {{c2::std::cerr}}, and {{c3::exit()}}.",
+      "source": "27.1 - The need for exceptions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch27_1_002",
+      "lesson": "27.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "error-handling"
+      ],
+      "front": "What is a major drawback of using return codes for error handling when a function needs to return both a result and an error code?",
+      "back": "Functions can only return one value, making it difficult to return both the function result and an error code. This often requires workarounds like output parameters or special return values.",
+      "source": "27.1 - The need for exceptions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch27_1_003",
+      "lesson": "27.1",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "common-mistakes"
+      ],
+      "question": "What's the problem with this function?",
+      "code": "double divide(int x, int y)\n{\n    return static_cast&lt;double&gt;(x)/y;\n}",
+      "answer": "It will crash if y is 0 (division by zero), but it can't easily return both an error code and the division result.",
+      "explanation": "This function demonstrates why return codes alone are insufficient - the function needs to return the division result, leaving no clean way to signal errors.",
+      "source": "27.1 - The need for exceptions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch27_1_004",
+      "lesson": "27.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "fundamentals"
+      ],
+      "text": "In C++, an {{c1::exception}} is an object or primitive type used to communicate that an error has occurred, and the process of creating and handling exceptions is called {{c2::exception handling}}.",
+      "source": "27.1 - The need for exceptions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch27_1_005",
+      "lesson": "27.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "error-handling"
+      ],
+      "front": "Why can return codes be cryptic in error handling?",
+      "back": "It's often hard to tell whether a return value (like -1) indicates an error or is a valid return value without examining the function implementation or documentation.",
+      "source": "27.1 - The need for exceptions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch27_1_006",
+      "lesson": "27.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "syntax"
+      ],
+      "text": "To raise an exception in C++, use the {{c1::throw}} keyword followed by the exception value. The exception value is typically an object of an exception class.",
+      "source": "27.1 - The need for exceptions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch27_1_007",
+      "lesson": "27.1",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "syntax"
+      ],
+      "question": "What happens when this code executes with y=0?",
+      "code": "double divide(int x, int y)\n{\n    if (y == 0)\n        throw \"Division by zero!\";\n    return static_cast&lt;double&gt;(x)/y;\n}",
+      "answer": "It throws a C-string exception \"Division by zero!\" and terminates the program if not caught.",
+      "explanation": "The throw statement creates an exception. If not caught by a try-catch block, the program will terminate.",
+      "source": "27.1 - The need for exceptions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_1_008",
+      "lesson": "27.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "syntax"
+      ],
+      "text": "To handle exceptions, code that might throw is placed in a {{c1::try}} block, and exception handlers are defined using {{c2::catch}} blocks.",
+      "source": "27.1 - The need for exceptions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch27_1_009",
+      "lesson": "27.1",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "syntax"
+      ],
+      "question": "What is printed when this code runs?",
+      "code": "try {\n    double result = divide(10, 0);\n    std::cout &lt;&lt; result;\n}\ncatch (const char* msg) {\n    std::cout &lt;&lt; \"Error: \" &lt;&lt; msg;\n}",
+      "answer": "Error: Division by zero!",
+      "explanation": "The divide function throws an exception when y is 0, which is caught by the catch block that handles const char* exceptions.",
+      "source": "27.1 - The need for exceptions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_1_010",
+      "lesson": "27.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "best-practices"
+      ],
+      "front": "What is the key advantage of exceptions over return codes for error handling?",
+      "back": "Exceptions separate error handling code from normal code flow, and allow functions to return their actual result while still being able to signal errors.",
+      "source": "27.1 - The need for exceptions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_1_011",
+      "lesson": "27.1",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "best-practices"
+      ],
+      "concept": "Why exceptions are needed in C++",
+      "explanation": "Exceptions solve critical problems with return codes:<ul><li>Return codes can be cryptic and hard to interpret</li><li>Functions can only return one value (can't return both result and error)</li><li>Return codes must be manually checked at every call site</li><li>Exceptions separate error handling from normal code flow</li></ul>",
+      "examples": [
+        "// With return codes: unclear",
+        "int result = findChar(str, 'x');  // Is -1 error or valid?",
+        "",
+        "// With exceptions: clear separation",
+        "try { auto result = findChar(str, 'x'); }",
+        "catch (NotFoundException&amp; e) { /* handle */ }"
+      ],
+      "source": "27.1 - The need for exceptions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_1_012",
+      "lesson": "27.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "fundamentals"
+      ],
+      "text": "When an exception is thrown, the program {{c1::immediately stops}} executing the current function and searches for a matching {{c2::catch}} block up the call stack.",
+      "source": "27.1 - The need for exceptions",
+      "difficulty": "medium"
+    }
+  ]
+}

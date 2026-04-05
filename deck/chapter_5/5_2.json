@@ -1,0 +1,160 @@
+{
+  "chapter": "Chapter 5",
+  "chapter_title": "Constants and Strings",
+  "lesson": "5.2",
+  "lesson_title": "Literals",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "ch5_5_2_001",
+      "lesson": "5.2",
+      "type": "cloze",
+      "text": "A {{c1::literal}} is a fixed value inserted directly into the source code.",
+      "tags": [
+        "cpp",
+        "literals",
+        "fundamentals"
+      ],
+      "source": "5.2 - Literals",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch5_5_2_002",
+      "lesson": "5.2",
+      "type": "cloze",
+      "text": "The literal {{c1::5}} is an integer literal, while {{c2::5.0}} is a floating-point literal.",
+      "tags": [
+        "cpp",
+        "literals",
+        "types"
+      ],
+      "source": "5.2 - Literals",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch5_5_2_003",
+      "lesson": "5.2",
+      "type": "cloze",
+      "text": "String literals are enclosed in {{c1::double quotes}}, while character literals use {{c2::single quotes}}.",
+      "tags": [
+        "cpp",
+        "literals",
+        "strings"
+      ],
+      "source": "5.2 - Literals",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch5_5_2_004",
+      "lesson": "5.2",
+      "type": "cloze",
+      "text": "The suffix {{c1::f}} or {{c1::F}} indicates a float literal: {{c2::5.0f}}",
+      "tags": [
+        "cpp",
+        "literals",
+        "float",
+        "syntax"
+      ],
+      "source": "5.2 - Literals",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch5_5_2_005",
+      "lesson": "5.2",
+      "type": "code",
+      "question": "What type is each literal?",
+      "code": "auto a = 5;\nauto b = 5.0;\nauto c = 5.0f;\nauto d = 'A';\nauto e = \"Hello\";",
+      "answer": "a: int<br>b: double<br>c: float<br>d: char<br>e: const char* (C-style string)",
+      "explanation": "Literals have default types: whole numbers are int, decimals are double, f suffix makes float, single quotes are char, double quotes are C-style strings.",
+      "tags": [
+        "cpp",
+        "literals",
+        "types"
+      ],
+      "source": "5.2 - Literals",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch5_5_2_006",
+      "lesson": "5.2",
+      "type": "code",
+      "question": "What's the difference between these two literals?",
+      "code": "'5' vs 5",
+      "answer": "'5' is a character literal (char type, ASCII value 53)<br>5 is an integer literal (int type, value 5)",
+      "explanation": "Single quotes create a character, double quotes would create a string.",
+      "tags": [
+        "cpp",
+        "literals",
+        "char",
+        "int"
+      ],
+      "source": "5.2 - Literals",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch5_5_2_007",
+      "lesson": "5.2",
+      "type": "basic",
+      "front": "What is the default type of a decimal literal like 3.14?",
+      "back": "double (not float)",
+      "tags": [
+        "cpp",
+        "literals",
+        "double",
+        "types"
+      ],
+      "source": "5.2 - Literals",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch5_5_2_008",
+      "lesson": "5.2",
+      "type": "basic",
+      "front": "How do you write a long literal to avoid integer overflow with large numbers?",
+      "back": "Add the suffix L or LL: 5000000000LL",
+      "tags": [
+        "cpp",
+        "literals",
+        "long",
+        "syntax"
+      ],
+      "source": "5.2 - Literals",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch5_5_2_009",
+      "lesson": "5.2",
+      "type": "concept",
+      "concept": "Literal suffixes in C++",
+      "explanation": "Suffixes change the type of a literal:<ul><li>f or F: float</li><li>u or U: unsigned</li><li>l or L: long</li><li>ll or LL: long long</li><li>Can combine: 5ULL (unsigned long long)</li></ul>",
+      "examples": [
+        "5.0f    // float",
+        "5U      // unsigned int",
+        "5LL     // long long",
+        "5UL     // unsigned long"
+      ],
+      "tags": [
+        "cpp",
+        "literals",
+        "types",
+        "suffixes"
+      ],
+      "source": "5.2 - Literals",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch5_5_2_010",
+      "lesson": "5.2",
+      "type": "reverse",
+      "front": "literal",
+      "back": "A fixed value inserted directly into source code (e.g., 5, 3.14, 'A', \"Hello\")",
+      "tags": [
+        "cpp",
+        "literals",
+        "terminology"
+      ],
+      "source": "5.2 - Literals",
+      "difficulty": "easy"
+    }
+  ]
+}

@@ -1,0 +1,145 @@
+{
+  "chapter": "Chapter 25",
+  "chapter_title": "Virtual Functions",
+  "lesson": "25.3",
+  "lesson_title": "The override and final specifiers, and covariant return types",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch25_3_001",
+      "lesson": "25.3",
+      "type": "cloze",
+      "tags": ["cpp", "virtual-functions", "syntax"],
+      "text": "The {{c1::override}} specifier is placed after a function signature to indicate it should override a base class virtual function.",
+      "source": "25.3 - The override and final specifiers, and covariant return types",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_3_002",
+      "lesson": "25.3",
+      "type": "basic",
+      "tags": ["cpp", "override", "best-practices"],
+      "front": "What happens if you use the override specifier but the function doesn't actually override anything?",
+      "back": "The compiler will generate an error, helping you catch mistakes where the signature doesn't match exactly.",
+      "source": "25.3 - The override and final specifiers, and covariant return types",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_3_003",
+      "lesson": "25.3",
+      "type": "cloze",
+      "tags": ["cpp", "override", "syntax"],
+      "text": "To mark a virtual function as an override: {{c1::virtual std::string getName() const override;}}",
+      "source": "25.3 - The override and final specifiers, and covariant return types",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_3_004",
+      "lesson": "25.3",
+      "type": "code",
+      "tags": ["cpp", "override", "common-mistakes"],
+      "question": "What's wrong with this code?",
+      "code": "class Base {\npublic:\n    virtual void func() const { }\n};\n\nclass Derived: public Base {\npublic:\n    virtual void func() override { }  // Missing const\n};",
+      "answer": "Compilation error: func() in Derived doesn't override anything because it's missing const.",
+      "explanation": "The override specifier causes a compile error when the signature doesn't match. Without override, this would silently create a new function instead of overriding.",
+      "source": "25.3 - The override and final specifiers, and covariant return types",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_3_005",
+      "lesson": "25.3",
+      "type": "basic",
+      "tags": ["cpp", "final", "virtual-functions"],
+      "front": "What does the final specifier do when applied to a virtual function?",
+      "back": "It prevents derived classes from overriding that function. Any attempt to override will cause a compilation error.",
+      "source": "25.3 - The override and final specifiers, and covariant return types",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_3_006",
+      "lesson": "25.3",
+      "type": "cloze",
+      "tags": ["cpp", "final", "syntax"],
+      "text": "To prevent a function from being overridden further: {{c1::virtual void func() final;}}",
+      "source": "25.3 - The override and final specifiers, and covariant return types",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_3_007",
+      "lesson": "25.3",
+      "type": "basic",
+      "tags": ["cpp", "final", "classes"],
+      "front": "What does the final specifier do when applied to a class?",
+      "back": "It prevents any other class from inheriting from that class. The class cannot be used as a base class.",
+      "source": "25.3 - The override and final specifiers, and covariant return types",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_3_008",
+      "lesson": "25.3",
+      "type": "cloze",
+      "tags": ["cpp", "final", "syntax"],
+      "text": "To prevent a class from being inherited from: {{c1::class MyClass final \\{ \\};}}",
+      "source": "25.3 - The override and final specifiers, and covariant return types",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_3_009",
+      "lesson": "25.3",
+      "type": "basic",
+      "tags": ["cpp", "covariant-return-types", "virtual-functions"],
+      "front": "What are covariant return types?",
+      "back": "A special exception where an override can return a pointer or reference to a derived type instead of the base type.<br><br>Example: If Base::func() returns Base*, Derived::func() can return Derived*.",
+      "source": "25.3 - The override and final specifiers, and covariant return types",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_3_010",
+      "lesson": "25.3",
+      "type": "code",
+      "tags": ["cpp", "covariant-return-types"],
+      "question": "Is this valid C++ code?",
+      "code": "class Base {\npublic:\n    virtual Base* clone() { return new Base(*this); }\n};\n\nclass Derived: public Base {\npublic:\n    virtual Derived* clone() override { return new Derived(*this); }\n};",
+      "answer": "Yes, this is valid.",
+      "explanation": "This uses covariant return types. Derived::clone() returns Derived* instead of Base*, which is allowed because Derived* is a more specific type derived from Base.",
+      "source": "25.3 - The override and final specifiers, and covariant return types",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_3_011",
+      "lesson": "25.3",
+      "type": "concept",
+      "tags": ["cpp", "override", "best-practices"],
+      "concept": "Why you should always use the override specifier",
+      "explanation": "The override specifier catches common mistakes at compile time:<ul><li>Misspelled function names</li><li>Mismatched const qualifiers</li><li>Wrong parameter types</li><li>Base function signature changes</li></ul>Without override, these mistakes create new functions instead of overriding, causing subtle bugs.",
+      "examples": [
+        "// Without override - silently creates new function:",
+        "virtual void Draw() { }  // Oops, should be draw()",
+        "",
+        "// With override - compile error:",
+        "virtual void Draw() override { }  // Error: no base function to override"
+      ],
+      "source": "25.3 - The override and final specifiers, and covariant return types",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_3_012",
+      "lesson": "25.3",
+      "type": "concept",
+      "tags": ["cpp", "final", "best-practices"],
+      "concept": "When to use the final specifier",
+      "explanation": "Use final when:<ul><li>Further overriding would break class invariants</li><li>Performance is critical (allows devirtualization)</li><li>The implementation is complete and shouldn't be changed</li></ul>Use sparingly - it limits extensibility and violates the open-closed principle.",
+      "examples": [
+        "class Transaction {",
+        "    virtual void commit() final { /* critical logic */ }",
+        "};",
+        "",
+        "class OptimizedCache final {  // No further derivation",
+        "    // ...",
+        "};"
+      ],
+      "source": "25.3 - The override and final specifiers, and covariant return types",
+      "difficulty": "hard"
+    }
+  ]
+}

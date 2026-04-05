@@ -1,0 +1,153 @@
+{
+  "chapter": "Chapter 21",
+  "chapter_title": "Operator Overloading",
+  "lesson": "21.6",
+  "lesson_title": "Overloading unary operators +, -, and !",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "ch21_6_001",
+      "lesson": "21.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "unary"
+      ],
+      "text": "Unary operators take {{c1::zero}} parameters as member functions (operate on *this) or {{c2::one}} parameter as friend/normal functions.",
+      "source": "21.6 - Overloading unary operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch21_6_002",
+      "lesson": "21.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "unary"
+      ],
+      "front": "What are the three common unary operators to overload?",
+      "back": "<ul><li>Unary minus (operator-): negation</li><li>Unary plus (operator+): rarely needed</li><li>Logical NOT (operator!): boolean inversion</li></ul>",
+      "source": "21.6 - Overloading unary operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch21_6_003",
+      "lesson": "21.6",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "unary"
+      ],
+      "question": "What does this unary operator- do?",
+      "code": "class Cents {\n    int m_cents{};\npublic:\n    Cents operator-() const {\n        return Cents{ -m_cents };\n    }\n};",
+      "answer": "Returns a new Cents object with the negated value. Allows -myObj syntax for negation.",
+      "explanation": "Unary minus creates a new object with negated value. Marked const since it doesn't modify the original object.",
+      "source": "21.6 - Overloading unary operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_6_004",
+      "lesson": "21.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "unary"
+      ],
+      "text": "Unary operator- should be marked {{c1::const}} and return a {{c2::new object}} by value, not modify *this.",
+      "source": "21.6 - Overloading unary operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch21_6_005",
+      "lesson": "21.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "unary"
+      ],
+      "front": "When would you overload operator! for a class?",
+      "back": "When you want to provide a boolean test for the class. For example, operator! could return true if a container is empty or if a pointer is null. Should return a bool value.",
+      "source": "21.6 - Overloading unary operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_6_006",
+      "lesson": "21.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "unary"
+      ],
+      "text": "operator! should return {{c1::bool}} and is typically used to test if an object is in a {{c2::false-like}} state (empty, null, invalid, etc.).",
+      "source": "21.6 - Overloading unary operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch21_6_007",
+      "lesson": "21.6",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "unary"
+      ],
+      "question": "How would you use this operator! overload?",
+      "code": "class Vector {\npublic:\n    bool operator!() const {\n        return m_size == 0;\n    }\n};",
+      "answer": "if (!myVector) { /* vector is empty */ } or while (!vec) { }",
+      "explanation": "operator! returns true when the vector is empty, allowing intuitive boolean tests.",
+      "source": "21.6 - Overloading unary operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch21_6_008",
+      "lesson": "21.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "unary"
+      ],
+      "front": "Should unary operator- modify the object it's called on?",
+      "back": "No. Unary operator- should return a new object with the negated value, leaving the original unchanged. It should be const. If you want to negate in-place, use a different function like negate().",
+      "source": "21.6 - Overloading unary operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_6_009",
+      "lesson": "21.6",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "unary"
+      ],
+      "concept": "Best practices for unary operator overloading",
+      "explanation": "Guidelines for unary operators:<ul><li>operator-: Return new negated object, mark const</li><li>operator+: Rarely needed, returns copy</li><li>operator!: Return bool, test for invalid/empty/false state</li><li>Don't modify the object (use const)</li><li>Return appropriate types (object for -, bool for !)</li></ul>",
+      "examples": [
+        "Cents operator-() const { return Cents{-m_cents}; }",
+        "bool operator!() const { return m_size == 0; }"
+      ],
+      "source": "21.6 - Overloading unary operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_6_010",
+      "lesson": "21.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "unary"
+      ],
+      "text": "As a member function, unary operator- has signature: ClassName {{c1::operator-}}() {{c2::const}} with {{c3::no parameters}}.",
+      "source": "21.6 - Overloading unary operators",
+      "difficulty": "easy"
+    }
+  ]
+}

@@ -1,0 +1,226 @@
+{
+  "chapter": "Chapter 13",
+  "chapter_title": "Compound Types: Enums and Structs",
+  "lesson": "13.6",
+  "lesson_title": "13.6 — Scoped enumerations (enum classes)",
+  "total_cards": 16,
+  "cards": [
+    {
+      "id": "ch13_6_001",
+      "lesson": "13.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "enum",
+        "syntax"
+      ],
+      "text": "Scoped enumerations are defined with {{c1::enum class}} or {{c2::enum struct}}: enum class Color {{c3::{ red, green };}}}",
+      "source": "13.6 — Scoped enumerations (enum classes)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_6_002",
+      "lesson": "13.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "enum",
+        "best-practices"
+      ],
+      "front": "What advantages do scoped enumerations have over unscoped?",
+      "back": "<ul><li>No namespace pollution (enumerators scoped to enum)</li><li>No implicit conversion to int</li><li>Stronger type safety</li><li>Can be forward declared</li></ul>",
+      "source": "13.6 — Scoped enumerations (enum classes)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_6_003",
+      "lesson": "13.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "enum",
+        "syntax"
+      ],
+      "text": "To access scoped enumerator: Color{{c1::::}}red (using {{c2::scope resolution operator}})",
+      "source": "13.6 — Scoped enumerations (enum classes)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_6_004",
+      "lesson": "13.6",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "enum",
+        "syntax"
+      ],
+      "question": "What's wrong?",
+      "code": "enum class Color { red, green };\nColor c = red;",
+      "answer": "Error: must use Color::red, not just red.",
+      "explanation": "Scoped enums require scope resolution operator.",
+      "source": "13.6 — Scoped enumerations (enum classes)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_6_005",
+      "lesson": "13.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "enum",
+        "type-safety"
+      ],
+      "front": "Do scoped enumerators implicitly convert to int?",
+      "back": "No. Must use explicit cast: <code>static_cast&lt;int&gt;(Color::red)</code>",
+      "source": "13.6 — Scoped enumerations (enum classes)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_6_006",
+      "lesson": "13.6",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "enum"
+      ],
+      "question": "What's wrong?",
+      "code": "enum class Color { red, green };\nstd::cout &lt;&lt; Color::red;",
+      "answer": "Error: no implicit conversion to int for output.",
+      "explanation": "Need: std::cout &lt;&lt; static_cast&lt;int&gt;(Color::red); or overload &lt;&lt;",
+      "source": "13.6 — Scoped enumerations (enum classes)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_6_007",
+      "lesson": "13.6",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "enum"
+      ],
+      "question": "Does this compile?",
+      "code": "enum class Color { red };\nenum class Fruit { red };",
+      "answer": "Yes. Color::red and Fruit::red don't conflict (different scopes).",
+      "explanation": "Scoped enums prevent namespace pollution.",
+      "source": "13.6 — Scoped enumerations (enum classes)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_6_008",
+      "lesson": "13.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "enum"
+      ],
+      "text": "{{c1::enum class}} and {{c2::enum struct}} are functionally identical.",
+      "source": "13.6 — Scoped enumerations (enum classes)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_6_009",
+      "lesson": "13.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "enum",
+        "forward-declaration"
+      ],
+      "front": "Can enum class be forward declared?",
+      "back": "Yes, without specifying base type: <code>enum class Color;</code>",
+      "source": "13.6 — Scoped enumerations (enum classes)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_6_010",
+      "lesson": "13.6",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "enum",
+        "best-practices"
+      ],
+      "concept": "Prefer enum class in modern C++",
+      "explanation": "Use <code>enum class</code> by default:<ul><li>Prevents naming conflicts</li><li>Stronger type safety (no implicit conversions)</li><li>More explicit and self-documenting</li><li>Only downside: slightly more verbose</li></ul>",
+      "examples": [
+        "enum class Color { red, green };",
+        "Color c = Color::red;  // Explicit",
+        "static_cast&lt;int&gt;(Color::red);  // No implicit conversion"
+      ],
+      "source": "13.6 — Scoped enumerations (enum classes)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_6_011",
+      "lesson": "13.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "enum"
+      ],
+      "text": "To specify underlying type: enum class Color : {{c1::uint8_t}} { red, green };",
+      "source": "13.6 — Scoped enumerations (enum classes)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_6_012",
+      "lesson": "13.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "enum"
+      ],
+      "text": "Scoped enumerations are defined with {{c1::enum class}} or {{c2::enum struct}}, and both are {{c3::functionally equivalent}}.",
+      "source": "13.6 — Scoped enumerations (enum classes)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_6_013",
+      "lesson": "13.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "enum"
+      ],
+      "text": "To specify the underlying type of an enum: enum class Color : {{c1::uint8_t}} { red, green };",
+      "source": "13.6 — Scoped enumerations (enum classes)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_6_014",
+      "lesson": "13.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "enum"
+      ],
+      "text": "Scoped enum comparison: Different enum class types {{c1::cannot}} be compared, providing {{c2::type safety}}.",
+      "source": "13.6 — Scoped enumerations (enum classes)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_6_015",
+      "lesson": "13.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "enum"
+      ],
+      "text": "Scoped enumerations are defined with {{c1::enum class}} or {{c2::enum struct}}, and both are {{c3::functionally equivalent}}.",
+      "source": "13.6 — Scoped enumerations (enum classes)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_6_016",
+      "lesson": "13.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "enum"
+      ],
+      "text": "To specify the underlying type of an enum: enum class Color : {{c1::uint8_t}} { red, green };",
+      "source": "13.6 — Scoped enumerations (enum classes)",
+      "difficulty": "medium"
+    }
+  ]
+}

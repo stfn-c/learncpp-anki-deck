@@ -1,0 +1,208 @@
+{
+  "chapter": "Chapter 23",
+  "chapter_title": "Object Relationships",
+  "lesson": "23.3",
+  "lesson_title": "Aggregation",
+  "total_cards": 14,
+  "cards": [
+    {
+      "id": "ch23_3_001",
+      "lesson": "23.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "aggregation",
+        "relationships"
+      ],
+      "text": "{{c1::Aggregation}} exists when a class has a {{c2::has-a}} relationship with the member.",
+      "source": "23.3 - Aggregation",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_3_002",
+      "lesson": "23.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "aggregation",
+        "object-lifetime"
+      ],
+      "front": "Who manages the existence of members in an aggregation relationship?",
+      "back": "The class does NOT manage the existence of the members. The parts can exist independently of the whole object.",
+      "source": "23.3 - Aggregation",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_3_003",
+      "lesson": "23.3",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "aggregation",
+        "fundamentals"
+      ],
+      "concept": "Requirements for an aggregation relationship",
+      "explanation": "To qualify as aggregation, an object and its parts must have the following relationship:<ul><li>The part (member) is part of the object (class)</li><li>The part can belong to more than one object at a time</li><li>The part does NOT have its existence managed by the object</li><li>The part does not know about the existence of the object</li></ul>",
+      "examples": [
+        "class Department {",
+        "    Teacher* m_teachers;  // Aggregation: teachers exist independently",
+        "};",
+        "// Teachers can belong to multiple departments"
+      ],
+      "source": "23.3 - Aggregation",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_3_004",
+      "lesson": "23.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "aggregation",
+        "implementation"
+      ],
+      "text": "Aggregations are typically implemented via {{c1::pointer}} or {{c2::reference}}.",
+      "source": "23.3 - Aggregation",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_3_005",
+      "lesson": "23.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "aggregation",
+        "vs-composition"
+      ],
+      "front": "What is the key difference between composition and aggregation regarding member ownership?",
+      "back": "In composition, the object manages the member's existence (owns it exclusively). In aggregation, the object does NOT manage the member's existence (the member exists independently).",
+      "source": "23.3 - Aggregation",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_3_006",
+      "lesson": "23.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "aggregation",
+        "multiplicity"
+      ],
+      "front": "Can a part in an aggregation relationship belong to multiple objects simultaneously?",
+      "back": "Yes. In an aggregation, the part can belong to more than one object at a time. For example, a Teacher can belong to multiple Departments.",
+      "source": "23.3 - Aggregation",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_3_007",
+      "lesson": "23.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "aggregation",
+        "terminology"
+      ],
+      "text": "In an aggregation, the relationship verb is {{c1::has-a}}, and the relationship type is {{c2::whole/part}}.",
+      "source": "23.3 - Aggregation",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_3_008",
+      "lesson": "23.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "aggregation",
+        "common-mistakes"
+      ],
+      "question": "What type of relationship is demonstrated here?",
+      "code": "class Team {\n    std::vector&lt;Player*&gt; m_players;\npublic:\n    void addPlayer(Player* player) {\n        m_players.push_back(player);\n    }\n    // Note: Team does NOT delete players in destructor\n};",
+      "answer": "Aggregation",
+      "explanation": "The Team has-a collection of Players via pointers, but does not manage their existence (no deletion in destructor). Players can exist independently and potentially belong to multiple Teams.",
+      "source": "23.3 - Aggregation",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_3_009",
+      "lesson": "23.3",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "aggregation",
+        "terminology"
+      ],
+      "front": "has-a",
+      "back": "Aggregation relationship verb - indicates the object has a part but doesn't own it",
+      "source": "23.3 - Aggregation",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_3_010",
+      "lesson": "23.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "aggregation",
+        "memory-management"
+      ],
+      "front": "What happens to aggregated parts when the containing object is destroyed?",
+      "back": "Nothing. The aggregated parts continue to exist because the containing object does not manage their lifetime. They must be managed elsewhere.",
+      "source": "23.3 - Aggregation",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_3_011",
+      "lesson": "23.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "aggregation",
+        "directionality"
+      ],
+      "front": "What is the directionality of an aggregation relationship?",
+      "back": "Unidirectional - the whole knows about the parts, but the parts do not know about the whole.",
+      "source": "23.3 - Aggregation",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_3_012",
+      "lesson": "23.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "aggregation",
+        "vs-composition"
+      ],
+      "front": "How do you decide between using composition vs aggregation?",
+      "back": "Use composition when the part's lifetime should be managed by and tied to the whole (part can't exist independently). Use aggregation when the part exists independently and can outlive or be shared by the whole.",
+      "source": "23.3 - Aggregation",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch23_3_013",
+      "lesson": "23.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "aggregation",
+        "lifetime"
+      ],
+      "text": "In aggregation, the part can {{c1::exist independently}} of the whole and can belong to {{c2::more than one}} object at a time.",
+      "source": "23.3 - Aggregation",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_3_014",
+      "lesson": "23.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "aggregation",
+        "destruction"
+      ],
+      "text": "When an object with aggregation is destroyed, the aggregated parts {{c1::continue to exist}} because they are {{c2::not owned}} by the object.",
+      "source": "23.3 - Aggregation",
+      "difficulty": "medium"
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "chapter": "Chapter 12",
+  "chapter_title": "Compound Types: References and Pointers",
+  "lesson": "12.13",
+  "lesson_title": "In and out parameters",
+  "total_cards": 7,
+  "cards": [
+    {
+      "id": "ch12_13_001",
+      "lesson": "12.13",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "parameters"
+      ],
+      "text": "An {{c1::in}} parameter is read from but not written to. An {{c2::out}} parameter is written to for the purpose of returning data. An {{c3::in-out}} parameter is both read and written to.",
+      "source": "12.13 - In and out parameters",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_13_002",
+      "lesson": "12.13",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "functions",
+        "parameters",
+        "best-practices"
+      ],
+      "front": "What parameter passing method should be used for an 'in' parameter?",
+      "back": "For fundamental types: pass by value. For class types: pass by const reference. This prevents modification and avoids unnecessary copies.",
+      "source": "12.13 - In and out parameters",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_13_003",
+      "lesson": "12.13",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "functions",
+        "parameters",
+        "best-practices"
+      ],
+      "front": "What parameter passing method should be used for an 'out' parameter?",
+      "back": "Pass by non-const reference (or non-const pointer if nullptr is meaningful). This allows the function to modify the parameter to return a value.",
+      "source": "12.13 - In and out parameters",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_13_004",
+      "lesson": "12.13",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "functions",
+        "parameters"
+      ],
+      "question": "Identify the in, out, and in-out parameters:",
+      "code": "void func(int x, int&amp; result, int&amp; accumulator) {<br>    result = x * 2;  // out<br>    accumulator += x;  // in-out<br>}",
+      "answer": "x is 'in' (only read), result is 'out' (only written), accumulator is 'in-out' (read and written).",
+      "explanation": "The parameter usage determines its category: read-only (in), write-only (out), or both (in-out).",
+      "source": "12.13 - In and out parameters",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_13_005",
+      "lesson": "12.13",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "functions",
+        "parameters",
+        "best-practices"
+      ],
+      "concept": "Parameter passing guidelines",
+      "explanation": "Choose parameter type based on usage:<br><br><b>IN parameters:</b><ul><li>Fundamental types: pass by value</li><li>Class types: pass by const reference</li></ul><b>OUT parameters:</b><ul><li>Pass by reference (or pointer if optional)</li></ul><b>IN-OUT parameters:</b><ul><li>Pass by reference</li></ul>",
+      "examples": [
+        "void process(int x, const std::string& s);  // in: value, const ref",
+        "void getSinCos(double angle, double& s, double& c);  // in, out, out",
+        "void increment(int& x);  // in-out"
+      ],
+      "source": "12.13 - In and out parameters",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_13_006",
+      "lesson": "12.13",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "parameters"
+      ],
+      "text": "For fundamental types, pass {{c1::in}} parameters by {{c2::value}}. For class types, pass by {{c3::const reference}}.",
+      "source": "12.13 - In and out parameters",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_13_007",
+      "lesson": "12.13",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "parameters"
+      ],
+      "text": "{{c1::Out}} parameters are used to return data from a function and should be passed by {{c2::non-const reference}} or {{c3::pointer}}.",
+      "source": "12.13 - In and out parameters",
+      "difficulty": "easy"
+    }
+  ]
+}

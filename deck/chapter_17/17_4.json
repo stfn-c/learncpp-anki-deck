@@ -1,0 +1,123 @@
+{
+  "chapter": "Chapter 17",
+  "chapter_title": "Arrays and Strings",
+  "lesson": "17.4",
+  "lesson_title": "std::array of class types, and brace elision",
+  "total_cards": 11,
+  "cards": [
+    {
+      "id": "ch17_4_001",
+      "lesson": "17.4",
+      "type": "basic",
+      "tags": ["cpp", "arrays", "std-array", "class-types"],
+      "front": "Can std::array hold class types (user-defined types)?",
+      "back": "Yes, std::array can hold any type including class types, as long as the type is copyable or movable.",
+      "source": "17.4 - std::array of class types, and brace elision",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_4_002",
+      "lesson": "17.4",
+      "type": "cloze",
+      "tags": ["cpp", "arrays", "std-array", "initialization"],
+      "text": "When initializing a std::array of structs, you need {{c1::double braces}}: std::array&lt;Point, 3&gt; arr {{c2::{{ {1,2}, {3,4}, {5,6} }}}}",
+      "source": "17.4 - std::array of class types, and brace elision",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_4_003",
+      "lesson": "17.4",
+      "type": "basic",
+      "tags": ["cpp", "arrays", "brace-elision"],
+      "front": "What is brace elision in the context of aggregate initialization?",
+      "back": "Brace elision allows you to omit inner braces when initializing nested aggregates, using single braces instead of double braces for convenience.",
+      "source": "17.4 - std::array of class types, and brace elision",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_4_004",
+      "lesson": "17.4",
+      "type": "code",
+      "tags": ["cpp", "arrays", "std-array", "brace-elision"],
+      "question": "Is this code valid using brace elision?",
+      "code": "struct Point { int x, y; };\nstd::array&lt;Point, 2&gt; arr { {1,2}, {3,4} };",
+      "answer": "Yes, this uses brace elision. The outer braces are for std::array, and inner braces initialize each Point.",
+      "explanation": "With brace elision, you can use single braces. The full form would be: std::array&lt;Point, 2&gt; arr {{ {1,2}, {3,4} }}",
+      "source": "17.4 - std::array of class types, and brace elision",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_4_005",
+      "lesson": "17.4",
+      "type": "cloze",
+      "tags": ["cpp", "arrays", "std-array", "aggregate"],
+      "text": "std::array is an {{c1::aggregate}} type, which means it has no user-declared constructors and uses {{c2::aggregate initialization}}",
+      "source": "17.4 - std::array of class types, and brace elision",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_4_006",
+      "lesson": "17.4",
+      "type": "concept",
+      "tags": ["cpp", "arrays", "std-array", "best-practices"],
+      "concept": "When to use double braces vs brace elision for std::array",
+      "explanation": "Double braces (no elision):<ul><li>More explicit and clear</li><li>Recommended for complex nested types</li><li>Example: {{ {1,2}, {3,4} }}</li></ul>Single braces (with elision):<ul><li>More concise</li><li>Works in most cases</li><li>Example: { {1,2}, {3,4} }</li></ul>",
+      "examples": [
+        "std::array&lt;Point, 2&gt; arr {{ {1,2}, {3,4} }};  // Explicit",
+        "std::array&lt;Point, 2&gt; arr { {1,2}, {3,4} };    // Elision"
+      ],
+      "source": "17.4 - std::array of class types, and brace elision",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch17_4_007",
+      "lesson": "17.4",
+      "type": "basic",
+      "tags": ["cpp", "arrays", "std-array", "value-initialization"],
+      "front": "What happens when you value-initialize a std::array of class types with {}?",
+      "back": "Each element is value-initialized. For class types with default constructors, the default constructor is called. For aggregates, all members are value-initialized.",
+      "source": "17.4 - std::array of class types, and brace elision",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_4_008",
+      "lesson": "17.4",
+      "type": "cloze",
+      "tags": ["cpp", "arrays", "std-array", "ctad"],
+      "text": "Using CTAD with std::array of structs: {{c1::std::array}} arr { Point{1,2}, Point{3,4} }; (no template parameters needed)",
+      "source": "17.4 - std::array of class types, and brace elision",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_4_009",
+      "lesson": "17.4",
+      "type": "code",
+      "tags": ["cpp", "arrays", "std-array", "common-mistakes"],
+      "question": "What's wrong with this initialization?",
+      "code": "struct Point { int x, y; };\nstd::array&lt;Point, 3&gt; arr { 1, 2, 3, 4, 5, 6 };",
+      "answer": "Missing braces for each Point struct. Should be: { {1,2}, {3,4}, {5,6} }",
+      "explanation": "Each Point needs its own pair of braces to initialize its x and y members. The compiler can't automatically group the values.",
+      "source": "17.4 - std::array of class types, and brace elision",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_4_010",
+      "lesson": "17.4",
+      "type": "basic",
+      "tags": ["cpp", "arrays", "std-array", "default-initialization"],
+      "front": "How do you create a std::array of objects where each element is default-constructed?",
+      "back": "Use empty braces: std::array&lt;MyClass, 5&gt; arr{}; This value-initializes each element, calling the default constructor for each.",
+      "source": "17.4 - std::array of class types, and brace elision",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_4_011",
+      "lesson": "17.4",
+      "type": "cloze",
+      "tags": ["cpp", "arrays", "std-array", "member-array"],
+      "text": "When std::array is a member of a class, it can be initialized using {{c1::member initializer list}} in the constructor",
+      "source": "17.4 - std::array of class types, and brace elision",
+      "difficulty": "medium"
+    }
+  ]
+}

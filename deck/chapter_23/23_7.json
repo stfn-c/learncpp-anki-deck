@@ -1,0 +1,209 @@
+{
+  "chapter": "Chapter 23",
+  "chapter_title": "Object Relationships",
+  "lesson": "23.7",
+  "lesson_title": "std::initializer_list",
+  "total_cards": 14,
+  "cards": [
+    {
+      "id": "ch23_7_001",
+      "lesson": "23.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "initializer-list",
+        "syntax"
+      ],
+      "text": "{{c1::std::initializer_list}} can be used to implement constructors, assignment operators, and other functions that accept a {{c2::list initialization parameter}}.",
+      "source": "23.7 - std::initializer_list",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_7_002",
+      "lesson": "23.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "initializer-list",
+        "header"
+      ],
+      "text": "std::initializer_list lives in the {{c1::&lt;initializer_list&gt;}} header.",
+      "source": "23.7 - std::initializer_list",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_7_003",
+      "lesson": "23.7",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "initializer-list",
+        "syntax"
+      ],
+      "question": "What does this constructor enable?",
+      "code": "#include &lt;initializer_list&gt;\n\nclass IntArray {\n    int* m_data{};\n    int m_length{};\npublic:\n    IntArray(std::initializer_list&lt;int&gt; list)\n        : m_length{static_cast&lt;int&gt;(list.size())} {\n        m_data = new int[m_length];\n        int count{0};\n        for (auto element : list) {\n            m_data[count++] = element;\n        }\n    }\n};",
+      "answer": "List initialization syntax",
+      "explanation": "This constructor allows creating an IntArray using brace initialization: IntArray arr{1, 2, 3, 4, 5}; The std::initializer_list parameter accepts the list of values.",
+      "source": "23.7 - std::initializer_list",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_7_004",
+      "lesson": "23.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "initializer-list",
+        "usage"
+      ],
+      "text": "To enable list initialization for your class, create a constructor that takes {{c1::std::initializer_list&lt;T&gt;}} as a parameter.",
+      "source": "23.7 - std::initializer_list",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_7_005",
+      "lesson": "23.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "initializer-list",
+        "iteration"
+      ],
+      "front": "How do you iterate over elements in a std::initializer_list?",
+      "back": "Use a range-based for loop:<br>for (auto element : list) { /* use element */ }<br>or use iterators with list.begin() and list.end().",
+      "source": "23.7 - std::initializer_list",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_7_006",
+      "lesson": "23.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "initializer-list",
+        "size"
+      ],
+      "front": "How do you get the number of elements in a std::initializer_list?",
+      "back": "Use the size() member function: list.size()<br>Note: size() returns size_t, so you may need to cast it to int if needed.",
+      "source": "23.7 - std::initializer_list",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_7_007",
+      "lesson": "23.7",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "initializer-list",
+        "assignment"
+      ],
+      "question": "What does this function enable?",
+      "code": "class IntArray {\npublic:\n    IntArray&amp; operator=(std::initializer_list&lt;int&gt; list) {\n        int length{static_cast&lt;int&gt;(list.size())};\n        delete[] m_data;\n        m_data = new int[length];\n        m_length = length;\n        int count{0};\n        for (auto element : list) {\n            m_data[count++] = element;\n        }\n        return *this;\n    }\n};",
+      "answer": "List assignment syntax",
+      "explanation": "This assignment operator allows assigning a list to an IntArray: arr = {1, 2, 3, 4}; It enables reassigning the array using brace initialization syntax.",
+      "source": "23.7 - std::initializer_list",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_7_008",
+      "lesson": "23.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "initializer-list",
+        "syntax"
+      ],
+      "text": "std::initializer_list is a {{c1::template}} class, so you must specify the {{c2::element type}} it will contain: std::initializer_list&lt;{{c2::int}}&gt;.",
+      "source": "23.7 - std::initializer_list",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_7_009",
+      "lesson": "23.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "initializer-list",
+        "examples"
+      ],
+      "front": "What syntax does std::initializer_list enable for your custom classes?",
+      "back": "It enables brace initialization syntax:<br>MyClass obj{1, 2, 3}; // construction<br>obj = {4, 5, 6}; // assignment<br>This is the same syntax used by std::vector and other STL containers.",
+      "source": "23.7 - std::initializer_list",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_7_010",
+      "lesson": "23.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "initializer-list",
+        "std-library"
+      ],
+      "front": "Which standard library containers support std::initializer_list?",
+      "back": "Most STL containers support it, including std::vector, std::array, std::list, std::set, std::map, etc.<br>Example: std::vector&lt;int&gt; v{1, 2, 3, 4, 5};",
+      "source": "23.7 - std::initializer_list",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_7_011",
+      "lesson": "23.7",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "initializer-list",
+        "best-practices"
+      ],
+      "concept": "When to provide std::initializer_list constructors",
+      "explanation": "Provide std::initializer_list constructors for:<ul><li>Container classes that hold multiple elements</li><li>Classes where list initialization makes semantic sense</li><li>Classes that need to match STL container initialization syntax</li></ul>Avoid for:<ul><li>Classes with few members where regular constructors are clearer</li><li>Classes where the order of initialization matters semantically</li></ul>",
+      "examples": [
+        "// Good: Container class",
+        "class Array { Array(std::initializer_list&lt;int&gt; list); };",
+        "// Questionable: Regular class",
+        "class Point { Point(std::initializer_list&lt;int&gt; list); };"
+      ],
+      "source": "23.7 - std::initializer_list",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch23_7_012",
+      "lesson": "23.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "initializer-list",
+        "gotchas"
+      ],
+      "front": "What type does std::initializer_list::size() return?",
+      "back": "It returns size_t (an unsigned integer type). You may need to static_cast it to int if you're using it for array indexing or other signed integer contexts.",
+      "source": "23.7 - std::initializer_list",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_7_013",
+      "lesson": "23.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "initializer-list",
+        "usage"
+      ],
+      "text": "To use std::initializer_list, include the {{c1::&lt;initializer_list&gt;}} header and create a constructor taking {{c2::std::initializer_list&lt;T&gt;}} as a parameter.",
+      "source": "23.7 - std::initializer_list",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_7_014",
+      "lesson": "23.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "initializer-list",
+        "syntax"
+      ],
+      "text": "std::initializer_list enables initialization syntax like: MyClass obj{{c1::{1, 2, 3}}}; and assignment like: obj {{c2::=}} {{c1::{4, 5, 6}}}.",
+      "source": "23.7 - std::initializer_list",
+      "difficulty": "medium"
+    }
+  ]
+}

@@ -1,0 +1,194 @@
+{
+  "chapter": "Chapter 27",
+  "chapter_title": "Exception Handling and Error Handling",
+  "lesson": "27.4",
+  "lesson_title": "27.4 — Uncaught exceptions and catch-all handlers",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch27_4_001",
+      "lesson": "27.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "syntax"
+      ],
+      "text": "A catch-all handler uses the syntax {{c1::catch (...)}} and will match {{c2::any type}} of exception.",
+      "source": "27.4 - Uncaught exceptions and catch-all handlers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch27_4_002",
+      "lesson": "27.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "syntax"
+      ],
+      "question": "Which catch block handles a std::string exception?",
+      "code": "try {\n    throw std::string(\"error\");\n}\ncatch (int e) { }\ncatch (...) {\n    std::cout &lt;&lt; \"Caught something\";\n}",
+      "answer": "The catch-all block catch (...) handles it.",
+      "explanation": "Since there's no catch block for std::string, the catch-all handler catches it.",
+      "source": "27.4 - Uncaught exceptions and catch-all handlers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch27_4_003",
+      "lesson": "27.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "gotchas"
+      ],
+      "front": "Can you access the exception object or its type inside a catch-all handler catch (...)?",
+      "back": "No, you cannot access the exception object or determine its type inside a catch-all handler. You only know that some exception was thrown.",
+      "source": "27.4 - Uncaught exceptions and catch-all handlers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_4_004",
+      "lesson": "27.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "best-practices"
+      ],
+      "text": "A catch-all handler should be placed {{c1::last}} in the sequence of catch blocks, because it will match {{c2::any exception}} and prevent later catch blocks from executing.",
+      "source": "27.4 - Uncaught exceptions and catch-all handlers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_4_005",
+      "lesson": "27.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this catch block ordering?",
+      "code": "try {\n    // code\n}\ncatch (...) {\n    std::cout &lt;&lt; \"Catch-all\";\n}\ncatch (int e) {\n    std::cout &lt;&lt; \"Int: \" &lt;&lt; e;\n}",
+      "answer": "The catch-all handler is first, so the int catch block will never execute.",
+      "explanation": "Catch blocks are checked in order. Since catch-all matches everything, it should be last. Later catch blocks become unreachable.",
+      "source": "27.4 - Uncaught exceptions and catch-all handlers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_4_006",
+      "lesson": "27.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "advanced"
+      ],
+      "text": "You can replace the default terminate handler using {{c1::std::set_terminate()}}, which takes a function pointer to your {{c2::custom termination handler}}.",
+      "source": "27.4 - Uncaught exceptions and catch-all handlers",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch27_4_007",
+      "lesson": "27.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "fundamentals"
+      ],
+      "front": "In what situations is std::terminate() called?",
+      "back": "std::terminate() is called when:<ul><li>An exception is thrown and not caught</li><li>An exception is thrown during stack unwinding (exception in destructor)</li><li>std::abort() or std::terminate() is explicitly called</li><li>A noexcept function throws an exception</li></ul>",
+      "source": "27.4 - Uncaught exceptions and catch-all handlers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_4_008",
+      "lesson": "27.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "fundamentals"
+      ],
+      "question": "What happens when this code runs?",
+      "code": "int main() {\n    throw std::runtime_error(\"error\");\n    return 0;\n}",
+      "answer": "std::terminate() is called and the program terminates abnormally.",
+      "explanation": "The exception is thrown from main() with no catch block to handle it, resulting in std::terminate() being called.",
+      "source": "27.4 - Uncaught exceptions and catch-all handlers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch27_4_009",
+      "lesson": "27.4",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "best-practices"
+      ],
+      "concept": "When and why to use catch-all handlers",
+      "explanation": "Catch-all handlers are useful for:<ul><li>Preventing program termination from unknown exceptions</li><li>Logging unexpected errors</li><li>Cleanup before re-throwing</li><li>Top-level error handling (e.g., in main)</li></ul>However, they provide no information about the exception type or value.",
+      "examples": [
+        "int main() {",
+        "    try {",
+        "        runApplication();",
+        "    }",
+        "    catch (const std::exception&amp; e) {",
+        "        log(e.what());  // known exceptions",
+        "    }",
+        "    catch (...) {",
+        "        log(\"Unknown error\");  // anything else",
+        "    }",
+        "}"
+      ],
+      "source": "27.4 - Uncaught exceptions and catch-all handlers",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch27_4_010",
+      "lesson": "27.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "gotchas"
+      ],
+      "front": "What information can you get about an exception in a catch-all handler?",
+      "back": "None. A catch-all handler provides no access to the exception object, its type, or any information about it. You only know that some exception occurred.",
+      "source": "27.4 - Uncaught exceptions and catch-all handlers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_4_011",
+      "lesson": "27.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "gotchas"
+      ],
+      "text": "If an exception is thrown while another exception is being handled (during stack unwinding), {{c1::std::terminate()}} is immediately called. This is why {{c2::destructors}} should not throw.",
+      "source": "27.4 - Uncaught exceptions and catch-all handlers",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch27_4_012",
+      "lesson": "27.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "best-practices"
+      ],
+      "question": "Why wrap main() in try-catch like this?",
+      "code": "int main() {\n    try {\n        return runApp();\n    }\n    catch (...) {\n        std::cerr &lt;&lt; \"Fatal error\\n\";\n        return 1;\n    }\n}",
+      "answer": "To prevent abnormal termination and allow graceful error handling with proper exit code.",
+      "explanation": "Catching all exceptions in main() prevents std::terminate() and allows the program to exit gracefully with an error code.",
+      "source": "27.4 - Uncaught exceptions and catch-all handlers",
+      "difficulty": "medium"
+    }
+  ]
+}

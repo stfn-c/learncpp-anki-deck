@@ -1,0 +1,234 @@
+{
+  "chapter": "Chapter 7",
+  "chapter_title": "Scope, Duration, and Linkage",
+  "lesson": "7.6",
+  "lesson_title": "Internal linkage",
+  "total_cards": 16,
+  "cards": [
+    {
+      "id": "ch7_6_001",
+      "lesson": "7.6",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "linkage",
+        "terminology"
+      ],
+      "front": "Linkage",
+      "back": "An identifier's linkage determines whether multiple declarations of the same identifier refer to the same object or not.",
+      "source": "7.6 - Internal linkage",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_6_002",
+      "lesson": "7.6",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "linkage",
+        "terminology"
+      ],
+      "front": "Internal linkage",
+      "back": "An identifier with internal linkage can be seen and used within a single translation unit, but is not accessible from other translation units.",
+      "source": "7.6 - Internal linkage",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_6_003",
+      "lesson": "7.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "linkage",
+        "syntax"
+      ],
+      "text": "To make a global variable internal, use the {{c1::static}} keyword before the variable definition.",
+      "source": "7.6 - Internal linkage",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_6_004",
+      "lesson": "7.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "linkage",
+        "constants"
+      ],
+      "front": "What is the default linkage for const global variables?",
+      "back": "Internal linkage. Const global variables have internal linkage by default (unless explicitly declared extern).",
+      "source": "7.6 - Internal linkage",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_6_005",
+      "lesson": "7.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "linkage",
+        "constants"
+      ],
+      "front": "What is the default linkage for constexpr variables?",
+      "back": "Internal linkage. Constexpr variables are implicitly const and therefore have internal linkage by default.",
+      "source": "7.6 - Internal linkage",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_6_006",
+      "lesson": "7.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "linkage",
+        "functions"
+      ],
+      "text": "To make a function internal to a file, use the {{c1::static}} keyword before the function definition: {{c2::static void helper() { }}}",
+      "source": "7.6 - Internal linkage",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_6_007",
+      "lesson": "7.6",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "linkage",
+        "syntax"
+      ],
+      "question": "Which of these has internal linkage?",
+      "code": "int g_a;                    // A\nstatic int g_b;             // B\nconst int g_c{ 1 };         // C\nconstexpr int g_d{ 2 };     // D",
+      "answer": "B, C, and D have internal linkage",
+      "explanation": "B has internal linkage due to 'static'. C has internal linkage because const globals default to internal. D has internal linkage because constexpr implies const. Only A has external linkage.",
+      "source": "7.6 - Internal linkage",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_6_008",
+      "lesson": "7.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "linkage",
+        "one-definition-rule"
+      ],
+      "front": "Can you define an identifier with internal linkage in multiple files?",
+      "back": "Yes. Because each definition is internal to its own translation unit, multiple files can have identically-named identifiers with internal linkage without violating the one-definition rule.",
+      "source": "7.6 - Internal linkage",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_6_009",
+      "lesson": "7.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "linkage",
+        "functions"
+      ],
+      "front": "Why use static (internal linkage) for helper functions?",
+      "back": "To prevent naming collisions across files and to indicate that a function is only used within its translation unit (not part of the public interface).",
+      "source": "7.6 - Internal linkage",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_6_010",
+      "lesson": "7.6",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "terminology"
+      ],
+      "front": "Translation unit",
+      "back": "A source file plus all of its included headers. Each .cpp file becomes a separate translation unit.",
+      "source": "7.6 - Internal linkage",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_6_011",
+      "lesson": "7.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "linkage",
+        "best-practices"
+      ],
+      "text": "Use {{c1::internal linkage}} (via static or const) when you want a global identifier to be used only within a single file. This prevents {{c2::naming collisions}} across files.",
+      "source": "7.6 - Internal linkage",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_6_012",
+      "lesson": "7.6",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "linkage",
+        "best-practices"
+      ],
+      "concept": "When to use internal linkage",
+      "explanation": "Use internal linkage for:<ul><li>Helper functions used only in one file</li><li>Global constants that don't need to be shared</li><li>Implementation details that shouldn't be accessible from other files</li><li>Preventing naming conflicts in larger projects</li></ul>",
+      "examples": [
+        "// Internal helper function",
+        "static void validateInput() { /* ... */ }",
+        "",
+        "// Internal constant",
+        "static const int MAX_SIZE{ 100 };"
+      ],
+      "source": "7.6 - Internal linkage",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_6_013",
+      "lesson": "7.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "linkage",
+        "const"
+      ],
+      "text": "Const global variables have {{c1::internal linkage}} by default, while non-const globals have {{c2::external linkage}}.",
+      "source": "7.6 - Internal linkage",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_6_014",
+      "lesson": "7.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "linkage",
+        "constexpr"
+      ],
+      "text": "Constexpr variables are implicitly {{c1::const}} and therefore have {{c2::internal linkage}} by default.",
+      "source": "7.6 - Internal linkage",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_6_015",
+      "lesson": "7.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "linkage",
+        "functions"
+      ],
+      "text": "To make a function internal to a file, use {{c1::static}} before the function: static void {{c2::helper}}() { }",
+      "source": "7.6 - Internal linkage",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_6_016",
+      "lesson": "7.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "linkage",
+        "translation-unit"
+      ],
+      "text": "A {{c1::translation unit}} is a source file plus all of its {{c2::included headers}}. Each .cpp file becomes a separate translation unit.",
+      "source": "7.6 - Internal linkage",
+      "difficulty": "easy"
+    }
+  ]
+}

@@ -1,0 +1,219 @@
+{
+  "chapter": "Chapter 3",
+  "chapter_title": "Debugging C++ Programs",
+  "lesson": "3.1",
+  "lesson_title": "Syntax and semantic errors",
+  "total_cards": 14,
+  "cards": [
+    {
+      "id": "ch3_1_001",
+      "lesson": "3.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "errors",
+        "syntax"
+      ],
+      "front": "What is a syntax error in C++?",
+      "back": "An error that occurs when you write a statement that is not valid according to the grammar of the C++ language (e.g., missing semicolons, mismatched braces, invalid identifiers).",
+      "source": "3.1 - Syntax and semantic errors",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_1_002",
+      "lesson": "3.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "errors",
+        "semantic"
+      ],
+      "front": "What is a semantic error in C++?",
+      "back": "An error in meaning where the code is syntactically valid but either violates language rules or doesn't do what the programmer intended.",
+      "source": "3.1 - Syntax and semantic errors",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_1_003",
+      "lesson": "3.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "errors",
+        "syntax"
+      ],
+      "text": "C++ errors fall into two main categories: {{c1::syntax errors}} and {{c2::semantic errors}} (also called logic errors).",
+      "source": "3.1 - Syntax and semantic errors",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_1_004",
+      "lesson": "3.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "errors",
+        "compiler"
+      ],
+      "front": "When are syntax errors detected?",
+      "back": "At compile-time. The compiler will detect syntax errors and issue compilation warnings or errors.",
+      "source": "3.1 - Syntax and semantic errors",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_1_005",
+      "lesson": "3.1",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "errors",
+        "syntax",
+        "common-mistakes"
+      ],
+      "question": "Identify THREE syntax errors in this code:",
+      "code": "int main(\n{\n    int 1x;\n    std::cout &lt;&lt; \"Hi there\"; &lt;&lt; x;\n    return 0\n}",
+      "answer": "<ul><li>Missing closing parenthesis after main(</li><li>Variable name 1x starts with a number (invalid identifier)</li><li>Missing semicolon after return 0</li></ul>",
+      "explanation": "Also note the extraneous semicolon after the string literal, though this is a less critical error.",
+      "source": "3.1 - Syntax and semantic errors",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_1_006",
+      "lesson": "3.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "errors",
+        "semantic"
+      ],
+      "front": "What are two types of semantic errors based on when they manifest?",
+      "back": "<ul><li>Compile-time semantic errors (detected by compiler)</li><li>Runtime semantic errors (manifest during program execution)</li></ul>",
+      "source": "3.1 - Syntax and semantic errors",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_1_007",
+      "lesson": "3.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "errors",
+        "semantic"
+      ],
+      "text": "Examples of compile-time semantic errors include using an {{c1::undeclared variable}} and {{c2::type mismatches}}.",
+      "source": "3.1 - Syntax and semantic errors",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_1_008",
+      "lesson": "3.1",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "errors",
+        "semantic",
+        "common-mistakes"
+      ],
+      "question": "What are the semantic errors in this code?",
+      "code": "int main()\n{\n    5 = x;\n    return \"hello\";\n}",
+      "answer": "<ul><li>Variable x is not declared</li><li>Cannot assign a value to literal 5 (not an lvalue)</li><li>Cannot return string literal from function returning int</li></ul>",
+      "explanation": "These are all compile-time semantic errors that the compiler will catch.",
+      "source": "3.1 - Syntax and semantic errors",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_1_009",
+      "lesson": "3.1",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "errors",
+        "semantic",
+        "runtime"
+      ],
+      "question": "What runtime error will this code cause?",
+      "code": "int a { 10 };\nint b { 0 };\nstd::cout &lt;&lt; a / b;",
+      "answer": "Division by zero - this is undefined behavior in mathematics and C++.",
+      "explanation": "Division by zero will likely crash the program or produce undefined results.",
+      "source": "3.1 - Syntax and semantic errors",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_1_010",
+      "lesson": "3.1",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "errors",
+        "semantic",
+        "initialization"
+      ],
+      "question": "What semantic error is present in this code?",
+      "code": "int main()\n{\n    int x;\n    std::cout &lt;&lt; x &lt;&lt; '\\n';\n    return 0;\n}",
+      "answer": "Use of uninitialized variable. Variable x has no initializer, so it contains a garbage value (indeterminate value).",
+      "explanation": "This leads to undefined behavior. The output will be unpredictable.",
+      "source": "3.1 - Syntax and semantic errors",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_1_011",
+      "lesson": "3.1",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "errors",
+        "semantic",
+        "functions"
+      ],
+      "question": "What will this code output and why is it wrong?",
+      "code": "int add(int x, int y)\n{\n    return x - y;\n}\n\nint main()\n{\n    std::cout &lt;&lt; \"5 + 3 = \" &lt;&lt; add(5, 3);\n    return 0;\n}",
+      "answer": "Output: \"5 + 3 = 2\"<br><br>The function is supposed to add but uses subtraction operator instead (wrong operator used in implementation).",
+      "explanation": "This is a logic error where the function doesn't match its intended behavior.",
+      "source": "3.1 - Syntax and semantic errors",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_1_012",
+      "lesson": "3.1",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "errors",
+        "semantic",
+        "control-flow"
+      ],
+      "question": "What's wrong with this code?",
+      "code": "int main()\n{\n    return 0;\n    std::cout &lt;&lt; \"Hello, world!\\n\";\n}",
+      "answer": "The cout statement is unreachable code - it appears after the return statement so it will never execute.",
+      "explanation": "This is a logic error. The function returns before the output statement can run.",
+      "source": "3.1 - Syntax and semantic errors",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_1_013",
+      "lesson": "3.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "errors",
+        "compiler"
+      ],
+      "text": "{{c1::Syntax errors}} are caught at {{c2::compile-time}} by the compiler, while runtime {{c3::semantic errors}} only appear when the program executes.",
+      "source": "3.1 - Syntax and semantic errors",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_1_014",
+      "lesson": "3.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "errors",
+        "syntax"
+      ],
+      "text": "Common syntax errors include missing {{c1::semicolons}}, mismatched {{c2::braces}}, and invalid {{c3::identifiers}}.",
+      "source": "3.1 - Syntax and semantic errors",
+      "difficulty": "easy"
+    }
+  ]
+}

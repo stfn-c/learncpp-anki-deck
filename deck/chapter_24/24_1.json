@@ -1,0 +1,110 @@
+{
+  "chapter": "Chapter 24",
+  "chapter_title": "Inheritance",
+  "lesson": "24.1",
+  "lesson_title": "Introduction to inheritance",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "ch24_1_001",
+      "lesson": "24.1",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "fundamentals"],
+      "front": "What type of relationship does inheritance model in C++?",
+      "back": "An \"is-a\" relationship between two objects (e.g., an Apple is-a Fruit).",
+      "source": "24.1 - Introduction to inheritance",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch24_1_002",
+      "lesson": "24.1",
+      "type": "cloze",
+      "tags": ["cpp", "inheritance", "terminology"],
+      "text": "In inheritance, the class being inherited from is called the {{c1::parent class}}, {{c1::base class}}, or {{c1::superclass}}, while the class doing the inheriting is called the {{c2::child class}}, {{c2::derived class}}, or {{c2::subclass}}.",
+      "source": "24.1 - Introduction to inheritance",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch24_1_003",
+      "lesson": "24.1",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "composition"],
+      "front": "What is the difference between composition (\"has-a\") and inheritance (\"is-a\") relationships?",
+      "back": "Composition models a \"has-a\" relationship where an object contains other objects as parts. Inheritance models an \"is-a\" relationship where a derived object IS a type of the base object.",
+      "source": "24.1 - Introduction to inheritance",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_1_004",
+      "lesson": "24.1",
+      "type": "cloze",
+      "tags": ["cpp", "inheritance", "syntax"],
+      "text": "To create a derived class that publicly inherits from a base class: {{c1::class Derived: public Base}}",
+      "source": "24.1 - Introduction to inheritance",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch24_1_005",
+      "lesson": "24.1",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "hierarchy"],
+      "front": "What is a hierarchy in the context of inheritance?",
+      "back": "A diagram that shows how various objects are related, either showing a progression over time or categorizing things from general to specific.",
+      "source": "24.1 - Introduction to inheritance",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch24_1_006",
+      "lesson": "24.1",
+      "type": "concept",
+      "tags": ["cpp", "inheritance", "real-world-examples"],
+      "concept": "Real-world examples of inheritance",
+      "explanation": "Inheritance is everywhere in real life. Biological inheritance (children inherit genes from parents), technology (Intel Pentium inherited features from 486), and categories (Apple is-a Fruit, which is-a Food).",
+      "examples": [
+        "Apple and Banana inherit properties from Fruit",
+        "Square is-a Rectangle is-a Quadrilateral is-a Shape",
+        "C++ inherited features from C language"
+      ],
+      "source": "24.1 - Introduction to inheritance",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch24_1_007",
+      "lesson": "24.1",
+      "type": "cloze",
+      "tags": ["cpp", "inheritance", "polymorphism"],
+      "text": "Inheritance enables {{c1::polymorphism}} through the use of {{c2::virtual functions}}.",
+      "source": "24.1 - Introduction to inheritance",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_1_008",
+      "lesson": "24.1",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "logic"],
+      "front": "If apples and bananas are fruits, and all fruits have a name, color, and size, what can we conclude about apples and bananas?",
+      "back": "Apples and bananas also have a name, color, and size. They inherit (acquire) all properties of fruit because they ARE fruit.",
+      "source": "24.1 - Introduction to inheritance",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch24_1_009",
+      "lesson": "24.1",
+      "type": "cloze",
+      "tags": ["cpp", "inheritance", "hierarchy"],
+      "text": "In an inheritance hierarchy, items at the {{c1::top}} are more {{c1::general}}, while items at the {{c2::bottom}} are more {{c2::specific}}.",
+      "source": "24.1 - Introduction to inheritance",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch24_1_010",
+      "lesson": "24.1",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "benefits"],
+      "front": "What are the two main benefits of using inheritance mentioned in the introduction?",
+      "back": "1) Reusing already written code<br>2) Modeling is-a relationships between objects more naturally",
+      "source": "24.1 - Introduction to inheritance",
+      "difficulty": "medium"
+    }
+  ]
+}

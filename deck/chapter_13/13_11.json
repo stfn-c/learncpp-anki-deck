@@ -1,0 +1,233 @@
+{
+  "chapter": "Chapter 13",
+  "chapter_title": "Compound Types: Enums and Structs",
+  "lesson": "13.11",
+  "lesson_title": "13.11 — Struct miscellany",
+  "total_cards": 16,
+  "cards": [
+    {
+      "id": "ch13_11_001",
+      "lesson": "13.11",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "struct",
+        "nested"
+      ],
+      "front": "Can you define a struct inside another struct?",
+      "back": "Yes. Nested structs are allowed and useful for types only relevant within the outer struct.",
+      "source": "13.11 — Struct miscellany",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_11_002",
+      "lesson": "13.11",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "struct",
+        "nested"
+      ],
+      "question": "How do you access the nested type?",
+      "code": "struct Employee {\n  struct Address { std::string city; };\n  Address addr;\n};",
+      "answer": "Use scope resolution: <code>Employee::Address</code><br>Access member: <code>emp.addr.city</code>",
+      "explanation": "Nested types use outer::inner syntax.",
+      "source": "13.11 — Struct miscellany",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_11_003",
+      "lesson": "13.11",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "struct",
+        "assignment"
+      ],
+      "front": "Can you assign one struct object to another of the same type?",
+      "back": "Yes. Memberwise assignment: each member is copied from source to destination.",
+      "source": "13.11 — Struct miscellany",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_11_004",
+      "lesson": "13.11",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "struct",
+        "assignment"
+      ],
+      "question": "What are joe's values after this?",
+      "code": "Employee frank { 14, 32, 60000.0 };\nEmployee joe;\njoe = frank;",
+      "answer": "joe.id=14, joe.age=32, joe.wage=60000.0 (copied from frank)",
+      "explanation": "Struct assignment copies all members.",
+      "source": "13.11 — Struct miscellany",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_11_005",
+      "lesson": "13.11",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "struct",
+        "comparison"
+      ],
+      "front": "Can you compare two structs with == operator by default?",
+      "back": "No. There's no default == for structs. You must overload operator== or compare members individually.",
+      "source": "13.11 — Struct miscellany",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_11_006",
+      "lesson": "13.11",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "struct",
+        "sizeof"
+      ],
+      "text": "The {{c1::sizeof}} operator returns the size of a struct in {{c2::bytes}}, including any {{c3::padding}}.",
+      "source": "13.11 — Struct miscellany",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_11_007",
+      "lesson": "13.11",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "struct",
+        "memory"
+      ],
+      "front": "Why might sizeof(struct) be larger than the sum of its members?",
+      "back": "Due to <strong>padding</strong> - the compiler adds extra bytes to align members for performance.",
+      "source": "13.11 — Struct miscellany",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_11_008",
+      "lesson": "13.11",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "struct",
+        "arrays"
+      ],
+      "question": "Is this valid?",
+      "code": "Employee employees[100];",
+      "answer": "Yes. You can create arrays of struct objects.",
+      "explanation": "Structs can be used anywhere fundamental types can be used.",
+      "source": "13.11 — Struct miscellany",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_11_009",
+      "lesson": "13.11",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "struct",
+        "temporary"
+      ],
+      "front": "Can you create temporary (anonymous) struct objects?",
+      "back": "Yes. Using aggregate initialization without a variable name:<br><code>print(Employee{ 14, 32, 60000.0 });</code>",
+      "source": "13.11 — Struct miscellany",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_11_010",
+      "lesson": "13.11",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "struct",
+        "memory"
+      ],
+      "concept": "Struct padding and alignment",
+      "explanation": "Compilers add padding between/after struct members for alignment:<ul><li>Improves performance on most architectures</li><li>Makes sizeof larger than sum of members</li><li>Depends on member order</li><li>Can use #pragma pack or alignas to control</li></ul>",
+      "examples": [
+        "struct S1 { char c; int i; };  // Likely 8 bytes (padding)",
+        "struct S2 { int i; char c; };  // Same members, different size",
+        "sizeof(S1) may not equal sizeof(c) + sizeof(i)"
+      ],
+      "source": "13.11 — Struct miscellany",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch13_11_011",
+      "lesson": "13.11",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "struct",
+        "scope"
+      ],
+      "front": "Where are struct definitions typically placed?",
+      "back": "In header files (.h) so they can be included and used across multiple source files.",
+      "source": "13.11 — Struct miscellany",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_11_012",
+      "lesson": "13.11",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "struct"
+      ],
+      "text": "Struct assignment performs {{c1::memberwise copy}} of all members from source to destination.",
+      "source": "13.11 — Struct miscellany",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_11_013",
+      "lesson": "13.11",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "struct"
+      ],
+      "text": "sizeof(struct) includes the size of members plus any {{c1::padding}} bytes added for {{c2::alignment}}.",
+      "source": "13.11 — Struct miscellany",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_11_014",
+      "lesson": "13.11",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "struct"
+      ],
+      "text": "Structs can be compared member-wise only if you {{c1::overload operator==}}; there's {{c2::no default}} comparison.",
+      "source": "13.11 — Struct miscellany",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_11_015",
+      "lesson": "13.11",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "struct"
+      ],
+      "text": "Struct assignment performs {{c1::memberwise copy}} of all members from source to destination.",
+      "source": "13.11 — Struct miscellany",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_11_016",
+      "lesson": "13.11",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "struct"
+      ],
+      "text": "sizeof(struct) includes the size of members plus any {{c1::padding}} bytes added for {{c2::alignment}}.",
+      "source": "13.11 — Struct miscellany",
+      "difficulty": "medium"
+    }
+  ]
+}

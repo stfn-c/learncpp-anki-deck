@@ -1,0 +1,211 @@
+{
+  "chapter": "Chapter 7",
+  "chapter_title": "Scope, Duration, and Linkage",
+  "lesson": "7.x",
+  "lesson_title": "Chapter 7 summary and quiz",
+  "total_cards": 14,
+  "cards": [
+    {
+      "id": "ch7_x_001",
+      "lesson": "7.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "review",
+        "compound-statements"
+      ],
+      "front": "What is a compound statement and where are they commonly used?",
+      "back": "A compound statement (block) is zero or more statements treated as a single statement, enclosed in braces { }. Commonly used with if statements to execute multiple statements conditionally.",
+      "source": "7.x - Chapter 7 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_x_002",
+      "lesson": "7.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "review",
+        "namespaces"
+      ],
+      "front": "What are the two ways to access a namespace member?",
+      "back": "<ul><li>Using the scope resolution operator (namespace::member)</li><li>Using a using declaration or using directive (then access member directly)</li></ul>",
+      "source": "7.x - Chapter 7 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_x_003",
+      "lesson": "7.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "review",
+        "scope"
+      ],
+      "text": "{{c1::Scope}} determines where an identifier can be accessed. {{c2::Duration}} determines when a variable is created and destroyed. {{c3::Linkage}} determines whether multiple declarations refer to the same object.",
+      "source": "7.x - Chapter 7 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_x_004",
+      "lesson": "7.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "review",
+        "variables"
+      ],
+      "front": "What's the key difference between local and global variables?",
+      "back": "Local variables have block scope and automatic duration (created/destroyed with scope). Global variables have file scope and static duration (exist for program lifetime).",
+      "source": "7.x - Chapter 7 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_x_005",
+      "lesson": "7.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "review",
+        "shadowing"
+      ],
+      "front": "How do you avoid variable shadowing?",
+      "back": "Use different names for variables in nested scopes, limit variable scope, enable compiler warnings (-Wshadow), and use 'g_' prefix for globals to distinguish them from locals.",
+      "source": "7.x - Chapter 7 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_x_006",
+      "lesson": "7.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "review",
+        "linkage"
+      ],
+      "text": "Use {{c1::internal linkage}} (static or unnamed namespace) for identifiers that should only be accessible within a single file. Use {{c2::external linkage}} for identifiers that need to be shared across files.",
+      "source": "7.x - Chapter 7 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_x_007",
+      "lesson": "7.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "review",
+        "constants"
+      ],
+      "front": "What's the modern C++17 way to share constants across files?",
+      "back": "Use inline constexpr variables in a header file, preferably inside a namespace. This creates a single shared constant accessible from all files that include the header.",
+      "source": "7.x - Chapter 7 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_x_008",
+      "lesson": "7.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "review",
+        "static"
+      ],
+      "front": "What are the three different uses of the 'static' keyword in C++?",
+      "back": "<ul><li>Static local variables (persist between function calls)</li><li>Static global variables/functions (internal linkage)</li><li>Static duration (lifetime of program)</li></ul>",
+      "source": "7.x - Chapter 7 summary and quiz",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch7_x_009",
+      "lesson": "7.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "review",
+        "best-practices"
+      ],
+      "front": "What are three key reasons to avoid non-const global variables?",
+      "back": "<ul><li>Hard to debug (any function can modify them)</li><li>Create tight coupling (reduce modularity)</li><li>Initialization order issues across files</li></ul>",
+      "source": "7.x - Chapter 7 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_x_010",
+      "lesson": "7.x",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "review",
+        "best-practices"
+      ],
+      "concept": "Chapter 7 key takeaways",
+      "explanation": "Master these core principles:<ul><li>Keep variable scope as narrow as possible</li><li>Use const/constexpr for constants, never non-const globals</li><li>Understand scope, duration, and linkage for all identifiers</li><li>Use namespaces to organize code and prevent collisions</li><li>Prefer unnamed namespaces over 'static' for internal linkage</li><li>Use inline variables (C++17) for shared constants in headers</li><li>Avoid variable shadowing and 'using namespace' in headers</li></ul>",
+      "examples": [
+        "// Good practices",
+        "namespace constants {",
+        "    inline constexpr double pi{ 3.14159 };",
+        "}",
+        "",
+        "int calculate(int x) {",
+        "    // Local scope, automatic duration",
+        "    int result = x * 2;",
+        "    return result;",
+        "}"
+      ],
+      "source": "7.x - Chapter 7 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_x_011",
+      "lesson": "7.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "review",
+        "linkage"
+      ],
+      "text": "The three types of linkage are {{c1::no linkage}} (local variables), {{c2::internal linkage}} (one file), and {{c3::external linkage}} (across files).",
+      "source": "7.x - Chapter 7 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_x_012",
+      "lesson": "7.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "review",
+        "best-practices"
+      ],
+      "text": "Keep variable scope as {{c1::narrow}} as possible and avoid {{c2::non-const global}} variables.",
+      "source": "7.x - Chapter 7 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_x_013",
+      "lesson": "7.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "review",
+        "namespaces"
+      ],
+      "text": "Use the {{c1::scope resolution operator}} ({{c2:::}}) to access namespace members: std{{c3::::}}cout",
+      "source": "7.x - Chapter 7 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_x_014",
+      "lesson": "7.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "review",
+        "static"
+      ],
+      "text": "The keyword {{c1::static}} has three uses: static {{c2::local variables}}, static {{c3::global identifiers}} (internal linkage), and static {{c4::duration}}.",
+      "source": "7.x - Chapter 7 summary and quiz",
+      "difficulty": "hard"
+    }
+  ]
+}

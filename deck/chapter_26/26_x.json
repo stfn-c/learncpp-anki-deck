@@ -1,0 +1,179 @@
+{
+  "chapter": "Chapter 26",
+  "chapter_title": "Templates and Classes",
+  "lesson": "26.x",
+  "lesson_title": "Chapter 26 summary and quiz",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch26_x_001",
+      "lesson": "26.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "fundamentals"
+      ],
+      "front": "What are templates in C++?",
+      "back": "Templates allow writing functions or classes using placeholder types, so the compiler can create identical versions using different types (like a stencil).",
+      "source": "26.x - Chapter 26 summary",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch26_x_002",
+      "lesson": "26.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "syntax"
+      ],
+      "text": "All template functions or classes must start with {{c1::template &lt;...&gt;}} containing {{c2::template type parameters or expression parameters}}.",
+      "source": "26.x - Chapter 26 summary",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch26_x_003",
+      "lesson": "26.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "file-organization"
+      ],
+      "front": "Why can't you split template class definitions and implementations into .h and .cpp files?",
+      "back": "Templates are stencils, not actual code. The compiler needs the full definition to instantiate them. Splitting causes linker errors because the .cpp file doesn't know what types to instantiate.",
+      "source": "26.x - Chapter 26 summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_x_004",
+      "lesson": "26.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "specialization"
+      ],
+      "front": "What is the difference between full and partial template specialization?",
+      "back": "Full specialization: all template parameters are specialized<br>Partial specialization: only some parameters are specialized<br>Note: Functions cannot be partially specialized (classes only).",
+      "source": "26.x - Chapter 26 summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_x_005",
+      "lesson": "26.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "naming"
+      ],
+      "text": "Template type parameters are typically named {{c1::T, T1, T2}} or other {{c2::single letter names}} like S.",
+      "source": "26.x - Chapter 26 summary",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch26_x_006",
+      "lesson": "26.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "std-library"
+      ],
+      "front": "Name two C++ standard library classes that use templates.",
+      "back": "std::array and std::vector (also std::string, std::map, std::set, etc.).",
+      "source": "26.x - Chapter 26 summary",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch26_x_007",
+      "lesson": "26.x",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "templates",
+        "use-cases"
+      ],
+      "concept": "Why templates are ideal for container classes",
+      "explanation": "Container classes (arrays, vectors, lists, maps) need to work with many different data types. Templates allow:<ul><li>Writing the container logic once</li><li>Type safety (compile-time checking)</li><li>No code duplication</li><li>Zero runtime overhead compared to hand-written versions</li></ul>",
+      "examples": [
+        "std::vector&lt;int&gt; numbers;",
+        "std::vector&lt;std::string&gt; names;",
+        "std::vector&lt;MyClass&gt; objects;"
+      ],
+      "source": "26.x - Chapter 26 summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_x_008",
+      "lesson": "26.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "expression-parameters"
+      ],
+      "front": "What types can template expression (non-type) parameters be?",
+      "back": "Usually integral types, but also:<ul><li>Enumerations</li><li>Pointers/references to functions or objects</li><li>std::nullptr_t</li><li>Floating point (C++20+)</li></ul>",
+      "source": "26.x - Chapter 26 summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_x_009",
+      "lesson": "26.x",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "templates",
+        "quiz"
+      ],
+      "question": "Write a template class Pair with two different template types T and S.",
+      "code": "// Your code here",
+      "answer": "template &lt;typename T, typename S&gt;<br>class Pair {<br>private:<br>    T m_first;<br>    S m_second;<br>public:<br>    Pair(const T&amp; first, const S&amp; second)<br>        : m_first{first}, m_second{second} {}<br>    T&amp; first() { return m_first; }<br>    S&amp; second() { return m_second; }<br>};",
+      "explanation": "Separate the two types by comma in the template parameter declaration. Each member uses its respective type.",
+      "source": "26.x - Chapter 26 quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_x_010",
+      "lesson": "26.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "best-practices"
+      ],
+      "text": "Template specialization can override {{c1::default behavior}} for {{c2::specific types}}, but prefer {{c3::non-template functions}} when possible for function templates.",
+      "source": "26.x - Chapter 26 summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_x_011",
+      "lesson": "26.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "file-organization"
+      ],
+      "text": "Template class code should be kept in {{c1::header files}} with {{c2::implementations underneath the class}}.",
+      "source": "26.x - Chapter 26 summary",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch26_x_012",
+      "lesson": "26.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "use-cases"
+      ],
+      "text": "Templates are often used for {{c1::container classes}} so a container can be written {{c2::once}} and used with any appropriate type.",
+      "source": "26.x - Chapter 26 summary",
+      "difficulty": "easy"
+    }
+  ]
+}

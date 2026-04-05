@@ -1,0 +1,145 @@
+{
+  "chapter": "Chapter 25",
+  "chapter_title": "Virtual Functions",
+  "lesson": "25.10",
+  "lesson_title": "Dynamic casting",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch25_10_001",
+      "lesson": "25.10",
+      "type": "cloze",
+      "tags": ["cpp", "dynamic-cast", "syntax"],
+      "text": "To perform a dynamic cast: {{c1::dynamic_cast}}&lt;Derived*&gt;(basePtr)",
+      "source": "25.10 - Dynamic casting",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_10_002",
+      "lesson": "25.10",
+      "type": "reverse",
+      "tags": ["cpp", "dynamic-cast", "terminology"],
+      "front": "dynamic_cast",
+      "back": "A casting operator that safely converts pointers/references along an inheritance hierarchy, performing runtime type checking",
+      "source": "25.10 - Dynamic casting",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_10_003",
+      "lesson": "25.10",
+      "type": "basic",
+      "tags": ["cpp", "dynamic-cast", "polymorphism"],
+      "front": "What does dynamic_cast return if the cast fails with a pointer?",
+      "back": "It returns nullptr if the cast is invalid (the object is not actually of the target type).",
+      "source": "25.10 - Dynamic casting",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_10_004",
+      "lesson": "25.10",
+      "type": "basic",
+      "tags": ["cpp", "dynamic-cast", "polymorphism"],
+      "front": "What does dynamic_cast do if the cast fails with a reference?",
+      "back": "It throws a std::bad_cast exception (since references can't be null).",
+      "source": "25.10 - Dynamic casting",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_10_005",
+      "lesson": "25.10",
+      "type": "code",
+      "tags": ["cpp", "dynamic-cast"],
+      "question": "What does this code do?",
+      "code": "Base* basePtr = getDerivedObject();\nDerived* derivedPtr = dynamic_cast&lt;Derived*&gt;(basePtr);\n\nif (derivedPtr) {\n    derivedPtr-&gt;derivedFunction();\n} else {\n    std::cout &lt;&lt; \"Not a Derived object\\n\";\n}",
+      "answer": "Safely attempts to downcast Base* to Derived*. If successful, calls derivedFunction(). If not, prints error message.",
+      "explanation": "dynamic_cast checks at runtime if basePtr actually points to a Derived object. If yes, returns valid pointer. If no, returns nullptr.",
+      "source": "25.10 - Dynamic casting",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_10_006",
+      "lesson": "25.10",
+      "type": "cloze",
+      "tags": ["cpp", "dynamic-cast", "requirements"],
+      "text": "dynamic_cast only works with {{c1::polymorphic}} classes (classes with at least one {{c2::virtual}} function).",
+      "source": "25.10 - Dynamic casting",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_10_007",
+      "lesson": "25.10",
+      "type": "reverse",
+      "tags": ["cpp", "casting", "terminology"],
+      "front": "downcasting",
+      "back": "Casting from a base class pointer/reference to a derived class pointer/reference",
+      "source": "25.10 - Dynamic casting",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_10_008",
+      "lesson": "25.10",
+      "type": "basic",
+      "tags": ["cpp", "dynamic-cast", "best-practices"],
+      "front": "Why is dynamic_cast safer than static_cast for downcasting?",
+      "back": "dynamic_cast performs runtime type checking and returns nullptr/throws exception if invalid. static_cast does no checking and can create invalid pointers, causing undefined behavior.",
+      "source": "25.10 - Dynamic casting",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_10_009",
+      "lesson": "25.10",
+      "type": "code",
+      "tags": ["cpp", "dynamic-cast", "common-mistakes"],
+      "question": "What's wrong with this code?",
+      "code": "class Base {  // No virtual functions!\npublic:\n    int x;\n};\n\nclass Derived: public Base { };\n\nBase* b = new Derived();\nDerived* d = dynamic_cast&lt;Derived*&gt;(b);",
+      "answer": "Compilation error: dynamic_cast requires Base to be polymorphic (have at least one virtual function).",
+      "explanation": "dynamic_cast only works with polymorphic types. Add a virtual destructor to Base to make it polymorphic.",
+      "source": "25.10 - Dynamic casting",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_10_010",
+      "lesson": "25.10",
+      "type": "concept",
+      "tags": ["cpp", "dynamic-cast", "best-practices"],
+      "concept": "When to use dynamic_cast",
+      "explanation": "Use dynamic_cast when:<ul><li>You need to safely downcast from base to derived</li><li>You're not sure of the actual object type at runtime</li><li>You want runtime type checking and safe failure</li></ul>Avoid if:<ul><li>You can redesign to use virtual functions instead</li><li>Performance is critical (dynamic_cast has runtime cost)</li><li>The type is known at compile time</li></ul>",
+      "examples": [
+        "// When base pointer might be different derived types:",
+        "if (auto* dog = dynamic_cast&lt;Dog*&gt;(animal)) {",
+        "    dog-&gt;wagTail();",
+        "}"
+      ],
+      "source": "25.10 - Dynamic casting",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch25_10_011",
+      "lesson": "25.10",
+      "type": "basic",
+      "tags": ["cpp", "dynamic-cast", "performance"],
+      "front": "What is the performance cost of dynamic_cast?",
+      "back": "dynamic_cast has runtime overhead because it must traverse the inheritance hierarchy to verify the cast is valid. It's slower than static_cast or C-style casts.",
+      "source": "25.10 - Dynamic casting",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_10_012",
+      "lesson": "25.10",
+      "type": "concept",
+      "tags": ["cpp", "dynamic-cast", "design"],
+      "concept": "Alternatives to dynamic_cast",
+      "explanation": "Dynamic casting often indicates design issues. Better alternatives:<ul><li>Use virtual functions for behavior instead of type checking</li><li>Use visitor pattern for type-specific operations</li><li>Store type info if you frequently need it</li><li>Redesign to avoid downcasting</li></ul>Excessive dynamic_cast usage suggests the design doesn't fully leverage polymorphism.",
+      "examples": [
+        "// Instead of:",
+        "if (auto* d = dynamic_cast&lt;Dog*&gt;(a)) d-&gt;bark();",
+        "",
+        "// Consider:",
+        "class Animal { virtual void makeSound() = 0; };",
+        "a-&gt;makeSound();  // Polymorphic call"
+      ],
+      "source": "25.10 - Dynamic casting",
+      "difficulty": "hard"
+    }
+  ]
+}

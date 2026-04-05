@@ -1,0 +1,160 @@
+{
+  "chapter": "Chapter 9",
+  "chapter_title": "Error Detection and Handling",
+  "lesson": "9.6",
+  "lesson_title": "Assert and static_assert",
+  "total_cards": 15,
+  "cards": [
+    {
+      "id": "ch9_6_001",
+      "lesson": "9.6",
+      "type": "cloze",
+      "tags": ["cpp", "assert", "terminology"],
+      "text": "A {{c1::precondition}} is any condition that must be true prior to the execution of some section of code (typically the body of a function).",
+      "source": "9.6 - Assert and static_assert",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch9_6_002",
+      "lesson": "9.6",
+      "type": "cloze",
+      "tags": ["cpp", "assert", "terminology"],
+      "text": "An {{c1::invariant}} is a condition that must be true while some section of code is executing. A {{c2::postcondition}} is something that must be true after the execution of some section of code.",
+      "source": "9.6 - Assert and static_assert",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch9_6_003",
+      "lesson": "9.6",
+      "type": "basic",
+      "tags": ["cpp", "assert", "patterns"],
+      "front": "What is the 'bouncer pattern' for preconditions?",
+      "back": "Place precondition checks at the top of a function, using early return to bounce back to the caller if the precondition isn't met. This keeps test cases up-front and reduces nesting.",
+      "source": "9.6 - Assert and static_assert",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch9_6_004",
+      "lesson": "9.6",
+      "type": "cloze",
+      "tags": ["cpp", "assert", "definition"],
+      "text": "An {{c1::assertion}} is an expression that will be true unless there is a bug in the program. If the expression evaluates to {{c2::false}}, an error message is displayed and the program is terminated via {{c3::std::abort}}.",
+      "source": "9.6 - Assert and static_assert",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch9_6_005",
+      "lesson": "9.6",
+      "type": "cloze",
+      "tags": ["cpp", "assert", "syntax"],
+      "text": "In C++, runtime assertions are implemented via the {{c1::assert}} preprocessor macro, which lives in the {{c2::&lt;cassert&gt;}} header.",
+      "source": "9.6 - Assert and static_assert",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch9_6_006",
+      "lesson": "9.6",
+      "type": "code",
+      "tags": ["cpp", "assert", "syntax"],
+      "question": "What does this assertion do?",
+      "code": "#include &lt;cassert&gt;\n\ndouble calculateTime(double height, double gravity)\n{\n    assert(gravity &gt; 0.0);\n    // ... rest of function\n}",
+      "answer": "Checks that gravity is positive. If gravity &lt;= 0.0, the program aborts with an error message showing the failed assertion.",
+      "explanation": "The assert macro validates assumptions. If the condition is false, it displays the expression, file name, and line number, then calls std::abort().",
+      "source": "9.6 - Assert and static_assert",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch9_6_007",
+      "lesson": "9.6",
+      "type": "cloze",
+      "tags": ["cpp", "assert", "best-practices"],
+      "text": "To make assert statements more descriptive, add a string literal with logical AND: {{c1::assert(found &amp;&amp; \"Car could not be found in database\")}}.",
+      "source": "9.6 - Assert and static_assert",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch9_6_008",
+      "lesson": "9.6",
+      "type": "basic",
+      "tags": ["cpp", "assert", "best-practices"],
+      "front": "Why does adding a string literal to an assert not change its behavior?",
+      "back": "A string literal always evaluates to bool true. So 'false &amp;&amp; true' is still false, and 'true &amp;&amp; true' is still true. But the string appears in the error message, providing context.",
+      "source": "9.6 - Assert and static_assert",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch9_6_009",
+      "lesson": "9.6",
+      "type": "cloze",
+      "tags": ["cpp", "assert", "ndebug"],
+      "text": "If the preprocessor macro {{c1::NDEBUG}} is defined, the assert macro gets disabled. Most IDEs set NDEBUG by default in {{c2::release}} configurations.",
+      "source": "9.6 - Assert and static_assert",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch9_6_010",
+      "lesson": "9.6",
+      "type": "cloze",
+      "tags": ["cpp", "assert", "static_assert"],
+      "text": "A {{c1::static_assert}} is an assertion that is checked at {{c2::compile-time}} rather than runtime, with a failing static_assert causing a {{c3::compile error}}.",
+      "source": "9.6 - Assert and static_assert",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch9_6_011",
+      "lesson": "9.6",
+      "type": "code",
+      "tags": ["cpp", "static_assert", "syntax"],
+      "question": "What does this code do?",
+      "code": "static_assert(sizeof(long) == 8, \"long must be 8 bytes\");\nstatic_assert(sizeof(int) &gt;= 4, \"int must be at least 4 bytes\");",
+      "answer": "Validates type sizes at compile-time. If long is not 8 bytes or int is less than 4 bytes, compilation fails with the diagnostic message.",
+      "explanation": "static_assert checks conditions at compile-time. These assertions ensure type sizes meet requirements before the program even compiles.",
+      "source": "9.6 - Assert and static_assert",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch9_6_012",
+      "lesson": "9.6",
+      "type": "basic",
+      "tags": ["cpp", "static_assert", "features"],
+      "front": "What are three key differences between static_assert and runtime assert?",
+      "back": "1. static_assert is evaluated at compile-time (no runtime cost)<br>2. static_assert is NOT deactivated in release builds<br>3. static_assert requires a constant expression condition",
+      "source": "9.6 - Assert and static_assert",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch9_6_013",
+      "lesson": "9.6",
+      "type": "cloze",
+      "tags": ["cpp", "assert", "best-practices"],
+      "text": "Best practice: Favor {{c1::static_assert}} over assert() whenever possible.",
+      "source": "9.6 - Assert and static_assert",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch9_6_014",
+      "lesson": "9.6",
+      "type": "concept",
+      "tags": ["cpp", "assert", "best-practices"],
+      "concept": "When to use asserts vs error handling",
+      "explanation": "Use different approaches for different scenarios:<ul><li><strong>Assertions:</strong> Detect programming errors during development. Document assumptions that should never happen. No recovery needed. Compiled out in release builds.</li><li><strong>Error handling:</strong> Handle cases that could happen in release builds (recoverable or unrecoverable). Has runtime cost.</li><li><strong>Both:</strong> Use both when something isn't supposed to occur, but you want to fail gracefully if it does in release.</li></ul>",
+      "examples": [
+        "assert(x != 0.0);  // Programming error if violated",
+        "if (x == 0.0) throw error;  // Handle gracefully in release",
+        "// Use both for critical checks"
+      ],
+      "source": "9.6 - Assert and static_assert",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch9_6_015",
+      "lesson": "9.6",
+      "type": "basic",
+      "tags": ["cpp", "assert", "gotchas"],
+      "front": "Why should assert expressions have no side effects?",
+      "back": "When NDEBUG is defined (release builds), assert expressions aren't evaluated. If they had side effects, the program would behave differently in debug vs release builds.",
+      "source": "9.6 - Assert and static_assert",
+      "difficulty": "hard"
+    }
+  ]
+}

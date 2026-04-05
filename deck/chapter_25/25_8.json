@@ -1,0 +1,126 @@
+{
+  "chapter": "Chapter 25",
+  "chapter_title": "Virtual Functions",
+  "lesson": "25.8",
+  "lesson_title": "Virtual base classes",
+  "total_cards": 11,
+  "cards": [
+    {
+      "id": "ch25_8_001",
+      "lesson": "25.8",
+      "type": "reverse",
+      "tags": ["cpp", "virtual-base-class", "terminology"],
+      "front": "diamond problem",
+      "back": "An ambiguity that occurs when a class inherits from two classes that both inherit from the same base class, resulting in duplicate base class subobjects",
+      "source": "25.8 - Virtual base classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_8_002",
+      "lesson": "25.8",
+      "type": "cloze",
+      "tags": ["cpp", "virtual-base-class", "syntax"],
+      "text": "To make a base class virtual, use the {{c1::virtual}} keyword in the inheritance specification: class Derived: {{c1::virtual}} public Base",
+      "source": "25.8 - Virtual base classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_8_003",
+      "lesson": "25.8",
+      "type": "basic",
+      "tags": ["cpp", "virtual-base-class", "diamond-problem"],
+      "front": "What problem do virtual base classes solve?",
+      "back": "They solve the diamond problem by ensuring only one copy of the base class exists in a derived object, even when inherited through multiple paths.",
+      "source": "25.8 - Virtual base classes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_8_004",
+      "lesson": "25.8",
+      "type": "code",
+      "tags": ["cpp", "diamond-problem"],
+      "question": "What's the problem with this code?",
+      "code": "class PoweredDevice { };\nclass Scanner: public PoweredDevice { };\nclass Printer: public PoweredDevice { };\nclass Copier: public Scanner, public Printer { };\n\nCopier c;\n// How many PoweredDevice subobjects does c have?",
+      "answer": "Two PoweredDevice subobjects - one from Scanner and one from Printer.",
+      "explanation": "Without virtual inheritance, Copier has two separate copies of PoweredDevice, which wastes memory and creates ambiguity when accessing PoweredDevice members.",
+      "source": "25.8 - Virtual base classes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_8_005",
+      "lesson": "25.8",
+      "type": "cloze",
+      "tags": ["cpp", "virtual-base-class", "syntax"],
+      "text": "With virtual base classes: class Scanner: {{c1::virtual public}} PoweredDevice \\{ \\};",
+      "source": "25.8 - Virtual base classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_8_006",
+      "lesson": "25.8",
+      "type": "code",
+      "tags": ["cpp", "virtual-base-class"],
+      "question": "How many PoweredDevice subobjects does c have with virtual inheritance?",
+      "code": "class PoweredDevice { };\nclass Scanner: virtual public PoweredDevice { };\nclass Printer: virtual public PoweredDevice { };\nclass Copier: public Scanner, public Printer { };\n\nCopier c;",
+      "answer": "One PoweredDevice subobject, shared between Scanner and Printer paths.",
+      "explanation": "Virtual inheritance ensures only a single shared base class subobject exists, solving the diamond problem.",
+      "source": "25.8 - Virtual base classes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_8_007",
+      "lesson": "25.8",
+      "type": "basic",
+      "tags": ["cpp", "virtual-base-class", "constructors"],
+      "front": "Who is responsible for constructing a virtual base class?",
+      "back": "The most-derived class is responsible for constructing the virtual base class directly, not the intermediate classes.<br><br>Example: In Copier: Scanner: Printer: PoweredDevice, Copier constructs PoweredDevice.",
+      "source": "25.8 - Virtual base classes",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch25_8_008",
+      "lesson": "25.8",
+      "type": "cloze",
+      "tags": ["cpp", "virtual-base-class", "construction"],
+      "text": "With virtual base classes, the {{c1::most-derived}} class must call the virtual base class constructor in its initialization list.",
+      "source": "25.8 - Virtual base classes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_8_009",
+      "lesson": "25.8",
+      "type": "concept",
+      "tags": ["cpp", "virtual-base-class", "gotchas"],
+      "concept": "Downsides of virtual base classes",
+      "explanation": "Virtual base classes have several costs:<ul><li>More complex construction rules (most-derived class must initialize)</li><li>Performance overhead (extra indirection to access members)</li><li>Increased object size (extra pointers for virtual base tracking)</li><li>More complicated memory layout</li></ul>Use only when necessary to solve the diamond problem.",
+      "examples": [
+        "// Without virtual inheritance: simpler, faster",
+        "// With virtual inheritance: solves diamond, but slower"
+      ],
+      "source": "25.8 - Virtual base classes",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch25_8_010",
+      "lesson": "25.8",
+      "type": "basic",
+      "tags": ["cpp", "virtual-base-class", "best-practices"],
+      "front": "When should you use virtual base classes?",
+      "back": "Only when you have a diamond inheritance pattern and need a single shared base class subobject. Avoid if possible due to complexity and performance costs.<br><br>Consider composition or redesign instead.",
+      "source": "25.8 - Virtual base classes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_8_011",
+      "lesson": "25.8",
+      "type": "code",
+      "tags": ["cpp", "virtual-base-class", "constructors"],
+      "question": "What's required to make this code compile?",
+      "code": "class Base {\n    int value;\npublic:\n    Base(int v): value(v) { }\n};\n\nclass A: virtual public Base { };\nclass B: virtual public Base { };\nclass Derived: public A, public B {\n    // What goes here?\n};",
+      "answer": "Derived must call Base constructor directly in its initialization list.",
+      "explanation": "With virtual base classes, the most-derived class (Derived) is responsible for initializing the virtual base (Base), even though it's not a direct parent.<br><br>Example: Derived(): Base(value), A(), B() { }",
+      "source": "25.8 - Virtual base classes",
+      "difficulty": "hard"
+    }
+  ]
+}

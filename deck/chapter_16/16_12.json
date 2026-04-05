@@ -1,0 +1,116 @@
+{
+  "chapter": "Chapter 16",
+  "chapter_title": "Introduction to Containers and Arrays",
+  "lesson": "16.12",
+  "lesson_title": "std::vector<bool>",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "ch16_12_001",
+      "lesson": "16.12",
+      "type": "basic",
+      "tags": ["cpp", "vector", "gotchas"],
+      "front": "Why is std::vector&lt;bool&gt; considered problematic?",
+      "back": "It's a specialized template that doesn't behave like other vectors. It stores bits instead of bool objects, doesn't return real references, and violates expectations. It's not considered a true container.",
+      "source": "16.12 - std::vector<bool>",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_12_002",
+      "lesson": "16.12",
+      "type": "cloze",
+      "tags": ["cpp", "vector", "bool"],
+      "text": "std::vector&lt;bool&gt; is a {{c1::template specialization}} that stores each bool as a single {{c2::bit}} rather than a byte to save memory.",
+      "source": "16.12 - std::vector<bool>",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_12_003",
+      "lesson": "16.12",
+      "type": "basic",
+      "tags": ["cpp", "vector", "bool"],
+      "front": "What does std::vector&lt;bool&gt;::operator[] return?",
+      "back": "A proxy object (not a real bool&amp;) that acts like a reference to a bit. This breaks code expecting a real reference.",
+      "source": "16.12 - std::vector<bool>",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch16_12_004",
+      "lesson": "16.12",
+      "type": "code",
+      "tags": ["cpp", "vector", "bool", "common-mistakes"],
+      "question": "What's wrong with this code?",
+      "code": "std::vector&lt;bool&gt; v{true, false};\nbool&amp; ref = v[0];",
+      "answer": "Won't compile. v[0] doesn't return a bool&amp;, it returns a proxy object that can't bind to bool&amp;.",
+      "explanation": "std::vector&lt;bool&gt; doesn't store actual bool objects, so it can't return real references.",
+      "source": "16.12 - std::vector<bool>",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch16_12_005",
+      "lesson": "16.12",
+      "type": "concept",
+      "tags": ["cpp", "vector", "bool", "best-practices"],
+      "concept": "Alternatives to std::vector&lt;bool&gt;",
+      "explanation": "Avoid std::vector&lt;bool&gt;. Better alternatives:<ul><li>std::vector&lt;char&gt; or std::vector&lt;unsigned char&gt; - uses more memory but behaves normally</li><li>std::deque&lt;bool&gt; - similar interface, no bit-packing</li><li>std::bitset - for fixed-size bit arrays</li><li>Third-party libraries like boost::dynamic_bitset</li></ul>",
+      "examples": [
+        "std::vector&lt;char&gt; flags;  // Use char instead",
+        "std::deque&lt;bool&gt; flags;  // Or deque",
+        "std::bitset&lt;32&gt; flags;  // Fixed size"
+      ],
+      "source": "16.12 - std::vector<bool>",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_12_006",
+      "lesson": "16.12",
+      "type": "basic",
+      "tags": ["cpp", "vector", "bool"],
+      "front": "What is the main benefit of std::vector&lt;bool&gt;'s bit-packing?",
+      "back": "Memory efficiency - uses 1 bit per bool instead of 1 byte, reducing memory usage by 8x. However, this comes with significant behavioral problems.",
+      "source": "16.12 - std::vector<bool>",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_12_007",
+      "lesson": "16.12",
+      "type": "cloze",
+      "tags": ["cpp", "vector", "bool"],
+      "text": "LearnCPP recommends avoiding {{c1::std::vector&lt;bool&gt;}} and using {{c2::std::vector&lt;char&gt;}} or {{c3::std::deque&lt;bool&gt;}} instead.",
+      "source": "16.12 - std::vector<bool>",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_12_008",
+      "lesson": "16.12",
+      "type": "basic",
+      "tags": ["cpp", "vector", "bool"],
+      "front": "Is std::vector&lt;bool&gt; considered a true container in C++?",
+      "back": "No. It doesn't meet all container requirements because it doesn't provide access to actual bool objects. It's a pseudo-container.",
+      "source": "16.12 - std::vector<bool>",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_12_009",
+      "lesson": "16.12",
+      "type": "code",
+      "tags": ["cpp", "vector", "bool"],
+      "question": "How would you fix this code?",
+      "code": "std::vector&lt;bool&gt; flags{true, false, true};",
+      "answer": "std::vector&lt;char&gt; flags{true, false, true};<br>or<br>std::deque&lt;bool&gt; flags{true, false, true};",
+      "explanation": "Replace vector&lt;bool&gt; with vector&lt;char&gt; or deque&lt;bool&gt; to avoid the specialization issues.",
+      "source": "16.12 - std::vector<bool>",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_12_010",
+      "lesson": "16.12",
+      "type": "basic",
+      "tags": ["cpp", "bitset", "containers"],
+      "front": "When should you use std::bitset instead of std::vector&lt;bool&gt;?",
+      "back": "When you need a fixed-size collection of bits known at compile time. std::bitset provides a clean interface for bit manipulation without the problems of vector&lt;bool&gt;.",
+      "source": "16.12 - std::vector<bool>",
+      "difficulty": "medium"
+    }
+  ]
+}

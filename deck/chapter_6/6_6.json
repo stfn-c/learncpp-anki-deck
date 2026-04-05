@@ -1,0 +1,200 @@
+{
+  "chapter": "Chapter 6",
+  "chapter_title": "Operators",
+  "lesson": "6.6",
+  "lesson_title": "The conditional operator",
+  "total_cards": 13,
+  "cards": [
+    {
+      "id": "ch6_6_001",
+      "lesson": "6.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operators",
+        "conditional"
+      ],
+      "text": "The conditional operator {{c1::?:}} is the only {{c2::ternary}} operator in C++ (takes three operands). It's also called the {{c3::arithmetic if}} operator.",
+      "source": "6.6 - The conditional operator",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_6_002",
+      "lesson": "6.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operators",
+        "syntax"
+      ],
+      "text": "The conditional operator syntax is {{c1::condition ? expressionIfTrue : expressionIfFalse}}. If condition is true, {{c2::expressionIfTrue}} is evaluated and returned.",
+      "source": "6.6 - The conditional operator",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_6_003",
+      "lesson": "6.6",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operators",
+        "conditional"
+      ],
+      "question": "What does this code output?",
+      "code": "int x = 5;\nstd::cout &lt;&lt; ((x &gt; 3) ? 10 : 20);",
+      "answer": "10",
+      "explanation": "x &gt; 3 is true (5 &gt; 3), so the conditional operator returns 10.",
+      "source": "6.6 - The conditional operator",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_6_004",
+      "lesson": "6.6",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operators",
+        "conditional"
+      ],
+      "question": "Rewrite using the conditional operator:",
+      "code": "if (x &gt; 0)\n    y = 1;\nelse\n    y = -1;",
+      "answer": "y = (x &gt; 0) ? 1 : -1;",
+      "explanation": "The conditional operator provides a concise way to assign one of two values based on a condition.",
+      "source": "6.6 - The conditional operator",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch6_6_005",
+      "lesson": "6.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operators",
+        "conditional",
+        "best-practices"
+      ],
+      "front": "When should you parenthesize the conditional operator?",
+      "back": "Always parenthesize the entire conditional operator when used in a compound expression. For readability, also parenthesize the condition if it contains operators.",
+      "source": "6.6 - The conditional operator",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_6_006",
+      "lesson": "6.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operators",
+        "conditional"
+      ],
+      "text": "The conditional operator evaluates as an {{c1::expression}}, not a statement, so it can be used anywhere a value is needed (assignments, function arguments, etc.).",
+      "source": "6.6 - The conditional operator",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch6_6_007",
+      "lesson": "6.6",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operators",
+        "conditional"
+      ],
+      "question": "What does this function return for num = 1?",
+      "code": "std::string_view pluralize(int num)\n{\n    return (num == 1) ? \"apple\" : \"apples\";\n}",
+      "answer": "\"apple\"",
+      "explanation": "When num is 1, the condition (num == 1) is true, so it returns \"apple\".",
+      "source": "6.6 - The conditional operator",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_6_008",
+      "lesson": "6.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operators",
+        "conditional"
+      ],
+      "front": "Can you use the conditional operator for type conversion?",
+      "back": "Yes. The conditional operator performs usual arithmetic conversions on the true and false expressions, so (true ? 1 : 2.5) returns double.",
+      "source": "6.6 - The conditional operator",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch6_6_009",
+      "lesson": "6.6",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operators",
+        "conditional"
+      ],
+      "question": "What's a better way to write this?",
+      "code": "std::cout &lt;&lt; (x &lt; y ? (x &lt; z ? x : z) : (y &lt; z ? y : z));",
+      "answer": "Use a function or if-else statements. Nested ternaries are hard to read.",
+      "explanation": "While nested conditional operators work, they quickly become unreadable. Use if-else or a function for complex logic.",
+      "source": "6.6 - The conditional operator",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch6_6_010",
+      "lesson": "6.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operators",
+        "conditional"
+      ],
+      "text": "The conditional operator only evaluates {{c1::one}} of the two expressions (either true or false branch), not both. This is called {{c2::short-circuit}} evaluation.",
+      "source": "6.6 - The conditional operator",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch6_6_011",
+      "lesson": "6.6",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "operators",
+        "conditional",
+        "best-practices"
+      ],
+      "concept": "When to use the conditional operator vs if-else",
+      "explanation": "Use the conditional operator for simple conditional assignments or return values. Use if-else for:<ul><li>Complex conditions</li><li>Multiple statements in branches</li><li>Better readability</li></ul>The conditional operator works best when assigning one of two values.",
+      "examples": [
+        "int max = (a &gt; b) ? a : b;  // Good use",
+        "return (isValid) ? data : defaultValue;  // Good",
+        "// Avoid complex nested ternaries"
+      ],
+      "source": "6.6 - The conditional operator",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch6_6_012",
+      "lesson": "6.6",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "operators"
+      ],
+      "front": "?:",
+      "back": "Conditional operator (ternary operator)",
+      "source": "6.6 - The conditional operator",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_6_013",
+      "lesson": "6.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operators",
+        "conditional"
+      ],
+      "text": "The ternary operator evaluates: if {{c1::condition}} is true, return {{c2::expressionIfTrue}}, else return {{c3::expressionIfFalse}}",
+      "source": "6.6 - The conditional operator",
+      "difficulty": "easy"
+    }
+  ]
+}

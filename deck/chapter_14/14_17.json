@@ -1,0 +1,125 @@
+{
+  "chapter": "Chapter 14",
+  "chapter_title": "Introduction to Classes",
+  "lesson": "14.17",
+  "lesson_title": "Constexpr aggregates and classes",
+  "total_cards": 11,
+  "cards": [
+    {
+      "id": "ch14_17_001",
+      "lesson": "14.17",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "constexpr"],
+      "text": "A {{c1::constexpr}} class object can be evaluated at {{c2::compile time}}, allowing the object to be used in constant expressions.",
+      "source": "14.17 - Constexpr aggregates and classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_17_002",
+      "lesson": "14.17",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "constexpr", "syntax"],
+      "text": "To make a constructor constexpr:<br>{{c1::constexpr}} ClassName(int x) : m_x{x} { }",
+      "source": "14.17 - Constexpr aggregates and classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_17_003",
+      "lesson": "14.17",
+      "type": "basic",
+      "tags": ["cpp", "classes", "constexpr"],
+      "front": "What are the requirements for a constructor to be constexpr?",
+      "back": "<ul><li>Must be marked constexpr</li><li>All initializations must be constant expressions</li><li>Constructor body can only contain statements allowed in constexpr functions</li><li>All data members being initialized must be const or constexpr types</li></ul>",
+      "source": "14.17 - Constexpr aggregates and classes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_17_004",
+      "lesson": "14.17",
+      "type": "code",
+      "tags": ["cpp", "classes", "constexpr"],
+      "question": "What does this code demonstrate?",
+      "code": "class Point<br>{<br>public:<br>&nbsp;&nbsp;&nbsp;&nbsp;constexpr Point(int x, int y)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: m_x{x}, m_y{y} { }<br>&nbsp;&nbsp;&nbsp;&nbsp;constexpr int getX() const { return m_x; }<br>private:<br>&nbsp;&nbsp;&nbsp;&nbsp;int m_x, m_y;<br>};<br><br>constexpr Point p{3, 4};<br>constexpr int x = p.getX();",
+      "answer": "Compile-time class object evaluation. Both the Point object and getX() call are evaluated at compile time.",
+      "explanation": "Constexpr constructor and member functions allow the entire object and its operations to be evaluated at compile time.",
+      "source": "14.17 - Constexpr aggregates and classes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_17_005",
+      "lesson": "14.17",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "constexpr"],
+      "text": "Member functions called on constexpr objects must also be marked {{c1::constexpr}} (or {{c2::const}} in some contexts) to be usable in constant expressions.",
+      "source": "14.17 - Constexpr aggregates and classes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_17_006",
+      "lesson": "14.17",
+      "type": "concept",
+      "tags": ["cpp", "classes", "constexpr", "best-practices"],
+      "concept": "Benefits of constexpr classes",
+      "explanation": "Constexpr classes provide:<ul><li>Compile-time computation and optimization</li><li>Ability to use objects in constant expressions (array sizes, template parameters)</li><li>Potentially better performance (computation done at compile time)</li><li>Stronger guarantees about object immutability</li><li>Can be used in contexts requiring compile-time constants</li></ul>",
+      "examples": [
+        "constexpr Point origin{0, 0};",
+        "int arr[Point{5, 10}.getX()];  // array size from constexpr"
+      ],
+      "source": "14.17 - Constexpr aggregates and classes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_17_007",
+      "lesson": "14.17",
+      "type": "basic",
+      "tags": ["cpp", "classes", "aggregates"],
+      "front": "What is an aggregate type in C++?",
+      "back": "An aggregate is a class/struct with:<ul><li>No user-declared constructors</li><li>No private or protected non-static data members</li><li>No base classes</li><li>No virtual functions</li></ul>Can be initialized with brace initialization.",
+      "source": "14.17 - Constexpr aggregates and classes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_17_008",
+      "lesson": "14.17",
+      "type": "code",
+      "tags": ["cpp", "classes", "aggregates"],
+      "question": "Is this an aggregate?",
+      "code": "struct Data<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;int x;<br>&nbsp;&nbsp;&nbsp;&nbsp;int y;<br>};",
+      "answer": "Yes. It has no constructors, all members are public, no base classes, no virtual functions.",
+      "explanation": "Simple structs with only public data members are aggregates and can use aggregate initialization.",
+      "source": "14.17 - Constexpr aggregates and classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_17_009",
+      "lesson": "14.17",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "aggregates"],
+      "text": "Aggregate initialization syntax:<br>{{c1::Data d{5, 10};}}&nbsp;&nbsp;// members initialized in declaration order",
+      "source": "14.17 - Constexpr aggregates and classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_17_010",
+      "lesson": "14.17",
+      "type": "basic",
+      "tags": ["cpp", "classes", "constexpr"],
+      "front": "Can a constexpr object be modified at runtime?",
+      "back": "No. Constexpr objects are implicitly const and cannot be modified. They are initialized at compile time and remain constant throughout the program's execution.",
+      "source": "14.17 - Constexpr aggregates and classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_17_011",
+      "lesson": "14.17",
+      "type": "code",
+      "tags": ["cpp", "classes", "constexpr", "common-mistakes"],
+      "question": "What's wrong with this code?",
+      "code": "class Counter<br>{<br>public:<br>&nbsp;&nbsp;&nbsp;&nbsp;constexpr Counter(int n) : m_count{n} { }<br>&nbsp;&nbsp;&nbsp;&nbsp;void increment() { ++m_count; }<br>private:<br>&nbsp;&nbsp;&nbsp;&nbsp;int m_count;<br>};<br><br>constexpr Counter c{0};<br>c.increment();  // error!",
+      "answer": "Cannot call non-const member function on constexpr object. c is implicitly const and cannot be modified.",
+      "explanation": "Constexpr objects are const. You cannot call member functions that modify the object.",
+      "source": "14.17 - Constexpr aggregates and classes",
+      "difficulty": "medium"
+    }
+  ]
+}

@@ -1,0 +1,227 @@
+{
+  "chapter": "Chapter 6",
+  "chapter_title": "Operators",
+  "lesson": "6.8",
+  "lesson_title": "Logical operators",
+  "total_cards": 15,
+  "cards": [
+    {
+      "id": "ch6_8_001",
+      "lesson": "6.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operators",
+        "logical"
+      ],
+      "text": "The three logical operators are: {{c1::!}} (NOT), {{c2::&amp;&amp;}} (AND), and {{c3::||}} (OR).",
+      "source": "6.8 - Logical operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_8_002",
+      "lesson": "6.8",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operators",
+        "logical"
+      ],
+      "question": "What does this code output?",
+      "code": "bool a = true;\nbool b = false;\nstd::cout &lt;&lt; (a &amp;&amp; b);",
+      "answer": "0",
+      "explanation": "AND operator returns true only if both operands are true. true &amp;&amp; false = false (printed as 0).",
+      "source": "6.8 - Logical operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_8_003",
+      "lesson": "6.8",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operators",
+        "logical"
+      ],
+      "question": "What does this code output?",
+      "code": "bool a = true;\nbool b = false;\nstd::cout &lt;&lt; (a || b);",
+      "answer": "1",
+      "explanation": "OR operator returns true if at least one operand is true. true || false = true (printed as 1).",
+      "source": "6.8 - Logical operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_8_004",
+      "lesson": "6.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operators",
+        "logical"
+      ],
+      "text": "The logical NOT operator {{c1::!}} is {{c2::unary}} (takes one operand). !true = {{c3::false}} and !false = {{c4::true}}.",
+      "source": "6.8 - Logical operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_8_005",
+      "lesson": "6.8",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operators",
+        "logical"
+      ],
+      "front": "What is short-circuit evaluation?",
+      "back": "When using &amp;&amp; or ||, if the result can be determined from the left operand alone, the right operand is not evaluated. For &amp;&amp;, if left is false, right isn't evaluated. For ||, if left is true, right isn't evaluated.",
+      "source": "6.8 - Logical operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch6_8_006",
+      "lesson": "6.8",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operators",
+        "logical"
+      ],
+      "question": "Will printHello() be called?",
+      "code": "if (false &amp;&amp; printHello())\n    std::cout &lt;&lt; \"Done\";",
+      "answer": "No",
+      "explanation": "Short-circuit evaluation: false &amp;&amp; anything is always false, so printHello() is never called.",
+      "source": "6.8 - Logical operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch6_8_007",
+      "lesson": "6.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operators",
+        "logical"
+      ],
+      "text": "De Morgan's laws: !(a &amp;&amp; b) is equivalent to {{c1::!a || !b}}, and !(a || b) is equivalent to {{c2::!a &amp;&amp; !b}}.",
+      "source": "6.8 - Logical operators",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch6_8_008",
+      "lesson": "6.8",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operators",
+        "logical"
+      ],
+      "front": "What does the logical AND truth table look like?",
+      "back": "true &amp;&amp; true = true<br>true &amp;&amp; false = false<br>false &amp;&amp; true = false<br>false &amp;&amp; false = false<br>(Only true when both are true)",
+      "source": "6.8 - Logical operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_8_009",
+      "lesson": "6.8",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operators",
+        "logical"
+      ],
+      "front": "What does the logical OR truth table look like?",
+      "back": "true || true = true<br>true || false = true<br>false || true = true<br>false || false = false<br>(Only false when both are false)",
+      "source": "6.8 - Logical operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_8_010",
+      "lesson": "6.8",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operators",
+        "logical"
+      ],
+      "question": "What does this check?",
+      "code": "if (x &gt;= 1 &amp;&amp; x &lt;= 10)",
+      "answer": "Whether x is in the range [1, 10] inclusive",
+      "explanation": "Checks if x is greater than or equal to 1 AND less than or equal to 10. Both conditions must be true.",
+      "source": "6.8 - Logical operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_8_011",
+      "lesson": "6.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operators",
+        "logical"
+      ],
+      "text": "The logical operators have {{c1::lower}} precedence than relational operators, so x &gt; 5 &amp;&amp; x &lt; 10 is evaluated as {{c2::(x &gt; 5) &amp;&amp; (x &lt; 10)}}.",
+      "source": "6.8 - Logical operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch6_8_012",
+      "lesson": "6.8",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "operators",
+        "logical",
+        "best-practices"
+      ],
+      "concept": "Leveraging short-circuit evaluation",
+      "explanation": "Short-circuit evaluation can be used to avoid expensive operations or prevent errors. Place cheaper or more likely-to-fail conditions first in &amp;&amp; expressions, and more likely-to-succeed conditions first in || expressions.",
+      "examples": [
+        "if (ptr != nullptr &amp;&amp; *ptr == 5)  // Safe: nullptr check first",
+        "if (cheapCheck() &amp;&amp; expensiveCheck())  // Efficient",
+        "if (commonCase || rareCase())  // commonCase evaluated first"
+      ],
+      "source": "6.8 - Logical operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch6_8_013",
+      "lesson": "6.8",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operators",
+        "logical"
+      ],
+      "front": "What is the alternative keyword for the logical NOT operator?",
+      "back": "The keyword 'not' can be used instead of !. So !x and 'not x' are equivalent. Similarly, 'and' for &amp;&amp; and 'or' for ||.",
+      "source": "6.8 - Logical operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch6_8_014",
+      "lesson": "6.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operators",
+        "logical"
+      ],
+      "text": "Logical operators: {{c1::!}} (NOT) flips the value, {{c2::&amp;&amp;}} (AND) requires both to be true, {{c3::||}} (OR) requires at least one to be true.",
+      "source": "6.8 - Logical operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_8_015",
+      "lesson": "6.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operators",
+        "logical"
+      ],
+      "text": "With {{c1::short-circuit}} evaluation, the {{c2::right}} operand is not evaluated if the result can be determined from the {{c3::left}} operand alone.",
+      "source": "6.8 - Logical operators",
+      "difficulty": "medium"
+    }
+  ]
+}

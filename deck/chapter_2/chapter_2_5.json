@@ -1,0 +1,180 @@
+{
+  "chapter": "Chapter 2",
+  "chapter_title": "C++ Basics: Functions and Files",
+  "lesson": "2.5",
+  "lesson_title": "Introduction to local scope",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch2_5_001",
+      "lesson": "2.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "scope",
+        "variables"
+      ],
+      "text": "An identifier's {{c1::scope}} determines where the identifier can be {{c2::accessed}} within the source code.",
+      "source": "2.5 - Introduction to local scope",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_5_002",
+      "lesson": "2.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "scope",
+        "local-variables"
+      ],
+      "source": "2.5 - Introduction to local scope",
+      "difficulty": "easy",
+      "text": "{{c1::Local scope}} refers to variables defined inside a {{c2::function}} or {{c3::block}}. They can only be accessed within that function/block."
+    },
+    {
+      "id": "ch2_5_003",
+      "lesson": "2.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "scope",
+        "variables"
+      ],
+      "text": "Variables defined inside a function are called {{c1::local variables}}. They are created when the function is {{c2::called}} and destroyed when it {{c3::returns}}.",
+      "source": "2.5 - Introduction to local scope",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_5_004",
+      "lesson": "2.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "scope",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this code?",
+      "code": "void doSomething() {<br>  int x = 5;<br>}<br><br>int main() {<br>  std::cout &lt;&lt; x;  // Error!<br>  return 0;<br>}",
+      "answer": "Error: x is not in scope. x is a local variable in doSomething() and cannot be accessed from main().",
+      "explanation": "Local variables are only accessible within the function where they're defined. x exists only inside doSomething().",
+      "source": "2.5 - Introduction to local scope",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_5_005",
+      "lesson": "2.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "scope",
+        "parameters"
+      ],
+      "source": "2.5 - Introduction to local scope",
+      "difficulty": "easy",
+      "text": "Function {{c1::parameters}} have {{c2::local scope}} - they can only be accessed within the {{c3::function body}}, just like local variables."
+    },
+    {
+      "id": "ch2_5_006",
+      "lesson": "2.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "scope",
+        "variables"
+      ],
+      "question": "Can two functions have local variables with the same name?",
+      "code": "void funcA() {<br>  int x = 5;<br>}<br><br>void funcB() {<br>  int x = 10;  // OK?<br>}",
+      "answer": "Yes, this is fine. Each x has local scope limited to its own function, so they don't conflict.",
+      "explanation": "Local variables in different functions are independent, even if they have the same name.",
+      "source": "2.5 - Introduction to local scope",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_5_007",
+      "lesson": "2.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "scope",
+        "variables"
+      ],
+      "text": "The region of code where a variable can be accessed is called its {{c1::scope}}. Variables go out of scope when they reach the end of the {{c2::block}} in which they were defined.",
+      "source": "2.5 - Introduction to local scope",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_5_008",
+      "lesson": "2.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "scope",
+        "lifetime"
+      ],
+      "source": "2.5 - Introduction to local scope",
+      "difficulty": "medium",
+      "text": "Local variables are {{c1::created}} at the point of definition and {{c2::destroyed}} at the end of the block (typically when the function {{c3::returns}})."
+    },
+    {
+      "id": "ch2_5_009",
+      "lesson": "2.5",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "scope",
+        "best-practices"
+      ],
+      "concept": "Benefits of local scope",
+      "explanation": "Local scope provides important advantages:<ul><li>Variables don't interfere with each other across functions</li><li>Easier to reason about code - limited area to check</li><li>Prevents accidental modification from other code</li><li>Automatic cleanup when function ends</li></ul>",
+      "examples": [
+        "void calcA() { int result = 5; }  // result only exists here",
+        "void calcB() { int result = 10; }  // Different result, no conflict"
+      ],
+      "source": "2.5 - Introduction to local scope",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_5_010",
+      "lesson": "2.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "scope",
+        "blocks"
+      ],
+      "question": "What is the scope of x in this code?",
+      "code": "int main() {<br>  int x = 5;<br>  {<br>    int y = 10;<br>  }  // y destroyed here<br>  // x still exists<br>  return 0;<br>}",
+      "answer": "x has scope for the entire main() function. y has scope only within the inner block.",
+      "explanation": "Variables defined in inner blocks have narrower scope than variables in outer blocks.",
+      "source": "2.5 - Introduction to local scope",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_5_011",
+      "lesson": "2.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "scope",
+        "blocks"
+      ],
+      "text": "A block is defined by curly braces {{c1::{ }}}. Variables defined in a block go out of scope at the {{c2::closing brace}}.",
+      "source": "2.5 - Introduction to local scope",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_5_012",
+      "lesson": "2.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "scope",
+        "variables"
+      ],
+      "front": "Can a local variable in an outer block access a variable in an inner nested block?",
+      "back": "No. Variables in inner blocks are not accessible to outer blocks. Scope only works outward, not inward.",
+      "source": "2.5 - Introduction to local scope",
+      "difficulty": "medium"
+    }
+  ]
+}

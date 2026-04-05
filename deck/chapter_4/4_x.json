@@ -1,0 +1,150 @@
+{
+  "chapter": "Chapter 4",
+  "chapter_title": "Fundamental Data Types",
+  "lesson": "4.x",
+  "lesson_title": "Chapter 4 summary and quiz",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "ch4_x_001",
+      "lesson": "4.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "types",
+        "review"
+      ],
+      "text": "The fundamental data types in C++ include {{c1::integral}} types (bool, char, int), {{c2::floating point}} types (float, double), void, and nullptr.",
+      "source": "4.x - Chapter 4 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_x_002",
+      "lesson": "4.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "types",
+        "best-practices"
+      ],
+      "front": "What are the recommended default type choices for common scenarios?",
+      "back": "<ul><li>Integers: <strong>int</strong></li><li>Floating point: <strong>double</strong></li><li>Characters: <strong>char</strong></li><li>Booleans: <strong>bool</strong></li></ul>",
+      "source": "4.x - Chapter 4 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_x_003",
+      "lesson": "4.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "unsigned",
+        "best-practices"
+      ],
+      "text": "Avoid unsigned integers except for {{c1::bit manipulation}} because of unexpected {{c2::wraparound}} behavior and mixing with signed types.",
+      "source": "4.x - Chapter 4 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch4_x_004",
+      "lesson": "4.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "initialization",
+        "best-practices"
+      ],
+      "front": "Why should you always initialize variables when declaring them?",
+      "back": "Uninitialized variables contain garbage values (whatever was in memory), leading to undefined behavior and bugs that are hard to track down.",
+      "source": "4.x - Chapter 4 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_x_005",
+      "lesson": "4.x",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with each line?",
+      "code": "void x;           // 1\nfloat f{ 5.0 };   // 2\nchar c{ \"a\" };    // 3\nif (x = 5) {}     // 4",
+      "answer": "1: Can't create void variables<br>2: Missing 'f' suffix (5.0 is double)<br>3: Should use 'a' not \"a\"<br>4: Assignment (=) instead of comparison (==)",
+      "explanation": "Common type and syntax mistakes from Chapter 4.",
+      "source": "4.x - Chapter 4 summary and quiz",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch4_x_006",
+      "lesson": "4.x",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "integers",
+        "overflow"
+      ],
+      "concept": "Integer overflow behavior: signed vs unsigned",
+      "explanation": "Key difference:<ul><li><strong>Signed overflow</strong>: Undefined behavior (anything can happen)</li><li><strong>Unsigned overflow</strong>: Defined wraparound using modulo arithmetic</li></ul>Both should be avoided in practice.",
+      "examples": [
+        "int x{ INT_MAX + 1 };      // undefined behavior",
+        "unsigned u{ 0 - 1 };       // wraps to UINT_MAX"
+      ],
+      "source": "4.x - Chapter 4 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch4_x_007",
+      "lesson": "4.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "floating-point",
+        "best-practices"
+      ],
+      "text": "Never compare floating point numbers using {{c1::==}} because of {{c2::rounding errors}}. Use epsilon comparison instead.",
+      "source": "4.x - Chapter 4 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch4_x_008",
+      "lesson": "4.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "static_cast",
+        "best-practices"
+      ],
+      "front": "When is static_cast necessary vs optional?",
+      "back": "<strong>Necessary</strong>: Narrowing conversions with brace init, fixing integer division<br><strong>Good practice</strong>: Making any type conversion explicit and clear",
+      "source": "4.x - Chapter 4 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch4_x_009",
+      "lesson": "4.x",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "if-statement",
+        "best-practices"
+      ],
+      "text": "Best practice: Always use {{c1::curly braces}} for if/else statement bodies, even for {{c2::single}} statements.",
+      "source": "4.x - Chapter 4 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_x_010",
+      "lesson": "4.x",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "fundamentals",
+        "review"
+      ],
+      "front": "What are the three most important takeaways from Chapter 4?",
+      "back": "<ul><li>Always initialize variables</li><li>Prefer int and double for default types</li><li>Avoid unsigned integers in most cases</li></ul>",
+      "source": "4.x - Chapter 4 summary and quiz",
+      "difficulty": "easy"
+    }
+  ]
+}

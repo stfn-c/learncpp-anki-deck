@@ -1,0 +1,145 @@
+{
+  "chapter": "Chapter 2",
+  "chapter_title": "C++ Basics: Functions and Files",
+  "lesson": "2.x",
+  "lesson_title": "Chapter 2 summary and quiz",
+  "total_cards": 11,
+  "cards": [
+    {
+      "id": "ch2_x_001",
+      "lesson": "2.x",
+      "type": "basic",
+      "tags": ["cpp", "functions", "summary"],
+      "front": "What are the three main parts of a function definition?",
+      "back": "1. Return type<br>2. Function name and parameters<br>3. Function body (in curly braces)",
+      "source": "2.x - Chapter 2 summary",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_x_002",
+      "lesson": "2.x",
+      "type": "basic",
+      "tags": ["cpp", "functions", "summary"],
+      "front": "What's the difference between a declaration and a definition?",
+      "back": "A <strong>declaration</strong> tells the compiler an identifier exists. A <strong>definition</strong> provides the full implementation and allocates memory/provides body.",
+      "source": "2.x - Chapter 2 summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_x_003",
+      "lesson": "2.x",
+      "type": "cloze",
+      "tags": ["cpp", "summary", "terminology"],
+      "text": "The {{c1::caller}} is the function that calls another function. The {{c2::callee}} is the function being called. The {{c3::scope}} determines where an identifier can be accessed.",
+      "source": "2.x - Chapter 2 summary",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_x_004",
+      "lesson": "2.x",
+      "type": "concept",
+      "tags": ["cpp", "files", "summary"],
+      "concept": "Multi-file program structure",
+      "explanation": "A typical C++ program consists of:<ul><li><strong>.h files:</strong> Forward declarations, prototypes, interfaces</li><li><strong>.cpp files:</strong> Function definitions, implementations</li><li><strong>main.cpp:</strong> Contains main() function</li><li><strong>Compilation:</strong> Each .cpp compiled separately</li><li><strong>Linking:</strong> Object files combined into executable</li></ul>",
+      "examples": [
+        "// math.h",
+        "int add(int a, int b);",
+        "",
+        "// math.cpp",
+        "#include \"math.h\"",
+        "int add(int a, int b) { return a+b; }",
+        "",
+        "// main.cpp",
+        "#include \"math.h\"",
+        "int main() { return add(2,3); }"
+      ],
+      "source": "2.x - Chapter 2 summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_x_005",
+      "lesson": "2.x",
+      "type": "basic",
+      "tags": ["cpp", "preprocessor", "summary"],
+      "front": "What's the role of the preprocessor?",
+      "back": "The preprocessor processes directives (starting with #) before compilation, handling #include, #define, and conditional compilation.",
+      "source": "2.x - Chapter 2 summary",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_x_006",
+      "lesson": "2.x",
+      "type": "cloze",
+      "tags": ["cpp", "headers", "summary"],
+      "text": "Every header file should have {{c1::header guards}} (or {{c2::#pragma once}}) to prevent {{c3::multiple inclusion}} errors.",
+      "source": "2.x - Chapter 2 summary",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_x_007",
+      "lesson": "2.x",
+      "type": "basic",
+      "tags": ["cpp", "namespaces", "summary"],
+      "front": "Why should you avoid 'using namespace std;'?",
+      "back": "It pollutes the global namespace with all std identifiers, defeating the purpose of namespaces and increasing risk of naming collisions.",
+      "source": "2.x - Chapter 2 summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_x_008",
+      "lesson": "2.x",
+      "type": "concept",
+      "tags": ["cpp", "functions", "summary", "best-practices"],
+      "concept": "Chapter 2 key best practices",
+      "explanation": "Essential practices from Chapter 2:<ul><li>Keep functions small and focused (one task)</li><li>Use meaningful function names</li><li>Define functions before use or provide forward declarations</li><li>Use header files for declarations, .cpp for definitions</li><li>Always use header guards</li><li>Prefer std:: over using namespace std</li><li>Design before coding (top-down, incremental)</li><li>Test frequently</li></ul>",
+      "examples": [
+        "// Good function",
+        "int calculateAverage(int a, int b) {",
+        "  return (a + b) / 2;",
+        "}",
+        "",
+        "// Proper header",
+        "#ifndef MATH_H",
+        "#define MATH_H",
+        "int calculateAverage(int a, int b);",
+        "#endif"
+      ],
+      "source": "2.x - Chapter 2 summary",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_x_009",
+      "lesson": "2.x",
+      "type": "code",
+      "tags": ["cpp", "summary", "quiz"],
+      "question": "What does this program output?",
+      "code": "int getValue() { return 5; }<br><br>int main() {<br>  int x = getValue();<br>  std::cout &lt;&lt; x * 2;<br>  return 0;<br>}",
+      "answer": "10",
+      "explanation": "getValue() returns 5, which is assigned to x. Then x * 2 (5 * 2 = 10) is printed.",
+      "source": "2.x - Chapter 2 summary",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_x_010",
+      "lesson": "2.x",
+      "type": "code",
+      "tags": ["cpp", "summary", "quiz"],
+      "question": "Identify the errors in this code structure",
+      "code": "// main.cpp<br>#include &lt;iostream&gt;<br>using namespace std;<br><br>int main() {<br>  printValue(5);<br>  return 0;<br>}<br><br>void printValue(int x) {<br>  cout &lt;&lt; x;<br>}",
+      "answer": "Errors:<br>1. using namespace std (bad practice)<br>2. printValue called before definition (need forward declaration)<br>3. void return type not specified before definition",
+      "explanation": "Need forward declaration for printValue before main(), and should avoid using namespace std.",
+      "source": "2.x - Chapter 2 summary",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch2_x_011",
+      "lesson": "2.x",
+      "type": "basic",
+      "tags": ["cpp", "summary"],
+      "front": "What are the key concepts covered in Chapter 2?",
+      "back": "<ul><li>Functions (definition, declaration, calls)</li><li>Parameters and arguments</li><li>Return values</li><li>Local scope</li><li>Forward declarations</li><li>Multi-file programs</li><li>Header files and guards</li><li>Namespaces</li><li>Preprocessor</li><li>Program design</li></ul>",
+      "source": "2.x - Chapter 2 summary",
+      "difficulty": "medium"
+    }
+  ]
+}

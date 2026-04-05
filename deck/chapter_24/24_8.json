@@ -1,0 +1,127 @@
+{
+  "chapter": "Chapter 24",
+  "chapter_title": "Inheritance",
+  "lesson": "24.8",
+  "lesson_title": "Hiding inherited functionality",
+  "total_cards": 11,
+  "cards": [
+    {
+      "id": "ch24_8_001",
+      "lesson": "24.8",
+      "type": "cloze",
+      "tags": ["cpp", "inheritance", "access-change"],
+      "text": "To change an inherited member's access specifier in a derived class, use: {{c1::using Base::memberName;}} under the new access specifier.",
+      "source": "24.8 - Hiding inherited functionality",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch24_8_002",
+      "lesson": "24.8",
+      "type": "code",
+      "tags": ["cpp", "inheritance", "access-change"],
+      "question": "What access level does printValue() have in Derived?",
+      "code": "class Base {\nprotected:\n    void printValue() const { /*...*/ }\n};\n\nclass Derived: public Base {\npublic:\n    using Base::printValue;\n};",
+      "answer": "public",
+      "explanation": "The using declaration changes printValue from protected (in Base) to public in Derived.",
+      "source": "24.8 - Hiding inherited functionality",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch24_8_003",
+      "lesson": "24.8",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "access-change"],
+      "front": "Can you change the access specifier of a private base member to public in a derived class?",
+      "back": "No, you can only change access specifiers for base members the derived class can access. Private members are inaccessible, so they can't be changed.",
+      "source": "24.8 - Hiding inherited functionality",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_8_004",
+      "lesson": "24.8",
+      "type": "cloze",
+      "tags": ["cpp", "inheritance", "hiding"],
+      "text": "To hide a public base class member in a derived class, use {{c1::using Base::member;}} under a {{c2::private:}} access specifier.",
+      "source": "24.8 - Hiding inherited functionality",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_8_005",
+      "lesson": "24.8",
+      "type": "code",
+      "tags": ["cpp", "inheritance", "hiding"],
+      "question": "Can the public access m_value through Derived?",
+      "code": "class Base {\npublic:\n    int m_value{};\n};\n\nclass Derived : public Base {\nprivate:\n    using Base::m_value;\n};\n\nint main() {\n    Derived d{7};\n    std::cout &lt;&lt; d.m_value; // OK?\n    return 0;\n}",
+      "answer": "No, compilation error",
+      "explanation": "m_value is now private in Derived due to the using declaration, so the public cannot access it through a Derived object.",
+      "source": "24.8 - Hiding inherited functionality",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_8_006",
+      "lesson": "24.8",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "hiding"],
+      "front": "Can encapsulation in a derived class be subverted by casting to a base class reference?",
+      "back": "Yes, if a member is public in Base but made private in Derived, you can still access it by casting to Base&amp; and accessing it there.",
+      "source": "24.8 - Hiding inherited functionality",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch24_8_007",
+      "lesson": "24.8",
+      "type": "cloze",
+      "tags": ["cpp", "inheritance", "deletion"],
+      "text": "To prevent a function from being called through a derived object, mark it as: {{c1::= delete}}",
+      "source": "24.8 - Hiding inherited functionality",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch24_8_008",
+      "lesson": "24.8",
+      "type": "code",
+      "tags": ["cpp", "inheritance", "deletion"],
+      "question": "Will this compile?",
+      "code": "class Base {\npublic:\n    int getValue() const { return m_value; }\nprivate:\n    int m_value{};\n};\n\nclass Derived : public Base {\npublic:\n    int getValue() const = delete;\n};\n\nint main() {\n    Derived d{7};\n    std::cout &lt;&lt; d.getValue();\n    return 0;\n}",
+      "answer": "No, compilation error",
+      "explanation": "getValue() has been marked as deleted in Derived, so it cannot be called through a Derived object.",
+      "source": "24.8 - Hiding inherited functionality",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_8_009",
+      "lesson": "24.8",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "deletion"],
+      "front": "After deleting a function in a derived class, can you still call the base class version?",
+      "back": "Yes, you can call Base::getValue() directly or upcast to Base&amp; to access it.",
+      "source": "24.8 - Hiding inherited functionality",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_8_010",
+      "lesson": "24.8",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "overloads"],
+      "front": "Can you change the access specifier for just one overload of a function?",
+      "back": "No, using Base::functionName affects ALL overloads with that name. You cannot selectively change access for individual overloads.",
+      "source": "24.8 - Hiding inherited functionality",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch24_8_011",
+      "lesson": "24.8",
+      "type": "concept",
+      "tags": ["cpp", "inheritance", "hiding"],
+      "concept": "Ways to hide or restrict inherited functionality",
+      "explanation": "Three approaches:<ul><li>Change access specifier using 'using' declaration (e.g., make public member private)</li><li>Delete the function (= delete)</li><li>Use private inheritance (makes all inherited members private)</li></ul>Note: Encapsulation can be bypassed by casting to Base&amp;.",
+      "examples": [
+        "using Base::member; // under private:",
+        "int getValue() const = delete;",
+        "class Derived : private Base { };"
+      ],
+      "source": "24.8 - Hiding inherited functionality",
+      "difficulty": "medium"
+    }
+  ]
+}

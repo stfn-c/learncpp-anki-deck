@@ -1,0 +1,156 @@
+{
+  "chapter": "Chapter 5",
+  "chapter_title": "Constants and Strings",
+  "lesson": "5.6",
+  "lesson_title": "Constexpr variables",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "ch5_5_6_001",
+      "lesson": "5.6",
+      "type": "cloze",
+      "text": "The {{c1::constexpr}} keyword defines a variable that must be a compile-time constant.",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "syntax"
+      ],
+      "source": "5.6 - Constexpr variables",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch5_5_6_002",
+      "lesson": "5.6",
+      "type": "cloze",
+      "text": "Unlike const, {{c1::constexpr}} guarantees the value is known at {{c2::compile-time}}.",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "compile-time"
+      ],
+      "source": "5.6 - Constexpr variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch5_5_6_003",
+      "lesson": "5.6",
+      "type": "cloze",
+      "text": "To declare a constexpr variable: {{c1::constexpr int x&#123; 5 &#125;;}}",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "syntax"
+      ],
+      "source": "5.6 - Constexpr variables",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch5_5_6_004",
+      "lesson": "5.6",
+      "type": "cloze",
+      "text": "Best practice: Use {{c1::constexpr}} for compile-time constants, and {{c2::const}} for runtime constants.",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "const",
+        "best-practices"
+      ],
+      "source": "5.6 - Constexpr variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch5_5_6_005",
+      "lesson": "5.6",
+      "type": "code",
+      "question": "What's wrong with this code?",
+      "code": "int x;\nstd::cin &gt;&gt; x;\nconstexpr int y&#123; x &#125;;",
+      "answer": "Compiler error: constexpr variables must be initialized with a constant expression. x is not known at compile-time.",
+      "explanation": "constexpr requires the value to be computable during compilation, but x depends on user input which is only available at runtime.",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "common-mistakes"
+      ],
+      "source": "5.6 - Constexpr variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch5_5_6_006",
+      "lesson": "5.6",
+      "type": "code",
+      "question": "Which declarations are valid?",
+      "code": "const int a&#123; 5 &#125;;\nconstexpr int b&#123; a &#125;;\nconstexpr int c&#123; a * 2 &#125;;\nint d&#123; 10 &#125;;\nconstexpr int e&#123; d &#125;;",
+      "answer": "Valid: a, b, c<br>Invalid: e (d is not const or constexpr)",
+      "explanation": "constexpr variables can be initialized from other const/constexpr values that are compile-time constants, but not from non-const variables.",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "const"
+      ],
+      "source": "5.6 - Constexpr variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch5_5_6_007",
+      "lesson": "5.6",
+      "type": "basic",
+      "front": "What is the main difference between const and constexpr?",
+      "back": "<ul><li>const: value cannot change, but may be determined at runtime</li><li>constexpr: value must be known at compile-time and cannot change</li></ul>",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "const",
+        "fundamentals"
+      ],
+      "source": "5.6 - Constexpr variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch5_5_6_008",
+      "lesson": "5.6",
+      "type": "basic",
+      "front": "When should you use constexpr instead of const?",
+      "back": "Use constexpr when:<ul><li>The value is known at compile-time</li><li>You need a compile-time constant (array size, template argument)</li><li>You want to ensure it's evaluated at compile-time for optimization</li></ul>",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "best-practices"
+      ],
+      "source": "5.6 - Constexpr variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch5_5_6_009",
+      "lesson": "5.6",
+      "type": "concept",
+      "concept": "Constexpr for optimization and safety",
+      "explanation": "constexpr provides both performance and correctness benefits:<ul><li>Performance: Guarantees compile-time evaluation</li><li>Safety: Compiler enforces compile-time computability</li><li>Intent: Clearly documents that value is compile-time constant</li></ul>The compiler will error if you accidentally try to use a runtime value.",
+      "examples": [
+        "constexpr int max&#123; 100 &#125;;\nint arr[max];  // OK",
+        "constexpr double pi&#123; 3.14159 &#125;;\nconstexpr double area&#123; pi * r * r &#125;;  // Computed at compile-time"
+      ],
+      "tags": [
+        "cpp",
+        "constexpr",
+        "optimization",
+        "best-practices"
+      ],
+      "source": "5.6 - Constexpr variables",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch5_5_6_010",
+      "lesson": "5.6",
+      "type": "reverse",
+      "front": "constexpr",
+      "back": "Keyword that declares a variable or function that must be evaluable at compile-time",
+      "tags": [
+        "cpp",
+        "keywords",
+        "constexpr"
+      ],
+      "source": "5.6 - Constexpr variables",
+      "difficulty": "easy"
+    }
+  ]
+}

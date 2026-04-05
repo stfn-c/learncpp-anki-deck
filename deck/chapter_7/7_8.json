@@ -1,0 +1,220 @@
+{
+  "chapter": "Chapter 7",
+  "chapter_title": "Scope, Duration, and Linkage",
+  "lesson": "7.8",
+  "lesson_title": "Why (non-const) global variables are evil",
+  "total_cards": 14,
+  "cards": [
+    {
+      "id": "ch7_8_001",
+      "lesson": "7.8",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "globals",
+        "best-practices"
+      ],
+      "front": "What are three main problems with non-const global variables?",
+      "back": "<ul><li>They can be modified from anywhere, making bugs hard to track</li><li>They create tight coupling between unrelated code</li><li>They make code harder to understand and reuse</li></ul>",
+      "source": "7.8 - Why (non-const) global variables are evil",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_8_002",
+      "lesson": "7.8",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "globals",
+        "debugging"
+      ],
+      "concept": "Why global variables make debugging harder",
+      "explanation": "When a global variable has an incorrect value, any function in the entire program could have caused it. This makes debugging much harder than with local variables, where only the current function (and functions it calls) could be responsible.",
+      "examples": [
+        "// Hard to debug",
+        "int g_score;",
+        "// 100 functions modify g_score",
+        "// Bug: g_score has wrong value - which function caused it?",
+        "",
+        "// Easier to debug",
+        "int calculateScore() {",
+        "    int score = 0;",
+        "    // Only this function modifies score",
+        "}"
+      ],
+      "source": "7.8 - Why (non-const) global variables are evil",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_8_003",
+      "lesson": "7.8",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "globals",
+        "coupling"
+      ],
+      "front": "What is the problem with tight coupling caused by global variables?",
+      "back": "Functions that use global variables become dependent on those variables and cannot be reused in other programs without bringing the globals along. This reduces modularity.",
+      "source": "7.8 - Why (non-const) global variables are evil",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_8_004",
+      "lesson": "7.8",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "globals",
+        "initialization"
+      ],
+      "front": "What is the initialization order problem with global variables?",
+      "back": "The initialization order of global variables across different files is not guaranteed. If one global variable depends on another from a different file, it may be initialized before the variable it depends on.",
+      "source": "7.8 - Why (non-const) global variables are evil",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch7_8_005",
+      "lesson": "7.8",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "globals",
+        "best-practices"
+      ],
+      "front": "Are global constants (const or constexpr) acceptable to use?",
+      "back": "Yes. Global constants are generally acceptable because they cannot be modified, so they don't cause the same problems as non-const globals.",
+      "source": "7.8 - Why (non-const) global variables are evil",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_8_006",
+      "lesson": "7.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "globals",
+        "best-practices"
+      ],
+      "text": "Instead of non-const global variables, prefer using {{c1::function parameters}} and {{c2::return values}} to pass data between functions.",
+      "source": "7.8 - Why (non-const) global variables are evil",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_8_007",
+      "lesson": "7.8",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "globals",
+        "best-practices"
+      ],
+      "front": "When might global variables be acceptable?",
+      "back": "In very small programs (e.g., fewer than 100 lines), for logging, or when representing a truly global resource like stdin/stdout. Even then, alternatives are often better.",
+      "source": "7.8 - Why (non-const) global variables are evil",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_8_008",
+      "lesson": "7.8",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "globals",
+        "namespaces"
+      ],
+      "front": "Do namespaces solve the problems with non-const global variables?",
+      "back": "No. Namespaces only help prevent naming collisions. They don't address the fundamental problems of tight coupling, debugging difficulty, and initialization order.",
+      "source": "7.8 - Why (non-const) global variables are evil",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_8_009",
+      "lesson": "7.8",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "globals",
+        "encapsulation"
+      ],
+      "front": "What does it mean that global variables violate encapsulation?",
+      "back": "Encapsulation means keeping implementation details hidden. Global variables expose data to the entire program, making it impossible to control or restrict access to that data.",
+      "source": "7.8 - Why (non-const) global variables are evil",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_8_010",
+      "lesson": "7.8",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "globals",
+        "best-practices"
+      ],
+      "concept": "Alternatives to non-const global variables",
+      "explanation": "Instead of non-const globals, use:<ul><li>Function parameters to pass data into functions</li><li>Return values to pass data out of functions</li><li>Local variables with appropriate scope</li><li>Class member variables (when you learn about classes)</li><li>Global constants for values that don't change</li></ul>",
+      "examples": [
+        "// Bad: global variable",
+        "int g_score = 0;",
+        "void updateScore() { g_score += 10; }",
+        "",
+        "// Good: pass by reference",
+        "void updateScore(int&amp; score) { score += 10; }"
+      ],
+      "source": "7.8 - Why (non-const) global variables are evil",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_8_011",
+      "lesson": "7.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "globals",
+        "best-practices"
+      ],
+      "text": "Instead of non-const globals, prefer using {{c1::function parameters}} and {{c2::return values}} to pass data between functions.",
+      "source": "7.8 - Why (non-const) global variables are evil",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_8_012",
+      "lesson": "7.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "globals",
+        "constants"
+      ],
+      "text": "Global {{c1::constants}} (const or constexpr) are generally {{c2::acceptable}} because they cannot be modified.",
+      "source": "7.8 - Why (non-const) global variables are evil",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_8_013",
+      "lesson": "7.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "globals",
+        "debugging"
+      ],
+      "text": "Non-const global variables make debugging harder because {{c1::any function}} in the entire program could have modified them.",
+      "source": "7.8 - Why (non-const) global variables are evil",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_8_014",
+      "lesson": "7.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "globals",
+        "initialization"
+      ],
+      "text": "The {{c1::initialization order}} of global variables across different files is {{c2::not guaranteed}}, which can cause bugs.",
+      "source": "7.8 - Why (non-const) global variables are evil",
+      "difficulty": "hard"
+    }
+  ]
+}

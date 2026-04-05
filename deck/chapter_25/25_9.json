@@ -1,0 +1,141 @@
+{
+  "chapter": "Chapter 25",
+  "chapter_title": "Virtual Functions",
+  "lesson": "25.9",
+  "lesson_title": "Object slicing",
+  "total_cards": 11,
+  "cards": [
+    {
+      "id": "ch25_9_001",
+      "lesson": "25.9",
+      "type": "reverse",
+      "tags": ["cpp", "object-slicing", "terminology"],
+      "front": "object slicing",
+      "back": "When a derived class object is assigned to a base class object, the derived-specific parts are 'sliced off', leaving only the base class portion",
+      "source": "25.9 - Object slicing",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_9_002",
+      "lesson": "25.9",
+      "type": "code",
+      "tags": ["cpp", "object-slicing", "common-mistakes"],
+      "question": "What happens in this code?",
+      "code": "class Base {\n    int base_val;\n};\n\nclass Derived: public Base {\n    int derived_val;\n};\n\nDerived d;\nBase b = d;  // What happens?",
+      "answer": "Object slicing occurs. Only the Base part of d is copied to b. derived_val is lost.",
+      "explanation": "When assigning a Derived object to a Base object, the compiler copies only the Base portion. The derived-specific members are sliced off.",
+      "source": "25.9 - Object slicing",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_9_003",
+      "lesson": "25.9",
+      "type": "cloze",
+      "tags": ["cpp", "object-slicing", "gotchas"],
+      "text": "Object slicing occurs when passing a derived object {{c1::by value}} to a function that takes a base class parameter.",
+      "source": "25.9 - Object slicing",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_9_004",
+      "lesson": "25.9",
+      "type": "code",
+      "tags": ["cpp", "object-slicing", "virtual-functions"],
+      "question": "What does this code output?",
+      "code": "class Base {\npublic:\n    virtual void print() { std::cout &lt;&lt; \"Base\"; }\n};\n\nclass Derived: public Base {\npublic:\n    virtual void print() override { std::cout &lt;&lt; \"Derived\"; }\n};\n\nvoid func(Base b) { b.print(); }\n\nDerived d;\nfunc(d);  // What prints?",
+      "answer": "Base",
+      "explanation": "Object slicing occurs when d is passed by value. The Base copy constructor creates a Base object, losing the Derived parts. Virtual functions don't help because b is a Base object, not a reference or pointer.",
+      "source": "25.9 - Object slicing",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch25_9_005",
+      "lesson": "25.9",
+      "type": "basic",
+      "tags": ["cpp", "object-slicing", "best-practices"],
+      "front": "How can you prevent object slicing?",
+      "back": "<ul><li>Pass by reference or pointer instead of by value</li><li>Delete the copy constructor and assignment operator in base classes</li><li>Use std::unique_ptr or std::shared_ptr for polymorphic objects</li></ul>",
+      "source": "25.9 - Object slicing",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_9_006",
+      "lesson": "25.9",
+      "type": "cloze",
+      "tags": ["cpp", "object-slicing", "best-practices"],
+      "text": "To prevent object slicing in polymorphic base classes, pass parameters by {{c1::reference}} or {{c2::pointer}}, not by value.",
+      "source": "25.9 - Object slicing",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_9_007",
+      "lesson": "25.9",
+      "type": "code",
+      "tags": ["cpp", "object-slicing", "best-practices"],
+      "question": "How would you fix this function to prevent slicing?",
+      "code": "void processAnimal(Animal a) {\n    a.speak();\n}",
+      "answer": "Change to: void processAnimal(const Animal&amp; a) or void processAnimal(Animal&amp; a)",
+      "explanation": "Using a reference parameter prevents slicing. The reference refers to the original object, preserving its type and enabling virtual function resolution.",
+      "source": "25.9 - Object slicing",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_9_008",
+      "lesson": "25.9",
+      "type": "concept",
+      "tags": ["cpp", "object-slicing", "best-practices"],
+      "concept": "Preventing slicing with deleted functions",
+      "explanation": "To prevent object slicing at compile time, delete the copy constructor and copy assignment operator in polymorphic base classes:<br><br>This prevents derived objects from being copied as base objects, forcing users to use references or pointers.",
+      "examples": [
+        "class Animal {",
+        "public:",
+        "    Animal(const Animal&amp;) = delete;",
+        "    Animal&amp; operator=(const Animal&amp;) = delete;",
+        "    // ...",
+        "};"
+      ],
+      "source": "25.9 - Object slicing",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_9_009",
+      "lesson": "25.9",
+      "type": "basic",
+      "tags": ["cpp", "object-slicing", "vectors"],
+      "front": "What happens if you store derived objects in a std::vector&lt;Base&gt;?",
+      "back": "Object slicing occurs. Each derived object is sliced to just its Base part when inserted into the vector. Virtual functions won't work polymorphically.<br><br>Use std::vector&lt;Base*&gt; or std::vector&lt;std::unique_ptr&lt;Base&gt;&gt; instead.",
+      "source": "25.9 - Object slicing",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_9_010",
+      "lesson": "25.9",
+      "type": "code",
+      "tags": ["cpp", "object-slicing", "vectors"],
+      "question": "What's wrong with this code?",
+      "code": "std::vector&lt;Animal&gt; animals;\nanimals.push_back(Cat(\"Felix\"));\nanimals.push_back(Dog(\"Rover\"));\n\nfor (auto&amp; animal : animals)\n    animal.speak();  // Expect \"Meow\" and \"Woof\"",
+      "answer": "Object slicing! Animals only contains Animal objects. Cat and Dog are sliced when inserted. All speak() calls return Animal::speak().",
+      "explanation": "Store polymorphic objects by pointer: std::vector&lt;std::unique_ptr&lt;Animal&gt;&gt; animals; animals.push_back(std::make_unique&lt;Cat&gt;(\"Felix\"));",
+      "source": "25.9 - Object slicing",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch25_9_011",
+      "lesson": "25.9",
+      "type": "concept",
+      "tags": ["cpp", "object-slicing", "gotchas"],
+      "concept": "Why object slicing breaks polymorphism",
+      "explanation": "Polymorphism requires:<ul><li>The actual object type to be preserved</li><li>Calling through a pointer or reference</li></ul>Object slicing violates both:<ul><li>Creates a new object of the base type</li><li>Loses all derived-class information</li><li>Virtual functions resolve to base versions because it IS a base object now</li></ul>",
+      "examples": [
+        "Derived d;",
+        "Base b = d;        // Slicing - b is a Base object",
+        "b.virtualFunc();   // Calls Base version",
+        "",
+        "Base&amp; ref = d;    // No slicing - ref refers to Derived",
+        "ref.virtualFunc(); // Calls Derived version"
+      ],
+      "source": "25.9 - Object slicing",
+      "difficulty": "hard"
+    }
+  ]
+}

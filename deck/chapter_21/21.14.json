@@ -1,0 +1,156 @@
+{
+  "chapter": "Chapter 21",
+  "chapter_title": "Operator Overloading",
+  "lesson": "21.14",
+  "lesson_title": "Overloading operators and function templates",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "ch21_14_001",
+      "lesson": "21.14",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "templates"
+      ],
+      "text": "When overloading operators for class templates, the operator can be defined as a {{c1::template}} function or as a {{c2::non-template friend}} inside the class template.",
+      "source": "21.14 - Overloading operators and function templates",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch21_14_002",
+      "lesson": "21.14",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "templates"
+      ],
+      "front": "Why might you define operator&lt;&lt; as a non-template friend inside a class template?",
+      "back": "To avoid template argument deduction issues. Defining it as a friend inside the template makes it a regular function (not a template) for each instantiation, simplifying usage and allowing better compiler error messages.",
+      "source": "21.14 - Overloading operators and function templates",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch21_14_003",
+      "lesson": "21.14",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "templates"
+      ],
+      "question": "What does this friend operator inside a template do?",
+      "code": "template &lt;typename T&gt;\nclass Array {\npublic:\n    friend std::ostream&amp; operator&lt;&lt;(std::ostream&amp; out, const Array&amp; arr) {\n        // implementation\n        return out;\n    }\n};",
+      "answer": "Defines operator&lt;&lt; as a non-template friend function. Each Array&lt;T&gt; instantiation gets its own operator&lt;&lt; function.",
+      "explanation": "This avoids template deduction issues and is simpler than making operator&lt;&lt; a template.",
+      "source": "21.14 - Overloading operators and function templates",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch21_14_004",
+      "lesson": "21.14",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "templates"
+      ],
+      "text": "Friend functions defined {{c1::inside}} a class template are automatically {{c2::inline}} and are generated for each template {{c3::instantiation}}.",
+      "source": "21.14 - Overloading operators and function templates",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_14_005",
+      "lesson": "21.14",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "templates"
+      ],
+      "front": "What's the advantage of implementing operator&lt;&lt; inside the class template definition?",
+      "back": "Simpler syntax, automatic template parameter deduction, and it's automatically inline. The compiler generates a separate operator&lt;&lt; for each template instantiation without requiring explicit template syntax.",
+      "source": "21.14 - Overloading operators and function templates",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_14_006",
+      "lesson": "21.14",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "templates"
+      ],
+      "question": "What's the alternative template way to define this operator?",
+      "code": "// Inside class template\nfriend std::ostream&amp; operator&lt;&lt;(std::ostream&amp; out, const Array&amp; arr) {\n    return out;\n}",
+      "answer": "template&lt;typename T&gt;<br>std::ostream&amp; operator&lt;&lt;(std::ostream&amp; out, const Array&lt;T&gt;&amp; arr) {<br>    return out;<br>}<br>Defined outside as a function template.",
+      "explanation": "External definition requires template syntax and explicit type parameter. More complex but separates interface from implementation.",
+      "source": "21.14 - Overloading operators and function templates",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch21_14_007",
+      "lesson": "21.14",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "templates"
+      ],
+      "front": "Can operator overloads for templates access private members?",
+      "back": "Yes, if declared as friend functions (either inside or outside the class template). Friend declarations give the operator access to private and protected members.",
+      "source": "21.14 - Overloading operators and function templates",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch21_14_008",
+      "lesson": "21.14",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "templates"
+      ],
+      "text": "When defining operator&lt;&lt; for a class template externally as a template function, you must forward-declare the {{c1::class template}}, then the {{c2::operator template}}, then declare it as {{c3::friend}} with specific template arguments.",
+      "source": "21.14 - Overloading operators and function templates",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch21_14_009",
+      "lesson": "21.14",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "templates"
+      ],
+      "concept": "Operator overloading with class templates",
+      "explanation": "Two approaches:<ul><li><b>Friend inside template:</b> Simple, automatic per-instantiation generation, inline</li><li><b>External template function:</b> Separates interface/implementation, requires forward declarations and friend template syntax</li></ul>Inside definition is usually preferred for simplicity unless you need separation.",
+      "examples": [
+        "// Inside class template (simpler)",
+        "template&lt;typename T&gt; class Array {",
+        "    friend std::ostream&amp; operator&lt;&lt;(...) { }",
+        "};"
+      ],
+      "source": "21.14 - Overloading operators and function templates",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch21_14_010",
+      "lesson": "21.14",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "templates"
+      ],
+      "front": "Do template operators need to be explicitly instantiated?",
+      "back": "No. If defined as friend inside the class template, they're automatically generated when the class template is instantiated. If defined as external templates, they're instantiated when used with specific types.",
+      "source": "21.14 - Overloading operators and function templates",
+      "difficulty": "medium"
+    }
+  ]
+}

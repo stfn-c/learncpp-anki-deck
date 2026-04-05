@@ -1,0 +1,205 @@
+{
+  "chapter": "Chapter 20",
+  "chapter_title": "Functions",
+  "lesson": "20.7",
+  "lesson_title": "Lambda captures",
+  "total_cards": 18,
+  "cards": [
+    {
+      "id": "ch20_7_001",
+      "lesson": "20.7",
+      "type": "basic",
+      "tags": ["cpp", "lambdas", "captures"],
+      "front": "What is a lambda capture?",
+      "back": "A capture allows a lambda to access variables from the enclosing scope. Captured variables are specified in the square brackets [].",
+      "source": "20.7 - Lambda captures",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch20_7_002",
+      "lesson": "20.7",
+      "type": "cloze",
+      "tags": ["cpp", "lambdas", "captures", "syntax"],
+      "text": "To capture a variable by value, use {{c1::[varName]}}. To capture by reference, use {{c2::[&amp;varName]}}.",
+      "source": "20.7 - Lambda captures",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch20_7_003",
+      "lesson": "20.7",
+      "type": "code",
+      "tags": ["cpp", "lambdas", "capture-by-value"],
+      "question": "What does this lambda print?",
+      "code": "int x = 5;<br>auto func = [x]() { std::cout &lt;&lt; x; };<br>x = 10;<br>func();",
+      "answer": "Prints: 5<br>Lambda captured x by value, so it has a copy of the original value (5), not affected by later changes.",
+      "explanation": "Capture by value [x] makes a copy when the lambda is created. Changes to x afterward don't affect the captured copy.",
+      "source": "20.7 - Lambda captures",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_7_004",
+      "lesson": "20.7",
+      "type": "code",
+      "tags": ["cpp", "lambdas", "capture-by-reference"],
+      "question": "What does this lambda print?",
+      "code": "int x = 5;<br>auto func = [&amp;x]() { std::cout &lt;&lt; x; };<br>x = 10;<br>func();",
+      "answer": "Prints: 10<br>Lambda captured x by reference, so it sees the current value of x when called.",
+      "explanation": "Capture by reference [&x] creates a reference to the original variable. Changes to x are visible to the lambda.",
+      "source": "20.7 - Lambda captures",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_7_005",
+      "lesson": "20.7",
+      "type": "cloze",
+      "tags": ["cpp", "lambdas", "captures", "default-capture"],
+      "text": "Default capture by value: {{c1::[=]}}. Default capture by reference: {{c2::[&amp;]}}. These capture {{c3::all}} variables used in the lambda.",
+      "source": "20.7 - Lambda captures",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch20_7_006",
+      "lesson": "20.7",
+      "type": "code",
+      "tags": ["cpp", "lambdas", "mixed-captures"],
+      "question": "What do these capture clauses mean?",
+      "code": "[=, &amp;y]  // ?<br>[&amp;, x]   // ?<br>[x, &amp;y]  // ?",
+      "answer": "[=, &amp;y]: Capture all by value, except y by reference<br>[&amp;, x]: Capture all by reference, except x by value<br>[x, &amp;y]: Capture x by value and y by reference (no default)",
+      "explanation": "Can mix default captures with specific captures. Default must come first, then specific captures override it.",
+      "source": "20.7 - Lambda captures",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_7_007",
+      "lesson": "20.7",
+      "type": "basic",
+      "tags": ["cpp", "lambdas", "captures", "dangers"],
+      "front": "What's the danger of capturing local variables by reference?",
+      "back": "If the lambda outlives the captured variable (e.g., lambda returned from function), the reference becomes dangling, leading to undefined behavior when accessed.",
+      "source": "20.7 - Lambda captures",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_7_008",
+      "lesson": "20.7",
+      "type": "cloze",
+      "tags": ["cpp", "lambdas", "captures", "mutable"],
+      "text": "Variables captured by value are {{c1::const}} by default. To modify them, use the {{c2::mutable}} keyword: [x]() mutable { x++; }",
+      "source": "20.7 - Lambda captures",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_7_009",
+      "lesson": "20.7",
+      "type": "code",
+      "tags": ["cpp", "lambdas", "mutable"],
+      "question": "What's the difference between these lambdas?",
+      "code": "int x = 5;<br>auto f1 = [x]() { x++; };      // Error!<br>auto f2 = [x]() mutable { x++; }; // OK",
+      "answer": "f1: Compile error - can't modify captured value without mutable<br>f2: OK - mutable allows modifying the captured copy (original x unchanged)",
+      "explanation": "By default, value captures are const. mutable keyword makes them modifiable (but still doesn't affect the original).",
+      "source": "20.7 - Lambda captures",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_7_010",
+      "lesson": "20.7",
+      "type": "basic",
+      "tags": ["cpp", "lambdas", "captures", "best-practices"],
+      "front": "Should you prefer capture by value or capture by reference?",
+      "back": "Prefer capture by value [=] for safety (no dangling references). Use capture by reference [&amp;] only when:<ul><li>Need to modify the original variable</li><li>Copying is expensive</li><li>Lambda won't outlive the variable</li></ul>",
+      "source": "20.7 - Lambda captures",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_7_011",
+      "lesson": "20.7",
+      "type": "cloze",
+      "tags": ["cpp", "lambdas", "captures"],
+      "text": "Empty capture clause {{c1::[]}} means the lambda is {{c2::stateless}} and captures nothing from the enclosing scope.",
+      "source": "20.7 - Lambda captures",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch20_7_012",
+      "lesson": "20.7",
+      "type": "code",
+      "tags": ["cpp", "lambdas", "captures", "this"],
+      "question": "How do you capture the this pointer in a lambda?",
+      "code": "class MyClass {<br>&nbsp;&nbsp;&nbsp;&nbsp;int value = 42;<br>&nbsp;&nbsp;&nbsp;&nbsp;void doWork() {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;auto lambda = [this]() { std::cout &lt;&lt; value; };<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>};",
+      "answer": "[this] captures the this pointer, allowing access to member variables and functions.<br>In C++17+, can use [*this] to capture by value (copy entire object).",
+      "explanation": "Capturing this gives access to class members. [this] is by pointer, [*this] is by value (C++17).",
+      "source": "20.7 - Lambda captures",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_7_013",
+      "lesson": "20.7",
+      "type": "concept",
+      "tags": ["cpp", "lambdas", "captures", "best-practices"],
+      "concept": "Best practices for lambda captures",
+      "explanation": "Follow these guidelines:<ul><li>Avoid default captures [=] and [&amp;] - be explicit about what you capture</li><li>Prefer capture by value for safety</li><li>Use capture by reference only for local, short-lived lambdas</li><li>Never return a lambda that captures local variables by reference</li><li>Capture only what you need, not everything</li></ul>",
+      "examples": [
+        "[x, y] // Good: explicit captures",
+        "[=] // Discouraged: captures everything by value",
+        "[&amp;] // Dangerous: captures everything by reference"
+      ],
+      "source": "20.7 - Lambda captures",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_7_014",
+      "lesson": "20.7",
+      "type": "code",
+      "tags": ["cpp", "lambdas", "captures", "common-mistakes"],
+      "question": "What's wrong with this code?",
+      "code": "auto makeLambda() {<br>&nbsp;&nbsp;&nbsp;&nbsp;int x = 5;<br>&nbsp;&nbsp;&nbsp;&nbsp;return [&amp;x]() { return x; };<br>}",
+      "answer": "Dangling reference! Lambda captures x by reference, but x is destroyed when makeLambda() returns. Calling the lambda causes undefined behavior.",
+      "explanation": "Never return a lambda that captures local variables by reference. Use capture by value instead: [x]",
+      "source": "20.7 - Lambda captures",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch20_7_015",
+      "lesson": "20.7",
+      "type": "cloze",
+      "tags": ["cpp", "lambdas", "captures", "init-capture"],
+      "text": "C++14 introduced {{c1::init captures}} (generalized lambda captures): [newVar = expression] to {{c2::create new variables}} in the capture clause.",
+      "source": "20.7 - Lambda captures",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch20_7_016",
+      "lesson": "20.7",
+      "type": "code",
+      "tags": ["cpp", "lambdas", "init-capture"],
+      "question": "What does this C++14 init capture do?",
+      "code": "int x = 5;<br>auto lambda = [y = x * 2]() { return y; };<br>std::cout &lt;&lt; lambda();",
+      "answer": "Prints: 10<br>Init capture [y = x * 2] creates a new variable y initialized to x * 2 (10) inside the lambda.",
+      "explanation": "Init captures let you transform or rename captured values. y exists only in lambda scope.",
+      "source": "20.7 - Lambda captures",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch20_7_017",
+      "lesson": "20.7",
+      "type": "basic",
+      "tags": ["cpp", "lambdas", "captures", "move"],
+      "front": "How do you move a variable into a lambda capture (C++14)?",
+      "back": "Use init capture with std::move:<br>[ptr = std::move(uniquePtr)]() { /* use ptr */ }<br>This transfers ownership into the lambda.",
+      "source": "20.7 - Lambda captures",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch20_7_018",
+      "lesson": "20.7",
+      "type": "code",
+      "tags": ["cpp", "lambdas", "captures", "constexpr"],
+      "question": "What happens when you capture a const variable?",
+      "code": "const int x = 10;<br>auto f1 = [x]() { return x * 2; };<br>auto f2 = [&amp;x]() { return x * 2; };",
+      "answer": "Both work fine. f1 captures const value by value, f2 by reference. Both can read x but neither can modify it (it's const).",
+      "explanation": "Capturing const variables is safe either way. The const-ness is preserved in the lambda.",
+      "source": "20.7 - Lambda captures",
+      "difficulty": "medium"
+    }
+  ]
+}

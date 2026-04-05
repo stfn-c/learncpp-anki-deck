@@ -1,0 +1,127 @@
+{
+  "chapter": "Chapter 8",
+  "chapter_title": "Control Flow",
+  "lesson": "8.9",
+  "lesson_title": "Do while statements",
+  "total_cards": 11,
+  "cards": [
+    {
+      "id": "ch8_9_001",
+      "lesson": "8.9",
+      "type": "cloze",
+      "tags": ["cpp", "do-while", "syntax"],
+      "text": "Do-while loop syntax:<br>{{c1::do}}<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;// statements<br>}<br>{{c2::while (condition);}}<br>Note: semicolon required after condition!",
+      "source": "8.9 - Do while statements",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_9_002",
+      "lesson": "8.9",
+      "type": "basic",
+      "tags": ["cpp", "do-while", "fundamentals"],
+      "front": "What is the key difference between while and do-while loops?",
+      "back": "Do-while checks the condition AFTER each iteration, so the loop body always executes at least once. While checks BEFORE, so the body may never execute.",
+      "source": "8.9 - Do while statements",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_9_003",
+      "lesson": "8.9",
+      "type": "basic",
+      "tags": ["cpp", "do-while", "fundamentals"],
+      "front": "How many times is a do-while loop guaranteed to execute?",
+      "back": "At least once, because the condition is checked after the first iteration.",
+      "source": "8.9 - Do while statements",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_9_004",
+      "lesson": "8.9",
+      "type": "code",
+      "tags": ["cpp", "do-while", "syntax"],
+      "question": "What does this code print?",
+      "code": "int x = 5;<br>do<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; x &lt;&lt; ' ';<br>&nbsp;&nbsp;&nbsp;&nbsp;++x;<br>}<br>while (x &lt; 5);",
+      "answer": "5",
+      "explanation": "Even though x &lt; 5 is false from the start, the do-while executes once before checking the condition. It prints 5, increments x to 6, then exits.",
+      "source": "8.9 - Do while statements",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_9_005",
+      "lesson": "8.9",
+      "type": "basic",
+      "tags": ["cpp", "do-while", "syntax"],
+      "front": "Why does the do-while loop require a semicolon after the condition?",
+      "back": "The while(condition); is actually a complete statement in a do-while loop, so it needs a semicolon like any other statement.",
+      "source": "8.9 - Do while statements",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_9_006",
+      "lesson": "8.9",
+      "type": "cloze",
+      "tags": ["cpp", "do-while", "syntax"],
+      "text": "Unlike regular while loops, do-while loops require a {{c1::semicolon}} after the while condition.",
+      "source": "8.9 - Do while statements",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_9_007",
+      "lesson": "8.9",
+      "type": "concept",
+      "tags": ["cpp", "do-while", "use-cases"],
+      "concept": "When to use do-while vs while",
+      "explanation": "Use do-while when:<ul><li>You need the loop body to execute at least once</li><li>Common for menu systems or input validation</li><li>You want to prompt user before checking input</li></ul>Use while when:<ul><li>The loop might need to execute zero times</li><li>This is the more common case (95%+ of loops)</li><li>More intuitive to read (condition at top)</li></ul>",
+      "examples": [
+        "// Good use of do-while: menu<br>do {<br>&nbsp;&nbsp;&nbsp;&nbsp;showMenu();<br>&nbsp;&nbsp;&nbsp;&nbsp;choice = getInput();<br>} while (choice != 0);",
+        "// Better as while: may skip entirely<br>while (count &lt; 10) { count++; }"
+      ],
+      "source": "8.9 - Do while statements",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_9_008",
+      "lesson": "8.9",
+      "type": "basic",
+      "tags": ["cpp", "do-while", "best-practices"],
+      "front": "Which is more commonly used in practice: while or do-while?",
+      "back": "While loops are far more common. Do-while is rarely used because most loops need to check the condition before executing.",
+      "source": "8.9 - Do while statements",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_9_009",
+      "lesson": "8.9",
+      "type": "code",
+      "tags": ["cpp", "do-while", "common-mistakes"],
+      "question": "What's wrong with this code?",
+      "code": "int x = 0;<br>do<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; x;<br>}<br>while (x &lt; 5)",
+      "answer": "Missing semicolon after while(x &lt; 5). Do-while requires a semicolon after the condition.",
+      "explanation": "Unlike regular while loops, do-while statements require a semicolon after the condition because while(condition); is a complete statement.",
+      "source": "8.9 - Do while statements",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_9_010",
+      "lesson": "8.9",
+      "type": "basic",
+      "tags": ["cpp", "do-while", "use-cases"],
+      "front": "What is the most common use case for do-while loops?",
+      "back": "Input validation and menu systems where you want to prompt the user at least once before checking their response.",
+      "source": "8.9 - Do while statements",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_9_011",
+      "lesson": "8.9",
+      "type": "code",
+      "tags": ["cpp", "do-while", "use-cases"],
+      "question": "Why is do-while good for this scenario?",
+      "code": "int selection;<br>do<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; \"Enter 1-5: \";<br>&nbsp;&nbsp;&nbsp;&nbsp;std::cin &gt;&gt; selection;<br>}<br>while (selection &lt; 1 || selection &gt; 5);",
+      "answer": "We need to prompt the user at least once before we can validate their input.",
+      "explanation": "A do-while guarantees one prompt before checking the condition. With a regular while, we'd need to initialize selection or duplicate the prompt code.",
+      "source": "8.9 - Do while statements",
+      "difficulty": "medium"
+    }
+  ]
+}

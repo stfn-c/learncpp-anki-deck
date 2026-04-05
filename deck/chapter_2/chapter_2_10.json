@@ -1,0 +1,127 @@
+{
+  "chapter": "Chapter 2",
+  "chapter_title": "C++ Basics: Functions and Files",
+  "lesson": "2.10",
+  "lesson_title": "Introduction to the preprocessor",
+  "total_cards": 11,
+  "cards": [
+    {
+      "id": "ch2_10_001",
+      "lesson": "2.10",
+      "type": "basic",
+      "tags": ["cpp", "preprocessor"],
+      "front": "What is the preprocessor?",
+      "back": "The preprocessor is a program that processes source code before compilation, handling directives that start with #.",
+      "source": "2.10 - Introduction to the preprocessor",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_10_002",
+      "lesson": "2.10",
+      "type": "cloze",
+      "tags": ["cpp", "preprocessor", "directives"],
+      "text": "Preprocessor directives start with a {{c1::#}} symbol and are processed {{c2::before}} compilation.",
+      "source": "2.10 - Introduction to the preprocessor",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_10_003",
+      "lesson": "2.10",
+      "type": "basic",
+      "tags": ["cpp", "preprocessor", "include"],
+      "front": "What does the #include directive do?",
+      "back": "#include replaces the directive with the contents of the specified file, effectively copying that file's contents into the current file.",
+      "source": "2.10 - Introduction to the preprocessor",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_10_004",
+      "lesson": "2.10",
+      "type": "cloze",
+      "tags": ["cpp", "preprocessor", "include", "syntax"],
+      "text": "#include {{c1::&lt;iostream&gt;}} uses angle brackets for {{c2::standard library}} headers. #include {{c3::\"myheader.h\"}} uses quotes for {{c4::user-defined}} headers.",
+      "source": "2.10 - Introduction to the preprocessor",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_10_005",
+      "lesson": "2.10",
+      "type": "basic",
+      "tags": ["cpp", "preprocessor", "macros"],
+      "front": "What is a macro?",
+      "back": "A macro is a preprocessor directive that defines a text substitution. When the preprocessor encounters the macro name, it replaces it with the defined text.",
+      "source": "2.10 - Introduction to the preprocessor",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_10_006",
+      "lesson": "2.10",
+      "type": "cloze",
+      "tags": ["cpp", "preprocessor", "macros", "syntax"],
+      "text": "Macros are defined using {{c1::#define}} followed by the macro name and replacement text.",
+      "source": "2.10 - Introduction to the preprocessor",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_10_007",
+      "lesson": "2.10",
+      "type": "code",
+      "tags": ["cpp", "preprocessor", "macros"],
+      "question": "What does this code become after preprocessing?",
+      "code": "#define MAX_VALUE 100<br><br>int x = MAX_VALUE;",
+      "answer": "int x = 100;",
+      "explanation": "The preprocessor replaces MAX_VALUE with 100 before the code is compiled.",
+      "source": "2.10 - Introduction to the preprocessor",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_10_008",
+      "lesson": "2.10",
+      "type": "basic",
+      "tags": ["cpp", "preprocessor", "conditional"],
+      "front": "What are conditional compilation directives?",
+      "back": "Directives like #ifdef, #ifndef, #if, #else, #endif that allow including or excluding code based on whether certain macros are defined.",
+      "source": "2.10 - Introduction to the preprocessor",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_10_009",
+      "lesson": "2.10",
+      "type": "code",
+      "tags": ["cpp", "preprocessor", "conditional"],
+      "question": "What does this preprocessor code do?",
+      "code": "#ifdef DEBUG<br>  std::cout &lt;&lt; \"Debug mode\\n\";<br>#endif",
+      "answer": "The cout statement is only included in compilation if DEBUG is defined.",
+      "explanation": "#ifdef checks if a macro is defined. Code between #ifdef and #endif is conditionally included.",
+      "source": "2.10 - Introduction to the preprocessor",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_10_010",
+      "lesson": "2.10",
+      "type": "basic",
+      "tags": ["cpp", "preprocessor", "macros", "best-practices"],
+      "front": "Why should you prefer const variables over #define macros for constants?",
+      "back": "const variables:<ul><li>Have type safety</li><li>Respect scope rules</li><li>Show up in debugger</li><li>Provide better error messages</li></ul>#define is simple text replacement with no type checking.",
+      "source": "2.10 - Introduction to the preprocessor",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_10_011",
+      "lesson": "2.10",
+      "type": "concept",
+      "tags": ["cpp", "preprocessor", "best-practices"],
+      "concept": "Common preprocessor directives",
+      "explanation": "Main preprocessor directives:<ul><li><strong>#include</strong> - Include header files</li><li><strong>#define</strong> - Define macros/constants</li><li><strong>#ifdef/#ifndef</strong> - Conditional compilation</li><li><strong>#if/#else/#endif</strong> - More complex conditionals</li><li><strong>#pragma</strong> - Compiler-specific directives</li></ul>",
+      "examples": [
+        "#include &lt;iostream&gt;  // Include standard header",
+        "#define PI 3.14159  // Define constant",
+        "#ifdef _WIN32  // Check if Windows",
+        "  // Windows-specific code",
+        "#endif"
+      ],
+      "source": "2.10 - Introduction to the preprocessor",
+      "difficulty": "medium"
+    }
+  ]
+}

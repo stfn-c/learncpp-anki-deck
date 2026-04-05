@@ -1,0 +1,184 @@
+{
+  "chapter": "Chapter 22",
+  "chapter_title": "Move Semantics and Smart Pointers",
+  "lesson": "22.2",
+  "lesson_title": "R-value references",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch22_2_001",
+      "lesson": "22.2",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "rvalue-reference",
+        "operators"
+      ],
+      "front": "&&",
+      "back": "R-value reference operator (double ampersand)",
+      "source": "22.2 - R-value references",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch22_2_002",
+      "lesson": "22.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "rvalue-reference",
+        "syntax"
+      ],
+      "text": "To declare an r-value reference, use {{c1::&&}} instead of {{c2::&}}. For example: {{c3::int&& rref = 5;}}",
+      "source": "22.2 - R-value references",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch22_2_003",
+      "lesson": "22.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "lvalue",
+        "rvalue-reference"
+      ],
+      "front": "What types of values can l-value references and r-value references bind to?",
+      "back": "L-value references (int&) bind to l-values (modifiable objects).<br>R-value references (int&&) bind to r-values (temporaries, literals, and values about to be destroyed).",
+      "source": "22.2 - R-value references",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch22_2_004",
+      "lesson": "22.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "rvalue-reference",
+        "common-mistakes"
+      ],
+      "question": "Which lines compile and which don't?",
+      "code": "int x = 5;\nint& lref1 = x;      // line 1\nint& lref2 = 5;      // line 2\nint&& rref1 = x;     // line 3\nint&& rref2 = 5;     // line 4",
+      "answer": "Lines 1 and 4 compile. Lines 2 and 3 don't compile.",
+      "explanation": "L-value references can't bind to r-values (line 2). R-value references can't bind to l-values (line 3). Line 1 binds l-value ref to l-value. Line 4 binds r-value ref to r-value.",
+      "source": "22.2 - R-value references",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_2_005",
+      "lesson": "22.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "lvalue",
+        "const"
+      ],
+      "text": "A {{c1::const}} l-value reference can bind to both l-values and r-values, which is why it's commonly used for {{c2::function parameters}}.",
+      "source": "22.2 - R-value references",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_2_006",
+      "lesson": "22.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "rvalue-reference",
+        "move-semantics"
+      ],
+      "front": "What is the primary purpose of r-value references in C++11?",
+      "back": "To enable move semantics and perfect forwarding. R-value references allow functions to differentiate between l-values (which should be copied) and r-values (which can be moved).",
+      "source": "22.2 - R-value references",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_2_007",
+      "lesson": "22.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "rvalue-reference",
+        "gotchas"
+      ],
+      "text": "An r-value reference {{c1::variable}} is actually an {{c2::l-value}}, because it has a name and an identifiable memory address.",
+      "source": "22.2 - R-value references",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch22_2_008",
+      "lesson": "22.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "rvalue-reference",
+        "gotchas"
+      ],
+      "question": "Does this code compile?",
+      "code": "void func(int&& rref) {}\n\nvoid test() {\n    int&& x = 5;\n    func(x);  // pass x to func\n}",
+      "answer": "No, it doesn't compile.",
+      "explanation": "Even though x is declared as an r-value reference, the variable x itself is an l-value (it has a name). func expects an r-value reference, so you'd need func(std::move(x)).",
+      "source": "22.2 - R-value references",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch22_2_009",
+      "lesson": "22.2",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "rvalue-reference",
+        "overloading"
+      ],
+      "concept": "Function overloading with l-value and r-value references",
+      "explanation": "You can overload functions to have different behavior for l-values vs r-values:<ul><li>void func(const T&) - called for l-values (copy)</li><li>void func(T&&) - called for r-values (move)</li></ul>This enables move semantics.",
+      "examples": [
+        "void print(const std::string& str) { /* copy */ }",
+        "void print(std::string&& str) { /* move */ }",
+        "",
+        "std::string s = \"hello\";",
+        "print(s);              // calls l-value version",
+        "print(\"world\");        // calls r-value version"
+      ],
+      "source": "22.2 - R-value references",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_2_010",
+      "lesson": "22.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "rvalue",
+        "optimization"
+      ],
+      "text": "When a function returns by value, the returned value is an {{c1::r-value}}, which enables {{c2::move semantics}} instead of copying.",
+      "source": "22.2 - R-value references",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_2_011",
+      "lesson": "22.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "rvalue-reference",
+        "best-practices"
+      ],
+      "front": "When should you use r-value references as function parameters?",
+      "back": "When implementing move constructors, move assignment operators, or functions that need to take ownership of temporary objects. Don't use them for regular function parameters unless you specifically need move semantics.",
+      "source": "22.2 - R-value references",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_2_012",
+      "lesson": "22.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "rvalue-reference",
+        "lifetime"
+      ],
+      "text": "Binding an r-value to an r-value reference {{c1::extends}} the lifetime of the temporary until the reference goes {{c2::out of scope}}.",
+      "source": "22.2 - R-value references",
+      "difficulty": "hard"
+    }
+  ]
+}

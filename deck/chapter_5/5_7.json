@@ -1,0 +1,174 @@
+{
+  "chapter": "Chapter 5",
+  "chapter_title": "Constants and Strings",
+  "lesson": "5.7",
+  "lesson_title": "Introduction to std::string",
+  "total_cards": 11,
+  "cards": [
+    {
+      "id": "ch5_5_7_001",
+      "lesson": "5.7",
+      "type": "cloze",
+      "text": "To use std::string, include the header {{c1::&lt;string&gt;}}.",
+      "tags": [
+        "cpp",
+        "string",
+        "headers",
+        "syntax"
+      ],
+      "source": "5.7 - Introduction to std::string",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch5_5_7_002",
+      "lesson": "5.7",
+      "type": "cloze",
+      "text": "To read a full line of input including spaces, use {{c1::std::getline(std::cin, str)}}.",
+      "tags": [
+        "cpp",
+        "string",
+        "input",
+        "syntax"
+      ],
+      "source": "5.7 - Introduction to std::string",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch5_5_7_003",
+      "lesson": "5.7",
+      "type": "cloze",
+      "text": "The member function {{c1::.length()}} or {{c1::.size()}} returns the number of characters in a std::string.",
+      "tags": [
+        "cpp",
+        "string",
+        "methods"
+      ],
+      "source": "5.7 - Introduction to std::string",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch5_5_7_004",
+      "lesson": "5.7",
+      "type": "cloze",
+      "text": "std::string objects can be concatenated with the {{c1::+}} or {{c2::+=}} operators.",
+      "tags": [
+        "cpp",
+        "string",
+        "operators"
+      ],
+      "source": "5.7 - Introduction to std::string",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch5_5_7_005",
+      "lesson": "5.7",
+      "type": "code",
+      "question": "What does this code output?",
+      "code": "#include &lt;string&gt;\nstd::string s1&#123; \"Hello\" &#125;;\nstd::string s2&#123; \" World\" &#125;;\nstd::string s3 = s1 + s2;\nstd::cout &lt;&lt; s3;",
+      "answer": "Hello World",
+      "explanation": "The + operator concatenates two strings together.",
+      "tags": [
+        "cpp",
+        "string",
+        "operators"
+      ],
+      "source": "5.7 - Introduction to std::string",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch5_5_7_006",
+      "lesson": "5.7",
+      "type": "code",
+      "question": "What's the problem with using std::cin to read a string with spaces?",
+      "code": "std::string name;\nstd::cout &lt;&lt; \"Enter your full name: \";\nstd::cin &gt;&gt; name;  // User enters: John Smith",
+      "answer": "std::cin only reads up to the first whitespace, so name would contain \"John\" only. Use std::getline() instead to read the full line.",
+      "explanation": "std::cin &gt;&gt; stops at whitespace. For full line input with spaces, use std::getline(std::cin, name).",
+      "tags": [
+        "cpp",
+        "string",
+        "input",
+        "common-mistakes"
+      ],
+      "source": "5.7 - Introduction to std::string",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch5_5_7_007",
+      "lesson": "5.7",
+      "type": "code",
+      "question": "What does this code output?",
+      "code": "#include &lt;string&gt;\nstd::string str&#123; \"C++\" &#125;;\nstd::cout &lt;&lt; str.length();",
+      "answer": "3",
+      "explanation": ".length() returns the number of characters in the string.",
+      "tags": [
+        "cpp",
+        "string",
+        "methods"
+      ],
+      "source": "5.7 - Introduction to std::string",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch5_5_7_008",
+      "lesson": "5.7",
+      "type": "basic",
+      "front": "What is the difference between std::cin and std::getline() for string input?",
+      "back": "<ul><li>std::cin &gt;&gt; str: reads until first whitespace</li><li>std::getline(std::cin, str): reads entire line including spaces until newline</li></ul>",
+      "tags": [
+        "cpp",
+        "string",
+        "input"
+      ],
+      "source": "5.7 - Introduction to std::string",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch5_5_7_009",
+      "lesson": "5.7",
+      "type": "basic",
+      "front": "Why is std::string preferred over C-style strings (char arrays)?",
+      "back": "<ul><li>Automatic memory management (no manual allocation)</li><li>Safer (no buffer overflows)</li><li>Easier to use (operators like +, ==)</li><li>More features (.length(), .substr(), etc.)</li></ul>",
+      "tags": [
+        "cpp",
+        "string",
+        "best-practices"
+      ],
+      "source": "5.7 - Introduction to std::string",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch5_5_7_010",
+      "lesson": "5.7",
+      "type": "concept",
+      "concept": "std::string initialization and assignment",
+      "explanation": "std::string can be initialized and assigned in multiple ways:<ul><li>Default initialization (empty string)</li><li>From string literal</li><li>From another string (copy)</li><li>Assignment after initialization</li></ul>All memory management is automatic.",
+      "examples": [
+        "std::string s1;  // Empty string",
+        "std::string s2&#123; \"Hello\" &#125;;  // From literal",
+        "std::string s3&#123; s2 &#125;;  // Copy from s2",
+        "s1 = \"World\";  // Assignment"
+      ],
+      "tags": [
+        "cpp",
+        "string",
+        "initialization"
+      ],
+      "source": "5.7 - Introduction to std::string",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch5_5_7_011",
+      "lesson": "5.7",
+      "type": "reverse",
+      "front": "std::string",
+      "back": "Standard library class for managing sequences of characters with automatic memory management",
+      "tags": [
+        "cpp",
+        "string",
+        "terminology"
+      ],
+      "source": "5.7 - Introduction to std::string",
+      "difficulty": "easy"
+    }
+  ]
+}

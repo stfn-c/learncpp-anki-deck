@@ -1,0 +1,153 @@
+{
+  "chapter": "Chapter 24",
+  "chapter_title": "Inheritance",
+  "lesson": "24.5",
+  "lesson_title": "Inheritance and access specifiers",
+  "total_cards": 14,
+  "cards": [
+    {
+      "id": "ch24_5_001",
+      "lesson": "24.5",
+      "type": "cloze",
+      "tags": ["cpp", "inheritance", "access-specifiers"],
+      "text": "The {{c1::protected}} access specifier allows the class the member belongs to, {{c2::friends}}, and {{c3::derived classes}} to access the member.",
+      "source": "24.5 - Inheritance and access specifiers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch24_5_002",
+      "lesson": "24.5",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "access-specifiers"],
+      "front": "What are the three types of inheritance in C++?",
+      "back": "<ul><li>Public inheritance</li><li>Protected inheritance</li><li>Private inheritance</li></ul>",
+      "source": "24.5 - Inheritance and access specifiers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch24_5_003",
+      "lesson": "24.5",
+      "type": "cloze",
+      "tags": ["cpp", "inheritance", "syntax"],
+      "text": "To inherit publicly: {{c1::class Derived: public Base}}<br>To inherit privately: {{c2::class Derived: private Base}}<br>To inherit protectedly: {{c3::class Derived: protected Base}}",
+      "source": "24.5 - Inheritance and access specifiers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch24_5_004",
+      "lesson": "24.5",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "access-specifiers"],
+      "front": "What is the default inheritance type in C++ if you don't specify public, protected, or private?",
+      "back": "Private inheritance (just like members default to private access if you don't specify otherwise).",
+      "source": "24.5 - Inheritance and access specifiers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_5_005",
+      "lesson": "24.5",
+      "type": "code",
+      "tags": ["cpp", "inheritance", "access-specifiers"],
+      "question": "With public inheritance, what access level do inherited public members have in the derived class?",
+      "code": "class Base {\npublic:\n    int m_public{};\n};\n\nclass Derived: public Base {\n    // What is m_public's access level here?\n};",
+      "answer": "public",
+      "explanation": "With public inheritance, inherited public members stay public, and inherited protected members stay protected.",
+      "source": "24.5 - Inheritance and access specifiers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch24_5_006",
+      "lesson": "24.5",
+      "type": "concept",
+      "tags": ["cpp", "inheritance", "access-specifiers"],
+      "concept": "Public inheritance access rules",
+      "explanation": "With public inheritance:<ul><li>Public members → stay public</li><li>Protected members → stay protected</li><li>Private members → inaccessible</li></ul>",
+      "examples": [
+        "class Derived: public Base { }; // Most common",
+        "Derived d; d.m_public = 1; // OK if m_public was public in Base"
+      ],
+      "source": "24.5 - Inheritance and access specifiers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_5_007",
+      "lesson": "24.5",
+      "type": "cloze",
+      "tags": ["cpp", "inheritance", "best-practices"],
+      "text": "You should use {{c1::public}} inheritance unless you have a specific reason to do otherwise. It is by far the {{c2::most commonly}} used type of inheritance.",
+      "source": "24.5 - Inheritance and access specifiers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch24_5_008",
+      "lesson": "24.5",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "access-specifiers"],
+      "front": "With private inheritance, what access level do inherited public and protected members have in the derived class?",
+      "back": "They both become private in the derived class.",
+      "source": "24.5 - Inheritance and access specifiers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_5_009",
+      "lesson": "24.5",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "access-specifiers"],
+      "front": "With protected inheritance, what access level do inherited public members have in the derived class?",
+      "back": "They become protected in the derived class.",
+      "source": "24.5 - Inheritance and access specifiers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_5_010",
+      "lesson": "24.5",
+      "type": "cloze",
+      "tags": ["cpp", "inheritance", "best-practices"],
+      "text": "Favor {{c1::private}} members over {{c2::protected}} members.",
+      "source": "24.5 - Inheritance and access specifiers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_5_011",
+      "lesson": "24.5",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "access-specifiers"],
+      "front": "When should you use the protected access specifier?",
+      "back": "When you're deriving from your own classes, the number of derived classes is reasonable, and you want derived classes to have direct access to base members without a large interface overhead.",
+      "source": "24.5 - Inheritance and access specifiers",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch24_5_012",
+      "lesson": "24.5",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "access-specifiers"],
+      "front": "What is the main disadvantage of using protected members in a base class?",
+      "back": "If you change the protected member (type, meaning, etc.), you'll probably need to change both the base class AND all derived classes, increasing maintenance burden.",
+      "source": "24.5 - Inheritance and access specifiers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_5_013",
+      "lesson": "24.5",
+      "type": "code",
+      "tags": ["cpp", "inheritance", "access-specifiers"],
+      "question": "Can the public access m_public through a Derived object with private inheritance?",
+      "code": "class Base {\npublic:\n    int m_public{};\n};\n\nclass Derived: private Base { };\n\nint main() {\n    Derived d;\n    d.m_public = 1; // Will this compile?\n    return 0;\n}",
+      "answer": "No, it will not compile",
+      "explanation": "With private inheritance, m_public becomes private in Derived, so the public cannot access it through a Derived object.",
+      "source": "24.5 - Inheritance and access specifiers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_5_014",
+      "lesson": "24.5",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "access-specifiers"],
+      "front": "Do the access rules for inherited members apply to member functions as well as member variables?",
+      "back": "Yes, these access rules hold true for all members, including member functions and types declared inside the class.",
+      "source": "24.5 - Inheritance and access specifiers",
+      "difficulty": "easy"
+    }
+  ]
+}

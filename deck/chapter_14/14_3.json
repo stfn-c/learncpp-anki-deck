@@ -1,0 +1,132 @@
+{
+  "chapter": "Chapter 14",
+  "chapter_title": "Introduction to Classes",
+  "lesson": "14.3",
+  "lesson_title": "Member functions",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch14_3_001",
+      "lesson": "14.3",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "member-functions"],
+      "text": "{{c1::Member functions}} are functions defined inside a class definition that allow class objects to perform behaviors.",
+      "source": "14.3 - Member functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_3_002",
+      "lesson": "14.3",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "syntax"],
+      "text": "To define a member function inside a class:<br>class MyClass<br>{<br>public:<br>&nbsp;&nbsp;&nbsp;&nbsp;{{c1::void}} functionName() {{c2::{}}}<br>};",
+      "source": "14.3 - Member functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_3_003",
+      "lesson": "14.3",
+      "type": "basic",
+      "tags": ["cpp", "classes", "member-functions"],
+      "front": "How do you call a member function on a class object?",
+      "back": "Use the member selection operator: objectName.functionName();<br>Example: employee.print();",
+      "source": "14.3 - Member functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_3_004",
+      "lesson": "14.3",
+      "type": "code",
+      "tags": ["cpp", "classes", "implicit-object"],
+      "question": "What does this code print?",
+      "code": "class Point<br>{<br>public:<br>&nbsp;&nbsp;&nbsp;&nbsp;int x{3};<br>&nbsp;&nbsp;&nbsp;&nbsp;void print() { std::cout &lt;&lt; x; }<br>};<br>Point p{};<br>p.print();",
+      "answer": "3",
+      "explanation": "Inside member functions, you can directly access data members of the implicit object (the object the function is called on). Here, x refers to p.x.",
+      "source": "14.3 - Member functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_3_005",
+      "lesson": "14.3",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "implicit-object"],
+      "text": "When a member function is called, the object before the {{c1::.}} operator is called the {{c2::implicit object}}. Inside the member function, all member variables refer to those of the implicit object.",
+      "source": "14.3 - Member functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_3_006",
+      "lesson": "14.3",
+      "type": "concept",
+      "tags": ["cpp", "classes", "best-practices"],
+      "concept": "Why define member functions outside the class (with scope resolution)",
+      "explanation": "Defining member functions outside the class keeps the class definition concise and readable, showing the interface without implementation details. It also allows you to put the class definition in a header and the implementation in a .cpp file.",
+      "examples": [
+        "// In class: void print();  // declaration only",
+        "// Outside: void ClassName::print() { ... }  // definition"
+      ],
+      "source": "14.3 - Member functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_3_007",
+      "lesson": "14.3",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "scope-resolution"],
+      "text": "To define a member function outside the class:<br>ReturnType {{c1::ClassName::}}functionName()<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;// implementation<br>}",
+      "source": "14.3 - Member functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_3_008",
+      "lesson": "14.3",
+      "type": "reverse",
+      "tags": ["cpp", "operators", "scope"],
+      "front": ":: (scope resolution operator)",
+      "back": "Used to specify that a function belongs to a particular class or namespace",
+      "source": "14.3 - Member functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_3_009",
+      "lesson": "14.3",
+      "type": "basic",
+      "tags": ["cpp", "classes", "member-functions"],
+      "front": "What are the two ways to define a member function?",
+      "back": "<ul><li>Inside the class definition (implicit inline)</li><li>Outside the class definition using scope resolution operator (ClassName::)</li></ul>",
+      "source": "14.3 - Member functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_3_010",
+      "lesson": "14.3",
+      "type": "code",
+      "tags": ["cpp", "classes", "common-mistakes"],
+      "question": "What's wrong with this code?",
+      "code": "class Date<br>{<br>public:<br>&nbsp;&nbsp;&nbsp;&nbsp;void print();<br>};<br><br>void print()  // define member function<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; \"Date\";<br>}",
+      "answer": "Missing scope resolution operator. Should be: void Date::print()",
+      "explanation": "Without Date::, this defines a non-member function named print, not the member function of class Date.",
+      "source": "14.3 - Member functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_3_011",
+      "lesson": "14.3",
+      "type": "basic",
+      "tags": ["cpp", "classes", "member-functions"],
+      "front": "Can member functions have parameters?",
+      "back": "Yes, member functions can have parameters just like normal functions. They can also have return values, default parameters, and be overloaded.",
+      "source": "14.3 - Member functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_3_012",
+      "lesson": "14.3",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "member-functions"],
+      "text": "Member functions defined inside the class definition are implicitly {{c1::inline}}. To make an outside member function inline, use the {{c2::inline}} keyword before the return type.",
+      "source": "14.3 - Member functions",
+      "difficulty": "medium"
+    }
+  ]
+}

@@ -1,0 +1,168 @@
+{
+  "url": "https://www.learncpp.com/cpp-tutorial/stdstring-character-access-and-conversion-to-c-style-arrays/",
+  "title": "22.4 \u2014 std::string character access and conversion to C-style arrays",
+  "sections": [
+    {
+      "heading": null,
+      "content": [
+        {
+          "text": "Character accessThere are two almost identical ways to access characters in a string. The easier to use and faster version is the overloaded operator[]:char& string::operator[] (size_type nIndex)const char& string::operator[] (size_type nIndex) constBoth of these functions return the character with index nIndexPassing an invalid index results in undefined behaviorBecause char& is the return type, you can use this to edit characters in the arraySample code:std::string sSource{ \"abcdefg\" };\nstd::cout << sSource[5] << '\\n';\nsSource[5] = 'X';\nstd::cout << sSource << '\\n';Output:f\nabcdeXgThere is also a non-operator version. This version is slower since it uses exceptions to check if the nIndex is valid. If you are not sure whether nIndex is valid, you should use this version to access the array:char& string::at (size_type nIndex)const char& string::at (size_type nIndex) constBoth of these functions return the character with index nIndexPassing an invalid index results in an out_of_range exceptionBecause char& is the return type, you can use this to edit characters in the arraySample code:std::string sSource{ \"abcdefg\" };\nstd::cout << sSource.at(5) << '\\n';\nsSource.at(5) = 'X';\nstd::cout << sSource << '\\n';Output:f\nabcdeXgConversion to C-style arraysMany functions (including all C functions) expect strings to be formatted as C-style strings rather than std::string. For this reason, std::string provides 3 different ways to convert std::string to C-style strings.const char* string::c_str () constReturns the contents of the string as a const C-style stringA null terminator is appendedThe C-style string is owned by the std::string and should not be deletedSample code:#include <cstring>\n\nstd::string sSource{ \"abcdefg\" };\nstd::cout << std::strlen(sSource.c_str());Output:7const char* string::data () constReturns the contents of the string as a const C-style stringA null terminator is appended. This function performs the same action asc_str()The C-style string is owned by the std::string and should not be deletedSample code:#include <cstring>\n\nstd::string sSource{ \"abcdefg\" };\nconst char* szString{ \"abcdefg\" };\n// memcmp compares the first n characters of two C-style strings and returns 0 if they are equal\nif (std::memcmp(sSource.data(), szString, sSource.length()) == 0)\n    std::cout << \"The strings are equal\";\nelse\n    std::cout << \"The strings are not equal\";Output:The strings are equalsize_type string::copy(char* szBuf, size_type nLength, size_type nIndex = 0) constBoth flavors copy at most nLength characters of the string to szBuf, beginning with character nIndexThe number of characters copied is returnedNo null is appended. It is up to the caller to ensure szBuf is initialized to NULL or terminate the string using the returned lengthThe caller is responsible for not overflowing szBufSample code:std::string sSource{ \"sphinx of black quartz, judge my vow\" };\n\nchar szBuf[20];\nint nLength{ static_cast<int>(sSource.copy(szBuf, 5, 10)) };\nszBuf[nLength] = '\\0';  // Make sure we terminate the string in the buffer\n\nstd::cout << szBuf << '\\n';Output:blackThis function should be avoided where possible as it is relatively dangerous (as it is up to the caller to provide null-termination and avoid buffer overflows).Next lesson22.5std::string assignment and swappingBack to table of contentsPrevious lesson22.3std::string length and capacity"
+        },
+        {
+          "text": "There are two almost identical ways to access characters in a string. The easier to use and faster version is the overloaded operator[]:char& string::operator[] (size_type nIndex)const char& string::operator[] (size_type nIndex) constBoth of these functions return the character with index nIndexPassing an invalid index results in undefined behaviorBecause char& is the return type, you can use this to edit characters in the arraySample code:std::string sSource{ \"abcdefg\" };\nstd::cout << sSource[5] << '\\n';\nsSource[5] = 'X';\nstd::cout << sSource << '\\n';Output:f\nabcdeXgThere is also a non-operator version. This version is slower since it uses exceptions to check if the nIndex is valid. If you are not sure whether nIndex is valid, you should use this version to access the array:char& string::at (size_type nIndex)const char& string::at (size_type nIndex) constBoth of these functions return the character with index nIndexPassing an invalid index results in an out_of_range exceptionBecause char& is the return type, you can use this to edit characters in the arraySample code:std::string sSource{ \"abcdefg\" };\nstd::cout << sSource.at(5) << '\\n';\nsSource.at(5) = 'X';\nstd::cout << sSource << '\\n';Output:f\nabcdeXgConversion to C-style arraysMany functions (including all C functions) expect strings to be formatted as C-style strings rather than std::string. For this reason, std::string provides 3 different ways to convert std::string to C-style strings.const char* string::c_str () constReturns the contents of the string as a const C-style stringA null terminator is appendedThe C-style string is owned by the std::string and should not be deletedSample code:#include <cstring>\n\nstd::string sSource{ \"abcdefg\" };\nstd::cout << std::strlen(sSource.c_str());Output:7const char* string::data () constReturns the contents of the string as a const C-style stringA null terminator is appended. This function performs the same action asc_str()The C-style string is owned by the std::string and should not be deletedSample code:#include <cstring>\n\nstd::string sSource{ \"abcdefg\" };\nconst char* szString{ \"abcdefg\" };\n// memcmp compares the first n characters of two C-style strings and returns 0 if they are equal\nif (std::memcmp(sSource.data(), szString, sSource.length()) == 0)\n    std::cout << \"The strings are equal\";\nelse\n    std::cout << \"The strings are not equal\";Output:The strings are equalsize_type string::copy(char* szBuf, size_type nLength, size_type nIndex = 0) constBoth flavors copy at most nLength characters of the string to szBuf, beginning with character nIndexThe number of characters copied is returnedNo null is appended. It is up to the caller to ensure szBuf is initialized to NULL or terminate the string using the returned lengthThe caller is responsible for not overflowing szBufSample code:std::string sSource{ \"sphinx of black quartz, judge my vow\" };\n\nchar szBuf[20];\nint nLength{ static_cast<int>(sSource.copy(szBuf, 5, 10)) };\nszBuf[nLength] = '\\0';  // Make sure we terminate the string in the buffer\n\nstd::cout << szBuf << '\\n';Output:blackThis function should be avoided where possible as it is relatively dangerous (as it is up to the caller to provide null-termination and avoid buffer overflows).Next lesson22.5std::string assignment and swappingBack to table of contentsPrevious lesson22.3std::string length and capacity"
+        },
+        {
+          "text": "char& string::operator[] (size_type nIndex)const char& string::operator[] (size_type nIndex) constBoth of these functions return the character with index nIndexPassing an invalid index results in undefined behaviorBecause char& is the return type, you can use this to edit characters in the arraySample code:std::string sSource{ \"abcdefg\" };\nstd::cout << sSource[5] << '\\n';\nsSource[5] = 'X';\nstd::cout << sSource << '\\n';Output:f\nabcdeXg"
+        },
+        {
+          "text": "char& string::operator[] (size_type nIndex)const char& string::operator[] (size_type nIndex) constBoth of these functions return the character with index nIndexPassing an invalid index results in undefined behaviorBecause char& is the return type, you can use this to edit characters in the arraySample code:std::string sSource{ \"abcdefg\" };\nstd::cout << sSource[5] << '\\n';\nsSource[5] = 'X';\nstd::cout << sSource << '\\n';Output:f\nabcdeXg"
+        },
+        {
+          "text": "Both of these functions return the character with index nIndexPassing an invalid index results in undefined behaviorBecause char& is the return type, you can use this to edit characters in the arraySample code:std::string sSource{ \"abcdefg\" };\nstd::cout << sSource[5] << '\\n';\nsSource[5] = 'X';\nstd::cout << sSource << '\\n';Output:f\nabcdeXg"
+        },
+        {
+          "list": [
+            "Both of these functions return the character with index nIndexPassing an invalid index results in undefined behaviorBecause char& is the return type, you can use this to edit characters in the array",
+            "Passing an invalid index results in undefined behaviorBecause char& is the return type, you can use this to edit characters in the array",
+            "Because char& is the return type, you can use this to edit characters in the array"
+          ]
+        },
+        {
+          "text": "Sample code:std::string sSource{ \"abcdefg\" };\nstd::cout << sSource[5] << '\\n';\nsSource[5] = 'X';\nstd::cout << sSource << '\\n';Output:f\nabcdeXg"
+        },
+        {
+          "code": "std::string sSource{ \"abcdefg\" };\nstd::cout << sSource[5] << '\\n';\nsSource[5] = 'X';\nstd::cout << sSource << '\\n';"
+        },
+        {
+          "text": "Output:f\nabcdeXg"
+        },
+        {
+          "code": "f\nabcdeXg\n"
+        },
+        {
+          "text": "There is also a non-operator version. This version is slower since it uses exceptions to check if the nIndex is valid. If you are not sure whether nIndex is valid, you should use this version to access the array:char& string::at (size_type nIndex)const char& string::at (size_type nIndex) constBoth of these functions return the character with index nIndexPassing an invalid index results in an out_of_range exceptionBecause char& is the return type, you can use this to edit characters in the arraySample code:std::string sSource{ \"abcdefg\" };\nstd::cout << sSource.at(5) << '\\n';\nsSource.at(5) = 'X';\nstd::cout << sSource << '\\n';Output:f\nabcdeXgConversion to C-style arraysMany functions (including all C functions) expect strings to be formatted as C-style strings rather than std::string. For this reason, std::string provides 3 different ways to convert std::string to C-style strings.const char* string::c_str () constReturns the contents of the string as a const C-style stringA null terminator is appendedThe C-style string is owned by the std::string and should not be deletedSample code:#include <cstring>\n\nstd::string sSource{ \"abcdefg\" };\nstd::cout << std::strlen(sSource.c_str());Output:7const char* string::data () constReturns the contents of the string as a const C-style stringA null terminator is appended. This function performs the same action asc_str()The C-style string is owned by the std::string and should not be deletedSample code:#include <cstring>\n\nstd::string sSource{ \"abcdefg\" };\nconst char* szString{ \"abcdefg\" };\n// memcmp compares the first n characters of two C-style strings and returns 0 if they are equal\nif (std::memcmp(sSource.data(), szString, sSource.length()) == 0)\n    std::cout << \"The strings are equal\";\nelse\n    std::cout << \"The strings are not equal\";Output:The strings are equalsize_type string::copy(char* szBuf, size_type nLength, size_type nIndex = 0) constBoth flavors copy at most nLength characters of the string to szBuf, beginning with character nIndexThe number of characters copied is returnedNo null is appended. It is up to the caller to ensure szBuf is initialized to NULL or terminate the string using the returned lengthThe caller is responsible for not overflowing szBufSample code:std::string sSource{ \"sphinx of black quartz, judge my vow\" };\n\nchar szBuf[20];\nint nLength{ static_cast<int>(sSource.copy(szBuf, 5, 10)) };\nszBuf[nLength] = '\\0';  // Make sure we terminate the string in the buffer\n\nstd::cout << szBuf << '\\n';Output:blackThis function should be avoided where possible as it is relatively dangerous (as it is up to the caller to provide null-termination and avoid buffer overflows).Next lesson22.5std::string assignment and swappingBack to table of contentsPrevious lesson22.3std::string length and capacity"
+        },
+        {
+          "text": "char& string::at (size_type nIndex)const char& string::at (size_type nIndex) constBoth of these functions return the character with index nIndexPassing an invalid index results in an out_of_range exceptionBecause char& is the return type, you can use this to edit characters in the arraySample code:std::string sSource{ \"abcdefg\" };\nstd::cout << sSource.at(5) << '\\n';\nsSource.at(5) = 'X';\nstd::cout << sSource << '\\n';Output:f\nabcdeXg"
+        },
+        {
+          "text": "char& string::at (size_type nIndex)const char& string::at (size_type nIndex) constBoth of these functions return the character with index nIndexPassing an invalid index results in an out_of_range exceptionBecause char& is the return type, you can use this to edit characters in the arraySample code:std::string sSource{ \"abcdefg\" };\nstd::cout << sSource.at(5) << '\\n';\nsSource.at(5) = 'X';\nstd::cout << sSource << '\\n';Output:f\nabcdeXg"
+        },
+        {
+          "text": "Both of these functions return the character with index nIndexPassing an invalid index results in an out_of_range exceptionBecause char& is the return type, you can use this to edit characters in the arraySample code:std::string sSource{ \"abcdefg\" };\nstd::cout << sSource.at(5) << '\\n';\nsSource.at(5) = 'X';\nstd::cout << sSource << '\\n';Output:f\nabcdeXg"
+        },
+        {
+          "list": [
+            "Both of these functions return the character with index nIndexPassing an invalid index results in an out_of_range exceptionBecause char& is the return type, you can use this to edit characters in the array",
+            "Passing an invalid index results in an out_of_range exceptionBecause char& is the return type, you can use this to edit characters in the array",
+            "Because char& is the return type, you can use this to edit characters in the array"
+          ]
+        },
+        {
+          "text": "Sample code:std::string sSource{ \"abcdefg\" };\nstd::cout << sSource.at(5) << '\\n';\nsSource.at(5) = 'X';\nstd::cout << sSource << '\\n';Output:f\nabcdeXg"
+        },
+        {
+          "code": "std::string sSource{ \"abcdefg\" };\nstd::cout << sSource.at(5) << '\\n';\nsSource.at(5) = 'X';\nstd::cout << sSource << '\\n';"
+        },
+        {
+          "text": "Output:f\nabcdeXg"
+        },
+        {
+          "code": "f\nabcdeXg\n"
+        },
+        {
+          "text": "Conversion to C-style arraysMany functions (including all C functions) expect strings to be formatted as C-style strings rather than std::string. For this reason, std::string provides 3 different ways to convert std::string to C-style strings.const char* string::c_str () constReturns the contents of the string as a const C-style stringA null terminator is appendedThe C-style string is owned by the std::string and should not be deletedSample code:#include <cstring>\n\nstd::string sSource{ \"abcdefg\" };\nstd::cout << std::strlen(sSource.c_str());Output:7const char* string::data () constReturns the contents of the string as a const C-style stringA null terminator is appended. This function performs the same action asc_str()The C-style string is owned by the std::string and should not be deletedSample code:#include <cstring>\n\nstd::string sSource{ \"abcdefg\" };\nconst char* szString{ \"abcdefg\" };\n// memcmp compares the first n characters of two C-style strings and returns 0 if they are equal\nif (std::memcmp(sSource.data(), szString, sSource.length()) == 0)\n    std::cout << \"The strings are equal\";\nelse\n    std::cout << \"The strings are not equal\";Output:The strings are equalsize_type string::copy(char* szBuf, size_type nLength, size_type nIndex = 0) constBoth flavors copy at most nLength characters of the string to szBuf, beginning with character nIndexThe number of characters copied is returnedNo null is appended. It is up to the caller to ensure szBuf is initialized to NULL or terminate the string using the returned lengthThe caller is responsible for not overflowing szBufSample code:std::string sSource{ \"sphinx of black quartz, judge my vow\" };\n\nchar szBuf[20];\nint nLength{ static_cast<int>(sSource.copy(szBuf, 5, 10)) };\nszBuf[nLength] = '\\0';  // Make sure we terminate the string in the buffer\n\nstd::cout << szBuf << '\\n';Output:blackThis function should be avoided where possible as it is relatively dangerous (as it is up to the caller to provide null-termination and avoid buffer overflows).Next lesson22.5std::string assignment and swappingBack to table of contentsPrevious lesson22.3std::string length and capacity"
+        },
+        {
+          "text": "Many functions (including all C functions) expect strings to be formatted as C-style strings rather than std::string. For this reason, std::string provides 3 different ways to convert std::string to C-style strings.const char* string::c_str () constReturns the contents of the string as a const C-style stringA null terminator is appendedThe C-style string is owned by the std::string and should not be deletedSample code:#include <cstring>\n\nstd::string sSource{ \"abcdefg\" };\nstd::cout << std::strlen(sSource.c_str());Output:7const char* string::data () constReturns the contents of the string as a const C-style stringA null terminator is appended. This function performs the same action asc_str()The C-style string is owned by the std::string and should not be deletedSample code:#include <cstring>\n\nstd::string sSource{ \"abcdefg\" };\nconst char* szString{ \"abcdefg\" };\n// memcmp compares the first n characters of two C-style strings and returns 0 if they are equal\nif (std::memcmp(sSource.data(), szString, sSource.length()) == 0)\n    std::cout << \"The strings are equal\";\nelse\n    std::cout << \"The strings are not equal\";Output:The strings are equalsize_type string::copy(char* szBuf, size_type nLength, size_type nIndex = 0) constBoth flavors copy at most nLength characters of the string to szBuf, beginning with character nIndexThe number of characters copied is returnedNo null is appended. It is up to the caller to ensure szBuf is initialized to NULL or terminate the string using the returned lengthThe caller is responsible for not overflowing szBufSample code:std::string sSource{ \"sphinx of black quartz, judge my vow\" };\n\nchar szBuf[20];\nint nLength{ static_cast<int>(sSource.copy(szBuf, 5, 10)) };\nszBuf[nLength] = '\\0';  // Make sure we terminate the string in the buffer\n\nstd::cout << szBuf << '\\n';Output:blackThis function should be avoided where possible as it is relatively dangerous (as it is up to the caller to provide null-termination and avoid buffer overflows).Next lesson22.5std::string assignment and swappingBack to table of contentsPrevious lesson22.3std::string length and capacity"
+        },
+        {
+          "text": "const char* string::c_str () constReturns the contents of the string as a const C-style stringA null terminator is appendedThe C-style string is owned by the std::string and should not be deletedSample code:#include <cstring>\n\nstd::string sSource{ \"abcdefg\" };\nstd::cout << std::strlen(sSource.c_str());Output:7"
+        },
+        {
+          "text": "const char* string::c_str () constReturns the contents of the string as a const C-style stringA null terminator is appendedThe C-style string is owned by the std::string and should not be deletedSample code:#include <cstring>\n\nstd::string sSource{ \"abcdefg\" };\nstd::cout << std::strlen(sSource.c_str());Output:7"
+        },
+        {
+          "text": "Returns the contents of the string as a const C-style stringA null terminator is appendedThe C-style string is owned by the std::string and should not be deletedSample code:#include <cstring>\n\nstd::string sSource{ \"abcdefg\" };\nstd::cout << std::strlen(sSource.c_str());Output:7"
+        },
+        {
+          "list": [
+            "Returns the contents of the string as a const C-style stringA null terminator is appendedThe C-style string is owned by the std::string and should not be deleted",
+            "A null terminator is appendedThe C-style string is owned by the std::string and should not be deleted",
+            "The C-style string is owned by the std::string and should not be deleted"
+          ]
+        },
+        {
+          "text": "Sample code:#include <cstring>\n\nstd::string sSource{ \"abcdefg\" };\nstd::cout << std::strlen(sSource.c_str());Output:7"
+        },
+        {
+          "code": "#include <cstring>\n\nstd::string sSource{ \"abcdefg\" };\nstd::cout << std::strlen(sSource.c_str());"
+        },
+        {
+          "code": "7\n"
+        },
+        {
+          "text": "const char* string::data () constReturns the contents of the string as a const C-style stringA null terminator is appended. This function performs the same action asc_str()The C-style string is owned by the std::string and should not be deletedSample code:#include <cstring>\n\nstd::string sSource{ \"abcdefg\" };\nconst char* szString{ \"abcdefg\" };\n// memcmp compares the first n characters of two C-style strings and returns 0 if they are equal\nif (std::memcmp(sSource.data(), szString, sSource.length()) == 0)\n    std::cout << \"The strings are equal\";\nelse\n    std::cout << \"The strings are not equal\";Output:The strings are equal"
+        },
+        {
+          "text": "const char* string::data () constReturns the contents of the string as a const C-style stringA null terminator is appended. This function performs the same action asc_str()The C-style string is owned by the std::string and should not be deletedSample code:#include <cstring>\n\nstd::string sSource{ \"abcdefg\" };\nconst char* szString{ \"abcdefg\" };\n// memcmp compares the first n characters of two C-style strings and returns 0 if they are equal\nif (std::memcmp(sSource.data(), szString, sSource.length()) == 0)\n    std::cout << \"The strings are equal\";\nelse\n    std::cout << \"The strings are not equal\";Output:The strings are equal"
+        },
+        {
+          "text": "Returns the contents of the string as a const C-style stringA null terminator is appended. This function performs the same action asc_str()The C-style string is owned by the std::string and should not be deletedSample code:#include <cstring>\n\nstd::string sSource{ \"abcdefg\" };\nconst char* szString{ \"abcdefg\" };\n// memcmp compares the first n characters of two C-style strings and returns 0 if they are equal\nif (std::memcmp(sSource.data(), szString, sSource.length()) == 0)\n    std::cout << \"The strings are equal\";\nelse\n    std::cout << \"The strings are not equal\";Output:The strings are equal"
+        },
+        {
+          "list": [
+            "Returns the contents of the string as a const C-style stringA null terminator is appended. This function performs the same action asc_str()The C-style string is owned by the std::string and should not be deleted",
+            "A null terminator is appended. This function performs the same action asc_str()The C-style string is owned by the std::string and should not be deleted",
+            "The C-style string is owned by the std::string and should not be deleted"
+          ]
+        },
+        {
+          "text": "Sample code:#include <cstring>\n\nstd::string sSource{ \"abcdefg\" };\nconst char* szString{ \"abcdefg\" };\n// memcmp compares the first n characters of two C-style strings and returns 0 if they are equal\nif (std::memcmp(sSource.data(), szString, sSource.length()) == 0)\n    std::cout << \"The strings are equal\";\nelse\n    std::cout << \"The strings are not equal\";Output:The strings are equal"
+        },
+        {
+          "code": "#include <cstring>\n\nstd::string sSource{ \"abcdefg\" };\nconst char* szString{ \"abcdefg\" };\n// memcmp compares the first n characters of two C-style strings and returns 0 if they are equal\nif (std::memcmp(sSource.data(), szString, sSource.length()) == 0)\n    std::cout << \"The strings are equal\";\nelse\n    std::cout << \"The strings are not equal\";"
+        },
+        {
+          "text": "Output:The strings are equal"
+        },
+        {
+          "code": "The strings are equal\n"
+        },
+        {
+          "text": "size_type string::copy(char* szBuf, size_type nLength, size_type nIndex = 0) constBoth flavors copy at most nLength characters of the string to szBuf, beginning with character nIndexThe number of characters copied is returnedNo null is appended. It is up to the caller to ensure szBuf is initialized to NULL or terminate the string using the returned lengthThe caller is responsible for not overflowing szBufSample code:std::string sSource{ \"sphinx of black quartz, judge my vow\" };\n\nchar szBuf[20];\nint nLength{ static_cast<int>(sSource.copy(szBuf, 5, 10)) };\nszBuf[nLength] = '\\0';  // Make sure we terminate the string in the buffer\n\nstd::cout << szBuf << '\\n';Output:black"
+        },
+        {
+          "text": "size_type string::copy(char* szBuf, size_type nLength, size_type nIndex = 0) constBoth flavors copy at most nLength characters of the string to szBuf, beginning with character nIndexThe number of characters copied is returnedNo null is appended. It is up to the caller to ensure szBuf is initialized to NULL or terminate the string using the returned lengthThe caller is responsible for not overflowing szBufSample code:std::string sSource{ \"sphinx of black quartz, judge my vow\" };\n\nchar szBuf[20];\nint nLength{ static_cast<int>(sSource.copy(szBuf, 5, 10)) };\nszBuf[nLength] = '\\0';  // Make sure we terminate the string in the buffer\n\nstd::cout << szBuf << '\\n';Output:black"
+        },
+        {
+          "text": "Both flavors copy at most nLength characters of the string to szBuf, beginning with character nIndexThe number of characters copied is returnedNo null is appended. It is up to the caller to ensure szBuf is initialized to NULL or terminate the string using the returned lengthThe caller is responsible for not overflowing szBufSample code:std::string sSource{ \"sphinx of black quartz, judge my vow\" };\n\nchar szBuf[20];\nint nLength{ static_cast<int>(sSource.copy(szBuf, 5, 10)) };\nszBuf[nLength] = '\\0';  // Make sure we terminate the string in the buffer\n\nstd::cout << szBuf << '\\n';Output:black"
+        },
+        {
+          "list": [
+            "Both flavors copy at most nLength characters of the string to szBuf, beginning with character nIndexThe number of characters copied is returnedNo null is appended. It is up to the caller to ensure szBuf is initialized to NULL or terminate the string using the returned lengthThe caller is responsible for not overflowing szBuf",
+            "The number of characters copied is returnedNo null is appended. It is up to the caller to ensure szBuf is initialized to NULL or terminate the string using the returned lengthThe caller is responsible for not overflowing szBuf",
+            "No null is appended. It is up to the caller to ensure szBuf is initialized to NULL or terminate the string using the returned lengthThe caller is responsible for not overflowing szBuf",
+            "The caller is responsible for not overflowing szBuf"
+          ]
+        },
+        {
+          "text": "Sample code:std::string sSource{ \"sphinx of black quartz, judge my vow\" };\n\nchar szBuf[20];\nint nLength{ static_cast<int>(sSource.copy(szBuf, 5, 10)) };\nszBuf[nLength] = '\\0';  // Make sure we terminate the string in the buffer\n\nstd::cout << szBuf << '\\n';Output:black"
+        },
+        {
+          "code": "std::string sSource{ \"sphinx of black quartz, judge my vow\" };\n\nchar szBuf[20];\nint nLength{ static_cast<int>(sSource.copy(szBuf, 5, 10)) };\nszBuf[nLength] = '\\0';  // Make sure we terminate the string in the buffer\n\nstd::cout << szBuf << '\\n';"
+        },
+        {
+          "text": "Output:black"
+        },
+        {
+          "code": "black\n"
+        },
+        {
+          "text": "This function should be avoided where possible as it is relatively dangerous (as it is up to the caller to provide null-termination and avoid buffer overflows).Next lesson22.5std::string assignment and swappingBack to table of contentsPrevious lesson22.3std::string length and capacity"
+        }
+      ]
+    }
+  ],
+  "quiz": []
+}

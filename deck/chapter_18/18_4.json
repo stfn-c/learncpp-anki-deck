@@ -1,0 +1,170 @@
+{
+  "chapter": "Chapter 18",
+  "chapter_title": "Basic standard library algorithms",
+  "lesson": "18.4",
+  "lesson_title": "Timing your code",
+  "total_cards": 11,
+  "cards": [
+    {
+      "id": "ch18_4_001",
+      "lesson": "18.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "chrono",
+        "timing"
+      ],
+      "text": "To time code in C++, use the {{c1::&lt;chrono&gt;}} library from C++11, which provides high-resolution timing functionality.",
+      "source": "18.4 - Timing your code",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch18_4_002",
+      "lesson": "18.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "chrono",
+        "timing",
+        "syntax"
+      ],
+      "text": "To get the current time point, use {{c1::std::chrono::steady_clock::now()}}.",
+      "source": "18.4 - Timing your code",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch18_4_003",
+      "lesson": "18.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "chrono",
+        "timing"
+      ],
+      "question": "What does this timing code do?",
+      "code": "auto start{ std::chrono::steady_clock::now() };\nsortArray(arr);\nauto end{ std::chrono::steady_clock::now() };\nstd::chrono::duration&lt;double&gt; elapsed{ end - start };",
+      "answer": "Measures how long sortArray() takes to execute, storing the elapsed time in seconds as a double.",
+      "explanation": "It captures the time before and after the function call, then calculates the difference (duration) between them.",
+      "source": "18.4 - Timing your code",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch18_4_004",
+      "lesson": "18.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "chrono",
+        "clocks"
+      ],
+      "front": "Why use std::chrono::steady_clock instead of std::chrono::system_clock?",
+      "back": "steady_clock is monotonic (never goes backwards), making it reliable for measuring intervals. system_clock can be adjusted (e.g., daylight savings, NTP), causing inaccurate measurements.",
+      "source": "18.4 - Timing your code",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch18_4_005",
+      "lesson": "18.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "chrono",
+        "duration"
+      ],
+      "text": "To convert a duration to milliseconds, use {{c1::std::chrono::duration_cast&lt;std::chrono::milliseconds&gt;(elapsed).count()}}.",
+      "source": "18.4 - Timing your code",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch18_4_006",
+      "lesson": "18.4",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "performance",
+        "timing",
+        "gotchas"
+      ],
+      "concept": "Important considerations when timing code",
+      "explanation": "Timing can be affected by:<ul><li>Compiler optimizations (may eliminate dead code)</li><li>System load (other processes competing)</li><li>CPU frequency scaling</li><li>Caching effects (first run vs subsequent runs)</li><li>Small variations between runs</li></ul>Run multiple iterations and average results.",
+      "examples": [
+        "// Run 100 times and average",
+        "// Prevent optimization: use results",
+        "// Close other applications"
+      ],
+      "source": "18.4 - Timing your code",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch18_4_007",
+      "lesson": "18.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "chrono",
+        "duration",
+        "syntax"
+      ],
+      "text": "std::chrono::duration&lt;{{c1::double}}&gt; stores elapsed time as a floating-point value in {{c2::seconds}} by default.",
+      "source": "18.4 - Timing your code",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch18_4_008",
+      "lesson": "18.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "chrono",
+        "duration"
+      ],
+      "front": "How do you get the numeric value from a std::chrono::duration?",
+      "back": "Call the .count() member function, which returns the number of ticks in the duration's underlying representation.",
+      "source": "18.4 - Timing your code",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch18_4_009",
+      "lesson": "18.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "chrono",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this timing code?",
+      "code": "auto start{ std::chrono::steady_clock::now() };\nint result = expensiveCalc();\nauto end{ std::chrono::steady_clock::now() };\n// result is never used",
+      "answer": "Compiler may optimize away expensiveCalc() since result is unused, giving inaccurate timing.",
+      "explanation": "To prevent this, ensure the result is used in a way the compiler can't optimize away (e.g., print it, or mark it as volatile).",
+      "source": "18.4 - Timing your code",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch18_4_010",
+      "lesson": "18.4",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "terminology"
+      ],
+      "front": "monotonic clock",
+      "back": "A clock that only moves forward, never backwards (even if system time is adjusted). Example: std::chrono::steady_clock",
+      "source": "18.4 - Timing your code",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch18_4_011",
+      "lesson": "18.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "chrono",
+        "performance"
+      ],
+      "front": "What is the typical use case for timing code with std::chrono?",
+      "back": "Comparing performance of different implementations or algorithms to determine which is faster in practice.",
+      "source": "18.4 - Timing your code",
+      "difficulty": "easy"
+    }
+  ]
+}

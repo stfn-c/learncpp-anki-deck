@@ -1,0 +1,134 @@
+{
+  "chapter": "Chapter 14",
+  "chapter_title": "Introduction to Classes",
+  "lesson": "14.9",
+  "lesson_title": "Introduction to constructors",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch14_9_001",
+      "lesson": "14.9",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "constructors"],
+      "text": "A {{c1::constructor}} is a special member function that is automatically called when an object of the class is {{c2::instantiated}}.",
+      "source": "14.9 - Introduction to constructors",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_9_002",
+      "lesson": "14.9",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "constructors", "syntax"],
+      "text": "Constructors have the {{c1::same name}} as the class, have {{c2::no return type}} (not even void), and are typically {{c3::public}}.",
+      "source": "14.9 - Introduction to constructors",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_9_003",
+      "lesson": "14.9",
+      "type": "code",
+      "tags": ["cpp", "classes", "constructors", "syntax"],
+      "question": "How do you define a constructor?",
+      "code": "class Fraction<br>{<br>private:<br>&nbsp;&nbsp;&nbsp;&nbsp;int m_numerator;<br>&nbsp;&nbsp;&nbsp;&nbsp;int m_denominator;<br>public:<br>&nbsp;&nbsp;&nbsp;&nbsp;// ???<br>};",
+      "answer": "Fraction(int numerator, int denominator)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;m_numerator = numerator;<br>&nbsp;&nbsp;&nbsp;&nbsp;m_denominator = denominator;<br>}",
+      "explanation": "Constructor has same name as class, no return type, and initializes the members.",
+      "source": "14.9 - Introduction to constructors",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_9_004",
+      "lesson": "14.9",
+      "type": "basic",
+      "tags": ["cpp", "classes", "constructors"],
+      "front": "When is a constructor called?",
+      "back": "Constructors are called automatically when an object is created. You don't explicitly call constructors - they're invoked during object instantiation.",
+      "source": "14.9 - Introduction to constructors",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_9_005",
+      "lesson": "14.9",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "constructors", "syntax"],
+      "text": "To instantiate an object with constructor parameters:<br>{{c1::Fraction f{3, 4};}}&nbsp;&nbsp;// using list initialization<br>{{c2::Fraction f(3, 4);}}&nbsp;&nbsp;// using direct initialization",
+      "source": "14.9 - Introduction to constructors",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_9_006",
+      "lesson": "14.9",
+      "type": "code",
+      "tags": ["cpp", "classes", "constructors", "common-mistakes"],
+      "question": "What's wrong with this constructor?",
+      "code": "class Foo<br>{<br>public:<br>&nbsp;&nbsp;&nbsp;&nbsp;void Foo() { }  // constructor?<br>};",
+      "answer": "This is NOT a constructor - it has a return type (void). Constructors must have no return type at all.",
+      "explanation": "This is actually a regular member function named Foo that returns void. Constructors have no return type, not even void.",
+      "source": "14.9 - Introduction to constructors",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_9_007",
+      "lesson": "14.9",
+      "type": "concept",
+      "tags": ["cpp", "classes", "constructors", "best-practices"],
+      "concept": "Why use constructors instead of default member initializers",
+      "explanation": "Constructors allow:<ul><li>Accepting parameters to initialize members with different values</li><li>Performing validation or calculations during initialization</li><li>Initializing members that depend on parameters</li><li>Enforcing that certain values must be provided at creation time</li></ul>Default member initializers only work for fixed default values.",
+      "examples": [
+        "Fraction(int n, int d) { m_num = n; m_den = d; }  // flexible",
+        "int m_value{0};  // only for fixed default"
+      ],
+      "source": "14.9 - Introduction to constructors",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_9_008",
+      "lesson": "14.9",
+      "type": "basic",
+      "tags": ["cpp", "classes", "constructors"],
+      "front": "Can a class have multiple constructors?",
+      "back": "Yes! A class can have multiple constructors with different parameters (constructor overloading). The compiler chooses which one to call based on the arguments provided.",
+      "source": "14.9 - Introduction to constructors",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_9_009",
+      "lesson": "14.9",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "constructors"],
+      "text": "Constructors are typically made {{c1::public}} so objects can be created from outside the class. Making them {{c2::private}} prevents object creation from outside the class.",
+      "source": "14.9 - Introduction to constructors",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_9_010",
+      "lesson": "14.9",
+      "type": "code",
+      "tags": ["cpp", "classes", "constructors"],
+      "question": "What does this code do?",
+      "code": "class Point<br>{<br>public:<br>&nbsp;&nbsp;&nbsp;&nbsp;Point(int x, int y)<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; \"Point(\" &lt;&lt; x &lt;&lt; \", \" &lt;&lt; y &lt;&lt; \") constructed\";<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>};<br><br>Point p{3, 4};",
+      "answer": "Prints: Point(3, 4) constructed",
+      "explanation": "The constructor is called automatically when p is created, executing the code inside the constructor body.",
+      "source": "14.9 - Introduction to constructors",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_9_011",
+      "lesson": "14.9",
+      "type": "basic",
+      "tags": ["cpp", "classes", "constructors", "gotchas"],
+      "front": "Can you call a constructor explicitly after an object is created?",
+      "back": "No. Constructors are only called during object creation. After an object exists, you cannot call its constructor again. If you need to reinitialize, you must create a new object or use a setter function.",
+      "source": "14.9 - Introduction to constructors",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_9_012",
+      "lesson": "14.9",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "constructors", "best-practices"],
+      "text": "Best practice: Constructors should {{c1::initialize}} all member variables to ensure objects start in a {{c2::valid state}}.",
+      "source": "14.9 - Introduction to constructors",
+      "difficulty": "easy"
+    }
+  ]
+}

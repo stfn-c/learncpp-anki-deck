@@ -1,0 +1,210 @@
+{
+  "chapter": "Chapter 10",
+  "chapter_title": "Type Conversion, Type Aliases, and Type Deduction",
+  "lesson": "10.1",
+  "lesson_title": "Implicit type conversion",
+  "total_cards": 14,
+  "cards": [
+    {
+      "id": "ch10_1_001",
+      "lesson": "10.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "type-conversion",
+        "fundamentals"
+      ],
+      "front": "What is implicit type conversion (also called automatic type conversion or coercion)?",
+      "back": "Type conversion performed automatically by the compiler when an expression of one type is supplied in a context where a different type is expected.",
+      "source": "10.1 - Implicit type conversion",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_1_002",
+      "lesson": "10.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "type-conversion",
+        "syntax"
+      ],
+      "text": "Implicit type conversion is also called {{c1::automatic type conversion}} or {{c2::coercion}}.",
+      "source": "10.1 - Implicit type conversion",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_1_003",
+      "lesson": "10.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "type-conversion",
+        "best-practices"
+      ],
+      "front": "Do conversions change the original data being converted?",
+      "back": "No. The conversion process uses the original data as input and produces a new temporary object of the target type with the converted result.",
+      "source": "10.1 - Implicit type conversion",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_1_004",
+      "lesson": "10.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "type-conversion",
+        "syntax"
+      ],
+      "text": "When converting a value to another type, the conversion process produces a {{c1::temporary object}} of the target type that holds the result.",
+      "source": "10.1 - Implicit type conversion",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_1_005",
+      "lesson": "10.1",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "type-conversion",
+        "fundamentals"
+      ],
+      "concept": "When implicit type conversion happens",
+      "explanation": "Implicit type conversion happens automatically in several contexts:<ul><li>When initializing or assigning a variable with a value of a different type</li><li>When a function's return value differs from its declared return type</li><li>When using binary operators with operands of different types</li><li>When using a non-Boolean value in an if-statement</li><li>When passing an argument that differs from the parameter type</li></ul>",
+      "examples": [
+        "double d{ 3 };           // int 3 converted to double",
+        "double division{ 4.0 / 3 }; // int 3 converted to double",
+        "if (5) { }              // int 5 converted to bool"
+      ],
+      "source": "10.1 - Implicit type conversion",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_1_006",
+      "lesson": "10.1",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "type-conversion",
+        "syntax"
+      ],
+      "question": "What type conversion happens in this code?",
+      "code": "double d{ 3 };\nd = 6;",
+      "answer": "In both lines, int values (3 and 6) are implicitly converted to type double.",
+      "explanation": "When initializing or assigning a variable with a value of a different type, implicit type conversion occurs automatically.",
+      "source": "10.1 - Implicit type conversion",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_1_007",
+      "lesson": "10.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "type-conversion",
+        "fundamentals"
+      ],
+      "front": "How many standard conversion categories are there in C++23?",
+      "back": "5 general categories:<ul><li>Numeric promotions</li><li>Numeric conversions</li><li>Qualification conversions</li><li>Value transformations</li><li>Pointer conversions</li></ul>These encompass 14 different standard conversions total.",
+      "source": "10.1 - Implicit type conversion",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_1_008",
+      "lesson": "10.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "type-conversion",
+        "fundamentals"
+      ],
+      "text": "The C++ standard defines conversion rules called the {{c1::standard conversions}}, which specify how fundamental types and certain compound types convert to other types.",
+      "source": "10.1 - Implicit type conversion",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_1_009",
+      "lesson": "10.1",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "type-conversion",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this code?",
+      "code": "int main()\n{\n    int x { \"14\" };\n    return 0;\n}",
+      "answer": "Compile error: There is no standard conversion from string literal (const char*) to int.",
+      "explanation": "The compiler produces an error like 'invalid conversion from const char* to int' because no standard conversion exists between these types.",
+      "source": "10.1 - Implicit type conversion",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_1_010",
+      "lesson": "10.1",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "type-conversion",
+        "brace-initialization"
+      ],
+      "question": "Why does this code fail to compile?",
+      "code": "int x { 3.5 };",
+      "answer": "Brace-initialization disallows narrowing conversions that result in data loss.",
+      "explanation": "Even though the compiler knows how to convert double to int, brace-initialization specifically prevents conversions where data could be lost (like truncating 3.5 to 3).",
+      "source": "10.1 - Implicit type conversion",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_1_011",
+      "lesson": "10.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "type-conversion",
+        "numeric-conversions"
+      ],
+      "text": "Converting an int value to a float value falls under the {{c1::numeric conversions}} category of standard conversions.",
+      "source": "10.1 - Implicit type conversion",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_1_012",
+      "lesson": "10.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "type-conversion",
+        "fundamentals"
+      ],
+      "front": "Why can't the compiler just copy bits directly when converting between different types (e.g., int to float)?",
+      "back": "Different data types use different bit representations for the same value. For example, int value 3 might be stored as binary 0000...0011, while float 3.0 might be stored as 0100...0000. Copying bits directly would result in incorrect values.",
+      "source": "10.1 - Implicit type conversion",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_1_013",
+      "lesson": "10.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "type-conversion",
+        "syntax"
+      ],
+      "text": "When a function's return value type differs from its declared return type, {{c1::implicit type conversion}} occurs automatically.",
+      "source": "10.1 - Implicit type conversion",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_1_014",
+      "lesson": "10.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "type-conversion",
+        "operators"
+      ],
+      "text": "When using binary operators with operands of different types, the compiler performs {{c1::implicit type conversion}} to make them the same type.",
+      "source": "10.1 - Implicit type conversion",
+      "difficulty": "easy"
+    }
+  ]
+}

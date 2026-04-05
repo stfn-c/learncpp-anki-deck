@@ -1,0 +1,241 @@
+{
+  "chapter": "Chapter O",
+  "chapter_title": "Bit Manipulation",
+  "lesson": "O.2",
+  "lesson_title": "Bitwise operators",
+  "total_cards": 16,
+  "cards": [
+    {
+      "id": "cho_2_001",
+      "lesson": "O.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "bitwise",
+        "operators"
+      ],
+      "text": "The bitwise AND operator is {{c1::&amp;}} and it returns 1 only if {{c2::both bits}} are 1.",
+      "source": "O.2 - Bitwise operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "cho_2_002",
+      "lesson": "O.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "bitwise",
+        "operators"
+      ],
+      "text": "The bitwise OR operator is {{c1::|}} and it returns 1 if {{c2::either bit}} (or both) is 1.",
+      "source": "O.2 - Bitwise operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "cho_2_003",
+      "lesson": "O.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "bitwise",
+        "operators"
+      ],
+      "text": "The bitwise XOR operator is {{c1::^}} and it returns 1 only if {{c2::the bits are different}} (one is 0 and the other is 1).",
+      "source": "O.2 - Bitwise operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "cho_2_004",
+      "lesson": "O.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "bitwise",
+        "operators"
+      ],
+      "question": "What is the result in binary?",
+      "code": "0b0101 &amp; 0b0110",
+      "answer": "0b0100",
+      "explanation": "Bitwise AND compares each bit:<br>0101<br>0110<br>----<br>0100<br>(1 only where both bits are 1)",
+      "source": "O.2 - Bitwise operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "cho_2_005",
+      "lesson": "O.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "bitwise",
+        "operators"
+      ],
+      "question": "What is the result in binary?",
+      "code": "0b0101 | 0b0110",
+      "answer": "0b0111",
+      "explanation": "Bitwise OR compares each bit:<br>0101<br>0110<br>----<br>0111<br>(1 if either bit is 1)",
+      "source": "O.2 - Bitwise operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "cho_2_006",
+      "lesson": "O.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "bitwise",
+        "operators"
+      ],
+      "text": "The bitwise NOT (complement) operator is {{c1::~}} and it {{c2::flips all bits}} (0 becomes 1, 1 becomes 0).",
+      "source": "O.2 - Bitwise operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "cho_2_007",
+      "lesson": "O.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "bitwise",
+        "shift"
+      ],
+      "text": "The left shift operator {{c1::&lt;&lt;}} shifts bits to the left by n positions, and fills the vacated bits with {{c2::0s}}.",
+      "source": "O.2 - Bitwise operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "cho_2_008",
+      "lesson": "O.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "bitwise",
+        "shift"
+      ],
+      "question": "What is the result of this left shift?",
+      "code": "0b0011 &lt;&lt; 2",
+      "answer": "0b1100 (or 12 in decimal)",
+      "explanation": "Left shift by 2 moves all bits 2 positions left:<br>0011 becomes 1100<br>This is equivalent to multiplying by 2^2 = 4 (3 * 4 = 12)",
+      "source": "O.2 - Bitwise operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "cho_2_009",
+      "lesson": "O.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "bitwise",
+        "shift"
+      ],
+      "text": "The right shift operator {{c1::&gt;&gt;}} shifts bits to the right by n positions. For {{c2::unsigned}} numbers, it fills with 0s.",
+      "source": "O.2 - Bitwise operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "cho_2_010",
+      "lesson": "O.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "bitwise",
+        "operators"
+      ],
+      "question": "What is the result in binary?",
+      "code": "0b0101 ^ 0b0110",
+      "answer": "0b0011",
+      "explanation": "Bitwise XOR compares each bit:<br>0101<br>0110<br>----<br>0011<br>(1 only where bits are different)",
+      "source": "O.2 - Bitwise operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "cho_2_011",
+      "lesson": "O.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "bitwise",
+        "shift"
+      ],
+      "front": "What mathematical operation does left shift by n positions perform?",
+      "back": "Multiplication by 2^n<br>Example: x &lt;&lt; 3 multiplies x by 2^3 = 8",
+      "source": "O.2 - Bitwise operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "cho_2_012",
+      "lesson": "O.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "bitwise",
+        "shift"
+      ],
+      "front": "What mathematical operation does right shift by n positions perform on unsigned integers?",
+      "back": "Division by 2^n (integer division, rounds down)<br>Example: x &gt;&gt; 2 divides x by 2^2 = 4",
+      "source": "O.2 - Bitwise operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "cho_2_013",
+      "lesson": "O.2",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "bitwise",
+        "operators",
+        "common-mistakes"
+      ],
+      "concept": "Difference between bitwise and logical operators",
+      "explanation": "Bitwise operators (&amp;, |, ^, ~) work on individual bits. Logical operators (&amp;&amp;, ||, !) work on boolean values and use short-circuit evaluation.<ul><li>Bitwise: 0b0101 &amp; 0b0110 = 0b0100</li><li>Logical: true &amp;&amp; false = false</li></ul>Don't confuse &amp; with &amp;&amp; or | with ||!",
+      "examples": [
+        "int flags = 0b1010 &amp; 0b1100;  // bitwise AND: 0b1000",
+        "if (x &gt; 0 &amp;&amp; y &gt; 0) { }  // logical AND: short-circuits"
+      ],
+      "source": "O.2 - Bitwise operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "cho_2_014",
+      "lesson": "O.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "bitwise",
+        "operators"
+      ],
+      "question": "What is the result for an 8-bit value?",
+      "code": "~0b0000'1111",
+      "answer": "0b1111'0000",
+      "explanation": "Bitwise NOT flips all bits:<br>0000 1111 becomes 1111 0000",
+      "source": "O.2 - Bitwise operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "cho_2_015",
+      "lesson": "O.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "bitwise",
+        "operators",
+        "syntax"
+      ],
+      "text": "The six bitwise operators are: {{c1::&amp;}} (AND), {{c2::|}} (OR), {{c3::^}} (XOR), {{c4::~}} (NOT), {{c5::&lt;&lt;}} (left shift), and {{c6::&gt;&gt;}} (right shift).",
+      "source": "O.2 - Bitwise operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "cho_2_016",
+      "lesson": "O.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "bitwise",
+        "operators"
+      ],
+      "text": "The compound bitwise assignment operators are: {{c1::&amp;=}}, {{c2::|=}}, {{c3::^=}}, {{c4::&lt;&lt;=}}, and {{c5::&gt;&gt;=}}.",
+      "source": "O.2 - Bitwise operators",
+      "difficulty": "easy"
+    }
+  ]
+}

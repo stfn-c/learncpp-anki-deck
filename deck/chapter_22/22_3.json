@@ -1,0 +1,195 @@
+{
+  "chapter": "Chapter 22",
+  "chapter_title": "Move Semantics and Smart Pointers",
+  "lesson": "22.3",
+  "lesson_title": "Move constructors and move assignment",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch22_3_001",
+      "lesson": "22.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "move-constructor",
+        "syntax"
+      ],
+      "text": "A move constructor takes an {{c1::r-value reference}} parameter: {{c2::ClassName(ClassName&& other) noexcept}}",
+      "source": "22.3 - Move constructors and move assignment",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch22_3_002",
+      "lesson": "22.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "move-assignment",
+        "syntax"
+      ],
+      "text": "A move assignment operator signature: {{c1::ClassName&}} operator=({{c2::ClassName&&}} other) {{c3::noexcept}}",
+      "source": "22.3 - Move constructors and move assignment",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch22_3_003",
+      "lesson": "22.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "move-constructor",
+        "move-semantics"
+      ],
+      "front": "When is a move constructor called instead of a copy constructor?",
+      "back": "When the object being constructed is initialized with an r-value (temporary object, std::move result, or object being returned by value).",
+      "source": "22.3 - Move constructors and move assignment",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch22_3_004",
+      "lesson": "22.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "move-constructor",
+        "syntax"
+      ],
+      "question": "What should a basic move constructor do?",
+      "code": "class MyClass {\n    int* data;\npublic:\n    MyClass(MyClass&& other) noexcept\n        : data(/* what goes here? */)\n    {\n        /* what goes here? */\n    }\n};",
+      "answer": "Steal the resource from other and nullify other's pointer.",
+      "explanation": "Move constructor: data(other.data) { other.data = nullptr; }<br>This transfers ownership and leaves the source in a valid but empty state.",
+      "source": "22.3 - Move constructors and move assignment",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_3_005",
+      "lesson": "22.3",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "rule-of-five",
+        "best-practices"
+      ],
+      "concept": "The Rule of Five",
+      "explanation": "If you define any of these five special member functions, you should probably define all of them:<ul><li>Destructor</li><li>Copy constructor</li><li>Copy assignment operator</li><li>Move constructor</li><li>Move assignment operator</li></ul>",
+      "examples": [
+        "class Resource {",
+        "public:",
+        "    ~Resource();                           // destructor",
+        "    Resource(const Resource&);             // copy constructor",
+        "    Resource& operator=(const Resource&);  // copy assignment",
+        "    Resource(Resource&&) noexcept;         // move constructor",
+        "    Resource& operator=(Resource&&) noexcept; // move assignment",
+        "};"
+      ],
+      "source": "22.3 - Move constructors and move assignment",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_3_006",
+      "lesson": "22.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "move-constructor",
+        "noexcept"
+      ],
+      "text": "Move constructors and move assignment operators should be marked {{c1::noexcept}} because STL containers like std::vector will only use move operations if they're guaranteed {{c2::not to throw}}.",
+      "source": "22.3 - Move constructors and move assignment",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_3_007",
+      "lesson": "22.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "move-assignment",
+        "best-practices"
+      ],
+      "question": "What should you check at the beginning of a move assignment operator?",
+      "code": "MyClass& operator=(MyClass&& other) noexcept\n{\n    /* what check goes here? */\n    // ... move logic\n    return *this;\n}",
+      "answer": "Check for self-assignment: if (this == &other) return *this;",
+      "explanation": "Although rare with move assignment, self-assignment is possible with std::move, so it's good practice to check.",
+      "source": "22.3 - Move constructors and move assignment",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_3_008",
+      "lesson": "22.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "move-semantics",
+        "performance"
+      ],
+      "front": "Why are move operations typically faster than copy operations?",
+      "back": "Move operations transfer ownership of resources (like pointers) rather than duplicating the underlying data. This is typically just pointer assignment rather than allocating new memory and copying data.",
+      "source": "22.3 - Move constructors and move assignment",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch22_3_009",
+      "lesson": "22.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "move-assignment",
+        "memory"
+      ],
+      "text": "In a move assignment operator, you must {{c1::delete}} any existing resources before taking ownership of the new resources, just like in {{c2::copy assignment}}.",
+      "source": "22.3 - Move constructors and move assignment",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_3_010",
+      "lesson": "22.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "move-constructor",
+        "compiler"
+      ],
+      "question": "When will the compiler generate a default move constructor?",
+      "code": "class MyClass {\n    std::string name;\n    int value;\n    // no constructors defined\n};",
+      "answer": "The compiler generates a default move constructor if:<ul><li>No user-declared copy constructor/assignment</li><li>No user-declared move assignment</li><li>No user-declared destructor</li><li>All members are movable</li></ul>",
+      "explanation": "The compiler-generated move constructor will move each member.",
+      "source": "22.3 - Move constructors and move assignment",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch22_3_011",
+      "lesson": "22.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "move-constructor",
+        "syntax"
+      ],
+      "text": "To prevent moving, explicitly delete the move operations: {{c1::ClassName(ClassName&&) = delete;}} and {{c2::ClassName& operator=(ClassName&&) = delete;}}",
+      "source": "22.3 - Move constructors and move assignment",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_3_012",
+      "lesson": "22.3",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "move-semantics",
+        "best-practices"
+      ],
+      "concept": "Valid but unspecified state after move",
+      "explanation": "After an object has been moved from, it should be left in a valid but unspecified state:<ul><li>Valid: safe to call destructor and assign to</li><li>Unspecified: don't rely on its value</li><li>Common practice: set pointers to nullptr, clear containers</li></ul>",
+      "examples": [
+        "MyClass(MyClass&& other) noexcept",
+        "    : m_ptr(other.m_ptr)",
+        "{",
+        "    other.m_ptr = nullptr; // valid but empty state",
+        "}"
+      ],
+      "source": "22.3 - Move constructors and move assignment",
+      "difficulty": "medium"
+    }
+  ]
+}

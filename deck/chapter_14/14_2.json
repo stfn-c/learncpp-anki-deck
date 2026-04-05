@@ -1,0 +1,132 @@
+{
+  "chapter": "Chapter 14",
+  "chapter_title": "Introduction to Classes",
+  "lesson": "14.2",
+  "lesson_title": "Introduction to classes",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch14_2_001",
+      "lesson": "14.2",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "syntax"],
+      "text": "To define a class in C++:<br>{{c1::class}} ClassName<br>{<br>}{{c2::;}}}",
+      "source": "14.2 - Introduction to classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_2_002",
+      "lesson": "14.2",
+      "type": "basic",
+      "tags": ["cpp", "classes", "struct"],
+      "front": "What is the main difference between a class and a struct in C++?",
+      "back": "Classes default to private member access, while structs default to public member access. Otherwise, they are functionally equivalent.",
+      "source": "14.2 - Introduction to classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_2_003",
+      "lesson": "14.2",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "naming"],
+      "text": "By convention, class names should {{c1::start with a capital letter}}, and class types are typically named using {{c2::nouns}}.",
+      "source": "14.2 - Introduction to classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_2_004",
+      "lesson": "14.2",
+      "type": "code",
+      "tags": ["cpp", "classes", "syntax"],
+      "question": "How do you instantiate a class object?",
+      "code": "class Employee<br>{<br>public:<br>&nbsp;&nbsp;&nbsp;&nbsp;std::string name{};<br>};",
+      "answer": "Employee joe;  // default initialization<br>Employee jane{};  // value initialization",
+      "explanation": "Class objects are instantiated just like fundamental types, using the class name as the type.",
+      "source": "14.2 - Introduction to classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_2_005",
+      "lesson": "14.2",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "terminology"],
+      "text": "Variables of class types are sometimes called {{c1::class objects}} or {{c2::class instances}}. The process of creating a variable is called {{c3::instantiation}}.",
+      "source": "14.2 - Introduction to classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_2_006",
+      "lesson": "14.2",
+      "type": "reverse",
+      "tags": ["cpp", "classes", "operators"],
+      "front": "Member selection operator",
+      "back": ". (dot operator) - used to access members of a class object",
+      "source": "14.2 - Introduction to classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_2_007",
+      "lesson": "14.2",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "syntax"],
+      "text": "To access a member of a class object: {{c1::objectName.memberName}}",
+      "source": "14.2 - Introduction to classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_2_008",
+      "lesson": "14.2",
+      "type": "basic",
+      "tags": ["cpp", "classes", "members"],
+      "front": "What are the two types of members a class can have?",
+      "back": "<ul><li>Data members (variables)</li><li>Member functions (functions)</li></ul>",
+      "source": "14.2 - Introduction to classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_2_009",
+      "lesson": "14.2",
+      "type": "code",
+      "tags": ["cpp", "classes", "member-access"],
+      "question": "What does this code print?",
+      "code": "class Data<br>{<br>public:<br>&nbsp;&nbsp;&nbsp;&nbsp;int value{42};<br>};<br>Data d{};<br>std::cout &lt;&lt; d.value;",
+      "answer": "42",
+      "explanation": "The member variable value is initialized with default member initializer {42}. The object d gets this value upon instantiation.",
+      "source": "14.2 - Introduction to classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_2_010",
+      "lesson": "14.2",
+      "type": "concept",
+      "tags": ["cpp", "classes", "best-practices"],
+      "concept": "When to use struct vs class",
+      "explanation": "Use struct for passive data structures with all public members (aggregates). Use class for objects that need to maintain invariants, have behaviors, or need private members for data hiding.",
+      "examples": [
+        "struct Point { int x; int y; };  // passive data",
+        "class BankAccount { private: double balance; };  // data hiding"
+      ],
+      "source": "14.2 - Introduction to classes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_2_011",
+      "lesson": "14.2",
+      "type": "basic",
+      "tags": ["cpp", "classes", "definition"],
+      "front": "Where should class type definitions typically be placed in a program?",
+      "back": "In a header file, so the type definition can be included and used in multiple code files without violating the one-definition rule (ODR).",
+      "source": "14.2 - Introduction to classes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_2_012",
+      "lesson": "14.2",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "syntax"],
+      "text": "Unlike functions, class type definitions {{c1::must include a semicolon}} after the closing brace.",
+      "source": "14.2 - Introduction to classes",
+      "difficulty": "easy"
+    }
+  ]
+}

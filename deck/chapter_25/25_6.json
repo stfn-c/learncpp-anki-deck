@@ -1,0 +1,142 @@
+{
+  "chapter": "Chapter 25",
+  "chapter_title": "Virtual Functions",
+  "lesson": "25.6",
+  "lesson_title": "The virtual table",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch25_6_001",
+      "lesson": "25.6",
+      "type": "reverse",
+      "tags": ["cpp", "vtable", "terminology"],
+      "front": "vtable",
+      "back": "A lookup table of function pointers used to resolve virtual function calls at runtime (virtual table)",
+      "source": "25.6 - The virtual table",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_6_002",
+      "lesson": "25.6",
+      "type": "reverse",
+      "tags": ["cpp", "vtable", "terminology"],
+      "front": "vptr",
+      "back": "A hidden pointer member added to each object of a class with virtual functions, pointing to the class's vtable (virtual pointer)",
+      "source": "25.6 - The virtual table",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_6_003",
+      "lesson": "25.6",
+      "type": "cloze",
+      "tags": ["cpp", "vtable", "implementation"],
+      "text": "The compiler creates {{c1::one vtable}} per class that has virtual functions, not one per object.",
+      "source": "25.6 - The virtual table",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_6_004",
+      "lesson": "25.6",
+      "type": "basic",
+      "tags": ["cpp", "vtable", "implementation"],
+      "front": "What does a vtable contain?",
+      "back": "An array of function pointers, one for each virtual function accessible by the class (including inherited virtual functions).",
+      "source": "25.6 - The virtual table",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_6_005",
+      "lesson": "25.6",
+      "type": "cloze",
+      "tags": ["cpp", "vtable", "memory"],
+      "text": "Each object of a class with virtual functions contains a hidden {{c1::vptr}} (virtual pointer) that points to the vtable for that object's {{c2::class type}}.",
+      "source": "25.6 - The virtual table",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_6_006",
+      "lesson": "25.6",
+      "type": "concept",
+      "tags": ["cpp", "vtable", "implementation"],
+      "concept": "How virtual function calls are resolved using vtables",
+      "explanation": "When a virtual function is called through a pointer/reference:<ol><li>Dereference the object's vptr to get the vtable</li><li>Look up the function pointer in the vtable (at a fixed offset)</li><li>Dereference the function pointer and call the function</li></ol>This happens at runtime, enabling polymorphism.",
+      "examples": [
+        "Base* ptr = new Derived();",
+        "ptr-&gt;virtualFunc();",
+        "// 1. Access ptr-&gt;vptr (points to Derived's vtable)",
+        "// 2. Look up virtualFunc in vtable",
+        "// 3. Call Derived::virtualFunc()"
+      ],
+      "source": "25.6 - The virtual table",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch25_6_007",
+      "lesson": "25.6",
+      "type": "basic",
+      "tags": ["cpp", "vtable", "memory"],
+      "front": "What is the memory overhead of virtual functions?",
+      "back": "One vptr (pointer-sized, typically 4 or 8 bytes) per object with virtual functions, plus one vtable (array of function pointers) per class.",
+      "source": "25.6 - The virtual table",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_6_008",
+      "lesson": "25.6",
+      "type": "cloze",
+      "tags": ["cpp", "vtable", "performance"],
+      "text": "Calling a virtual function requires {{c1::two}} extra indirections: one to access the vtable through the vptr, and one to call the function through the function pointer.",
+      "source": "25.6 - The virtual table",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_6_009",
+      "lesson": "25.6",
+      "type": "basic",
+      "tags": ["cpp", "vtable", "inheritance"],
+      "front": "How does a derived class's vtable differ from its base class's vtable?",
+      "back": "The derived class's vtable contains:<ul><li>Function pointers to overridden functions (pointing to derived versions)</li><li>Function pointers to inherited virtual functions not overridden (pointing to base versions)</li><li>Pointers to any new virtual functions in the derived class</li></ul>",
+      "source": "25.6 - The virtual table",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch25_6_010",
+      "lesson": "25.6",
+      "type": "code",
+      "tags": ["cpp", "vtable", "memory"],
+      "question": "How much extra memory does each Dog object use if Dog has virtual functions?",
+      "code": "class Dog {\n    int age;           // 4 bytes\n    double weight;     // 8 bytes\npublic:\n    virtual void bark() { }\n};",
+      "answer": "One pointer (vptr), typically 4-8 bytes, in addition to the 12 bytes for age and weight.",
+      "explanation": "Each object with virtual functions gets a hidden vptr member. The vtable itself is shared among all Dog objects, so it doesn't add per-object overhead.",
+      "source": "25.6 - The virtual table",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_6_011",
+      "lesson": "25.6",
+      "type": "basic",
+      "tags": ["cpp", "vtable", "implementation"],
+      "front": "When is the vptr initialized for an object?",
+      "back": "The vptr is set by the constructor when the object is created. Each constructor in the inheritance hierarchy sets the vptr to point to its class's vtable.",
+      "source": "25.6 - The virtual table",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_6_012",
+      "lesson": "25.6",
+      "type": "concept",
+      "tags": ["cpp", "vtable", "gotchas"],
+      "concept": "Why virtual functions can't be called from constructors effectively",
+      "explanation": "During construction, the vptr points to the current constructor's class vtable, not the most-derived class.<br><br>When Base constructor runs:<ul><li>Derived part doesn't exist yet</li><li>vptr points to Base's vtable</li><li>Virtual calls resolve to Base versions</li></ul>Only after construction completes does vptr point to the final derived class vtable.",
+      "examples": [
+        "class Base {",
+        "    Base() { virtualFunc(); }  // Calls Base::virtualFunc",
+        "    virtual void virtualFunc() { }",
+        "};",
+        "// Even if Derived d; the Base constructor calls Base version"
+      ],
+      "source": "25.6 - The virtual table",
+      "difficulty": "hard"
+    }
+  ]
+}

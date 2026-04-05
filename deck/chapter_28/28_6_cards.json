@@ -1,0 +1,182 @@
+{
+  "chapter": "Chapter 28",
+  "chapter_title": "Input and Output (I/O)",
+  "lesson": "28.6",
+  "lesson_title": "Basic file I/O",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch28_6_001",
+      "lesson": "28.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "file-io",
+        "headers"
+      ],
+      "text": "To use file streams, you must {{c1::#include &lt;fstream&gt;}}.",
+      "source": "28.6 - Basic file I/O",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch28_6_002",
+      "lesson": "28.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "file-io",
+        "classes"
+      ],
+      "text": "The three file stream classes are {{c1::std::ifstream}} (reading), {{c2::std::ofstream}} (writing), and {{c3::std::fstream}} (both reading and writing).",
+      "source": "28.6 - Basic file I/O",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch28_6_003",
+      "lesson": "28.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "file-io",
+        "syntax"
+      ],
+      "text": "To open a file for reading, use {{c1::std::ifstream file(\"data.txt\")}} or {{c2::file.open(\"data.txt\")}}.",
+      "source": "28.6 - Basic file I/O",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch28_6_004",
+      "lesson": "28.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "file-io",
+        "error-handling"
+      ],
+      "front": "How do you check if a file was successfully opened?",
+      "back": "Use if (file.is_open()) or if (file). The stream evaluates to false if the file couldn't be opened.",
+      "source": "28.6 - Basic file I/O",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch28_6_005",
+      "lesson": "28.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "file-io",
+        "modes"
+      ],
+      "text": "Common file open modes: {{c1::std::ios::in}} (read), {{c2::std::ios::out}} (write), {{c3::std::ios::app}} (append), {{c4::std::ios::trunc}} (truncate).",
+      "source": "28.6 - Basic file I/O",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch28_6_006",
+      "lesson": "28.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "file-io",
+        "modes"
+      ],
+      "front": "What is the difference between std::ios::out and std::ios::app?",
+      "back": "std::ios::out overwrites the file (truncates it). std::ios::app appends to the end of the file without erasing existing content.",
+      "source": "28.6 - Basic file I/O",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch28_6_007",
+      "lesson": "28.6",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "file-io",
+        "reading"
+      ],
+      "question": "How do you read an entire file line by line?",
+      "code": "std::ifstream file(\"data.txt\");\nstd::string line;\n// What goes here?",
+      "answer": "while (std::getline(file, line)) { /* process line */ }",
+      "explanation": "getline() returns the stream, which evaluates to false when EOF is reached or an error occurs.",
+      "source": "28.6 - Basic file I/O",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch28_6_008",
+      "lesson": "28.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "file-io",
+        "raii"
+      ],
+      "front": "Do you need to manually close file streams?",
+      "back": "No. File streams automatically close when they go out of scope (RAII). However, you can manually close with file.close() if needed.",
+      "source": "28.6 - Basic file I/O",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch28_6_009",
+      "lesson": "28.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "file-io",
+        "modes"
+      ],
+      "text": "To open a file in binary mode, combine with {{c1::std::ios::binary}}, like: std::ios::in | std::ios::binary",
+      "source": "28.6 - Basic file I/O",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch28_6_010",
+      "lesson": "28.6",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "file-io",
+        "best-practices"
+      ],
+      "concept": "Proper file I/O error handling pattern",
+      "explanation": "Always check if file operations succeeded:<ul><li>Check if file opened: if (!file) return error;</li><li>Check if reads succeeded: if (!(file &gt;&gt; data))</li><li>Use is_open() for explicit open checks</li><li>Check eof() vs fail() to distinguish end-of-file from errors</li></ul>",
+      "examples": [
+        "std::ifstream file(\"data.txt\");",
+        "if (!file.is_open()) { /* handle error */ }",
+        "while (file &gt;&gt; value) { /* process */ }",
+        "if (file.bad()) { /* I/O error */ }"
+      ],
+      "source": "28.6 - Basic file I/O",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch28_6_011",
+      "lesson": "28.6",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "file-io",
+        "writing"
+      ],
+      "question": "How do you write data to a file?",
+      "code": "// Write \"Hello, World!\" to output.txt",
+      "answer": "std::ofstream file(\"output.txt\");<br>file &lt;&lt; \"Hello, World!\\n\";",
+      "explanation": "Use ofstream with the &lt;&lt; operator, just like cout. The file is automatically created if it doesn't exist.",
+      "source": "28.6 - Basic file I/O",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch28_6_012",
+      "lesson": "28.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "file-io",
+        "gotchas"
+      ],
+      "front": "What happens if you open a file with std::ofstream and the file already exists?",
+      "back": "By default, ofstream truncates (erases) the existing file content. Use std::ios::app to append instead.",
+      "source": "28.6 - Basic file I/O",
+      "difficulty": "medium"
+    }
+  ]
+}

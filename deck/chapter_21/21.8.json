@@ -1,0 +1,180 @@
+{
+  "chapter": "Chapter 21",
+  "chapter_title": "Operator Overloading",
+  "lesson": "21.8",
+  "lesson_title": "Overloading the increment and decrement operators",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch21_8_001",
+      "lesson": "21.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "increment"
+      ],
+      "text": "Prefix increment ({{c1::++x}}) increments the value and returns the {{c2::new value}}, while postfix increment ({{c3::x++}}) increments but returns the {{c4::old value}}.",
+      "source": "21.8 - Overloading increment and decrement",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_8_002",
+      "lesson": "21.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "increment"
+      ],
+      "text": "To distinguish prefix from postfix, postfix operators take a dummy {{c1::int}} parameter: operator++({{c2::int}}).",
+      "source": "21.8 - Overloading increment and decrement",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_8_003",
+      "lesson": "21.8",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "increment"
+      ],
+      "question": "What does this prefix ++ operator do?",
+      "code": "Cents&amp; operator++() {  // prefix\n    ++m_cents;\n    return *this;\n}",
+      "answer": "Increments m_cents and returns a reference to *this (the updated object). This is prefix ++.",
+      "explanation": "Prefix ++ modifies the object and returns a reference for chaining and efficiency.",
+      "source": "21.8 - Overloading increment and decrement",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_8_004",
+      "lesson": "21.8",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "increment"
+      ],
+      "question": "What does this postfix ++ operator do?",
+      "code": "Cents operator++(int) {  // postfix\n    Cents temp{ *this };\n    ++(*this);\n    return temp;\n}",
+      "answer": "Saves old value, increments *this, returns the old value. This is postfix ++.",
+      "explanation": "Postfix returns old value by value. The int parameter distinguishes it from prefix.",
+      "source": "21.8 - Overloading increment and decrement",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch21_8_005",
+      "lesson": "21.8",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "increment"
+      ],
+      "front": "Why does prefix ++ return by reference while postfix ++ returns by value?",
+      "back": "Prefix returns the modified object itself (by reference) for efficiency. Postfix must return the old value before increment, which requires creating a copy (return by value).",
+      "source": "21.8 - Overloading increment and decrement",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch21_8_006",
+      "lesson": "21.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "increment"
+      ],
+      "text": "Prefix operator++ signature: ClassName{{c1::&amp;}} operator{{c2::++}}().<br>Postfix operator++ signature: ClassName operator++({{c3::int}}).",
+      "source": "21.8 - Overloading increment and decrement",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_8_007",
+      "lesson": "21.8",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "increment"
+      ],
+      "front": "Which is more efficient: prefix or postfix increment? Why?",
+      "back": "Prefix (++x) is more efficient because it doesn't create a copy. Postfix (x++) must save the old value before incrementing, requiring a copy. For primitive types compilers optimize this away, but not for user-defined types.",
+      "source": "21.8 - Overloading increment and decrement",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_8_008",
+      "lesson": "21.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "increment"
+      ],
+      "text": "The dummy int parameter in operator++(int) is {{c1::never used}} and has {{c2::no name}}. It only serves to {{c3::distinguish}} postfix from prefix.",
+      "source": "21.8 - Overloading increment and decrement",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch21_8_009",
+      "lesson": "21.8",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "increment"
+      ],
+      "front": "Can you implement postfix ++ using prefix ++?",
+      "back": "Yes. Common pattern: save copy, call prefix ++(*this), return copy. This reduces code duplication:<br>Cents operator++(int) { Cents temp{*this}; ++(*this); return temp; }",
+      "source": "21.8 - Overloading increment and decrement",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_8_010",
+      "lesson": "21.8",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "increment"
+      ],
+      "concept": "Implementing increment and decrement operators",
+      "explanation": "Standard patterns:<ul><li><b>Prefix (++x):</b> Modify object, return *this by reference</li><li><b>Postfix (x++):</b> Save copy, call prefix version, return old copy by value</li><li>Same applies to -- operators</li><li>Prefer prefix for efficiency (no copy)</li><li>Must be member functions</li></ul>",
+      "examples": [
+        "T&amp; operator++() { ++m_value; return *this; }  // prefix",
+        "T operator++(int) { T temp{*this}; ++(*this); return temp; }  // postfix"
+      ],
+      "source": "21.8 - Overloading increment and decrement",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch21_8_011",
+      "lesson": "21.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "increment"
+      ],
+      "text": "Increment and decrement operators should be implemented as {{c1::member functions}}, not friend functions.",
+      "source": "21.8 - Overloading increment and decrement",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch21_8_012",
+      "lesson": "21.8",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "increment"
+      ],
+      "front": "What's the difference between operator-- and operator++ implementation?",
+      "back": "They're identical except one decrements and one increments. Prefix --: decrement and return *this by reference. Postfix --: save copy, decrement, return old copy.",
+      "source": "21.8 - Overloading increment and decrement",
+      "difficulty": "easy"
+    }
+  ]
+}

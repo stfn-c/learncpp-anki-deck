@@ -1,0 +1,191 @@
+{
+  "chapter": "Chapter 15",
+  "chapter_title": "More on Classes",
+  "lesson": "15.4",
+  "lesson_title": "Introduction to destructors",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch15_4_001",
+      "lesson": "15.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "destructors",
+        "syntax"
+      ],
+      "text": "A destructor has the same name as the class, preceded by a {{c1::tilde (~)}} symbol, and takes {{c2::no parameters}}.",
+      "source": "15.4 - Destructors",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch15_4_002",
+      "lesson": "15.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "destructors"
+      ],
+      "text": "A destructor is automatically called when an object goes {{c1::out of scope}} or is explicitly {{c2::deleted}}.",
+      "source": "15.4 - Destructors",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch15_4_003",
+      "lesson": "15.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "destructors"
+      ],
+      "text": "Destructors are primarily used to {{c1::deallocate memory}} or {{c2::release resources}} acquired by the object.",
+      "source": "15.4 - Destructors",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch15_4_004",
+      "lesson": "15.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "destructors",
+        "raii"
+      ],
+      "text": "The RAII idiom stands for {{c1::Resource Acquisition Is Initialization}}, where resources are acquired in the {{c2::constructor}} and released in the {{c3::destructor}}.",
+      "source": "15.4 - Destructors",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_4_005",
+      "lesson": "15.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "destructors"
+      ],
+      "text": "A class can only have {{c1::one}} destructor, and destructors cannot be {{c2::overloaded}}.",
+      "source": "15.4 - Destructors",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch15_4_006",
+      "lesson": "15.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "classes",
+        "destructors"
+      ],
+      "front": "What happens if you don't define a destructor for a class?",
+      "back": "The compiler will generate a default destructor that does nothing except call destructors for all member objects.",
+      "source": "15.4 - Destructors",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch15_4_007",
+      "lesson": "15.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "classes",
+        "destructors"
+      ],
+      "front": "In what order are destructors called for class members?",
+      "back": "In the reverse order of construction: last constructed, first destructed.",
+      "source": "15.4 - Destructors",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_4_008",
+      "lesson": "15.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "classes",
+        "destructors",
+        "syntax"
+      ],
+      "question": "Write a destructor for a class named Database that closes a connection.",
+      "code": "class Database {\n    Connection* m_conn;\npublic:\n    Database() { m_conn = openConnection(); }\n    // Write destructor here\n};",
+      "answer": "<code>~Database() { closeConnection(m_conn); }</code>",
+      "explanation": "Destructor has same name as class with ~ prefix, no return type, no parameters.",
+      "source": "15.4 - Destructors",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch15_4_009",
+      "lesson": "15.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "classes",
+        "destructors"
+      ],
+      "question": "In what order will destructors be called?",
+      "code": "class A { ~A() { std::cout &lt;&lt; \"A\"; } };\nclass B { ~B() { std::cout &lt;&lt; \"B\"; } };\nclass C { ~C() { std::cout &lt;&lt; \"C\"; } };\n\nint main() {\n    A a;\n    B b;\n    C c;\n}",
+      "answer": "CBA",
+      "explanation": "Objects are destructed in reverse order of construction: c is destroyed first, then b, then a.",
+      "source": "15.4 - Destructors",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_4_010",
+      "lesson": "15.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "classes",
+        "destructors",
+        "memory",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this code?",
+      "code": "class Array {\n    int* m_data;\npublic:\n    Array(int size) { m_data = new int[size]; }\n    // No destructor defined\n};",
+      "answer": "Memory leak! The dynamically allocated array is never deleted.",
+      "explanation": "Should add destructor: <code>~Array() { delete[] m_data; }</code> to prevent memory leak.",
+      "source": "15.4 - Destructors",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_4_011",
+      "lesson": "15.4",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "classes",
+        "destructors",
+        "raii"
+      ],
+      "concept": "RAII (Resource Acquisition Is Initialization)",
+      "explanation": "RAII is a C++ programming idiom where:<ul><li>Resources (memory, files, locks, etc.) are acquired in the constructor</li><li>Resources are automatically released in the destructor</li><li>Ensures resources are always cleaned up, even with exceptions</li><li>Makes resource management automatic and exception-safe</li></ul>",
+      "examples": [
+        "class FileHandle {",
+        "    FILE* m_file;",
+        "    FileHandle(const char* name) { m_file = fopen(name, \"r\"); }",
+        "    ~FileHandle() { fclose(m_file); }  // automatic cleanup",
+        "};"
+      ],
+      "source": "15.4 - Destructors and RAII",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_4_012",
+      "lesson": "15.4",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "classes",
+        "destructors"
+      ],
+      "front": "destructor",
+      "back": "Special member function called automatically when an object is destroyed, used to clean up resources (syntax: ~ClassName())",
+      "source": "15.4 - Destructors",
+      "difficulty": "easy"
+    }
+  ]
+}

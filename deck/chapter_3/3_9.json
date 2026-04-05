@@ -1,0 +1,217 @@
+{
+  "chapter": "Chapter 3",
+  "chapter_title": "Debugging C++ Programs",
+  "lesson": "3.9",
+  "lesson_title": "Using an integrated debugger: The call stack",
+  "total_cards": 14,
+  "cards": [
+    {
+      "id": "ch3_9_001",
+      "lesson": "3.9",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "debugger",
+        "call-stack"
+      ],
+      "front": "What is the call stack?",
+      "back": "A structure that tracks the sequence of function calls that led to the current point of execution, showing which function called which.",
+      "source": "3.9 - Using an integrated debugger: The call stack",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_9_002",
+      "lesson": "3.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "call-stack",
+        "execution"
+      ],
+      "text": "Each function call adds a {{c1::stack frame}} to the call stack, and when the function returns, its frame is {{c2::removed}}.",
+      "source": "3.9 - Using an integrated debugger: The call stack",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_9_003",
+      "lesson": "3.9",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "call-stack",
+        "example"
+      ],
+      "question": "What would the call stack look like when paused at the comment?",
+      "code": "void c() {\n    // Paused here\n}\nvoid b() { c(); }\nvoid a() { b(); }\nint main() { a(); }",
+      "answer": "From top (current) to bottom:<br><ul><li>c()</li><li>b()</li><li>a()</li><li>main()</li></ul>",
+      "explanation": "The call stack shows the chain: main called a, a called b, b called c.",
+      "source": "3.9 - Using an integrated debugger: The call stack",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_9_004",
+      "lesson": "3.9",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "debugger",
+        "call-stack"
+      ],
+      "front": "What information does a stack frame contain?",
+      "back": "Function name, line number where it was called, function parameters, and local variables.",
+      "source": "3.9 - Using an integrated debugger: The call stack",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_9_005",
+      "lesson": "3.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "debugger",
+        "call-stack"
+      ],
+      "text": "The call stack window shows the {{c1::current}} function at the top and {{c2::main()}} (usually) at the bottom.",
+      "source": "3.9 - Using an integrated debugger: The call stack",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_9_006",
+      "lesson": "3.9",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "debugger",
+        "call-stack"
+      ],
+      "front": "How can you view variables from a previous function in the call stack?",
+      "back": "Click on that function's stack frame in the call stack window. The debugger will show you that function's local variables and source code location.",
+      "source": "3.9 - Using an integrated debugger: The call stack",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_9_007",
+      "lesson": "3.9",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "call-stack",
+        "debugging"
+      ],
+      "concept": "Why the call stack is useful for debugging",
+      "explanation": "The call stack helps you:<ul><li>Understand how you got to current code (execution path)</li><li>See which function called the buggy function</li><li>Examine parameters passed from calling functions</li><li>Trace back through function calls to find root cause</li><li>Understand program flow in complex code</li></ul>",
+      "examples": [
+        "// Crash in process() - check call stack",
+        "// See: main() \u2192 loadData() \u2192 process()",
+        "// Problem: Bad data from loadData()"
+      ],
+      "source": "3.9 - Using an integrated debugger: The call stack",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_9_008",
+      "lesson": "3.9",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "call-stack",
+        "errors"
+      ],
+      "front": "What does it mean if a function appears multiple times in the call stack?",
+      "back": "The function is recursive (calls itself) or is called multiple times in the chain. This is normal for recursive functions.",
+      "source": "3.9 - Using an integrated debugger: The call stack",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_9_009",
+      "lesson": "3.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "call-stack",
+        "growth"
+      ],
+      "text": "The call stack grows {{c1::downward}} (or rightward) as functions are called, and {{c2::shrinks}} as they return.",
+      "source": "3.9 - Using an integrated debugger: The call stack",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_9_010",
+      "lesson": "3.9",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "call-stack",
+        "stack-overflow"
+      ],
+      "front": "What causes a stack overflow error?",
+      "back": "Too many stack frames (usually from infinite recursion or very deep recursion), exceeding the stack's memory limit.",
+      "source": "3.9 - Using an integrated debugger: The call stack",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_9_011",
+      "lesson": "3.9",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "call-stack",
+        "stack-overflow"
+      ],
+      "question": "What will happen with this code's call stack?",
+      "code": "void infinite() {\n    infinite();\n}\nint main() {\n    infinite();\n}",
+      "answer": "Stack overflow. The function calls itself infinitely, adding unlimited stack frames until the stack memory is exhausted.",
+      "explanation": "Each call adds a frame but never returns, causing the stack to grow without bound.",
+      "source": "3.9 - Using an integrated debugger: The call stack",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_9_012",
+      "lesson": "3.9",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "debugger",
+        "call-stack"
+      ],
+      "concept": "Navigating the call stack window",
+      "explanation": "Using the call stack window:<ul><li>Top frame = currently executing function</li><li>Click any frame to see its source location</li><li>View local variables for any frame</li><li>See parameters passed to each function</li><li>Trace execution path backward</li><li>Identify where bad values originated</li></ul>",
+      "examples": [
+        "// Bug in calculate() called from process()",
+        "// Click process() frame to see what it passed",
+        "// Find it passed wrong parameter value"
+      ],
+      "source": "3.9 - Using an integrated debugger: The call stack",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_9_013",
+      "lesson": "3.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "call-stack",
+        "fundamentals"
+      ],
+      "text": "Each function call adds a {{c1::stack frame}}, and returns {{c2::remove}} it from the call stack.",
+      "source": "3.9 - Using an integrated debugger: The call stack",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_9_014",
+      "lesson": "3.9",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "call-stack",
+        "debugging"
+      ],
+      "question": "How would you use the call stack to debug this?",
+      "code": "void calculate(int x) {\n    int result = x / 0;  // Crashes\n}\nvoid process(int val) { calculate(val); }\nint main() { process(getUserInput()); }",
+      "answer": "When it crashes, check the call stack to see: main() \u2192 process() \u2192 calculate(). Click on process() frame to see what value was passed to calculate().",
+      "explanation": "The call stack lets you trace back to see where bad values originated.",
+      "source": "3.9 - Using an integrated debugger: The call stack",
+      "difficulty": "medium"
+    }
+  ]
+}

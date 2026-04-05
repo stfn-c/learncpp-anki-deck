@@ -1,0 +1,132 @@
+{
+  "chapter": "Chapter 24",
+  "chapter_title": "Inheritance",
+  "lesson": "24.3",
+  "lesson_title": "Order of construction of derived classes",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch24_3_001",
+      "lesson": "24.3",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "construction"],
+      "front": "When a derived class object is constructed, which part is constructed first: the base portion or the derived portion?",
+      "back": "The base portion is constructed first, then the derived portion.",
+      "source": "24.3 - Order of construction of derived classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch24_3_002",
+      "lesson": "24.3",
+      "type": "cloze",
+      "tags": ["cpp", "inheritance", "construction"],
+      "text": "When C++ constructs derived objects, it constructs from {{c1::most-base}} to {{c2::most-derived}}. Destruction happens in {{c3::reverse}} order.",
+      "source": "24.3 - Order of construction of derived classes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_3_003",
+      "lesson": "24.3",
+      "type": "code",
+      "tags": ["cpp", "inheritance", "construction"],
+      "question": "What does this code output?",
+      "code": "class Base {\npublic:\n    Base() { std::cout &lt;&lt; \"Base\\n\"; }\n};\n\nclass Derived: public Base {\npublic:\n    Derived() { std::cout &lt;&lt; \"Derived\\n\"; }\n};\n\nint main() {\n    Derived derived;\n    return 0;\n}",
+      "answer": "Base<br>Derived",
+      "explanation": "The Base constructor is called first, printing \"Base\", then the Derived constructor prints \"Derived\".",
+      "source": "24.3 - Order of construction of derived classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch24_3_004",
+      "lesson": "24.3",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "construction"],
+      "front": "Why does C++ construct the base class portion before the derived class portion?",
+      "back": "Because the child class often uses variables and functions from the parent. Constructing the parent first ensures those variables are initialized before the derived class needs them.",
+      "source": "24.3 - Order of construction of derived classes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_3_005",
+      "lesson": "24.3",
+      "type": "cloze",
+      "tags": ["cpp", "inheritance", "memory"],
+      "text": "A derived class is actually a {{c1::two part}} class: one part {{c2::Base}}, and one part {{c2::Derived}}.",
+      "source": "24.3 - Order of construction of derived classes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_3_006",
+      "lesson": "24.3",
+      "type": "code",
+      "tags": ["cpp", "inheritance", "construction"],
+      "question": "What does this code output?",
+      "code": "class A {\npublic:\n    A() { std::cout &lt;&lt; \"A\\n\"; }\n};\nclass B: public A {\npublic:\n    B() { std::cout &lt;&lt; \"B\\n\"; }\n};\nclass C: public B {\npublic:\n    C() { std::cout &lt;&lt; \"C\\n\"; }\n};\n\nint main() {\n    C c;\n    return 0;\n}",
+      "answer": "A<br>B<br>C",
+      "explanation": "In an inheritance chain, construction starts at the most-base class (A), then walks down the inheritance tree (B), ending at the most-derived class (C).",
+      "source": "24.3 - Order of construction of derived classes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_3_007",
+      "lesson": "24.3",
+      "type": "cloze",
+      "tags": ["cpp", "inheritance", "destruction"],
+      "text": "When a derived class is destroyed, each destructor is called in {{c1::reverse}} order of construction: from {{c2::most-derived}} to {{c2::most-base}}.",
+      "source": "24.3 - Order of construction of derived classes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_3_008",
+      "lesson": "24.3",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "construction"],
+      "front": "Are base class members copied into the derived class during construction?",
+      "back": "No, they are NOT copied. The derived class contains a base class portion and a derived class portion as separate parts.",
+      "source": "24.3 - Order of construction of derived classes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_3_009",
+      "lesson": "24.3",
+      "type": "concept",
+      "tags": ["cpp", "inheritance", "construction"],
+      "concept": "Construction phases for derived classes",
+      "explanation": "C++ constructs derived classes in phases:<br>1. Most-base class is constructed<br>2. Each child class is constructed in order<br>3. Most-child class is constructed last",
+      "examples": [
+        "class D: public C: public B: public A → Constructs A, B, C, D",
+        "Destruction happens in reverse: ~D, ~C, ~B, ~A"
+      ],
+      "source": "24.3 - Order of construction of derived classes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_3_010",
+      "lesson": "24.3",
+      "type": "cloze",
+      "tags": ["cpp", "inheritance", "logic"],
+      "text": "A child cannot exist without a {{c1::parent}}, which is why the parent class must be constructed {{c2::first}}.",
+      "source": "24.3 - Order of construction of derived classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch24_3_011",
+      "lesson": "24.3",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "constructors"],
+      "front": "Which constructor is called for the base portion if not explicitly specified in the derived constructor?",
+      "back": "The default base class constructor is called.",
+      "source": "24.3 - Order of construction of derived classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch24_3_012",
+      "lesson": "24.3",
+      "type": "cloze",
+      "tags": ["cpp", "inheritance", "construction"],
+      "text": "As each class in an inheritance chain is constructed, the {{c1::appropriate constructor}} from that class is called to {{c2::initialize that part}} of the class.",
+      "source": "24.3 - Order of construction of derived classes",
+      "difficulty": "easy"
+    }
+  ]
+}

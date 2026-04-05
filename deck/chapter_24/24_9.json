@@ -1,0 +1,132 @@
+{
+  "chapter": "Chapter 24",
+  "chapter_title": "Inheritance",
+  "lesson": "24.9",
+  "lesson_title": "Multiple inheritance",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch24_9_001",
+      "lesson": "24.9",
+      "type": "cloze",
+      "tags": ["cpp", "inheritance", "multiple-inheritance"],
+      "text": "{{c1::Multiple inheritance}} enables a derived class to inherit members from {{c2::more than one}} parent.",
+      "source": "24.9 - Multiple inheritance",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch24_9_002",
+      "lesson": "24.9",
+      "type": "cloze",
+      "tags": ["cpp", "inheritance", "multiple-inheritance"],
+      "text": "To use multiple inheritance, specify each base class separated by a {{c1::comma}}:<br>class Teacher : public {{c2::Person, public Employee}}",
+      "source": "24.9 - Multiple inheritance",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch24_9_003",
+      "lesson": "24.9",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "mixins"],
+      "front": "What is a mixin in C++?",
+      "back": "A small class that can be inherited from to add properties to a class. It's intended to be mixed into other classes, not instantiated on its own.",
+      "source": "24.9 - Multiple inheritance",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_9_004",
+      "lesson": "24.9",
+      "type": "code",
+      "tags": ["cpp", "inheritance", "multiple-inheritance"],
+      "question": "What's the problem with this code?",
+      "code": "class USBDevice {\npublic:\n    long getID() const { return m_id; }\nprivate:\n    long m_id{};\n};\n\nclass NetworkDevice {\npublic:\n    long getID() const { return m_id; }\nprivate:\n    long m_id{};\n};\n\nclass WirelessAdapter: public USBDevice, public NetworkDevice {};\n\nint main() {\n    WirelessAdapter c54G{5442, 181742};\n    std::cout &lt;&lt; c54G.getID(); // Problem?\n}",
+      "answer": "Ambiguous function call - which getID()?",
+      "explanation": "WirelessAdapter has TWO getID() functions (one from USBDevice, one from NetworkDevice), so c54G.getID() is ambiguous. Must use c54G.USBDevice::getID() or c54G.NetworkDevice::getID().",
+      "source": "24.9 - Multiple inheritance",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch24_9_005",
+      "lesson": "24.9",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "multiple-inheritance"],
+      "front": "What is the \"diamond problem\" (or \"diamond of doom\") in multiple inheritance?",
+      "back": "When a class multiply inherits from two classes which each inherit from a single base class, creating a diamond-shaped inheritance pattern. This raises issues about whether the derived class has one or two copies of the base.",
+      "source": "24.9 - Multiple inheritance",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch24_9_006",
+      "lesson": "24.9",
+      "type": "cloze",
+      "tags": ["cpp", "inheritance", "best-practices"],
+      "text": "{{c1::Avoid}} multiple inheritance unless alternatives lead to more {{c2::complexity}}.",
+      "source": "24.9 - Multiple inheritance",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_9_007",
+      "lesson": "24.9",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "multiple-inheritance"],
+      "front": "Why do many modern languages (Java, C#) restrict or disallow multiple inheritance?",
+      "back": "Because it makes the language too complex and ultimately causes more problems than it fixes. These languages often allow multiple inheritance of interface classes only.",
+      "source": "24.9 - Multiple inheritance",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_9_008",
+      "lesson": "24.9",
+      "type": "concept",
+      "tags": ["cpp", "inheritance", "mixins"],
+      "concept": "Mixin design pattern",
+      "explanation": "Mixins are small classes designed to add specific functionality when inherited:<ul><li>Not meant to be instantiated alone</li><li>Mixed into other classes via multiple inheritance</li><li>Often use scope resolution to avoid ambiguity</li><li>Typically don't use virtual functions</li><li>Often implemented as templates</li></ul>",
+      "examples": [
+        "class Button : public Box, public Label, public Tooltip { };",
+        "button.Label::setText(\"Submit\"); // Explicit scope"
+      ],
+      "source": "24.9 - Multiple inheritance",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch24_9_009",
+      "lesson": "24.9",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "multiple-inheritance"],
+      "front": "What is CRTP (Curiously Recurring Template Pattern)?",
+      "back": "When a derived class inherits from a mixin base class using the derived class itself as a template type parameter: class Derived : public Mixin&lt;Derived&gt; { };",
+      "source": "24.9 - Multiple inheritance",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch24_9_010",
+      "lesson": "24.9",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "multiple-inheritance"],
+      "front": "How do you resolve an ambiguous function call in multiple inheritance?",
+      "back": "Use explicit scope resolution to specify which parent class's version you want: object.ParentClass::functionName()",
+      "source": "24.9 - Multiple inheritance",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_9_011",
+      "lesson": "24.9",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "multiple-inheritance"],
+      "front": "Can most problems solved with multiple inheritance also be solved with single inheritance?",
+      "back": "Yes, most problems can be solved using single inheritance instead. Multiple inheritance should only be used when alternatives would lead to more complexity.",
+      "source": "24.9 - Multiple inheritance",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch24_9_012",
+      "lesson": "24.9",
+      "type": "basic",
+      "tags": ["cpp", "inheritance", "multiple-inheritance"],
+      "front": "Name two C++ standard library objects that use multiple inheritance.",
+      "back": "std::cin and std::cout are both implemented using multiple inheritance.",
+      "source": "24.9 - Multiple inheritance",
+      "difficulty": "easy"
+    }
+  ]
+}

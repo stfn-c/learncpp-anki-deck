@@ -1,0 +1,190 @@
+{
+  "chapter": "Chapter 11",
+  "chapter_title": "Function Overloading and Function Templates",
+  "lesson": "11.3",
+  "lesson_title": "Function overload resolution and ambiguous matches",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch11_3_001",
+      "lesson": "11.3",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "functions",
+        "overloading"
+      ],
+      "front": "Overload resolution",
+      "back": "The process of matching function calls to a specific overloaded function",
+      "source": "11.3 - Function overload resolution and ambiguous matches",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_3_002",
+      "lesson": "11.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "functions",
+        "overloading"
+      ],
+      "front": "What are the three possible outcomes when the compiler tries to resolve an overloaded function call?",
+      "back": "<ul><li>A match is found</li><li>No match is found</li><li>An ambiguous match is found</li></ul>",
+      "source": "11.3 - Function overload resolution and ambiguous matches",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_3_003",
+      "lesson": "11.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "overloading"
+      ],
+      "text": "When no match is found for an overloaded function call, the compiler will issue a {{c1::compile error}}.",
+      "source": "11.3 - Function overload resolution and ambiguous matches",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_3_004",
+      "lesson": "11.3",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "functions",
+        "overloading"
+      ],
+      "front": "Ambiguous match",
+      "back": "When the compiler finds two or more functions that can be matched, but cannot determine which is the best match",
+      "source": "11.3 - Function overload resolution and ambiguous matches",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_3_005",
+      "lesson": "11.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "functions",
+        "overloading",
+        "common-mistakes"
+      ],
+      "question": "Will this code compile?",
+      "code": "void print(int x) {}\nvoid print(double x) {}\n\nint main() {\n    print(5.0f);  // float argument\n    return 0;\n}",
+      "answer": "No, it will cause an ambiguous match compile error.",
+      "explanation": "The float argument 5.0f can be converted to either int or double with equal priority, creating an ambiguous match.",
+      "source": "11.3 - Function overload resolution and ambiguous matches",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_3_006",
+      "lesson": "11.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "overloading"
+      ],
+      "text": "The compiler will prefer an {{c1::exact match}} over a match requiring type conversion.",
+      "source": "11.3 - Function overload resolution and ambiguous matches",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_3_007",
+      "lesson": "11.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "functions",
+        "overloading"
+      ],
+      "question": "Which function is called?",
+      "code": "void print(int x) {}\nvoid print(double x) {}\n\nprint(5);",
+      "answer": "print(int x) is called.",
+      "explanation": "The argument 5 is an exact match for int, so print(int) is selected over print(double) which would require a conversion.",
+      "source": "11.3 - Function overload resolution and ambiguous matches",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_3_008",
+      "lesson": "11.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "functions",
+        "overloading"
+      ],
+      "front": "What happens when the compiler encounters an ambiguous function call?",
+      "back": "The compiler will issue a compile error indicating an ambiguous match.",
+      "source": "11.3 - Function overload resolution and ambiguous matches",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_3_009",
+      "lesson": "11.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "functions",
+        "overloading",
+        "common-mistakes"
+      ],
+      "question": "Will this compile?",
+      "code": "void print(unsigned int x) {}\nvoid print(float x) {}\n\nprint(0);",
+      "answer": "No, it will cause an ambiguous match error.",
+      "explanation": "The literal 0 is of type int, which can be converted to both unsigned int and float with equal priority, creating ambiguity.",
+      "source": "11.3 - Function overload resolution and ambiguous matches",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch11_3_010",
+      "lesson": "11.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "overloading"
+      ],
+      "text": "To resolve an ambiguous function call, you can use a {{c1::static_cast}} to explicitly convert the argument to the desired type.",
+      "source": "11.3 - Function overload resolution and ambiguous matches",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_3_011",
+      "lesson": "11.3",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "functions",
+        "overloading",
+        "best-practices"
+      ],
+      "concept": "How to resolve ambiguous function call errors",
+      "explanation": "When you get an ambiguous match error, you can:<ul><li>Use static_cast to explicitly convert the argument to match one overload</li><li>Use a literal suffix to make the type explicit (e.g., 5.0f for float)</li><li>Remove or modify one of the ambiguous overloads</li></ul>",
+      "examples": [
+        "void print(int x) {}",
+        "void print(double x) {}",
+        "",
+        "print(static_cast&lt;int&gt;(5.0f));  // Explicitly choose int version",
+        "print(5.0);                        // double literal matches print(double)"
+      ],
+      "source": "11.3 - Function overload resolution and ambiguous matches",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_3_012",
+      "lesson": "11.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "functions",
+        "overloading"
+      ],
+      "front": "Why does overload resolution prefer exact matches over matches requiring conversions?",
+      "back": "To ensure the most appropriate and type-safe function is called, avoiding unnecessary conversions that could lose information or precision.",
+      "source": "11.3 - Function overload resolution and ambiguous matches",
+      "difficulty": "medium"
+    }
+  ]
+}

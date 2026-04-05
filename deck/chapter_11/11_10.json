@@ -1,0 +1,154 @@
+{
+  "chapter": "Chapter 11",
+  "chapter_title": "Function Overloading and Function Templates",
+  "lesson": "11.10",
+  "lesson_title": "Using function templates in multiple files",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "ch11_10_001",
+      "lesson": "11.10",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "organization"
+      ],
+      "front": "Where should function template definitions be placed?",
+      "back": "In header files, not in .cpp files. The full template definition must be visible wherever it is instantiated.",
+      "source": "11.10 - Using function templates in multiple files",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_10_002",
+      "lesson": "11.10",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "text": "Unlike regular functions, templates are not compiled until they are {{c1::instantiated}}.",
+      "source": "11.10 - Using function templates in multiple files",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_10_003",
+      "lesson": "11.10",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "front": "Why can't you put function template definitions in .cpp files like regular functions?",
+      "back": "Because the compiler needs to see the complete template definition at the point of instantiation to generate code for each specific type used.",
+      "source": "11.10 - Using function templates in multiple files",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_10_004",
+      "lesson": "11.10",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "templates",
+        "best-practices"
+      ],
+      "concept": "How to organize function templates across multiple files",
+      "explanation": "Place the entire template definition (including the body) in a header file. Include this header wherever you need to use the template. This is different from regular functions where you typically separate declaration (in .h) from definition (in .cpp).",
+      "examples": [
+        "// max.h - Template in header",
+        "template &lt;typename T&gt;",
+        "T max(T x, T y) {",
+        "    return (x &gt; y) ? x : y;",
+        "}",
+        "",
+        "// main.cpp - Use the template",
+        "#include \"max.h\"",
+        "int result = max(1, 2);"
+      ],
+      "source": "11.10 - Using function templates in multiple files",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_10_005",
+      "lesson": "11.10",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "best-practices"
+      ],
+      "text": "Best practice: Template definitions should go in {{c1::header files}} so they are accessible wherever they are needed.",
+      "source": "11.10 - Using function templates in multiple files",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_10_006",
+      "lesson": "11.10",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "front": "Will the same template instantiated with the same type in multiple .cpp files cause linker errors?",
+      "back": "No. Template instantiations with the same type are considered identical and the linker will keep only one copy.",
+      "source": "11.10 - Using function templates in multiple files",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_10_007",
+      "lesson": "11.10",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "templates",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this organization?",
+      "code": "// max.h\ntemplate &lt;typename T&gt;\nT max(T x, T y);\n\n// max.cpp\ntemplate &lt;typename T&gt;\nT max(T x, T y) { return (x &gt; y) ? x : y; }",
+      "answer": "The template definition is in the .cpp file, but it needs to be in the header file where it can be seen by all files that use it.",
+      "explanation": "This organization works for regular functions but not templates, because templates need their full definition visible at instantiation time.",
+      "source": "11.10 - Using function templates in multiple files",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_10_008",
+      "lesson": "11.10",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "front": "What happens if a template definition is not available when the compiler tries to instantiate it?",
+      "back": "The compiler will issue an error because it cannot generate the code without seeing the complete template definition.",
+      "source": "11.10 - Using function templates in multiple files",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_10_009",
+      "lesson": "11.10",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "text": "The compiler instantiates templates in {{c1::each translation unit}} where they are used, but the linker removes duplicates.",
+      "source": "11.10 - Using function templates in multiple files",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_10_010",
+      "lesson": "11.10",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "best-practices"
+      ],
+      "front": "Is it acceptable to define function templates entirely in header files?",
+      "back": "Yes, this is the standard and recommended practice for function templates. Unlike regular functions, this does not violate the one definition rule.",
+      "source": "11.10 - Using function templates in multiple files",
+      "difficulty": "easy"
+    }
+  ]
+}

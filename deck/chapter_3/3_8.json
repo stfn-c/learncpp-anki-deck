@@ -1,0 +1,195 @@
+{
+  "chapter": "Chapter 3",
+  "chapter_title": "Debugging C++ Programs",
+  "lesson": "3.8",
+  "lesson_title": "Using an integrated debugger: Watching variables",
+  "total_cards": 13,
+  "cards": [
+    {
+      "id": "ch3_8_001",
+      "lesson": "3.8",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "debugger",
+        "watch"
+      ],
+      "front": "What is a watch window in a debugger?",
+      "back": "A window that displays the values of variables or expressions while the program is paused, updating as you step through code.",
+      "source": "3.8 - Using an integrated debugger: Watching variables",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_8_002",
+      "lesson": "3.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "debugger",
+        "watch"
+      ],
+      "text": "Watch windows typically show variable {{c1::names}}, {{c2::values}}, and {{c3::types}}.",
+      "source": "3.8 - Using an integrated debugger: Watching variables",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_8_003",
+      "lesson": "3.8",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "debugger",
+        "locals"
+      ],
+      "front": "What is the difference between the Locals and Watch windows?",
+      "back": "Locals: Automatically shows all local variables in current scope<br>Watch: Shows only variables/expressions you explicitly add",
+      "source": "3.8 - Using an integrated debugger: Watching variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_8_004",
+      "lesson": "3.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "debugger",
+        "watch"
+      ],
+      "text": "You can add {{c1::expressions}} (not just variables) to a watch window, such as {{c2::x + y}} or {{c3::arr[i]}}.",
+      "source": "3.8 - Using an integrated debugger: Watching variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_8_005",
+      "lesson": "3.8",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "debugger",
+        "watch"
+      ],
+      "front": "What happens to a variable in the watch window when it goes out of scope?",
+      "back": "It typically shows as unavailable or displays an error message until it comes back into scope.",
+      "source": "3.8 - Using an integrated debugger: Watching variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_8_006",
+      "lesson": "3.8",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "debugger",
+        "watch"
+      ],
+      "concept": "Effective use of watch windows",
+      "explanation": "Watch windows are useful for:<ul><li>Tracking how key variables change as you step</li><li>Monitoring complex expressions</li><li>Comparing multiple related values</li><li>Spotting when a value becomes incorrect</li><li>Avoiding cluttering code with print statements</li></ul>",
+      "examples": [
+        "// Watch: x, y, x+y to see calculation",
+        "// Watch: arr[0], arr[1], arr[2]",
+        "// Watch: count &lt; 10 (see boolean result)"
+      ],
+      "source": "3.8 - Using an integrated debugger: Watching variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_8_007",
+      "lesson": "3.8",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "debugger",
+        "modification"
+      ],
+      "front": "Can you modify variable values while debugging?",
+      "back": "Yes, most debuggers allow you to change variable values while paused. This is useful for testing different scenarios without recompiling.",
+      "source": "3.8 - Using an integrated debugger: Watching variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_8_008",
+      "lesson": "3.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "debugger",
+        "watch"
+      ],
+      "text": "The {{c1::Locals}} window automatically displays all variables in the {{c2::current scope}}, while {{c3::Watch}} requires manual addition.",
+      "source": "3.8 - Using an integrated debugger: Watching variables",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_8_009",
+      "lesson": "3.8",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "debugger",
+        "watch"
+      ],
+      "front": "Why might you use Watch instead of just relying on the Locals window?",
+      "back": "Watch lets you monitor specific expressions, global variables, or values from outer scopes that aren't in the current local scope.",
+      "source": "3.8 - Using an integrated debugger: Watching variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_8_010",
+      "lesson": "3.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "debugger",
+        "call-stack"
+      ],
+      "text": "The {{c1::call stack}} window shows the sequence of {{c2::function calls}} that led to the current point of execution.",
+      "source": "3.8 - Using an integrated debugger: Watching variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_8_011",
+      "lesson": "3.8",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "debugger",
+        "best-practices"
+      ],
+      "concept": "Debugger windows for comprehensive debugging",
+      "explanation": "Key debugger windows:<ul><li><strong>Locals</strong>: Current function's variables</li><li><strong>Watch</strong>: User-selected variables/expressions</li><li><strong>Call Stack</strong>: Function call hierarchy</li><li><strong>Breakpoints</strong>: List of all breakpoints</li><li><strong>Output/Console</strong>: Program output</li></ul>",
+      "examples": [
+        "// Locals: See x, y in current function",
+        "// Watch: Track global config variable",
+        "// Call Stack: See main() \u2192 process() \u2192 calculate()"
+      ],
+      "source": "3.8 - Using an integrated debugger: Watching variables",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_8_012",
+      "lesson": "3.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "debugger",
+        "watch"
+      ],
+      "text": "Watch windows display variable {{c1::names}}, current {{c2::values}}, and data {{c3::types}}.",
+      "source": "3.8 - Using an integrated debugger: Watching variables",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_8_013",
+      "lesson": "3.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "debugger",
+        "watch"
+      ],
+      "text": "You can watch {{c1::expressions}} like x + y or arr[i], not just simple {{c2::variable}} names.",
+      "source": "3.8 - Using an integrated debugger: Watching variables",
+      "difficulty": "medium"
+    }
+  ]
+}

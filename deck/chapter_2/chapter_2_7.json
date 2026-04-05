@@ -1,0 +1,203 @@
+{
+  "chapter": "Chapter 2",
+  "chapter_title": "C++ Basics: Functions and Files",
+  "lesson": "2.7",
+  "lesson_title": "Forward declarations and definitions",
+  "total_cards": 13,
+  "cards": [
+    {
+      "id": "ch2_7_001",
+      "lesson": "2.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "forward-declaration"
+      ],
+      "source": "2.7 - Forward declarations",
+      "difficulty": "easy",
+      "text": "A {{c1::forward declaration}} tells the compiler about the {{c2::existence}} of an identifier before it is {{c3::fully defined}}, allowing it to be used before its full definition."
+    },
+    {
+      "id": "ch2_7_002",
+      "lesson": "2.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "forward-declaration",
+        "syntax"
+      ],
+      "text": "A forward declaration for a function consists of the function's {{c1::return type}}, {{c2::name}}, and {{c3::parameter types}}, followed by a {{c4::semicolon}}.",
+      "source": "2.7 - Forward declarations",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_7_003",
+      "lesson": "2.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "forward-declaration",
+        "syntax"
+      ],
+      "text": "A forward declaration is also called a function {{c1::prototype}} or function {{c2::declaration}}.",
+      "source": "2.7 - Forward declarations",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_7_004",
+      "lesson": "2.7",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "functions",
+        "forward-declaration"
+      ],
+      "question": "Which is the forward declaration?",
+      "code": "int add(int x, int y);  // A<br><br>int add(int x, int y) {  // B<br>  return x + y;<br>}",
+      "answer": "A is the forward declaration (prototype). B is the function definition.",
+      "explanation": "The forward declaration ends with a semicolon and has no body. The definition includes the function body.",
+      "source": "2.7 - Forward declarations",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_7_005",
+      "lesson": "2.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "functions",
+        "forward-declaration"
+      ],
+      "front": "Why would you need a forward declaration?",
+      "back": "Forward declarations allow you to:<ul><li>Call a function before it's defined</li><li>Resolve circular dependencies</li><li>Organize code with definitions after main()</li><li>Separate interface from implementation</li></ul>",
+      "source": "2.7 - Forward declarations",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_7_006",
+      "lesson": "2.7",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "functions",
+        "forward-declaration"
+      ],
+      "question": "Will this code compile without a forward declaration?",
+      "code": "int main() {<br>  printValue(5);  // Call before definition<br>  return 0;<br>}<br><br>void printValue(int x) {<br>  std::cout &lt;&lt; x;<br>}",
+      "answer": "No. The compiler doesn't know about printValue() when main() tries to call it. A forward declaration is needed.",
+      "explanation": "Without a forward declaration, the compiler encounters the call to printValue before knowing it exists.",
+      "source": "2.7 - Forward declarations",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_7_007",
+      "lesson": "2.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "definitions"
+      ],
+      "text": "A function {{c1::declaration}} tells the compiler about a function's existence. A function {{c2::definition}} provides the actual implementation/body.",
+      "source": "2.7 - Forward declarations",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_7_008",
+      "lesson": "2.7",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "functions",
+        "forward-declaration",
+        "syntax"
+      ],
+      "question": "Write a forward declaration for: int multiply(int a, int b)",
+      "code": "",
+      "answer": "int multiply(int a, int b);",
+      "explanation": "The forward declaration is the function signature followed by a semicolon, no body needed.",
+      "source": "2.7 - Forward declarations",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_7_009",
+      "lesson": "2.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "forward-declaration"
+      ],
+      "source": "2.7 - Forward declarations",
+      "difficulty": "medium",
+      "text": "Parameter {{c1::names}} do {{c2::not}} need to match between forward declaration and definition. Only the parameter {{c3::types}} need to match."
+    },
+    {
+      "id": "ch2_7_010",
+      "lesson": "2.7",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "functions",
+        "forward-declaration"
+      ],
+      "question": "Are these forward declaration and definition compatible?",
+      "code": "int add(int x, int y);  // Forward declaration<br><br>int add(int a, int b) {  // Definition<br>  return a + b;<br>}",
+      "answer": "Yes, they are compatible. Parameter names don't need to match, only types and return type.",
+      "explanation": "The compiler only cares that the types match (int, int) and return type matches (int).",
+      "source": "2.7 - Forward declarations",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_7_011",
+      "lesson": "2.7",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "functions",
+        "forward-declaration",
+        "best-practices"
+      ],
+      "concept": "When to use forward declarations",
+      "explanation": "Use forward declarations when:<ul><li>You want to define functions after main()</li><li>Two functions call each other (mutual recursion)</li><li>You want to organize code logically</li><li>Separating interface from implementation</li></ul>However, if a function is defined before it's used, no forward declaration is needed.",
+      "examples": [
+        "// Forward declaration needed",
+        "void funcB();  // prototype",
+        "void funcA() { funcB(); }",
+        "void funcB() { }"
+      ],
+      "source": "2.7 - Forward declarations",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_7_012",
+      "lesson": "2.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "functions",
+        "definitions"
+      ],
+      "front": "Can a function have multiple declarations but only one definition?",
+      "back": "Yes. A function can be declared multiple times (though usually not needed) but must have exactly one definition (One Definition Rule).",
+      "source": "2.7 - Forward declarations",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_7_013",
+      "lesson": "2.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "functions",
+        "forward-declaration"
+      ],
+      "text": "Forward declarations are typically placed at the {{c1::top}} of the source file, before {{c2::main()}} or other functions that use them.",
+      "source": "2.7 - Forward declarations",
+      "difficulty": "easy"
+    }
+  ]
+}

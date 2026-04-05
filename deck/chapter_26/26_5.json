@@ -1,0 +1,196 @@
+{
+  "chapter": "Chapter 26",
+  "chapter_title": "Templates and Classes",
+  "lesson": "26.5",
+  "lesson_title": "Partial template specialization",
+  "total_cards": 13,
+  "cards": [
+    {
+      "id": "ch26_5_001",
+      "lesson": "26.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "partial-specialization"
+      ],
+      "front": "What is partial template specialization?",
+      "back": "A specialization where only some of the template parameters are specialized, while others remain generic.",
+      "source": "26.5 - Partial template specialization",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch26_5_002",
+      "lesson": "26.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "partial-specialization"
+      ],
+      "front": "Can functions use partial template specialization?",
+      "back": "No. Only classes can use partial template specialization. Functions can only be fully specialized.",
+      "source": "26.5 - Partial template specialization",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_5_003",
+      "lesson": "26.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "partial-specialization",
+        "syntax"
+      ],
+      "text": "To partially specialize StaticArray&lt;T, size&gt; for size 12:<br>{{c1::template &lt;typename T&gt;}}<br>{{c2::class StaticArray&lt;T, 12&gt; { ... };}}",
+      "source": "26.5 - Partial template specialization",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_5_004",
+      "lesson": "26.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "templates",
+        "partial-specialization"
+      ],
+      "question": "What types match this partial specialization?",
+      "code": "template &lt;typename T&gt;\nclass Storage&lt;T*&gt; {\n    // Specialized for pointers\n};",
+      "answer": "Any pointer type: int*, double*, char*, MyClass*, etc.",
+      "explanation": "This partial specialization matches when T is any type and the template argument is a pointer to that type.",
+      "source": "26.5 - Partial template specialization",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_5_005",
+      "lesson": "26.5",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "templates",
+        "partial-specialization",
+        "use-cases"
+      ],
+      "concept": "Common uses for partial template specialization",
+      "explanation": "Partial specialization is useful for:<ul><li>Specializing for pointer types (T*)</li><li>Specializing for const types (const T)</li><li>Specializing for specific non-type parameter values</li><li>Specializing template classes with multiple parameters</li></ul>",
+      "examples": [
+        "template&lt;typename T&gt; class Array&lt;T*&gt; { };  // All pointers",
+        "template&lt;typename T&gt; class Array&lt;T, 12&gt; { }; // Size 12"
+      ],
+      "source": "26.5 - Partial template specialization",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_5_006",
+      "lesson": "26.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "partial-specialization"
+      ],
+      "text": "Partial specializations {{c1::ARE}} implicitly inline (unlike full specializations which are {{c2::NOT}}).",
+      "source": "26.5 - Partial template specialization",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch26_5_007",
+      "lesson": "26.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "partial-specialization"
+      ],
+      "front": "What happens if multiple partial specializations match a template instantiation?",
+      "back": "The compiler chooses the most specialized one. If multiple are equally specialized, it's ambiguous and causes a compilation error.",
+      "source": "26.5 - Partial template specialization",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch26_5_008",
+      "lesson": "26.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "templates",
+        "partial-specialization"
+      ],
+      "question": "For StaticArray&lt;int, 12&gt;, which specialization is used?",
+      "code": "template &lt;typename T, int size&gt;\nclass StaticArray { }; // Primary\n\ntemplate &lt;typename T&gt;\nclass StaticArray&lt;T, 12&gt; { }; // Partial\n\ntemplate &lt;int size&gt;\nclass StaticArray&lt;int, size&gt; { }; // Partial\n\nStaticArray&lt;int, 12&gt; arr;",
+      "answer": "Ambiguous - compilation error! Both partial specializations match equally.",
+      "explanation": "StaticArray&lt;T, 12&gt; and StaticArray&lt;int, size&gt; are both equally specialized for int and 12. The compiler cannot choose.",
+      "source": "26.5 - Partial template specialization",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch26_5_009",
+      "lesson": "26.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "partial-specialization"
+      ],
+      "text": "In template &lt;typename T&gt; class Array&lt;T*&gt;, the {{c1::template &lt;typename T&gt;}} part contains the remaining generic parameters, and {{c2::Array&lt;T*&gt;}} shows which parameters are specialized.",
+      "source": "26.5 - Partial template specialization",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_5_010",
+      "lesson": "26.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "partial-specialization"
+      ],
+      "front": "Why might you create a partial specialization for pointer types (T*)?",
+      "back": "To provide special behavior for pointers, such as:<ul><li>Deep copying pointed-to values</li><li>Automatic memory management</li><li>NULL/nullptr checking</li><li>Different semantics for pointer operations</li></ul>",
+      "source": "26.5 - Partial template specialization",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_5_011",
+      "lesson": "26.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates",
+        "partial-specialization"
+      ],
+      "front": "Can you partially specialize by adding const to a type parameter?",
+      "back": "Yes. You can create partial specializations like template&lt;typename T&gt; class Array&lt;const T&gt; for const types.",
+      "source": "26.5 - Partial template specialization",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch26_5_012",
+      "lesson": "26.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "partial-specialization"
+      ],
+      "text": "Partial template specialization is {{c1::only available for classes}}, not for {{c2::functions}}.",
+      "source": "26.5 - Partial template specialization",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch26_5_013",
+      "lesson": "26.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "partial-specialization"
+      ],
+      "text": "Template&lt;typename T&gt; class Array&lt;T*&gt; is a partial specialization that matches {{c1::all pointer types}}.",
+      "source": "26.5 - Partial template specialization",
+      "difficulty": "medium"
+    }
+  ]
+}

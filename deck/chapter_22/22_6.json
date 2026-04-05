@@ -1,0 +1,196 @@
+{
+  "chapter": "Chapter 22",
+  "chapter_title": "Move Semantics and Smart Pointers",
+  "lesson": "22.6",
+  "lesson_title": "std::shared_ptr",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch22_6_001",
+      "lesson": "22.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "shared_ptr",
+        "syntax"
+      ],
+      "text": "To create a shared_ptr, use: {{c1::std::shared_ptr&lt;Type&gt; ptr = std::make_shared&lt;Type&gt;(args);}}",
+      "source": "22.6 - std::shared_ptr",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch22_6_002",
+      "lesson": "22.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "shared_ptr",
+        "ownership"
+      ],
+      "front": "What ownership model does std::shared_ptr implement?",
+      "back": "Shared ownership. Multiple shared_ptrs can own the same resource. The resource is deleted when the last shared_ptr owning it is destroyed (reference counting).",
+      "source": "22.6 - std::shared_ptr",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch22_6_003",
+      "lesson": "22.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "shared_ptr",
+        "reference-counting"
+      ],
+      "text": "std::shared_ptr uses {{c1::reference counting}} to track how many shared_ptrs own the resource. When the count reaches {{c2::zero}}, the resource is {{c3::deleted}}.",
+      "source": "22.6 - std::shared_ptr",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch22_6_004",
+      "lesson": "22.6",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "shared_ptr",
+        "reference-counting"
+      ],
+      "question": "What happens to the reference count in this code?",
+      "code": "auto ptr1 = std::make_shared&lt;int&gt;(42); // count = ?\n{\n    auto ptr2 = ptr1; // count = ?\n    auto ptr3 = ptr1; // count = ?\n} // count = ?",
+      "answer": "Count: 1, then 2, then 3, then back to 1 after the block.",
+      "explanation": "Each copy of shared_ptr increments the reference count. When ptr2 and ptr3 go out of scope, the count decrements. The object is deleted when count reaches 0.",
+      "source": "22.6 - std::shared_ptr",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_6_005",
+      "lesson": "22.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "shared_ptr",
+        "methods"
+      ],
+      "text": "Call {{c1::ptr.use_count()}} to get the current reference count of a shared_ptr.",
+      "source": "22.6 - std::shared_ptr",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch22_6_006",
+      "lesson": "22.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "shared_ptr",
+        "best-practices"
+      ],
+      "front": "Why is std::make_shared preferred over the shared_ptr constructor with new?",
+      "back": "std::make_shared is more efficient (single allocation for object + control block), exception-safe, and more concise than using new.",
+      "source": "22.6 - std::shared_ptr",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_6_007",
+      "lesson": "22.6",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "shared_ptr",
+        "best-practices"
+      ],
+      "concept": "When to use std::shared_ptr vs std::unique_ptr",
+      "explanation": "Use std::shared_ptr when:<ul><li>Multiple owners need to share ownership</li><li>Ownership is complex or unclear</li><li>Object lifetime can't be determined statically</li></ul>Use std::unique_ptr when:<ul><li>Single, clear ownership</li><li>Most cases - prefer unique_ptr by default</li></ul>",
+      "examples": [
+        "// shared_ptr: multiple owners",
+        "std::vector&lt;std::shared_ptr&lt;Widget&gt;&gt; widgets;",
+        "auto w = std::make_shared&lt;Widget&gt;();",
+        "widgets.push_back(w); // shared ownership",
+        "processWidget(w);     // still valid"
+      ],
+      "source": "22.6 - std::shared_ptr",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_6_008",
+      "lesson": "22.6",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "shared_ptr",
+        "move-semantics"
+      ],
+      "question": "What's the difference in reference count behavior?",
+      "code": "auto ptr1 = std::make_shared&lt;int&gt;(5);\n\n// Option A: copy\nauto ptr2 = ptr1;\n\n// Option B: move\nauto ptr3 = std::move(ptr1);",
+      "answer": "Option A increments ref count. Option B transfers ownership without incrementing count (ptr1 becomes null).",
+      "explanation": "Copying shared_ptr increments reference count. Moving transfers ownership, leaving source null but keeping the same total count.",
+      "source": "22.6 - std::shared_ptr",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_6_009",
+      "lesson": "22.6",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "shared_ptr",
+        "performance"
+      ],
+      "text": "std::shared_ptr has overhead compared to unique_ptr: it stores {{c1::two pointers}} (one to the object, one to the control block) and maintains a {{c2::reference count}}.",
+      "source": "22.6 - std::shared_ptr",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_6_010",
+      "lesson": "22.6",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "shared_ptr",
+        "threading"
+      ],
+      "front": "What thread-safety guarantees does std::shared_ptr provide?",
+      "back": "The reference count operations are thread-safe (atomic). However, accessing the managed object itself is NOT thread-safe - you need separate synchronization for that.",
+      "source": "22.6 - std::shared_ptr",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch22_6_011",
+      "lesson": "22.6",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "shared_ptr",
+        "methods"
+      ],
+      "question": "What does reset() do on a shared_ptr?",
+      "code": "auto ptr1 = std::make_shared&lt;int&gt;(42);\nauto ptr2 = ptr1; // count = 2\nptr1.reset();     // what happens?",
+      "answer": "ptr1 becomes null, reference count decrements to 1. The object is NOT deleted because ptr2 still owns it.",
+      "explanation": "reset() releases this shared_ptr's ownership. The object is only deleted when ALL shared_ptrs release ownership (count reaches 0).",
+      "source": "22.6 - std::shared_ptr",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch22_6_012",
+      "lesson": "22.6",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "shared_ptr",
+        "gotchas"
+      ],
+      "concept": "Common std::shared_ptr pitfalls",
+      "explanation": "Pitfalls to avoid:<ul><li>Creating multiple shared_ptrs from same raw pointer (double delete)</li><li>Circular references (memory leak - use weak_ptr)</li><li>Unnecessary shared ownership (prefer unique_ptr)</li><li>Excessive copying (impacts performance)</li></ul>",
+      "examples": [
+        "// WRONG: double delete",
+        "int* raw = new int(5);",
+        "std::shared_ptr&lt;int&gt; p1(raw);",
+        "std::shared_ptr&lt;int&gt; p2(raw); // BAD!",
+        "",
+        "// CORRECT: copy shared_ptr",
+        "auto p1 = std::make_shared&lt;int&gt;(5);",
+        "auto p2 = p1; // Good"
+      ],
+      "source": "22.6 - std::shared_ptr",
+      "difficulty": "hard"
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "chapter": "Chapter 17",
+  "chapter_title": "Arrays and Strings",
+  "lesson": "17.11",
+  "lesson_title": "C-style string symbolic constants",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "ch17_11_001",
+      "lesson": "17.11",
+      "type": "basic",
+      "tags": ["cpp", "c-style-strings", "string-literals"],
+      "front": "Where are C-style string literals stored in memory?",
+      "back": "String literals are stored in read-only memory (often called the code segment or data segment), not on the stack or heap.",
+      "source": "17.11 - C-style string symbolic constants",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_11_002",
+      "lesson": "17.11",
+      "type": "cloze",
+      "tags": ["cpp", "c-style-strings", "const"],
+      "text": "String literals should always be assigned to {{c1::const char*}}, never {{c2::char*}}, because they're in read-only memory",
+      "source": "17.11 - C-style string symbolic constants",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_11_003",
+      "lesson": "17.11",
+      "type": "code",
+      "tags": ["cpp", "c-style-strings", "undefined-behavior"],
+      "question": "What's wrong with this code?",
+      "code": "char* str = \"Hello\";\nstr[0] = 'J';",
+      "answer": "Undefined behavior! Attempting to modify a string literal in read-only memory.",
+      "explanation": "String literals are const. Use const char* to prevent modification, or copy to a char array if modification is needed.",
+      "source": "17.11 - C-style string symbolic constants",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_11_004",
+      "lesson": "17.11",
+      "type": "cloze",
+      "tags": ["cpp", "c-style-strings", "array-vs-pointer"],
+      "text": "The declaration {{c1::char str[] = \"Hello\";}} creates a modifiable copy, but {{c2::const char* str = \"Hello\";}} points to read-only memory",
+      "source": "17.11 - C-style string symbolic constants",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_11_005",
+      "lesson": "17.11",
+      "type": "basic",
+      "tags": ["cpp", "c-style-strings", "symbolic-constants"],
+      "front": "What is a symbolic constant in the context of C-style strings?",
+      "back": "A symbolic constant is a named identifier representing a string literal, typically declared as const char* to prevent modification and clearly indicate the value shouldn't change.",
+      "source": "17.11 - C-style string symbolic constants",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_11_006",
+      "lesson": "17.11",
+      "type": "code",
+      "tags": ["cpp", "c-style-strings", "comparison"],
+      "question": "Will this comparison work correctly?",
+      "code": "const char* str1 = \"Hello\";\nconst char* str2 = \"Hello\";\nif (str1 == str2) { }",
+      "answer": "Maybe! It compares pointer addresses, not contents. Behavior depends on string literal pooling.",
+      "explanation": "Compilers may optimize identical string literals to the same memory location, but this isn't guaranteed. Use strcmp() for reliable string comparison.",
+      "source": "17.11 - C-style string symbolic constants",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch17_11_007",
+      "lesson": "17.11",
+      "type": "cloze",
+      "tags": ["cpp", "c-style-strings", "lifetime"],
+      "text": "String literals have {{c1::static storage duration}}, meaning they exist for the {{c2::entire program lifetime}}",
+      "source": "17.11 - C-style string symbolic constants",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_11_008",
+      "lesson": "17.11",
+      "type": "basic",
+      "tags": ["cpp", "c-style-strings", "return-value"],
+      "front": "Is it safe to return a pointer to a string literal from a function?",
+      "back": "Yes, because string literals have static storage duration and exist for the entire program lifetime. They won't be destroyed when the function returns.",
+      "source": "17.11 - C-style string symbolic constants",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_11_009",
+      "lesson": "17.11",
+      "type": "concept",
+      "tags": ["cpp", "c-style-strings", "best-practices"],
+      "concept": "Best practices for C-style string constants",
+      "explanation": "When working with string constants:<ul><li>Always use const char* for string literals</li><li>Use std::string_view (C++17) for modern const string references</li><li>Use std::string for modifiable strings</li><li>Never try to modify string literals</li><li>Use strcmp for comparisons, not ==</li></ul>",
+      "examples": [
+        "const char* name = \"Alice\";     // C-style constant",
+        "std::string_view name = \"Alice\"; // Modern C++ (C++17+)"
+      ],
+      "source": "17.11 - C-style string symbolic constants",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_11_010",
+      "lesson": "17.11",
+      "type": "code",
+      "tags": ["cpp", "c-style-strings", "array-copy"],
+      "question": "What's the difference between these two declarations?",
+      "code": "const char* str1 = \"Hello\";\nchar str2[] = \"Hello\";",
+      "answer": "str1 points to read-only memory. str2 is a modifiable array containing a copy of \"Hello\".",
+      "explanation": "str1 is a pointer to a string literal (const). str2 is an array initialized with a copy of the string (modifiable).",
+      "source": "17.11 - C-style string symbolic constants",
+      "difficulty": "medium"
+    }
+  ]
+}

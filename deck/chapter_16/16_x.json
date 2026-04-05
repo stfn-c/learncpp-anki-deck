@@ -1,0 +1,134 @@
+{
+  "chapter": "Chapter 16",
+  "chapter_title": "Introduction to Containers and Arrays",
+  "lesson": "16.x",
+  "lesson_title": "Chapter 16 summary and quiz",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch16_x_001",
+      "lesson": "16.x",
+      "type": "basic",
+      "tags": ["cpp", "containers", "summary"],
+      "front": "What are the three main array types in C++?",
+      "back": "<ul><li>C-style arrays (built-in, dangerous)</li><li>std::vector (flexible, dynamic)</li><li>std::array (fixed-size, efficient)</li></ul>",
+      "source": "16.x - Chapter 16 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_x_002",
+      "lesson": "16.x",
+      "type": "cloze",
+      "tags": ["cpp", "vector", "summary"],
+      "text": "std::vector is the most {{c1::flexible}} array type, supporting {{c2::dynamic}} resizing and many useful operations.",
+      "source": "16.x - Chapter 16 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_x_003",
+      "lesson": "16.x",
+      "type": "concept",
+      "tags": ["cpp", "vector", "best-practices"],
+      "concept": "Best practices for working with std::vector",
+      "explanation": "Key guidelines for std::vector:<ul><li>Pass by const reference for read-only</li><li>Pass by reference to modify</li><li>Return by value (move semantics)</li><li>Use signed int for indices (with std::ssize)</li><li>Prefer range-based for loops when possible</li><li>Use reserve() when you know final size</li><li>Avoid std::vector&lt;bool&gt;</li></ul>",
+      "examples": [
+        "void process(const std::vector&lt;int&gt;&amp; v);  // read",
+        "void modify(std::vector&lt;int&gt;&amp; v);  // modify",
+        "for (const auto&amp; val : v)  // iterate"
+      ],
+      "source": "16.x - Chapter 16 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_x_004",
+      "lesson": "16.x",
+      "type": "basic",
+      "tags": ["cpp", "containers", "terminology"],
+      "front": "What makes a container homogenous?",
+      "back": "All elements must have the same type. C++ containers are homogenous.",
+      "source": "16.x - Chapter 16 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_x_005",
+      "lesson": "16.x",
+      "type": "cloze",
+      "tags": ["cpp", "loops", "summary"],
+      "text": "The three main ways to iterate a vector are: {{c1::index-based}} for loops, {{c2::iterator-based}} for loops, and {{c3::range-based}} for loops.",
+      "source": "16.x - Chapter 16 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_x_006",
+      "lesson": "16.x",
+      "type": "basic",
+      "tags": ["cpp", "move-semantics", "summary"],
+      "front": "What optimization makes returning std::vector by value efficient?",
+      "back": "Move semantics (and copy elision/RVO). The vector's contents are moved rather than copied, making it fast even for large vectors.",
+      "source": "16.x - Chapter 16 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_x_007",
+      "lesson": "16.x",
+      "type": "cloze",
+      "tags": ["cpp", "vector", "summary"],
+      "text": "A vector's {{c1::length}} is the number of elements in use, while its {{c2::capacity}} is the total storage allocated.",
+      "source": "16.x - Chapter 16 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_x_008",
+      "lesson": "16.x",
+      "type": "concept",
+      "tags": ["cpp", "signed-unsigned", "summary"],
+      "concept": "The unsigned length and subscript problem",
+      "explanation": "Container sizes return unsigned (std::size_t), but signed is better for indices:<ul><li>Unsigned can't represent negative numbers</li><li>Wraparound when decrementing from 0</li><li>Comparison issues with signed values</li><li>Solution: Use std::ssize() or static_cast to signed</li></ul>",
+      "examples": [
+        "for (int i{0}; i &lt; std::ssize(v); ++i)  // Good",
+        "for (std::size_t i{0}; i &lt; v.size(); ++i)  // Problems"
+      ],
+      "source": "16.x - Chapter 16 summary and quiz",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch16_x_009",
+      "lesson": "16.x",
+      "type": "basic",
+      "tags": ["cpp", "enums", "summary"],
+      "front": "How can enumerators improve array indexing?",
+      "back": "Use enum values as indices for meaningful names. Add a max_count enumerator to automatically track array size. Makes code more readable and maintainable.",
+      "source": "16.x - Chapter 16 summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_x_010",
+      "lesson": "16.x",
+      "type": "cloze",
+      "tags": ["cpp", "vector", "stack"],
+      "text": "To use std::vector as a stack: {{c1::push_back()}} to push, {{c2::pop_back()}} to pop, {{c3::back()}} to peek at top.",
+      "source": "16.x - Chapter 16 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_x_011",
+      "lesson": "16.x",
+      "type": "basic",
+      "tags": ["cpp", "arrays", "summary"],
+      "front": "What does it mean for arrays to store elements contiguously?",
+      "back": "Elements are stored in adjacent memory locations with no gaps. This allows fast, direct access to any element by index.",
+      "source": "16.x - Chapter 16 summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_x_012",
+      "lesson": "16.x",
+      "type": "basic",
+      "tags": ["cpp", "vector", "gotchas"],
+      "front": "Why should you avoid std::vector&lt;bool&gt;?",
+      "back": "It's a template specialization that stores bits instead of bool objects, doesn't return real references, and violates container expectations. Use std::vector&lt;char&gt; or std::deque&lt;bool&gt; instead.",
+      "source": "16.x - Chapter 16 summary and quiz",
+      "difficulty": "medium"
+    }
+  ]
+}

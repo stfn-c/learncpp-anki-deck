@@ -1,0 +1,111 @@
+{
+  "chapter": "Chapter 0",
+  "chapter_title": "Introduction / Getting Started",
+  "lesson": "0.6",
+  "lesson_title": "Installing an Integrated Development Environment (IDE)",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "ch0_6_001",
+      "lesson": "0.6",
+      "type": "basic",
+      "tags": ["cpp", "ide", "setup"],
+      "front": "What is the recommended IDE for C++ development on Windows?",
+      "back": "Visual Studio Community (the free version of Visual Studio) is recommended for Windows. It has excellent C++ support and debugging tools.",
+      "source": "0.6 - Installing an Integrated Development Environment (IDE)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_6_002",
+      "lesson": "0.6",
+      "type": "cloze",
+      "tags": ["cpp", "ide", "setup"],
+      "text": "On macOS, the recommended IDE is {{c1::Xcode}}, which is free from the {{c2::Mac App Store}}.",
+      "source": "0.6 - Installing an Integrated Development Environment (IDE)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_6_003",
+      "lesson": "0.6",
+      "type": "basic",
+      "tags": ["cpp", "ide", "setup"],
+      "front": "What are good cross-platform IDE options for C++?",
+      "back": "Code::Blocks (free, beginner-friendly) and CLion (commercial, powerful) work on Windows, macOS, and Linux.",
+      "source": "0.6 - Installing an Integrated Development Environment (IDE)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_6_004",
+      "lesson": "0.6",
+      "type": "basic",
+      "tags": ["cpp", "ide", "visual-studio"],
+      "front": "What is the difference between Visual Studio and Visual Studio Code?",
+      "back": "Visual Studio is a full IDE with built-in C++ compiler and debugger. Visual Studio Code is a lightweight text editor that requires separate installation and configuration of C++ tools.",
+      "source": "0.6 - Installing an Integrated Development Environment (IDE)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_6_005",
+      "lesson": "0.6",
+      "type": "cloze",
+      "tags": ["cpp", "ide", "installation"],
+      "text": "When installing Visual Studio, make sure to select the {{c1::Desktop development with C++}} workload to get the C++ compiler and tools.",
+      "source": "0.6 - Installing an Integrated Development Environment (IDE)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_6_006",
+      "lesson": "0.6",
+      "type": "concept",
+      "tags": ["cpp", "ide", "best-practices"],
+      "concept": "Why beginners should avoid using online compilers for learning",
+      "explanation": "Online compilers have limitations:<ul><li>Limited debugging capabilities</li><li>Can't create multi-file projects easily</li><li>Unreliable internet dependency</li><li>Don't teach real-world development workflow</li><li>Limited customization and settings</li></ul>A local IDE provides a better learning experience and matches professional development.",
+      "examples": [
+        "Online: limited to single files or simple programs",
+        "Local IDE: full debugger with breakpoints and watches",
+        "Local IDE: learn real project structure and build systems"
+      ],
+      "source": "0.6 - Installing an Integrated Development Environment (IDE)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch0_6_007",
+      "lesson": "0.6",
+      "type": "basic",
+      "tags": ["cpp", "ide", "linux"],
+      "front": "What IDE options are available for Linux?",
+      "back": "Code::Blocks, CLion, Qt Creator, or configure a text editor (VS Code, vim, emacs) with C++ tools. Many Linux users prefer command-line tools with makefiles or CMake.",
+      "source": "0.6 - Installing an Integrated Development Environment (IDE)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_6_008",
+      "lesson": "0.6",
+      "type": "basic",
+      "tags": ["cpp", "ide", "compilers"],
+      "front": "What C++ compiler does Visual Studio use?",
+      "back": "Visual Studio uses MSVC (Microsoft Visual C++ compiler). Xcode uses Clang. GCC is common on Linux.",
+      "source": "0.6 - Installing an Integrated Development Environment (IDE)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_6_009",
+      "lesson": "0.6",
+      "type": "cloze",
+      "tags": ["cpp", "ide", "setup"],
+      "text": "After installing your IDE, verify it works by creating a {{c1::Hello World}} program and successfully {{c2::compiling and running}} it.",
+      "source": "0.6 - Installing an Integrated Development Environment (IDE)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch0_6_010",
+      "lesson": "0.6",
+      "type": "basic",
+      "tags": ["cpp", "ide", "best-practices"],
+      "front": "Why might you want to use the same IDE that the tutorial uses?",
+      "back": "Using the same IDE makes it easier to follow instructions and screenshots. Different IDEs have different project setup steps and menu layouts.",
+      "source": "0.6 - Installing an Integrated Development Environment (IDE)",
+      "difficulty": "easy"
+    }
+  ]
+}

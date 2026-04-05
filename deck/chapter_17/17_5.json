@@ -1,0 +1,122 @@
+{
+  "chapter": "Chapter 17",
+  "chapter_title": "Arrays and Strings",
+  "lesson": "17.5",
+  "lesson_title": "Arrays of references via std::reference_wrapper",
+  "total_cards": 11,
+  "cards": [
+    {
+      "id": "ch17_5_001",
+      "lesson": "17.5",
+      "type": "basic",
+      "tags": ["cpp", "arrays", "references"],
+      "front": "Can you create an array of references in C++?",
+      "back": "No, you cannot directly create an array of references because references are not objects. Arrays can only hold objects.",
+      "source": "17.5 - Arrays of references via std::reference_wrapper",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_5_002",
+      "lesson": "17.5",
+      "type": "cloze",
+      "tags": ["cpp", "arrays", "std-array", "reference-wrapper"],
+      "text": "To create an array-like container of references, use {{c1::std::reference_wrapper}} which is defined in the {{c2::&lt;functional&gt;}} header",
+      "source": "17.5 - Arrays of references via std::reference_wrapper",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_5_003",
+      "lesson": "17.5",
+      "type": "cloze",
+      "tags": ["cpp", "reference-wrapper", "syntax"],
+      "text": "To create a std::array of references to ints, declare: {{c1::std::array&lt;std::reference_wrapper&lt;int&gt;, 3&gt;}} arr { x, y, z };",
+      "source": "17.5 - Arrays of references via std::reference_wrapper",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_5_004",
+      "lesson": "17.5",
+      "type": "basic",
+      "tags": ["cpp", "reference-wrapper", "behavior"],
+      "front": "What is the key behavior of std::reference_wrapper?",
+      "back": "std::reference_wrapper is a copyable object that behaves like a reference. It allows references to be stored in containers and can be implicitly converted to the referenced type.",
+      "source": "17.5 - Arrays of references via std::reference_wrapper",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_5_005",
+      "lesson": "17.5",
+      "type": "cloze",
+      "tags": ["cpp", "reference-wrapper", "access"],
+      "text": "To access the underlying object from a std::reference_wrapper, use the {{c1::get()}} member function or rely on {{c2::implicit conversion}}",
+      "source": "17.5 - Arrays of references via std::reference_wrapper",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_5_006",
+      "lesson": "17.5",
+      "type": "code",
+      "tags": ["cpp", "reference-wrapper", "usage"],
+      "question": "What does this code do?",
+      "code": "int x = 5;\nstd::reference_wrapper&lt;int&gt; ref { x };\nref.get() = 10;",
+      "answer": "Modifies x to 10",
+      "explanation": "ref.get() returns a reference to x, so assigning to it modifies the original variable x.",
+      "source": "17.5 - Arrays of references via std::reference_wrapper",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_5_007",
+      "lesson": "17.5",
+      "type": "cloze",
+      "tags": ["cpp", "reference-wrapper", "helper-function"],
+      "text": "Instead of std::reference_wrapper&lt;T&gt;, you can use the helper function {{c1::std::ref()}} for shorter syntax",
+      "source": "17.5 - Arrays of references via std::reference_wrapper",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_5_008",
+      "lesson": "17.5",
+      "type": "cloze",
+      "tags": ["cpp", "reference-wrapper", "const"],
+      "text": "For const references, use {{c1::std::cref()}} which creates a std::reference_wrapper to a const object",
+      "source": "17.5 - Arrays of references via std::reference_wrapper",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_5_009",
+      "lesson": "17.5",
+      "type": "code",
+      "tags": ["cpp", "reference-wrapper", "array"],
+      "question": "What's a cleaner way to write this?",
+      "code": "int x=1, y=2, z=3;\nstd::array&lt;std::reference_wrapper&lt;int&gt;, 3&gt; arr { x, y, z };",
+      "answer": "std::array arr { std::ref(x), std::ref(y), std::ref(z) };",
+      "explanation": "Using CTAD and std::ref() makes the code more concise and readable.",
+      "source": "17.5 - Arrays of references via std::reference_wrapper",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_5_010",
+      "lesson": "17.5",
+      "type": "basic",
+      "tags": ["cpp", "reference-wrapper", "implicit-conversion"],
+      "front": "Do you always need to call get() to access the value in std::reference_wrapper?",
+      "back": "No, std::reference_wrapper has an implicit conversion operator that allows it to be used directly as the referenced type in most contexts.",
+      "source": "17.5 - Arrays of references via std::reference_wrapper",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_5_011",
+      "lesson": "17.5",
+      "type": "concept",
+      "tags": ["cpp", "reference-wrapper", "use-cases"],
+      "concept": "When to use std::reference_wrapper",
+      "explanation": "Use std::reference_wrapper when you need:<ul><li>To store references in containers (arrays, vectors)</li><li>To pass references through standard library algorithms</li><li>To create copyable reference-like objects</li></ul>Avoid when simple references or pointers would suffice.",
+      "examples": [
+        "std::array arr { std::ref(x), std::ref(y) };  // Array of refs",
+        "std::vector&lt;std::reference_wrapper&lt;int&gt;&gt; vec;  // Vector of refs"
+      ],
+      "source": "17.5 - Arrays of references via std::reference_wrapper",
+      "difficulty": "medium"
+    }
+  ]
+}

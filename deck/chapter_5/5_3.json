@@ -1,0 +1,162 @@
+{
+  "chapter": "Chapter 5",
+  "chapter_title": "Constants and Strings",
+  "lesson": "5.3",
+  "lesson_title": "Numeral systems (decimal, binary, hexadecimal, and octal)",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "ch5_5_3_001",
+      "lesson": "5.3",
+      "type": "cloze",
+      "text": "To write a binary literal in C++, use the prefix {{c1::0b}} or {{c1::0B}}: {{c2::0b1010}}",
+      "tags": [
+        "cpp",
+        "literals",
+        "binary",
+        "syntax"
+      ],
+      "source": "5.3 - Numeral systems",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch5_5_3_002",
+      "lesson": "5.3",
+      "type": "cloze",
+      "text": "To write a hexadecimal literal, use the prefix {{c1::0x}} or {{c1::0X}}: {{c2::0xFF}}",
+      "tags": [
+        "cpp",
+        "literals",
+        "hexadecimal",
+        "syntax"
+      ],
+      "source": "5.3 - Numeral systems",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch5_5_3_003",
+      "lesson": "5.3",
+      "type": "cloze",
+      "text": "To write an octal literal, use the prefix {{c1::0}}: {{c2::075}}",
+      "tags": [
+        "cpp",
+        "literals",
+        "octal",
+        "syntax"
+      ],
+      "source": "5.3 - Numeral systems",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch5_5_3_004",
+      "lesson": "5.3",
+      "type": "cloze",
+      "text": "The digit separator {{c1::'}} (single quote) can make long numbers more readable: {{c2::1'000'000}}",
+      "tags": [
+        "cpp",
+        "literals",
+        "readability",
+        "syntax"
+      ],
+      "source": "5.3 - Numeral systems",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch5_5_3_005",
+      "lesson": "5.3",
+      "type": "code",
+      "question": "What decimal value does each literal represent?",
+      "code": "int a = 0b1111;\nint b = 0xFF;\nint c = 077;",
+      "answer": "a = 15<br>b = 255<br>c = 63",
+      "explanation": "0b1111 is binary (1+2+4+8=15), 0xFF is hex (15*16+15=255), 077 is octal (7*8+7=63)",
+      "tags": [
+        "cpp",
+        "literals",
+        "binary",
+        "hex",
+        "octal"
+      ],
+      "source": "5.3 - Numeral systems",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch5_5_3_006",
+      "lesson": "5.3",
+      "type": "code",
+      "question": "What's the decimal value of this hex literal?",
+      "code": "int x = 0xAB;",
+      "answer": "171",
+      "explanation": "0xAB = (10 * 16) + 11 = 160 + 11 = 171",
+      "tags": [
+        "cpp",
+        "literals",
+        "hexadecimal"
+      ],
+      "source": "5.3 - Numeral systems",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch5_5_3_007",
+      "lesson": "5.3",
+      "type": "basic",
+      "front": "Why should you avoid using octal literals (starting with 0)?",
+      "back": "It's easy to accidentally create an octal literal by adding a leading zero, which can cause unexpected values. For example, 077 is 63 in decimal, not 77.",
+      "tags": [
+        "cpp",
+        "literals",
+        "octal",
+        "gotchas"
+      ],
+      "source": "5.3 - Numeral systems",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch5_5_3_008",
+      "lesson": "5.3",
+      "type": "basic",
+      "front": "What are the four numeral systems supported by C++ literals?",
+      "back": "<ul><li>Decimal (base 10) - no prefix</li><li>Binary (base 2) - 0b prefix</li><li>Hexadecimal (base 16) - 0x prefix</li><li>Octal (base 8) - 0 prefix</li></ul>",
+      "tags": [
+        "cpp",
+        "literals",
+        "numeral-systems"
+      ],
+      "source": "5.3 - Numeral systems",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch5_5_3_009",
+      "lesson": "5.3",
+      "type": "concept",
+      "concept": "When to use different numeral systems",
+      "explanation": "Different numeral systems are useful for different purposes:<ul><li>Binary: bit flags, bit manipulation</li><li>Hex: memory addresses, colors, bit patterns</li><li>Octal: file permissions (Unix/Linux), rarely used otherwise</li><li>Decimal: most common use cases</li></ul>",
+      "examples": [
+        "0b1010'1100  // Binary for bit flags",
+        "0xFF00FF    // Hex for RGB color (magenta)",
+        "0755        // Octal for file permissions"
+      ],
+      "tags": [
+        "cpp",
+        "literals",
+        "numeral-systems",
+        "best-practices"
+      ],
+      "source": "5.3 - Numeral systems",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch5_5_3_010",
+      "lesson": "5.3",
+      "type": "reverse",
+      "front": "0x prefix",
+      "back": "Indicates a hexadecimal (base 16) literal",
+      "tags": [
+        "cpp",
+        "literals",
+        "hexadecimal"
+      ],
+      "source": "5.3 - Numeral systems",
+      "difficulty": "easy"
+    }
+  ]
+}

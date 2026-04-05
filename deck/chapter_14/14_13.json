@@ -1,0 +1,128 @@
+{
+  "chapter": "Chapter 14",
+  "chapter_title": "Introduction to Classes",
+  "lesson": "14.13",
+  "lesson_title": "Temporary class objects",
+  "total_cards": 11,
+  "cards": [
+    {
+      "id": "ch14_13_001",
+      "lesson": "14.13",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "temporaries"],
+      "text": "A {{c1::temporary object}} (or anonymous object) is an object created for a single expression that is {{c2::destroyed at the end of that expression}}.",
+      "source": "14.13 - Temporary class objects",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_13_002",
+      "lesson": "14.13",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "temporaries", "syntax"],
+      "text": "To create a temporary class object:<br>{{c1::ClassName{arguments}}} or {{c2::ClassName(arguments)}}",
+      "source": "14.13 - Temporary class objects",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_13_003",
+      "lesson": "14.13",
+      "type": "code",
+      "tags": ["cpp", "classes", "temporaries"],
+      "question": "What does this code do?",
+      "code": "class Cents<br>{<br>public:<br>&nbsp;&nbsp;&nbsp;&nbsp;Cents(int value) : m_value{value} { }<br>&nbsp;&nbsp;&nbsp;&nbsp;int getValue() const { return m_value; }<br>private:<br>&nbsp;&nbsp;&nbsp;&nbsp;int m_value;<br>};<br><br>std::cout &lt;&lt; Cents{5}.getValue();",
+      "answer": "Prints 5. Creates a temporary Cents object with value 5, calls getValue(), then destroys the temporary.",
+      "explanation": "Cents{5} creates a temporary object that exists only for this expression. After getValue() returns, the temporary is destroyed.",
+      "source": "14.13 - Temporary class objects",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_13_004",
+      "lesson": "14.13",
+      "type": "basic",
+      "tags": ["cpp", "classes", "temporaries"],
+      "front": "What is the lifetime of a temporary object?",
+      "back": "Temporary objects are created at the point of use and destroyed at the end of the full expression (typically at the semicolon). They don't persist beyond the statement that creates them.",
+      "source": "14.13 - Temporary class objects",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_13_005",
+      "lesson": "14.13",
+      "type": "concept",
+      "tags": ["cpp", "classes", "temporaries", "best-practices"],
+      "concept": "When temporary objects are useful",
+      "explanation": "Temporary objects are useful for:<ul><li>Passing arguments to functions without creating named variables</li><li>Returning values from functions</li><li>Performing one-time operations without cluttering scope with named objects</li><li>Testing or debugging (quick object creation)</li></ul>",
+      "examples": [
+        "printCents(Cents{10});  // pass temporary as argument",
+        "return Cents{total};    // return temporary from function"
+      ],
+      "source": "14.13 - Temporary class objects",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_13_006",
+      "lesson": "14.13",
+      "type": "code",
+      "tags": ["cpp", "classes", "temporaries"],
+      "question": "What does this function call do?",
+      "code": "void print(const Cents&amp; c)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; c.getValue();<br>}<br><br>print(Cents{7});",
+      "answer": "Creates a temporary Cents object with value 7, binds it to the const reference parameter, prints 7, then destroys the temporary after the function returns.",
+      "explanation": "Temporaries can be bound to const reference parameters, extending their lifetime for the duration of the function call.",
+      "source": "14.13 - Temporary class objects",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_13_007",
+      "lesson": "14.13",
+      "type": "basic",
+      "tags": ["cpp", "classes", "temporaries"],
+      "front": "Can you bind a temporary object to a non-const reference?",
+      "back": "No. Temporary objects can only be bound to const lvalue references (const Type&amp;) or rvalue references (Type&amp;&amp;). They cannot be bound to non-const lvalue references.",
+      "source": "14.13 - Temporary class objects",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_13_008",
+      "lesson": "14.13",
+      "type": "code",
+      "tags": ["cpp", "classes", "temporaries", "common-mistakes"],
+      "question": "What's wrong with this code?",
+      "code": "void modify(Cents&amp; c)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;// ...<br>}<br><br>modify(Cents{5});  // error!",
+      "answer": "Cannot bind a temporary to a non-const lvalue reference. Change parameter to const Cents&amp; or Cents&amp;&amp;.",
+      "explanation": "Temporaries are rvalues and cannot be bound to non-const lvalue references. This prevents accidental modification of objects that will be immediately destroyed.",
+      "source": "14.13 - Temporary class objects",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_13_009",
+      "lesson": "14.13",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "temporaries"],
+      "text": "When a temporary is bound to a {{c1::const reference}}, its lifetime is extended to match the {{c2::lifetime of the reference}}.",
+      "source": "14.13 - Temporary class objects",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_13_010",
+      "lesson": "14.13",
+      "type": "basic",
+      "tags": ["cpp", "classes", "temporaries", "best-practices"],
+      "front": "When should you prefer named objects over temporary objects?",
+      "back": "Use named objects when you need to:<ul><li>Use the object multiple times</li><li>Debug and inspect the object's state</li><li>Make code more readable</li></ul>Use temporaries for one-time use or when passing arguments.",
+      "source": "14.13 - Temporary class objects",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_13_011",
+      "lesson": "14.13",
+      "type": "code",
+      "tags": ["cpp", "classes", "temporaries"],
+      "question": "How many objects are created in this code?",
+      "code": "Cents add(const Cents&amp; c1, const Cents&amp; c2)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;return Cents{c1.getValue() + c2.getValue()};<br>}<br><br>Cents result = add(Cents{5}, Cents{10});",
+      "answer": "Potentially 4 objects: two temporary parameters (5, 10), one temporary return value, and result. However, copy elision may reduce this.",
+      "explanation": "Temporaries are created for arguments and return value. Modern compilers often eliminate unnecessary copies through copy elision/RVO.",
+      "source": "14.13 - Temporary class objects",
+      "difficulty": "hard"
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "chapter": "Chapter 16",
+  "chapter_title": "Introduction to Containers and Arrays",
+  "lesson": "16.1",
+  "lesson_title": "Introduction to containers and arrays",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch16_1_001",
+      "lesson": "16.1",
+      "type": "cloze",
+      "tags": ["cpp", "containers", "fundamentals"],
+      "text": "A {{c1::container}} is a data type that provides storage for a collection of {{c2::unnamed}} objects (called {{c3::elements}}).",
+      "source": "16.1 - Introduction to containers and arrays",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_1_002",
+      "lesson": "16.1",
+      "type": "cloze",
+      "tags": ["cpp", "containers", "terminology"],
+      "text": "In a container, the individual values stored are called {{c1::elements}}, and the number of elements is called the container's {{c2::length}} or {{c2::count}}.",
+      "source": "16.1 - Introduction to containers and arrays",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_1_003",
+      "lesson": "16.1",
+      "type": "basic",
+      "tags": ["cpp", "containers", "best-practices"],
+      "front": "Why are elements in a container unnamed?",
+      "back": "So that we can put as many elements in the container as we want without having to give each element a unique name. The container provides methods to access elements without needing individual names.",
+      "source": "16.1 - Introduction to containers and arrays",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_1_004",
+      "lesson": "16.1",
+      "type": "cloze",
+      "tags": ["cpp", "containers", "terminology"],
+      "text": "In C++, containers are {{c1::homogenous}}, meaning all elements must have the {{c2::same type}}.",
+      "source": "16.1 - Introduction to containers and arrays",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_1_005",
+      "lesson": "16.1",
+      "type": "cloze",
+      "tags": ["cpp", "arrays", "fundamentals"],
+      "text": "Arrays store elements {{c1::contiguously}}, meaning each element is placed in an {{c2::adjacent memory location}}, with {{c3::no gaps}}.",
+      "source": "16.1 - Introduction to containers and arrays",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_1_006",
+      "lesson": "16.1",
+      "type": "cloze",
+      "tags": ["cpp", "arrays", "types"],
+      "text": "C++ has three primary array types: {{c1::C-style arrays}}, {{c2::std::vector}}, and {{c3::std::array}}.",
+      "source": "16.1 - Introduction to containers and arrays",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_1_007",
+      "lesson": "16.1",
+      "type": "reverse",
+      "tags": ["cpp", "containers", "terminology"],
+      "front": "container class",
+      "back": "A class type that implements a container (part of C++ Containers library)",
+      "source": "16.1 - Introduction to containers and arrays",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_1_008",
+      "lesson": "16.1",
+      "type": "basic",
+      "tags": ["cpp", "containers", "common-mistakes"],
+      "front": "Why is std::string not considered a true container in C++?",
+      "back": "It doesn't implement all the requirements listed in the C++ standard for containers. However, it behaves like a container in most circumstances, so it's called a \"pseudo-container\".",
+      "source": "16.1 - Introduction to containers and arrays",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_1_009",
+      "lesson": "16.1",
+      "type": "cloze",
+      "tags": ["cpp", "arrays", "history"],
+      "text": "{{c1::std::vector}} was introduced in C++03 to make arrays safer and easier to use, while {{c2::std::array}} was introduced in C++11 as a direct replacement for C-style arrays.",
+      "source": "16.1 - Introduction to containers and arrays",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_1_010",
+      "lesson": "16.1",
+      "type": "concept",
+      "tags": ["cpp", "containers", "best-practices"],
+      "concept": "When to use containers instead of individual variables",
+      "explanation": "Use containers when you need to work with a set of related values. Individual variables don't scale well:<ul><li>Each variable needs a unique name</li><li>Can't easily iterate over values</li><li>Hard to maintain and modify (e.g., adding one more value requires changing code everywhere)</li><li>Cannot determine count programmatically</li></ul>",
+      "examples": [
+        "int scores[30];  // Better than 30 individual variables",
+        "std::vector&lt;int&gt; scores;  // Even better: can grow/shrink"
+      ],
+      "source": "16.1 - Introduction to containers and arrays",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_1_011",
+      "lesson": "16.1",
+      "type": "basic",
+      "tags": ["cpp", "terminology", "containers"],
+      "front": "What is the difference between \"length\" and \"size\" when referring to containers?",
+      "back": "\"Length\" refers to the number of elements in a container. \"Size\" refers to the amount of storage (in bytes) required by an object. This distinction avoids confusion with the sizeof operator.",
+      "source": "16.1 - Introduction to containers and arrays",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_1_012",
+      "lesson": "16.1",
+      "type": "cloze",
+      "tags": ["cpp", "containers", "operations"],
+      "text": "Common container operations include: {{c1::create}} a container, {{c2::access}} elements, {{c3::insert and remove}} elements, and {{c4::get the number}} of elements.",
+      "source": "16.1 - Introduction to containers and arrays",
+      "difficulty": "easy"
+    }
+  ]
+}

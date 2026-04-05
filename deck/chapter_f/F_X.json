@@ -1,0 +1,154 @@
+{
+  "chapter": "Chapter F",
+  "chapter_title": "Introduction to Functions and Constexpr",
+  "lesson": "F.X",
+  "lesson_title": "Chapter F summary and quiz",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "chF_X_001",
+      "lesson": "F.X",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "summary"
+      ],
+      "text": "A {{c1::constexpr function}} is allowed to be called in a constant expression, while a {{c2::consteval function}} must evaluate at compile-time.",
+      "source": "F.X - Chapter F summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "chF_X_002",
+      "lesson": "F.X",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "summary"
+      ],
+      "front": "What three compile-time related keywords were covered in Chapter F?",
+      "back": "<ul><li>constexpr - function can evaluate at compile-time or runtime</li><li>consteval - function must evaluate at compile-time</li><li>constinit - variable initialized at compile-time but mutable</li></ul>",
+      "source": "F.X - Chapter F summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "chF_X_003",
+      "lesson": "F.X",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "quiz"
+      ],
+      "question": "In the quiz example, why can't getTowerHeight() be made constexpr?",
+      "code": "double getTowerHeight()\n{\n    std::cout &lt;&lt; \"Enter height: \";\n    double height{};\n    std::cin &gt;&gt; height;\n    return height;\n}",
+      "answer": "Because it performs I/O operations (std::cout and std::cin), which can only be done at runtime.",
+      "explanation": "The I/O operators &lt;&lt; and &gt;&gt; for std::cout and std::cin don't support constexpr. Input/output must happen at runtime, not compile-time.",
+      "source": "F.X - Chapter F summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "chF_X_004",
+      "lesson": "F.X",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "quiz"
+      ],
+      "text": "In the quiz example, gravity should be {{c1::constexpr}} because it's a {{c2::compile-time constant}}, but towerHeight can only be {{c3::const}} because its value comes from {{c4::runtime input}}.",
+      "source": "F.X - Chapter F summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "chF_X_005",
+      "lesson": "F.X",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "quiz"
+      ],
+      "front": "In the quiz, why can calculateBallHeight() be made constexpr even though it's called with runtime values?",
+      "back": "Because constexpr functions can evaluate at either compile-time OR runtime. When called with runtime arguments, it evaluates at runtime like a normal function.",
+      "source": "F.X - Chapter F summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "chF_X_006",
+      "lesson": "F.X",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "quiz"
+      ],
+      "question": "In the quiz, why can't the ballHeight variable be constexpr?",
+      "code": "void printCalculatedBallHeight(double towerHeight, int seconds)\n{\n    const double ballHeight{ calculateBallHeight(towerHeight, seconds) };\n    printBallHeight(ballHeight, seconds);\n}",
+      "answer": "Because its initializer (calculateBallHeight with runtime arguments) is not a constant expression.",
+      "explanation": "Even though calculateBallHeight() is constexpr, it's being called with towerHeight which has a runtime value. The result is therefore a runtime value, not a compile-time constant.",
+      "source": "F.X - Chapter F summary and quiz",
+      "difficulty": "hard"
+    },
+    {
+      "id": "chF_X_007",
+      "lesson": "F.X",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "parameters"
+      ],
+      "text": "Function parameters are {{c1::never constexpr}}, even in a {{c2::constexpr function}}.",
+      "source": "F.X - Chapter F summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "chF_X_008",
+      "lesson": "F.X",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "best-practices"
+      ],
+      "concept": "Decision tree: const vs constexpr for variables",
+      "explanation": "Use this decision tree for variables:<ul><li>Value known at compile-time and won't change? Use <b>constexpr</b></li><li>Value from runtime source but won't change after init? Use <b>const</b></li><li>Value needs to change? Use neither</li></ul>Special case: constinit for mutable global/static variables initialized at compile-time.",
+      "examples": [
+        "constexpr double pi = 3.14159;  // compile-time constant",
+        "const double height = getHeight();  // runtime constant",
+        "int counter = 0;  // mutable variable"
+      ],
+      "source": "F.X - Chapter F summary and quiz",
+      "difficulty": "medium"
+    },
+    {
+      "id": "chF_X_009",
+      "lesson": "F.X",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "summary"
+      ],
+      "front": "What is the best practice regarding when to make functions constexpr?",
+      "back": "If a function CAN be made constexpr (it performs calculations without I/O or other runtime-only operations), it SHOULD be made constexpr.",
+      "source": "F.X - Chapter F summary and quiz",
+      "difficulty": "easy"
+    },
+    {
+      "id": "chF_X_010",
+      "lesson": "F.X",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "constexpr",
+        "implicit"
+      ],
+      "text": "Constexpr functions are implicitly {{c1::inline}}, which means they can be {{c2::defined in header files}} without violating the one definition rule.",
+      "source": "F.X - Chapter F summary and quiz",
+      "difficulty": "medium"
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "chapter": "Chapter 17",
+  "chapter_title": "Arrays and Strings",
+  "lesson": "17.6",
+  "lesson_title": "std::array and enumerations",
+  "total_cards": 11,
+  "cards": [
+    {
+      "id": "ch17_6_001",
+      "lesson": "17.6",
+      "type": "basic",
+      "tags": ["cpp", "arrays", "enumerations", "indexing"],
+      "front": "Can you use an enumerator as an array index directly?",
+      "back": "Not directly for std::array (it expects std::size_t). You need to cast the enumerator to an integer type using static_cast or std::to_underlying (C++23).",
+      "source": "17.6 - std::array and enumerations",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_6_002",
+      "lesson": "17.6",
+      "type": "cloze",
+      "tags": ["cpp", "enumerations", "to-underlying"],
+      "text": "In C++23, to convert an enumerator to its underlying value, use {{c1::std::to_underlying()}} from the {{c2::&lt;utility&gt;}} header",
+      "source": "17.6 - std::array and enumerations",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_6_003",
+      "lesson": "17.6",
+      "type": "cloze",
+      "tags": ["cpp", "arrays", "enumerations", "indexing"],
+      "text": "To use an enum class value as array index: arr[{{c1::static_cast&lt;std::size_t&gt;}}(MyEnum::Value)]",
+      "source": "17.6 - std::array and enumerations",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_6_004",
+      "lesson": "17.6",
+      "type": "code",
+      "tags": ["cpp", "arrays", "enumerations", "common-mistakes"],
+      "question": "What's wrong with this code?",
+      "code": "enum class Color { red, green, blue };\nstd::array&lt;int, 3&gt; arr { 1, 2, 3 };\nstd::cout &lt;&lt; arr[Color::red];",
+      "answer": "Cannot use enum class as array index without casting to std::size_t",
+      "explanation": "Enum class values don't implicitly convert to integers. Use: arr[static_cast&lt;std::size_t&gt;(Color::red)]",
+      "source": "17.6 - std::array and enumerations",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_6_005",
+      "lesson": "17.6",
+      "type": "cloze",
+      "tags": ["cpp", "arrays", "enumerations", "length"],
+      "text": "To size an array based on an enum, add a {{c1::count}} or {{c2::max}} enumerator as the last value, then use it as the array size",
+      "source": "17.6 - std::array and enumerations",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_6_006",
+      "lesson": "17.6",
+      "type": "code",
+      "tags": ["cpp", "arrays", "enumerations", "sizing"],
+      "question": "How does this pattern ensure the array size matches the enum?",
+      "code": "enum class Color { red, green, blue, max };\nstd::array&lt;int, static_cast&lt;std::size_t&gt;(Color::max)&gt; arr;",
+      "answer": "The 'max' enumerator automatically equals the count of colors (3), ensuring array size stays in sync with enum values.",
+      "explanation": "If you add more colors, max automatically increments, keeping the array size correct.",
+      "source": "17.6 - std::array and enumerations",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_6_007",
+      "lesson": "17.6",
+      "type": "concept",
+      "tags": ["cpp", "arrays", "enumerations", "best-practices"],
+      "concept": "Using enumerations for type-safe array indexing",
+      "explanation": "Benefits of using enums for array indices:<ul><li>Type safety: prevents invalid indices</li><li>Self-documenting: arr[Color::red] is clearer than arr[0]</li><li>Maintainable: adding enum values automatically updates array size if using count/max pattern</li></ul>",
+      "examples": [
+        "enum class Color { red, green, blue, count };",
+        "std::array&lt;int, static_cast&lt;std::size_t&gt;(Color::count)&gt; arr;"
+      ],
+      "source": "17.6 - std::array and enumerations",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_6_008",
+      "lesson": "17.6",
+      "type": "cloze",
+      "tags": ["cpp", "enumerations", "count-pattern"],
+      "text": "Common naming for the count enumerator: {{c1::count}}, {{c2::max}}, or {{c3::num_items}}",
+      "source": "17.6 - std::array and enumerations",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_6_009",
+      "lesson": "17.6",
+      "type": "basic",
+      "tags": ["cpp", "arrays", "enumerations", "underlying-type"],
+      "front": "Why might you want to specify an underlying type for an enum used with arrays?",
+      "back": "To ensure the enum values fit within a specific integer type (like std::size_t or int), preventing potential size mismatches or overflow issues.",
+      "source": "17.6 - std::array and enumerations",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch17_6_010",
+      "lesson": "17.6",
+      "type": "cloze",
+      "tags": ["cpp", "enumerations", "underlying-type"],
+      "text": "To specify the underlying type of an enum: enum class Color {{c1::: std::size_t}} { red, green, blue };",
+      "source": "17.6 - std::array and enumerations",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_6_011",
+      "lesson": "17.6",
+      "type": "basic",
+      "tags": ["cpp", "arrays", "enumerations", "iteration"],
+      "front": "What's a safe way to iterate over array elements using an enum-based index?",
+      "back": "Use a regular integer loop from 0 to the count enumerator value, casting the loop variable to the enum type when needed. Alternatively, use range-based for loops when you don't need the index.",
+      "source": "17.6 - std::array and enumerations",
+      "difficulty": "hard"
+    }
+  ]
+}

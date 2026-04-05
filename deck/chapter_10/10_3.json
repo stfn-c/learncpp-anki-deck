@@ -1,0 +1,212 @@
+{
+  "chapter": "Chapter 10",
+  "chapter_title": "Type Conversion, Type Aliases, and Type Deduction",
+  "lesson": "10.3",
+  "lesson_title": "Numeric conversions",
+  "total_cards": 14,
+  "cards": [
+    {
+      "id": "ch10_3_001",
+      "lesson": "10.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "numeric-conversions",
+        "type-conversion"
+      ],
+      "front": "What is a numeric conversion?",
+      "back": "A type conversion between fundamental types that is NOT a numeric promotion. Unlike promotions, numeric conversions may or may not be safe and may result in data loss.",
+      "source": "10.3 - Numeric conversions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_3_002",
+      "lesson": "10.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "numeric-conversions",
+        "safety"
+      ],
+      "front": "What are the 5 basic types of numeric conversions?",
+      "back": "<ul><li>Converting an integral type to any other integral type (except integral promotions)</li><li>Converting a floating point type to any other floating point type (except floating-point promotions)</li><li>Converting a floating point type to any integral type</li><li>Converting an integral type to any floating point type</li><li>Converting an integral or floating point type to bool</li></ul>",
+      "source": "10.3 - Numeric conversions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_3_003",
+      "lesson": "10.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "narrowing-conversion",
+        "terminology"
+      ],
+      "text": "A {{c1::narrowing conversion}} is a numeric conversion that may result in data loss, such as converting a larger type to a smaller type or a floating point to an integral type.",
+      "source": "10.3 - Numeric conversions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_3_004",
+      "lesson": "10.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "narrowing-conversion",
+        "common-mistakes"
+      ],
+      "question": "What problem occurs in this code?",
+      "code": "int i{ 3.5 };",
+      "answer": "Compile error: Brace initialization disallows narrowing conversions.",
+      "explanation": "Converting double 3.5 to int would lose the fractional part (0.5). Brace initialization prevents this narrowing conversion to avoid data loss.",
+      "source": "10.3 - Numeric conversions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_3_005",
+      "lesson": "10.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "numeric-conversions",
+        "floating-point"
+      ],
+      "question": "What value does i get and why?",
+      "code": "int i = 3.5;",
+      "answer": "i gets value 3. The fractional part (0.5) is dropped when converting double to int using copy initialization.",
+      "explanation": "Copy initialization (using =) allows narrowing conversions. When converting floating point to integral, the fractional component is dropped (not rounded).",
+      "source": "10.3 - Numeric conversions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_3_006",
+      "lesson": "10.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "numeric-conversions",
+        "floating-point"
+      ],
+      "text": "When converting a floating point value to an integral type, the {{c1::fractional component}} is {{c2::dropped}} (not rounded).",
+      "source": "10.3 - Numeric conversions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_3_007",
+      "lesson": "10.3",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "numeric-conversions",
+        "gotchas"
+      ],
+      "concept": "Data loss from converting large integers to floating point",
+      "explanation": "Converting a large integer to a floating point type can lose precision because floating point types store a limited number of significant digits. Values that require more precision than the type can hold will be rounded.",
+      "examples": [
+        "float f = 123456789;  // float has ~7 significant digits",
+        "std::cout &lt;&lt; f;      // may print 123456792 (rounded)"
+      ],
+      "source": "10.3 - Numeric conversions",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch10_3_008",
+      "lesson": "10.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "numeric-conversions",
+        "signed-unsigned"
+      ],
+      "question": "What unexpected behavior occurs here?",
+      "code": "signed int s{ -1 };\nunsigned int u{ s };\nstd::cout &lt;&lt; u;",
+      "answer": "Prints a large positive number (like 4294967295 on 32-bit systems).",
+      "explanation": "Converting a negative signed int to unsigned int causes the value to wrap around. -1 becomes the maximum value representable by unsigned int due to modulo wrapping.",
+      "source": "10.3 - Numeric conversions",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch10_3_009",
+      "lesson": "10.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "numeric-conversions",
+        "bool"
+      ],
+      "front": "How do integral and floating point values convert to bool?",
+      "back": "Value 0 (or 0.0) converts to false. Any non-zero value converts to true.",
+      "source": "10.3 - Numeric conversions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_3_010",
+      "lesson": "10.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "numeric-conversions",
+        "bool"
+      ],
+      "text": "When converting a numeric value to bool, {{c1::0}} becomes false and {{c2::any non-zero value}} becomes true.",
+      "source": "10.3 - Numeric conversions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_3_011",
+      "lesson": "10.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "narrowing-conversion",
+        "best-practices"
+      ],
+      "front": "Why should you avoid narrowing conversions when possible?",
+      "back": "Narrowing conversions are unsafe because they can result in data loss:<ul><li>Loss of fractional values when converting float to int</li><li>Out of range values when converting larger to smaller types</li><li>Sign changes when converting signed to unsigned</li><li>Loss of precision when converting large int to float</li></ul>",
+      "source": "10.3 - Numeric conversions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_3_012",
+      "lesson": "10.3",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "numeric-conversions",
+        "overflow"
+      ],
+      "question": "What happens in this conversion?",
+      "code": "int i{ 30000 };\nchar c = i;",
+      "answer": "Undefined behavior or implementation-defined behavior. The value 30000 is outside the range of char (-128 to 127), resulting in overflow.",
+      "explanation": "Converting a value that doesn't fit in the target type's range produces undefined or implementation-defined behavior, often resulting in a wrapped or truncated value.",
+      "source": "10.3 - Numeric conversions",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch10_3_013",
+      "lesson": "10.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "numeric-conversions",
+        "floating-point"
+      ],
+      "text": "When converting floating point to integral type, the {{c1::fractional part is dropped}}, not rounded.",
+      "source": "10.3 - Numeric conversions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_3_014",
+      "lesson": "10.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "numeric-conversions",
+        "bool"
+      ],
+      "text": "When converting numeric types to bool, {{c1::0}} becomes {{c2::false}} and {{c3::non-zero}} values become {{c4::true}}.",
+      "source": "10.3 - Numeric conversions",
+      "difficulty": "easy"
+    }
+  ]
+}

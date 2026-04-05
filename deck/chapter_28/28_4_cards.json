@@ -1,0 +1,183 @@
+{
+  "chapter": "Chapter 28",
+  "chapter_title": "Input and Output (I/O)",
+  "lesson": "28.4",
+  "lesson_title": "Stream classes for strings",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch28_4_001",
+      "lesson": "28.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "stringstream",
+        "headers"
+      ],
+      "text": "To use string streams, you must {{c1::#include &lt;sstream&gt;}}.",
+      "source": "28.4 - Stream classes for strings",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch28_4_002",
+      "lesson": "28.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "stringstream",
+        "classes"
+      ],
+      "text": "The three string stream classes are {{c1::std::istringstream}} (input), {{c2::std::ostringstream}} (output), and {{c3::std::stringstream}} (bidirectional).",
+      "source": "28.4 - Stream classes for strings",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch28_4_003",
+      "lesson": "28.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "stringstream",
+        "fundamentals"
+      ],
+      "front": "What is the primary difference between stringstream and cin/cout?",
+      "back": "Stringstreams provide a buffer but are not connected to an I/O channel (keyboard, monitor). They work with strings in memory.",
+      "source": "28.4 - Stream classes for strings",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch28_4_004",
+      "lesson": "28.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "stringstream",
+        "syntax"
+      ],
+      "text": "Two ways to put data into a stringstream: {{c1::os &lt;&lt; \"text\"}} or {{c2::os.str(\"text\")}}.",
+      "source": "28.4 - Stream classes for strings",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch28_4_005",
+      "lesson": "28.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "stringstream",
+        "syntax"
+      ],
+      "text": "Two ways to get data from a stringstream: {{c1::os.str()}} returns the entire buffer, or {{c2::os &gt;&gt; var}} extracts values sequentially.",
+      "source": "28.4 - Stream classes for strings",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch28_4_006",
+      "lesson": "28.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "stringstream",
+        "conversion"
+      ],
+      "question": "What does this code output?",
+      "code": "std::stringstream ss;\nss &lt;&lt; 42 &lt;&lt; \" \" &lt;&lt; 3.14;\nstd::string result = ss.str();\nstd::cout &lt;&lt; result;",
+      "answer": "42 3.14",
+      "explanation": "Stringstreams can convert numbers to strings using the &lt;&lt; operator and str() to retrieve the result.",
+      "source": "28.4 - Stream classes for strings",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch28_4_007",
+      "lesson": "28.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "stringstream",
+        "conversion"
+      ],
+      "question": "What does this code do?",
+      "code": "std::stringstream ss(\"123 45.6\");\nint n;\ndouble d;\nss &gt;&gt; n &gt;&gt; d;",
+      "answer": "Converts string \"123 45.6\" to int n=123 and double d=45.6",
+      "explanation": "Stringstreams can parse strings into numbers using the &gt;&gt; operator.",
+      "source": "28.4 - Stream classes for strings",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch28_4_008",
+      "lesson": "28.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "stringstream",
+        "behavior"
+      ],
+      "front": "What is the difference between str() and operator&gt;&gt; when extracting from a stringstream?",
+      "back": "str() returns the entire buffer contents. operator&gt;&gt; extracts values sequentially, advancing the stream position each time.",
+      "source": "28.4 - Stream classes for strings",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch28_4_009",
+      "lesson": "28.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "stringstream",
+        "clear"
+      ],
+      "text": "To clear a stringstream buffer, use {{c1::ss.str(\"\")}} or {{c2::ss.str(std::string{})}}. Also call {{c3::ss.clear()}} to reset error flags.",
+      "source": "28.4 - Stream classes for strings",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch28_4_010",
+      "lesson": "28.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "stringstream",
+        "clear"
+      ],
+      "front": "Why should you call clear() after clearing a stringstream with str(\"\")?",
+      "back": "clear() resets any error flags that may have been set and returns the stream to the ok state, ensuring it can be reused properly.",
+      "source": "28.4 - Stream classes for strings",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch28_4_011",
+      "lesson": "28.4",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "stringstream",
+        "best-practices"
+      ],
+      "concept": "Common use cases for stringstreams",
+      "explanation": "Stringstreams are useful for:<ul><li>Converting between strings and numbers</li><li>Buffering output for display at a later time</li><li>Processing input line-by-line</li><li>Building formatted strings</li></ul>",
+      "examples": [
+        "std::stringstream ss; ss &lt;&lt; \"Score: \" &lt;&lt; score;",
+        "std::stringstream parser(line); parser &gt;&gt; val1 &gt;&gt; val2;",
+        "Safer than sprintf/sscanf for C++ code"
+      ],
+      "source": "28.4 - Stream classes for strings",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch28_4_012",
+      "lesson": "28.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "stringstream",
+        "gotchas"
+      ],
+      "question": "What's the output?",
+      "code": "std::stringstream ss;\nss &lt;&lt; \"12 34\";\nint a;\nss &gt;&gt; a;\nstd::cout &lt;&lt; ss.str();",
+      "answer": "12 34",
+      "explanation": "str() returns the entire buffer content, even if &gt;&gt; has already extracted part of it. The stream position and buffer contents are independent.",
+      "source": "28.4 - Stream classes for strings",
+      "difficulty": "hard"
+    }
+  ]
+}

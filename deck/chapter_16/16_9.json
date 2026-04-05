@@ -1,0 +1,129 @@
+{
+  "chapter": "Chapter 16",
+  "chapter_title": "Introduction to Containers and Arrays",
+  "lesson": "16.9",
+  "lesson_title": "Array indexing and length using enumerators",
+  "total_cards": 11,
+  "cards": [
+    {
+      "id": "ch16_9_001",
+      "lesson": "16.9",
+      "type": "basic",
+      "tags": ["cpp", "arrays", "enums"],
+      "front": "Why use enumerators for array indices instead of magic numbers?",
+      "back": "Enumerators provide meaningful names, improve code readability, prevent errors, and make it easier to maintain and modify code when adding/removing elements.",
+      "source": "16.9 - Array indexing and length using enumerators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_9_002",
+      "lesson": "16.9",
+      "type": "cloze",
+      "tags": ["cpp", "enums", "arrays"],
+      "text": "To use enumerators as array indices, define an {{c1::enum}} or {{c1::enum class}} with values for each index position.",
+      "source": "16.9 - Array indexing and length using enumerators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_9_003",
+      "lesson": "16.9",
+      "type": "code",
+      "tags": ["cpp", "enums", "arrays"],
+      "question": "How would you define an enum for array indices?",
+      "code": "std::vector&lt;int&gt; scores; // test scores for: math, english, science",
+      "answer": "enum class Subject { math, english, science, max_subjects };<br>std::vector&lt;int&gt; scores(static_cast&lt;int&gt;(Subject::max_subjects));",
+      "explanation": "Define enum with named indices and a max value to determine array size.",
+      "source": "16.9 - Array indexing and length using enumerators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_9_004",
+      "lesson": "16.9",
+      "type": "concept",
+      "tags": ["cpp", "enums", "best-practices"],
+      "concept": "Using a max_value enumerator to determine array length",
+      "explanation": "Add a max/count enumerator as the last value in your enum:<ul><li>Automatically represents the number of elements</li><li>Updates automatically when you add/remove enumerators</li><li>Prevents off-by-one errors</li><li>Makes code self-documenting</li></ul>",
+      "examples": [
+        "enum class Color { red, green, blue, max_colors };",
+        "std::vector&lt;int&gt; v(static_cast&lt;int&gt;(Color::max_colors));",
+        "// v has 3 elements (red=0, green=1, blue=2)"
+      ],
+      "source": "16.9 - Array indexing and length using enumerators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_9_005",
+      "lesson": "16.9",
+      "type": "cloze",
+      "tags": ["cpp", "enums", "arrays"],
+      "text": "To get the array size from an enum, add a final enumerator like {{c1::max_count}} or {{c1::max_items}}, which will have a value equal to the {{c2::number of other enumerators}}.",
+      "source": "16.9 - Array indexing and length using enumerators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_9_006",
+      "lesson": "16.9",
+      "type": "code",
+      "tags": ["cpp", "enums", "arrays"],
+      "question": "What does this code output?",
+      "code": "enum class Item { sword, shield, potion, max_items };\nstd::cout &lt;&lt; static_cast&lt;int&gt;(Item::max_items);",
+      "answer": "3",
+      "explanation": "max_items is the 4th enumerator, with value 3 (after sword=0, shield=1, potion=2).",
+      "source": "16.9 - Array indexing and length using enumerators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_9_007",
+      "lesson": "16.9",
+      "type": "basic",
+      "tags": ["cpp", "enums", "casting"],
+      "front": "Why do you need to cast enum class values when using them as array indices?",
+      "back": "enum class is strongly typed and doesn't implicitly convert to int. Use static_cast&lt;int&gt;(enum_value) to convert for array indexing.",
+      "source": "16.9 - Array indexing and length using enumerators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_9_008",
+      "lesson": "16.9",
+      "type": "cloze",
+      "tags": ["cpp", "enums", "syntax"],
+      "text": "To access an array using an enum class: vec[{{c1::static_cast&lt;int&gt;(EnumClass::value)}}]",
+      "source": "16.9 - Array indexing and length using enumerators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_9_009",
+      "lesson": "16.9",
+      "type": "code",
+      "tags": ["cpp", "enums", "arrays"],
+      "question": "Write code to access element using enum",
+      "code": "enum class Day { mon, tue, wed, max_days };\nstd::vector&lt;int&gt; hours(static_cast&lt;int&gt;(Day::max_days));\n// How to access tuesday's hours?",
+      "answer": "hours[static_cast&lt;int&gt;(Day::tue)]",
+      "explanation": "Cast the enum value to int to use as array index.",
+      "source": "16.9 - Array indexing and length using enumerators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch16_9_010",
+      "lesson": "16.9",
+      "type": "basic",
+      "tags": ["cpp", "enums", "best-practices"],
+      "front": "What advantage does using enums for indices provide when refactoring?",
+      "back": "If you add/remove items from the enum, the max_value enumerator automatically updates, and all code using it adjusts automatically. No need to hunt for magic numbers throughout code.",
+      "source": "16.9 - Array indexing and length using enumerators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch16_9_011",
+      "lesson": "16.9",
+      "type": "code",
+      "tags": ["cpp", "enums", "common-mistakes"],
+      "question": "What's wrong with this code?",
+      "code": "enum class Color { red, green, blue };\nstd::vector&lt;int&gt; v(Color::blue);",
+      "answer": "Cannot implicitly convert enum class to int. Need: std::vector&lt;int&gt; v(static_cast&lt;int&gt;(Color::blue));",
+      "explanation": "enum class requires explicit casting. Also, blue=2, so this creates a vector of size 2, not 3. Should use max_colors.",
+      "source": "16.9 - Array indexing and length using enumerators",
+      "difficulty": "hard"
+    }
+  ]
+}

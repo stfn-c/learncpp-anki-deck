@@ -1,0 +1,172 @@
+{
+  "chapter": "Chapter 11",
+  "chapter_title": "Function Overloading and Function Templates",
+  "lesson": "11.8",
+  "lesson_title": "Function templates with multiple template types",
+  "total_cards": 11,
+  "cards": [
+    {
+      "id": "ch11_8_001",
+      "lesson": "11.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "syntax"
+      ],
+      "text": "To declare a template with two type parameters: {{c1::template &lt;typename T, typename U&gt;}}",
+      "source": "11.8 - Function templates with multiple template types",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_8_002",
+      "lesson": "11.8",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "question": "What does this template do?",
+      "code": "template &lt;typename T, typename U&gt;\nT max(T x, U y) {\n    return (x &gt; y) ? x : y;\n}",
+      "answer": "It returns the maximum of two values that can be different types, with the return type matching the first parameter's type T.",
+      "explanation": "This template allows comparing values of different types (T and U), but always returns type T.",
+      "source": "11.8 - Function templates with multiple template types",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_8_003",
+      "lesson": "11.8",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "question": "What type is returned?",
+      "code": "template &lt;typename T, typename U&gt;\nT max(T x, U y) { return (x &gt; y) ? x : y; }\n\nmax(3, 7.5);",
+      "answer": "int (the type of the first argument)",
+      "explanation": "The return type is T, which is deduced to be int from the first argument. The double value 7.5 is converted to int for comparison.",
+      "source": "11.8 - Function templates with multiple template types",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_8_004",
+      "lesson": "11.8",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "front": "Can a function template have multiple template type parameters?",
+      "back": "Yes. You can have as many template type parameters as needed, separated by commas in the template parameter list.",
+      "source": "11.8 - Function templates with multiple template types",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_8_005",
+      "lesson": "11.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "syntax"
+      ],
+      "text": "Template with three type parameters: {{c1::template &lt;typename T, typename U, typename V&gt;}}",
+      "source": "11.8 - Function templates with multiple template types",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_8_006",
+      "lesson": "11.8",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "question": "How would you explicitly specify both template arguments?",
+      "code": "template &lt;typename T, typename U&gt;\nvoid print(T x, U y) { std::cout &lt;&lt; x &lt;&lt; y; }\n\n// Call with explicit types:",
+      "answer": "print&lt;int, double&gt;(5, 3.14);",
+      "explanation": "Specify both template arguments in order within angle brackets.",
+      "source": "11.8 - Function templates with multiple template types",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_8_007",
+      "lesson": "11.8",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "front": "What happens if you only specify the first template argument explicitly?",
+      "back": "The first template argument is used as specified, and the remaining template arguments are deduced from the function call arguments (if possible).",
+      "source": "11.8 - Function templates with multiple template types",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_8_008",
+      "lesson": "11.8",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "question": "What's the deduced type for each parameter?",
+      "code": "template &lt;typename T, typename U&gt;\nvoid func(T x, U y);\n\nfunc(5, 3.14);",
+      "answer": "T is int, U is double",
+      "explanation": "Template argument deduction determines T from the first argument (5, an int) and U from the second argument (3.14, a double).",
+      "source": "11.8 - Function templates with multiple template types",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_8_009",
+      "lesson": "11.8",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "templates",
+        "best-practices"
+      ],
+      "concept": "When to use multiple template type parameters",
+      "explanation": "Use multiple template type parameters when your function needs to work with different types for different parameters, such as comparison functions with mixed types or functions that convert between types.",
+      "examples": [
+        "// Converting between types",
+        "template &lt;typename T, typename U&gt;",
+        "T convert(U value);",
+        "",
+        "// Mixed-type operations",
+        "template &lt;typename T, typename U&gt;",
+        "bool less(T x, U y) { return x &lt; y; }"
+      ],
+      "source": "11.8 - Function templates with multiple template types",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_8_010",
+      "lesson": "11.8",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "text": "When you have multiple template parameters, the compiler deduces each one {{c1::independently}} from the corresponding function arguments.",
+      "source": "11.8 - Function templates with multiple template types",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_8_011",
+      "lesson": "11.8",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "templates",
+        "common-mistakes"
+      ],
+      "question": "What's the problem with this template for a max function?",
+      "code": "template &lt;typename T, typename U&gt;\nT max(T x, U y) {\n    return (x &gt; y) ? x : y;\n}",
+      "answer": "The return type is always T, which may cause precision loss if y (type U) is the larger value and has more precision than T.",
+      "explanation": "If T is int and U is double, and y is larger, the double value is converted to int, losing precision. A better approach might use auto or a common type.",
+      "source": "11.8 - Function templates with multiple template types",
+      "difficulty": "hard"
+    }
+  ]
+}

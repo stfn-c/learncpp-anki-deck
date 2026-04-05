@@ -1,0 +1,226 @@
+{
+  "chapter": "Chapter 10",
+  "chapter_title": "Type Conversion, Type Aliases, and Type Deduction",
+  "lesson": "10.9",
+  "lesson_title": "Type deduction for functions",
+  "total_cards": 15,
+  "cards": [
+    {
+      "id": "ch10_9_001",
+      "lesson": "10.9",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "auto",
+        "function-return"
+      ],
+      "front": "Can you use auto as a function return type?",
+      "back": "Yes. The compiler deduces the return type from the return statements in the function body.<br>auto add(int x, int y) { return x + y; } // returns int",
+      "source": "10.9 - Type deduction for functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_9_002",
+      "lesson": "10.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "auto",
+        "function-return"
+      ],
+      "text": "When using auto as a function return type, the compiler deduces the type from the {{c1::return statements}} in the function body.",
+      "source": "10.9 - Type deduction for functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_9_003",
+      "lesson": "10.9",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "auto",
+        "function-return"
+      ],
+      "question": "What return type is deduced?",
+      "code": "auto getValue()\n{\n    return 5.0;\n}",
+      "answer": "double",
+      "explanation": "The return statement returns 5.0 (a double literal), so the compiler deduces the return type as double.",
+      "source": "10.9 - Type deduction for functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_9_004",
+      "lesson": "10.9",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "auto",
+        "function-return",
+        "common-mistakes"
+      ],
+      "front": "What restriction applies when using auto return type with multiple return statements?",
+      "back": "All return statements must deduce to the SAME type. If different return statements would deduce different types, the code won't compile.",
+      "source": "10.9 - Type deduction for functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_9_005",
+      "lesson": "10.9",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "auto",
+        "function-return",
+        "common-mistakes"
+      ],
+      "question": "Why does this fail to compile?",
+      "code": "auto getValue(bool flag)\n{\n    if (flag)\n        return 5;      // int\n    return 5.0;        // double\n}",
+      "answer": "Compile error: Different return statements deduce different types (int vs double).",
+      "explanation": "All return statements must deduce to the same type when using auto. Mixing int and double return values causes a compilation error.",
+      "source": "10.9 - Type deduction for functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_9_006",
+      "lesson": "10.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "auto",
+        "function-return"
+      ],
+      "text": "When using auto return type with multiple return statements, all returns must deduce to the {{c1::same type}}.",
+      "source": "10.9 - Type deduction for functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_9_007",
+      "lesson": "10.9",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "auto",
+        "trailing-return-type"
+      ],
+      "front": "What is a trailing return type and what is its syntax?",
+      "back": "A way to specify the return type AFTER the parameter list using -&gt;:<br>auto add(int x, int y) -&gt; int { return x + y; }<br>The auto is just a placeholder; the actual type comes after -&gt;.",
+      "source": "10.9 - Type deduction for functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_9_008",
+      "lesson": "10.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "trailing-return-type",
+        "syntax"
+      ],
+      "text": "Trailing return type syntax: auto functionName(params) {{c1::-&gt;}} ReturnType { }",
+      "source": "10.9 - Type deduction for functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_9_009",
+      "lesson": "10.9",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "auto",
+        "best-practices"
+      ],
+      "front": "Should you use auto return types for normal functions in everyday code?",
+      "back": "No. Explicit return types are preferred for normal functions because:<ul><li>Better documentation and readability</li><li>Clearer intent</li><li>Easier for others to understand the API</li><li>Better error messages</li></ul>auto return types are mainly useful for advanced cases like templates.",
+      "source": "10.9 - Type deduction for functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_9_010",
+      "lesson": "10.9",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "auto",
+        "function-parameters"
+      ],
+      "front": "Can you use auto for function parameters in C++20?",
+      "back": "Yes, but it creates a function template, not a normal function. Each call with different argument types generates a different function instantiation. This is abbreviated function template syntax.",
+      "source": "10.9 - Type deduction for functions",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch10_9_011",
+      "lesson": "10.9",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "auto",
+        "function-parameters"
+      ],
+      "question": "What does this function do in C++20?",
+      "code": "auto add(auto x, auto y)\n{\n    return x + y;\n}",
+      "answer": "Creates a function template where x and y can be any types that support operator+. Each call with different types generates a new function.",
+      "explanation": "This is abbreviated function template syntax (C++20). auto parameters make the function a template, allowing it to work with any types.",
+      "source": "10.9 - Type deduction for functions",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch10_9_012",
+      "lesson": "10.9",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "auto",
+        "best-practices"
+      ],
+      "concept": "When auto return types are useful",
+      "explanation": "auto return types are most useful in:<ul><li>Lambda expressions (default behavior)</li><li>Function templates where return type depends on template parameters</li><li>Advanced metaprogramming</li><li>Forwarding functions</li></ul>For normal functions, explicit return types are clearer and preferred.",
+      "examples": [
+        "// Template where return type depends on operation",
+        "template&lt;typename T, typename U&gt;",
+        "auto multiply(T x, U y) { return x * y; }"
+      ],
+      "source": "10.9 - Type deduction for functions",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_9_013",
+      "lesson": "10.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "auto",
+        "function-return"
+      ],
+      "text": "When using auto as a function return type with multiple return statements, all returns must deduce to the {{c1::same type}}.",
+      "source": "10.9 - Type deduction for functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_9_014",
+      "lesson": "10.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "trailing-return-type",
+        "syntax"
+      ],
+      "text": "Trailing return type syntax uses auto as a placeholder: auto func(params) {{c1::-&gt;}} ReturnType { }",
+      "source": "10.9 - Type deduction for functions",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_9_015",
+      "lesson": "10.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "auto",
+        "function-parameters"
+      ],
+      "text": "In C++20, using {{c1::auto}} for function parameters creates a {{c2::function template}}, not a normal function.",
+      "source": "10.9 - Type deduction for functions",
+      "difficulty": "medium"
+    }
+  ]
+}

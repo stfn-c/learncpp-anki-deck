@@ -1,0 +1,211 @@
+{
+  "chapter": "Chapter 10",
+  "chapter_title": "Type Conversion, Type Aliases, and Type Deduction",
+  "lesson": "10.7",
+  "lesson_title": "Typedefs and type aliases",
+  "total_cards": 14,
+  "cards": [
+    {
+      "id": "ch10_7_001",
+      "lesson": "10.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "type-aliases",
+        "fundamentals"
+      ],
+      "front": "What is a type alias?",
+      "back": "An identifier that acts as an alternative name for an existing type. It doesn't create a new distinct type, just a synonym for an existing one.",
+      "source": "10.7 - Typedefs and type aliases",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_7_002",
+      "lesson": "10.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "type-aliases",
+        "syntax"
+      ],
+      "text": "To create a type alias in modern C++, use: {{c1::using}} AliasName {{c2::=}} ExistingType;",
+      "source": "10.7 - Typedefs and type aliases",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_7_003",
+      "lesson": "10.7",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "type-aliases",
+        "syntax"
+      ],
+      "question": "How do you create a type alias named Distance for type double?",
+      "code": "",
+      "answer": "using Distance = double;",
+      "explanation": "The using keyword creates a type alias. Now Distance can be used anywhere double can be used.",
+      "source": "10.7 - Typedefs and type aliases",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_7_004",
+      "lesson": "10.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "typedef",
+        "syntax"
+      ],
+      "text": "The older C-style way to create type aliases uses the {{c1::typedef}} keyword: typedef double Distance;",
+      "source": "10.7 - Typedefs and type aliases",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_7_005",
+      "lesson": "10.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "type-aliases",
+        "best-practices"
+      ],
+      "front": "Why prefer using over typedef for type aliases?",
+      "back": "using is preferred because:<ul><li>More readable and consistent syntax</li><li>Works better with templates (can be templated)</li><li>Left-to-right reading order (name = type)</li><li>Recommended by modern C++ style guides</li></ul>",
+      "source": "10.7 - Typedefs and type aliases",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_7_006",
+      "lesson": "10.7",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "type-aliases",
+        "use-cases"
+      ],
+      "concept": "Benefits of using type aliases",
+      "explanation": "Type aliases improve code in several ways:<ul><li>Make complex types easier to read and understand</li><li>Document the purpose/meaning of a type</li><li>Reduce typing for long type names</li><li>Allow easy changes to underlying types</li><li>Hide platform-specific implementation details</li></ul>",
+      "examples": [
+        "using StudentID = int;  // documents purpose",
+        "using Vec2D = std::pair&lt;double, double&gt;;  // simplifies complex type",
+        "using Distance = double;  // can change to float easily"
+      ],
+      "source": "10.7 - Typedefs and type aliases",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_7_007",
+      "lesson": "10.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "type-aliases",
+        "scope"
+      ],
+      "front": "What is the scope of a type alias?",
+      "back": "Type aliases follow normal identifier scoping rules:<ul><li>Block scope if defined in a function/block</li><li>Global scope if defined at file level</li><li>Can be defined in namespaces or classes</li></ul>They're only visible within their scope.",
+      "source": "10.7 - Typedefs and type aliases",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_7_008",
+      "lesson": "10.7",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "type-aliases",
+        "semantics"
+      ],
+      "question": "Will this code compile?",
+      "code": "using Miles = double;\nusing Kilometers = double;\n\nMiles m{ 5.0 };\nKilometers k = m;  // assign Miles to Kilometers",
+      "answer": "Yes, it compiles without error.",
+      "explanation": "Type aliases don't create distinct types - both Miles and Kilometers are just aliases for double. They're fully interchangeable, which can be both convenient and dangerous.",
+      "source": "10.7 - Typedefs and type aliases",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_7_009",
+      "lesson": "10.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "type-aliases",
+        "semantics"
+      ],
+      "text": "Type aliases are {{c1::not}} distinct types - they're just {{c2::synonyms}} for existing types and are fully {{c3::interchangeable}}.",
+      "source": "10.7 - Typedefs and type aliases",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_7_010",
+      "lesson": "10.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "type-aliases",
+        "naming"
+      ],
+      "front": "What are the common naming conventions for type aliases?",
+      "back": "Type aliases typically use:<ul><li>PascalCase (most common): StudentID, Distance</li><li>Same naming as types they represent</li><li>Suffix '_t' for some standard library types: size_t</li></ul>Choose a convention and be consistent.",
+      "source": "10.7 - Typedefs and type aliases",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_7_011",
+      "lesson": "10.7",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "type-aliases",
+        "best-practices"
+      ],
+      "question": "What's wrong with this use of type aliases?",
+      "code": "using Length = int;\nusing Width = int;\n\nLength l{ 10 };\nWidth w{ 5 };\nint area = l * w;  // mixing Length and Width",
+      "answer": "Nothing technically wrong (compiles fine), but it's semantically unclear - mixing Length and Width types without clear intent.",
+      "explanation": "Since type aliases don't create distinct types, the compiler won't catch semantic errors like mixing incompatible units. Type aliases provide documentation but not type safety.",
+      "source": "10.7 - Typedefs and type aliases",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch10_7_012",
+      "lesson": "10.7",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "type-aliases",
+        "portability"
+      ],
+      "front": "How do type aliases help with platform-specific code?",
+      "back": "Type aliases can hide platform-specific implementation details. For example, std::size_t is a type alias for an unsigned integral type whose actual type (unsigned int, unsigned long, etc.) varies by platform.",
+      "source": "10.7 - Typedefs and type aliases",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch10_7_013",
+      "lesson": "10.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "type-aliases",
+        "syntax"
+      ],
+      "text": "Modern C++ uses {{c1::using}} to create type aliases: using Distance {{c2::=}} double;",
+      "source": "10.7 - Typedefs and type aliases",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch10_7_014",
+      "lesson": "10.7",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "type-aliases",
+        "semantics"
+      ],
+      "text": "Type aliases are {{c1::not}} distinct types - they're just {{c2::alternative names}} for existing types.",
+      "source": "10.7 - Typedefs and type aliases",
+      "difficulty": "easy"
+    }
+  ]
+}

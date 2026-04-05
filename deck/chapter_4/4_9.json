@@ -1,0 +1,169 @@
+{
+  "chapter": "Chapter 4",
+  "chapter_title": "Fundamental Data Types",
+  "lesson": "4.9",
+  "lesson_title": "Boolean values",
+  "total_cards": 11,
+  "cards": [
+    {
+      "id": "ch4_9_001",
+      "lesson": "4.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "bool",
+        "types"
+      ],
+      "text": "A {{c1::Boolean}} variable can only hold one of two values: {{c2::true}} or {{c3::false}}.",
+      "source": "4.9 - Boolean values",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_9_002",
+      "lesson": "4.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "bool",
+        "syntax"
+      ],
+      "text": "Boolean variables are declared using the {{c1::bool}} keyword.",
+      "source": "4.9 - Boolean values",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_9_003",
+      "lesson": "4.9",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "bool",
+        "syntax"
+      ],
+      "question": "How do you declare a boolean variable?",
+      "code": "bool isHappy{ true };\nbool isSad{ false };",
+      "answer": "Use bool keyword with true or false",
+      "explanation": "Boolean variables use the bool type and can be initialized to true or false.",
+      "source": "4.9 - Boolean values",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_9_004",
+      "lesson": "4.9",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "bool",
+        "output"
+      ],
+      "front": "What does std::cout print for boolean values by default?",
+      "back": "0 for false, 1 for true (as integers)",
+      "source": "4.9 - Boolean values",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_9_005",
+      "lesson": "4.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "bool",
+        "output",
+        "syntax"
+      ],
+      "text": "To print boolean values as 'true' or 'false' instead of 1 or 0, use {{c1::std::boolalpha}}.",
+      "source": "4.9 - Boolean values",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_9_006",
+      "lesson": "4.9",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "bool",
+        "output"
+      ],
+      "question": "What does this print?",
+      "code": "bool b{ true };\nstd::cout &lt;&lt; std::boolalpha &lt;&lt; b;",
+      "answer": "true",
+      "explanation": "std::boolalpha manipulator makes cout print 'true' instead of '1'.",
+      "source": "4.9 - Boolean values",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_9_007",
+      "lesson": "4.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "bool",
+        "conversion"
+      ],
+      "text": "When converted to an integer, true becomes {{c1::1}} and false becomes {{c2::0}}.",
+      "source": "4.9 - Boolean values",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch4_9_008",
+      "lesson": "4.9",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "bool",
+        "conversion"
+      ],
+      "question": "What value does b hold?",
+      "code": "bool b{ 42 };",
+      "answer": "true",
+      "explanation": "Any non-zero integer converts to true when assigned to bool. Only 0 converts to false.",
+      "source": "4.9 - Boolean values",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch4_9_009",
+      "lesson": "4.9",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "bool",
+        "memory"
+      ],
+      "front": "How much memory does a bool typically use?",
+      "back": "1 byte (8 bits), even though it only needs 1 bit, due to memory addressing constraints.",
+      "source": "4.9 - Boolean values",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch4_9_010",
+      "lesson": "4.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "bool",
+        "input"
+      ],
+      "text": "When inputting boolean values with std::cin, use {{c1::std::boolalpha}} to allow 'true' and 'false' text input instead of just 0 and 1.",
+      "source": "4.9 - Boolean values",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch4_9_011",
+      "lesson": "4.9",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "bool",
+        "best-practices"
+      ],
+      "concept": "When to use bool variables",
+      "explanation": "Use bool for:<ul><li>Flags and state (is valid, is open, has data)</li><li>Function return values indicating success/failure</li><li>Conditional logic</li></ul>Makes code self-documenting compared to using integers.",
+      "examples": [
+        "bool isValid{ true };    // good: clear intent",
+        "int isValid{ 1 };        // avoid: unclear"
+      ],
+      "source": "4.9 - Boolean values",
+      "difficulty": "easy"
+    }
+  ]
+}

@@ -1,0 +1,182 @@
+{
+  "chapter": "Chapter 3",
+  "chapter_title": "Debugging C++ Programs",
+  "lesson": "3.3",
+  "lesson_title": "A strategy for debugging",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch3_3_001",
+      "lesson": "3.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "debugging",
+        "techniques"
+      ],
+      "front": "What are the five main debugging techniques?",
+      "back": "<ul><li>Code inspection</li><li>Running the program</li><li>Print statements</li><li>Logging</li><li>Using a debugger</li></ul>",
+      "source": "3.3 - A strategy for debugging",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_3_002",
+      "lesson": "3.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "debugging",
+        "inspection"
+      ],
+      "text": "{{c1::Code inspection}} involves examining the code directly to find errors, and works best for {{c2::small programs}} or when you have a good idea where the problem is.",
+      "source": "3.3 - A strategy for debugging",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_3_003",
+      "lesson": "3.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "debugging",
+        "testing"
+      ],
+      "front": "Why is running the program an important debugging technique?",
+      "back": "It helps you observe the program's behavior, see what inputs cause problems, and reproduce the error consistently.",
+      "source": "3.3 - A strategy for debugging",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_3_004",
+      "lesson": "3.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "debugging",
+        "print"
+      ],
+      "text": "Using {{c1::print statements}} (like std::cout) to output variable values at different points helps you track program {{c2::state}} and find where values become incorrect.",
+      "source": "3.3 - A strategy for debugging",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_3_005",
+      "lesson": "3.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "debugging",
+        "best-practices"
+      ],
+      "front": "What is the advantage of logging over print statements?",
+      "back": "Logging can be turned on/off conditionally, provides timestamps, severity levels, and can output to files rather than cluttering console output.",
+      "source": "3.3 - A strategy for debugging",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_3_006",
+      "lesson": "3.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "debugging",
+        "debugger"
+      ],
+      "front": "What is the main advantage of using an integrated debugger over print statements?",
+      "back": "A debugger lets you pause execution, inspect variables, step through code line-by-line, and examine the call stack without modifying source code.",
+      "source": "3.3 - A strategy for debugging",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_3_007",
+      "lesson": "3.3",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "debugging",
+        "strategy"
+      ],
+      "concept": "When to use different debugging techniques",
+      "explanation": "<ul><li>Code inspection: Small programs, obvious errors</li><li>Print statements: Quick checks, simple issues</li><li>Logging: Complex programs needing persistent debugging info</li><li>Debugger: Complex bugs, need to inspect program state in detail</li></ul>",
+      "examples": [
+        "// Simple syntax error \u2192 code inspection",
+        "// Wrong calculation \u2192 print statements",
+        "// Crash in large program \u2192 debugger"
+      ],
+      "source": "3.3 - A strategy for debugging",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_3_008",
+      "lesson": "3.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "debugging",
+        "strategy"
+      ],
+      "front": "What should you do if a debugging technique isn't working?",
+      "back": "Try a different technique. If one approach isn't helping you find the error, switch to another debugging method.",
+      "source": "3.3 - A strategy for debugging",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_3_009",
+      "lesson": "3.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "debugging",
+        "reproduction"
+      ],
+      "text": "Being able to {{c1::reproduce}} a bug consistently is important because it allows you to test whether your {{c2::fix}} actually works.",
+      "source": "3.3 - A strategy for debugging",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_3_010",
+      "lesson": "3.3",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "debugging",
+        "gotchas"
+      ],
+      "front": "Why might print statements be problematic for debugging?",
+      "back": "They clutter your code, must be removed later, can change program behavior (especially timing), and are hard to turn off/on conditionally.",
+      "source": "3.3 - A strategy for debugging",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_3_011",
+      "lesson": "3.3",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "debugging",
+        "process"
+      ],
+      "text": "The vast majority of debugging time is spent {{c1::finding where the error is}}, not fixing it.",
+      "source": "3.3 - A strategy for debugging",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_3_012",
+      "lesson": "3.3",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "debugging",
+        "best-practices"
+      ],
+      "concept": "Best practices for finding bugs faster",
+      "explanation": "<ul><li>Write code incrementally and test often</li><li>Reproduce the bug consistently</li><li>Use the appropriate debugging technique</li><li>Narrow down the problem location systematically</li><li>Understand the cause before attempting a fix</li></ul>",
+      "examples": [
+        "// Don't: Write 500 lines, then debug",
+        "// Do: Write 20 lines, test, repeat"
+      ],
+      "source": "3.3 - A strategy for debugging",
+      "difficulty": "medium"
+    }
+  ]
+}

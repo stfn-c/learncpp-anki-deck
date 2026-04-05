@@ -1,0 +1,197 @@
+{
+  "chapter": "Chapter O",
+  "chapter_title": "Bit Manipulation",
+  "lesson": "O.1",
+  "lesson_title": "Bit flags and bit manipulation via std::bitset",
+  "total_cards": 13,
+  "cards": [
+    {
+      "id": "cho_1_001",
+      "lesson": "O.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "bitset",
+        "syntax"
+      ],
+      "text": "To declare an 8-bit bitset, write: {{c1::std::bitset&lt;8&gt; mybitset{};}}",
+      "source": "O.1 - Bit flags and bit manipulation via std::bitset",
+      "difficulty": "easy"
+    },
+    {
+      "id": "cho_1_002",
+      "lesson": "O.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "bitset",
+        "memory"
+      ],
+      "front": "Why might you use bit flags instead of separate bool variables?",
+      "back": "To pack 8 Boolean values into a single byte for storage efficiency. A bool uses 1 byte (8 bits) but only needs 1 bit, wasting 7 bits.",
+      "source": "O.1 - Bit flags and bit manipulation via std::bitset",
+      "difficulty": "easy"
+    },
+    {
+      "id": "cho_1_003",
+      "lesson": "O.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "bitset",
+        "methods"
+      ],
+      "text": "std::bitset provides these key methods: {{c1::test()}} to query a bit, {{c2::set()}} to turn a bit on, {{c3::reset()}} to turn a bit off, and {{c4::flip()}} to toggle a bit.",
+      "source": "O.1 - Bit flags and bit manipulation via std::bitset",
+      "difficulty": "medium"
+    },
+    {
+      "id": "cho_1_004",
+      "lesson": "O.1",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "bitset",
+        "operations"
+      ],
+      "question": "What is the final value of bits in binary?",
+      "code": "std::bitset&lt;8&gt; bits{0b0000'0101};\nbits.set(3);\nbits.flip(4);",
+      "answer": "0001 1101",
+      "explanation": "Start: 0000 0101<br>After set(3): 0000 1101 (bit 3 turned on)<br>After flip(4): 0001 1101 (bit 4 toggled from 0 to 1)",
+      "source": "O.1 - Bit flags and bit manipulation via std::bitset",
+      "difficulty": "medium"
+    },
+    {
+      "id": "cho_1_005",
+      "lesson": "O.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "bitset",
+        "fundamentals"
+      ],
+      "front": "In the bit sequence 0000 0101, which bits are set (have value 1)?",
+      "back": "Bits at position 0 and position 2.<br>(Bits are numbered right to left starting from 0)",
+      "source": "O.1 - Bit flags and bit manipulation via std::bitset",
+      "difficulty": "easy"
+    },
+    {
+      "id": "cho_1_006",
+      "lesson": "O.1",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "bitset",
+        "terminology"
+      ],
+      "front": "bit flag",
+      "back": "An individual bit in an object used as a Boolean value (true/false, on/off, set/not set)",
+      "source": "O.1 - Bit flags and bit manipulation via std::bitset",
+      "difficulty": "easy"
+    },
+    {
+      "id": "cho_1_007",
+      "lesson": "O.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "bitset",
+        "methods"
+      ],
+      "text": "To check if bit 3 is set in a bitset, use: {{c1::bits.test(3)}} which returns {{c2::true}} if the bit is 1, {{c2::false}} if 0.",
+      "source": "O.1 - Bit flags and bit manipulation via std::bitset",
+      "difficulty": "easy"
+    },
+    {
+      "id": "cho_1_008",
+      "lesson": "O.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "bitset",
+        "best-practices"
+      ],
+      "front": "What type of integers should you use for bit manipulation?",
+      "back": "Unsigned integers or std::bitset.<br>Bit manipulation is one of the few cases where unsigned integers are unambiguously preferred.",
+      "source": "O.1 - Bit flags and bit manipulation via std::bitset",
+      "difficulty": "easy"
+    },
+    {
+      "id": "cho_1_009",
+      "lesson": "O.1",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "bitset",
+        "operations"
+      ],
+      "question": "What does this code output?",
+      "code": "std::bitset&lt;8&gt; bits{0b1111'1111};\nbits.reset(3);\nstd::cout &lt;&lt; bits.test(3);",
+      "answer": "0 (or false)",
+      "explanation": "reset(3) turns bit 3 off (sets it to 0), so test(3) returns false/0.",
+      "source": "O.1 - Bit flags and bit manipulation via std::bitset",
+      "difficulty": "easy"
+    },
+    {
+      "id": "cho_1_010",
+      "lesson": "O.1",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "bitset",
+        "applications"
+      ],
+      "concept": "When is bit manipulation commonly used",
+      "explanation": "Bit manipulation is frequently used in:<ul><li>Graphics programming</li><li>Encryption</li><li>Compression</li><li>Performance optimization</li><li>Storage-intensive applications</li></ul>It's less common in general programming.",
+      "examples": [
+        "std::bitset&lt;8&gt; flags{};  // 8 boolean flags in 1 byte",
+        "flags.set(2);  // Enable flag 2",
+        "if (flags.test(2)) { ... }  // Check if flag 2 is set"
+      ],
+      "source": "O.1 - Bit flags and bit manipulation via std::bitset",
+      "difficulty": "easy"
+    },
+    {
+      "id": "cho_1_011",
+      "lesson": "O.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "bitset",
+        "terminology"
+      ],
+      "text": "When a bit changes from 0 to 1 or from 1 to 0, we say it has been {{c1::flipped}} or {{c1::inverted}}.",
+      "source": "O.1 - Bit flags and bit manipulation via std::bitset",
+      "difficulty": "easy"
+    },
+    {
+      "id": "cho_1_012",
+      "lesson": "O.1",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "bitset",
+        "operations"
+      ],
+      "question": "What is the final binary value?",
+      "code": "std::bitset&lt;8&gt; bits{0b0000'0000};\nbits.set(0);\nbits.set(2);\nbits.flip(1);",
+      "answer": "0000 0111",
+      "explanation": "Start: 0000 0000<br>set(0): 0000 0001<br>set(2): 0000 0101<br>flip(1): 0000 0111",
+      "source": "O.1 - Bit flags and bit manipulation via std::bitset",
+      "difficulty": "medium"
+    },
+    {
+      "id": "cho_1_013",
+      "lesson": "O.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "bitset",
+        "terminology"
+      ],
+      "text": "A bit with value {{c1::0}} is said to be {{c2::false}}, {{c2::off}}, or {{c2::not set}}. A bit with value {{c3::1}} is said to be {{c4::true}}, {{c4::on}}, or {{c4::set}}.",
+      "source": "O.1 - Bit flags and bit manipulation via std::bitset",
+      "difficulty": "easy"
+    }
+  ]
+}

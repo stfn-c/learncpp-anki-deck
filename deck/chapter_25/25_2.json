@@ -1,0 +1,173 @@
+{
+  "chapter": "Chapter 25",
+  "chapter_title": "Virtual Functions",
+  "lesson": "25.2",
+  "lesson_title": "Virtual functions and polymorphism",
+  "total_cards": 15,
+  "cards": [
+    {
+      "id": "ch25_2_001",
+      "lesson": "25.2",
+      "type": "cloze",
+      "tags": ["cpp", "virtual-functions", "syntax"],
+      "text": "To make a function virtual, place the {{c1::virtual}} keyword before the function declaration.",
+      "source": "25.2 - Virtual functions and polymorphism",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_2_002",
+      "lesson": "25.2",
+      "type": "basic",
+      "tags": ["cpp", "virtual-functions", "polymorphism"],
+      "front": "What is a virtual function?",
+      "back": "A special type of member function that, when called, resolves to the most-derived version of the function for the actual type of the object being referenced or pointed to.",
+      "source": "25.2 - Virtual functions and polymorphism",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_2_003",
+      "lesson": "25.2",
+      "type": "code",
+      "tags": ["cpp", "virtual-functions", "polymorphism"],
+      "question": "What does this code output?",
+      "code": "class Base {\npublic:\n    virtual std::string_view getName() const { return \"Base\"; }\n};\n\nclass Derived: public Base {\npublic:\n    virtual std::string_view getName() const { return \"Derived\"; }\n};\n\nDerived derived{};\nBase&amp; rBase{ derived };\nstd::cout &lt;&lt; rBase.getName();",
+      "answer": "Derived",
+      "explanation": "Because Base::getName() is virtual, calling it through a Base reference resolves to the most-derived version (Derived::getName()).",
+      "source": "25.2 - Virtual functions and polymorphism",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_2_004",
+      "lesson": "25.2",
+      "type": "cloze",
+      "tags": ["cpp", "virtual-functions", "terminology"],
+      "text": "A derived function that has the same signature and return type as a base virtual function is called an {{c1::override}}.",
+      "source": "25.2 - Virtual functions and polymorphism",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_2_005",
+      "lesson": "25.2",
+      "type": "basic",
+      "tags": ["cpp", "virtual-functions", "gotchas"],
+      "front": "When does virtual function resolution work?",
+      "back": "Only when a virtual member function is called through a pointer or reference to a class type object.<br><br>It does NOT work when called directly on an object (e.g., obj.func() always calls the object's type version).",
+      "source": "25.2 - Virtual functions and polymorphism",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_2_006",
+      "lesson": "25.2",
+      "type": "cloze",
+      "tags": ["cpp", "polymorphism", "terminology"],
+      "text": "{{c1::Compile-time polymorphism}} includes function overload resolution and template resolution, while {{c2::runtime polymorphism}} includes virtual function resolution.",
+      "source": "25.2 - Virtual functions and polymorphism",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_2_007",
+      "lesson": "25.2",
+      "type": "reverse",
+      "tags": ["cpp", "polymorphism", "terminology"],
+      "front": "polymorphism",
+      "back": "The ability of an entity to have multiple forms (literally \"many forms\")",
+      "source": "25.2 - Virtual functions and polymorphism",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_2_008",
+      "lesson": "25.2",
+      "type": "code",
+      "tags": ["cpp", "virtual-functions", "common-mistakes"],
+      "question": "What does this code output?",
+      "code": "class A {\npublic:\n    virtual std::string_view getName() const { return \"A\"; }\n};\nclass B: public A {\npublic:\n    virtual std::string_view getName() const { return \"B\"; }\n};\nclass C: public B {\n    // No getName() here\n};\n\nC c{};\nA&amp; rBase{ c };\nstd::cout &lt;&lt; rBase.getName();",
+      "answer": "B",
+      "explanation": "Virtual function resolution finds the most-derived version between A and C. Since C doesn't override getName(), it resolves to B::getName().",
+      "source": "25.2 - Virtual functions and polymorphism",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch25_2_009",
+      "lesson": "25.2",
+      "type": "cloze",
+      "tags": ["cpp", "virtual-functions", "syntax"],
+      "text": "If a function is marked as virtual, all matching overrides in derived classes are {{c1::implicitly}} considered virtual, even if not explicitly marked.",
+      "source": "25.2 - Virtual functions and polymorphism",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_2_010",
+      "lesson": "25.2",
+      "type": "basic",
+      "tags": ["cpp", "virtual-functions", "best-practices"],
+      "front": "Why should you never call virtual functions from constructors or destructors?",
+      "back": "In constructors: The derived portion hasn't been created yet, so it will call the base version instead.<br><br>In destructors: The derived portion has already been destroyed, so it will always call the base version.",
+      "source": "25.2 - Virtual functions and polymorphism",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_2_011",
+      "lesson": "25.2",
+      "type": "code",
+      "tags": ["cpp", "virtual-functions", "gotchas"],
+      "question": "What does this code output?",
+      "code": "class Base {\npublic:\n    virtual int getValue() const { return 5; }\n};\nclass Derived: public Base {\npublic:\n    virtual double getValue() const { return 6.78; }\n};\n\nDerived d;\nBase&amp; ref{ d };\nstd::cout &lt;&lt; ref.getValue();",
+      "answer": "This code will not compile.",
+      "explanation": "Derived::getValue() is not considered a matching override because the return type (double) doesn't match Base::getValue()'s return type (int). The signature must match exactly.",
+      "source": "25.2 - Virtual functions and polymorphism",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch25_2_012",
+      "lesson": "25.2",
+      "type": "concept",
+      "tags": ["cpp", "virtual-functions", "best-practices"],
+      "concept": "The key benefit of virtual functions",
+      "explanation": "Virtual functions allow you to structure code so that newly derived classes automatically work with existing code without modification.<br><br>You can write a function once using base class references/pointers, and it will work correctly with all current and future derived classes.",
+      "examples": [
+        "void report(const Animal&amp; a) { a.speak(); }",
+        "// Works with Cat, Dog, and any future Animal types",
+        "// No need to modify report() when adding new animals"
+      ],
+      "source": "25.2 - Virtual functions and polymorphism",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_2_013",
+      "lesson": "25.2",
+      "type": "cloze",
+      "tags": ["cpp", "virtual-functions", "performance"],
+      "text": "Virtual functions have two downsides: {{c1::resolving a virtual function call takes longer}} than a regular one, and the compiler must allocate an {{c2::extra pointer}} for each object of a class with virtual functions.",
+      "source": "25.2 - Virtual functions and polymorphism",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_2_014",
+      "lesson": "25.2",
+      "type": "code",
+      "tags": ["cpp", "virtual-functions", "gotchas"],
+      "question": "What does this code output?",
+      "code": "class A {\npublic:\n    virtual std::string_view getName() const { return \"A\"; }\n};\nclass B: public A {\npublic:\n    std::string_view getName() { return \"B\"; }  // Not const!\n};\n\nB b{};\nA&amp; rBase{ b };\nstd::cout &lt;&lt; rBase.getName();",
+      "answer": "A",
+      "explanation": "B::getName() is not const, so it doesn't match the signature of A::getName() const. It's not an override, so the call resolves to A::getName().",
+      "source": "25.2 - Virtual functions and polymorphism",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch25_2_015",
+      "lesson": "25.2",
+      "type": "concept",
+      "tags": ["cpp", "virtual-functions", "gotchas"],
+      "concept": "Virtual function signature matching requirements",
+      "explanation": "For a derived function to be an override, it must EXACTLY match the base function's signature:<ul><li>Same function name</li><li>Same parameter types</li><li>Same const-ness</li><li>Same return type (with rare exceptions for covariant types)</li></ul>If any part doesn't match, it's not an override and won't resolve virtually.",
+      "examples": [
+        "virtual int func() const;  // Base",
+        "virtual int func();        // NOT an override (missing const)",
+        "virtual double func() const;  // NOT an override (wrong return)",
+        "virtual int func(int) const;  // NOT an override (extra param)"
+      ],
+      "source": "25.2 - Virtual functions and polymorphism",
+      "difficulty": "hard"
+    }
+  ]
+}

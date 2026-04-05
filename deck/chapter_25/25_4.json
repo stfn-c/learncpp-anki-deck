@@ -1,0 +1,132 @@
+{
+  "chapter": "Chapter 25",
+  "chapter_title": "Virtual Functions",
+  "lesson": "25.4",
+  "lesson_title": "Virtual destructors, virtual assignment, and overriding virtualization",
+  "total_cards": 11,
+  "cards": [
+    {
+      "id": "ch25_4_001",
+      "lesson": "25.4",
+      "type": "cloze",
+      "tags": ["cpp", "virtual-destructors", "syntax"],
+      "text": "To make a destructor virtual, write: {{c1::virtual ~ClassName();}}",
+      "source": "25.4 - Virtual destructors, virtual assignment, and overriding virtualization",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_4_002",
+      "lesson": "25.4",
+      "type": "basic",
+      "tags": ["cpp", "virtual-destructors", "best-practices"],
+      "front": "Why should you always make destructors virtual in base classes that are meant to be inherited from?",
+      "back": "Without a virtual destructor, deleting a derived object through a base pointer only calls the base destructor, causing a memory leak and undefined behavior.<br><br>A virtual destructor ensures the derived destructor is called first, then the base destructor.",
+      "source": "25.4 - Virtual destructors, virtual assignment, and overriding virtualization",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_4_003",
+      "lesson": "25.4",
+      "type": "code",
+      "tags": ["cpp", "virtual-destructors", "common-mistakes"],
+      "question": "What's wrong with this code?",
+      "code": "class Base {\npublic:\n    ~Base() { std::cout &lt;&lt; \"~Base\\n\"; }\n};\n\nclass Derived: public Base {\n    int* data;\npublic:\n    Derived() : data(new int[100]) { }\n    ~Derived() { delete[] data; std::cout &lt;&lt; \"~Derived\\n\"; }\n};\n\nBase* ptr = new Derived();\ndelete ptr;  // What happens?",
+      "answer": "Memory leak! Only ~Base() is called, not ~Derived(), so data is never deleted.",
+      "explanation": "Without a virtual destructor in Base, deleting through a Base* only calls ~Base(). The Derived destructor never runs, leaking the dynamically allocated array.",
+      "source": "25.4 - Virtual destructors, virtual assignment, and overriding virtualization",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch25_4_004",
+      "lesson": "25.4",
+      "type": "cloze",
+      "tags": ["cpp", "virtual-destructors", "best-practices"],
+      "text": "A class with virtual functions should {{c1::always}} have a virtual destructor.",
+      "source": "25.4 - Virtual destructors, virtual assignment, and overriding virtualization",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_4_005",
+      "lesson": "25.4",
+      "type": "basic",
+      "tags": ["cpp", "virtual-destructors", "syntax"],
+      "front": "How do you create a default virtual destructor in C++11 and later?",
+      "back": "virtual ~ClassName() = default;",
+      "source": "25.4 - Virtual destructors, virtual assignment, and overriding virtualization",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_4_006",
+      "lesson": "25.4",
+      "type": "basic",
+      "tags": ["cpp", "assignment-operators", "virtual-functions"],
+      "front": "Should you make assignment operators virtual?",
+      "back": "No, generally you should not make assignment operators virtual. Assignment operators are typically not inherited or overridden in the same way as other functions, and making them virtual can lead to issues with object slicing.",
+      "source": "25.4 - Virtual destructors, virtual assignment, and overriding virtualization",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_4_007",
+      "lesson": "25.4",
+      "type": "cloze",
+      "tags": ["cpp", "virtual-functions", "syntax"],
+      "text": "You can prevent a function from being virtual by using the {{c1::final}} specifier, which stops further overriding.",
+      "source": "25.4 - Virtual destructors, virtual assignment, and overriding virtualization",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_4_008",
+      "lesson": "25.4",
+      "type": "concept",
+      "tags": ["cpp", "virtual-destructors", "gotchas"],
+      "concept": "Destructor call order with virtual destructors",
+      "explanation": "When deleting a derived object through a base pointer with virtual destructors:<br><ol><li>The most-derived destructor is called first</li><li>Then each base class destructor in reverse order of construction</li></ol>This ensures proper cleanup of all resources in the inheritance hierarchy.",
+      "examples": [
+        "Base* ptr = new Derived();",
+        "delete ptr;",
+        "// Calls: ~Derived(), then ~Base()"
+      ],
+      "source": "25.4 - Virtual destructors, virtual assignment, and overriding virtualization",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_4_009",
+      "lesson": "25.4",
+      "type": "code",
+      "tags": ["cpp", "virtual-destructors"],
+      "question": "What does this code output?",
+      "code": "class Base {\npublic:\n    virtual ~Base() { std::cout &lt;&lt; \"~Base \"; }\n};\n\nclass Derived: public Base {\npublic:\n    ~Derived() { std::cout &lt;&lt; \"~Derived \"; }\n};\n\nBase* ptr = new Derived();\ndelete ptr;",
+      "answer": "~Derived ~Base",
+      "explanation": "With a virtual destructor, delete ptr calls the most-derived destructor first (~Derived), then the base destructor (~Base).",
+      "source": "25.4 - Virtual destructors, virtual assignment, and overriding virtualization",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_4_010",
+      "lesson": "25.4",
+      "type": "basic",
+      "tags": ["cpp", "virtual-destructors", "best-practices"],
+      "front": "If a class has no virtual functions, should its destructor be virtual?",
+      "back": "Generally no, unless the class is specifically designed to be a polymorphic base class. Virtual destructors add overhead (vtable pointer) that may not be needed.",
+      "source": "25.4 - Virtual destructors, virtual assignment, and overriding virtualization",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_4_011",
+      "lesson": "25.4",
+      "type": "concept",
+      "tags": ["cpp", "virtual-destructors", "best-practices"],
+      "concept": "The rule for virtual destructors",
+      "explanation": "A class should have a virtual destructor if:<ul><li>It has at least one virtual function, OR</li><li>It's designed to be used polymorphically (as a base class)</li></ul>This prevents undefined behavior and memory leaks when deleting derived objects through base pointers.",
+      "examples": [
+        "class Base {",
+        "public:",
+        "    virtual void func() { }",
+        "    virtual ~Base() = default;  // Required!",
+        "};"
+      ],
+      "source": "25.4 - Virtual destructors, virtual assignment, and overriding virtualization",
+      "difficulty": "medium"
+    }
+  ]
+}

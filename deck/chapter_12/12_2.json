@@ -1,0 +1,130 @@
+{
+  "chapter": "Chapter 12",
+  "chapter_title": "Compound Types: References and Pointers",
+  "lesson": "12.2",
+  "lesson_title": "Value categories (lvalues and rvalues)",
+  "total_cards": 8,
+  "cards": [
+    {
+      "id": "ch12_2_001",
+      "lesson": "12.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "lvalue",
+        "value-categories"
+      ],
+      "text": "An {{c1::lvalue}} is an expression that evaluates to an {{c2::identifiable object or function}} (has an identity).",
+      "source": "12.2 - Value categories (lvalues and rvalues)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_2_002",
+      "lesson": "12.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "rvalue",
+        "value-categories"
+      ],
+      "text": "An {{c1::rvalue}} is an expression that is {{c2::not}} an lvalue. Rvalues are typically {{c3::temporary}} or {{c4::literal}} values.",
+      "source": "12.2 - Value categories (lvalues and rvalues)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_2_003",
+      "lesson": "12.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "lvalue",
+        "rvalue"
+      ],
+      "question": "Which expressions are lvalues?",
+      "code": "int x = 5;<br>x;           // 1<br>5;           // 2<br>x + 1;       // 3<br>x = 6;       // 4",
+      "answer": "Expressions 1 and 4 are lvalues. Expression 1 (x) identifies a variable, and expression 4 (x = 6) evaluates to x.",
+      "explanation": "Variables and assignment expressions are lvalues. Literals (5) and temporary results (x + 1) are rvalues.",
+      "source": "12.2 - Value categories (lvalues and rvalues)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_2_004",
+      "lesson": "12.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "lvalue",
+        "memory"
+      ],
+      "front": "Can you take the address of an lvalue?",
+      "back": "Yes. An lvalue has an identifiable memory location, so you can take its address using the address-of operator (&amp;).",
+      "source": "12.2 - Value categories (lvalues and rvalues)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch12_2_005",
+      "lesson": "12.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "lvalue",
+        "rvalue",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this code?",
+      "code": "int x = 5;<br>&amp;5;      // error<br>&amp;(x + 1); // error",
+      "answer": "Cannot take the address of rvalues. Both 5 and (x + 1) are rvalues with no identifiable memory location.",
+      "explanation": "The address-of operator requires an lvalue because only lvalues have persistent memory addresses.",
+      "source": "12.2 - Value categories (lvalues and rvalues)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_2_006",
+      "lesson": "12.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "lvalue",
+        "assignment"
+      ],
+      "front": "Why must the left operand of an assignment be an lvalue?",
+      "back": "Because assignment requires modifying an identifiable object in memory. An lvalue has an identity and memory location, while an rvalue is temporary.",
+      "source": "12.2 - Value categories (lvalues and rvalues)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_2_007",
+      "lesson": "12.2",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "lvalue",
+        "rvalue",
+        "best-practices"
+      ],
+      "concept": "Quick test to determine if an expression is an lvalue",
+      "explanation": "Ask: Can I take the address of this expression?<ul><li>If YES: it's an lvalue (has an identity)</li><li>If NO: it's an rvalue (temporary or literal)</li></ul>",
+      "examples": [
+        "int x = 5;",
+        "&x       // OK: x is lvalue",
+        "&5       // Error: 5 is rvalue",
+        "&(x + 1)  // Error: x + 1 is rvalue"
+      ],
+      "source": "12.2 - Value categories (lvalues and rvalues)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch12_2_008",
+      "lesson": "12.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "lvalue",
+        "value-categories"
+      ],
+      "text": "Variables are {{c1::lvalues}} because they have an {{c2::identifiable memory location}}, while literals like 5 are {{c3::rvalues}}.",
+      "source": "12.2 - Value categories (lvalues and rvalues)",
+      "difficulty": "easy"
+    }
+  ]
+}

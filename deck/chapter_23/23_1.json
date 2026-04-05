@@ -1,0 +1,165 @@
+{
+  "chapter": "Chapter 23",
+  "chapter_title": "Object Relationships",
+  "lesson": "23.1",
+  "lesson_title": "Object relationships",
+  "total_cards": 11,
+  "cards": [
+    {
+      "id": "ch23_1_001",
+      "lesson": "23.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "object-relationships",
+        "fundamentals"
+      ],
+      "front": "What are the main relationship types between objects covered in Chapter 23?",
+      "back": "The main relationship types are:<ul><li>part-of (Composition)</li><li>has-a (Aggregation)</li><li>uses-a (Association)</li><li>depends-on (Dependency)</li><li>member-of</li></ul>",
+      "source": "23.1 - Object relationships",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_1_002",
+      "lesson": "23.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "object-relationships",
+        "terminology"
+      ],
+      "text": "A square {{c1::is-a}} shape, a car {{c2::has-a}} steering wheel, a programmer {{c3::uses-a}} keyboard, and a flower {{c4::depends-on}} a bee for pollination.",
+      "source": "23.1 - Object relationships",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_1_003",
+      "lesson": "23.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "object-relationships",
+        "composition"
+      ],
+      "front": "What relationship type describes a 'part-of' relationship?",
+      "back": "Composition - where a part (member) is part of the whole object and the object manages the part's existence.",
+      "source": "23.1 - Object relationships",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_1_004",
+      "lesson": "23.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "object-relationships",
+        "aggregation"
+      ],
+      "text": "A {{c1::has-a}} relationship is typically implemented using {{c2::aggregation}}, where the part can exist independently of the whole.",
+      "source": "23.1 - Object relationships",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_1_005",
+      "lesson": "23.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "inheritance",
+        "relationships"
+      ],
+      "front": "Which object relationship type is explored through C++'s inheritance model and virtual functions?",
+      "back": "The is-a relationship, which is covered in the following two chapters after Chapter 23.",
+      "source": "23.1 - Object relationships",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_1_006",
+      "lesson": "23.1",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "object-relationships",
+        "best-practices"
+      ],
+      "concept": "Why understanding object relationships is important in C++",
+      "explanation": "Understanding object relationships helps:<ul><li>Improve code reusability</li><li>Write more extensible classes</li><li>Apply real-world patterns to programming objects</li><li>Make better design decisions about class structure</li></ul>",
+      "examples": [
+        "// Composition: Point is part of Shape",
+        "class Shape { Point m_point; };",
+        "// Aggregation: Teacher has-a Student (but doesn't own)",
+        "class Teacher { Student* m_students; };"
+      ],
+      "source": "23.1 - Object relationships",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_1_007",
+      "lesson": "23.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "object-composition",
+        "terminology"
+      ],
+      "text": "The process of building complex objects from simpler ones is called {{c1::object composition}}.",
+      "source": "23.1 - Object relationships",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_1_008",
+      "lesson": "23.1",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "relationships",
+        "terminology"
+      ],
+      "front": "uses-a",
+      "back": "Association relationship - where a class uses an otherwise unrelated object",
+      "source": "23.1 - Object relationships",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_1_009",
+      "lesson": "23.1",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "relationships",
+        "terminology"
+      ],
+      "front": "depends-on",
+      "back": "Dependency relationship - where one class depends on another to perform a specific task",
+      "source": "23.1 - Object relationships",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_1_010",
+      "lesson": "23.1",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "object-relationships",
+        "patterns"
+      ],
+      "front": "How do real-life object relationships help us understand programming objects?",
+      "back": "Real-life relationships (like flowers and plants) help us recognize patterns that we can apply to programming objects, allowing us to infer behavior and structure from abstract concepts we already understand.",
+      "source": "23.1 - Object relationships",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_1_011",
+      "lesson": "23.1",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "object-relationships",
+        "verbs"
+      ],
+      "text": "The relationship verb for composition is {{c1::part-of}}, for aggregation is {{c2::has-a}}, for association is {{c3::uses-a}}, and for dependency is {{c4::depends-on}}.",
+      "source": "23.1 - Object relationships",
+      "difficulty": "medium"
+    }
+  ]
+}

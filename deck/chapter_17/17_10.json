@@ -1,0 +1,144 @@
+{
+  "chapter": "Chapter 17",
+  "chapter_title": "Arrays and Strings",
+  "lesson": "17.10",
+  "lesson_title": "C-style strings",
+  "total_cards": 13,
+  "cards": [
+    {
+      "id": "ch17_10_001",
+      "lesson": "17.10",
+      "type": "basic",
+      "tags": ["cpp", "strings", "c-style-strings"],
+      "front": "What is a C-style string?",
+      "back": "A C-style string is a char array terminated by a null character ('\\0'). It's the traditional way to represent strings in C and older C++ code.",
+      "source": "17.10 - C-style strings",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_10_002",
+      "lesson": "17.10",
+      "type": "cloze",
+      "tags": ["cpp", "c-style-strings", "null-terminator"],
+      "text": "C-style strings must end with a {{c1::null terminator}} which is the character {{c2::'\\0'}} (value {{c3::0}})",
+      "source": "17.10 - C-style strings",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_10_003",
+      "lesson": "17.10",
+      "type": "cloze",
+      "tags": ["cpp", "c-style-strings", "initialization"],
+      "text": "To create a C-style string from a string literal: {{c1::const char* str = \"Hello\";}} or {{c2::char str[] = \"Hello\";}}",
+      "source": "17.10 - C-style strings",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_10_004",
+      "lesson": "17.10",
+      "type": "code",
+      "tags": ["cpp", "c-style-strings", "null-terminator"],
+      "question": "How many elements does this array need?",
+      "code": "char str[] = \"Hello\";",
+      "answer": "6 elements (5 for 'H', 'e', 'l', 'l', 'o' plus 1 for '\\0')",
+      "explanation": "The compiler automatically adds the null terminator, so the array has 6 elements even though \"Hello\" has 5 visible characters.",
+      "source": "17.10 - C-style strings",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_10_005",
+      "lesson": "17.10",
+      "type": "cloze",
+      "tags": ["cpp", "c-style-strings", "cstring"],
+      "text": "To use C-style string functions like strlen, strcpy, strcmp, include the {{c1::&lt;cstring&gt;}} header",
+      "source": "17.10 - C-style strings",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_10_006",
+      "lesson": "17.10",
+      "type": "basic",
+      "tags": ["cpp", "c-style-strings", "strlen"],
+      "front": "What does strlen() return?",
+      "back": "strlen() returns the number of characters in the C-style string, NOT including the null terminator. For \"Hello\", it returns 5, not 6.",
+      "source": "17.10 - C-style strings",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_10_007",
+      "lesson": "17.10",
+      "type": "code",
+      "tags": ["cpp", "c-style-strings", "common-mistakes"],
+      "question": "What's dangerous about this code?",
+      "code": "char str[5];\nstrcpy(str, \"Hello\");",
+      "answer": "Buffer overflow! \"Hello\" needs 6 chars (including '\\0'), but array only has 5.",
+      "explanation": "strcpy doesn't check bounds. This writes past the array end, causing undefined behavior. Use strncpy or std::string instead.",
+      "source": "17.10 - C-style strings",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_10_008",
+      "lesson": "17.10",
+      "type": "cloze",
+      "tags": ["cpp", "c-style-strings", "comparison"],
+      "text": "To compare two C-style strings, use {{c1::strcmp()}} NOT the {{c2::==}} operator, which compares pointer addresses",
+      "source": "17.10 - C-style strings",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_10_009",
+      "lesson": "17.10",
+      "type": "basic",
+      "tags": ["cpp", "c-style-strings", "strcmp"],
+      "front": "What does strcmp(str1, str2) return?",
+      "back": "Returns 0 if strings are equal, negative if str1 &lt; str2, positive if str1 &gt; str2 (lexicographically).",
+      "source": "17.10 - C-style strings",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_10_010",
+      "lesson": "17.10",
+      "type": "cloze",
+      "tags": ["cpp", "c-style-strings", "input"],
+      "text": "To read a C-style string with std::cin, use {{c1::std::cin.getline(buffer, size)}} to prevent buffer overflow, NOT operator&gt;&gt;",
+      "source": "17.10 - C-style strings",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_10_011",
+      "lesson": "17.10",
+      "type": "concept",
+      "tags": ["cpp", "c-style-strings", "best-practices"],
+      "concept": "Why avoid C-style strings in modern C++",
+      "explanation": "C-style strings are error-prone:<ul><li>No bounds checking (buffer overflows)</li><li>Manual memory management</li><li>Easy to forget null terminator</li><li>Pointer confusion with ==, =</li><li>No built-in length tracking</li></ul>Use std::string or std::string_view instead.",
+      "examples": [
+        "char str[50];        // C-style: avoid",
+        "std::string str;     // Prefer this"
+      ],
+      "source": "17.10 - C-style strings",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch17_10_012",
+      "lesson": "17.10",
+      "type": "basic",
+      "tags": ["cpp", "c-style-strings", "const"],
+      "front": "Why should string literals be stored as const char* instead of char*?",
+      "back": "String literals are stored in read-only memory. Modifying them is undefined behavior. const char* prevents accidental modification attempts.",
+      "source": "17.10 - C-style strings",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch17_10_013",
+      "lesson": "17.10",
+      "type": "code",
+      "tags": ["cpp", "c-style-strings", "gotchas"],
+      "question": "What's the issue here?",
+      "code": "char str[10] = \"Hello\";\nfor (int i = 0; i &lt; 10; ++i)\n    std::cout &lt;&lt; str[i];",
+      "answer": "Prints \"Hello\" followed by garbage characters after the null terminator",
+      "explanation": "Should loop while str[i] != '\\0' or use strlen(str) as the limit. The array has 10 elements but the string is only 6 chars including '\\0'.",
+      "source": "17.10 - C-style strings",
+      "difficulty": "medium"
+    }
+  ]
+}

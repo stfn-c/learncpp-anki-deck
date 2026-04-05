@@ -1,0 +1,248 @@
+{
+  "chapter": "Chapter 19",
+  "chapter_title": "Dynamic memory allocation",
+  "lesson": "19.5",
+  "lesson_title": "Void pointers",
+  "total_cards": 16,
+  "cards": [
+    {
+      "id": "ch19_5_001",
+      "lesson": "19.5",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "pointers",
+        "void-pointer"
+      ],
+      "front": "Void pointer",
+      "back": "A special type of pointer that can point to objects of any data type (generic pointer)",
+      "source": "19.5 - Void pointers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch19_5_002",
+      "lesson": "19.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "pointers",
+        "syntax",
+        "void-pointer"
+      ],
+      "text": "To declare a void pointer: {{c1::void* ptr{};}}",
+      "source": "19.5 - Void pointers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch19_5_003",
+      "lesson": "19.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "void-pointer"
+      ],
+      "question": "Is this code valid?",
+      "code": "int nValue{ 5 };\nfloat fValue{ 7.5f };\nvoid* ptr{};\n\nptr = &amp;nValue;\nptr = &amp;fValue;",
+      "answer": "Yes, this is valid. A void pointer can point to any type of object, so it can hold the address of an int or a float.",
+      "explanation": "Void pointers are generic and can be assigned addresses of any data type without casting.",
+      "source": "19.5 - Void pointers",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch19_5_004",
+      "lesson": "19.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "void-pointer",
+        "gotchas"
+      ],
+      "front": "Can you directly dereference a void pointer?",
+      "back": "No. The compiler doesn't know what type of object the void pointer points to, so it doesn't know how to dereference it. You must first cast to a typed pointer.",
+      "source": "19.5 - Void pointers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch19_5_005",
+      "lesson": "19.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "void-pointer",
+        "casting"
+      ],
+      "text": "To dereference a void pointer, first cast it to the correct type:<br>void* ptr{ &amp;value };<br>int* intPtr{ {{c1::static_cast&lt;int*&gt;(ptr)}} };<br>std::cout &lt;&lt; {{c2::*intPtr}};",
+      "source": "19.5 - Void pointers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch19_5_006",
+      "lesson": "19.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "void-pointer",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this code?",
+      "code": "int value{ 5 };\nvoid* ptr{ &amp;value };\nstd::cout &lt;&lt; *ptr;",
+      "answer": "Cannot dereference a void pointer directly. Must cast to int* first: std::cout &lt;&lt; *static_cast&lt;int*&gt;(ptr);",
+      "explanation": "Void pointers don't have a type, so the compiler doesn't know how to interpret the data. Must cast to the correct pointer type.",
+      "source": "19.5 - Void pointers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch19_5_007",
+      "lesson": "19.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "void-pointer",
+        "gotchas"
+      ],
+      "front": "Can you do pointer arithmetic with void pointers?",
+      "back": "No. Void pointers don't have a type, so the compiler doesn't know the size of the object being pointed to, which is required for pointer arithmetic.",
+      "source": "19.5 - Void pointers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch19_5_008",
+      "lesson": "19.5",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "void-pointer",
+        "gotchas"
+      ],
+      "concept": "Limitations of void pointers",
+      "explanation": "Void pointers cannot:<ul><li>Be dereferenced directly (must cast first)</li><li>Perform pointer arithmetic (no type size information)</li><li>Know what they're pointing to (type information lost)</li></ul>They can only:<ul><li>Hold an address</li><li>Be compared with other pointers</li><li>Be cast to another pointer type</li></ul>",
+      "examples": [
+        "void* ptr{ &amp;value };",
+        "*ptr;              // ERROR: cannot dereference",
+        "ptr++;             // ERROR: no pointer arithmetic",
+        "int* ip = static_cast&lt;int*&gt;(ptr);  // OK: casting"
+      ],
+      "source": "19.5 - Void pointers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch19_5_009",
+      "lesson": "19.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "void-pointer"
+      ],
+      "front": "When are void pointers typically used in C++?",
+      "back": "<ul><li>C-style functions that work with multiple types (e.g., memcpy, qsort)</li><li>Interfacing with C libraries</li><li>Low-level memory operations</li></ul>In modern C++, prefer templates or std::any instead of void pointers.",
+      "source": "19.5 - Void pointers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch19_5_010",
+      "lesson": "19.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "void-pointer",
+        "stdlib"
+      ],
+      "text": "The C standard library function {{c1::qsort}} uses void pointers to sort arrays of any type: void qsort({{c2::void* base}}, size_t num, size_t size, int (*compare)(const void*, const void*));",
+      "source": "19.5 - Void pointers",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch19_5_011",
+      "lesson": "19.5",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "best-practices",
+        "void-pointer",
+        "templates"
+      ],
+      "concept": "Why prefer templates over void pointers in modern C++",
+      "explanation": "Templates are type-safe and checked at compile time:<ul><li>Compiler catches type errors</li><li>No casting needed</li><li>No runtime overhead</li><li>Better performance</li></ul>Void pointers:<ul><li>No type safety - cast errors cause undefined behavior</li><li>Require manual casting</li><li>Can't dereference or do arithmetic</li></ul>",
+      "examples": [
+        "// Dangerous: void pointer (C-style)",
+        "void print(void* ptr) { cout &lt;&lt; *(int*)ptr; }",
+        "",
+        "// Safe: template (C++-style)",
+        "template&lt;typename T&gt;",
+        "void print(T* ptr) { cout &lt;&lt; *ptr; }"
+      ],
+      "source": "19.5 - Void pointers",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch19_5_012",
+      "lesson": "19.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "void-pointer",
+        "gotchas"
+      ],
+      "question": "What's dangerous about this code?",
+      "code": "float value{ 7.5f };\nvoid* ptr{ &amp;value };\nint* intPtr{ static_cast&lt;int*&gt;(ptr) };\nstd::cout &lt;&lt; *intPtr;",
+      "answer": "The void pointer originally pointed to a float, but is being cast to int*. Dereferencing as int interprets the float's bytes as an int, giving a garbage value.",
+      "explanation": "Void pointers lose type information. You must remember and cast back to the original type, or you get undefined behavior.",
+      "source": "19.5 - Void pointers",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch19_5_013",
+      "lesson": "19.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "void-pointer",
+        "delete",
+        "gotchas"
+      ],
+      "front": "What happens if you delete a void pointer that points to dynamically allocated memory?",
+      "back": "It causes undefined behavior. The compiler doesn't know the type, so it can't call the destructor. You must cast to the correct type before deleting.",
+      "source": "19.5 - Void pointers",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch19_5_014",
+      "lesson": "19.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "void-pointer",
+        "limitations"
+      ],
+      "text": "Void pointers cannot be {{c1::dereferenced}} or used for {{c2::pointer arithmetic}} because they lack {{c3::type information}}.",
+      "source": "19.5 - Void pointers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch19_5_015",
+      "lesson": "19.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "void-pointer",
+        "casting"
+      ],
+      "text": "To use a void pointer, you must {{c1::cast}} it back to the {{c2::original type}} before dereferencing: static_cast&lt;{{c3::int*}}&gt;(voidPtr)",
+      "source": "19.5 - Void pointers",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch19_5_016",
+      "lesson": "19.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "void-pointer",
+        "best-practices"
+      ],
+      "text": "In modern C++, prefer {{c1::templates}} or {{c2::std::any}} over void pointers for {{c3::type safety}} and compile-time checking.",
+      "source": "19.5 - Void pointers",
+      "difficulty": "medium"
+    }
+  ]
+}

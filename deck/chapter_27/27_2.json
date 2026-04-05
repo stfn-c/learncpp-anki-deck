@@ -1,0 +1,188 @@
+{
+  "chapter": "Chapter 27",
+  "chapter_title": "Exception Handling and Error Handling",
+  "lesson": "27.2",
+  "lesson_title": "27.2 — Basic exception handling",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch27_2_001",
+      "lesson": "27.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "syntax"
+      ],
+      "text": "The throw statement syntax is: {{c1::throw}} expression;. The expression can be any type, but is typically an {{c2::exception class object}}.",
+      "source": "27.2 - Basic exception handling",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch27_2_002",
+      "lesson": "27.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "syntax"
+      ],
+      "question": "What types can be thrown as exceptions in this code?",
+      "code": "throw 42;              // int\nthrow 3.14;            // double\nthrow \"Error!\";        // const char*\nthrow std::string(\"Error\");  // std::string\nthrow MyException();   // custom class",
+      "answer": "Any type can be thrown: primitives (int, double), pointers (const char*), standard library objects (std::string), or custom classes.",
+      "explanation": "C++ allows throwing any type as an exception, though using exception class objects is considered best practice.",
+      "source": "27.2 - Basic exception handling",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch27_2_003",
+      "lesson": "27.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "syntax"
+      ],
+      "text": "A {{c1::try}} block is used to detect exceptions thrown within its scope. It must be followed by one or more {{c2::catch}} blocks.",
+      "source": "27.2 - Basic exception handling",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch27_2_004",
+      "lesson": "27.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "syntax"
+      ],
+      "text": "A catch block begins with {{c1::catch}} followed by a parameter declaration in parentheses, which specifies the {{c2::exception type}} to catch.",
+      "source": "27.2 - Basic exception handling",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch27_2_005",
+      "lesson": "27.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "syntax"
+      ],
+      "question": "What's the best way to write the catch parameter for a custom exception class?",
+      "code": "catch (MyException e)           // ?\ncatch (MyException&amp; e)          // ?\ncatch (const MyException&amp; e)    // ?",
+      "answer": "catch (const MyException&amp; e) is best - it avoids copying and prevents modification.",
+      "explanation": "Using const reference avoids expensive copying of exception objects and prevents accidental modification, which is generally unnecessary.",
+      "source": "27.2 - Basic exception handling",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_2_006",
+      "lesson": "27.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "syntax"
+      ],
+      "front": "Can a try block have multiple catch blocks?",
+      "back": "Yes, a try block can have multiple catch blocks to handle different exception types. The catch blocks are checked in order from top to bottom.",
+      "source": "27.2 - Basic exception handling",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch27_2_007",
+      "lesson": "27.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "syntax"
+      ],
+      "question": "Which catch block executes if divide() throws an int?",
+      "code": "try {\n    divide(x, y);\n}\ncatch (const char* msg) {\n    std::cout &lt;&lt; \"String: \" &lt;&lt; msg;\n}\ncatch (int code) {\n    std::cout &lt;&lt; \"Code: \" &lt;&lt; code;\n}",
+      "answer": "The second catch block (catch (int code)) executes.",
+      "explanation": "Catch blocks are matched by type. Only the first matching catch block is executed.",
+      "source": "27.2 - Basic exception handling",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_2_008",
+      "lesson": "27.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "syntax"
+      ],
+      "text": "A catch-all handler {{c1::catch (...)}} will catch exceptions of {{c2::any type}}. It should be placed {{c3::last}} in the catch block sequence.",
+      "source": "27.2 - Basic exception handling",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_2_009",
+      "lesson": "27.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "gotchas"
+      ],
+      "front": "What happens if an exception is thrown but not caught by any catch block?",
+      "back": "The program calls std::terminate(), which by default calls std::abort() and terminates the program abnormally.",
+      "source": "27.2 - Basic exception handling",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_2_010",
+      "lesson": "27.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "fundamentals"
+      ],
+      "question": "What is the output of this code?",
+      "code": "try {\n    std::cout &lt;&lt; \"A\";\n    throw 1;\n    std::cout &lt;&lt; \"B\";  // after throw\n}\ncatch (int) {\n    std::cout &lt;&lt; \"C\";\n}\nstd::cout &lt;&lt; \"D\";",
+      "answer": "ACD",
+      "explanation": "Code after a throw statement in the same block is never executed. After the catch block, execution continues normally.",
+      "source": "27.2 - Basic exception handling",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_2_011",
+      "lesson": "27.2",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "fundamentals"
+      ],
+      "concept": "How exception handling works in C++",
+      "explanation": "Exception handling follows these steps:<ul><li>throw statement raises an exception</li><li>Program immediately exits the current function</li><li>Searches for matching catch block up the call stack</li><li>First matching catch block handles the exception</li><li>Execution continues after the catch block</li><li>If no match found, std::terminate() is called</li></ul>",
+      "examples": [
+        "try {",
+        "    func();  // might throw",
+        "    // code after throw never runs",
+        "}",
+        "catch (const Exception&amp; e) { /* handle */ }",
+        "// execution continues here after catch"
+      ],
+      "source": "27.2 - Basic exception handling",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch27_2_012",
+      "lesson": "27.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "exceptions",
+        "best-practices"
+      ],
+      "text": "When catching exception objects, prefer {{c1::const reference}} (const Type&amp;) to avoid {{c2::copying}} and prevent {{c3::modification}} of the exception.",
+      "source": "27.2 - Basic exception handling",
+      "difficulty": "medium"
+    }
+  ]
+}

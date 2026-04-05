@@ -1,0 +1,158 @@
+{
+  "chapter": "Chapter 25",
+  "chapter_title": "Virtual Functions",
+  "lesson": "25.7",
+  "lesson_title": "Pure virtual functions, abstract base classes, and interface classes",
+  "total_cards": 13,
+  "cards": [
+    {
+      "id": "ch25_7_001",
+      "lesson": "25.7",
+      "type": "cloze",
+      "tags": ["cpp", "pure-virtual", "syntax"],
+      "text": "To declare a pure virtual function, add {{c1::= 0}} after the function declaration: virtual void func() {{c1::= 0}};",
+      "source": "25.7 - Pure virtual functions, abstract base classes, and interface classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_7_002",
+      "lesson": "25.7",
+      "type": "reverse",
+      "tags": ["cpp", "pure-virtual", "terminology"],
+      "front": "pure virtual function",
+      "back": "A virtual function that has no body and must be overridden by derived classes (declared with = 0)",
+      "source": "25.7 - Pure virtual functions, abstract base classes, and interface classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_7_003",
+      "lesson": "25.7",
+      "type": "reverse",
+      "tags": ["cpp", "abstract-base-class", "terminology"],
+      "front": "abstract base class",
+      "back": "A class that has at least one pure virtual function and cannot be instantiated",
+      "source": "25.7 - Pure virtual functions, abstract base classes, and interface classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_7_004",
+      "lesson": "25.7",
+      "type": "basic",
+      "tags": ["cpp", "abstract-base-class"],
+      "front": "Can you create an object of an abstract base class?",
+      "back": "No. Any class with at least one pure virtual function is abstract and cannot be instantiated. You can only create objects of concrete derived classes that override all pure virtual functions.",
+      "source": "25.7 - Pure virtual functions, abstract base classes, and interface classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_7_005",
+      "lesson": "25.7",
+      "type": "code",
+      "tags": ["cpp", "pure-virtual", "common-mistakes"],
+      "question": "Will this code compile?",
+      "code": "class Animal {\npublic:\n    virtual void speak() = 0;  // Pure virtual\n};\n\nAnimal a;  // Try to create object",
+      "answer": "No, compilation error.",
+      "explanation": "Animal is an abstract base class because it has a pure virtual function. You cannot instantiate abstract classes directly.",
+      "source": "25.7 - Pure virtual functions, abstract base classes, and interface classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_7_006",
+      "lesson": "25.7",
+      "type": "cloze",
+      "tags": ["cpp", "pure-virtual", "inheritance"],
+      "text": "A derived class must {{c1::override all}} pure virtual functions from its base class to become a {{c2::concrete}} (non-abstract) class.",
+      "source": "25.7 - Pure virtual functions, abstract base classes, and interface classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_7_007",
+      "lesson": "25.7",
+      "type": "reverse",
+      "tags": ["cpp", "interface-class", "terminology"],
+      "front": "interface class",
+      "back": "A class with no member variables and all pure virtual functions, defining a contract that derived classes must implement",
+      "source": "25.7 - Pure virtual functions, abstract base classes, and interface classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_7_008",
+      "lesson": "25.7",
+      "type": "code",
+      "tags": ["cpp", "interface-class", "syntax"],
+      "question": "Is this a valid interface class in C++?",
+      "code": "class IErrorLog {\npublic:\n    virtual ~IErrorLog() { }  // Virtual destructor\n    virtual void logError(const std::string&amp; msg) = 0;\n    virtual void clearLog() = 0;\n};",
+      "answer": "Yes, this is a valid interface class.",
+      "explanation": "An interface class has all pure virtual functions (except possibly a virtual destructor) and no member variables. It defines a contract for derived classes.",
+      "source": "25.7 - Pure virtual functions, abstract base classes, and interface classes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_7_009",
+      "lesson": "25.7",
+      "type": "basic",
+      "tags": ["cpp", "interface-class", "naming"],
+      "front": "What is the common naming convention for interface classes in C++?",
+      "back": "Prefix the class name with 'I' (e.g., ISerializable, IErrorLog, IDrawable).",
+      "source": "25.7 - Pure virtual functions, abstract base classes, and interface classes",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch25_7_010",
+      "lesson": "25.7",
+      "type": "concept",
+      "tags": ["cpp", "pure-virtual", "best-practices"],
+      "concept": "When to use pure virtual functions",
+      "explanation": "Use pure virtual functions when:<ul><li>A base class has no sensible default implementation</li><li>You want to force derived classes to provide their own implementation</li><li>You want to prevent instantiation of the base class</li><li>You're defining an interface or contract</li></ul>This ensures derived classes don't forget to override critical functions.",
+      "examples": [
+        "class Shape {",
+        "public:",
+        "    virtual double area() = 0;  // No default for area",
+        "    virtual void draw() = 0;    // Must be implemented",
+        "};"
+      ],
+      "source": "25.7 - Pure virtual functions, abstract base classes, and interface classes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_7_011",
+      "lesson": "25.7",
+      "type": "basic",
+      "tags": ["cpp", "pure-virtual", "destructors"],
+      "front": "Should an abstract base class have a virtual destructor?",
+      "back": "Yes, always. Even though the class is abstract, derived objects will be deleted through base pointers, so a virtual destructor is essential to prevent memory leaks.",
+      "source": "25.7 - Pure virtual functions, abstract base classes, and interface classes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_7_012",
+      "lesson": "25.7",
+      "type": "code",
+      "tags": ["cpp", "pure-virtual", "inheritance"],
+      "question": "Will this code compile?",
+      "code": "class Base {\npublic:\n    virtual void func() = 0;\n};\n\nclass Derived: public Base {\n    // Does not override func()\n};\n\nDerived d;  // Try to create object",
+      "answer": "No, compilation error.",
+      "explanation": "Derived doesn't override the pure virtual function func(), so Derived is also abstract and cannot be instantiated.",
+      "source": "25.7 - Pure virtual functions, abstract base classes, and interface classes",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch25_7_013",
+      "lesson": "25.7",
+      "type": "concept",
+      "tags": ["cpp", "interface-class", "best-practices"],
+      "concept": "Benefits of interface classes",
+      "explanation": "Interface classes provide:<ul><li>Clear contracts defining what derived classes must implement</li><li>Multiple inheritance of interfaces (safe, unlike implementation inheritance)</li><li>Decoupling - code depends on interfaces, not concrete implementations</li><li>Testability - easy to create mock implementations</li></ul>They're a key tool for writing flexible, maintainable code.",
+      "examples": [
+        "class ISerializable {",
+        "public:",
+        "    virtual ~ISerializable() = default;",
+        "    virtual std::string serialize() = 0;",
+        "    virtual void deserialize(const std::string&amp;) = 0;",
+        "};"
+      ],
+      "source": "25.7 - Pure virtual functions, abstract base classes, and interface classes",
+      "difficulty": "hard"
+    }
+  ]
+}

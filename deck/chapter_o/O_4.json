@@ -1,0 +1,205 @@
+{
+  "chapter": "Chapter O",
+  "chapter_title": "Bit Manipulation",
+  "lesson": "O.4",
+  "lesson_title": "Converting integers between binary and decimal representation",
+  "total_cards": 13,
+  "cards": [
+    {
+      "id": "cho_4_001",
+      "lesson": "O.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "binary",
+        "conversion"
+      ],
+      "text": "To convert binary to decimal, add the value of each bit: bit n has value {{c1::2^n}} if set, or {{c2::0}} if not set.",
+      "source": "O.4 - Converting integers between binary and decimal representation",
+      "difficulty": "easy"
+    },
+    {
+      "id": "cho_4_002",
+      "lesson": "O.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "binary",
+        "conversion"
+      ],
+      "question": "What is 0b1011 in decimal?",
+      "code": "0b1011",
+      "answer": "11",
+      "explanation": "From right to left:<br>Bit 0: 1 * 2^0 = 1<br>Bit 1: 1 * 2^1 = 2<br>Bit 2: 0 * 2^2 = 0<br>Bit 3: 1 * 2^3 = 8<br>Total: 8 + 2 + 1 = 11",
+      "source": "O.4 - Converting integers between binary and decimal representation",
+      "difficulty": "medium"
+    },
+    {
+      "id": "cho_4_003",
+      "lesson": "O.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "binary",
+        "conversion"
+      ],
+      "question": "What is 0b1111'0000 in decimal?",
+      "code": "0b1111'0000",
+      "answer": "240",
+      "explanation": "Bits 4-7 are set:<br>2^4 + 2^5 + 2^6 + 2^7 = 16 + 32 + 64 + 128 = 240",
+      "source": "O.4 - Converting integers between binary and decimal representation",
+      "difficulty": "medium"
+    },
+    {
+      "id": "cho_4_004",
+      "lesson": "O.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "binary",
+        "conversion"
+      ],
+      "text": "To convert decimal to binary, repeatedly {{c1::divide by 2}} and track the {{c2::remainder}}. The remainders in {{c3::reverse order}} form the binary representation.",
+      "source": "O.4 - Converting integers between binary and decimal representation",
+      "difficulty": "medium"
+    },
+    {
+      "id": "cho_4_005",
+      "lesson": "O.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "binary",
+        "fundamentals"
+      ],
+      "front": "What are the first 8 powers of 2 (2^0 through 2^7)?",
+      "back": "1, 2, 4, 8, 16, 32, 64, 128<br>(These are the decimal values of 8-bit positions)",
+      "source": "O.4 - Converting integers between binary and decimal representation",
+      "difficulty": "easy"
+    },
+    {
+      "id": "cho_4_006",
+      "lesson": "O.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "binary",
+        "conversion"
+      ],
+      "question": "What is 13 in binary (8-bit)?",
+      "code": "unsigned char value = 13;",
+      "answer": "0b0000'1101",
+      "explanation": "13 = 8 + 4 + 1 = 2^3 + 2^2 + 2^0<br>So bits 0, 2, and 3 are set: 0000 1101",
+      "source": "O.4 - Converting integers between binary and decimal representation",
+      "difficulty": "medium"
+    },
+    {
+      "id": "cho_4_007",
+      "lesson": "O.4",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "binary",
+        "conversion"
+      ],
+      "concept": "Step-by-step method to convert decimal to binary",
+      "explanation": "To convert decimal number to binary:<ul><li>Divide the number by 2</li><li>The remainder (0 or 1) is the next binary digit</li><li>Use the quotient for the next iteration</li><li>Repeat until quotient is 0</li><li>Read remainders in reverse order (bottom to top)</li></ul>",
+      "examples": [
+        "Convert 11 to binary:",
+        "11 ÷ 2 = 5 remainder 1",
+        "5 ÷ 2 = 2 remainder 1",
+        "2 ÷ 2 = 1 remainder 0",
+        "1 ÷ 2 = 0 remainder 1",
+        "Reading bottom-up: 1011"
+      ],
+      "source": "O.4 - Converting integers between binary and decimal representation",
+      "difficulty": "medium"
+    },
+    {
+      "id": "cho_4_008",
+      "lesson": "O.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "binary",
+        "patterns"
+      ],
+      "front": "What decimal value does a binary number with only bit n set represent?",
+      "back": "2^n<br>Example: 0b0001'0000 (only bit 4 set) = 16 = 2^4",
+      "source": "O.4 - Converting integers between binary and decimal representation",
+      "difficulty": "easy"
+    },
+    {
+      "id": "cho_4_009",
+      "lesson": "O.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "binary",
+        "conversion"
+      ],
+      "question": "What is 0b1111'1111 (all 8 bits set) in decimal?",
+      "code": "0b1111'1111",
+      "answer": "255",
+      "explanation": "2^7 + 2^6 + 2^5 + 2^4 + 2^3 + 2^2 + 2^1 + 2^0<br>= 128 + 64 + 32 + 16 + 8 + 4 + 2 + 1<br>= 255<br>(Also: 2^8 - 1)",
+      "source": "O.4 - Converting integers between binary and decimal representation",
+      "difficulty": "easy"
+    },
+    {
+      "id": "cho_4_010",
+      "lesson": "O.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "binary",
+        "conversion"
+      ],
+      "text": "An alternative method to convert decimal to binary is to find the {{c1::largest power of 2}} less than or equal to the number, {{c2::subtract it}}, and repeat with the remainder.",
+      "source": "O.4 - Converting integers between binary and decimal representation",
+      "difficulty": "medium"
+    },
+    {
+      "id": "cho_4_011",
+      "lesson": "O.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "binary",
+        "fundamentals"
+      ],
+      "front": "What is the maximum value that can be stored in an n-bit unsigned integer?",
+      "back": "2^n - 1<br>Example: 8-bit unsigned max = 2^8 - 1 = 255",
+      "source": "O.4 - Converting integers between binary and decimal representation",
+      "difficulty": "easy"
+    },
+    {
+      "id": "cho_4_012",
+      "lesson": "O.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "binary",
+        "conversion"
+      ],
+      "question": "What is 0b0101'0101 in decimal?",
+      "code": "0b0101'0101",
+      "answer": "85",
+      "explanation": "Bits 0, 2, 4, 6 are set:<br>2^0 + 2^2 + 2^4 + 2^6 = 1 + 4 + 16 + 64 = 85",
+      "source": "O.4 - Converting integers between binary and decimal representation",
+      "difficulty": "medium"
+    },
+    {
+      "id": "cho_4_013",
+      "lesson": "O.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "binary",
+        "conversion"
+      ],
+      "text": "The binary number 0b{{c1::1000'0000}} represents {{c2::128}} in decimal, which is {{c3::2^7}}.",
+      "source": "O.4 - Converting integers between binary and decimal representation",
+      "difficulty": "easy"
+    }
+  ]
+}

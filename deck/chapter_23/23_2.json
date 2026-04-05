@@ -1,0 +1,207 @@
+{
+  "chapter": "Chapter 23",
+  "chapter_title": "Object Relationships",
+  "lesson": "23.2",
+  "lesson_title": "Composition",
+  "total_cards": 14,
+  "cards": [
+    {
+      "id": "ch23_2_001",
+      "lesson": "23.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "composition",
+        "relationships"
+      ],
+      "text": "{{c1::Composition}} exists when a member of a class has a {{c2::part-of}} relationship with the class.",
+      "source": "23.2 - Composition",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_2_002",
+      "lesson": "23.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "composition",
+        "object-lifetime"
+      ],
+      "front": "Who manages the existence of members in a composition relationship?",
+      "back": "The class (whole object) manages the existence of the members (parts). When the object is created, it creates the parts; when the object is destroyed, the parts are destroyed.",
+      "source": "23.2 - Composition",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_2_003",
+      "lesson": "23.2",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "composition",
+        "best-practices"
+      ],
+      "concept": "Requirements for a composition relationship",
+      "explanation": "To qualify as composition, an object and a part must have the following relationship:<ul><li>The part (member) is part of the object (class)</li><li>The part can only belong to one object at a time</li><li>The part has its existence managed by the object</li><li>The part does not know about the existence of the object</li></ul>",
+      "examples": [
+        "class Person {",
+        "    std::string m_name;  // Composition: name is part of Person",
+        "    Heart m_heart;       // Composition: heart managed by Person",
+        "};"
+      ],
+      "source": "23.2 - Composition",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_2_004",
+      "lesson": "23.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "composition",
+        "implementation"
+      ],
+      "text": "Compositions are typically implemented via {{c1::normal member variables}}, or by {{c2::pointers}} where the class manages all memory allocation and deallocation.",
+      "source": "23.2 - Composition",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_2_005",
+      "lesson": "23.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "composition",
+        "exclusivity"
+      ],
+      "front": "Can a part in a composition relationship belong to multiple objects at the same time?",
+      "back": "No. In a composition, the part can only belong to one object at a time. The object exclusively owns and manages the part.",
+      "source": "23.2 - Composition",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_2_006",
+      "lesson": "23.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "composition",
+        "best-practices"
+      ],
+      "text": "If you can implement a class as a {{c1::composition}}, you should implement it as a {{c1::composition}}.",
+      "source": "23.2 - Composition",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_2_007",
+      "lesson": "23.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "composition",
+        "directionality"
+      ],
+      "front": "Does a part in a composition know about the object that contains it?",
+      "back": "No. The part (member) does not know about the existence of the object (class) that contains it. This is a unidirectional relationship.",
+      "source": "23.2 - Composition",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_2_008",
+      "lesson": "23.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "composition",
+        "syntax"
+      ],
+      "question": "What type of relationship is demonstrated here?",
+      "code": "class Fraction {\n    int m_numerator{};\n    int m_denominator{};\npublic:\n    Fraction(int num, int den)\n        : m_numerator{num}, m_denominator{den} {}\n};",
+      "answer": "Composition",
+      "explanation": "The numerator and denominator are parts of the Fraction. They are normal member variables managed by the Fraction class, can only belong to one Fraction, and their lifetime is tied to the Fraction object.",
+      "source": "23.2 - Composition",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_2_009",
+      "lesson": "23.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "composition",
+        "terminology"
+      ],
+      "text": "In a composition, the relationship verb is {{c1::part-of}}, and the relationship type is {{c2::whole/part}}.",
+      "source": "23.2 - Composition",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_2_010",
+      "lesson": "23.2",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "composition",
+        "terminology"
+      ],
+      "front": "part-of",
+      "back": "Composition relationship verb - indicates the member is an integral part of the object",
+      "source": "23.2 - Composition",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_2_011",
+      "lesson": "23.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "composition",
+        "memory-management"
+      ],
+      "front": "If a composition is implemented using pointers, who is responsible for memory management?",
+      "back": "The class (whole object) is responsible for all memory allocation and deallocation. The class manages the member's existence completely.",
+      "source": "23.2 - Composition",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_2_012",
+      "lesson": "23.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "composition",
+        "design"
+      ],
+      "front": "Why should you prefer composition when possible?",
+      "back": "Composition provides the strongest ownership and clearest object lifetime management, making code more predictable and easier to reason about. It encapsulates the parts within the whole.",
+      "source": "23.2 - Composition",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch23_2_013",
+      "lesson": "23.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "composition",
+        "lifetime"
+      ],
+      "text": "In composition, when the object is {{c1::created}}, it creates the parts; when the object is {{c2::destroyed}}, the parts are destroyed.",
+      "source": "23.2 - Composition",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch23_2_014",
+      "lesson": "23.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "composition",
+        "ownership"
+      ],
+      "text": "A composition is characterized by {{c1::exclusive ownership}} - the part can only belong to {{c2::one object}} at a time.",
+      "source": "23.2 - Composition",
+      "difficulty": "medium"
+    }
+  ]
+}

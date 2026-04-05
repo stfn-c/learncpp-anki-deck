@@ -1,0 +1,128 @@
+{
+  "chapter": "Chapter 2",
+  "chapter_title": "C++ Basics: Functions and Files",
+  "lesson": "2.8",
+  "lesson_title": "Programs with multiple code files",
+  "total_cards": 11,
+  "cards": [
+    {
+      "id": "ch2_8_001",
+      "lesson": "2.8",
+      "type": "basic",
+      "tags": ["cpp", "files", "compilation"],
+      "front": "Why split a program into multiple files?",
+      "back": "Multiple files provide:<ul><li>Better organization</li><li>Faster compilation (only changed files recompile)</li><li>Easier collaboration</li><li>Code reusability across projects</li></ul>",
+      "source": "2.8 - Programs with multiple files",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_8_002",
+      "lesson": "2.8",
+      "type": "cloze",
+      "tags": ["cpp", "files", "headers"],
+      "text": "To use a function defined in another file, you need a {{c1::forward declaration}}. These are typically placed in {{c2::header files}} with {{c3::.h}} or {{c4::.hpp}} extensions.",
+      "source": "2.8 - Programs with multiple files",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_8_003",
+      "lesson": "2.8",
+      "type": "basic",
+      "tags": ["cpp", "files", "headers"],
+      "front": "What is the difference between .cpp and .h files?",
+      "back": ".cpp files contain function <strong>definitions</strong> (implementations). .h (header) files contain forward <strong>declarations</strong> and other interface information.",
+      "source": "2.8 - Programs with multiple files",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_8_004",
+      "lesson": "2.8",
+      "type": "cloze",
+      "tags": ["cpp", "preprocessor", "headers", "syntax"],
+      "text": "To include a header file you wrote, use {{c1::#include \"filename.h\"}} with {{c2::quotes}}. For standard library headers, use {{c3::angle brackets}} like {{c4::&lt;iostream&gt;}}.",
+      "source": "2.8 - Programs with multiple files",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_8_005",
+      "lesson": "2.8",
+      "type": "code",
+      "tags": ["cpp", "files", "headers"],
+      "question": "If add.cpp defines add(), what should add.h contain?",
+      "code": "// add.cpp<br>int add(int x, int y) {<br>  return x + y;<br>}",
+      "answer": "// add.h<br>int add(int x, int y);",
+      "explanation": "The header file should contain the forward declaration (prototype) of the function, not the definition.",
+      "source": "2.8 - Programs with multiple files",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_8_006",
+      "lesson": "2.8",
+      "type": "basic",
+      "tags": ["cpp", "compilation", "linking"],
+      "front": "What is the difference between compiling and linking?",
+      "back": "<strong>Compiling</strong> converts each .cpp file to object code. <strong>Linking</strong> combines all object files into a single executable, resolving function calls across files.",
+      "source": "2.8 - Programs with multiple files",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_8_007",
+      "lesson": "2.8",
+      "type": "code",
+      "tags": ["cpp", "files", "headers"],
+      "question": "How would main.cpp use a function from math.cpp?",
+      "code": "// math.cpp<br>int square(int x) { return x * x; }",
+      "answer": "// math.h<br>int square(int x);<br><br>// main.cpp<br>#include \"math.h\"<br>int main() {<br>  int result = square(5);<br>}",
+      "explanation": "Create math.h with the declaration, include it in main.cpp, and compile both .cpp files together.",
+      "source": "2.8 - Programs with multiple files",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_8_008",
+      "lesson": "2.8",
+      "type": "cloze",
+      "tags": ["cpp", "headers", "best-practices"],
+      "text": "Header files should contain {{c1::declarations}} not {{c2::definitions}} (with some exceptions). Definitions belong in {{c3::.cpp}} files.",
+      "source": "2.8 - Programs with multiple files",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_8_009",
+      "lesson": "2.8",
+      "type": "basic",
+      "tags": ["cpp", "headers", "best-practices"],
+      "front": "Should a .cpp file include its own corresponding .h file?",
+      "back": "Yes. This ensures the implementation matches the declarations and catches errors where they don't match.",
+      "source": "2.8 - Programs with multiple files",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_8_010",
+      "lesson": "2.8",
+      "type": "concept",
+      "tags": ["cpp", "files", "best-practices"],
+      "concept": "Best practices for organizing multi-file programs",
+      "explanation": "Follow these guidelines:<ul><li>Group related functions in the same .cpp file</li><li>Create a corresponding .h file for each .cpp file</li><li>Use meaningful file names that describe the contents</li><li>Include only necessary headers</li><li>Add header guards to prevent multiple inclusion</li></ul>",
+      "examples": [
+        "// math.h - declarations",
+        "int add(int a, int b);",
+        "",
+        "// math.cpp - definitions",
+        "#include \"math.h\"",
+        "int add(int a, int b) { return a + b; }"
+      ],
+      "source": "2.8 - Programs with multiple files",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_8_011",
+      "lesson": "2.8",
+      "type": "basic",
+      "tags": ["cpp", "compilation", "main"],
+      "front": "Can a program have multiple .cpp files?",
+      "back": "Yes, a program can have many .cpp files. However, only ONE .cpp file can contain the main() function.",
+      "source": "2.8 - Programs with multiple files",
+      "difficulty": "easy"
+    }
+  ]
+}

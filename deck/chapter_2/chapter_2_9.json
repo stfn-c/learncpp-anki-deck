@@ -1,0 +1,186 @@
+{
+  "chapter": "Chapter 2",
+  "chapter_title": "C++ Basics: Functions and Files",
+  "lesson": "2.9",
+  "lesson_title": "Naming collisions and an introduction to namespaces",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch2_9_001",
+      "lesson": "2.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "namespaces",
+        "naming"
+      ],
+      "source": "2.9 - Naming collisions and namespaces",
+      "difficulty": "easy",
+      "text": "A {{c1::naming collision}} occurs when two {{c2::identifiers}} have the same {{c3::name}} in the same {{c4::scope}}, causing a conflict."
+    },
+    {
+      "id": "ch2_9_002",
+      "lesson": "2.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "namespaces"
+      ],
+      "text": "A {{c1::namespace}} provides a way to group related identifiers and keep them separate from other identifiers with the same name in different {{c2::namespaces}}.",
+      "source": "2.9 - Naming collisions and namespaces",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_9_003",
+      "lesson": "2.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "namespaces",
+        "std",
+        "syntax"
+      ],
+      "text": "The standard library is defined in the {{c1::std}} namespace. To access it, use the {{c2::scope resolution operator}} {{c3::::}}",
+      "source": "2.9 - Naming collisions and namespaces",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_9_004",
+      "lesson": "2.9",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "namespaces",
+        "syntax"
+      ],
+      "question": "What does std::cout mean?",
+      "code": "std::cout &lt;&lt; \"Hello\";",
+      "answer": "cout from the std namespace",
+      "explanation": "std:: specifies that we're using cout from the standard (std) namespace, not some other cout that might exist.",
+      "source": "2.9 - Naming collisions and namespaces",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_9_005",
+      "lesson": "2.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "namespaces",
+        "using",
+        "syntax"
+      ],
+      "text": "The statement {{c1::using namespace std;}} allows you to use identifiers from std without the {{c2::std::}} prefix.",
+      "source": "2.9 - Naming collisions and namespaces",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_9_006",
+      "lesson": "2.9",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "namespaces",
+        "using",
+        "best-practices"
+      ],
+      "front": "Why is 'using namespace std;' considered bad practice?",
+      "back": "It defeats the purpose of namespaces by bringing all std names into global scope, increasing the risk of naming collisions and reducing code clarity.",
+      "source": "2.9 - Naming collisions and namespaces",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_9_007",
+      "lesson": "2.9",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "namespaces",
+        "collisions"
+      ],
+      "question": "What problem does this code have?",
+      "code": "using namespace std;<br>using namespace foo;  // foo also has 'cout'<br><br>cout &lt;&lt; \"Hello\";  // Which cout?",
+      "answer": "Naming collision: Ambiguous which cout to use (std::cout or foo::cout).",
+      "explanation": "Using multiple namespaces can cause collisions when they have identifiers with the same name.",
+      "source": "2.9 - Naming collisions and namespaces",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_9_008",
+      "lesson": "2.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "namespaces",
+        "syntax"
+      ],
+      "text": "The scope resolution operator {{c1::::}} tells the compiler that an identifier is inside a specific {{c2::namespace}}.",
+      "source": "2.9 - Naming collisions and namespaces",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_9_009",
+      "lesson": "2.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "namespaces"
+      ],
+      "source": "2.9 - Naming collisions and namespaces",
+      "difficulty": "easy",
+      "text": "You can create {{c1::custom namespaces}} using the {{c2::namespace}} keyword to organize your code and avoid {{c3::naming conflicts}}."
+    },
+    {
+      "id": "ch2_9_010",
+      "lesson": "2.9",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "namespaces",
+        "best-practices"
+      ],
+      "concept": "Best practices for using namespaces",
+      "explanation": "Follow these guidelines:<ul><li>Prefer explicit std:: over using namespace std</li><li>Never use 'using namespace' in header files</li><li>Use 'using' declarations sparingly for specific identifiers if needed</li><li>Group related code in custom namespaces</li><li>Keep namespace names short but descriptive</li></ul>",
+      "examples": [
+        "// Good - explicit",
+        "std::cout &lt;&lt; \"Hello\";",
+        "",
+        "// Acceptable - specific using",
+        "using std::cout;",
+        "cout &lt;&lt; \"Hello\";",
+        "",
+        "// Bad - entire namespace",
+        "using namespace std;"
+      ],
+      "source": "2.9 - Naming collisions and namespaces",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch2_9_011",
+      "lesson": "2.9",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "operators"
+      ],
+      "front": "::",
+      "back": "Scope resolution operator - used to specify which namespace an identifier belongs to",
+      "source": "2.9 - Naming collisions and namespaces",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch2_9_012",
+      "lesson": "2.9",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "namespaces",
+        "global"
+      ],
+      "front": "What namespace are identifiers in if no namespace is specified?",
+      "back": "The global namespace. Identifiers defined outside any explicit namespace are in the global namespace.",
+      "source": "2.9 - Naming collisions and namespaces",
+      "difficulty": "medium"
+    }
+  ]
+}

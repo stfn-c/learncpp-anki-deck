@@ -1,0 +1,124 @@
+{
+  "chapter": "Chapter 14",
+  "chapter_title": "Introduction to Classes",
+  "lesson": "14.15",
+  "lesson_title": "Class initialization and copy elision",
+  "total_cards": 11,
+  "cards": [
+    {
+      "id": "ch14_15_001",
+      "lesson": "14.15",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "copy-elision"],
+      "text": "{{c1::Copy elision}} is a compiler optimization that avoids unnecessary {{c2::copying}} of objects, even when the copy constructor would normally be called.",
+      "source": "14.15 - Class initialization and copy elision",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_15_002",
+      "lesson": "14.15",
+      "type": "reverse",
+      "tags": ["cpp", "classes", "terminology"],
+      "front": "RVO (Return Value Optimization)",
+      "back": "A form of copy elision where the compiler eliminates the copy when returning an object by value from a function",
+      "source": "14.15 - Class initialization and copy elision",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_15_003",
+      "lesson": "14.15",
+      "type": "code",
+      "tags": ["cpp", "classes", "copy-elision"],
+      "question": "What optimization occurs in this code?",
+      "code": "class Widget { };<br><br>Widget createWidget()<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;return Widget{};<br>}<br><br>Widget w = createWidget();",
+      "answer": "RVO (copy elision). The compiler constructs w directly instead of creating a temporary, copying it, and destroying the temporary.",
+      "explanation": "Modern compilers optimize this to construct the object directly in the caller's space, avoiding copies entirely.",
+      "source": "14.15 - Class initialization and copy elision",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_15_004",
+      "lesson": "14.15",
+      "type": "basic",
+      "tags": ["cpp", "classes", "initialization"],
+      "front": "What is the difference between copy initialization and direct initialization?",
+      "back": "Copy initialization: Type obj = value; (uses =)<br>Direct initialization: Type obj{value}; or Type obj(value);<br>Direct initialization is preferred as it's more efficient and explicit.",
+      "source": "14.15 - Class initialization and copy elision",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_15_005",
+      "lesson": "14.15",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "copy-elision"],
+      "text": "As of C++17, copy elision is {{c1::mandatory}} in certain cases (like returning a temporary), not just an optimization. These are called {{c2::guaranteed copy elision}}.",
+      "source": "14.15 - Class initialization and copy elision",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_15_006",
+      "lesson": "14.15",
+      "type": "concept",
+      "tags": ["cpp", "classes", "copy-elision", "best-practices"],
+      "concept": "Why copy elision matters for performance",
+      "explanation": "Copy elision eliminates expensive copy operations, especially important for:<ul><li>Large objects (vectors, strings with lots of data)</li><li>Objects that manage resources (avoiding duplicate resource management)</li><li>Temporary objects in expressions</li><li>Return values from functions</li></ul>Can significantly improve performance by eliminating unnecessary object construction and destruction.",
+      "examples": [
+        "// Without elision: construct temp, copy to result, destroy temp",
+        "// With elision: construct directly into result location"
+      ],
+      "source": "14.15 - Class initialization and copy elision",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_15_007",
+      "lesson": "14.15",
+      "type": "basic",
+      "tags": ["cpp", "classes", "copy-elision"],
+      "front": "Does copy elision require the copy constructor to exist?",
+      "back": "In C++17+, guaranteed copy elision doesn't require a copy constructor. However, for non-guaranteed cases (where elision is optional), the copy constructor must still be accessible even if it's not called.",
+      "source": "14.15 - Class initialization and copy elision",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch14_15_008",
+      "lesson": "14.15",
+      "type": "code",
+      "tags": ["cpp", "classes", "initialization"],
+      "question": "Which initialization is preferred and why?",
+      "code": "A) Widget w = Widget{5};<br><br>B) Widget w{5};",
+      "answer": "B is preferred. It's direct initialization - clearer, more concise, and doesn't rely on copy elision.",
+      "explanation": "Direct initialization (B) is the modern C++ way. Copy initialization (A) works but is unnecessarily verbose and conceptually involves copying (even if elided).",
+      "source": "14.15 - Class initialization and copy elision",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch14_15_009",
+      "lesson": "14.15",
+      "type": "cloze",
+      "tags": ["cpp", "classes", "best-practices"],
+      "text": "Best practice: Use {{c1::direct initialization}} (braces or parentheses) instead of {{c2::copy initialization}} (equals sign) for class objects.",
+      "source": "14.15 - Class initialization and copy elision",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch14_15_010",
+      "lesson": "14.15",
+      "type": "basic",
+      "tags": ["cpp", "classes", "copy-elision"],
+      "front": "What is NRVO and when might it not apply?",
+      "back": "NRVO (Named Return Value Optimization) elides copies when returning a named local variable. It might not apply if:<ul><li>Returning different objects from different code paths</li><li>The compiler can't prove only one object is returned</li><li>Optimization is disabled</li></ul>",
+      "source": "14.15 - Class initialization and copy elision",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch14_15_011",
+      "lesson": "14.15",
+      "type": "basic",
+      "tags": ["cpp", "classes", "copy-elision", "gotchas"],
+      "front": "Should you rely on copy elision for program correctness?",
+      "back": "For C++17+ guaranteed copy elision, yes. For optional copy elision (NRVO), no - it's an optimization, not guaranteed. Your code should work correctly even if elision doesn't occur (except in guaranteed cases).",
+      "source": "14.15 - Class initialization and copy elision",
+      "difficulty": "medium"
+    }
+  ]
+}

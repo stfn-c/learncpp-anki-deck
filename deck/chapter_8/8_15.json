@@ -1,0 +1,115 @@
+{
+  "chapter": "Chapter 8",
+  "chapter_title": "Control Flow",
+  "lesson": "8.15",
+  "lesson_title": "Global random numbers (Random.h)",
+  "total_cards": 10,
+  "cards": [
+    {
+      "id": "ch8_15_001",
+      "lesson": "8.15",
+      "type": "basic",
+      "tags": ["cpp", "random", "global-objects"],
+      "front": "Why is it recommended to use a global Mersenne Twister engine instead of local static ones?",
+      "back": "A global engine avoids the static initialization order problem, ensures consistent seeding, and can be shared across the entire program.",
+      "source": "8.15 - Global random numbers (Random.h)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_15_002",
+      "lesson": "8.15",
+      "type": "concept",
+      "tags": ["cpp", "random", "namespace"],
+      "concept": "Creating a Random namespace for random utilities",
+      "explanation": "Best practice is to create a Random namespace containing:<ul><li>A global mt19937 engine (seeded with random_device)</li><li>Helper functions for common random operations</li><li>Put in a header file (e.g., Random.h)</li><li>This centralizes random number generation</li><li>Avoids duplicate engines and inconsistent seeding</li></ul>",
+      "examples": [
+        "namespace Random<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;inline std::mt19937 mt{std::random_device{}()};<br>&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;int get(int min, int max) { ... }<br>}"
+      ],
+      "source": "8.15 - Global random numbers (Random.h)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_15_003",
+      "lesson": "8.15",
+      "type": "cloze",
+      "tags": ["cpp", "random", "inline"],
+      "text": "To define a global random engine in a header without ODR violations, use the {{c1::inline}} keyword.",
+      "source": "8.15 - Global random numbers (Random.h)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_15_004",
+      "lesson": "8.15",
+      "type": "code",
+      "tags": ["cpp", "random", "syntax"],
+      "question": "How do you declare a global mt19937 engine in a header file?",
+      "code": "namespace Random<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;{{c1::inline}} std::mt19937 mt{std::random_device{}()};<br>}",
+      "answer": "inline std::mt19937 mt{std::random_device{}()};",
+      "explanation": "The inline keyword allows the definition in the header without violating the One Definition Rule when included in multiple files.",
+      "source": "8.15 - Global random numbers (Random.h)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_15_005",
+      "lesson": "8.15",
+      "type": "basic",
+      "tags": ["cpp", "random", "best-practices"],
+      "front": "What is the advantage of creating helper functions like Random::get(min, max)?",
+      "back": "It simplifies random number generation - users don't need to understand distributions, just call a simple function with the desired range.",
+      "source": "8.15 - Global random numbers (Random.h)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_15_006",
+      "lesson": "8.15",
+      "type": "cloze",
+      "tags": ["cpp", "random", "syntax"],
+      "text": "A helper function for random integers in a range:<br>int get(int min, int max)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;{{c1::std::uniform_int_distribution die{min, max};}}<br>&nbsp;&nbsp;&nbsp;&nbsp;{{c2::return die(mt);}}<br>}",
+      "source": "8.15 - Global random numbers (Random.h)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_15_007",
+      "lesson": "8.15",
+      "type": "basic",
+      "tags": ["cpp", "random", "namespace"],
+      "front": "How would you call a random number function from a Random namespace?",
+      "back": "Random::get(1, 6) - where get is the helper function that returns a random number in the specified range.",
+      "source": "8.15 - Global random numbers (Random.h)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_15_008",
+      "lesson": "8.15",
+      "type": "concept",
+      "tags": ["cpp", "random", "best-practices"],
+      "concept": "Benefits of a centralized Random namespace",
+      "explanation": "Centralizing random utilities in a namespace provides:<ul><li>Single point of seeding (one engine for entire program)</li><li>Consistent random number quality</li><li>Easy to use helper functions</li><li>No duplicate engines or initialization</li><li>Can add more random utilities in one place</li><li>Better than scattered static local engines</li></ul>",
+      "examples": [
+        "// Easy to use<br>int roll = Random::get(1, 6);<br>int percent = Random::get(0, 100);"
+      ],
+      "source": "8.15 - Global random numbers (Random.h)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_15_009",
+      "lesson": "8.15",
+      "type": "basic",
+      "tags": ["cpp", "random", "header"],
+      "front": "Why should the Random namespace and engine be in a header file?",
+      "back": "So it can be included in any source file that needs random numbers, making it available throughout the program.",
+      "source": "8.15 - Global random numbers (Random.h)",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_15_010",
+      "lesson": "8.15",
+      "type": "basic",
+      "tags": ["cpp", "random", "testing"],
+      "front": "How can you make random number generation testable/reproducible?",
+      "back": "Add a seed() function to the Random namespace that allows setting a specific seed for the mt19937 engine, useful for debugging and testing.",
+      "source": "8.15 - Global random numbers (Random.h)",
+      "difficulty": "medium"
+    }
+  ]
+}

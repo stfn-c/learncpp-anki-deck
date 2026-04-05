@@ -1,0 +1,185 @@
+{
+  "chapter": "Chapter 13",
+  "chapter_title": "Compound Types: Enums and Structs",
+  "lesson": "13.5",
+  "lesson_title": "13.5 — Introduction to overloading the I/O operators",
+  "total_cards": 13,
+  "cards": [
+    {
+      "id": "ch13_5_001",
+      "lesson": "13.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "iostream"
+      ],
+      "text": "To enable <code>std::cout &lt;&lt; myEnum;</code> to print enum names, you can {{c1::overload}} the {{c2::insertion operator}} ({{c3::&lt;&lt;}}).",
+      "source": "13.5 — Introduction to overloading the I/O operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_5_002",
+      "lesson": "13.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading"
+      ],
+      "front": "What are the insertion and extraction operators for I/O?",
+      "back": "<strong>Insertion operator:</strong> <code>&lt;&lt;</code> (output to stream)<br><strong>Extraction operator:</strong> <code>&gt;&gt;</code> (input from stream)",
+      "source": "13.5 — Introduction to overloading the I/O operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch13_5_003",
+      "lesson": "13.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "iostream"
+      ],
+      "question": "What does this function signature enable?",
+      "code": "std::ostream&amp; operator&lt;&lt;(std::ostream&amp; out, Color color);",
+      "answer": "Enables outputting Color enums with std::cout (e.g., std::cout &lt;&lt; myColor).",
+      "explanation": "Overloads the &lt;&lt; operator for Color type, allowing custom output behavior.",
+      "source": "13.5 — Introduction to overloading the I/O operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_5_004",
+      "lesson": "13.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "syntax"
+      ],
+      "text": "The signature for overloading output operator is: {{c1::std::ostream&amp;}} operator&lt;&lt;({{c2::std::ostream&amp;}} out, {{c3::YourType}} obj);",
+      "source": "13.5 — Introduction to overloading the I/O operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_5_005",
+      "lesson": "13.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading"
+      ],
+      "front": "Why does operator&lt;&lt; overload return std::ostream&amp;?",
+      "back": "To enable chaining: <code>std::cout &lt;&lt; x &lt;&lt; y &lt;&lt; z;</code><br>Returning the stream allows the next &lt;&lt; to use the result.",
+      "source": "13.5 — Introduction to overloading the I/O operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_5_006",
+      "lesson": "13.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operator-overloading"
+      ],
+      "question": "What does this implementation do?",
+      "code": "std::ostream&amp; operator&lt;&lt;(std::ostream&amp; out, Color c) {\n  switch(c) {\n    case red: return out &lt;&lt; \"red\";\n    case green: return out &lt;&lt; \"green\";\n    default: return out &lt;&lt; \"unknown\";\n  }\n}",
+      "answer": "Overloads &lt;&lt; to output Color enums as their string names instead of integers.",
+      "explanation": "Combines switch-based enum-to-string with operator overloading for clean syntax.",
+      "source": "13.5 — Introduction to overloading the I/O operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_5_007",
+      "lesson": "13.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading"
+      ],
+      "text": "To overload the input operator: {{c1::std::istream&amp;}} operator&gt;&gt;({{c2::std::istream&amp;}} in, {{c3::YourType&amp;}} obj);",
+      "source": "13.5 — Introduction to overloading the I/O operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_5_008",
+      "lesson": "13.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading"
+      ],
+      "front": "Why is the second parameter of operator&gt;&gt; a reference?",
+      "back": "The extracted value needs to be stored in the original variable, so it must be passed by reference to allow modification.",
+      "source": "13.5 — Introduction to overloading the I/O operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_5_009",
+      "lesson": "13.5",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "best-practices"
+      ],
+      "concept": "Overloading I/O operators for custom types",
+      "explanation": "Benefits of overloading &lt;&lt; and &gt;&gt;:<ul><li>Cleaner syntax than named functions</li><li>Consistent with built-in types</li><li>Enables chaining operations</li><li>Makes custom types feel \"native\"</li></ul>Use for frequently printed/input types.",
+      "examples": [
+        "std::cout &lt;&lt; myColor;  // Natural syntax",
+        "std::cin &gt;&gt; myColor;  // Consistent input",
+        "std::cout &lt;&lt; a &lt;&lt; b &lt;&lt; c;  // Chaining works"
+      ],
+      "source": "13.5 — Introduction to overloading the I/O operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_5_010",
+      "lesson": "13.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading"
+      ],
+      "front": "Where should you typically define operator&lt;&lt; and operator&gt;&gt; for a type?",
+      "back": "In the same namespace as the type, as non-member functions. This allows argument-dependent lookup (ADL) to find them.",
+      "source": "13.5 — Introduction to overloading the I/O operators",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch13_5_011",
+      "lesson": "13.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading"
+      ],
+      "text": "To overload output for custom types: std::ostream{{c1::&amp;}} operator{{c2::&lt;&lt;}}(std::ostream{{c3::&amp;}} out, MyType obj);",
+      "source": "13.5 — Introduction to overloading the I/O operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_5_012",
+      "lesson": "13.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading"
+      ],
+      "text": "Overloaded I/O operators return {{c1::stream reference}} to enable {{c2::chaining}}: cout &lt;&lt; a &lt;&lt; b &lt;&lt; c;",
+      "source": "13.5 — Introduction to overloading the I/O operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch13_5_013",
+      "lesson": "13.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading"
+      ],
+      "text": "To overload output for custom types: std::ostream{{c1::&amp;}} operator{{c2::&lt;&lt;}}(std::ostream{{c3::&amp;}} out, MyType obj);",
+      "source": "13.5 — Introduction to overloading the I/O operators",
+      "difficulty": "medium"
+    }
+  ]
+}

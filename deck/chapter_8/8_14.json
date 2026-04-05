@@ -1,0 +1,133 @@
+{
+  "chapter": "Chapter 8",
+  "chapter_title": "Control Flow",
+  "lesson": "8.14",
+  "lesson_title": "Generating random numbers using Mersenne Twister",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch8_14_001",
+      "lesson": "8.14",
+      "type": "basic",
+      "tags": ["cpp", "mersenne-twister", "fundamentals"],
+      "front": "What does std::mt19937 stand for?",
+      "back": "Mersenne Twister with a period of 2^19937-1. It's a high-quality pseudo-random number generator.",
+      "source": "8.14 - Generating random numbers using Mersenne Twister",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_14_002",
+      "lesson": "8.14",
+      "type": "basic",
+      "tags": ["cpp", "mersenne-twister", "variants"],
+      "front": "What is the difference between std::mt19937 and std::mt19937_64?",
+      "back": "std::mt19937 generates 32-bit random numbers. std::mt19937_64 generates 64-bit random numbers.",
+      "source": "8.14 - Generating random numbers using Mersenne Twister",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_14_003",
+      "lesson": "8.14",
+      "type": "cloze",
+      "tags": ["cpp", "random-device", "syntax"],
+      "text": "To get a truly random seed from the OS, use {{c1::std::random_device}}. Call it with {{c2::rd()}} to get a random value.",
+      "source": "8.14 - Generating random numbers using Mersenne Twister",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_14_004",
+      "lesson": "8.14",
+      "type": "code",
+      "tags": ["cpp", "mersenne-twister", "syntax"],
+      "question": "How do you properly initialize a Mersenne Twister with a random seed?",
+      "code": "{{c1::std::random_device rd;}}<br>{{c2::std::mt19937 mt{rd()};}}  // seed with random value",
+      "answer": "std::random_device rd;<br>std::mt19937 mt{rd()};",
+      "explanation": "Create a random_device, then use it to seed the mt19937 engine. The rd() call gets a random value from the OS.",
+      "source": "8.14 - Generating random numbers using Mersenne Twister",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_14_005",
+      "lesson": "8.14",
+      "type": "basic",
+      "tags": ["cpp", "mersenne-twister", "state"],
+      "front": "Why should the Mersenne Twister engine be declared static in a function?",
+      "back": "So it persists between function calls and maintains its state. This ensures you get different random numbers each call, not the same sequence.",
+      "source": "8.14 - Generating random numbers using Mersenne Twister",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_14_006",
+      "lesson": "8.14",
+      "type": "cloze",
+      "tags": ["cpp", "random", "syntax"],
+      "text": "To generate a random integer between min and max (inclusive):<br>{{c1::std::uniform_int_distribution dist{min, max};}}<br>{{c2::int value = dist(mt);}}",
+      "source": "8.14 - Generating random numbers using Mersenne Twister",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch8_14_007",
+      "lesson": "8.14",
+      "type": "basic",
+      "tags": ["cpp", "uniform-int-distribution", "range"],
+      "front": "Is the upper bound of std::uniform_int_distribution inclusive or exclusive?",
+      "back": "Inclusive. If you create dist{1, 6}, both 1 and 6 can be generated (like a dice roll).",
+      "source": "8.14 - Generating random numbers using Mersenne Twister",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_14_008",
+      "lesson": "8.14",
+      "type": "concept",
+      "tags": ["cpp", "mersenne-twister", "best-practices"],
+      "concept": "Complete pattern for random number generation function",
+      "explanation": "The recommended pattern for a random number function:<ul><li>Make engine static so it persists</li><li>Seed once with std::random_device</li><li>Create distribution for desired range</li><li>Call distribution with engine to generate</li><li>Return the random value</li></ul>This gives high-quality randomness with different values each call.",
+      "examples": [
+        "int random(int min, int max)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;static std::mt19937 mt{std::random_device{}()};<br>&nbsp;&nbsp;&nbsp;&nbsp;std::uniform_int_distribution die{min, max};<br>&nbsp;&nbsp;&nbsp;&nbsp;return die(mt);<br>}"
+      ],
+      "source": "8.14 - Generating random numbers using Mersenne Twister",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_14_009",
+      "lesson": "8.14",
+      "type": "code",
+      "tags": ["cpp", "random", "common-mistakes"],
+      "question": "What's wrong with this random number function?",
+      "code": "int random(int min, int max)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;std::mt19937 mt{std::random_device{}()};<br>&nbsp;&nbsp;&nbsp;&nbsp;std::uniform_int_distribution die{min, max};<br>&nbsp;&nbsp;&nbsp;&nbsp;return die(mt);<br>}",
+      "answer": "The engine mt is recreated and reseeded on every call, which is slow and may produce similar sequences.",
+      "explanation": "Without static, the engine is created new each call. This is inefficient and defeats the purpose of a PRNG's state. Make it static.",
+      "source": "8.14 - Generating random numbers using Mersenne Twister",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch8_14_010",
+      "lesson": "8.14",
+      "type": "basic",
+      "tags": ["cpp", "random-device", "limitations"],
+      "front": "Why shouldn't you use std::random_device directly for all random number generation?",
+      "back": "It can be slow (accesses hardware/OS resources), may have limited entropy, and on some systems might not actually be random. Use it only for seeding.",
+      "source": "8.14 - Generating random numbers using Mersenne Twister",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_14_011",
+      "lesson": "8.14",
+      "type": "cloze",
+      "tags": ["cpp", "mersenne-twister", "syntax"],
+      "text": "The common idiom to seed mt19937 inline:<br>{{c1::std::mt19937 mt{std::random_device{}()};}}",
+      "source": "8.14 - Generating random numbers using Mersenne Twister",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch8_14_012",
+      "lesson": "8.14",
+      "type": "basic",
+      "tags": ["cpp", "mersenne-twister", "reproducibility"],
+      "front": "How can you make random number generation reproducible (same sequence each run) for debugging?",
+      "back": "Seed the Mersenne Twister with a fixed value instead of std::random_device:<br>std::mt19937 mt{12345}; // fixed seed",
+      "source": "8.14 - Generating random numbers using Mersenne Twister",
+      "difficulty": "medium"
+    }
+  ]
+}

@@ -1,0 +1,172 @@
+{
+  "chapter": "Chapter 11",
+  "chapter_title": "Function Overloading and Function Templates",
+  "lesson": "11.9",
+  "lesson_title": "Non-type template parameters",
+  "total_cards": 11,
+  "cards": [
+    {
+      "id": "ch11_9_001",
+      "lesson": "11.9",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "templates",
+        "parameters"
+      ],
+      "front": "Non-type template parameter",
+      "back": "A template parameter that is a compile-time constant value rather than a type",
+      "source": "11.9 - Non-type template parameters",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_9_002",
+      "lesson": "11.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "syntax"
+      ],
+      "text": "To declare a non-type template parameter: {{c1::template &lt;typename T, int N&gt;}}",
+      "source": "11.9 - Non-type template parameters",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_9_003",
+      "lesson": "11.9",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "question": "What does this template do?",
+      "code": "template &lt;int N&gt;\nvoid printN() {\n    std::cout &lt;&lt; N;\n}",
+      "answer": "It prints the compile-time constant value N.",
+      "explanation": "N is a non-type template parameter that must be known at compile time.",
+      "source": "11.9 - Non-type template parameters",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_9_004",
+      "lesson": "11.9",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "question": "How do you call this function to print 42?",
+      "code": "template &lt;int N&gt;\nvoid printN() { std::cout &lt;&lt; N; }",
+      "answer": "printN&lt;42&gt;();",
+      "explanation": "You must explicitly specify the non-type template argument in angle brackets.",
+      "source": "11.9 - Non-type template parameters",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_9_005",
+      "lesson": "11.9",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "front": "What types can be used as non-type template parameters?",
+      "back": "Integral types (int, char, bool, etc.), enumeration types, pointers, references, and (in C++20) floating-point types and class types with specific constraints.",
+      "source": "11.9 - Non-type template parameters",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_9_006",
+      "lesson": "11.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "text": "Non-type template parameters must be {{c1::compile-time constants}}.",
+      "source": "11.9 - Non-type template parameters",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_9_007",
+      "lesson": "11.9",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "templates",
+        "common-mistakes"
+      ],
+      "question": "Will this code compile?",
+      "code": "template &lt;int N&gt;\nvoid print() { std::cout &lt;&lt; N; }\n\nint x = 5;\nprint&lt;x&gt;();",
+      "answer": "No, it will not compile.",
+      "explanation": "Non-type template arguments must be compile-time constants. x is a runtime variable, so it cannot be used as a template argument. Use constexpr or a literal instead.",
+      "source": "11.9 - Non-type template parameters",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_9_008",
+      "lesson": "11.9",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "templates",
+        "arrays"
+      ],
+      "concept": "Using non-type template parameters with arrays",
+      "explanation": "Non-type template parameters are commonly used to specify array sizes, allowing templates to work with arrays of specific sizes while preserving size information.",
+      "examples": [
+        "template &lt;typename T, int N&gt;",
+        "void printArray(const T (&amp;arr)[N]) {",
+        "    for (int i = 0; i &lt; N; ++i)",
+        "        std::cout &lt;&lt; arr[i] &lt;&lt; ' ';",
+        "}",
+        "",
+        "int arr[5] = {1, 2, 3, 4, 5};",
+        "printArray(arr);  // N deduced as 5"
+      ],
+      "source": "11.9 - Non-type template parameters",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_9_009",
+      "lesson": "11.9",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "question": "What happens when you call this?",
+      "code": "template &lt;int N&gt;\nint multiply(int x) { return x * N; }\n\nmultiply&lt;5&gt;(3);",
+      "answer": "Returns 15 (3 * 5)",
+      "explanation": "The template is instantiated with N=5, so the function returns x * 5.",
+      "source": "11.9 - Non-type template parameters",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch11_9_010",
+      "lesson": "11.9",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "templates"
+      ],
+      "front": "Can non-type template parameters be deduced from function arguments?",
+      "back": "Yes, in some cases (like with array references), but often they must be explicitly specified.",
+      "source": "11.9 - Non-type template parameters",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch11_9_011",
+      "lesson": "11.9",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "templates",
+        "syntax"
+      ],
+      "text": "You can mix type and non-type template parameters: {{c1::template &lt;typename T, int Size&gt;}}",
+      "source": "11.9 - Non-type template parameters",
+      "difficulty": "easy"
+    }
+  ]
+}

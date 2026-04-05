@@ -1,0 +1,183 @@
+{
+  "chapter": "Chapter 6",
+  "chapter_title": "Operators",
+  "lesson": "6.5",
+  "lesson_title": "The comma operator",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch6_5_001",
+      "lesson": "6.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operators",
+        "comma"
+      ],
+      "text": "The comma operator {{c1::,}} evaluates the {{c2::left}} operand first, then the {{c3::right}} operand, and returns the value of the {{c4::right}} operand.",
+      "source": "6.5 - The comma operator",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_5_002",
+      "lesson": "6.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operators",
+        "comma"
+      ],
+      "question": "What does this code output?",
+      "code": "int x = 1, y = 2;\nstd::cout &lt;&lt; (++x, ++y);",
+      "answer": "3",
+      "explanation": "The comma operator evaluates ++x (x becomes 2), then ++y (y becomes 3), and returns the result of the right operand (3).",
+      "source": "6.5 - The comma operator",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch6_5_003",
+      "lesson": "6.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operators",
+        "comma"
+      ],
+      "front": "What is the precedence level of the comma operator?",
+      "back": "The comma operator has the lowest precedence of all operators, even lower than assignment.",
+      "source": "6.5 - The comma operator",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_5_004",
+      "lesson": "6.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operators",
+        "comma"
+      ],
+      "question": "What's the difference between these two lines?",
+      "code": "z = (a, b);\nz = a, b;",
+      "answer": "First: z gets value of b. Second: z gets value of a, b is evaluated and discarded.",
+      "explanation": "First evaluates as z = (a, b) due to parentheses. Second evaluates as (z = a), b due to comma's low precedence.",
+      "source": "6.5 - The comma operator",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch6_5_005",
+      "lesson": "6.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operators",
+        "best-practices"
+      ],
+      "text": "Best practice: {{c1::Avoid}} using the comma operator, except within {{c2::for loops}}.",
+      "source": "6.5 - The comma operator",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_5_006",
+      "lesson": "6.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operators",
+        "comma"
+      ],
+      "front": "What is the difference between the comma operator and separator commas?",
+      "back": "The comma operator (,) evaluates expressions sequentially. Separator commas are used in function calls, declarations, etc., and don't invoke the comma operator.",
+      "source": "6.5 - The comma operator",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch6_5_007",
+      "lesson": "6.5",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operators",
+        "comma"
+      ],
+      "question": "Are these separator commas or comma operators?",
+      "code": "void foo(int x, int y)\n{\n    add(x, y);\n}",
+      "answer": "Separator commas",
+      "explanation": "In function parameters and function call arguments, commas are separators, not comma operators.",
+      "source": "6.5 - The comma operator",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_5_008",
+      "lesson": "6.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operators",
+        "comma"
+      ],
+      "text": "In the expression (a, b, c), the comma operator returns the value of {{c1::c}} (the rightmost operand).",
+      "source": "6.5 - The comma operator",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch6_5_009",
+      "lesson": "6.5",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "operators",
+        "best-practices"
+      ],
+      "concept": "Why the comma operator is rarely used",
+      "explanation": "The comma operator makes code harder to read and understand. Almost any use of the comma operator can be better written as separate statements. The only common exception is in for loop initialization/increment.",
+      "examples": [
+        "(++x, ++y)           // Hard to read",
+        "++x; ++y;            // Better: separate statements",
+        "for (int i=0, j=10; i&lt;j; ++i, --j) // OK: common in for loops"
+      ],
+      "source": "6.5 - The comma operator",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch6_5_010",
+      "lesson": "6.5",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operators",
+        "comma"
+      ],
+      "front": "Why is the low precedence of the comma operator dangerous?",
+      "back": "Because it can cause unexpected grouping. For example, z = a, b evaluates as (z = a), b, not z = (a, b), which may not be what you intended.",
+      "source": "6.5 - The comma operator",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch6_5_011",
+      "lesson": "6.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operators",
+        "comma"
+      ],
+      "text": "The comma operator has the {{c1::lowest}} precedence of all operators, so z = a, b evaluates as {{c2::(z = a), b}}, not z = (a, b).",
+      "source": "6.5 - The comma operator",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch6_5_012",
+      "lesson": "6.5",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operators",
+        "comma"
+      ],
+      "text": "Comma operator evaluates {{c1::both}} operands from {{c2::left}} to {{c3::right}}, returns value of {{c4::right}} operand.",
+      "source": "6.5 - The comma operator",
+      "difficulty": "easy"
+    }
+  ]
+}

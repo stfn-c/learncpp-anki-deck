@@ -1,0 +1,229 @@
+{
+  "chapter": "Chapter 7",
+  "chapter_title": "Scope, Duration, and Linkage",
+  "lesson": "7.14",
+  "lesson_title": "Unnamed and inline namespaces",
+  "total_cards": 15,
+  "cards": [
+    {
+      "id": "ch7_14_001",
+      "lesson": "7.14",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "namespaces",
+        "syntax"
+      ],
+      "text": "An {{c1::unnamed namespace}} (also called an {{c2::anonymous namespace}}) is a namespace without a name: {{c3::namespace { }}}",
+      "source": "7.14 - Unnamed and inline namespaces",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch7_14_002",
+      "lesson": "7.14",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "namespaces",
+        "linkage"
+      ],
+      "front": "What linkage do identifiers in an unnamed namespace have?",
+      "back": "Internal linkage. All identifiers in an unnamed namespace are treated as if they have internal linkage, limiting them to the current translation unit.",
+      "source": "7.14 - Unnamed and inline namespaces",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_14_003",
+      "lesson": "7.14",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "namespaces",
+        "syntax"
+      ],
+      "question": "How do you access members of an unnamed namespace?",
+      "code": "namespace\n{\n    int value{ 5 };\n    void doSomething() { }\n}\n\nint main()\n{\n    // How to access value and doSomething?\n}",
+      "answer": "value = 10;<br>doSomething();<br><br>No prefix needed - they're accessible directly in the same file.",
+      "explanation": "Unnamed namespace members can be accessed without any prefix within the same translation unit. They act like global identifiers with internal linkage.",
+      "source": "7.14 - Unnamed and inline namespaces",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_14_004",
+      "lesson": "7.14",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "namespaces",
+        "best-practices"
+      ],
+      "front": "What is the modern C++ way to give internal linkage to functions and variables?",
+      "back": "Use unnamed namespaces instead of the 'static' keyword. This is the preferred modern C++ approach.",
+      "source": "7.14 - Unnamed and inline namespaces",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_14_005",
+      "lesson": "7.14",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "namespaces",
+        "best-practices"
+      ],
+      "question": "Modernize this code using an unnamed namespace:",
+      "code": "// a.cpp\nstatic void helper() { }\nstatic const int maxSize{ 100 };",
+      "answer": "// a.cpp<br>namespace<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;void helper() { }<br>&nbsp;&nbsp;&nbsp;&nbsp;const int maxSize{ 100 };<br>}",
+      "explanation": "Unnamed namespaces are the modern C++ way to create identifiers with internal linkage. Prefer them over 'static' for functions and variables.",
+      "source": "7.14 - Unnamed and inline namespaces",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_14_006",
+      "lesson": "7.14",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "namespaces",
+        "syntax"
+      ],
+      "text": "An {{c1::inline namespace}} is declared with the {{c2::inline}} keyword: {{c3::inline namespace v1 { }}}. Its members are treated as if they're part of the parent namespace.",
+      "source": "7.14 - Unnamed and inline namespaces",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_14_007",
+      "lesson": "7.14",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "namespaces",
+        "inline"
+      ],
+      "front": "What is the primary use case for inline namespaces?",
+      "back": "Versioning - to maintain multiple versions of an API while making one version the default. Libraries can update the default version without breaking existing code.",
+      "source": "7.14 - Unnamed and inline namespaces",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_14_008",
+      "lesson": "7.14",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "namespaces",
+        "inline"
+      ],
+      "question": "How can you access both versions in this code?",
+      "code": "namespace mylib\n{\n    inline namespace v2\n    {\n        void doSomething() { /* v2 */ }\n    }\n    namespace v1\n    {\n        void doSomething() { /* v1 */ }\n    }\n}",
+      "answer": "mylib::doSomething(); // v2 (default via inline)<br>mylib::v1::doSomething(); // v1 (explicit)<br>mylib::v2::doSomething(); // v2 (explicit)",
+      "explanation": "The inline namespace makes its members accessible without the namespace name. Non-inline versions require explicit qualification.",
+      "source": "7.14 - Unnamed and inline namespaces",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch7_14_009",
+      "lesson": "7.14",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "namespaces",
+        "unnamed"
+      ],
+      "front": "Can unnamed namespaces be nested?",
+      "back": "Yes, but it's not common. Unnamed namespaces can be nested inside named namespaces or other unnamed namespaces.",
+      "source": "7.14 - Unnamed and inline namespaces",
+      "difficulty": "hard"
+    },
+    {
+      "id": "ch7_14_010",
+      "lesson": "7.14",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "namespaces",
+        "comparison"
+      ],
+      "front": "What's the difference between 'static' and unnamed namespaces for internal linkage?",
+      "back": "They're functionally similar, but unnamed namespaces are the modern C++ approach. Unnamed namespaces work for all identifiers (including types), while 'static' doesn't work for types.",
+      "source": "7.14 - Unnamed and inline namespaces",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_14_011",
+      "lesson": "7.14",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "namespaces",
+        "best-practices"
+      ],
+      "concept": "When to use unnamed vs inline namespaces",
+      "explanation": "Use unnamed namespaces for:<ul><li>Implementation details that should be file-local</li><li>Helper functions/variables used only in one file</li><li>Modern alternative to 'static' for internal linkage</li></ul>Use inline namespaces for:<ul><li>Versioning APIs in libraries</li><li>Providing a default version while maintaining backward compatibility</li></ul>",
+      "examples": [
+        "// Unnamed: internal helpers",
+        "namespace { void helper() { } }",
+        "",
+        "// Inline: API versioning",
+        "namespace mylib {",
+        "    inline namespace v2 { void foo(); }",
+        "    namespace v1 { void foo(); }",
+        "}"
+      ],
+      "source": "7.14 - Unnamed and inline namespaces",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_14_012",
+      "lesson": "7.14",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "namespaces",
+        "linkage"
+      ],
+      "text": "All identifiers in an {{c1::unnamed namespace}} have {{c2::internal linkage}}, limiting them to the current translation unit.",
+      "source": "7.14 - Unnamed and inline namespaces",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_14_013",
+      "lesson": "7.14",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "namespaces",
+        "inline"
+      ],
+      "text": "An {{c1::inline namespace}} makes its members accessible as if they're part of the {{c2::parent namespace}}, commonly used for {{c3::versioning}}.",
+      "source": "7.14 - Unnamed and inline namespaces",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_14_014",
+      "lesson": "7.14",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "namespaces",
+        "best-practices"
+      ],
+      "text": "The modern C++ way to give internal linkage is to use {{c1::unnamed namespaces}} instead of the {{c2::static}} keyword.",
+      "source": "7.14 - Unnamed and inline namespaces",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch7_14_015",
+      "lesson": "7.14",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "namespaces",
+        "versioning"
+      ],
+      "text": "Inline namespaces are primarily used for {{c1::API versioning}}, making one version the {{c2::default}} while maintaining backward compatibility.",
+      "source": "7.14 - Unnamed and inline namespaces",
+      "difficulty": "medium"
+    }
+  ]
+}

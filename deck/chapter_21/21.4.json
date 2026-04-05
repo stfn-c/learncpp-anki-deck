@@ -1,0 +1,169 @@
+{
+  "chapter": "Chapter 21",
+  "chapter_title": "Operator Overloading",
+  "lesson": "21.4",
+  "lesson_title": "Overloading the I/O operators",
+  "total_cards": 11,
+  "cards": [
+    {
+      "id": "ch21_4_001",
+      "lesson": "21.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "io-operators"
+      ],
+      "text": "The insertion operator {{c1::&lt;&lt;}} is used with std::cout, while the extraction operator {{c2::&gt;&gt;}} is used with std::cin.",
+      "source": "21.4 - Overloading the I/O operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch21_4_002",
+      "lesson": "21.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "io-operators"
+      ],
+      "text": "I/O operators must be implemented as {{c1::friend}} or {{c2::normal}} functions (not member functions) because the left operand is a {{c3::stream object}}, not your class.",
+      "source": "21.4 - Overloading the I/O operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_4_003",
+      "lesson": "21.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "io-operators"
+      ],
+      "question": "What does this operator&lt;&lt; overload do?",
+      "code": "friend std::ostream&amp; operator&lt;&lt;(std::ostream&amp; out, const Point&amp; point) {\n    out &lt;&lt; \"Point(\" &lt;&lt; point.m_x &lt;&lt; \", \" &lt;&lt; point.m_y &lt;&lt; \")\";\n    return out;\n}",
+      "answer": "Overloads the insertion operator to output a Point object to a stream. Returns the stream by reference to allow chaining.",
+      "explanation": "Takes std::ostream&amp; (the stream) and const Point&amp; (object to output). Returns out by reference for chaining (e.g., std::cout &lt;&lt; p1 &lt;&lt; p2).",
+      "source": "21.4 - Overloading the I/O operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_4_004",
+      "lesson": "21.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "io-operators"
+      ],
+      "front": "Why must operator&lt;&lt; and operator&gt;&gt; return a reference to the stream?",
+      "back": "Returning a stream reference allows chaining multiple operations together, e.g., std::cout &lt;&lt; a &lt;&lt; b &lt;&lt; c. Each operator returns the stream, which becomes the left operand for the next operation.",
+      "source": "21.4 - Overloading the I/O operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_4_005",
+      "lesson": "21.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "io-operators"
+      ],
+      "text": "For operator&lt;&lt;, the first parameter is {{c1::std::ostream&amp;}} and the second is {{c2::const YourClass&amp;}}. For operator&gt;&gt;, the first is {{c3::std::istream&amp;}} and the second is {{c4::YourClass&amp;}} (non-const).",
+      "source": "21.4 - Overloading the I/O operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_4_006",
+      "lesson": "21.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "io-operators"
+      ],
+      "question": "What's wrong with this operator&gt;&gt; implementation?",
+      "code": "friend std::istream&amp; operator&gt;&gt;(std::istream&amp; in, const Point&amp; point) {\n    in &gt;&gt; point.m_x &gt;&gt; point.m_y;\n    return in;\n}",
+      "answer": "The Point parameter is const, but operator&gt;&gt; needs to modify the object to read into it. It should be Point&amp; (non-const reference).",
+      "explanation": "Extraction operator must modify the object to store input values, so the parameter cannot be const.",
+      "source": "21.4 - Overloading the I/O operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_4_007",
+      "lesson": "21.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "io-operators"
+      ],
+      "front": "Should operator&lt;&lt; take its object parameter by const reference or non-const reference?",
+      "back": "const reference. The insertion operator only reads from the object to output it, so it should not modify the object. This also allows outputting temporary objects and const objects.",
+      "source": "21.4 - Overloading the I/O operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch21_4_008",
+      "lesson": "21.4",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "io-operators"
+      ],
+      "concept": "Implementing I/O operator overloads",
+      "explanation": "Standard pattern for I/O operators:<ul><li><b>operator&lt;&lt;</b>: std::ostream&amp; operator&lt;&lt;(std::ostream&amp; out, const T&amp; obj)</li><li><b>operator&gt;&gt;</b>: std::istream&amp; operator&gt;&gt;(std::istream&amp; in, T&amp; obj)</li><li>Both return stream reference for chaining</li><li>Typically implemented as friend functions</li><li>Output operator takes const reference, input takes non-const</li></ul>",
+      "examples": [
+        "friend std::ostream&amp; operator&lt;&lt;(std::ostream&amp; out, const Point&amp; p);",
+        "friend std::istream&amp; operator&gt;&gt;(std::istream&amp; in, Point&amp; p);"
+      ],
+      "source": "21.4 - Overloading the I/O operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_4_009",
+      "lesson": "21.4",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "io-operators"
+      ],
+      "front": "Why can't operator&lt;&lt; be implemented as a member function?",
+      "back": "Because the left operand is std::ostream, not your class. Member functions require the left operand to be an object of your class (*this). You'd need std::cout.operator&lt;&lt;(myObj), which requires modifying the standard library.",
+      "source": "21.4 - Overloading the I/O operators",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch21_4_010",
+      "lesson": "21.4",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "io-operators"
+      ],
+      "text": "To enable chaining like std::cout &lt;&lt; a &lt;&lt; b, operator&lt;&lt; must return {{c1::std::ostream&amp;}} (a reference to the output stream).",
+      "source": "21.4 - Overloading the I/O operators",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch21_4_011",
+      "lesson": "21.4",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "operator-overloading",
+        "io-operators"
+      ],
+      "question": "How would you use this operator&gt;&gt; overload?",
+      "code": "friend std::istream&amp; operator&gt;&gt;(std::istream&amp; in, Point&amp; point) {\n    in &gt;&gt; point.m_x &gt;&gt; point.m_y;\n    return in;\n}",
+      "answer": "std::cin &gt;&gt; myPoint; or you can chain: std::cin &gt;&gt; p1 &gt;&gt; p2;",
+      "explanation": "The operator reads two values from the input stream into the Point's x and y members, allowing standard input syntax.",
+      "source": "21.4 - Overloading the I/O operators",
+      "difficulty": "easy"
+    }
+  ]
+}

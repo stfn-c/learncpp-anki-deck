@@ -1,0 +1,213 @@
+{
+  "chapter": "Chapter 3",
+  "chapter_title": "Debugging C++ Programs",
+  "lesson": "3.10",
+  "lesson_title": "Finding issues before they become problems",
+  "total_cards": 14,
+  "cards": [
+    {
+      "id": "ch3_10_001",
+      "lesson": "3.10",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "warnings",
+        "compiler"
+      ],
+      "front": "Why should you always compile with warnings enabled?",
+      "back": "Compiler warnings catch many potential bugs before they become runtime problems. They identify suspicious code patterns that are legal but likely incorrect.",
+      "source": "3.10 - Finding issues before they become problems",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_10_002",
+      "lesson": "3.10",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "warnings",
+        "compiler"
+      ],
+      "text": "Turn on compiler warnings with {{c1::-Wall -Weffc++ -Wextra}} (GCC/Clang) or {{c2::/W4}} (Visual Studio).",
+      "source": "3.10 - Finding issues before they become problems",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_10_003",
+      "lesson": "3.10",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "warnings",
+        "best-practices"
+      ],
+      "front": "What is the 'treat warnings as errors' compiler setting?",
+      "back": "A compiler option that makes the build fail if there are any warnings, forcing you to fix them before the program can be built.",
+      "source": "3.10 - Finding issues before they become problems",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_10_004",
+      "lesson": "3.10",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "warnings",
+        "compiler"
+      ],
+      "text": "Enable 'treat warnings as errors' with {{c1::-Werror}} (GCC/Clang) or {{c2::/WX}} (Visual Studio).",
+      "source": "3.10 - Finding issues before they become problems",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_10_005",
+      "lesson": "3.10",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "warnings",
+        "best-practices"
+      ],
+      "concept": "Benefits of treating warnings as errors",
+      "explanation": "Treating warnings as errors:<ul><li>Prevents ignoring warnings</li><li>Forces immediate fixes</li><li>Catches bugs early in development</li><li>Maintains clean codebase</li><li>Makes warnings visible to whole team</li></ul>",
+      "examples": [
+        "// Without -Werror: warnings scroll by, ignored",
+        "// With -Werror: build fails, must fix now"
+      ],
+      "source": "3.10 - Finding issues before they become problems",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_10_006",
+      "lesson": "3.10",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "linters",
+        "static-analysis"
+      ],
+      "front": "What is a linter or static analyzer?",
+      "back": "A tool that analyzes source code without running it, looking for bugs, style issues, and suspicious patterns beyond what the compiler checks.",
+      "source": "3.10 - Finding issues before they become problems",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_10_007",
+      "lesson": "3.10",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "static-analysis",
+        "tools"
+      ],
+      "text": "Popular C++ static analyzers include {{c1::cppcheck}}, {{c2::clang-tidy}}, and {{c3::PVS-Studio}}.",
+      "source": "3.10 - Finding issues before they become problems",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_10_008",
+      "lesson": "3.10",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "testing",
+        "best-practices"
+      ],
+      "front": "What is the purpose of unit testing?",
+      "back": "Testing individual functions or components in isolation to verify they work correctly before integrating them into the larger program.",
+      "source": "3.10 - Finding issues before they become problems",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_10_009",
+      "lesson": "3.10",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "best-practices",
+        "prevention"
+      ],
+      "concept": "Defensive programming strategies",
+      "explanation": "Prevent bugs before they occur:<ul><li>Enable and fix all compiler warnings</li><li>Use static analyzers/linters</li><li>Write unit tests</li><li>Use assertions to validate assumptions</li><li>Initialize all variables</li><li>Use const correctness</li><li>Code reviews</li></ul>",
+      "examples": [
+        "// Always initialize: int x{0};",
+        "// Use const: const int max{100};",
+        "// Assert: assert(x &gt;= 0);"
+      ],
+      "source": "3.10 - Finding issues before they become problems",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_10_010",
+      "lesson": "3.10",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "warnings",
+        "common-mistakes"
+      ],
+      "question": "What warning would a good compiler give for this code?",
+      "code": "int getValue() {\n    int x;\n    return x;\n}",
+      "answer": "Warning: 'x' is used uninitialized. The variable has no value but is being returned.",
+      "explanation": "This is a common bug that compiler warnings catch - using a variable before giving it a value.",
+      "source": "3.10 - Finding issues before they become problems",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_10_011",
+      "lesson": "3.10",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "testing",
+        "best-practices"
+      ],
+      "front": "What's the advantage of catching bugs with static analysis vs. debugging at runtime?",
+      "back": "Static analysis finds bugs before you even run the code, saving time. Runtime debugging requires reproducing the bug, which may be difficult or time-consuming.",
+      "source": "3.10 - Finding issues before they become problems",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch3_10_012",
+      "lesson": "3.10",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "best-practices",
+        "prevention"
+      ],
+      "text": "The best way to fix bugs is to {{c1::prevent}} them from happening in the first place through good coding practices and {{c2::tools}}.",
+      "source": "3.10 - Finding issues before they become problems",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_10_013",
+      "lesson": "3.10",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "static-analysis",
+        "tools"
+      ],
+      "text": "{{c1::Static analyzers}} examine code without {{c2::running}} it, finding bugs and suspicious patterns.",
+      "source": "3.10 - Finding issues before they become problems",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch3_10_014",
+      "lesson": "3.10",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "warnings",
+        "common-mistakes"
+      ],
+      "question": "What warning would this trigger with -Wall?",
+      "code": "int calculate(int x, int y) {\n    int result = x + y;\n    return x;  // Wrong return value\n}",
+      "answer": "Warning: unused variable 'result' (or 'parameter y unused' depending on the compiler).",
+      "explanation": "The compiler notices result is assigned but never used, suggesting a logic error.",
+      "source": "3.10 - Finding issues before they become problems",
+      "difficulty": "medium"
+    }
+  ]
+}

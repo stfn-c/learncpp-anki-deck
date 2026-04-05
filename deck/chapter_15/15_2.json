@@ -1,0 +1,187 @@
+{
+  "chapter": "Chapter 15",
+  "chapter_title": "More on Classes",
+  "lesson": "15.2",
+  "lesson_title": "Classes and header files",
+  "total_cards": 12,
+  "cards": [
+    {
+      "id": "ch15_2_001",
+      "lesson": "15.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "header-files",
+        "best-practices"
+      ],
+      "text": "Class definitions should go in {{c1::header files}} (.h) and member function definitions should go in {{c2::source files}} (.cpp).",
+      "source": "15.2 - Classes and header files",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch15_2_002",
+      "lesson": "15.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "syntax"
+      ],
+      "text": "To define a member function outside the class, use the {{c1::scope resolution operator}}: <code>{{c2::ClassName::}}functionName()</code>",
+      "source": "15.2 - Classes and header files",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch15_2_003",
+      "lesson": "15.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "header-files"
+      ],
+      "text": "Member functions defined inside the class definition are implicitly {{c1::inline}}, which may allow the compiler to expand them in place.",
+      "source": "15.2 - Classes and header files",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_2_004",
+      "lesson": "15.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "best-practices"
+      ],
+      "text": "Trivial member functions (like simple {{c1::getters}} and {{c2::setters}}) can be defined {{c3::inside the class definition}}, while non-trivial functions should be defined {{c4::in the .cpp file}}.",
+      "source": "15.2 - Classes and header files",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_2_005",
+      "lesson": "15.2",
+      "type": "cloze",
+      "tags": [
+        "cpp",
+        "classes",
+        "constructors"
+      ],
+      "text": "Constructors with default parameters can have the default values specified in the {{c1::class definition}} but not in the {{c2::function definition}}.",
+      "source": "15.2 - Classes and header files",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_2_006",
+      "lesson": "15.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "classes",
+        "header-files"
+      ],
+      "front": "What are the two ways to define a member function?",
+      "back": "<ul><li>Inside the class definition (implicitly inline)</li><li>Outside the class using the scope resolution operator (ClassName::)</li></ul>",
+      "source": "15.2 - Classes and header files",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch15_2_007",
+      "lesson": "15.2",
+      "type": "basic",
+      "tags": [
+        "cpp",
+        "classes",
+        "header-files"
+      ],
+      "front": "Why should non-trivial member functions be defined in .cpp files instead of header files?",
+      "back": "To minimize recompilation when the implementation changes. Changes to .cpp files only require recompiling that file, while changes to .h files require recompiling all files that include them.",
+      "source": "15.2 - Classes and header files",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_2_008",
+      "lesson": "15.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "classes",
+        "syntax"
+      ],
+      "question": "How do you define this member function outside the class?",
+      "code": "// Date.h\nclass Date {\n    int m_year;\n    int m_month;\n    int m_day;\npublic:\n    void print() const;  // declaration only\n};\n\n// Date.cpp - how to define print()?",
+      "answer": "<code>void Date::print() const { std::cout &lt;&lt; m_year &lt;&lt; '/' &lt;&lt; m_month &lt;&lt; '/' &lt;&lt; m_day; }</code>",
+      "explanation": "Use the scope resolution operator Date:: before the function name, and include the const qualifier.",
+      "source": "15.2 - Classes and header files",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch15_2_009",
+      "lesson": "15.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "classes",
+        "common-mistakes"
+      ],
+      "question": "What's wrong with this code?",
+      "code": "// Date.h\nclass Date {\npublic:\n    void Date::print() const;  // ERROR!\n};",
+      "answer": "Cannot use the scope resolution operator (Date::) when declaring a member function inside the class definition.",
+      "explanation": "The scope resolution operator is only used when <em>defining</em> member functions outside the class, not when declaring them inside.",
+      "source": "15.2 - Classes and header files",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_2_010",
+      "lesson": "15.2",
+      "type": "code",
+      "tags": [
+        "cpp",
+        "classes",
+        "inline"
+      ],
+      "question": "Which of these member functions is implicitly inline?",
+      "code": "// Version 1\nclass Foo {\n    int getX() const { return m_x; }\n};\n\n// Version 2\nclass Foo {\n    int getX() const;\n};\nint Foo::getX() const { return m_x; }",
+      "answer": "Version 1 is implicitly inline (defined inside the class).",
+      "explanation": "Member functions defined inside the class definition are implicitly inline. Version 2 is not inline unless explicitly marked.",
+      "source": "15.2 - Classes and header files",
+      "difficulty": "medium"
+    },
+    {
+      "id": "ch15_2_011",
+      "lesson": "15.2",
+      "type": "concept",
+      "tags": [
+        "cpp",
+        "classes",
+        "header-files",
+        "best-practices"
+      ],
+      "concept": "Best practice for organizing class code",
+      "explanation": "Separate class declarations from definitions:<ul><li>Header file (.h): Class definition with member declarations</li><li>Source file (.cpp): Member function definitions</li><li>Exception: Trivial functions (simple getters/setters) can stay in the header</li><li>Benefit: Faster recompilation when implementation changes</li></ul>",
+      "examples": [
+        "// Date.h - declarations only",
+        "class Date { void print() const; };",
+        "",
+        "// Date.cpp - definitions",
+        "void Date::print() const { /* ... */ }"
+      ],
+      "source": "15.2 - Classes and header files",
+      "difficulty": "easy"
+    },
+    {
+      "id": "ch15_2_012",
+      "lesson": "15.2",
+      "type": "reverse",
+      "tags": [
+        "cpp",
+        "operators",
+        "scope"
+      ],
+      "front": "::",
+      "back": "Scope resolution operator, used to access members of a namespace or define class members outside the class definition",
+      "source": "15.2 - Classes and header files",
+      "difficulty": "easy"
+    }
+  ]
+}
